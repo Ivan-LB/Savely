@@ -150,18 +150,6 @@ struct ReportsView: View {
     }
 }
 
-struct ExpenseCategory: Identifiable {
-    let id = UUID()
-    let category: String
-    let amount: Double
-}
-
-struct MonthlySaving: Identifiable {
-    let id = UUID()
-    let month: String
-    let amount: Double
-}
-
 struct ReportsView_Previews: PreviewProvider {
     static var previews: some View {
         ReportsView()

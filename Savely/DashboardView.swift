@@ -128,30 +128,6 @@ struct DashboardView: View {
     }
 }
 
-struct QuickActionButton: View {
-    var iconName: String
-    var label: String
-    var backgroundColor: Color
-
-    var body: some View {
-        VStack {
-            Image(systemName: iconName)
-                .resizable()
-                .frame(width: 24, height: 24)
-                .foregroundColor(.white)
-                .padding()
-                .background(backgroundColor)
-                .clipShape(Circle())
-            Text(label)
-                .font(.footnote)
-                .foregroundColor(.white)
-        }
-        .padding()
-        .background(backgroundColor)
-        .cornerRadius(10)
-    }
-}
-
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         DashboardView()

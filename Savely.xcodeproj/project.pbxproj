@@ -21,6 +21,14 @@
 		1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2583B2CC081D90002DDE3 /* ProfileView.swift */; };
 		1DC2583E2CC082450002DDE3 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2583D2CC082450002DDE3 /* NavigationView.swift */; };
 		1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258422CC61D3A0002DDE3 /* CardView.swift */; };
+		1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258452CC628C70002DDE3 /* QuickActionButton.swift */; };
+		1DC258492CC629210002DDE3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258482CC629210002DDE3 /* Goal.swift */; };
+		1DC2584B2CC629540002DDE3 /* ExpenseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */; };
+		1DC2584D2CC629890002DDE3 /* MonthlySaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584C2CC629890002DDE3 /* MonthlySaving.swift */; };
+		1DC2584F2CC62A160002DDE3 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584E2CC62A160002DDE3 /* Tip.swift */; };
+		1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258512CC62A5B0002DDE3 /* TabsView.swift */; };
+		1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258532CC62B530002DDE3 /* TipsListView.swift */; };
+		1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258552CC62BAB0002DDE3 /* TipCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +66,14 @@
 		1DC2583B2CC081D90002DDE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1DC2583D2CC082450002DDE3 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		1DC258422CC61D3A0002DDE3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		1DC258452CC628C70002DDE3 /* QuickActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionButton.swift; sourceTree = "<group>"; };
+		1DC258482CC629210002DDE3 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModels.swift; sourceTree = "<group>"; };
+		1DC2584C2CC629890002DDE3 /* MonthlySaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySaving.swift; sourceTree = "<group>"; };
+		1DC2584E2CC62A160002DDE3 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		1DC258512CC62A5B0002DDE3 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		1DC258532CC62B530002DDE3 /* TipsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsListView.swift; sourceTree = "<group>"; };
+		1DC258552CC62BAB0002DDE3 /* TipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,17 +124,18 @@
 		1DC258062CC07DCC0002DDE3 /* Savely */ = {
 			isa = PBXGroup;
 			children = (
+				1DC258472CC629120002DDE3 /* Models */,
 				1DC2583F2CC61D1E0002DDE3 /* Views */,
 				1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */,
-				1DC258312CC07DF40002DDE3 /* DashboardView.swift */,
-				1DC258332CC07E460002DDE3 /* GoalsView.swift */,
-				1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */,
-				1DC2580D2CC07DCF0002DDE3 /* Preview Content */,
 				1DC258352CC07E850002DDE3 /* ExpenseTrackerView.swift */,
+				1DC258312CC07DF40002DDE3 /* DashboardView.swift */,
 				1DC258372CC07FA00002DDE3 /* ReportsView.swift */,
+				1DC258332CC07E460002DDE3 /* GoalsView.swift */,
 				1DC258392CC081A40002DDE3 /* TipsAndSuggestionsView.swift */,
 				1DC2583B2CC081D90002DDE3 /* ProfileView.swift */,
 				1DC2583D2CC082450002DDE3 /* NavigationView.swift */,
+				1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */,
+				1DC2580D2CC07DCF0002DDE3 /* Preview Content */,
 			);
 			path = Savely;
 			sourceTree = "<group>";
@@ -160,8 +177,23 @@
 			isa = PBXGroup;
 			children = (
 				1DC258422CC61D3A0002DDE3 /* CardView.swift */,
+				1DC258452CC628C70002DDE3 /* QuickActionButton.swift */,
+				1DC258512CC62A5B0002DDE3 /* TabsView.swift */,
+				1DC258532CC62B530002DDE3 /* TipsListView.swift */,
+				1DC258552CC62BAB0002DDE3 /* TipCardView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		1DC258472CC629120002DDE3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1DC258482CC629210002DDE3 /* Goal.swift */,
+				1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */,
+				1DC2584C2CC629890002DDE3 /* MonthlySaving.swift */,
+				1DC2584E2CC62A160002DDE3 /* Tip.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,13 +326,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DC2584B2CC629540002DDE3 /* ExpenseModels.swift in Sources */,
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
 				1DC2583E2CC082450002DDE3 /* NavigationView.swift in Sources */,
+				1DC2584F2CC62A160002DDE3 /* Tip.swift in Sources */,
+				1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */,
 				1DC2583A2CC081A40002DDE3 /* TipsAndSuggestionsView.swift in Sources */,
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
 				1DC258362CC07E850002DDE3 /* ExpenseTrackerView.swift in Sources */,
+				1DC258492CC629210002DDE3 /* Goal.swift in Sources */,
+				1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */,
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
+				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
+				1DC2584D2CC629890002DDE3 /* MonthlySaving.swift in Sources */,
+				1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */,
 				1DC258382CC07FA00002DDE3 /* ReportsView.swift in Sources */,
 				1DC258342CC07E460002DDE3 /* GoalsView.swift in Sources */,
 			);

@@ -131,13 +131,6 @@ struct ExpenseTrackerView: View {
     }
 }
 
-struct Expense: Identifiable {
-    let id: Int
-    let description: String
-    let amount: Double
-    let date: String
-}
-
 struct ExpenseTrackerView_Previews: PreviewProvider {
     static var previews: some View {
         ExpenseTrackerView()

@@ -85,18 +85,6 @@ struct GoalsView: View {
     }
 }
 
-struct Goal: Identifiable {
-    let id: Int
-    let name: String
-    let current: Double
-    let target: Double
-    let color: Color
-    
-    var progress: Double {
-        return current / target
-    }
-}
-
 struct GoalsView_Previews: PreviewProvider {
     static var previews: some View {
         GoalsView()
