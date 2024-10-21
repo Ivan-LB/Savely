@@ -1,0 +1,14 @@
+.DS_Store
+
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+
+build/
+DerivedData/
+
+*.xcscmblueprint
+
+*.swp
+Savely.xcodeproj/xcuserdata
+Savely.xcodeproj/project.xcworkspace/xcshareddata
+Savely.xcodeproj/project.xcworkspace
