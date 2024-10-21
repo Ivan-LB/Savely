@@ -36,7 +36,7 @@ struct GoalsView: View {
                         Image(systemName: "plus.circle")
                             .foregroundColor(.white)
                             .font(.title)
-                        Text("Agregar Nueva Meta")
+                        Text(Strings.Buttons.newGoalButton)
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(.white)

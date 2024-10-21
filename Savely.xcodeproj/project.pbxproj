@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3669872CC62F8200E84FF9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3669862CC62F8200E84FF9 /* Strings.swift */; };
+		1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3669882CC62F9100E84FF9 /* UIConstants.swift */; };
+		1D36698B2CC62FD700E84FF9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1D36698A2CC62FD700E84FF9 /* Localizable.xcstrings */; };
 		1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */; };
 		1DC2580C2CC07DCF0002DDE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */; };
 		1DC2580F2CC07DCF0002DDE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580E2CC07DCF0002DDE3 /* Preview Assets.xcassets */; };
@@ -15,7 +18,6 @@
 		1DC258252CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258242CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift */; };
 		1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258312CC07DF40002DDE3 /* DashboardView.swift */; };
 		1DC258342CC07E460002DDE3 /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258332CC07E460002DDE3 /* GoalsView.swift */; };
-		1DC258362CC07E850002DDE3 /* ExpenseTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258352CC07E850002DDE3 /* ExpenseTrackerView.swift */; };
 		1DC258382CC07FA00002DDE3 /* ReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258372CC07FA00002DDE3 /* ReportsView.swift */; };
 		1DC2583A2CC081A40002DDE3 /* TipsAndSuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258392CC081A40002DDE3 /* TipsAndSuggestionsView.swift */; };
 		1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2583B2CC081D90002DDE3 /* ProfileView.swift */; };
@@ -29,6 +31,7 @@
 		1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258512CC62A5B0002DDE3 /* TabsView.swift */; };
 		1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258532CC62B530002DDE3 /* TipsListView.swift */; };
 		1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258552CC62BAB0002DDE3 /* TipCardView.swift */; };
+		1DC258572CC62DF20002DDE3 /* ExpenseTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258352CC07E850002DDE3 /* ExpenseTrackerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D3669862CC62F8200E84FF9 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		1D3669882CC62F9100E84FF9 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		1D36698A2CC62FD700E84FF9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		1DC258042CC07DCC0002DDE3 /* Savely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavelyApp.swift; sourceTree = "<group>"; };
 		1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +107,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D3669842CC62EDD00E84FF9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1D3669852CC62F6900E84FF9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1D3669862CC62F8200E84FF9 /* Strings.swift */,
+				1D3669882CC62F9100E84FF9 /* UIConstants.swift */,
+				1D36698A2CC62FD700E84FF9 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		1DC257FB2CC07DCC0002DDE3 = {
 			isa = PBXGroup;
 			children = (
@@ -124,16 +147,11 @@
 		1DC258062CC07DCC0002DDE3 /* Savely */ = {
 			isa = PBXGroup;
 			children = (
+				1D3669852CC62F6900E84FF9 /* Resources */,
 				1DC258472CC629120002DDE3 /* Models */,
 				1DC2583F2CC61D1E0002DDE3 /* Views */,
+				1D3669842CC62EDD00E84FF9 /* ViewModels */,
 				1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */,
-				1DC258352CC07E850002DDE3 /* ExpenseTrackerView.swift */,
-				1DC258312CC07DF40002DDE3 /* DashboardView.swift */,
-				1DC258372CC07FA00002DDE3 /* ReportsView.swift */,
-				1DC258332CC07E460002DDE3 /* GoalsView.swift */,
-				1DC258392CC081A40002DDE3 /* TipsAndSuggestionsView.swift */,
-				1DC2583B2CC081D90002DDE3 /* ProfileView.swift */,
-				1DC2583D2CC082450002DDE3 /* NavigationView.swift */,
 				1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */,
 				1DC2580D2CC07DCF0002DDE3 /* Preview Content */,
 			);
@@ -169,6 +187,13 @@
 			isa = PBXGroup;
 			children = (
 				1DC258402CC61D250002DDE3 /* Components */,
+				1DC258312CC07DF40002DDE3 /* DashboardView.swift */,
+				1DC258372CC07FA00002DDE3 /* ReportsView.swift */,
+				1DC258332CC07E460002DDE3 /* GoalsView.swift */,
+				1DC258392CC081A40002DDE3 /* TipsAndSuggestionsView.swift */,
+				1DC2583B2CC081D90002DDE3 /* ProfileView.swift */,
+				1DC2583D2CC082450002DDE3 /* NavigationView.swift */,
+				1DC258352CC07E850002DDE3 /* ExpenseTrackerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,6 +307,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"es-419",
 			);
 			mainGroup = 1DC257FB2CC07DCC0002DDE3;
 			productRefGroup = 1DC258052CC07DCC0002DDE3 /* Products */;
@@ -302,6 +328,7 @@
 			files = (
 				1DC2580F2CC07DCF0002DDE3 /* Preview Assets.xcassets in Resources */,
 				1DC2580C2CC07DCF0002DDE3 /* Assets.xcassets in Resources */,
+				1D36698B2CC62FD700E84FF9 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,14 +357,16 @@
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
 				1DC2583E2CC082450002DDE3 /* NavigationView.swift in Sources */,
 				1DC2584F2CC62A160002DDE3 /* Tip.swift in Sources */,
+				1DC258572CC62DF20002DDE3 /* ExpenseTrackerView.swift in Sources */,
 				1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */,
 				1DC2583A2CC081A40002DDE3 /* TipsAndSuggestionsView.swift in Sources */,
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
-				1DC258362CC07E850002DDE3 /* ExpenseTrackerView.swift in Sources */,
 				1DC258492CC629210002DDE3 /* Goal.swift in Sources */,
+				1D3669872CC62F8200E84FF9 /* Strings.swift in Sources */,
 				1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */,
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
+				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1DC2584D2CC629890002DDE3 /* MonthlySaving.swift in Sources */,
 				1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */,

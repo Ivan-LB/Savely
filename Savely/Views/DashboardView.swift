@@ -52,9 +52,12 @@ struct DashboardView: View {
                 .padding(.horizontal)
 
                 // Quick Actions
-                HStack(spacing: 20) {
-                    QuickActionButton(iconName: "camera", label: "Registrar Gasto", backgroundColor: .green)
-                    QuickActionButton(iconName: "plus.circle", label: "Nueva Meta", backgroundColor: .green)
+                HStack() {
+                    QuickActionButton(iconName: "camera", label: Strings.Buttons.addIncomeButton, backgroundColor: .green)
+                    Spacer()
+                    QuickActionButton(iconName: "camera", label: Strings.Buttons.addExpenseButton, backgroundColor: .green)
+                    Spacer()
+                    QuickActionButton(iconName: "plus.circle", label: Strings.Buttons.newGoalButton, backgroundColor: .green)
                 }
                 .padding(.horizontal)
 

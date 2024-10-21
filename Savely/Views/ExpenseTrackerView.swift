@@ -37,7 +37,7 @@ struct ExpenseTrackerView: View {
                         Image(systemName: "camera")
                             .foregroundColor(.white)
                             .font(.title)
-                        Text("Subir Foto de Recibo")
+                        Text(Strings.Buttons.scanReceiptButton)
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -65,7 +65,7 @@ struct ExpenseTrackerView: View {
                             amount = ""
                         }
                     }) {
-                        Text("Registrar Gasto")
+                        Text(Strings.Buttons.addExpenseButton)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .padding()

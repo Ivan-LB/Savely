@@ -1,0 +1,499 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld%%" : {
+
+    },
+    "$%.2f / $%.2f" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "$%1$.2f / $%2$.2f"
+          }
+        }
+      }
+    },
+    "75%" : {
+
+    },
+    "add_expense_button" : {
+      "comment" : "Add Expense Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add Expense"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar Gasto"
+          }
+        }
+      }
+    },
+    "add_income_button" : {
+      "comment" : "Add Income Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add Income"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar Ingreso"
+          }
+        }
+      }
+    },
+    "add_new_goal_button" : {
+      "comment" : "Add New Goal Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add New Goal"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar Nueva Meta"
+          }
+        }
+      }
+    },
+    "Ahorros" : {
+
+    },
+    "Amount" : {
+
+    },
+    "app_preferences_title" : {
+      "comment" : "App Preferences Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "App Preferences"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferencias de la Aplicación"
+          }
+        }
+      }
+    },
+    "Bienvenido a Savely" : {
+
+    },
+    "Categoría" : {
+
+    },
+    "change_password_button" : {
+      "comment" : "Change Password Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Change Password"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar Contraseña"
+          }
+        }
+      }
+    },
+    "Consejo del Día" : {
+
+    },
+    "Consejos y Sugerencias" : {
+
+    },
+    "dark_mode_label" : {
+      "comment" : "Dark Mode Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dark Mode"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo Oscuro"
+          }
+        }
+      }
+    },
+    "dashboard_tab_string" : {
+      "comment" : "Dashboard Tab String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dashboard"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panel"
+          }
+        }
+      }
+    },
+    "Descripción" : {
+
+    },
+    "Día" : {
+
+    },
+    "Distribución de Gastos" : {
+
+    },
+    "email_placeholder_title" : {
+      "comment" : "Email Placeholder Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Email"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correo Electrónico"
+          }
+        }
+      }
+    },
+    "Establece metas pequeñas y alcanzables. ¡El éxito en pequeños objetivos te motivará a lograr metas más grandes!" : {
+
+    },
+    "Este año" : {
+
+    },
+    "Este mes" : {
+
+    },
+    "Este trimestre" : {
+
+    },
+    "expense_reminders_label" : {
+      "comment" : "Expense Reminders Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense Reminders"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorios de Gastos"
+          }
+        }
+      }
+    },
+    "expenses_tab_string" : {
+      "comment" : "Expenses Tab String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expenses"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos"
+          }
+        }
+      }
+    },
+    "export_report_button" : {
+      "comment" : "Export Report Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Export Report"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar Reporte"
+          }
+        }
+      }
+    },
+    "Favoritos" : {
+
+    },
+    "filter_button" : {
+      "comment" : "Filter Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Filter"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar"
+          }
+        }
+      }
+    },
+    "Gasto" : {
+
+    },
+    "Gastos Recientes" : {
+
+    },
+    "Gastos Semanales" : {
+
+    },
+    "Generales" : {
+
+    },
+    "goal_alerts_label" : {
+      "comment" : "Goal Alerts Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goal Alerts"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alertas de Metas"
+          }
+        }
+      }
+    },
+    "goals_tab_string" : {
+      "comment" : "Goals Tab String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goals"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metas"
+          }
+        }
+      }
+    },
+    "Mes" : {
+
+    },
+    "Meta Mensual" : {
+
+    },
+    "Monto" : {
+
+    },
+    "name_placeholder_label" : {
+      "comment" : "Name Placeholder Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "notifications_title" : {
+      "comment" : "Notifications Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Notifications"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones"
+          }
+        }
+      }
+    },
+    "Perfil de Usuario" : {
+
+    },
+    "personal_information_title" : {
+      "comment" : "Personal Information Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Personal Information"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información Personal"
+          }
+        }
+      }
+    },
+    "Personalizados" : {
+
+    },
+    "profile_tab_string" : {
+      "comment" : "Profile Tab String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profile"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfil"
+          }
+        }
+      }
+    },
+    "Registro de Gastos" : {
+
+    },
+    "Reportes Financieros" : {
+
+    },
+    "reports_tab_string" : {
+      "comment" : "Reports Tab String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reports"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reportes"
+          }
+        }
+      }
+    },
+    "Resumen de Ahorros" : {
+
+    },
+    "Resumen Mensual" : {
+
+    },
+    "scan_receipt_button" : {
+      "comment" : "Scan Receipt Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Scan Receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escanear Recibo"
+          }
+        }
+      }
+    },
+    "Seguridad" : {
+
+    },
+    "Seleccionar Fecha" : {
+
+    },
+    "Seleccionar Período" : {
+
+    },
+    "Select Tab" : {
+
+    },
+    "Tendencia de Ahorros" : {
+
+    },
+    "Tu compañero de ahorro" : {
+
+    },
+    "Tus Metas de Ahorro" : {
+
+    },
+    "update_information_button" : {
+      "comment" : "Update Information Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Update Information"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar Información"
+          }
+        }
+      }
+    },
+    "Vista previa del contenido" : {
+
+    }
+  },
+  "version" : "1.0"
+}

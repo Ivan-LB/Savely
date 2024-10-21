@@ -13,37 +13,31 @@ struct NavigationView: View {
             DashboardView()
                 .tabItem {
                     Image(systemName: "house.fill")
-                    Text("Dashboard")
+                    Text(Strings.Tabs.dashboardTab)
                 }
 
             GoalsView()
                 .tabItem {
                     Image(systemName: "target")
-                    Text("Metas")
+                    Text(Strings.Tabs.goalsTab)
                 }
 
             ExpenseTrackerView()
                 .tabItem {
                     Image(systemName: "list.bullet")
-                    Text("Gastos")
+                    Text(Strings.Tabs.expensesTab)
                 }
 
             ReportsView()
                 .tabItem {
                     Image(systemName: "chart.bar.fill")
-                    Text("Reportes")
-                }
-
-            TipsAndSuggestionsView()
-                .tabItem {
-                    Image(systemName: "lightbulb.fill")
-                    Text("Consejos")
+                    Text(Strings.Tabs.reportsTab)
                 }
 
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
-                    Text("Perfil")
+                    Text(Strings.Tabs.profileTab)
                 }
         }
         .accentColor(.blue)

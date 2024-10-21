@@ -57,7 +57,7 @@ struct ReportsView: View {
                                 // Action for filtering
                                 print("Hola")
                             }) {
-                                Label("Filtrar", systemImage: "line.horizontal.3.decrease.circle")
+                                Label(Strings.Buttons.filterButton, systemImage: "line.horizontal.3.decrease.circle")
                                     .padding(10)
                                     .background(Color.gray.opacity(0.1))
                                     .cornerRadius(8)
@@ -133,7 +133,10 @@ struct ReportsView: View {
                 }) {
                     HStack {
                         Image(systemName: "square.and.arrow.down")
-                        Text("Exportar Reporte")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                        Text(Strings.Buttons.exportReport)
                             .fontWeight(.bold)
                     }
                     .padding()

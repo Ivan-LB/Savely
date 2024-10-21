@@ -16,11 +16,9 @@ struct QuickActionButton: View {
         VStack {
             Image(systemName: iconName)
                 .resizable()
+                .scaledToFit()
                 .frame(width: 24, height: 24)
                 .foregroundColor(.white)
-                .padding()
-                .background(backgroundColor)
-                .clipShape(Circle())
             Text(label)
                 .font(.footnote)
                 .foregroundColor(.white)
