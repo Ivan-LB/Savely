@@ -8,6 +8,29 @@
 import Foundation
 
 struct Strings {
+    struct DashboardTab {
+        static let welcomeHeader = NSLocalizedString(
+            "welcome_header",
+            value: "Welcome to Savely",
+            comment: "Welcome to Savely Header")
+        static let monthlyGoalLabel = NSLocalizedString(
+            "monthly_goal_label",
+            value: "Monthly Goal",
+            comment: "Monthly Goal Label")
+        static let savingsSummaryTitle = NSLocalizedString(
+            "savings_summary_title",
+            value: "Savings Summary",
+            comment: "Savings Summary Title")
+        static let weeklyExpensesTitle = NSLocalizedString(
+            "weekly_expenses_title",
+            value: "Weekly Expenses",
+            comment: "Weekly Expenses Title")
+        static let tipOfTheDayTitle = NSLocalizedString(
+            "tip_of_the_day_title",
+            value: "Tip of the Day",
+            comment: "Tip of the Day Title")
+    }
+    
     struct Profile {
         static let personalInformationTitle = NSLocalizedString(
             "personal_information_title",

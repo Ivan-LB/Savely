@@ -32,15 +32,15 @@ struct ReportsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 // Header Section
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Reportes Financieros")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.blue)
+//                VStack(alignment: .leading, spacing: 5) {
+//                    Text("Reportes Financieros")
+//                        .font(.largeTitle)
+//                        .fontWeight(.bold)
+//                        .foregroundColor(.white)
+//                }
+//                .padding()
+//                .frame(maxWidth: .infinity, alignment: .leading)
+//                .background(Color.blue)
                 
                 // Filter Card
                 CardView(content: {

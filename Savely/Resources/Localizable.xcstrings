@@ -95,9 +95,6 @@
         }
       }
     },
-    "Bienvenido a Savely" : {
-
-    },
     "Categoría" : {
 
     },
@@ -118,9 +115,6 @@
           }
         }
       }
-    },
-    "Consejo del Día" : {
-
     },
     "Consejos y Sugerencias" : {
 
@@ -281,9 +275,6 @@
     "Gastos Recientes" : {
 
     },
-    "Gastos Semanales" : {
-
-    },
     "Generales" : {
 
     },
@@ -326,8 +317,23 @@
     "Mes" : {
 
     },
-    "Meta Mensual" : {
-
+    "monthly_goal_label" : {
+      "comment" : "Monthly Goal Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Monthly Goal"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta Mensual"
+          }
+        }
+      }
     },
     "Monto" : {
 
@@ -340,6 +346,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Name"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre"
           }
         }
       }
@@ -361,9 +373,6 @@
           }
         }
       }
-    },
-    "Perfil de Usuario" : {
-
     },
     "personal_information_title" : {
       "comment" : "Personal Information Title",
@@ -404,12 +413,6 @@
         }
       }
     },
-    "Registro de Gastos" : {
-
-    },
-    "Reportes Financieros" : {
-
-    },
     "reports_tab_string" : {
       "comment" : "Reports Tab String",
       "extractionState" : "extracted_with_value",
@@ -428,11 +431,23 @@
         }
       }
     },
-    "Resumen de Ahorros" : {
-
-    },
     "Resumen Mensual" : {
 
+    },
+    "Savely" : {
+
+    },
+    "savings_summary_title" : {
+      "comment" : "Savings Summary Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Savings Summary"
+          }
+        }
+      }
     },
     "scan_receipt_button" : {
       "comment" : "Scan Receipt Button",
@@ -452,8 +467,23 @@
         }
       }
     },
-    "Seguridad" : {
-
+    "security_title" : {
+      "comment" : "Security Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Security"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguridad"
+          }
+        }
+      }
     },
     "Seleccionar Fecha" : {
 
@@ -467,11 +497,23 @@
     "Tendencia de Ahorros" : {
 
     },
-    "Tu compañero de ahorro" : {
-
-    },
-    "Tus Metas de Ahorro" : {
-
+    "tip_of_the_day_title" : {
+      "comment" : "Tip of the Day Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tip of the Day"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consejo del Día"
+          }
+        }
+      }
     },
     "update_information_button" : {
       "comment" : "Update Information Button",
@@ -493,6 +535,42 @@
     },
     "Vista previa del contenido" : {
 
+    },
+    "weekly_expenses_title" : {
+      "comment" : "Weekly Expenses Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Weekly Expenses"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos Semanales"
+          }
+        }
+      }
+    },
+    "welcome_header" : {
+      "comment" : "Welcome to Savely Header",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Welcome to Savely"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido a Savely"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

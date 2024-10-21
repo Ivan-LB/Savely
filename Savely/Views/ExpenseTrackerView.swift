@@ -19,15 +19,15 @@ struct ExpenseTrackerView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 // Header Section
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Registro de Gastos")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.blue)
+//                VStack(alignment: .leading, spacing: 5) {
+//                    Text("Registro de Gastos")
+//                        .font(.largeTitle)
+//                        .fontWeight(.bold)
+//                        .foregroundColor(.white)
+//                }
+//                .padding()
+//                .frame(maxWidth: .infinity, alignment: .leading)
+//                .background(Color.blue)
                 
                 // Upload Receipt Button
                 Button(action: {

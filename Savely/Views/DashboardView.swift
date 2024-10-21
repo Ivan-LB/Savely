@@ -13,22 +13,16 @@ struct DashboardView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 // Header Section
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Bienvenido a Savely")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                    Text("Tu compañero de ahorro")
-                        .font(.subheadline)
-                        .foregroundColor(.white.opacity(0.8))
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.blue)
+                Text(Strings.DashboardTab.welcomeHeader)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.blue)
+                    .padding(.horizontal)
+                
 
                 // Overview Card
                 VStack(spacing: 15) {
-                    Text("Resumen de Ahorros")
+                    Text(Strings.DashboardTab.savingsSummaryTitle)
                         .font(.title3)
                         .fontWeight(.bold)
                     ZStack {
@@ -41,7 +35,7 @@ struct DashboardView: View {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                     }
-                    Text("Meta Mensual")
+                    Text(Strings.DashboardTab.monthlyGoalLabel)
                         .font(.subheadline)
                 }
                 .padding()
@@ -63,7 +57,7 @@ struct DashboardView: View {
 
                 // Weekly Spending Chart
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Gastos Semanales")
+                    Text(Strings.DashboardTab.weeklyExpensesTitle)
                         .font(.title3)
                         .fontWeight(.bold)
                     Chart {
@@ -110,7 +104,7 @@ struct DashboardView: View {
                     HStack {
                         Image(systemName: "chart.line.uptrend.xyaxis")
                             .foregroundColor(.blue)
-                        Text("Consejo del Día")
+                        Text(Strings.DashboardTab.tipOfTheDayTitle)
                             .font(.title3)
                             .fontWeight(.bold)
                     }
