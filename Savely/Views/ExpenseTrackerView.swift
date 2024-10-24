@@ -14,6 +14,7 @@ struct ExpenseTrackerView: View {
     ]
     @State private var description = ""
     @State private var amount = ""
+    @State private var showCameraView: Bool = false
     
     var body: some View {
         ScrollView {
@@ -32,6 +33,7 @@ struct ExpenseTrackerView: View {
                 // Upload Receipt Button
                 Button(action: {
                     // Action to upload receipt photo
+                    showCameraView = true
                 }) {
                     HStack {
                         Image(systemName: "camera")
@@ -48,12 +50,15 @@ struct ExpenseTrackerView: View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                 }
+                .sheet(isPresented: $showCameraView) {
+                    CameraView()
+                }
                 
                 // Expense Form
                 VStack(spacing: 15) {
-                    TextField("Descripción", text: $description)
+                    TextField(Strings.ExpenseTrackerTab.descriptionPlaceholderLabel, text: $description)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Monto", text: $amount)
+                    TextField(Strings.ExpenseTrackerTab.amountPlaceholderLabel, text: $amount)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Button(action: {
@@ -82,7 +87,7 @@ struct ExpenseTrackerView: View {
                 
                 // Expense List
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Gastos Recientes")
+                    Text(Strings.ExpenseTrackerTab.recentExpensesTitle)
                         .font(.title3)
                         .fontWeight(.bold)
                     ForEach(expenses) { expense in

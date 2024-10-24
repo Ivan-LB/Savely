@@ -31,6 +31,22 @@ struct Strings {
             comment: "Tip of the Day Title")
     }
     
+    struct ExpenseTrackerTab {
+        static let descriptionPlaceholderLabel = NSLocalizedString(
+            "description_placeholder_label",
+            value: "Description",
+            comment: "Description Placeholder Label")
+        static let amountPlaceholderLabel = NSLocalizedString(
+            "amount_placeholder_label",
+            value: "Amount",
+            comment: "Amount Placeholder Label")
+        
+        static let recentExpensesTitle = NSLocalizedString(
+            "recent_expenses_title",
+            value: "Recent Expenses",
+            comment: "Recent Expenses Title")
+    }
+    
     struct Profile {
         static let personalInformationTitle = NSLocalizedString(
             "personal_information_title",

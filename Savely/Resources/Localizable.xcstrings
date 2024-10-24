@@ -77,6 +77,18 @@
     "Amount" : {
 
     },
+    "amount_placeholder_label" : {
+      "comment" : "Amount Placeholder Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Amount"
+          }
+        }
+      }
+    },
     "app_preferences_title" : {
       "comment" : "App Preferences Title",
       "extractionState" : "extracted_with_value",
@@ -155,8 +167,17 @@
         }
       }
     },
-    "Descripción" : {
-
+    "description_placeholder_label" : {
+      "comment" : "Description Placeholder Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Description"
+          }
+        }
+      }
     },
     "Día" : {
 
@@ -270,9 +291,6 @@
       }
     },
     "Gasto" : {
-
-    },
-    "Gastos Recientes" : {
 
     },
     "Generales" : {
@@ -409,6 +427,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfil"
+          }
+        }
+      }
+    },
+    "recent_expenses_title" : {
+      "comment" : "Recent Expenses Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Recent Expenses"
           }
         }
       }
