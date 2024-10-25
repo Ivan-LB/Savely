@@ -6,52 +6,95 @@
 //
 
 import AVFoundation
+import Vision
 import UIKit
 
 class CameraManager: NSObject, ObservableObject {
+    @Published var photoData: Data?
+    @Published var isRectangleDetected: Bool = false
+    @Published var detectedRectangle: VNRectangleObservation?
+
     private let session = AVCaptureSession()
-    private let output = AVCapturePhotoOutput()
+    private var photoOutput = AVCapturePhotoOutput()
+    private var videoOutput = AVCaptureVideoDataOutput()
+    private let sessionQueue = DispatchQueue(label: "session_queue")
     private var previewLayer: AVCaptureVideoPreviewLayer?
-    
-    @Published var photoData: Data? = nil
-    
+
+    let rectangleDetectionRequest: VNDetectRectanglesRequest = {
+        let request = VNDetectRectanglesRequest()
+        request.maximumObservations = 1
+        request.minimumConfidence = 0.8
+        request.minimumAspectRatio = 0.3
+        request.maximumAspectRatio = 1.0
+        return request
+    }()
+
+    var isProcessingFrame = false
+
     func startSession() {
-        // Configurar la sesión de captura
+        sessionQueue.async {
+            self.configureSession()
+            self.session.startRunning()
+        }
+    }
+
+    func stopSession() {
+        sessionQueue.async {
+            self.session.stopRunning()
+        }
+    }
+
+    private func configureSession() {
         session.beginConfiguration()
-        
-        // Configurar el dispositivo de entrada (cámara)
-        guard let camera = AVCaptureDevice.default(for: .video),
-              let input = try? AVCaptureDeviceInput(device: camera) else {
-            print("Error: No se pudo configurar la cámara.")
+        session.sessionPreset = .photo
+
+        guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
+            print("No se pudo acceder a la cámara trasera.")
             return
         }
-        
-        // Añadir entrada y salida a la sesión
-        if session.canAddInput(input) {
-            session.addInput(input)
+
+        do {
+            let videoDeviceInput = try AVCaptureDeviceInput(device: videoDevice)
+            if session.canAddInput(videoDeviceInput) {
+                session.addInput(videoDeviceInput)
+            } else {
+                print("No se pudo agregar entrada de cámara a la sesión.")
+                return
+            }
+        } catch {
+            print("Error al crear entrada de cámara: \(error)")
+            return
         }
-        
-        if session.canAddOutput(output) {
-            session.addOutput(output)
+
+        if session.canAddOutput(photoOutput) {
+            session.addOutput(photoOutput)
+        } else {
+            print("No se pudo agregar salida de foto a la sesión.")
+            return
         }
-        
+
+        videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "video_output_queue"))
+        if session.canAddOutput(videoOutput) {
+            session.addOutput(videoOutput)
+            videoOutput.alwaysDiscardsLateVideoFrames = true
+            videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
+        } else {
+            print("No se pudo agregar salida de video a la sesión.")
+            return
+        }
+
         session.commitConfiguration()
-        session.startRunning()
     }
-    
-    func stopSession() {
-        session.stopRunning()
-    }
-    
+
     func setPreviewLayer(to view: UIView) {
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
         previewLayer?.videoGravity = .resizeAspectFill
         previewLayer?.frame = view.bounds
-        view.layer.addSublayer(previewLayer!)
+        view.layer.insertSublayer(previewLayer!, at: 0)
     }
-    
+
     func capturePhoto() {
         let settings = AVCapturePhotoSettings()
-        output.capturePhoto(with: settings, delegate: self)
+        photoOutput.capturePhoto(with: settings, delegate: self)
     }
 }

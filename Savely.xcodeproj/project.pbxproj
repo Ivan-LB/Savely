@@ -14,6 +14,9 @@
 		1D88B7CC2CC6EA47009B6538 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7CB2CC6EA47009B6538 /* CameraManager.swift */; };
 		1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7CE2CC6EB62009B6538 /* CameraManagerExtension.swift */; };
 		1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D02CC6EBB4009B6538 /* CameraView.swift */; };
+		1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */; };
+		1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */; };
+		1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */; };
 		1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */; };
 		1DC2580C2CC07DCF0002DDE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */; };
 		1DC2580F2CC07DCF0002DDE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580E2CC07DCF0002DDE3 /* Preview Assets.xcassets */; };
@@ -63,6 +66,9 @@
 		1D88B7CB2CC6EA47009B6538 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		1D88B7CE2CC6EB62009B6538 /* CameraManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManagerExtension.swift; sourceTree = "<group>"; };
 		1D88B7D02CC6EBB4009B6538 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleOverlay.swift; sourceTree = "<group>"; };
+		1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRUtilities.swift; sourceTree = "<group>"; };
 		1DC258042CC07DCC0002DDE3 /* Savely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavelyApp.swift; sourceTree = "<group>"; };
 		1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +154,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1D88B7D62CC9FA28009B6538 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		1DC257FB2CC07DCC0002DDE3 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +185,7 @@
 		1DC258062CC07DCC0002DDE3 /* Savely */ = {
 			isa = PBXGroup;
 			children = (
+				1D88B7D62CC9FA28009B6538 /* Utilities */,
 				1D88B7CD2CC6EB3A009B6538 /* Extensions */,
 				1D88B7CA2CC6EA38009B6538 /* Managers */,
 				1D3669852CC62F6900E84FF9 /* Resources */,
@@ -234,6 +249,8 @@
 				1DC258532CC62B530002DDE3 /* TipsListView.swift */,
 				1DC258552CC62BAB0002DDE3 /* TipCardView.swift */,
 				1D88B7D02CC6EBB4009B6538 /* CameraView.swift */,
+				1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */,
+				1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -383,6 +400,7 @@
 			files = (
 				1DC2584B2CC629540002DDE3 /* ExpenseModels.swift in Sources */,
 				1D88B7CC2CC6EA47009B6538 /* CameraManager.swift in Sources */,
+				1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */,
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
 				1DC2583E2CC082450002DDE3 /* NavigationView.swift in Sources */,
 				1DC2584F2CC62A160002DDE3 /* Tip.swift in Sources */,
@@ -390,6 +408,7 @@
 				1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */,
 				1DC2583A2CC081A40002DDE3 /* TipsAndSuggestionsView.swift in Sources */,
 				1D36698D2CC6CB4100E84FF9 /* SplashScreenView.swift in Sources */,
+				1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */,
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
 				1DC258492CC629210002DDE3 /* Goal.swift in Sources */,
@@ -400,6 +419,7 @@
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,
+				1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */,
 				1DC2584D2CC629890002DDE3 /* MonthlySaving.swift in Sources */,
 				1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */,
 				1DC258382CC07FA00002DDE3 /* ReportsView.swift in Sources */,
