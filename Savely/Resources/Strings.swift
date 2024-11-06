@@ -109,6 +109,11 @@ struct Strings {
             "reports_tab_string",
             value: "Reports",
             comment: "Reports Tab String")
+        
+        static let incomesTab = NSLocalizedString(
+            "incomes_tab_string",
+            value: "Incomes",
+            comment: "Incomes Tab String")
 
         static let profileTab = NSLocalizedString(
             "profile_tab_string",

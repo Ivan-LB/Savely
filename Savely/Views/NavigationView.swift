@@ -28,9 +28,10 @@ struct NavigationView: View {
                     Text(Strings.Tabs.expensesTab)
                 }
 
-            ReportsView()
+            //ReportsView()
+            IncomesView()
                 .tabItem {
-                    Image(systemName: "chart.bar.fill")
+                    Image(systemName: "dollarsign.circle.fill")
                     Text(Strings.Tabs.reportsTab)
                 }
 
