@@ -12,3 +12,6 @@ DerivedData/
 Savely.xcodeproj/xcuserdata
 Savely.xcodeproj/project.xcworkspace/xcshareddata
 Savely.xcodeproj/project.xcworkspace
+Pods
+Savely.xcworkspace/contents.xcworkspacedata
+Savely.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist

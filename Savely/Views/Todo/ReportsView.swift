@@ -46,10 +46,10 @@ struct ReportsView: View {
                 CardView(content: {
                     VStack(alignment: .leading, spacing: 15) {
                         HStack {
-                            Picker("Seleccionar Período", selection: $date) {
-                                Text("Este mes").tag("month")
-                                Text("Este trimestre").tag("quarter")
-                                Text("Este año").tag("year")
+                            Picker(Strings.ReportsView.pickTimePeriodLabel, selection: $date) {
+                                Text(Strings.ReportsView.thisMonthLabel).tag("month")
+                                Text(Strings.ReportsView.thisTrimesterLabel).tag("quarter")
+                                Text(Strings.ReportsView.thisYearLabel).tag("year")
                             }
                             .pickerStyle(MenuPickerStyle())
                             
@@ -65,7 +65,7 @@ struct ReportsView: View {
                         }
                         .padding(.bottom, 10)
                         
-                        DatePicker("Seleccionar Fecha", selection: $date, displayedComponents: .date)
+                        DatePicker(Strings.ReportsView.pickDateLabel, selection: $date, displayedComponents: .date)
                             .datePickerStyle(GraphicalDatePickerStyle())
                     }
                     .padding()
@@ -75,12 +75,12 @@ struct ReportsView: View {
                 // Expense Distribution Chart
                 CardView(content: {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Distribución de Gastos")
+                        Text(Strings.ReportsView.expenseDistributionLabel)
                             .font(.title3)
                             .fontWeight(.bold)
                         Chart(expenseData) { data in
                             SectorMark(
-                                angle: .value("Amount", data.amount),
+                                angle: .value(Strings.ExpenseTrackerTab.amountPlaceholderLabel, data.amount),
                                 innerRadius: .ratio(0.5)
                             )
                         }
@@ -93,14 +93,14 @@ struct ReportsView: View {
                 // Savings Trend Line Chart
                 CardView(content: {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Tendencia de Ahorros")
+                        Text(Strings.ReportsView.savingsTrendLabel)
                             .font(.title3)
                             .fontWeight(.bold)
                         Chart {
                             ForEach(savingsData) { data in
                                 LineMark(
-                                    x: .value("Mes", data.month),
-                                    y: .value("Ahorros", data.amount)
+                                    x: .value(Strings.Placeholders.monthsLabel, data.month),
+                                    y: .value(Strings.Placeholders.savingsLabel, data.amount)
                                 )
                             }
                         }
@@ -113,13 +113,13 @@ struct ReportsView: View {
                 // Monthly Summary Bar Chart
                 CardView(content: {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Resumen Mensual")
+                        Text(Strings.Placeholders.monthlySummaryPlaceholder)
                             .font(.title3)
                             .fontWeight(.bold)
                         Chart {
-                            BarMark(x: .value("Categoría", "Ingresos"), y: .value("Monto", 2000))
-                            BarMark(x: .value("Categoría", "Gastos"), y: .value("Monto", 1500))
-                            BarMark(x: .value("Categoría", "Ahorros"), y: .value("Monto", 500))
+                            BarMark(x: .value(Strings.Placeholders.categoryPlaceholder, Strings.Tabs.incomesTab), y: .value(Strings.ExpenseTrackerTab.amountPlaceholderLabel, 2000))
+                            BarMark(x: .value(Strings.Placeholders.categoryPlaceholder, Strings.Tabs.expensesTab), y: .value(Strings.ExpenseTrackerTab.amountPlaceholderLabel, 1500))
+                            BarMark(x: .value(Strings.Placeholders.categoryPlaceholder, Strings.Placeholders.savingsPlaceholder), y: .value(Strings.ExpenseTrackerTab.amountPlaceholderLabel, 500))
                         }
                         .frame(height: 200)
                     }

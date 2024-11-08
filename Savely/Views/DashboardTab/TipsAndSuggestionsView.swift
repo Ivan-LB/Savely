@@ -27,7 +27,7 @@ struct TipsAndSuggestionsView: View {
             VStack(alignment: .leading, spacing: 20) {
                 // Header Section
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Consejos y Sugerencias")
+                    Text(Strings.DashboardTab.tipsAndSuggestionsTitle)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.white)

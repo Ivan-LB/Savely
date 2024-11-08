@@ -56,48 +56,48 @@ struct DashboardView: View {
                 .padding(.horizontal)
 
                 // Weekly Spending Chart
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(Strings.DashboardTab.weeklyExpensesTitle)
-                        .font(.title3)
-                        .fontWeight(.bold)
-                    Chart {
-                        BarMark(
-                            x: .value("Día", "Lun"),
-                            y: .value("Gasto", 20)
-                        )
-                        BarMark(
-                            x: .value("Día", "Mar"),
-                            y: .value("Gasto", 45)
-                        )
-                        BarMark(
-                            x: .value("Día", "Mié"),
-                            y: .value("Gasto", 28)
-                        )
-                        BarMark(
-                            x: .value("Día", "Jue"),
-                            y: .value("Gasto", 80)
-                        )
-                        BarMark(
-                            x: .value("Día", "Vie"),
-                            y: .value("Gasto", 99)
-                        )
-                        BarMark(
-                            x: .value("Día", "Sáb"),
-                            y: .value("Gasto", 43)
-                        )
-                        BarMark(
-                            x: .value("Día", "Dom"),
-                            y: .value("Gasto", 50)
-                        )
-                    }
-                    .frame(height: 200)
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
-                .padding(.horizontal)
+//                VStack(alignment: .leading, spacing: 10) {
+//                    Text(Strings.DashboardTab.weeklyExpensesTitle)
+//                        .font(.title3)
+//                        .fontWeight(.bold)
+//                    Chart {
+//                        BarMark(
+//                            x: .value("Día", "Lun"),
+//                            y: .value("Gasto", 20)
+//                        )
+//                        BarMark(
+//                            x: .value("Día", "Mar"),
+//                            y: .value("Gasto", 45)
+//                        )
+//                        BarMark(
+//                            x: .value("Día", "Mié"),
+//                            y: .value("Gasto", 28)
+//                        )
+//                        BarMark(
+//                            x: .value("Día", "Jue"),
+//                            y: .value("Gasto", 80)
+//                        )
+//                        BarMark(
+//                            x: .value("Día", "Vie"),
+//                            y: .value("Gasto", 99)
+//                        )
+//                        BarMark(
+//                            x: .value("Día", "Sáb"),
+//                            y: .value("Gasto", 43)
+//                        )
+//                        BarMark(
+//                            x: .value("Día", "Dom"),
+//                            y: .value("Gasto", 50)
+//                        )
+//                    }
+//                    .frame(height: 200)
+//                }
+//                .padding()
+//                .frame(maxWidth: .infinity)
+//                .background(Color.white)
+//                .cornerRadius(10)
+//                .shadow(radius: 2)
+//                .padding(.horizontal)
 
                 // Tip of the Day Card
                 VStack(alignment: .leading, spacing: 10) {

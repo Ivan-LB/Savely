@@ -14,8 +14,7 @@ struct SplashScreenView: View {
     var body: some View {
         ZStack {
             if isSplashEnded {
-                // La pantalla principal de la app, reemplaza con la vista principal
-                NavigationView()
+                MainNavigationView()
             } else {
                 VStack {
                     Image(systemName: "banknote.fill")
@@ -35,7 +34,7 @@ struct SplashScreenView: View {
                             }
                         }
                     
-                    Text("Savely")
+                    Text(Strings.SplashScreen.savelyAppTitle)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.green)

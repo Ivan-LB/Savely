@@ -1,13 +1,13 @@
 //
-//  ExpenseTrackerView.swift
+//  IncomesTrackerView.swift
 //  Savely
 //
-//  Created by Ivan Lorenzana Belli on 16/10/24.
+//  Created by Ivan Lorenzana Belli on 05/11/24.
 //
 
 import SwiftUI
 
-struct ExpenseTrackerView: View {
+struct IncomesTrackerView: View {
     @State private var expenses = [
         Expense(id: 1, description: "Supermercado", amount: 50.75, date: "2023-05-15"),
         Expense(id: 2, description: "Gasolina", amount: 30.00, date: "2023-05-14")
@@ -19,41 +19,6 @@ struct ExpenseTrackerView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Header Section
-//                VStack(alignment: .leading, spacing: 5) {
-//                    Text("Registro de Gastos")
-//                        .font(.largeTitle)
-//                        .fontWeight(.bold)
-//                        .foregroundColor(.white)
-//                }
-//                .padding()
-//                .frame(maxWidth: .infinity, alignment: .leading)
-//                .background(Color.blue)
-                
-                // Upload Receipt Button
-                Button(action: {
-                    // Action to upload receipt photo
-                    showCameraView = true
-                }) {
-                    HStack {
-                        Image(systemName: "camera")
-                            .foregroundColor(.white)
-                            .font(.title)
-                        Text(Strings.Buttons.scanReceiptButton)
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                    }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                }
-                .sheet(isPresented: $showCameraView) {
-                    CameraView()
-                }
-                
                 // Expense Form
                 VStack(spacing: 15) {
                     TextField(Strings.ExpenseTrackerTab.descriptionPlaceholderLabel, text: $description)
@@ -70,7 +35,7 @@ struct ExpenseTrackerView: View {
                             amount = ""
                         }
                     }) {
-                        Text(Strings.Buttons.addExpenseButton)
+                        Text(Strings.Buttons.addIncomeButton)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .padding()
@@ -87,7 +52,7 @@ struct ExpenseTrackerView: View {
                 
                 // Expense List
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(Strings.ExpenseTrackerTab.recentExpensesTitle)
+                    Text(Strings.IncomesTrackerView.recentIncomesTitle)
                         .font(.title3)
                         .fontWeight(.bold)
                     ForEach(expenses) { expense in
@@ -121,6 +86,7 @@ struct ExpenseTrackerView: View {
                             .padding(.leading, 10)
                         }
                         .padding(.vertical, 10)
+                        .padding(.horizontal, 10)
                         .border(Color.gray.opacity(0.2), width: 1)
                     }
                 }
@@ -136,8 +102,6 @@ struct ExpenseTrackerView: View {
     }
 }
 
-struct ExpenseTrackerView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExpenseTrackerView()
-    }
+#Preview {
+    IncomesTrackerView()
 }

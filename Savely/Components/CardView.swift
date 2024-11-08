@@ -28,6 +28,6 @@ struct CardView<Content: View>: View {
 
 #Preview {
     CardView {
-        Text("Vista previa del contenido")
+        Text(Strings.DashboardTab.monthlyGoalLabel)
     }
 }
