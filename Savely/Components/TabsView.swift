@@ -16,10 +16,10 @@ struct TabsView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Picker("Select Tab", selection: $selectedTab) {
-                Text("Personalizados").tag("personalized")
-                Text("Generales").tag("general")
-                Text("Favoritos").tag("favorites")
+            Picker(Strings.Placeholders.selectTabPlaceholder, selection: $selectedTab) {
+                Text(Strings.Placeholders.personalizedPlaceholder).tag("personalized")
+                Text(Strings.Placeholders.generalPlaceholder).tag("general")
+                Text(Strings.Placeholders.personalizedPlaceholder).tag("favorites")
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding()

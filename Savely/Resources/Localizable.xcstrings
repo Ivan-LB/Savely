@@ -17,6 +17,24 @@
     "75%" : {
 
     },
+    "achievements_title" : {
+      "comment" : "Achievements Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Achievements and Medals"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logros y Medallas"
+          }
+        }
+      }
+    },
     "add_expense_button" : {
       "comment" : "Add Expense Button",
       "extractionState" : "extracted_with_value",
@@ -71,12 +89,6 @@
         }
       }
     },
-    "Ahorros" : {
-
-    },
-    "Amount" : {
-
-    },
     "amount_placeholder_label" : {
       "comment" : "Amount Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -85,6 +97,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Amount"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cantidad"
           }
         }
       }
@@ -107,8 +125,23 @@
         }
       }
     },
-    "Categoría" : {
-
+    "category_placeholder" : {
+      "comment" : "Category Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Category"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria"
+          }
+        }
+      }
     },
     "change_password_button" : {
       "comment" : "Change Password Button",
@@ -127,9 +160,6 @@
           }
         }
       }
-    },
-    "Consejos y Sugerencias" : {
-
     },
     "dark_mode_label" : {
       "comment" : "Dark Mode Label",
@@ -176,14 +206,14 @@
             "state" : "new",
             "value" : "Description"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descripción"
+          }
         }
       }
-    },
-    "Día" : {
-
-    },
-    "Distribución de Gastos" : {
-
     },
     "email_placeholder_title" : {
       "comment" : "Email Placeholder Label",
@@ -206,14 +236,23 @@
     "Establece metas pequeñas y alcanzables. ¡El éxito en pequeños objetivos te motivará a lograr metas más grandes!" : {
 
     },
-    "Este año" : {
-
-    },
-    "Este mes" : {
-
-    },
-    "Este trimestre" : {
-
+    "expense_distribution_label" : {
+      "comment" : "Expense Distribution Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense Distribution"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distribución de Gastos"
+          }
+        }
+      }
     },
     "expense_reminders_label" : {
       "comment" : "Expense Reminders Label",
@@ -269,8 +308,23 @@
         }
       }
     },
-    "Favoritos" : {
-
+    "favorites_placeholder" : {
+      "comment" : "Favorites Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Favorites"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoritos"
+          }
+        }
+      }
     },
     "filter_button" : {
       "comment" : "Filter Button",
@@ -290,11 +344,23 @@
         }
       }
     },
-    "Gasto" : {
-
-    },
-    "Generales" : {
-
+    "general_placeholder" : {
+      "comment" : "General Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "General"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        }
+      }
     },
     "goal_alerts_label" : {
       "comment" : "Goal Alerts Label",
@@ -332,8 +398,23 @@
         }
       }
     },
-    "Mes" : {
-
+    "incomes_tab_string" : {
+      "comment" : "Incomes Tab String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Incomes"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresos"
+          }
+        }
+      }
     },
     "monthly_goal_label" : {
       "comment" : "Monthly Goal Label",
@@ -353,8 +434,41 @@
         }
       }
     },
-    "Monto" : {
-
+    "monthly_summary_placeholder" : {
+      "comment" : "Monthly Summary Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Monthly Summary"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumen Mensual"
+          }
+        }
+      }
+    },
+    "months_placeholder" : {
+      "comment" : "Months Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Months"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meses"
+          }
+        }
+      }
     },
     "name_placeholder_label" : {
       "comment" : "Name Placeholder Label",
@@ -410,8 +524,59 @@
         }
       }
     },
-    "Personalizados" : {
-
+    "personalized_placeholder" : {
+      "comment" : "Personalized Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Personalized"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizados"
+          }
+        }
+      }
+    },
+    "pick_date_label" : {
+      "comment" : "Pick Date Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pick Date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona Fecha"
+          }
+        }
+      }
+    },
+    "pick_time_period" : {
+      "comment" : "Pick Time Period Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pick Time Period"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona Periodo de Tiempo"
+          }
+        }
+      }
     },
     "profile_tab_string" : {
       "comment" : "Profile Tab String",
@@ -440,6 +605,30 @@
             "state" : "new",
             "value" : "Recent Expenses"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos Recientes"
+          }
+        }
+      }
+    },
+    "recent_incomes_title" : {
+      "comment" : "Recent Incomes Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Recent Incomes"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresos Recientes"
+          }
         }
       }
     },
@@ -461,11 +650,41 @@
         }
       }
     },
-    "Resumen Mensual" : {
-
+    "savely_app_title" : {
+      "comment" : "Savely App Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Savely"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Savely"
+          }
+        }
+      }
     },
-    "Savely" : {
-
+    "savings_placeholder" : {
+      "comment" : "Savings Placeholcer\n   Savings Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Savings"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorros"
+          }
+        }
+      }
     },
     "savings_summary_title" : {
       "comment" : "Savings Summary Title",
@@ -475,6 +694,30 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Savings Summary"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumen de Ahorros"
+          }
+        }
+      }
+    },
+    "savings_trend_label" : {
+      "comment" : "Savings Trend Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Savings Trend"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendencia de Ahorros"
           }
         }
       }
@@ -515,17 +758,77 @@
         }
       }
     },
-    "Seleccionar Fecha" : {
-
+    "select_tab_placeholder" : {
+      "comment" : "Select Tab Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select Tab"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona Pestaña"
+          }
+        }
+      }
     },
-    "Seleccionar Período" : {
-
+    "this_month_label" : {
+      "comment" : "This Month Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This Month"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este Mes"
+          }
+        }
+      }
     },
-    "Select Tab" : {
-
+    "this_trimester_period" : {
+      "comment" : "This Trimester Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This Trimester"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este Trimestre"
+          }
+        }
+      }
     },
-    "Tendencia de Ahorros" : {
-
+    "this_year_period" : {
+      "comment" : "This Year Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This Year"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este Año"
+          }
+        }
+      }
     },
     "tip_of_the_day_title" : {
       "comment" : "Tip of the Day Title",
@@ -541,6 +844,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consejo del Día"
+          }
+        }
+      }
+    },
+    "tips_and_suggestion_title" : {
+      "comment" : "Tips and Suggestions Tittle",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tips and Suggestions"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consejos y Sugerencias"
           }
         }
       }
@@ -563,8 +884,23 @@
         }
       }
     },
-    "Vista previa del contenido" : {
-
+    "view_achievements" : {
+      "comment" : "View Achievements Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View Achievements"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Logros"
+          }
+        }
+      }
     },
     "weekly_expenses_title" : {
       "comment" : "Weekly Expenses Title",

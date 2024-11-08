@@ -30,5 +30,5 @@ struct QuickActionButton: View {
 }
 
 #Preview {
-    QuickActionButton(iconName: "camera", label: "Registrar Gasto", backgroundColor: .green)
+    QuickActionButton(iconName: "camera", label: Strings.Buttons.addExpenseButton, backgroundColor: .green)
 }

@@ -18,7 +18,9 @@
 		1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */; };
 		1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */; };
 		1D88B88D2CDAA400009B6538 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1D88B88C2CDAA400009B6538 /* Podfile */; };
-		1DC013FB2CDB575F009A46E1 /* IncomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesView.swift */; };
+		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
+		1DC013FF2CDDFA46009A46E1 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* Achievement.swift */; };
+		1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */; };
 		1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */; };
 		1DC2580C2CC07DCF0002DDE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */; };
 		1DC2580F2CC07DCF0002DDE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580E2CC07DCF0002DDE3 /* Preview Assets.xcassets */; };
@@ -30,7 +32,7 @@
 		1DC258382CC07FA00002DDE3 /* ReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258372CC07FA00002DDE3 /* ReportsView.swift */; };
 		1DC2583A2CC081A40002DDE3 /* TipsAndSuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258392CC081A40002DDE3 /* TipsAndSuggestionsView.swift */; };
 		1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2583B2CC081D90002DDE3 /* ProfileView.swift */; };
-		1DC2583E2CC082450002DDE3 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2583D2CC082450002DDE3 /* NavigationView.swift */; };
+		1DC2583E2CC082450002DDE3 /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2583D2CC082450002DDE3 /* MainNavigationView.swift */; };
 		1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258422CC61D3A0002DDE3 /* CardView.swift */; };
 		1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258452CC628C70002DDE3 /* QuickActionButton.swift */; };
 		1DC258492CC629210002DDE3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258482CC629210002DDE3 /* Goal.swift */; };
@@ -78,7 +80,9 @@
 		1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleOverlay.swift; sourceTree = "<group>"; };
 		1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRUtilities.swift; sourceTree = "<group>"; };
 		1D88B88C2CDAA400009B6538 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		1DC013FA2CDB575F009A46E1 /* IncomesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesView.swift; sourceTree = "<group>"; };
+		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
+		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
+		1DC013FE2CDDFA46009A46E1 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		1DC258042CC07DCC0002DDE3 /* Savely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavelyApp.swift; sourceTree = "<group>"; };
 		1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,7 +98,7 @@
 		1DC258372CC07FA00002DDE3 /* ReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsView.swift; sourceTree = "<group>"; };
 		1DC258392CC081A40002DDE3 /* TipsAndSuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsAndSuggestionsView.swift; sourceTree = "<group>"; };
 		1DC2583B2CC081D90002DDE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		1DC2583D2CC082450002DDE3 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		1DC2583D2CC082450002DDE3 /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
 		1DC258422CC61D3A0002DDE3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		1DC258452CC628C70002DDE3 /* QuickActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionButton.swift; sourceTree = "<group>"; };
 		1DC258482CC629210002DDE3 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
@@ -189,6 +193,48 @@
 			path = Todo;
 			sourceTree = "<group>";
 		};
+		1DC014002CDE00C4009A46E1 /* DashboardTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DC258392CC081A40002DDE3 /* TipsAndSuggestionsView.swift */,
+				1DC258312CC07DF40002DDE3 /* DashboardView.swift */,
+			);
+			path = DashboardTab;
+			sourceTree = "<group>";
+		};
+		1DC014012CDE00DB009A46E1 /* GoalsTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DC258332CC07E460002DDE3 /* GoalsView.swift */,
+			);
+			path = GoalsTab;
+			sourceTree = "<group>";
+		};
+		1DC014022CDE00EA009A46E1 /* ExpensesTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DC258352CC07E850002DDE3 /* ExpenseTrackerView.swift */,
+			);
+			path = ExpensesTab;
+			sourceTree = "<group>";
+		};
+		1DC014032CDE00F1009A46E1 /* IncomesTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */,
+			);
+			path = IncomesTab;
+			sourceTree = "<group>";
+		};
+		1DC014042CDE00F7009A46E1 /* ProfileTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */,
+				1DC2583B2CC081D90002DDE3 /* ProfileView.swift */,
+			);
+			path = ProfileTab;
+			sourceTree = "<group>";
+		};
 		1DC257FB2CC07DCC0002DDE3 = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +265,7 @@
 				1D88B7CD2CC6EB3A009B6538 /* Extensions */,
 				1D88B7CA2CC6EA38009B6538 /* Managers */,
 				1D3669852CC62F6900E84FF9 /* Resources */,
+				1DC258402CC61D250002DDE3 /* Components */,
 				1DC258472CC629120002DDE3 /* Models */,
 				1DC2583F2CC61D1E0002DDE3 /* Views */,
 				1D3669842CC62EDD00E84FF9 /* ViewModels */,
@@ -257,16 +304,14 @@
 		1DC2583F2CC61D1E0002DDE3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1DC014042CDE00F7009A46E1 /* ProfileTab */,
+				1DC014032CDE00F1009A46E1 /* IncomesTab */,
+				1DC014022CDE00EA009A46E1 /* ExpensesTab */,
+				1DC014012CDE00DB009A46E1 /* GoalsTab */,
+				1DC014002CDE00C4009A46E1 /* DashboardTab */,
 				1DC013F92CDB571F009A46E1 /* Todo */,
-				1DC258402CC61D250002DDE3 /* Components */,
-				1DC258312CC07DF40002DDE3 /* DashboardView.swift */,
-				1DC258332CC07E460002DDE3 /* GoalsView.swift */,
-				1DC258392CC081A40002DDE3 /* TipsAndSuggestionsView.swift */,
-				1DC2583B2CC081D90002DDE3 /* ProfileView.swift */,
-				1DC2583D2CC082450002DDE3 /* NavigationView.swift */,
-				1DC258352CC07E850002DDE3 /* ExpenseTrackerView.swift */,
+				1DC2583D2CC082450002DDE3 /* MainNavigationView.swift */,
 				1D36698C2CC6CB4000E84FF9 /* SplashScreenView.swift */,
-				1DC013FA2CDB575F009A46E1 /* IncomesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,6 +338,7 @@
 				1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */,
 				1DC2584C2CC629890002DDE3 /* MonthlySaving.swift */,
 				1DC2584E2CC62A160002DDE3 /* Tip.swift */,
+				1DC013FE2CDDFA46009A46E1 /* Achievement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -563,9 +609,10 @@
 			files = (
 				1DC2584B2CC629540002DDE3 /* ExpenseModels.swift in Sources */,
 				1D88B7CC2CC6EA47009B6538 /* CameraManager.swift in Sources */,
+				1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */,
 				1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */,
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
-				1DC2583E2CC082450002DDE3 /* NavigationView.swift in Sources */,
+				1DC2583E2CC082450002DDE3 /* MainNavigationView.swift in Sources */,
 				1DC2584F2CC62A160002DDE3 /* Tip.swift in Sources */,
 				1DC258572CC62DF20002DDE3 /* ExpenseTrackerView.swift in Sources */,
 				1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */,
@@ -575,11 +622,12 @@
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
 				1DC258492CC629210002DDE3 /* Goal.swift in Sources */,
-				1DC013FB2CDB575F009A46E1 /* IncomesView.swift in Sources */,
+				1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */,
 				1D3669872CC62F8200E84FF9 /* Strings.swift in Sources */,
 				1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */,
 				1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */,
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
+				1DC013FF2CDDFA46009A46E1 /* Achievement.swift in Sources */,
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,
@@ -662,6 +710,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -725,6 +774,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
