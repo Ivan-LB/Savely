@@ -52,7 +52,6 @@ PODS:
 
 DEPENDENCIES:
   - GoogleMLKit/TextRecognition
-  - PromisesObjC
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -83,6 +82,6 @@ SPEC CHECKSUMS:
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
 
-PODFILE CHECKSUM: 4bf31cb418ad5e04456c32f54c3621467e587cce
+PODFILE CHECKSUM: 842bc2882dd91d36f8305e5d11d22804310e86e1
 
 COCOAPODS: 1.16.1
