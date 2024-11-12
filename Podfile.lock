@@ -49,9 +49,11 @@ PODS:
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
   - PromisesObjC (2.4.0)
+  - TesseractOCRiOS (5.0.1)
 
 DEPENDENCIES:
   - GoogleMLKit/TextRecognition
+  - TesseractOCRiOS
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -67,6 +69,7 @@ SPEC REPOS:
     - MLKitVision
     - nanopb
     - PromisesObjC
+    - TesseractOCRiOS
 
 SPEC CHECKSUMS:
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
@@ -81,7 +84,8 @@ SPEC CHECKSUMS:
   MLKitVision: 45e79d68845a2de77e2dd4d7f07947f0ed157b0e
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
 
-PODFILE CHECKSUM: 842bc2882dd91d36f8305e5d11d22804310e86e1
+PODFILE CHECKSUM: 3e55af58d937c3d39f2a759f6c2940c3c6185a7e
 
 COCOAPODS: 1.16.1

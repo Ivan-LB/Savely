@@ -8,6 +8,7 @@ target 'Savely' do
 
   # Pods for Savely
   pod 'GoogleMLKit/TextRecognition'
+  pod 'TesseractOCRiOS'
 
   target 'SavelyTests' do
     inherit! :search_paths
