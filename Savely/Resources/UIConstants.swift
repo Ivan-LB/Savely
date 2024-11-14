@@ -10,11 +10,11 @@ import SwiftUI
 
 struct UIConstants {
     enum UICornerRadius {
-        
+        static let cornerRadius = 15.0
     }
     
-    enum UISpacing {
-        
+    enum UILineWidth {
+        static let lineWidth = 1.0
     }
     
     enum UIFont {
