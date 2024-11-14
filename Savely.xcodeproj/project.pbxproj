@@ -17,10 +17,16 @@
 		1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */; };
 		1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */; };
 		1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */; };
-		1D88B88D2CDAA400009B6538 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1D88B88C2CDAA400009B6538 /* Podfile */; };
 		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
 		1DC013FF2CDDFA46009A46E1 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* Achievement.swift */; };
 		1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */; };
+		1DC014082CE5AE80009A46E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014072CE5AE80009A46E1 /* LoginView.swift */; };
+		1DC0140A2CE5AEBF009A46E1 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014092CE5AEBF009A46E1 /* SignUpView.swift */; };
+		1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC0140C2CE5AF59009A46E1 /* OnboardingView.swift */; };
+		1DC0140F2CE5AF81009A46E1 /* OnboardingStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC0140E2CE5AF81009A46E1 /* OnboardingStepView.swift */; };
+		1DC014112CE5AFAE009A46E1 /* OnboardingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014102CE5AFAD009A46E1 /* OnboardingStep.swift */; };
+		1DC014132CE5B0C5009A46E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014122CE5B0C5009A46E1 /* ContentView.swift */; };
+		1DC014152CE5B674009A46E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DC014142CE5B674009A46E1 /* GoogleService-Info.plist */; };
 		1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */; };
 		1DC2580C2CC07DCF0002DDE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */; };
 		1DC2580F2CC07DCF0002DDE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580E2CC07DCF0002DDE3 /* Preview Assets.xcassets */; };
@@ -43,9 +49,6 @@
 		1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258532CC62B530002DDE3 /* TipsListView.swift */; };
 		1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258552CC62BAB0002DDE3 /* TipCardView.swift */; };
 		1DC258572CC62DF20002DDE3 /* ExpenseTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258352CC07E850002DDE3 /* ExpenseTrackerView.swift */; };
-		27616F5A1D4FD2E3C9407079 /* Pods_SavelyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23CEFF4EBC2E1F2B4BEA041D /* Pods_SavelyUITests.framework */; };
-		7FC63225444419023C88B1C7 /* Pods_SavelyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875B7152F527CCF884D6DB6F /* Pods_SavelyTests.framework */; };
-		BC37A45ACE125A43484CC391 /* Pods_Savely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3180BD0C5507A8106DB795C /* Pods_Savely.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +69,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06037ECC6ECFC024494B6BE9 /* Pods-Savely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Savely.release.xcconfig"; path = "Target Support Files/Pods-Savely/Pods-Savely.release.xcconfig"; sourceTree = "<group>"; };
-		062F024BE11CABECF3D65FCD /* Pods-SavelyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavelyUITests.release.xcconfig"; path = "Target Support Files/Pods-SavelyUITests/Pods-SavelyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		0FFA9DD4483170976F413416 /* Pods-Savely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Savely.debug.xcconfig"; path = "Target Support Files/Pods-Savely/Pods-Savely.debug.xcconfig"; sourceTree = "<group>"; };
 		1D3669862CC62F8200E84FF9 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		1D3669882CC62F9100E84FF9 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		1D36698A2CC62FD700E84FF9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -79,10 +79,16 @@
 		1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleOverlay.swift; sourceTree = "<group>"; };
 		1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRUtilities.swift; sourceTree = "<group>"; };
-		1D88B88C2CDAA400009B6538 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
 		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		1DC013FE2CDDFA46009A46E1 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		1DC014072CE5AE80009A46E1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1DC014092CE5AEBF009A46E1 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		1DC0140C2CE5AF59009A46E1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		1DC0140E2CE5AF81009A46E1 /* OnboardingStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepView.swift; sourceTree = "<group>"; };
+		1DC014102CE5AFAD009A46E1 /* OnboardingStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep.swift; sourceTree = "<group>"; };
+		1DC014122CE5B0C5009A46E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1DC014142CE5B674009A46E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1DC258042CC07DCC0002DDE3 /* Savely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavelyApp.swift; sourceTree = "<group>"; };
 		1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,12 +114,6 @@
 		1DC258512CC62A5B0002DDE3 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		1DC258532CC62B530002DDE3 /* TipsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsListView.swift; sourceTree = "<group>"; };
 		1DC258552CC62BAB0002DDE3 /* TipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCardView.swift; sourceTree = "<group>"; };
-		23CEFF4EBC2E1F2B4BEA041D /* Pods_SavelyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SavelyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		702181810255E212215D2FC7 /* Pods-SavelyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavelyTests.release.xcconfig"; path = "Target Support Files/Pods-SavelyTests/Pods-SavelyTests.release.xcconfig"; sourceTree = "<group>"; };
-		875B7152F527CCF884D6DB6F /* Pods_SavelyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SavelyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A1D0CEEC477B095419237B6 /* Pods-SavelyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavelyTests.debug.xcconfig"; path = "Target Support Files/Pods-SavelyTests/Pods-SavelyTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B3180BD0C5507A8106DB795C /* Pods_Savely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Savely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFEE366AC6D30FEFBBCFD38E /* Pods-SavelyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SavelyUITests.debug.xcconfig"; path = "Target Support Files/Pods-SavelyUITests/Pods-SavelyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC37A45ACE125A43484CC391 /* Pods_Savely.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +128,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FC63225444419023C88B1C7 /* Pods_SavelyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +135,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27616F5A1D4FD2E3C9407079 /* Pods_SavelyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,15 +232,31 @@
 			path = ProfileTab;
 			sourceTree = "<group>";
 		};
+		1DC014062CE5AE6E009A46E1 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1DC014072CE5AE80009A46E1 /* LoginView.swift */,
+				1DC014092CE5AEBF009A46E1 /* SignUpView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		1DC0140B2CE5AF4A009A46E1 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1DC0140C2CE5AF59009A46E1 /* OnboardingView.swift */,
+				1DC0140E2CE5AF81009A46E1 /* OnboardingStepView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		1DC257FB2CC07DCC0002DDE3 = {
 			isa = PBXGroup;
 			children = (
-				1D88B88C2CDAA400009B6538 /* Podfile */,
 				1DC258062CC07DCC0002DDE3 /* Savely */,
 				1DC258172CC07DCF0002DDE3 /* SavelyTests */,
 				1DC258212CC07DCF0002DDE3 /* SavelyUITests */,
 				1DC258052CC07DCC0002DDE3 /* Products */,
-				5D6318A88FD4B2BAB8EE1DF4 /* Pods */,
 				415D1F2E32596A29B695CE25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -261,6 +274,7 @@
 		1DC258062CC07DCC0002DDE3 /* Savely */ = {
 			isa = PBXGroup;
 			children = (
+				1DC014142CE5B674009A46E1 /* GoogleService-Info.plist */,
 				1D88B7D62CC9FA28009B6538 /* Utilities */,
 				1D88B7CD2CC6EB3A009B6538 /* Extensions */,
 				1D88B7CA2CC6EA38009B6538 /* Managers */,
@@ -304,6 +318,8 @@
 		1DC2583F2CC61D1E0002DDE3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1DC0140B2CE5AF4A009A46E1 /* Onboarding */,
+				1DC014062CE5AE6E009A46E1 /* Auth */,
 				1DC014042CDE00F7009A46E1 /* ProfileTab */,
 				1DC014032CDE00F1009A46E1 /* IncomesTab */,
 				1DC014022CDE00EA009A46E1 /* ExpensesTab */,
@@ -312,6 +328,7 @@
 				1DC013F92CDB571F009A46E1 /* Todo */,
 				1DC2583D2CC082450002DDE3 /* MainNavigationView.swift */,
 				1D36698C2CC6CB4000E84FF9 /* SplashScreenView.swift */,
+				1DC014122CE5B0C5009A46E1 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,6 +356,7 @@
 				1DC2584C2CC629890002DDE3 /* MonthlySaving.swift */,
 				1DC2584E2CC62A160002DDE3 /* Tip.swift */,
 				1DC013FE2CDDFA46009A46E1 /* Achievement.swift */,
+				1DC014102CE5AFAD009A46E1 /* OnboardingStep.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -346,24 +364,8 @@
 		415D1F2E32596A29B695CE25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3180BD0C5507A8106DB795C /* Pods_Savely.framework */,
-				875B7152F527CCF884D6DB6F /* Pods_SavelyTests.framework */,
-				23CEFF4EBC2E1F2B4BEA041D /* Pods_SavelyUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5D6318A88FD4B2BAB8EE1DF4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0FFA9DD4483170976F413416 /* Pods-Savely.debug.xcconfig */,
-				06037ECC6ECFC024494B6BE9 /* Pods-Savely.release.xcconfig */,
-				9A1D0CEEC477B095419237B6 /* Pods-SavelyTests.debug.xcconfig */,
-				702181810255E212215D2FC7 /* Pods-SavelyTests.release.xcconfig */,
-				EFEE366AC6D30FEFBBCFD38E /* Pods-SavelyUITests.debug.xcconfig */,
-				062F024BE11CABECF3D65FCD /* Pods-SavelyUITests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,12 +375,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DC258282CC07DCF0002DDE3 /* Build configuration list for PBXNativeTarget "Savely" */;
 			buildPhases = (
-				61B19F34CDAA4FF36C9001DA /* [CP] Check Pods Manifest.lock */,
 				1DC258002CC07DCC0002DDE3 /* Sources */,
 				1DC258012CC07DCC0002DDE3 /* Frameworks */,
 				1DC258022CC07DCC0002DDE3 /* Resources */,
-				A012404A61312E6D7C4B9B40 /* [CP] Embed Pods Frameworks */,
-				9122CE1D5CFD5DCCCE6A0CA2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -393,7 +392,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DC2582B2CC07DCF0002DDE3 /* Build configuration list for PBXNativeTarget "SavelyTests" */;
 			buildPhases = (
-				D1191277B68629FD7BE655BE /* [CP] Check Pods Manifest.lock */,
 				1DC258102CC07DCF0002DDE3 /* Sources */,
 				1DC258112CC07DCF0002DDE3 /* Frameworks */,
 				1DC258122CC07DCF0002DDE3 /* Resources */,
@@ -412,7 +410,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DC2582E2CC07DCF0002DDE3 /* Build configuration list for PBXNativeTarget "SavelyUITests" */;
 			buildPhases = (
-				67CAC43438B6CC0EFFD5279F /* [CP] Check Pods Manifest.lock */,
 				1DC2581A2CC07DCF0002DDE3 /* Sources */,
 				1DC2581B2CC07DCF0002DDE3 /* Frameworks */,
 				1DC2581C2CC07DCF0002DDE3 /* Resources */,
@@ -478,7 +475,7 @@
 			files = (
 				1DC2580F2CC07DCF0002DDE3 /* Preview Assets.xcassets in Resources */,
 				1DC2580C2CC07DCF0002DDE3 /* Assets.xcassets in Resources */,
-				1D88B88D2CDAA400009B6538 /* Podfile in Resources */,
+				1DC014152CE5B674009A46E1 /* GoogleService-Info.plist in Resources */,
 				1D36698B2CC62FD700E84FF9 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,109 +496,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		61B19F34CDAA4FF36C9001DA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Savely-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		67CAC43438B6CC0EFFD5279F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SavelyUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9122CE1D5CFD5DCCCE6A0CA2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Savely/Pods-Savely-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Savely/Pods-Savely-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Savely/Pods-Savely-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A012404A61312E6D7C4B9B40 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Savely/Pods-Savely-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Savely/Pods-Savely-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Savely/Pods-Savely-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D1191277B68629FD7BE655BE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SavelyTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		1DC258002CC07DCC0002DDE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -620,18 +514,24 @@
 				1D36698D2CC6CB4100E84FF9 /* SplashScreenView.swift in Sources */,
 				1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */,
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
+				1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
 				1DC258492CC629210002DDE3 /* Goal.swift in Sources */,
+				1DC014132CE5B0C5009A46E1 /* ContentView.swift in Sources */,
 				1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */,
+				1DC0140A2CE5AEBF009A46E1 /* SignUpView.swift in Sources */,
 				1D3669872CC62F8200E84FF9 /* Strings.swift in Sources */,
 				1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */,
+				1DC014082CE5AE80009A46E1 /* LoginView.swift in Sources */,
 				1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */,
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
 				1DC013FF2CDDFA46009A46E1 /* Achievement.swift in Sources */,
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,
+				1DC014112CE5AFAE009A46E1 /* OnboardingStep.swift in Sources */,
 				1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */,
+				1DC0140F2CE5AF81009A46E1 /* OnboardingStepView.swift in Sources */,
 				1DC2584D2CC629890002DDE3 /* MonthlySaving.swift in Sources */,
 				1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */,
 				1DC258382CC07FA00002DDE3 /* ReportsView.swift in Sources */,
@@ -795,7 +695,6 @@
 		};
 		1DC258292CC07DCF0002DDE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FFA9DD4483170976F413416 /* Pods-Savely.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -827,7 +726,6 @@
 		};
 		1DC2582A2CC07DCF0002DDE3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06037ECC6ECFC024494B6BE9 /* Pods-Savely.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -859,7 +757,6 @@
 		};
 		1DC2582C2CC07DCF0002DDE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A1D0CEEC477B095419237B6 /* Pods-SavelyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -880,7 +777,6 @@
 		};
 		1DC2582D2CC07DCF0002DDE3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 702181810255E212215D2FC7 /* Pods-SavelyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -901,7 +797,6 @@
 		};
 		1DC2582F2CC07DCF0002DDE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFEE366AC6D30FEFBBCFD38E /* Pods-SavelyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -920,7 +815,6 @@
 		};
 		1DC258302CC07DCF0002DDE3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 062F024BE11CABECF3D65FCD /* Pods-SavelyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
