@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct HybridTextField: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @Binding var text: String
+    @State private var isSecure: Bool = true
+    var titleKey: String
 
-#Preview {
-    HybridTextField()
+    var body: some View {
+        ZStack(alignment: .trailing) {
+            Group {
+                if isSecure {
+                    SecureField(titleKey, text: $text)
+                } else {
+                    TextField(titleKey, text: $text)
+                }
+            }
+            .padding(.trailing, 32)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(Color.black, lineWidth: 1)
+            )
+            Button(action: {
+                isSecure.toggle()
+            }) {
+                Image(systemName: self.isSecure ? "eye.slash" : "eye")
+                    .accentColor(.gray)
+            }
+            .padding(.trailing, 16)
+        }
+    }
 }
