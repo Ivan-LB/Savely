@@ -46,7 +46,7 @@ struct MainNavigationView: View {
                 }
                 .toolbarBackground(.visible, for: .tabBar)
         }
-        .accentColor(.blue)
+        .accentColor(.green)
     }
 }
 

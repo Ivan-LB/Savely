@@ -16,7 +16,7 @@ struct DashboardView: View {
                 Text(Strings.DashboardTab.welcomeHeader)
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundStyle(Color.blue)
+                    .foregroundStyle(Color.green)
                     .padding(.horizontal)
                 
 
