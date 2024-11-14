@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct AchievementsView: View {
-    let achievements = [
-        Achievement(id: 1, title: "Primera Meta Alcanzada", description: "Has alcanzado tu primera meta de ahorro.", iconName: "star.fill", achieved: true),
-        Achievement(id: 2, title: "Tres Metas Alcanzadas", description: "Has alcanzado tres metas de ahorro diferentes.", iconName: "trophy.fill", achieved: false),
-        Achievement(id: 3, title: "Ahorro Mensual Consistente", description: "Has mantenido un ahorro mensual constante durante tres meses.", iconName: "calendar.circle.fill", achieved: true),
-        Achievement(id: 4, title: "Sin Gastos Innecesarios", description: "Has evitado gastos innecesarios durante un mes completo.", iconName: "checkmark.seal.fill", achieved: false),
-    ]
+    let achievements = AchievementsData.allAchievements
     
     var body: some View {
         ScrollView {
@@ -43,6 +38,7 @@ struct AchievementsView: View {
                     .cornerRadius(10)
                     .shadow(radius: 5)
                     .padding(.horizontal)
+                    .opacity(achievement.achieved ? 1.0 : 0.5)
                 }
             }
             .padding(.vertical)
