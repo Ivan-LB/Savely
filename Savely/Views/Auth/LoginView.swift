@@ -27,42 +27,22 @@ struct LoginView: View {
                     .opacity(0.6)
                 
                 VStack(spacing: 15) {
-                    TextField(Strings.Authentication.emailString, text: $email)
-                        .padding()
-                        .autocapitalization(.none)
+                    CustomTextfield(placeholder: Strings.Authentication.emailString, value: $email)
                         .keyboardType(.emailAddress)
-                        .background{
-                            RoundedRectangle(cornerRadius: UIConstants.UICornerRadius.cornerRadius)
-                                .stroke(Color(.black), lineWidth: UIConstants.UILineWidth.lineWidth)
-                        }
-                    
-                    SecureField(Strings.Authentication.passwordString, text: $password)
-                        .padding()
-                        .autocapitalization(.none)
-                        .background{
-                            RoundedRectangle(cornerRadius: UIConstants.UICornerRadius.cornerRadius)
-                                .stroke(Color(.black), lineWidth: UIConstants.UILineWidth.lineWidth)
-                        }
+                    HybridTextField(text: $password, titleKey: Strings.Authentication.passwordString)
                 }
                 .padding(.horizontal)
-                Button {
+                
+                PrimaryButton(action: {
                     
-                } label: {
-                    Text(Strings.Authentication.signInString)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
-                }
-                .padding(.horizontal)
+                }, text: Strings.Authentication.signInString)
                 
                 Spacer()
                 
                 Text(Strings.Authentication.otherWayToConnectLabel)
                     .font(.subheadline)
                     .opacity(0.6)
+                
                 SignInWithAppleButton(
                     .signIn,
                     onRequest: { request in

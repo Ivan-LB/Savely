@@ -25,6 +25,7 @@ struct QuickActionButton: View {
         }
         .padding()
         .background(backgroundColor)
+        .frame(width: .infinity, height: .infinity)
         .cornerRadius(10)
     }
 }
