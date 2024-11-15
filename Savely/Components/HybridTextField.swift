@@ -17,8 +17,11 @@ struct HybridTextField: View {
             Group {
                 if isSecure {
                     SecureField(titleKey, text: $text)
+                        .autocorrectionDisabled()
                 } else {
                     TextField(titleKey, text: $text)
+                        .autocapitalization(.none)
+                        .autocorrectionDisabled()
                 }
             }
             .padding(.trailing, 32)
