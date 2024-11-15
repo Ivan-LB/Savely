@@ -27,22 +27,11 @@ struct SignUpView: View {
                     .opacity(0.6)
 
                 VStack(spacing: 15) {
-                    TextField(Strings.Authentication.fullNamePlaceholder, text: $name)
-                        .padding()
+                    CustomTextfield(placeholder: Strings.Authentication.fullNamePlaceholder, value: $name)
                         .autocapitalization(.words)
-                        .background(
-                            RoundedRectangle(cornerRadius: UIConstants.UICornerRadius.cornerRadius)
-                                .stroke(Color.black, lineWidth: UIConstants.UILineWidth.lineWidth)
-                        )
 
-                    TextField(Strings.Authentication.emailString, text: $email)
-                        .padding()
-                        .autocapitalization(.none)
+                    CustomTextfield(placeholder: Strings.Authentication.emailString, value: $email)
                         .keyboardType(.emailAddress)
-                        .background(
-                            RoundedRectangle(cornerRadius: UIConstants.UICornerRadius.cornerRadius)
-                                .stroke(Color.black, lineWidth: UIConstants.UILineWidth.lineWidth)
-                        )
 
                     HybridTextField(text: $password, titleKey: Strings.Authentication.passwordString)
                     HybridTextField(text: $confirmPassword, titleKey: Strings.Authentication.confirmPasswordString)
@@ -51,18 +40,9 @@ struct SignUpView: View {
 
                 Spacer()
 
-                Button(action: {
-                    // Acción para registrar al usuario
-                }) {
-                    Text(Strings.Buttons.createAccountButton)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
-                }
-                .padding(.horizontal)
+                PrimaryButton(action: {
+                    
+                }, text: Strings.Buttons.createAccountButton)
 
                 Spacer()
             }

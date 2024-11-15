@@ -15,7 +15,7 @@ struct ProfileView: View {
     @State private var email: String = ""
     
     var body: some View {
-        NavigationView { // <--- Aquí añadí el NavigationView
+        NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     // Personal Information Card
@@ -33,8 +33,9 @@ struct ProfileView: View {
                             }) {
                                 Label(Strings.Buttons.updateInformationButton, systemImage: "person.fill")
                                     .padding()
+                                    .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.blue)
+                                    .background(Color.green)
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
                             }
@@ -78,8 +79,9 @@ struct ProfileView: View {
                             }) {
                                 Label(Strings.Buttons.changePasswordButton, systemImage: "key.fill")
                                     .padding()
+                                    .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.blue)
+                                    .background(Color.green)
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
                             }
@@ -103,11 +105,11 @@ struct ProfileView: View {
                                         .foregroundColor(.yellow)
                                     Text(Strings.Profile.viewAchievements)
                                         .fontWeight(.bold)
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(.green)
                                 }
                                 .padding()
                                 .frame(maxWidth: .infinity)
-                                .background(Color.blue.opacity(0.1))
+                                .background(Color.green.opacity(0.1))
                                 .cornerRadius(10)
                             }
                         }

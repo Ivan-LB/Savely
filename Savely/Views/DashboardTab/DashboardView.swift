@@ -19,7 +19,6 @@ struct DashboardView: View {
                     .foregroundStyle(Color.green)
                     .padding(.horizontal)
                 
-
                 // Overview Card
                 VStack(spacing: 15) {
                     Text(Strings.DashboardTab.savingsSummaryTitle)
@@ -47,11 +46,11 @@ struct DashboardView: View {
 
                 // Quick Actions
                 HStack() {
-                    QuickActionButton(iconName: "camera", label: Strings.Buttons.addIncomeButton, backgroundColor: .green)
+                    QuickActionButton(iconName: "creditcard.fill", label: Strings.Buttons.addIncomeButton, backgroundColor: .green)
                     Spacer()
-                    QuickActionButton(iconName: "camera", label: Strings.Buttons.addExpenseButton, backgroundColor: .green)
+                    QuickActionButton(iconName: "camera.fill", label: Strings.Buttons.addExpenseButton, backgroundColor: .green)
                     Spacer()
-                    QuickActionButton(iconName: "plus.circle", label: Strings.Buttons.newGoalButton, backgroundColor: .green)
+                    QuickActionButton(iconName: "plus.circle.fill", label: Strings.Buttons.newGoalButton, backgroundColor: .green)
                 }
                 .padding(.horizontal)
 
@@ -114,7 +113,7 @@ struct DashboardView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.blue.opacity(0.1))
+                .background(Color.green.opacity(0.1))
                 .cornerRadius(10)
                 .shadow(radius: 2)
                 .padding(.horizontal)
