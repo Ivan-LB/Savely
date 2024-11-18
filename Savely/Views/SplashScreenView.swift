@@ -16,32 +16,37 @@ struct SplashScreenView: View {
             if isSplashEnded {
                 ContentView()
             } else {
-                VStack {
-                    Image(systemName: "banknote.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 150)
-                        .rotationEffect(Angle(degrees: isAnimating ? 360 : 0))
-                        .scaleEffect(isAnimating ? 1.1 : 1.0)
-                        .foregroundColor(.green)
-                        .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: isAnimating)
-                        .onAppear {
-                            isAnimating = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                                withAnimation {
-                                    isSplashEnded = true
+                ZStack {
+                    Color("PrimaryBlack")
+                    VStack {
+                        Image("AppUtilityIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200, height: 200)
+                            .opacity(isAnimating ? 1.0 : 0.5)
+                            .scaleEffect(isAnimating ? 1.2 : 1.0)
+                            .foregroundColor(.green)
+                            .animation(.easeInOut(duration: 1.5), value: isAnimating)
+                            .onAppear {
+                                isAnimating = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                    withAnimation {
+                                        isSplashEnded = true
+                                    }
                                 }
                             }
-                        }
-                    
-                    Text(Strings.SplashScreen.savelyAppTitle)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.green)
-                        .opacity(isAnimating ? 1.0 : 0.5)
-                        .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: isAnimating)
+
+                        
+                        Text(Strings.SplashScreen.savelyAppTitle)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.green)
+                            .opacity(isAnimating ? 1.0 : 0.5)
+                            .scaleEffect(isAnimating ? 1.2 : 1.0)
+                            .animation(.easeInOut(duration: 1.5), value: isAnimating)
+                    }
+                    .transition(.opacity)
                 }
-                .transition(.opacity)
             }
         }
         .ignoresSafeArea()
