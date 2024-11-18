@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TipCardView: View {
-    let tip: Tip
+    let tip: TipModel
     let isFavorite: Bool
     let onToggleFavorite: () -> Void
     
@@ -38,7 +38,7 @@ struct TipCardView: View {
 
 #Preview {
     TipCardView(
-        tip: Tip(id: "1", title: "Aumenta tus ahorros", description: "Incrementa tus ahorros en un 5%."),
+        tip: TipModel(id: "1", title: "Aumenta tus ahorros", description: "Incrementa tus ahorros en un 5%."),
         isFavorite: true,
         onToggleFavorite: {}
     )

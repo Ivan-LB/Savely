@@ -9,22 +9,22 @@ import Foundation
 
 struct OnboardingData {
     static let steps = [
-        OnboardingStep(
+        OnboardingStepModel(
             image: "dollarsign.circle",
             title: Strings.Onboarding.setGoalsTitle,
             description: Strings.Onboarding.setGoalsLabel
         ),
-        OnboardingStep(
+        OnboardingStepModel(
             image: "chart.bar",
             title: Strings.Onboarding.trackExpensesTitle,
             description: Strings.Onboarding.trackExpensesLabel
         ),
-        OnboardingStep(
+        OnboardingStepModel(
             image: "creditcard",
             title: Strings.Onboarding.trackIncomesTitle,
             description: Strings.Onboarding.trackIncomesLabel
         ),
-        OnboardingStep(
+        OnboardingStepModel(
             image: "lightbulb",
             title: Strings.Onboarding.receiveTipsTitle,
             description: Strings.Onboarding.receiveTipsLabel

@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Expense: Identifiable {
+struct ExpenseModel: Identifiable {
     let id: Int
     let description: String
     let amount: Double
     let date: String
 }
 
-struct ExpenseCategory: Identifiable {
+struct ExpenseCategoryModel: Identifiable {
     let id = UUID()
     let category: String
     let amount: Double

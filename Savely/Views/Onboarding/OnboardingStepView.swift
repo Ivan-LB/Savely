@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingStepView: View {
-    let step: OnboardingStep
+    let step: OnboardingStepModel
     
     var body: some View {
         VStack(spacing: 20) {
@@ -31,7 +31,7 @@ struct OnboardingStepView: View {
 }
 
 #Preview {
-    OnboardingStepView(step: OnboardingStep(
+    OnboardingStepView(step: OnboardingStepModel(
         image: "dollarsign.circle",
         title: Strings.Onboarding.setGoalsTitle,
         description: Strings.Onboarding.setGoalsLabel

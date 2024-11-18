@@ -9,9 +9,9 @@ import SwiftUI
 
 struct GoalsView: View {
     let goals = [
-        Goal(id: 1, name: "Vacaciones", current: 2000, target: 5000, color: .green),
-        Goal(id: 2, name: "Nuevo Teléfono", current: 300, target: 1000, color: .blue),
-        Goal(id: 3, name: "Fondo de Emergencia", current: 1500, target: 3000, color: .yellow)
+        GoalModel(id: 1, name: "Vacaciones", current: 2000, target: 5000, color: .green),
+        GoalModel(id: 2, name: "Nuevo Teléfono", current: 300, target: 1000, color: .blue),
+        GoalModel(id: 3, name: "Fondo de Emergencia", current: 1500, target: 3000, color: .yellow)
     ]
     
     var body: some View {

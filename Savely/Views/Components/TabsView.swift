@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TabsView: View {
-    let personalizedTips: [Tip]
-    let generalTips: [Tip]
+    let personalizedTips: [TipModel]
+    let generalTips: [TipModel]
     @Binding var favorites: [String]
     
     @State private var selectedTab: String = "personalized"
@@ -41,12 +41,12 @@ struct TabsView: View {
     
     return TabsView(
         personalizedTips: [
-            Tip(id: "1", title: "Reduce gastos", description: "Opción gratuita de entretenimiento."),
-            Tip(id: "2", title: "Aumenta tus ahorros", description: "Incrementar tus ahorros en un 5%.")
+            TipModel(id: "1", title: "Reduce gastos", description: "Opción gratuita de entretenimiento."),
+            TipModel(id: "2", title: "Aumenta tus ahorros", description: "Incrementar tus ahorros en un 5%.")
         ],
         generalTips: [
-            Tip(id: "3", title: "Fondo de emergencia", description: "Ahorra el equivalente a 3-6 meses."),
-            Tip(id: "4", title: "Automatiza ahorros", description: "Transferencias automáticas mensuales.")
+            TipModel(id: "3", title: "Fondo de emergencia", description: "Ahorra el equivalente a 3-6 meses."),
+            TipModel(id: "4", title: "Automatiza ahorros", description: "Transferencias automáticas mensuales.")
         ],
         favorites: $favorites
     )

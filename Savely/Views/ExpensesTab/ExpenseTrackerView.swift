@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ExpenseTrackerView: View {
     @State private var expenses = [
-        Expense(id: 1, description: "Supermercado", amount: 50.75, date: "2023-05-15"),
-        Expense(id: 2, description: "Gasolina", amount: 30.00, date: "2023-05-14")
+        ExpenseModel(id: 1, description: "Supermercado", amount: 50.75, date: "2023-05-15"),
+        ExpenseModel(id: 2, description: "Gasolina", amount: 30.00, date: "2023-05-14")
     ]
     @State private var description = ""
     @State private var amount = ""
@@ -53,7 +53,7 @@ struct ExpenseTrackerView: View {
                     Button(action: {
                         // Action to add a new expense
                         if let amountValue = Double(amount) {
-                            let newExpense = Expense(id: expenses.count + 1, description: description, amount: amountValue, date: DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .none))
+                            let newExpense = ExpenseModel(id: expenses.count + 1, description: description, amount: amountValue, date: DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .none))
                             expenses.append(newExpense)
                             description = ""
                             amount = ""
