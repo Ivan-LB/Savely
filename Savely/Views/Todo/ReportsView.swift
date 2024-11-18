@@ -12,20 +12,20 @@ struct ReportsView: View {
     @State private var date: Date = Date()
     
     let expenseData = [
-        ExpenseCategory(category: "Alimentación", amount: 300),
-        ExpenseCategory(category: "Transporte", amount: 150),
-        ExpenseCategory(category: "Entretenimiento", amount: 100),
-        ExpenseCategory(category: "Servicios", amount: 200),
-        ExpenseCategory(category: "Otros", amount: 50)
+        ExpenseCategoryModel(category: "Alimentación", amount: 300),
+        ExpenseCategoryModel(category: "Transporte", amount: 150),
+        ExpenseCategoryModel(category: "Entretenimiento", amount: 100),
+        ExpenseCategoryModel(category: "Servicios", amount: 200),
+        ExpenseCategoryModel(category: "Otros", amount: 50)
     ]
     
     let savingsData = [
-        MonthlySaving(month: "Ene", amount: 100),
-        MonthlySaving(month: "Feb", amount: 150),
-        MonthlySaving(month: "Mar", amount: 200),
-        MonthlySaving(month: "Abr", amount: 180),
-        MonthlySaving(month: "May", amount: 250),
-        MonthlySaving(month: "Jun", amount: 300)
+        MonthlySavingModel(month: "Ene", amount: 100),
+        MonthlySavingModel(month: "Feb", amount: 150),
+        MonthlySavingModel(month: "Mar", amount: 200),
+        MonthlySavingModel(month: "Abr", amount: 180),
+        MonthlySavingModel(month: "May", amount: 250),
+        MonthlySavingModel(month: "Jun", amount: 300)
     ]
     
     var body: some View {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Tip: Identifiable {
+struct TipModel: Identifiable {
     let id: String
     let title: String
     let description: String

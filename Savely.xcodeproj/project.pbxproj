@@ -18,13 +18,13 @@
 		1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */; };
 		1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */; };
 		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
-		1DC013FF2CDDFA46009A46E1 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* Achievement.swift */; };
+		1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */; };
 		1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */; };
 		1DC014082CE5AE80009A46E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014072CE5AE80009A46E1 /* LoginView.swift */; };
 		1DC0140A2CE5AEBF009A46E1 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014092CE5AEBF009A46E1 /* SignUpView.swift */; };
 		1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC0140C2CE5AF59009A46E1 /* OnboardingView.swift */; };
 		1DC0140F2CE5AF81009A46E1 /* OnboardingStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC0140E2CE5AF81009A46E1 /* OnboardingStepView.swift */; };
-		1DC014112CE5AFAE009A46E1 /* OnboardingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014102CE5AFAD009A46E1 /* OnboardingStep.swift */; };
+		1DC014112CE5AFAE009A46E1 /* OnboardingStepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014102CE5AFAD009A46E1 /* OnboardingStepModel.swift */; };
 		1DC014132CE5B0C5009A46E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014122CE5B0C5009A46E1 /* ContentView.swift */; };
 		1DC014152CE5B674009A46E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DC014142CE5B674009A46E1 /* GoogleService-Info.plist */; };
 		1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */; };
@@ -41,10 +41,10 @@
 		1DC2583E2CC082450002DDE3 /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2583D2CC082450002DDE3 /* MainNavigationView.swift */; };
 		1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258422CC61D3A0002DDE3 /* CardView.swift */; };
 		1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258452CC628C70002DDE3 /* QuickActionButton.swift */; };
-		1DC258492CC629210002DDE3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258482CC629210002DDE3 /* Goal.swift */; };
+		1DC258492CC629210002DDE3 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258482CC629210002DDE3 /* GoalModel.swift */; };
 		1DC2584B2CC629540002DDE3 /* ExpenseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */; };
-		1DC2584D2CC629890002DDE3 /* MonthlySaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584C2CC629890002DDE3 /* MonthlySaving.swift */; };
-		1DC2584F2CC62A160002DDE3 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584E2CC62A160002DDE3 /* Tip.swift */; };
+		1DC2584D2CC629890002DDE3 /* MonthlySavingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584C2CC629890002DDE3 /* MonthlySavingModel.swift */; };
+		1DC2584F2CC62A160002DDE3 /* TipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584E2CC62A160002DDE3 /* TipModel.swift */; };
 		1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258512CC62A5B0002DDE3 /* TabsView.swift */; };
 		1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258532CC62B530002DDE3 /* TipsListView.swift */; };
 		1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258552CC62BAB0002DDE3 /* TipCardView.swift */; };
@@ -88,12 +88,12 @@
 		1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRUtilities.swift; sourceTree = "<group>"; };
 		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
 		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
-		1DC013FE2CDDFA46009A46E1 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
 		1DC014072CE5AE80009A46E1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1DC014092CE5AEBF009A46E1 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1DC0140C2CE5AF59009A46E1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		1DC0140E2CE5AF81009A46E1 /* OnboardingStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepView.swift; sourceTree = "<group>"; };
-		1DC014102CE5AFAD009A46E1 /* OnboardingStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep.swift; sourceTree = "<group>"; };
+		1DC014102CE5AFAD009A46E1 /* OnboardingStepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepModel.swift; sourceTree = "<group>"; };
 		1DC014122CE5B0C5009A46E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1DC014142CE5B674009A46E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1DC258042CC07DCC0002DDE3 /* Savely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savely.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,10 +114,10 @@
 		1DC2583D2CC082450002DDE3 /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
 		1DC258422CC61D3A0002DDE3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		1DC258452CC628C70002DDE3 /* QuickActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionButton.swift; sourceTree = "<group>"; };
-		1DC258482CC629210002DDE3 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		1DC258482CC629210002DDE3 /* GoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
 		1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModels.swift; sourceTree = "<group>"; };
-		1DC2584C2CC629890002DDE3 /* MonthlySaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySaving.swift; sourceTree = "<group>"; };
-		1DC2584E2CC62A160002DDE3 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		1DC2584C2CC629890002DDE3 /* MonthlySavingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySavingModel.swift; sourceTree = "<group>"; };
+		1DC2584E2CC62A160002DDE3 /* TipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipModel.swift; sourceTree = "<group>"; };
 		1DC258512CC62A5B0002DDE3 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		1DC258532CC62B530002DDE3 /* TipsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsListView.swift; sourceTree = "<group>"; };
 		1DC258552CC62BAB0002DDE3 /* TipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCardView.swift; sourceTree = "<group>"; };
@@ -370,12 +370,12 @@
 		1DC258472CC629120002DDE3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1DC258482CC629210002DDE3 /* Goal.swift */,
+				1DC258482CC629210002DDE3 /* GoalModel.swift */,
 				1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */,
-				1DC2584C2CC629890002DDE3 /* MonthlySaving.swift */,
-				1DC2584E2CC62A160002DDE3 /* Tip.swift */,
-				1DC013FE2CDDFA46009A46E1 /* Achievement.swift */,
-				1DC014102CE5AFAD009A46E1 /* OnboardingStep.swift */,
+				1DC2584C2CC629890002DDE3 /* MonthlySavingModel.swift */,
+				1DC2584E2CC62A160002DDE3 /* TipModel.swift */,
+				1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */,
+				1DC014102CE5AFAD009A46E1 /* OnboardingStepModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -533,7 +533,7 @@
 				1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */,
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
 				1DC2583E2CC082450002DDE3 /* MainNavigationView.swift in Sources */,
-				1DC2584F2CC62A160002DDE3 /* Tip.swift in Sources */,
+				1DC2584F2CC62A160002DDE3 /* TipModel.swift in Sources */,
 				1DC258572CC62DF20002DDE3 /* ExpenseTrackerView.swift in Sources */,
 				1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */,
 				1DC2583A2CC081A40002DDE3 /* TipsAndSuggestionsView.swift in Sources */,
@@ -544,7 +544,7 @@
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
 				1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
-				1DC258492CC629210002DDE3 /* Goal.swift in Sources */,
+				1DC258492CC629210002DDE3 /* GoalModel.swift in Sources */,
 				1DC014132CE5B0C5009A46E1 /* ContentView.swift in Sources */,
 				1DE4B4D42CE60032006C8F65 /* HybridTextField.swift in Sources */,
 				1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */,
@@ -555,14 +555,14 @@
 				1DC014082CE5AE80009A46E1 /* LoginView.swift in Sources */,
 				1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */,
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
-				1DC013FF2CDDFA46009A46E1 /* Achievement.swift in Sources */,
+				1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */,
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,
-				1DC014112CE5AFAE009A46E1 /* OnboardingStep.swift in Sources */,
+				1DC014112CE5AFAE009A46E1 /* OnboardingStepModel.swift in Sources */,
 				1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */,
 				1DC0140F2CE5AF81009A46E1 /* OnboardingStepView.swift in Sources */,
-				1DC2584D2CC629890002DDE3 /* MonthlySaving.swift in Sources */,
+				1DC2584D2CC629890002DDE3 /* MonthlySavingModel.swift in Sources */,
 				1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */,
 				1DC258382CC07FA00002DDE3 /* ReportsView.swift in Sources */,
 				1DC258342CC07E460002DDE3 /* GoalsView.swift in Sources */,

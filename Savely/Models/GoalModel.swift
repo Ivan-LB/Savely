@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Goal: Identifiable {
+struct GoalModel: Identifiable {
     let id: Int
     let name: String
     let current: Double

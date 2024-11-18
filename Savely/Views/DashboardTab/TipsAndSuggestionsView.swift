@@ -11,15 +11,15 @@ struct TipsAndSuggestionsView: View {
     @State private var favorites: [String] = []
     
     let personalizedTips = [
-        Tip(id: "1", title: "Reduce gastos en entretenimiento", description: "Considera opciones gratuitas de entretenimiento para alcanzar tu meta de ahorro más rápido."),
-        Tip(id: "2", title: "Aumenta tus ahorros mensuales", description: "Incrementar tus ahorros en un 5% te ayudará a alcanzar tu meta de vacaciones antes de lo planeado."),
-        Tip(id: "3", title: "Revisa tus suscripciones", description: "Cancelar suscripciones no utilizadas podría ahorrarte hasta $50 al mes.")
+        TipModel(id: "1", title: "Reduce gastos en entretenimiento", description: "Considera opciones gratuitas de entretenimiento para alcanzar tu meta de ahorro más rápido."),
+        TipModel(id: "2", title: "Aumenta tus ahorros mensuales", description: "Incrementar tus ahorros en un 5% te ayudará a alcanzar tu meta de vacaciones antes de lo planeado."),
+        TipModel(id: "3", title: "Revisa tus suscripciones", description: "Cancelar suscripciones no utilizadas podría ahorrarte hasta $50 al mes.")
     ]
     
     let generalTips = [
-        Tip(id: "4", title: "Crea un fondo de emergencia", description: "Ahorra el equivalente a 3-6 meses de gastos para emergencias."),
-        Tip(id: "5", title: "Sigue la regla 50/30/20", description: "Destina 50% a necesidades, 30% a deseos y 20% a ahorros de tus ingresos."),
-        Tip(id: "6", title: "Automatiza tus ahorros", description: "Configura transferencias automáticas a tu cuenta de ahorros cada mes.")
+        TipModel(id: "4", title: "Crea un fondo de emergencia", description: "Ahorra el equivalente a 3-6 meses de gastos para emergencias."),
+        TipModel(id: "5", title: "Sigue la regla 50/30/20", description: "Destina 50% a necesidades, 30% a deseos y 20% a ahorros de tus ingresos."),
+        TipModel(id: "6", title: "Automatiza tus ahorros", description: "Configura transferencias automáticas a tu cuenta de ahorros cada mes.")
     ]
     
     var body: some View {

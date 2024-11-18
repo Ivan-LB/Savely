@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Achievement: Identifiable {
+struct AchievementModel: Identifiable {
     let id: Int
     let title: String
     let description: String

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TipsListView: View {
-    let tips: [Tip]
+    let tips: [TipModel]
     @Binding var favorites: [String]
     var filterFavorites: Bool = false
     
@@ -22,7 +22,7 @@ struct TipsListView: View {
         }
     }
     
-    private var filteredTips: [Tip] {
+    private var filteredTips: [TipModel] {
         filterFavorites ? tips.filter { favorites.contains($0.id) } : tips
     }
     
@@ -40,8 +40,8 @@ struct TipsListView: View {
     
     return TipsListView(
         tips: [
-            Tip(id: "1", title: "Reduce gastos", description: "Opción gratuita de entretenimiento."),
-            Tip(id: "2", title: "Aumenta tus ahorros", description: "Incrementar tus ahorros en un 5%.")
+            TipModel(id: "1", title: "Reduce gastos", description: "Opción gratuita de entretenimiento."),
+            TipModel(id: "2", title: "Aumenta tus ahorros", description: "Incrementar tus ahorros en un 5%.")
         ],
         favorites: $favorites
     )
