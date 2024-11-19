@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%lld%%" : {
 
     },
@@ -671,6 +674,9 @@
         }
       }
     },
+    "Is it right?" : {
+
+    },
     "Las contraseñas no coinciden" : {
 
     },
@@ -769,6 +775,9 @@
           }
         }
       }
+    },
+    "No" : {
+
     },
     "no_unnecessary_spending_description" : {
       "comment" : "Description for avoiding unnecessary spending",
@@ -1023,7 +1032,7 @@
       }
     },
     "savings_placeholder" : {
-      "comment" : "Savings Placeholcer\n   Savings Placeholder",
+      "comment" : "Savings Placeholcer\nSavings Placeholder",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -1238,6 +1247,9 @@
         }
       }
     },
+    "Take another photo" : {
+
+    },
     "terms_of_service_label" : {
       "comment" : "Terms of Service Label",
       "extractionState" : "extracted_with_value",
@@ -1363,6 +1375,9 @@
           }
         }
       }
+    },
+    "Total amount detected:" : {
+
     },
     "track_expenses_label" : {
       "comment" : "Track Expenses Label",
@@ -1519,6 +1534,9 @@
           }
         }
       }
+    },
+    "Yes" : {
+
     }
   },
   "version" : "1.0"

@@ -14,7 +14,7 @@ struct SplashScreenView: View {
     var body: some View {
         ZStack {
             if isSplashEnded {
-                ContentView()
+                MainNavigationView()
             } else {
                 ZStack {
                     Color("PrimaryBlack")
