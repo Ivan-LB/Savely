@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State private var darkMode: Bool = false
-    @State private var expenseReminders: Bool = true
-    @State private var goalAlerts: Bool = true
-    @State private var name: String = ""
-    @State private var email: String = ""
+    @StateObject private var viewModel = ProfileViewModel()
+    @EnvironmentObject var appViewModel: AppViewModel
     
     var body: some View {
         NavigationView {
@@ -24,12 +21,14 @@ struct ProfileView: View {
                             Text(Strings.Profile.personalInformationTitle)
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            TextField(Strings.Profile.namePlaceholderLabel, text: $name)
+                            TextField(Strings.Profile.namePlaceholderLabel, text: $viewModel.displayName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                            TextField(Strings.Profile.emailPlaceholderLabel, text: $email)
+                            TextField(Strings.Profile.emailPlaceholderLabel, text: $viewModel.email)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                             Button(action: {
-                                // Update personal information
+                                Task {
+                                    await viewModel.updatePersonalInformation()
+                                }
                             }) {
                                 Label(Strings.Buttons.updateInformationButton, systemImage: "person.fill")
                                     .padding()
@@ -50,8 +49,8 @@ struct ProfileView: View {
                             Text(Strings.Profile.notificationTitle)
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            Toggle(Strings.Profile.expenseRemindersLabel, isOn: $expenseReminders)
-                            Toggle(Strings.Profile.goalAlertsLabel, isOn: $goalAlerts)
+                            Toggle(Strings.Profile.expenseRemindersLabel, isOn: $viewModel.expenseReminders)
+                            Toggle(Strings.Profile.goalAlertsLabel, isOn: $viewModel.goalAlerts)
                         }
                         .padding(.top)
                         .padding(.horizontal)
@@ -63,7 +62,7 @@ struct ProfileView: View {
                             Text(Strings.Profile.appPreferencesTitle)
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            Toggle(Strings.Profile.darkModeLabel, isOn: $darkMode)
+                            Toggle(Strings.Profile.darkModeLabel, isOn: $viewModel.darkMode)
                         }
                         .padding(.horizontal)
 
@@ -76,12 +75,29 @@ struct ProfileView: View {
                                 .fontWeight(.bold)
                             Button(action: {
                                 // Change password
+                                Task {
+                                    try AuthenticationManager.shared.signOut()
+                                }
                             }) {
                                 Label(Strings.Buttons.changePasswordButton, systemImage: "key.fill")
                                     .padding()
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
                                     .background(Color.green)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                            Button(action: {
+                                // Change password
+                                Task {
+                                    try AuthenticationManager.shared.signOut()
+                                }
+                            }) {
+                                Label(Strings.Buttons.signOutButton, systemImage: "arrowshape.turn.up.backward.fill")
+                                    .padding()
+                                    .fontWeight(.bold)
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.red)
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
                             }

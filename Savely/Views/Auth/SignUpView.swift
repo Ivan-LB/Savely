@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @State private var name = ""
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
+    @StateObject private var viewModel = SignUpViewModel()
+    @EnvironmentObject var appViewModel: AppViewModel
     
     var body: some View {
         NavigationView {
@@ -27,21 +25,32 @@ struct SignUpView: View {
                     .opacity(0.6)
 
                 VStack(spacing: 15) {
-                    CustomTextfield(placeholder: Strings.Authentication.fullNamePlaceholder, value: $name)
+                    CustomTextfield(placeholder: Strings.Authentication.fullNamePlaceholder, value: $viewModel.fullName)
                         .autocapitalization(.words)
 
-                    CustomTextfield(placeholder: Strings.Authentication.emailString, value: $email)
+                    CustomTextfield(placeholder: Strings.Authentication.emailString, value: $viewModel.email)
                         .keyboardType(.emailAddress)
 
-                    HybridTextField(text: $password, titleKey: Strings.Authentication.passwordString)
-                    HybridTextField(text: $confirmPassword, titleKey: Strings.Authentication.confirmPasswordString)
+                    HybridTextField(text: $viewModel.password, titleKey: Strings.Authentication.passwordString)
+                    HybridTextField(text: $viewModel.confirmPassword, titleKey: Strings.Authentication.confirmPasswordString)
+                    
+                    if !viewModel.passwordsMatch && !viewModel.confirmPassword.isEmpty {
+                        Text("Las contraseñas no coinciden")
+                            .foregroundColor(.red)
+                    }
                 }
                 .padding(.horizontal)
 
                 Spacer()
 
                 PrimaryButton(action: {
-                    
+                    Task {
+                        do {
+                            try await viewModel.signUp()
+                        } catch {
+                            print("Error \(error)")
+                        }
+                    }
                 }, text: Strings.Buttons.createAccountButton)
 
                 Spacer()

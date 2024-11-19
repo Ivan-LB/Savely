@@ -429,6 +429,10 @@ struct Strings {
             "change_password_button",
             value: "Change Password",
             comment: "Change Password Button")
+        static let signOutButton = NSLocalizedString(
+            "sign_out_button",
+            value: "Sign Out",
+            comment: "Sign Out Button")
         
         static let scanReceiptButton = NSLocalizedString(
             "scan_receipt_button",

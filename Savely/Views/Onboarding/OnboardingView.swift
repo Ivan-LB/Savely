@@ -9,8 +9,8 @@ import SwiftUI
 
 struct OnboardingView: View {
     @State private var currentStep = 0
-    @Binding var isOnboardingComplete: Bool
     let onboardingSteps = OnboardingData.steps
+    @EnvironmentObject var appViewModel: AppViewModel
     
     var body: some View {
         VStack {
@@ -26,7 +26,14 @@ struct OnboardingView: View {
                 if currentStep < onboardingSteps.count - 1 {
                     currentStep += 1
                 } else {
-                    isOnboardingComplete = true
+                    Task {
+                        do {
+                            try await UserManager.shared.updateOnboardingStatus(isComplete: true)
+                            appViewModel.isOnboardingComplete = true
+                        } catch {
+                            print("Error updating onboarding status: \(error)")
+                        }
+                    }
                 }
             }) {
                 Text(currentStep < onboardingSteps.count - 1 ? Strings.Buttons.nextButton : Strings.Buttons.startButton)
@@ -43,5 +50,5 @@ struct OnboardingView: View {
 }
 
 #Preview {
-    OnboardingView(isOnboardingComplete: .constant(false))
+    OnboardingView()
 }
