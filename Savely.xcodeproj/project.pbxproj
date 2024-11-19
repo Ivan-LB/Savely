@@ -56,6 +56,17 @@
 		1DE4B4D42CE60032006C8F65 /* HybridTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4D32CE60032006C8F65 /* HybridTextField.swift */; };
 		1DE4B4D62CE7AF93006C8F65 /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4D52CE7AF93006C8F65 /* CustomTextfield.swift */; };
 		1DE4B4D82CE7B10E006C8F65 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4D72CE7B10E006C8F65 /* PrimaryButton.swift */; };
+		1DE4B4DA2CEBF60B006C8F65 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4D92CEBF60B006C8F65 /* AuthenticationManager.swift */; };
+		1DE4B4DC2CEBF812006C8F65 /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4DB2CEBF812006C8F65 /* AuthDataResultModel.swift */; };
+		1DE4B4DE2CEBF8AC006C8F65 /* AuthenticationManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4DD2CEBF8AC006C8F65 /* AuthenticationManagerExtension.swift */; };
+		1DE4B4E02CEBF909006C8F65 /* SignInWithAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4DF2CEBF909006C8F65 /* SignInWithAppleHelper.swift */; };
+		1DE4B4E32CEBFAA5006C8F65 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4E22CEBFAA5006C8F65 /* LoginViewModel.swift */; };
+		1DE4B4E52CEBFAD4006C8F65 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4E42CEBFAD4006C8F65 /* UserManager.swift */; };
+		1DE4B4E72CEBFAF8006C8F65 /* DBUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4E62CEBFAF8006C8F65 /* DBUserModel.swift */; };
+		1DE4B4E92CEC018E006C8F65 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4E82CEC018E006C8F65 /* SignUpViewModel.swift */; };
+		1DE4B4EC2CEC4EE3006C8F65 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4EB2CEC4EE3006C8F65 /* AppViewModel.swift */; };
+		1DE4B4EF2CEC514B006C8F65 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4EE2CEC514B006C8F65 /* ProfileViewModel.swift */; };
+		1DE4B4F12CEC5174006C8F65 /* UserManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4F02CEC5174006C8F65 /* UserManagerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +137,18 @@
 		1DE4B4D32CE60032006C8F65 /* HybridTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HybridTextField.swift; sourceTree = "<group>"; };
 		1DE4B4D52CE7AF93006C8F65 /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		1DE4B4D72CE7B10E006C8F65 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		1DE4B4D92CEBF60B006C8F65 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		1DE4B4DB2CEBF812006C8F65 /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
+		1DE4B4DD2CEBF8AC006C8F65 /* AuthenticationManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManagerExtension.swift; sourceTree = "<group>"; };
+		1DE4B4DF2CEBF909006C8F65 /* SignInWithAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleHelper.swift; sourceTree = "<group>"; };
+		1DE4B4E22CEBFAA5006C8F65 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1DE4B4E42CEBFAD4006C8F65 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		1DE4B4E62CEBFAF8006C8F65 /* DBUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUserModel.swift; sourceTree = "<group>"; };
+		1DE4B4E82CEC018E006C8F65 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		1DE4B4EA2CEC037E006C8F65 /* Savely.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Savely.entitlements; sourceTree = "<group>"; };
+		1DE4B4EB2CEC4EE3006C8F65 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		1DE4B4EE2CEC514B006C8F65 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		1DE4B4F02CEC5174006C8F65 /* UserManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +181,9 @@
 		1D3669842CC62EDD00E84FF9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1DE4B4ED2CEC5138006C8F65 /* ProfileTab */,
+				1DE4B4E12CEBFA99006C8F65 /* Auth */,
+				1DE4B4EB2CEC4EE3006C8F65 /* AppViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -176,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				1D88B7CB2CC6EA47009B6538 /* CameraManager.swift */,
+				1DE4B4D92CEBF60B006C8F65 /* AuthenticationManager.swift */,
+				1DE4B4E42CEBFAD4006C8F65 /* UserManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -184,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				1D88B7CE2CC6EB62009B6538 /* CameraManagerExtension.swift */,
+				1DE4B4DD2CEBF8AC006C8F65 /* AuthenticationManagerExtension.swift */,
+				1DE4B4F02CEC5174006C8F65 /* UserManagerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -194,6 +224,7 @@
 				1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */,
 				1DE4B4CF2CE5F2D6006C8F65 /* OnboardingData.swift */,
 				1DE4B4D12CE5F681006C8F65 /* AchievementsData.swift */,
+				1DE4B4DF2CEBF909006C8F65 /* SignInWithAppleHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -290,6 +321,7 @@
 		1DC258062CC07DCC0002DDE3 /* Savely */ = {
 			isa = PBXGroup;
 			children = (
+				1DE4B4EA2CEC037E006C8F65 /* Savely.entitlements */,
 				1DC014142CE5B674009A46E1 /* GoogleService-Info.plist */,
 				1D88B7D62CC9FA28009B6538 /* Utilities */,
 				1D88B7CD2CC6EB3A009B6538 /* Extensions */,
@@ -376,8 +408,27 @@
 				1DC2584E2CC62A160002DDE3 /* TipModel.swift */,
 				1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */,
 				1DC014102CE5AFAD009A46E1 /* OnboardingStepModel.swift */,
+				1DE4B4DB2CEBF812006C8F65 /* AuthDataResultModel.swift */,
+				1DE4B4E62CEBFAF8006C8F65 /* DBUserModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1DE4B4E12CEBFA99006C8F65 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1DE4B4E22CEBFAA5006C8F65 /* LoginViewModel.swift */,
+				1DE4B4E82CEC018E006C8F65 /* SignUpViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		1DE4B4ED2CEC5138006C8F65 /* ProfileTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DE4B4EE2CEC514B006C8F65 /* ProfileViewModel.swift */,
+			);
+			path = ProfileTab;
 			sourceTree = "<group>";
 		};
 		415D1F2E32596A29B695CE25 /* Frameworks */ = {
@@ -532,6 +583,8 @@
 				1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */,
 				1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */,
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
+				1DE4B4DA2CEBF60B006C8F65 /* AuthenticationManager.swift in Sources */,
+				1DE4B4E32CEBFAA5006C8F65 /* LoginViewModel.swift in Sources */,
 				1DC2583E2CC082450002DDE3 /* MainNavigationView.swift in Sources */,
 				1DC2584F2CC62A160002DDE3 /* TipModel.swift in Sources */,
 				1DC258572CC62DF20002DDE3 /* ExpenseTrackerView.swift in Sources */,
@@ -539,12 +592,16 @@
 				1DC2583A2CC081A40002DDE3 /* TipsAndSuggestionsView.swift in Sources */,
 				1DE4B4D22CE5F681006C8F65 /* AchievementsData.swift in Sources */,
 				1DE4B4D62CE7AF93006C8F65 /* CustomTextfield.swift in Sources */,
+				1DE4B4EF2CEC514B006C8F65 /* ProfileViewModel.swift in Sources */,
 				1D36698D2CC6CB4100E84FF9 /* SplashScreenView.swift in Sources */,
 				1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */,
+				1DE4B4EC2CEC4EE3006C8F65 /* AppViewModel.swift in Sources */,
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
+				1DE4B4DE2CEBF8AC006C8F65 /* AuthenticationManagerExtension.swift in Sources */,
 				1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
 				1DC258492CC629210002DDE3 /* GoalModel.swift in Sources */,
+				1DE4B4E02CEBF909006C8F65 /* SignInWithAppleHelper.swift in Sources */,
 				1DC014132CE5B0C5009A46E1 /* ContentView.swift in Sources */,
 				1DE4B4D42CE60032006C8F65 /* HybridTextField.swift in Sources */,
 				1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */,
@@ -553,9 +610,14 @@
 				1D3669872CC62F8200E84FF9 /* Strings.swift in Sources */,
 				1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */,
 				1DC014082CE5AE80009A46E1 /* LoginView.swift in Sources */,
+				1DE4B4E52CEBFAD4006C8F65 /* UserManager.swift in Sources */,
 				1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */,
+				1DE4B4E72CEBFAF8006C8F65 /* DBUserModel.swift in Sources */,
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
+				1DE4B4F12CEC5174006C8F65 /* UserManagerExtension.swift in Sources */,
+				1DE4B4E92CEC018E006C8F65 /* SignUpViewModel.swift in Sources */,
 				1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */,
+				1DE4B4DC2CEBF812006C8F65 /* AuthDataResultModel.swift in Sources */,
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,
@@ -745,6 +807,7 @@
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Savely/Savely.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Savely/Preview Content\"";
@@ -779,6 +842,7 @@
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Savely/Savely.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Savely/Preview Content\"";
