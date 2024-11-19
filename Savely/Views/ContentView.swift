@@ -8,17 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("isOnboardingComplete") private var isOnboardingComplete = false
-    @State private var isLoggedIn = false
-    
+    @StateObject private var appViewModel = AppViewModel()
+
     var body: some View {
-        if !isOnboardingComplete && isLoggedIn{
-            OnboardingView(isOnboardingComplete: $isOnboardingComplete)
-        } else if !isLoggedIn {
+        switch appViewModel.appState {
+        case .loading:
+            LoadingView()
+                .transition(.opacity)
+                .environmentObject(appViewModel)
+        case .loggedOut:
             LoginView()
-        } else {
+                .transition(.slide)
+                .environmentObject(appViewModel)
+        case .onboarding:
+            OnboardingView()
+                .transition(.slide)
+                .environmentObject(appViewModel)
+        case .main:
             MainNavigationView()
+                .transition(.slide)
+                .environmentObject(appViewModel)
         }
+    }
+}
+
+struct LoadingView: View {
+    var body: some View {
+        VStack {
+            ProgressView("Cargando...")
+                .progressViewStyle(CircularProgressViewStyle(tint: .green))
+                .scaleEffect(1.5)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(UIColor.systemBackground))
     }
 }
 

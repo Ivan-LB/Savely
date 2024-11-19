@@ -27,7 +27,7 @@ struct HybridTextField: View {
             .padding(.trailing, 32)
             .padding()
             .background(
-                RoundedRectangle(cornerRadius: 15)
+                RoundedRectangle(cornerRadius: UIConstants.UICornerRadius.cornerRadius)
                     .stroke(Color.black, lineWidth: 1)
             )
             Button(action: {

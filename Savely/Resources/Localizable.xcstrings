@@ -89,6 +89,18 @@
         }
       }
     },
+    "already_have_and_account_label" : {
+      "comment" : "Already have an account Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Don't have an account?"
+          }
+        }
+      }
+    },
     "amount_placeholder_label" : {
       "comment" : "Amount Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -125,6 +137,9 @@
         }
       }
     },
+    "Cargando..." : {
+
+    },
     "category_placeholder" : {
       "comment" : "Category Placeholder",
       "extractionState" : "extracted_with_value",
@@ -157,6 +172,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cambiar Contraseña"
+          }
+        }
+      }
+    },
+    "confirm_password_string" : {
+      "comment" : "Confirm Password String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Confirm Password"
+          }
+        }
+      }
+    },
+    "consistent_savings_description" : {
+      "comment" : "Description for consistent monthly savings",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have maintained consistent monthly savings for three months."
+          }
+        }
+      }
+    },
+    "consistent_savings_title" : {
+      "comment" : "Title for consistent monthly savings",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Consistent Monthly Savings"
+          }
+        }
+      }
+    },
+    "create_account_button" : {
+      "comment" : "Create Account Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Create Account"
+          }
+        }
+      }
+    },
+    "create_account_title" : {
+      "comment" : "Create Account Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Create your account!"
+          }
+        }
+      }
+    },
+    "creating_account_label" : {
+      "comment" : "Creating Account Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "By creating an account, I accept Savely's"
           }
         }
       }
@@ -197,6 +284,30 @@
         }
       }
     },
+    "debt_paid_off_description" : {
+      "comment" : "Description for paying off debt",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have paid off a major debt."
+          }
+        }
+      }
+    },
+    "debt_paid_off_title" : {
+      "comment" : "Title for paying off debt",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Debt Paid Off"
+          }
+        }
+      }
+    },
     "description_placeholder_label" : {
       "comment" : "Description Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -229,6 +340,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Correo Electrónico"
+          }
+        }
+      }
+    },
+    "email_string" : {
+      "comment" : "Email String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Email"
+          }
+        }
+      }
+    },
+    "emergency_fund_description" : {
+      "comment" : "Description for establishing an emergency fund",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have created an emergency fund worth three months of expenses."
+          }
+        }
+      }
+    },
+    "emergency_fund_title" : {
+      "comment" : "Title for establishing an emergency fund",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Emergency Fund Established"
+          }
+        }
+      }
+    },
+    "enter_email_and_password_label" : {
+      "comment" : "Enter your email and password to sign in Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enter your email and password to sign in."
           }
         }
       }
@@ -344,6 +503,78 @@
         }
       }
     },
+    "first_goal_description" : {
+      "comment" : "Description for achieving the first goal",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have reached your first savings goal."
+          }
+        }
+      }
+    },
+    "first_goal_title" : {
+      "comment" : "Title for achieving the first goal",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "First Goal Achieved"
+          }
+        }
+      }
+    },
+    "first_investment_description" : {
+      "comment" : "Description for making the first investment",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have made your first investment towards your financial future."
+          }
+        }
+      }
+    },
+    "first_investment_title" : {
+      "comment" : "Title for making the first investment",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "First Investment Made"
+          }
+        }
+      }
+    },
+    "forgot_password_label" : {
+      "comment" : "Forgot Password Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Forgot password?"
+          }
+        }
+      }
+    },
+    "full_name_placeholder" : {
+      "comment" : "Full Name Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Full Name"
+          }
+        }
+      }
+    },
     "general_placeholder" : {
       "comment" : "General Placeholder",
       "extractionState" : "extracted_with_value",
@@ -398,6 +629,30 @@
         }
       }
     },
+    "high_savings_rate_description" : {
+      "comment" : "Description for achieving a high savings rate",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have saved more than 20% of your income this month."
+          }
+        }
+      }
+    },
+    "high_savings_rate_title" : {
+      "comment" : "Title for achieving a high savings rate",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "High Savings Rate"
+          }
+        }
+      }
+    },
     "incomes_tab_string" : {
       "comment" : "Incomes Tab String",
       "extractionState" : "extracted_with_value",
@@ -412,6 +667,21 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ingresos"
+          }
+        }
+      }
+    },
+    "Las contraseñas no coinciden" : {
+
+    },
+    "log_in_string" : {
+      "comment" : "Log In String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Log in to your existant account"
           }
         }
       }
@@ -488,6 +758,42 @@
         }
       }
     },
+    "next_button" : {
+      "comment" : "Next Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "no_unnecessary_spending_description" : {
+      "comment" : "Description for avoiding unnecessary spending",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have avoided unnecessary spending for a whole month."
+          }
+        }
+      }
+    },
+    "no_unnecessary_spending_title" : {
+      "comment" : "Title for avoiding unnecessary spending",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No Unnecessary Spending"
+          }
+        }
+      }
+    },
     "notifications_title" : {
       "comment" : "Notifications Title",
       "extractionState" : "extracted_with_value",
@@ -502,6 +808,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notificaciones"
+          }
+        }
+      }
+    },
+    "other_way_to_connect_label" : {
+      "comment" : "Other Way to Connect",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Or connect using"
+          }
+        }
+      }
+    },
+    "password_string" : {
+      "comment" : "Password String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Password"
           }
         }
       }
@@ -592,6 +922,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfil"
+          }
+        }
+      }
+    },
+    "receive_tips_label" : {
+      "comment" : "Receive Tips Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Get personalized tips to improve your financial health."
+          }
+        }
+      }
+    },
+    "receive_tips_title" : {
+      "comment" : "Receive Tips Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Receive Tips"
           }
         }
       }
@@ -776,6 +1130,126 @@
         }
       }
     },
+    "set_goals_label" : {
+      "comment" : "Set Goals Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Define your financial objectives and work towards achieving them."
+          }
+        }
+      }
+    },
+    "set_goals_title" : {
+      "comment" : "Set Goals Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Set Goals"
+          }
+        }
+      }
+    },
+    "sign_in_string" : {
+      "comment" : "Sign In String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign In"
+          }
+        }
+      }
+    },
+    "sign_out_button" : {
+      "comment" : "Sign Out Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign Out"
+          }
+        }
+      }
+    },
+    "sign_up_label" : {
+      "comment" : "Sign Up Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign Up"
+          }
+        }
+      }
+    },
+    "sign_up_to_get_started" : {
+      "comment" : "Sign Up To Get Started",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign up to get started"
+          }
+        }
+      }
+    },
+    "start_button" : {
+      "comment" : "Start Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Start"
+          }
+        }
+      }
+    },
+    "subscription_cleanup_description" : {
+      "comment" : "Description for canceling unused subscriptions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have canceled unused subscriptions to reduce your monthly expenses."
+          }
+        }
+      }
+    },
+    "subscription_cleanup_title" : {
+      "comment" : "Title for canceling unused subscriptions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Subscription Clean-up"
+          }
+        }
+      }
+    },
+    "terms_of_service_label" : {
+      "comment" : "Terms of Service Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Terms of Service"
+          }
+        }
+      }
+    },
     "this_month_label" : {
       "comment" : "This Month Label",
       "extractionState" : "extracted_with_value",
@@ -830,6 +1304,30 @@
         }
       }
     },
+    "three_goals_description" : {
+      "comment" : "Description for achieving three goals",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have achieved three different savings goals."
+          }
+        }
+      }
+    },
+    "three_goals_title" : {
+      "comment" : "Title for achieving three goals",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Three Goals Achieved"
+          }
+        }
+      }
+    },
     "tip_of_the_day_title" : {
       "comment" : "Tip of the Day Title",
       "extractionState" : "extracted_with_value",
@@ -862,6 +1360,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consejos y Sugerencias"
+          }
+        }
+      }
+    },
+    "track_expenses_label" : {
+      "comment" : "Track Expenses Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Record and categorize your expenses to understand your spending habits."
+          }
+        }
+      }
+    },
+    "track_expenses_title" : {
+      "comment" : "Track Expenses Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Track Your Expenses"
+          }
+        }
+      }
+    },
+    "track_incomes_label" : {
+      "comment" : "Track Incomes Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Record your income to better plan your budget and reach your savings goals."
+          }
+        }
+      }
+    },
+    "track_incomes_title" : {
+      "comment" : "Track Incomes Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Track Your Income"
           }
         }
       }
@@ -902,6 +1448,30 @@
         }
       }
     },
+    "weekly_budget_description" : {
+      "comment" : "Description for achieving the weekly budget goal",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have successfully stayed within your budget for a whole week."
+          }
+        }
+      }
+    },
+    "weekly_budget_title" : {
+      "comment" : "Title for achieving the weekly budget goal",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Weekly Budget Goal"
+          }
+        }
+      }
+    },
     "weekly_expenses_title" : {
       "comment" : "Weekly Expenses Title",
       "extractionState" : "extracted_with_value",
@@ -916,6 +1486,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gastos Semanales"
+          }
+        }
+      }
+    },
+    "welcome_back_string" : {
+      "comment" : "Welcome Back String",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Welcome Back!"
           }
         }
       }

@@ -9,8 +9,8 @@ import SwiftUI
 import AuthenticationServices
 
 struct LoginView: View {
-    @State private var email = ""
-    @State private var password = ""
+    @StateObject private var viewModel = LoginViewModel()
+    @EnvironmentObject var appViewModel: AppViewModel
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -27,14 +27,20 @@ struct LoginView: View {
                     .opacity(0.6)
                 
                 VStack(spacing: 15) {
-                    CustomTextfield(placeholder: Strings.Authentication.emailString, value: $email)
+                    CustomTextfield(placeholder: Strings.Authentication.emailString, value: $viewModel.email)
                         .keyboardType(.emailAddress)
-                    HybridTextField(text: $password, titleKey: Strings.Authentication.passwordString)
+                    HybridTextField(text: $viewModel.password, titleKey: Strings.Authentication.passwordString)
                 }
                 .padding(.horizontal)
                 
                 PrimaryButton(action: {
-                    
+                    Task {
+                        do {
+                            try await viewModel.signIn()
+                        } catch {
+                            print("Error \(error)")
+                        }
+                    }
                 }, text: Strings.Authentication.signInString)
                 
                 Spacer()
@@ -43,16 +49,18 @@ struct LoginView: View {
                     .font(.subheadline)
                     .opacity(0.6)
                 
-                SignInWithAppleButton(
-                    .signIn,
-                    onRequest: { request in
-                        request.requestedScopes = [.fullName, .email]
-                    },
-                    onCompletion: { result in
-                        // Manejar el resultado del inicio de sesión con Apple
+                Button(action: {
+                    Task {
+                        do {
+                            try await viewModel.signInApple()
+                        } catch {
+                            print(error)
+                        }
                     }
-                )
-                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+                }, label: {
+                    SignInWithAppleButtonViewRepresentable(type: .signIn, style: .black)
+                        .allowsHitTesting(false)
+                })
                 .frame(height: 50)
                 .padding(.horizontal)
                 
