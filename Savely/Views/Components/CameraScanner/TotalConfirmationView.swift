@@ -18,7 +18,7 @@ struct TotalConfirmationView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Total amount detected:")
+            Text(Strings.Camera.pleaseConfirmValueTitle)
                 .font(.headline)
             
             // Muestra el total detectado o el total seleccionado si el usuario ha elegido uno
@@ -29,27 +29,29 @@ struct TotalConfirmationView: View {
                 .multilineTextAlignment(.center)
                 .padding()
             
-            Text("Is it right?")
+            Text(Strings.Camera.confirmationValueLabel)
                 .font(.subheadline)
             
             HStack {
                 Button(action: {
                     isCorrect = false
                 }) {
-                    Text("No")
+                    Text(Strings.Buttons.noButton)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.gray.opacity(0.2))
+                        .background(Color.gray)
+                        .foregroundStyle(Color.white)
                         .cornerRadius(10)
                 }
                 
                 Button(action: {
                     onConfirm(detectedTotal) // Confirma el monto detectado
                 }) {
-                    Text("Yes")
+                    Text(Strings.Buttons.yesButton)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.green.opacity(0.2))
+                        .background(Color.green)
+                        .foregroundStyle(Color.white)
                         .cornerRadius(10)
                 }
             }
@@ -74,7 +76,7 @@ struct TotalConfirmationView: View {
                         Button(action: {
                             onRetake() // Permite tomar otra foto
                         }) {
-                            Text("Take another photo")
+                            Text(Strings.Camera.takeAnotherPhotoLabel)
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .background(Color.gray.opacity(0.1))
@@ -83,10 +85,9 @@ struct TotalConfirmationView: View {
                     }
                     .padding(.top)
                 }
-                .frame(maxHeight: 200) // Limita la altura del ScrollView para permitir desplazamiento
+                .frame(maxHeight: 200)
             }
         }
         .padding()
     }
 }
-
