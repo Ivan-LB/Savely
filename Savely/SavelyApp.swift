@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+import SwiftData
 import FirebaseCore
+import IQKeyboardManagerSwift
 
 @main
 struct SavelyApp: App {
@@ -16,14 +18,15 @@ struct SavelyApp: App {
         WindowGroup {
             SplashScreenView()
         }
+        .modelContainer(for: [IncomeModel.self])
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
+    func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-
-    return true
-  }
+        FirebaseApp.configure()
+        IQKeyboardManager.shared.resignOnTouchOutside = true
+        return true
+    }
 }
