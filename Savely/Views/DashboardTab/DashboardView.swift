@@ -45,14 +45,14 @@ struct DashboardView: View {
                 .padding(.horizontal)
 
                 // Quick Actions
-                HStack() {
-                    QuickActionButton(iconName: "creditcard.fill", label: Strings.Buttons.addIncomeButton, backgroundColor: .green)
-                    Spacer()
-                    QuickActionButton(iconName: "camera.fill", label: Strings.Buttons.addExpenseButton, backgroundColor: .green)
-                    Spacer()
-                    QuickActionButton(iconName: "plus.circle.fill", label: Strings.Buttons.newGoalButton, backgroundColor: .green)
-                }
-                .padding(.horizontal)
+//                HStack() {
+//                    QuickActionButton(iconName: "creditcard.fill", label: Strings.Buttons.addIncomeButton, backgroundColor: .green)
+//                    Spacer()
+//                    QuickActionButton(iconName: "camera.fill", label: Strings.Buttons.addExpenseButton, backgroundColor: .green)
+//                    Spacer()
+//                    QuickActionButton(iconName: "plus.circle.fill", label: Strings.Buttons.newGoalButton, backgroundColor: .green)
+//                }
+//                .padding(.horizontal)
 
                 // Weekly Spending Chart
 //                VStack(alignment: .leading, spacing: 10) {
