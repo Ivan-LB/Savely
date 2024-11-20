@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
-import Charts
+import SwiftData
 
 struct DashboardView: View {
     @StateObject private var viewModel = DashboardViewModel()
+    @Query var goals: [GoalModel]
+    
+    var favoriteGoal: GoalModel? {
+        return goals.first(where: { $0.isFavorite })
+    }
     
     var body: some View {
         ScrollView {
@@ -26,18 +31,30 @@ struct DashboardView: View {
                     Text(Strings.DashboardTab.savingsSummaryTitle)
                         .font(.title3)
                         .fontWeight(.bold)
-                    ZStack {
-                        Circle()
-                            .trim(from: 0, to: 0.75)
-                            .stroke(Color.green, lineWidth: 8)
-                            .frame(width: 160, height: 160)
-                            .rotationEffect(.degrees(-90))
-                        Text("75%")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
+                    if let goal = favoriteGoal {
+                        ZStack {
+                            // Círculo de fondo en gris
+                            Circle()
+                                .stroke(Color.gray.opacity(0.3), lineWidth: 8)
+                                .frame(width: 160, height: 160)
+                            // Círculo de progreso en el color de la meta
+                            Circle()
+                                .trim(from: 0, to: goal.progress)
+                                .stroke(goal.color, lineWidth: 8)
+                                .frame(width: 160, height: 160)
+                                .rotationEffect(.degrees(-90))
+                            // Texto del porcentaje de progreso
+                            Text("\(Int(goal.progress * 100))%")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                        }
+                        Text(goal.name)
+                            .font(.subheadline)
+                    } else {
+                        Text("No hay objetivos actualmente")
+                            .font(.headline)
+                            .padding()
                     }
-                    Text(Strings.DashboardTab.monthlyGoalLabel)
-                        .font(.subheadline)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -51,20 +68,20 @@ struct DashboardView: View {
                     QuickActionButton(
                         iconName: "creditcard.fill",
                         label: Strings.Buttons.addIncomeButton,
-                        action: viewModel.addIncomeAction
+                        action: {}
                     )
-//                    Spacer()
-//                    QuickActionButton(
-//                        iconName: "camera.fill",
-//                        label: Strings.Buttons.addExpenseButton,
-//                        action: viewModel.addExpenseAction
-//                    )
-//                    Spacer()
-//                    QuickActionButton(
-//                        iconName: "plus.circle.fill",
-//                        label: Strings.Buttons.newGoalButton,
-//                        action: viewModel.newGoalAction
-//                    )
+                    Spacer()
+                    QuickActionButton(
+                        iconName: "camera.fill",
+                        label: Strings.Buttons.addExpenseButton,
+                        action: {}
+                    )
+                    Spacer()
+                    QuickActionButton(
+                        iconName: "plus.circle.fill",
+                        label: Strings.Buttons.newGoalButton,
+                        action: {}
+                    )
                 }
                 .padding(.horizontal)
 
