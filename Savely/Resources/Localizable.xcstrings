@@ -74,6 +74,18 @@
         }
       }
     },
+    "add_income_label" : {
+      "comment" : "Add Income Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add Income"
+          }
+        }
+      }
+    },
     "add_new_goal_button" : {
       "comment" : "Add New Goal Button",
       "extractionState" : "extracted_with_value",
@@ -100,6 +112,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Don't have an account?"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿No tiene una cuenta?"
           }
         }
       }
@@ -188,6 +206,12 @@
             "state" : "new",
             "value" : "Confirm Password"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmar Contraseña"
+          }
         }
       }
     },
@@ -224,6 +248,12 @@
             "state" : "new",
             "value" : "Create Account"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear una cuenta"
+          }
         }
       }
     },
@@ -235,6 +265,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Create your account!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Crea tú cuenta!"
           }
         }
       }
@@ -343,18 +379,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Correo Electrónico"
-          }
-        }
-      }
-    },
-    "email_string" : {
-      "comment" : "Email String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Email"
           }
         }
       }
@@ -1032,7 +1056,7 @@
       }
     },
     "savings_placeholder" : {
-      "comment" : "Savings Placeholcer\nSavings Placeholder",
+      "comment" : "Savings Placeholcer\n   Savings Placeholder",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {

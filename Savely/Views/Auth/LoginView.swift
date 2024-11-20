@@ -27,7 +27,7 @@ struct LoginView: View {
                     .opacity(0.6)
                 
                 VStack(spacing: 15) {
-                    CustomTextfield(placeholder: Strings.Authentication.emailString, value: $viewModel.email)
+                    CustomTextfield(placeholder: Strings.Profile.emailPlaceholderLabel, value: $viewModel.email)
                         .keyboardType(.emailAddress)
                     HybridTextField(text: $viewModel.password, titleKey: Strings.Authentication.passwordString)
                 }

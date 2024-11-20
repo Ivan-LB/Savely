@@ -28,7 +28,7 @@ struct SignUpView: View {
                     CustomTextfield(placeholder: Strings.Authentication.fullNamePlaceholder, value: $viewModel.fullName)
                         .autocapitalization(.words)
 
-                    CustomTextfield(placeholder: Strings.Authentication.emailString, value: $viewModel.email)
+                    CustomTextfield(placeholder: Strings.Profile.emailPlaceholderLabel, value: $viewModel.email)
                         .keyboardType(.emailAddress)
 
                     HybridTextField(text: $viewModel.password, titleKey: Strings.Authentication.passwordString)

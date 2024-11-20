@@ -25,10 +25,6 @@ struct Strings {
             "forgot_password_label",
             value: "Forgot password?",
             comment: "Forgot Password Label")
-        static let emailString = NSLocalizedString(
-            "email_string",
-            value: "Email",
-            comment: "Email String")
         static let passwordString = NSLocalizedString(
             "password_string",
             value: "Password",
@@ -241,6 +237,10 @@ struct Strings {
             "recent_incomes_title",
             value: "Recent Incomes",
             comment: "Recent Incomes Title")
+        static let addIncomeLabel = NSLocalizedString(
+            "add_income_label",
+            value: "Add Income",
+            comment: "Add Income Label")
     }
     
     struct ReportsView {
