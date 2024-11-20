@@ -451,6 +451,30 @@ struct Strings {
             "create_account_button",
             value: "Create Account",
             comment: "Create Account Button")
+        
+        static let yesButton = NSLocalizedString(
+            "yes_button",
+            value: "Yes",
+            comment: "Yes Button")
+        static let noButton = NSLocalizedString(
+            "no_button",
+            value: "No",
+            comment: "No Button")
+    }
+    
+    struct Camera {
+        static let takeAnotherPhotoLabel = NSLocalizedString(
+            "take_another_photo_label",
+            value: "Take another photo",
+            comment: "Take Another Photo Label")
+        static let confirmationValueLabel = NSLocalizedString(
+            "is_it_rigth_label",
+            value: "Is it right?",
+            comment: "Is It Ritght Label")
+        static let pleaseConfirmValueTitle = NSLocalizedString(
+            "please_confirm_value_title",
+            value: "Please Confirm Value",
+            comment: "Please Confirm Value Title")
     }
     
     struct SplashScreen {

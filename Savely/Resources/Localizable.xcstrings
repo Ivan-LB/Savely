@@ -701,6 +701,18 @@
     "Is it right?" : {
 
     },
+    "is_it_rigth_label" : {
+      "comment" : "Is It Ritght Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Is it right?"
+          }
+        }
+      }
+    },
     "Las contraseñas no coinciden" : {
 
     },
@@ -802,6 +814,18 @@
     },
     "No" : {
 
+    },
+    "no_button" : {
+      "comment" : "No Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No"
+          }
+        }
+      }
     },
     "no_unnecessary_spending_description" : {
       "comment" : "Description for avoiding unnecessary spending",
@@ -937,6 +961,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Selecciona Periodo de Tiempo"
+          }
+        }
+      }
+    },
+    "please_confirm_value_title" : {
+      "comment" : "Please Confirm Value Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Please Confirm Value"
           }
         }
       }
@@ -1274,6 +1310,18 @@
     "Take another photo" : {
 
     },
+    "take_another_photo_label" : {
+      "comment" : "Take Another Photo Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Take another photo"
+          }
+        }
+      }
+    },
     "terms_of_service_label" : {
       "comment" : "Terms of Service Label",
       "extractionState" : "extracted_with_value",
@@ -1399,9 +1447,6 @@
           }
         }
       }
-    },
-    "Total amount detected:" : {
-
     },
     "track_expenses_label" : {
       "comment" : "Track Expenses Label",
@@ -1561,6 +1606,18 @@
     },
     "Yes" : {
 
+    },
+    "yes_button" : {
+      "comment" : "Yes Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yes"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
