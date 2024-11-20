@@ -22,6 +22,7 @@
 		1DAF5D0F2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1DAF5D0E2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift */; };
 		1DAF5D132CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D122CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift */; };
 		1DAF5D162CEDB69B001C0AF3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */; };
+		1DAF5D1B2CEDC118001C0AF3 /* GoalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D1A2CEDC118001C0AF3 /* GoalsViewModel.swift */; };
 		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
 		1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */; };
 		1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */; };
@@ -108,6 +109,7 @@
 		1DAF5D0B2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerViewModel.swift; sourceTree = "<group>"; };
 		1DAF5D122CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTrackerViewModel.swift; sourceTree = "<group>"; };
 		1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		1DAF5D1A2CEDC118001C0AF3 /* GoalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewModel.swift; sourceTree = "<group>"; };
 		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
 		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		1D3669842CC62EDD00E84FF9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1DAF5D192CEDC103001C0AF3 /* GoalsTab */,
 				1DAF5D142CEDB690001C0AF3 /* Camera */,
 				1DAF5D112CEDB40F001C0AF3 /* ExpensesTab */,
 				1DAF5D0A2CEDA6AF001C0AF3 /* IncomesTab */,
@@ -322,6 +325,14 @@
 				1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		1DAF5D192CEDC103001C0AF3 /* GoalsTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DAF5D1A2CEDC118001C0AF3 /* GoalsViewModel.swift */,
+			);
+			path = GoalsTab;
 			sourceTree = "<group>";
 		};
 		1DC013F92CDB571F009A46E1 /* Todo */ = {
@@ -713,6 +724,7 @@
 				1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,
+				1DAF5D1B2CEDC118001C0AF3 /* GoalsViewModel.swift in Sources */,
 				1DC014112CE5AFAE009A46E1 /* OnboardingStepModel.swift in Sources */,
 				1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */,
 				1DC0140F2CE5AF81009A46E1 /* OnboardingStepView.swift in Sources */,

@@ -6,39 +6,52 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct GoalsView: View {
-    let goals = [
-        GoalModel(id: 1, name: "Vacaciones", current: 2000, target: 5000, color: .green),
-        GoalModel(id: 2, name: "Nuevo Teléfono", current: 300, target: 1000, color: .blue),
-        GoalModel(id: 3, name: "Fondo de Emergencia", current: 1500, target: 3000, color: .yellow)
-    ]
-    
+    @Environment(\.modelContext) private var modelContext
+    @StateObject private var viewModel = GoalsViewModel()
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Add New Goal Button
-                Button(action: {
-                    // Action for adding a new goal
-                }) {
-                    HStack {
-                        Image(systemName: "plus.circle")
-                            .foregroundColor(.white)
-                            .font(.title)
-                        Text(Strings.Buttons.newGoalButton)
-                            .font(.headline)
+                // Formulario para agregar nueva meta
+                VStack(spacing: 15) {
+                    TextField("Nombre de la meta", text: $viewModel.name)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Monto objetivo", text: $viewModel.targetAmount)
+                        .keyboardType(.decimalPad)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    // Selección de color
+                    Picker("Color", selection: $viewModel.selectedColor) {
+                        Text("Verde").tag(GoalColor.green)
+                        Text("Azul").tag(GoalColor.blue)
+                        Text("Amarillo").tag(GoalColor.yellow)
+                        Text("Rojo").tag(GoalColor.red)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+
+                    Button(action: {
+                        viewModel.addGoal()
+                    }) {
+                        Text("Agregar Meta")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.green)
+                            .cornerRadius(10)
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
+                    .disabled(viewModel.modelContext == nil)
                 }
-                
-                // Goals List
-                ForEach(goals) { goal in
+                .padding()
+                .background(Color.white)
+                .cornerRadius(10)
+                .shadow(radius: 2)
+                .padding(.horizontal)
+
+                // Lista de metas
+                ForEach(viewModel.goals) { goal in
                     VStack(alignment: .leading, spacing: 10) {
                         HStack {
                             Image(systemName: "target")
@@ -46,6 +59,13 @@ struct GoalsView: View {
                             Text(goal.name)
                                 .font(.title3)
                                 .fontWeight(.bold)
+                            Spacer()
+                            Button(action: {
+                                viewModel.setFavorite(goal: goal)
+                            }) {
+                                Image(systemName: goal.isFavorite ? "star.fill" : "star")
+                                    .foregroundColor(goal.isFavorite ? .yellow : .gray)
+                            }
                         }
                         ProgressView(value: goal.progress)
                             .accentColor(goal.color)
@@ -71,11 +91,14 @@ struct GoalsView: View {
             .padding(.vertical)
         }
         .background(Color(UIColor.systemGray6))
-    }
-}
-
-struct GoalsView_Previews: PreviewProvider {
-    static var previews: some View {
-        GoalsView()
+        .onAppear {
+            print("onAppear called")
+            if viewModel.modelContext == nil {
+                print("Setting modelContext in viewModel")
+                viewModel.setModelContext(modelContext)
+            }
+            // Actualizar el progreso de las metas al aparecer la vista
+            viewModel.updateGoalProgress()
+        }
     }
 }

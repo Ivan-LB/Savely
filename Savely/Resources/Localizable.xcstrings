@@ -17,9 +17,6 @@
         }
       }
     },
-    "75%" : {
-
-    },
     "achievements_title" : {
       "comment" : "Achievements Title",
       "extractionState" : "extracted_with_value",
@@ -104,6 +101,9 @@
         }
       }
     },
+    "Agregar Meta" : {
+
+    },
     "already_have_and_account_label" : {
       "comment" : "Already have an account Label",
       "extractionState" : "extracted_with_value",
@@ -121,6 +121,9 @@
           }
         }
       }
+    },
+    "Amarillo" : {
+
     },
     "amount_placeholder_label" : {
       "comment" : "Amount Placeholder Label",
@@ -157,6 +160,9 @@
           }
         }
       }
+    },
+    "Azul" : {
+
     },
     "Cargando..." : {
 
@@ -196,6 +202,9 @@
           }
         }
       }
+    },
+    "Color" : {
+
     },
     "confirm_password_string" : {
       "comment" : "Confirm Password String",
@@ -782,6 +791,9 @@
         }
       }
     },
+    "Monto objetivo" : {
+
+    },
     "name_placeholder_label" : {
       "comment" : "Name Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -813,6 +825,9 @@
       }
     },
     "No" : {
+
+    },
+    "No hay objetivos actualmente" : {
 
     },
     "no_button" : {
@@ -850,6 +865,9 @@
           }
         }
       }
+    },
+    "Nombre de la meta" : {
+
     },
     "notifications_title" : {
       "comment" : "Notifications Title",
@@ -1072,6 +1090,9 @@
           }
         }
       }
+    },
+    "Rojo" : {
+
     },
     "savely_app_title" : {
       "comment" : "Savely App Title",
@@ -1513,6 +1534,9 @@
           }
         }
       }
+    },
+    "Verde" : {
+
     },
     "view_achievements" : {
       "comment" : "View Achievements Label",
