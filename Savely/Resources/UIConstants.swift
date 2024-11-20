@@ -11,6 +11,7 @@ import SwiftUI
 struct UIConstants {
     enum UICornerRadius {
         static let cornerRadius = 5.0
+        static let cornerRadiusMedium = 10.0
     }
     
     enum UILineWidth {

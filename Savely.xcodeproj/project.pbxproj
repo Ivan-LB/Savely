@@ -15,7 +15,6 @@
 		1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7CE2CC6EB62009B6538 /* CameraManagerExtension.swift */; };
 		1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D02CC6EBB4009B6538 /* CameraView.swift */; };
 		1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */; };
-		1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */; };
 		1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */; };
 		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
 		1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */; };
@@ -97,7 +96,6 @@
 		1D88B7CE2CC6EB62009B6538 /* CameraManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManagerExtension.swift; sourceTree = "<group>"; };
 		1D88B7D02CC6EBB4009B6538 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
-		1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleOverlay.swift; sourceTree = "<group>"; };
 		1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRUtilities.swift; sourceTree = "<group>"; };
 		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
 		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
@@ -225,12 +223,50 @@
 		1D88B7D62CC9FA28009B6538 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				82D33CE12CEC66D200BE005E /* TextRecognizer.swift */,
 				1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */,
 				1DE4B4CF2CE5F2D6006C8F65 /* OnboardingData.swift */,
 				1DE4B4D12CE5F681006C8F65 /* AchievementsData.swift */,
 				1DE4B4DF2CEBF909006C8F65 /* SignInWithAppleHelper.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1DAF5D012CED9475001C0AF3 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				1DE4B4D72CE7B10E006C8F65 /* PrimaryButton.swift */,
+				1DC258452CC628C70002DDE3 /* QuickActionButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		1DAF5D022CED9481001C0AF3 /* CameraScanner */ = {
+			isa = PBXGroup;
+			children = (
+				82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */,
+				1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */,
+				1D88B7D02CC6EBB4009B6538 /* CameraView.swift */,
+			);
+			path = CameraScanner;
+			sourceTree = "<group>";
+		};
+		1DAF5D032CED94DD001C0AF3 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				1DE4B4D52CE7AF93006C8F65 /* CustomTextfield.swift */,
+				1DE4B4D32CE60032006C8F65 /* HybridTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		1DAF5D042CED94F1001C0AF3 /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				1DC258552CC62BAB0002DDE3 /* TipCardView.swift */,
+				1DC258532CC62B530002DDE3 /* TipsListView.swift */,
+			);
+			path = Tips;
 			sourceTree = "<group>";
 		};
 		1DC013F92CDB571F009A46E1 /* Todo */ = {
@@ -387,19 +423,12 @@
 		1DC258402CC61D250002DDE3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1DAF5D042CED94F1001C0AF3 /* Tips */,
+				1DAF5D032CED94DD001C0AF3 /* TextFields */,
+				1DAF5D022CED9481001C0AF3 /* CameraScanner */,
+				1DAF5D012CED9475001C0AF3 /* Buttons */,
 				1DC258422CC61D3A0002DDE3 /* CardView.swift */,
-				1DC258452CC628C70002DDE3 /* QuickActionButton.swift */,
 				1DC258512CC62A5B0002DDE3 /* TabsView.swift */,
-				1DC258532CC62B530002DDE3 /* TipsListView.swift */,
-				1DC258552CC62BAB0002DDE3 /* TipCardView.swift */,
-				1D88B7D02CC6EBB4009B6538 /* CameraView.swift */,
-				1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */,
-				1D88B7D42CC9FA0E009B6538 /* RectangleOverlay.swift */,
-				1DE4B4D32CE60032006C8F65 /* HybridTextField.swift */,
-				1DE4B4D52CE7AF93006C8F65 /* CustomTextfield.swift */,
-				1DE4B4D72CE7B10E006C8F65 /* PrimaryButton.swift */,
-				82D33CE12CEC66D200BE005E /* TextRecognizer.swift */,
-				82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -434,13 +463,6 @@
 				1DE4B4EE2CEC514B006C8F65 /* ProfileViewModel.swift */,
 			);
 			path = ProfileTab;
-			sourceTree = "<group>";
-		};
-		415D1F2E32596A29B695CE25 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -586,7 +608,6 @@
 				1DC2584B2CC629540002DDE3 /* ExpenseModels.swift in Sources */,
 				1D88B7CC2CC6EA47009B6538 /* CameraManager.swift in Sources */,
 				1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */,
-				1D88B7D52CC9FA0E009B6538 /* RectangleOverlay.swift in Sources */,
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
 				1DE4B4DA2CEBF60B006C8F65 /* AuthenticationManager.swift in Sources */,
 				1DE4B4E32CEBFAA5006C8F65 /* LoginViewModel.swift in Sources */,
