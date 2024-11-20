@@ -9,6 +9,8 @@ import SwiftUI
 import Charts
 
 struct DashboardView: View {
+    @StateObject private var viewModel = DashboardViewModel()
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -41,18 +43,30 @@ struct DashboardView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.white)
                 .cornerRadius(10)
-                .shadow(radius: 2)
+                .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
 
                 // Quick Actions
-//                HStack() {
-//                    QuickActionButton(iconName: "creditcard.fill", label: Strings.Buttons.addIncomeButton, backgroundColor: .green)
+                HStack() {
+                    QuickActionButton(
+                        iconName: "creditcard.fill",
+                        label: Strings.Buttons.addIncomeButton,
+                        action: viewModel.addIncomeAction
+                    )
 //                    Spacer()
-//                    QuickActionButton(iconName: "camera.fill", label: Strings.Buttons.addExpenseButton, backgroundColor: .green)
+//                    QuickActionButton(
+//                        iconName: "camera.fill",
+//                        label: Strings.Buttons.addExpenseButton,
+//                        action: viewModel.addExpenseAction
+//                    )
 //                    Spacer()
-//                    QuickActionButton(iconName: "plus.circle.fill", label: Strings.Buttons.newGoalButton, backgroundColor: .green)
-//                }
-//                .padding(.horizontal)
+//                    QuickActionButton(
+//                        iconName: "plus.circle.fill",
+//                        label: Strings.Buttons.newGoalButton,
+//                        action: viewModel.newGoalAction
+//                    )
+                }
+                .padding(.horizontal)
 
                 // Weekly Spending Chart
 //                VStack(alignment: .leading, spacing: 10) {
@@ -115,7 +129,7 @@ struct DashboardView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.green.opacity(0.1))
                 .cornerRadius(10)
-                .shadow(radius: 2)
+                .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
             }
             .padding(.vertical)

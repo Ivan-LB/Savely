@@ -21,7 +21,7 @@ struct CardView<Content: View>: View {
         }
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 2)
+        .shadow(radius: UIConstants.UIShadow.shadow)
         .padding(.horizontal, 5)
     }
 }

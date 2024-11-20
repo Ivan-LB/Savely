@@ -36,7 +36,7 @@ struct AchievementsView: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(10)
-                    .shadow(radius: 5)
+                    .shadow(radius: UIConstants.UIShadow.shadowMedium)
                     .padding(.horizontal)
                     .opacity(achievement.achieved ? 1.0 : 0.5)
                 }

@@ -71,7 +71,7 @@ struct ExpenseTrackerView: View {
                 .padding()
                 .background(Color.white)
                 .cornerRadius(10)
-                .shadow(radius: 2)
+                .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
                 
                 // Expense List
@@ -117,7 +117,7 @@ struct ExpenseTrackerView: View {
                 .padding()
                 .background(Color.white)
                 .cornerRadius(10)
-                .shadow(radius: 2)
+                .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
             }
             .padding(.vertical)
