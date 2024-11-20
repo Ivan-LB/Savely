@@ -6,22 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ExpenseTrackerView: View {
-    @State private var expenses = [
-        ExpenseModel(id: 1, description: "Supermercado", amount: 50.75, date: "2023-05-15"),
-        ExpenseModel(id: 2, description: "Gasolina", amount: 30.00, date: "2023-05-14")
-    ]
-    @State private var description = ""
-    @State private var amount = ""
+    @Environment(\.modelContext) private var modelContext
+    @StateObject private var viewModel = ExpenseTrackerViewModel()
     @State private var showCameraView: Bool = false
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                // Upload Receipt Button
+                // Botón para subir recibo
                 Button(action: {
-                    // Action to upload receipt photo
                     showCameraView = true
                 }) {
                     HStack {
@@ -40,24 +36,19 @@ struct ExpenseTrackerView: View {
                     .padding(.horizontal)
                 }
                 .sheet(isPresented: $showCameraView) {
-                    CameraView()
+                    let cameraViewModel = CameraViewModel(expenseViewModel: viewModel)
+                    CameraView(viewModel: cameraViewModel)
                 }
-                
-                // Expense Form
+
+                // Formulario de Gastos
                 VStack(spacing: 15) {
-                    TextField(Strings.ExpenseTrackerTab.descriptionPlaceholderLabel, text: $description)
+                    TextField(Strings.ExpenseTrackerTab.descriptionPlaceholderLabel, text: $viewModel.expenseDescription)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField(Strings.ExpenseTrackerTab.amountPlaceholderLabel, text: $amount)
+                    TextField(Strings.ExpenseTrackerTab.amountPlaceholderLabel, text: $viewModel.amount)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Button(action: {
-                        // Action to add a new expense
-                        if let amountValue = Double(amount) {
-                            let newExpense = ExpenseModel(id: expenses.count + 1, description: description, amount: amountValue, date: DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .none))
-                            expenses.append(newExpense)
-                            description = ""
-                            amount = ""
-                        }
+                        viewModel.addExpense()
                     }) {
                         Text(Strings.Buttons.addExpenseButton)
                             .fontWeight(.bold)
@@ -73,19 +64,22 @@ struct ExpenseTrackerView: View {
                 .cornerRadius(10)
                 .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
-                
-                // Expense List
+
+                // Lista de Gastos
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(Strings.ExpenseTrackerTab.recentExpensesTitle)
-                        .font(.title3)
-                        .fontWeight(.bold)
-                    ForEach(expenses) { expense in
+                    HStack {
+                        Text(Strings.ExpenseTrackerTab.recentExpensesTitle)
+                            .font(.title3)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    ForEach(viewModel.expenses) { expense in
                         HStack {
                             VStack(alignment: .leading) {
-                                Text(expense.description)
+                                Text(expense.expenseDescription)
                                     .font(.headline)
                                     .fontWeight(.bold)
-                                Text(expense.date)
+                                Text(DateFormatter.localizedString(from: expense.date, dateStyle: .short, timeStyle: .none))
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -94,15 +88,14 @@ struct ExpenseTrackerView: View {
                                 .font(.headline)
                                 .fontWeight(.bold)
                             Button(action: {
-                                // Action to edit expense
+                                // Acción para editar gasto (opcional)
                             }) {
                                 Image(systemName: "pencil")
                                     .foregroundColor(.blue)
                             }
                             .padding(.leading, 10)
                             Button(action: {
-                                // Action to delete expense
-                                expenses.removeAll { $0.id == expense.id }
+                                viewModel.deleteExpense(expense)
                             }) {
                                 Image(systemName: "trash")
                                     .foregroundColor(.red)
@@ -115,6 +108,7 @@ struct ExpenseTrackerView: View {
                     }
                 }
                 .padding()
+                .frame(maxWidth: .infinity)
                 .background(Color.white)
                 .cornerRadius(10)
                 .shadow(radius: UIConstants.UIShadow.shadow)
@@ -123,11 +117,10 @@ struct ExpenseTrackerView: View {
             .padding(.vertical)
         }
         .background(Color(UIColor.systemGray6))
-    }
-}
-
-struct ExpenseTrackerView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExpenseTrackerView()
+        .onAppear {
+            if viewModel.modelContext == nil {
+                viewModel.setModelContext(modelContext)
+            }
+        }
     }
 }

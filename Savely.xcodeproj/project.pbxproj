@@ -20,6 +20,8 @@
 		1DAF5D092CED9CA3001C0AF3 /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D082CED9CA3001C0AF3 /* IncomeModel.swift */; };
 		1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D0B2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift */; };
 		1DAF5D0F2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1DAF5D0E2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift */; };
+		1DAF5D132CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D122CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift */; };
+		1DAF5D162CEDB69B001C0AF3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */; };
 		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
 		1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */; };
 		1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */; };
@@ -104,6 +106,8 @@
 		1DAF5D062CED97EE001C0AF3 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		1DAF5D082CED9CA3001C0AF3 /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
 		1DAF5D0B2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerViewModel.swift; sourceTree = "<group>"; };
+		1DAF5D122CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTrackerViewModel.swift; sourceTree = "<group>"; };
+		1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
 		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 		1D3669842CC62EDD00E84FF9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1DAF5D142CEDB690001C0AF3 /* Camera */,
+				1DAF5D112CEDB40F001C0AF3 /* ExpensesTab */,
 				1DAF5D0A2CEDA6AF001C0AF3 /* IncomesTab */,
 				1DAF5D052CED97DB001C0AF3 /* DashboardTab */,
 				1DE4B4ED2CEC5138006C8F65 /* ProfileTab */,
@@ -300,6 +306,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1DAF5D112CEDB40F001C0AF3 /* ExpensesTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DAF5D122CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift */,
+			);
+			path = ExpensesTab;
+			sourceTree = "<group>";
+		};
+		1DAF5D142CEDB690001C0AF3 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		1DC013F92CDB571F009A46E1 /* Todo */ = {
@@ -662,6 +684,7 @@
 				1DE4B4EC2CEC4EE3006C8F65 /* AppViewModel.swift in Sources */,
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
 				1DE4B4DE2CEBF8AC006C8F65 /* AuthenticationManagerExtension.swift in Sources */,
+				1DAF5D162CEDB69B001C0AF3 /* CameraViewModel.swift in Sources */,
 				1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */,
 				1DAF5D072CED97EE001C0AF3 /* DashboardViewModel.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
@@ -678,6 +701,7 @@
 				1DC014082CE5AE80009A46E1 /* LoginView.swift in Sources */,
 				1DE4B4E52CEBFAD4006C8F65 /* UserManager.swift in Sources */,
 				1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */,
+				1DAF5D132CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift in Sources */,
 				1DE4B4E72CEBFAF8006C8F65 /* DBUserModel.swift in Sources */,
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
 				1DE4B4F12CEC5174006C8F65 /* UserManagerExtension.swift in Sources */,

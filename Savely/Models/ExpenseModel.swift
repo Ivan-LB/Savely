@@ -6,16 +6,19 @@
 //
 
 import Foundation
+import SwiftData
 
-struct ExpenseModel: Identifiable {
-    let id: Int
-    let description: String
-    let amount: Double
-    let date: String
-}
+@Model
+class ExpenseModel {
+    @Attribute(.unique) var id: UUID
+    var expenseDescription: String
+    var amount: Double
+    var date: Date
 
-struct ExpenseCategoryModel: Identifiable {
-    let id = UUID()
-    let category: String
-    let amount: Double
+    init(expenseDescription: String, amount: Double, date: Date) {
+        self.id = UUID()
+        self.expenseDescription = expenseDescription
+        self.amount = amount
+        self.date = date
+    }
 }
