@@ -1,5 +1,5 @@
 //
-//  ExpenseModels.swift
+//  ExpenseModel.swift
 //  Savely
 //
 //  Created by Ivan Lorenzana Belli on 20/10/24.

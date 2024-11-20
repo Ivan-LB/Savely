@@ -16,6 +16,10 @@
 		1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D02CC6EBB4009B6538 /* CameraView.swift */; };
 		1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */; };
 		1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */; };
+		1DAF5D072CED97EE001C0AF3 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D062CED97EE001C0AF3 /* DashboardViewModel.swift */; };
+		1DAF5D092CED9CA3001C0AF3 /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D082CED9CA3001C0AF3 /* IncomeModel.swift */; };
+		1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D0B2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift */; };
+		1DAF5D0F2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1DAF5D0E2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift */; };
 		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
 		1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */; };
 		1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */; };
@@ -41,7 +45,7 @@
 		1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258422CC61D3A0002DDE3 /* CardView.swift */; };
 		1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258452CC628C70002DDE3 /* QuickActionButton.swift */; };
 		1DC258492CC629210002DDE3 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258482CC629210002DDE3 /* GoalModel.swift */; };
-		1DC2584B2CC629540002DDE3 /* ExpenseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */; };
+		1DC2584B2CC629540002DDE3 /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584A2CC629540002DDE3 /* ExpenseModel.swift */; };
 		1DC2584D2CC629890002DDE3 /* MonthlySavingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584C2CC629890002DDE3 /* MonthlySavingModel.swift */; };
 		1DC2584F2CC62A160002DDE3 /* TipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC2584E2CC62A160002DDE3 /* TipModel.swift */; };
 		1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258512CC62A5B0002DDE3 /* TabsView.swift */; };
@@ -97,6 +101,9 @@
 		1D88B7D02CC6EBB4009B6538 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRUtilities.swift; sourceTree = "<group>"; };
+		1DAF5D062CED97EE001C0AF3 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		1DAF5D082CED9CA3001C0AF3 /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
+		1DAF5D0B2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerViewModel.swift; sourceTree = "<group>"; };
 		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
 		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
@@ -126,7 +133,7 @@
 		1DC258422CC61D3A0002DDE3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		1DC258452CC628C70002DDE3 /* QuickActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionButton.swift; sourceTree = "<group>"; };
 		1DC258482CC629210002DDE3 /* GoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
-		1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModels.swift; sourceTree = "<group>"; };
+		1DC2584A2CC629540002DDE3 /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
 		1DC2584C2CC629890002DDE3 /* MonthlySavingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySavingModel.swift; sourceTree = "<group>"; };
 		1DC2584E2CC62A160002DDE3 /* TipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipModel.swift; sourceTree = "<group>"; };
 		1DC258512CC62A5B0002DDE3 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
@@ -160,6 +167,7 @@
 			files = (
 				1DE4B4CA2CE5DC36006C8F65 /* FirebaseAuth in Frameworks */,
 				1DE4B4CC2CE5DC3B006C8F65 /* FirebaseFirestore in Frameworks */,
+				1DAF5D0F2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +191,8 @@
 		1D3669842CC62EDD00E84FF9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1DAF5D0A2CEDA6AF001C0AF3 /* IncomesTab */,
+				1DAF5D052CED97DB001C0AF3 /* DashboardTab */,
 				1DE4B4ED2CEC5138006C8F65 /* ProfileTab */,
 				1DE4B4E12CEBFA99006C8F65 /* Auth */,
 				1DE4B4EB2CEC4EE3006C8F65 /* AppViewModel.swift */,
@@ -269,6 +279,29 @@
 			path = Tips;
 			sourceTree = "<group>";
 		};
+		1DAF5D052CED97DB001C0AF3 /* DashboardTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DAF5D062CED97EE001C0AF3 /* DashboardViewModel.swift */,
+			);
+			path = DashboardTab;
+			sourceTree = "<group>";
+		};
+		1DAF5D0A2CEDA6AF001C0AF3 /* IncomesTab */ = {
+			isa = PBXGroup;
+			children = (
+				1DAF5D0B2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift */,
+			);
+			path = IncomesTab;
+			sourceTree = "<group>";
+		};
+		1DAF5D102CEDAAFB001C0AF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1DC013F92CDB571F009A46E1 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +377,7 @@
 				1DC258172CC07DCF0002DDE3 /* SavelyTests */,
 				1DC258212CC07DCF0002DDE3 /* SavelyUITests */,
 				1DC258052CC07DCC0002DDE3 /* Products */,
+				1DAF5D102CEDAAFB001C0AF3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -437,13 +471,14 @@
 			isa = PBXGroup;
 			children = (
 				1DC258482CC629210002DDE3 /* GoalModel.swift */,
-				1DC2584A2CC629540002DDE3 /* ExpenseModels.swift */,
+				1DC2584A2CC629540002DDE3 /* ExpenseModel.swift */,
 				1DC2584C2CC629890002DDE3 /* MonthlySavingModel.swift */,
 				1DC2584E2CC62A160002DDE3 /* TipModel.swift */,
 				1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */,
 				1DC014102CE5AFAD009A46E1 /* OnboardingStepModel.swift */,
 				1DE4B4DB2CEBF812006C8F65 /* AuthDataResultModel.swift */,
 				1DE4B4E62CEBFAF8006C8F65 /* DBUserModel.swift */,
+				1DAF5D082CED9CA3001C0AF3 /* IncomeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -484,6 +519,7 @@
 			packageProductDependencies = (
 				1DE4B4C92CE5DC36006C8F65 /* FirebaseAuth */,
 				1DE4B4CB2CE5DC3B006C8F65 /* FirebaseFirestore */,
+				1DAF5D0E2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift */,
 			);
 			productName = Savely;
 			productReference = 1DC258042CC07DCC0002DDE3 /* Savely.app */;
@@ -560,6 +596,7 @@
 			mainGroup = 1DC257FB2CC07DCC0002DDE3;
 			packageReferences = (
 				1DE4B4C42CE5D63E006C8F65 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1DAF5D0D2CEDAA59001C0AF3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 1DC258052CC07DCC0002DDE3 /* Products */;
 			projectDirPath = "";
@@ -605,7 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DC2584B2CC629540002DDE3 /* ExpenseModels.swift in Sources */,
+				1DC2584B2CC629540002DDE3 /* ExpenseModel.swift in Sources */,
 				1D88B7CC2CC6EA47009B6538 /* CameraManager.swift in Sources */,
 				1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */,
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
@@ -626,8 +663,10 @@
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
 				1DE4B4DE2CEBF8AC006C8F65 /* AuthenticationManagerExtension.swift in Sources */,
 				1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */,
+				1DAF5D072CED97EE001C0AF3 /* DashboardViewModel.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
 				1DC258492CC629210002DDE3 /* GoalModel.swift in Sources */,
+				1DAF5D092CED9CA3001C0AF3 /* IncomeModel.swift in Sources */,
 				1DE4B4E02CEBF909006C8F65 /* SignInWithAppleHelper.swift in Sources */,
 				1DC014132CE5B0C5009A46E1 /* ContentView.swift in Sources */,
 				1DE4B4D42CE60032006C8F65 /* HybridTextField.swift in Sources */,
@@ -647,6 +686,7 @@
 				82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */,
 				1DE4B4DC2CEBF812006C8F65 /* AuthDataResultModel.swift in Sources */,
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
+				1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,
 				1DC014112CE5AFAE009A46E1 /* OnboardingStepModel.swift in Sources */,
@@ -839,7 +879,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Savely/Preview Content\"";
-				DEVELOPMENT_TEAM = 7V25N77999;
+				DEVELOPMENT_TEAM = ZHLD96SP29;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Savely uses the camera to scan receipts for recording and managing your expenses.\n";
@@ -854,7 +894,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = IvanLB.Savelyd;
+				PRODUCT_BUNDLE_IDENTIFIER = IvanLB.Savely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
@@ -874,7 +914,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Savely/Preview Content\"";
-				DEVELOPMENT_TEAM = 7V25N77999;
+				DEVELOPMENT_TEAM = ZHLD96SP29;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Savely uses the camera to scan receipts for recording and managing your expenses.\n";
@@ -889,7 +929,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = IvanLB.Savelyd;
+				PRODUCT_BUNDLE_IDENTIFIER = IvanLB.Savely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
@@ -907,7 +947,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7V25N77999;
+				DEVELOPMENT_TEAM = ZHLD96SP29;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
@@ -930,7 +970,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7V25N77999;
+				DEVELOPMENT_TEAM = ZHLD96SP29;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
@@ -952,7 +992,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7V25N77999;
+				DEVELOPMENT_TEAM = ZHLD96SP29;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = IvanLB.SavelyUITests;
@@ -973,7 +1013,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7V25N77999;
+				DEVELOPMENT_TEAM = ZHLD96SP29;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = IvanLB.SavelyUITests;
@@ -1029,6 +1069,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1DAF5D0D2CEDAA59001C0AF3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		1DE4B4C42CE5D63E006C8F65 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1040,6 +1088,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1DAF5D0E2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1DAF5D0D2CEDAA59001C0AF3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
 		1DE4B4C92CE5DC36006C8F65 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1DE4B4C42CE5D63E006C8F65 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
