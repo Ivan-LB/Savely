@@ -95,13 +95,16 @@
         },
         "es-419" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Agregar Nueva Meta"
           }
         }
       }
     },
-    "Agregar Meta" : {
+    "Agregar Gasto" : {
+
+    },
+    "Agregar Ingreso" : {
 
     },
     "already_have_and_account_label" : {
@@ -121,9 +124,6 @@
           }
         }
       }
-    },
-    "Amarillo" : {
-
     },
     "amount_placeholder_label" : {
       "comment" : "Amount Placeholder Label",
@@ -161,10 +161,22 @@
         }
       }
     },
-    "Azul" : {
+    "blue_color" : {
+      "comment" : "Blue Color",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Blue"
+          }
+        }
+      }
+    },
+    "Cancelar" : {
 
     },
-    "Cargando consejo..." : {
+    "Cantidad" : {
 
     },
     "Cargando..." : {
@@ -359,6 +371,9 @@
         }
       }
     },
+    "Descripción" : {
+
+    },
     "description_placeholder_label" : {
       "comment" : "Description Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -376,6 +391,12 @@
           }
         }
       }
+    },
+    "Detalles del Gasto" : {
+
+    },
+    "Detalles del Ingreso" : {
+
     },
     "email_placeholder_title" : {
       "comment" : "Email Placeholder Label",
@@ -430,6 +451,9 @@
           }
         }
       }
+    },
+    "Error" : {
+
     },
     "expense_distribution_label" : {
       "comment" : "Expense Distribution Label",
@@ -647,6 +671,42 @@
         }
       }
     },
+    "goal_amount_placeholder" : {
+      "comment" : "Goal Amount Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goal amount"
+          }
+        }
+      }
+    },
+    "goal_details_headline" : {
+      "comment" : "Goal Details Headline",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goal details"
+          }
+        }
+      }
+    },
+    "goal_name_placeholder" : {
+      "comment" : "Goal Name Placeholder",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goal name"
+          }
+        }
+      }
+    },
     "goals_tab_string" : {
       "comment" : "Goals Tab String",
       "extractionState" : "extracted_with_value",
@@ -661,6 +721,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Metas"
+          }
+        }
+      }
+    },
+    "green_color" : {
+      "comment" : "Green Color",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Green"
           }
         }
       }
@@ -688,9 +760,6 @@
           }
         }
       }
-    },
-    "Historial de Tips" : {
-
     },
     "incomes_tab_string" : {
       "comment" : "Incomes Tab String",
@@ -725,8 +794,17 @@
         }
       }
     },
-    "Las contraseñas no coinciden" : {
-
+    "loading_tip_label" : {
+      "comment" : "Loading Tip Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Loading tip..."
+          }
+        }
+      }
     },
     "log_in_string" : {
       "comment" : "Log In String",
@@ -794,9 +872,6 @@
         }
       }
     },
-    "Monto objetivo" : {
-
-    },
     "name_placeholder_label" : {
       "comment" : "Name Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -830,9 +905,6 @@
     "No" : {
 
     },
-    "No hay objetivos actualmente" : {
-
-    },
     "no_button" : {
       "comment" : "No Button",
       "extractionState" : "extracted_with_value",
@@ -841,6 +913,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "No"
+          }
+        }
+      }
+    },
+    "no_goal_recently" : {
+      "comment" : "No Goal Recently Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No goals recently"
           }
         }
       }
@@ -869,9 +953,6 @@
         }
       }
     },
-    "Nombre de la meta" : {
-
-    },
     "notifications_title" : {
       "comment" : "Notifications Title",
       "extractionState" : "extracted_with_value",
@@ -889,6 +970,9 @@
           }
         }
       }
+    },
+    "OK" : {
+
     },
     "other_way_to_connect_label" : {
       "comment" : "Other Way to Connect",
@@ -910,6 +994,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Password"
+          }
+        }
+      }
+    },
+    "passwords_dont_match" : {
+      "comment" : "Passwords Doesnt Match",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Passwords doesn't match"
           }
         }
       }
@@ -1088,6 +1184,18 @@
         }
       }
     },
+    "red_color" : {
+      "comment" : "Red Color",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Red"
+          }
+        }
+      }
+    },
     "reports_tab_string" : {
       "comment" : "Reports Tab String",
       "extractionState" : "extracted_with_value",
@@ -1105,9 +1213,6 @@
           }
         }
       }
-    },
-    "Rojo" : {
-
     },
     "savely_app_title" : {
       "comment" : "Savely App Title",
@@ -1460,9 +1565,6 @@
         }
       }
     },
-    "Tip del Día" : {
-
-    },
     "tip_of_the_day_title" : {
       "comment" : "Tip of the Day Title",
       "extractionState" : "extracted_with_value",
@@ -1495,6 +1597,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consejos y Sugerencias"
+          }
+        }
+      }
+    },
+    "tips_history_title" : {
+      "comment" : "Tips History Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tips History"
           }
         }
       }
@@ -1564,9 +1678,6 @@
           }
         }
       }
-    },
-    "Verde" : {
-
     },
     "view_achievements" : {
       "comment" : "View Achievements Label",
@@ -1654,6 +1765,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenido a Savely"
+          }
+        }
+      }
+    },
+    "yellowColor" : {
+      "comment" : "Yellow Color",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yellow"
           }
         }
       }

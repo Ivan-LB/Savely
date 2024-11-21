@@ -13,6 +13,9 @@ class ExpenseTrackerViewModel: ObservableObject {
     @Published var expenseDescription = ""
     @Published var amount = ""
     @Published var expenses: [ExpenseModel] = []
+    
+    @Published var showError: Bool = false
+    @Published var errorMessage: String = ""
 
     var modelContext: ModelContext?
 
@@ -36,7 +39,9 @@ class ExpenseTrackerViewModel: ObservableObject {
         do {
             expenses = try modelContext.fetch(fetchDescriptor)
         } catch {
-            print("Failed to fetch expenses: \(error)")
+            print("Error fetching expenses: \(error)")
+            errorMessage = "Error al obtener los gastos."
+            showError = true
         }
     }
 
@@ -49,6 +54,18 @@ class ExpenseTrackerViewModel: ObservableObject {
                 date: Date()
             )
             modelContext.insert(newExpense)
+            
+            do {
+                try modelContext.save()
+                print("New expense saved successfully")
+                
+                NotificationCenter.default.post(name: .expenseAdded, object: nil, userInfo: ["amount": amountValue])
+            } catch {
+                print("Error saving new expense: \(error)")
+                errorMessage = "Error al guardar el gasto."
+                showError = true
+            }
+            
             expenseDescription = ""
             amount = ""
             fetchExpenses()
@@ -58,6 +75,19 @@ class ExpenseTrackerViewModel: ObservableObject {
     func deleteExpense(_ expense: ExpenseModel) {
         guard let modelContext = modelContext else { return }
         modelContext.delete(expense)
+        
+        do {
+            try modelContext.save()
+            print("Expense deleted successfully")
+            
+            NotificationCenter.default.post(name: .expenseDeleted, object: nil, userInfo: ["amount": expense.amount])
+        } catch {
+            print("Error saving after deleting expense: \(error)")
+            errorMessage = "Error al eliminar el gasto."
+            showError = true
+        }
+        
         fetchExpenses()
     }
 }
+

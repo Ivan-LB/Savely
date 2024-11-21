@@ -206,6 +206,10 @@ struct Strings {
             "savings_summary_title",
             value: "Savings Summary",
             comment: "Savings Summary Title")
+        static let noGoalsRecentlyLabel = NSLocalizedString(
+            "no_goal_recently",
+            value: "No goals recently",
+            comment: "No Goal Recently Label")
         static let weeklyExpensesTitle = NSLocalizedString(
             "weekly_expenses_title",
             value: "Weekly Expenses",
@@ -222,6 +226,10 @@ struct Strings {
             "tips_and_suggestion_title",
             value: "Tips and Suggestions",
             comment: "Tips and Suggestions Tittle")
+        static let goalDetailsHeadline = NSLocalizedString(
+            "goal_details_headline",
+            value: "Goal details",
+            comment: "Goal Details Headline")
     }
     
     struct ExpenseTrackerTab {
@@ -395,27 +403,22 @@ struct Strings {
             "dashboard_tab_string",
             value: "Dashboard",
             comment: "Dashboard Tab String")
-
         static let goalsTab = NSLocalizedString(
             "goals_tab_string",
             value: "Goals",
             comment: "Goals Tab String")
-
         static let expensesTab = NSLocalizedString(
             "expenses_tab_string",
             value: "Expenses",
             comment: "Expenses Tab String")
-
         static let reportsTab = NSLocalizedString(
             "reports_tab_string",
             value: "Reports",
             comment: "Reports Tab String")
-        
         static let incomesTab = NSLocalizedString(
             "incomes_tab_string",
             value: "Incomes",
             comment: "Incomes Tab String")
-
         static let profileTab = NSLocalizedString(
             "profile_tab_string",
             value: "Profile",

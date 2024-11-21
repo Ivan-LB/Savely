@@ -29,6 +29,10 @@
 		1DAF5D262CEE9C13001C0AF3 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D252CEE9C13001C0AF3 /* OpenAIClient.swift */; };
 		1DAF5D282CEE9DCF001C0AF3 /* OpenAIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D272CEE9DCF001C0AF3 /* OpenAIModels.swift */; };
 		1DAF5D2B2CEEA943001C0AF3 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1DAF5D2A2CEEA943001C0AF3 /* MarkdownUI */; };
+		1DAF5D2D2CEEDE02001C0AF3 /* AddGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D2C2CEEDE02001C0AF3 /* AddGoalView.swift */; };
+		1DAF5D2F2CEEE700001C0AF3 /* AddIncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D2E2CEEE700001C0AF3 /* AddIncomeView.swift */; };
+		1DAF5D312CEEE743001C0AF3 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D302CEEE743001C0AF3 /* AddExpenseView.swift */; };
+		1DAF5D332CEEE7AA001C0AF3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D322CEEE7AA001C0AF3 /* Notifications.swift */; };
 		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
 		1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */; };
 		1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */; };
@@ -122,6 +126,10 @@
 		1DAF5D232CEE9AF4001C0AF3 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		1DAF5D252CEE9C13001C0AF3 /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
 		1DAF5D272CEE9DCF001C0AF3 /* OpenAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIModels.swift; sourceTree = "<group>"; };
+		1DAF5D2C2CEEDE02001C0AF3 /* AddGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoalView.swift; sourceTree = "<group>"; };
+		1DAF5D2E2CEEE700001C0AF3 /* AddIncomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeView.swift; sourceTree = "<group>"; };
+		1DAF5D302CEEE743001C0AF3 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
+		1DAF5D322CEEE7AA001C0AF3 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
 		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
@@ -262,6 +270,7 @@
 				1DE4B4D12CE5F681006C8F65 /* AchievementsData.swift */,
 				1DE4B4DF2CEBF909006C8F65 /* SignInWithAppleHelper.swift */,
 				1DAF5D252CEE9C13001C0AF3 /* OpenAIClient.swift */,
+				1DAF5D322CEEE7AA001C0AF3 /* Notifications.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -371,6 +380,9 @@
 			children = (
 				1DC258392CC081A40002DDE3 /* TipsAndSuggestionsView.swift */,
 				1DC258312CC07DF40002DDE3 /* DashboardView.swift */,
+				1DAF5D2C2CEEDE02001C0AF3 /* AddGoalView.swift */,
+				1DAF5D2E2CEEE700001C0AF3 /* AddIncomeView.swift */,
+				1DAF5D302CEEE743001C0AF3 /* AddExpenseView.swift */,
 			);
 			path = DashboardTab;
 			sourceTree = "<group>";
@@ -717,6 +729,7 @@
 				1DC258572CC62DF20002DDE3 /* ExpenseTrackerView.swift in Sources */,
 				1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */,
 				1DC2583A2CC081A40002DDE3 /* TipsAndSuggestionsView.swift in Sources */,
+				1DAF5D2D2CEEDE02001C0AF3 /* AddGoalView.swift in Sources */,
 				1DE4B4D22CE5F681006C8F65 /* AchievementsData.swift in Sources */,
 				1DE4B4D62CE7AF93006C8F65 /* CustomTextfield.swift in Sources */,
 				1DE4B4EF2CEC514B006C8F65 /* ProfileViewModel.swift in Sources */,
@@ -728,6 +741,7 @@
 				1DE4B4DE2CEBF8AC006C8F65 /* AuthenticationManagerExtension.swift in Sources */,
 				1DAF5D162CEDB69B001C0AF3 /* CameraViewModel.swift in Sources */,
 				1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */,
+				1DAF5D332CEEE7AA001C0AF3 /* Notifications.swift in Sources */,
 				1DAF5D072CED97EE001C0AF3 /* DashboardViewModel.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
 				1DC258492CC629210002DDE3 /* GoalModel.swift in Sources */,
@@ -749,12 +763,14 @@
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
 				1DAF5D202CEE9767001C0AF3 /* TipHistoryView.swift in Sources */,
 				1DE4B4F12CEC5174006C8F65 /* UserManagerExtension.swift in Sources */,
+				1DAF5D2F2CEEE700001C0AF3 /* AddIncomeView.swift in Sources */,
 				1DE4B4E92CEC018E006C8F65 /* SignUpViewModel.swift in Sources */,
 				1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */,
 				82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */,
 				1DE4B4DC2CEBF812006C8F65 /* AuthDataResultModel.swift in Sources */,
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */,
+				1DAF5D312CEEE743001C0AF3 /* AddExpenseView.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,
 				1DAF5D1B2CEDC118001C0AF3 /* GoalsViewModel.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct DashboardView: View {
-    @StateObject private var viewModel = DashboardViewModel()
+//    @EnvironmentObject var viewModel: DashboardViewModel
     @Query var goals: [GoalModel]
     
     var favoriteGoal: GoalModel? {
@@ -51,7 +51,7 @@ struct DashboardView: View {
                         Text(goal.name)
                             .font(.subheadline)
                     } else {
-                        Text("No hay objetivos actualmente")
+                        Text(Strings.DashboardTab.noGoalsRecentlyLabel)
                             .font(.headline)
                             .padding()
                     }
@@ -68,66 +68,28 @@ struct DashboardView: View {
                     QuickActionButton(
                         iconName: "creditcard.fill",
                         label: Strings.Buttons.addIncomeButton,
-                        action: {}
+                        action: {
+//                            viewModel.showAddIncome()
+                        }
                     )
                     Spacer()
                     QuickActionButton(
                         iconName: "camera.fill",
                         label: Strings.Buttons.addExpenseButton,
-                        action: {}
+                        action: {
+//                            viewModel.showAddExpense()
+                        }
                     )
                     Spacer()
                     QuickActionButton(
                         iconName: "plus.circle.fill",
                         label: Strings.Buttons.newGoalButton,
-                        action: {}
+                        action: {
+//                            viewModel.showAddGoal()
+                        }
                     )
                 }
                 .padding(.horizontal)
-
-                // Weekly Spending Chart
-//                VStack(alignment: .leading, spacing: 10) {
-//                    Text(Strings.DashboardTab.weeklyExpensesTitle)
-//                        .font(.title3)
-//                        .fontWeight(.bold)
-//                    Chart {
-//                        BarMark(
-//                            x: .value("Día", "Lun"),
-//                            y: .value("Gasto", 20)
-//                        )
-//                        BarMark(
-//                            x: .value("Día", "Mar"),
-//                            y: .value("Gasto", 45)
-//                        )
-//                        BarMark(
-//                            x: .value("Día", "Mié"),
-//                            y: .value("Gasto", 28)
-//                        )
-//                        BarMark(
-//                            x: .value("Día", "Jue"),
-//                            y: .value("Gasto", 80)
-//                        )
-//                        BarMark(
-//                            x: .value("Día", "Vie"),
-//                            y: .value("Gasto", 99)
-//                        )
-//                        BarMark(
-//                            x: .value("Día", "Sáb"),
-//                            y: .value("Gasto", 43)
-//                        )
-//                        BarMark(
-//                            x: .value("Día", "Dom"),
-//                            y: .value("Gasto", 50)
-//                        )
-//                    }
-//                    .frame(height: 200)
-//                }
-//                .padding()
-//                .frame(maxWidth: .infinity)
-//                .background(Color.white)
-//                .cornerRadius(10)
-//                .shadow(radius: 2)
-//                .padding(.horizontal)
 
                 // Tip of the Day Card
                 TipsAndSuggestionsView()
@@ -136,11 +98,26 @@ struct DashboardView: View {
             .padding(.vertical)
         }
         .background(Color(UIColor.systemGray6))
+//        .sheet(isPresented: $viewModel.showingAddGoalModal) {
+//            AddGoalView()
+//                .environmentObject(viewModel.goalsViewModel)
+//        }
+//        .sheet(isPresented: $viewModel.showingAddIncomeModal) {
+//            AddIncomeView()
+//                .environmentObject(viewModel.incomesViewModel)
+//        }
+//        .sheet(isPresented: $viewModel.showingAddExpenseModal) {
+//            AddExpenseView()
+//                .environmentObject(viewModel.expensesViewModel)
+//        }
     }
 }
 
-struct DashboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        DashboardView()
-    }
-}
+//struct DashboardContainerView: View {
+//    @Environment(\.modelContext) private var modelContext
+//    
+//    var body: some View {
+//        DashboardView()
+//            .environmentObject(DashboardViewModel(modelContext: modelContext))
+//    }
+//}
