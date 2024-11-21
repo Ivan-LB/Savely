@@ -96,8 +96,9 @@ struct GoalsView: View {
                 print("Setting modelContext in viewModel")
                 viewModel.setModelContext(modelContext)
             }
-            // Actualizar el progreso de las metas al aparecer la vista
-            viewModel.updateGoalProgress()
+        }
+        .alert(isPresented: $viewModel.showError) {
+            Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
         }
     }
 }

@@ -142,7 +142,7 @@ struct ProfileView: View {
                                 TipHistoryView()
                             } label: {
                                 HStack {
-                                    Image(systemName: "lightbulb")
+                                    Image(systemName: "lightbulb.fill")
                                         .foregroundColor(.yellow)
                                     Text(Strings.Profile.seePreviousTipsLabel)
                                         .fontWeight(.bold)
