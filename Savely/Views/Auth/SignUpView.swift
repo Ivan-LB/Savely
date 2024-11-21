@@ -35,7 +35,7 @@ struct SignUpView: View {
                     HybridTextField(text: $viewModel.confirmPassword, titleKey: Strings.Authentication.confirmPasswordString)
                     
                     if !viewModel.passwordsMatch && !viewModel.confirmPassword.isEmpty {
-                        Text("Las contraseñas no coinciden")
+                        Text(Strings.Authentication.passwordDontMatch)
                             .foregroundColor(.red)
                     }
                 }

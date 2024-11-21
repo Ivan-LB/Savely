@@ -18,7 +18,7 @@ struct SavelyApp: App {
         WindowGroup {
             SplashScreenView()
         }
-        .modelContainer(for: [IncomeModel.self, ExpenseModel.self, GoalModel.self])
+        .modelContainer(for: [TipModel.self, IncomeModel.self, ExpenseModel.self, GoalModel.self])
     }
 }
 

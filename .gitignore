@@ -16,3 +16,4 @@ Pods
 Savely.xcworkspace/contents.xcworkspacedata
 Savely.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 *.xcscheme
+Savely/Config.plist

@@ -6,9 +6,17 @@
 //
 
 import Foundation
+import SwiftData
 
-struct TipModel: Identifiable {
-    let id: String
-    let title: String
-    let description: String
+@Model
+class TipModel: Identifiable {
+    @Attribute(.unique) var id: UUID
+    var date: Date
+    var content: String
+    
+    init(id: UUID = UUID(), date: Date, content: String) {
+        self.id = id
+        self.date = date
+        self.content = content
+    }
 }
