@@ -130,24 +130,8 @@ struct DashboardView: View {
 //                .padding(.horizontal)
 
                 // Tip of the Day Card
-                VStack(alignment: .leading, spacing: 10) {
-                    HStack {
-                        Image(systemName: "chart.line.uptrend.xyaxis")
-                            .foregroundColor(.blue)
-                        Text(Strings.DashboardTab.tipOfTheDayTitle)
-                            .font(.title3)
-                            .fontWeight(.bold)
-                    }
-                    Text("Establece metas pequeñas y alcanzables. ¡El éxito en pequeños objetivos te motivará a lograr metas más grandes!")
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.green.opacity(0.1))
-                .cornerRadius(10)
-                .shadow(radius: UIConstants.UIShadow.shadow)
-                .padding(.horizontal)
+                TipsAndSuggestionsView()
+                    .padding(.horizontal)
             }
             .padding(.vertical)
         }

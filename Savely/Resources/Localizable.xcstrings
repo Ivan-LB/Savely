@@ -164,6 +164,9 @@
     "Azul" : {
 
     },
+    "Cargando consejo..." : {
+
+    },
     "Cargando..." : {
 
     },
@@ -428,9 +431,6 @@
         }
       }
     },
-    "Establece metas pequeñas y alcanzables. ¡El éxito en pequeños objetivos te motivará a lograr metas más grandes!" : {
-
-    },
     "expense_distribution_label" : {
       "comment" : "Expense Distribution Label",
       "extractionState" : "extracted_with_value",
@@ -688,6 +688,9 @@
           }
         }
       }
+    },
+    "Historial de Tips" : {
+
     },
     "incomes_tab_string" : {
       "comment" : "Incomes Tab String",
@@ -995,6 +998,18 @@
         }
       }
     },
+    "previous_tips_title" : {
+      "comment" : "Previous Tips",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Previous Tips"
+          }
+        }
+      }
+    },
     "profile_tab_string" : {
       "comment" : "Profile Tab String",
       "extractionState" : "extracted_with_value",
@@ -1198,6 +1213,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seguridad"
+          }
+        }
+      }
+    },
+    "see_previous_tips_label" : {
+      "comment" : "See Previous Tips Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "See previous tips"
           }
         }
       }
@@ -1432,6 +1459,9 @@
           }
         }
       }
+    },
+    "Tip del Día" : {
+
     },
     "tip_of_the_day_title" : {
       "comment" : "Tip of the Day Title",

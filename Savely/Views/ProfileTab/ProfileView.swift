@@ -132,6 +132,31 @@ struct ProfileView: View {
                         .padding()
                     }
                     .padding(.horizontal)
+                    
+                    CardView {
+                        VStack(alignment: .leading, spacing: 15) {
+                            Text(Strings.Profile.previousTipsTitle)
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            NavigationLink {
+                                TipHistoryView()
+                            } label: {
+                                HStack {
+                                    Image(systemName: "lightbulb")
+                                        .foregroundColor(.yellow)
+                                    Text(Strings.Profile.seePreviousTipsLabel)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.green)
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.green.opacity(0.1))
+                                .cornerRadius(10)
+                            }
+                        }
+                        .padding()
+                    }
+                    .padding(.horizontal)
                 }
                 .padding(.vertical)
             }

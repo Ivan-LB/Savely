@@ -69,6 +69,10 @@ struct Strings {
             "terms_of_service_label",
             value: "Terms of Service",
             comment: "Terms of Service Label")
+        static let passwordDontMatch = NSLocalizedString(
+            "passwords_dont_match",
+            value: "Passwords doesn't match",
+            comment: "Passwords Doesnt Match")
     }
     
     struct Achievements {
@@ -210,6 +214,10 @@ struct Strings {
             "tip_of_the_day_title",
             value: "Tip of the Day",
             comment: "Tip of the Day Title")
+        static let loadingTipLabel = NSLocalizedString(
+            "loading_tip_label", 
+            value: "Loading tip...",
+            comment: "Loading Tip Label")
         static let tipsAndSuggestionsTitle = NSLocalizedString(
             "tips_and_suggestion_title",
             value: "Tips and Suggestions",
@@ -326,6 +334,21 @@ struct Strings {
             "view_achievements",
             value: "View Achievements",
             comment: "View Achievements Label")
+        
+        static let previousTipsTitle = NSLocalizedString(
+            "previous_tips_title",
+            value: "Previous Tips",
+            comment: "Previous Tips")
+        
+        static let seePreviousTipsLabel = NSLocalizedString(
+            "see_previous_tips_label",
+            value: "See previous tips",
+            comment: "See Previous Tips Label")
+        
+        static let tipsHistoryTitle = NSLocalizedString(
+            "tips_history_title",
+            value: "Tips History",
+            comment: "Tips History Title")
     }
     
     struct Placeholders {
@@ -482,5 +505,32 @@ struct Strings {
             "savely_app_title",
             value: "Savely",
             comment: "Savely App Title")
+    }
+    
+    struct GoalsView {
+        static let goalNamePlaceholder = NSLocalizedString(
+            "goal_name_placeholder",
+            value: "Goal name",
+            comment: "Goal Name Placeholder")
+        static let goalAmountPlaceholder = NSLocalizedString(
+            "goal_amount_placeholder",
+            value: "Goal amount",
+            comment: "Goal Amount Placeholder")
+        static let greenColor = NSLocalizedString(
+            "green_color",
+            value: "Green",
+            comment: "Green Color")
+        static let blueColor = NSLocalizedString(
+            "blue_color",
+            value: "Blue",
+            comment: "Blue Color")
+        static let yellowColor = NSLocalizedString(
+            "yellowColor",
+            value: "Yellow",
+            comment: "Yellow Color")
+        static let redColor = NSLocalizedString(
+            "red_color",
+            value: "Red",
+            comment: "Red Color")
     }
 }

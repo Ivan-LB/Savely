@@ -17,24 +17,24 @@ struct GoalsView: View {
             VStack(alignment: .leading, spacing: 20) {
                 // Formulario para agregar nueva meta
                 VStack(spacing: 15) {
-                    TextField("Nombre de la meta", text: $viewModel.name)
+                    TextField(Strings.GoalsView.goalNamePlaceholder, text: $viewModel.name)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Monto objetivo", text: $viewModel.targetAmount)
+                    TextField(Strings.GoalsView.goalAmountPlaceholder, text: $viewModel.targetAmount)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     // Selección de color
                     Picker("Color", selection: $viewModel.selectedColor) {
-                        Text("Verde").tag(GoalColor.green)
-                        Text("Azul").tag(GoalColor.blue)
-                        Text("Amarillo").tag(GoalColor.yellow)
-                        Text("Rojo").tag(GoalColor.red)
+                        Text(Strings.GoalsView.greenColor).tag(GoalColor.green)
+                        Text(Strings.GoalsView.blueColor).tag(GoalColor.blue)
+                        Text(Strings.GoalsView.yellowColor).tag(GoalColor.yellow)
+                        Text(Strings.GoalsView.redColor).tag(GoalColor.red)
                     }
                     .pickerStyle(SegmentedPickerStyle())
 
                     Button(action: {
                         viewModel.addGoal()
                     }) {
-                        Text("Agregar Meta")
+                        Text(Strings.Buttons.newGoalButton)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .padding()
@@ -92,7 +92,6 @@ struct GoalsView: View {
         }
         .background(Color(UIColor.systemGray6))
         .onAppear {
-            print("onAppear called")
             if viewModel.modelContext == nil {
                 print("Setting modelContext in viewModel")
                 viewModel.setModelContext(modelContext)

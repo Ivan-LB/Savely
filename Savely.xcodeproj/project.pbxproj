@@ -23,6 +23,12 @@
 		1DAF5D132CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D122CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift */; };
 		1DAF5D162CEDB69B001C0AF3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */; };
 		1DAF5D1B2CEDC118001C0AF3 /* GoalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D1A2CEDC118001C0AF3 /* GoalsViewModel.swift */; };
+		1DAF5D1E2CEE9695001C0AF3 /* TipsAndSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D1D2CEE9695001C0AF3 /* TipsAndSuggestionViewModel.swift */; };
+		1DAF5D202CEE9767001C0AF3 /* TipHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D1F2CEE9767001C0AF3 /* TipHistoryView.swift */; };
+		1DAF5D242CEE9AF4001C0AF3 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DAF5D232CEE9AF4001C0AF3 /* Config.plist */; };
+		1DAF5D262CEE9C13001C0AF3 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D252CEE9C13001C0AF3 /* OpenAIClient.swift */; };
+		1DAF5D282CEE9DCF001C0AF3 /* OpenAIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D272CEE9DCF001C0AF3 /* OpenAIModels.swift */; };
+		1DAF5D2B2CEEA943001C0AF3 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1DAF5D2A2CEEA943001C0AF3 /* MarkdownUI */; };
 		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
 		1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */; };
 		1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */; };
@@ -110,6 +116,12 @@
 		1DAF5D122CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTrackerViewModel.swift; sourceTree = "<group>"; };
 		1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		1DAF5D1A2CEDC118001C0AF3 /* GoalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewModel.swift; sourceTree = "<group>"; };
+		1DAF5D1D2CEE9695001C0AF3 /* TipsAndSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsAndSuggestionViewModel.swift; sourceTree = "<group>"; };
+		1DAF5D1F2CEE9767001C0AF3 /* TipHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipHistoryView.swift; sourceTree = "<group>"; };
+		1DAF5D212CEE9989001C0AF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DAF5D232CEE9AF4001C0AF3 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		1DAF5D252CEE9C13001C0AF3 /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
+		1DAF5D272CEE9DCF001C0AF3 /* OpenAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIModels.swift; sourceTree = "<group>"; };
 		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
 		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
@@ -174,6 +186,7 @@
 				1DE4B4CA2CE5DC36006C8F65 /* FirebaseAuth in Frameworks */,
 				1DE4B4CC2CE5DC3B006C8F65 /* FirebaseFirestore in Frameworks */,
 				1DAF5D0F2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift in Frameworks */,
+				1DAF5D2B2CEEA943001C0AF3 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +210,7 @@
 		1D3669842CC62EDD00E84FF9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1DAF5D1C2CEE9680001C0AF3 /* Tips */,
 				1DAF5D192CEDC103001C0AF3 /* GoalsTab */,
 				1DAF5D142CEDB690001C0AF3 /* Camera */,
 				1DAF5D112CEDB40F001C0AF3 /* ExpensesTab */,
@@ -247,6 +261,7 @@
 				1DE4B4CF2CE5F2D6006C8F65 /* OnboardingData.swift */,
 				1DE4B4D12CE5F681006C8F65 /* AchievementsData.swift */,
 				1DE4B4DF2CEBF909006C8F65 /* SignInWithAppleHelper.swift */,
+				1DAF5D252CEE9C13001C0AF3 /* OpenAIClient.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -335,6 +350,14 @@
 			path = GoalsTab;
 			sourceTree = "<group>";
 		};
+		1DAF5D1C2CEE9680001C0AF3 /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				1DAF5D1D2CEE9695001C0AF3 /* TipsAndSuggestionViewModel.swift */,
+			);
+			path = Tips;
+			sourceTree = "<group>";
+		};
 		1DC013F92CDB571F009A46E1 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */,
+				1DAF5D1F2CEE9767001C0AF3 /* TipHistoryView.swift */,
 				1DC2583B2CC081D90002DDE3 /* ProfileView.swift */,
 			);
 			path = ProfileTab;
@@ -439,6 +463,8 @@
 				1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */,
 				1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */,
 				1DC2580D2CC07DCF0002DDE3 /* Preview Content */,
+				1DAF5D212CEE9989001C0AF3 /* Info.plist */,
+				1DAF5D232CEE9AF4001C0AF3 /* Config.plist */,
 			);
 			path = Savely;
 			sourceTree = "<group>";
@@ -512,6 +538,7 @@
 				1DE4B4DB2CEBF812006C8F65 /* AuthDataResultModel.swift */,
 				1DE4B4E62CEBFAF8006C8F65 /* DBUserModel.swift */,
 				1DAF5D082CED9CA3001C0AF3 /* IncomeModel.swift */,
+				1DAF5D272CEE9DCF001C0AF3 /* OpenAIModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -553,6 +580,7 @@
 				1DE4B4C92CE5DC36006C8F65 /* FirebaseAuth */,
 				1DE4B4CB2CE5DC3B006C8F65 /* FirebaseFirestore */,
 				1DAF5D0E2CEDAAAD001C0AF3 /* IQKeyboardManagerSwift */,
+				1DAF5D2A2CEEA943001C0AF3 /* MarkdownUI */,
 			);
 			productName = Savely;
 			productReference = 1DC258042CC07DCC0002DDE3 /* Savely.app */;
@@ -630,6 +658,7 @@
 			packageReferences = (
 				1DE4B4C42CE5D63E006C8F65 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1DAF5D0D2CEDAA59001C0AF3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				1DAF5D292CEEA943001C0AF3 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
 			);
 			productRefGroup = 1DC258052CC07DCC0002DDE3 /* Products */;
 			projectDirPath = "";
@@ -650,6 +679,7 @@
 				1DC2580F2CC07DCF0002DDE3 /* Preview Assets.xcassets in Resources */,
 				1DC2580C2CC07DCF0002DDE3 /* Assets.xcassets in Resources */,
 				1DC014152CE5B674009A46E1 /* GoogleService-Info.plist in Resources */,
+				1DAF5D242CEE9AF4001C0AF3 /* Config.plist in Resources */,
 				1D36698B2CC62FD700E84FF9 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,6 +711,7 @@
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
 				1DE4B4DA2CEBF60B006C8F65 /* AuthenticationManager.swift in Sources */,
 				1DE4B4E32CEBFAA5006C8F65 /* LoginViewModel.swift in Sources */,
+				1DAF5D1E2CEE9695001C0AF3 /* TipsAndSuggestionViewModel.swift in Sources */,
 				1DC2583E2CC082450002DDE3 /* MainNavigationView.swift in Sources */,
 				1DC2584F2CC62A160002DDE3 /* TipModel.swift in Sources */,
 				1DC258572CC62DF20002DDE3 /* ExpenseTrackerView.swift in Sources */,
@@ -713,8 +744,10 @@
 				1DE4B4E52CEBFAD4006C8F65 /* UserManager.swift in Sources */,
 				1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */,
 				1DAF5D132CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift in Sources */,
+				1DAF5D282CEE9DCF001C0AF3 /* OpenAIModels.swift in Sources */,
 				1DE4B4E72CEBFAF8006C8F65 /* DBUserModel.swift in Sources */,
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
+				1DAF5D202CEE9767001C0AF3 /* TipHistoryView.swift in Sources */,
 				1DE4B4F12CEC5174006C8F65 /* UserManagerExtension.swift in Sources */,
 				1DE4B4E92CEC018E006C8F65 /* SignUpViewModel.swift in Sources */,
 				1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */,
@@ -728,6 +761,7 @@
 				1DC014112CE5AFAE009A46E1 /* OnboardingStepModel.swift in Sources */,
 				1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */,
 				1DC0140F2CE5AF81009A46E1 /* OnboardingStepView.swift in Sources */,
+				1DAF5D262CEE9C13001C0AF3 /* OpenAIClient.swift in Sources */,
 				1DC2584D2CC629890002DDE3 /* MonthlySavingModel.swift in Sources */,
 				1DC258462CC628C70002DDE3 /* QuickActionButton.swift in Sources */,
 				1DC258382CC07FA00002DDE3 /* ReportsView.swift in Sources */,
@@ -918,6 +952,7 @@
 				DEVELOPMENT_TEAM = ZHLD96SP29;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Savely/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Savely uses the camera to scan receipts for recording and managing your expenses.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -953,6 +988,7 @@
 				DEVELOPMENT_TEAM = ZHLD96SP29;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Savely/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Savely uses the camera to scan receipts for recording and managing your expenses.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1113,6 +1149,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		1DAF5D292CEEA943001C0AF3 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
+			};
+		};
 		1DE4B4C42CE5D63E006C8F65 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1128,6 +1172,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1DAF5D0D2CEDAA59001C0AF3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		1DAF5D2A2CEEA943001C0AF3 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1DAF5D292CEEA943001C0AF3 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
+			productName = MarkdownUI;
 		};
 		1DE4B4C92CE5DC36006C8F65 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
