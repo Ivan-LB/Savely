@@ -14,6 +14,9 @@ class IncomesTrackerViewModel: ObservableObject {
     @Published var amount = ""
     @Published var incomes: [IncomeModel] = []
     
+    @Published var showError: Bool = false
+    @Published var errorMessage: String = ""
+    
     var modelContext: ModelContext?
 
     init(modelContext: ModelContext? = nil) {
@@ -36,7 +39,9 @@ class IncomesTrackerViewModel: ObservableObject {
         do {
             incomes = try modelContext.fetch(fetchDescriptor)
         } catch {
-            print("Failed to fetch incomes: \(error)")
+            print("Error fetching incomes: \(error)")
+            errorMessage = "Error al obtener los ingresos."
+            showError = true
         }
     }
 
@@ -49,6 +54,18 @@ class IncomesTrackerViewModel: ObservableObject {
                 date: Date()
             )
             modelContext.insert(newIncome)
+            
+            do {
+                try modelContext.save()
+                print("New income saved successfully")
+                
+                NotificationCenter.default.post(name: .incomeAdded, object: nil, userInfo: ["amount": amountValue])
+            } catch {
+                print("Error saving new income: \(error)")
+                errorMessage = "Error al guardar el ingreso."
+                showError = true
+            }
+            
             incomeDescription = ""
             amount = ""
             fetchIncomes()
@@ -58,6 +75,18 @@ class IncomesTrackerViewModel: ObservableObject {
     func deleteIncome(_ income: IncomeModel) {
         guard let modelContext = modelContext else { return }
         modelContext.delete(income)
+
+        do {
+            try modelContext.save()
+            print("Income deleted successfully")
+           
+            NotificationCenter.default.post(name: .incomeDeleted, object: nil, userInfo: ["amount": income.amount])
+        } catch {
+           print("Error saving after deleting income: \(error)")
+           errorMessage = "Error al eliminar el ingreso."
+           showError = true
+        }
+
         fetchIncomes()
     }
 }
