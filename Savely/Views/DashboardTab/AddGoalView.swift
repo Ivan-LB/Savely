@@ -38,7 +38,7 @@ struct AddGoalView: View {
                         .cornerRadius(10)
                 }
                 .disabled(viewModel.name.isEmpty || viewModel.targetAmount.isEmpty)
-                .opacity(viewModel.name.isEmpty || viewModel.targetAmount.isEmpty ? 0.5 : 1.0) // Ajuste de opacidad
+                .opacity(viewModel.name.isEmpty || viewModel.targetAmount.isEmpty ? 0.5 : 1.0)
             }
             .navigationTitle(Strings.Buttons.newGoalButton)
             .alert(isPresented: $viewModel.showError) {
