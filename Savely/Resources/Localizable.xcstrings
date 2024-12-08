@@ -485,6 +485,42 @@
         }
       }
     },
+    "expense_reminder_body" : {
+      "comment" : "Expense Reminder Body",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Don't forget to log your expenses today!"
+          }
+        }
+      }
+    },
+    "expense_reminder_time_label" : {
+      "comment" : "Expense Reminder Time Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense Reminder Time"
+          }
+        }
+      }
+    },
+    "expense_reminder_title" : {
+      "comment" : "Expense Reminder Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense Reminder"
+          }
+        }
+      }
+    },
     "expense_reminders_label" : {
       "comment" : "Expense Reminders Label",
       "extractionState" : "extracted_with_value",
@@ -661,6 +697,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "General"
+          }
+        }
+      }
+    },
+    "goal_alert_body" : {
+      "comment" : "Goal Alert Body",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check your goals and track your progress!"
+          }
+        }
+      }
+    },
+    "goal_alert_time_label" : {
+      "comment" : "Goal Alert Time Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goal Alert Time"
+          }
+        }
+      }
+    },
+    "goal_alert_title" : {
+      "comment" : "Goal Alert Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goal Alert"
           }
         }
       }
@@ -955,6 +1027,33 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "No Unnecessary Spending"
+          }
+        }
+      }
+    },
+    "Notice" : {
+
+    },
+    "notification_settings_description" : {
+      "comment" : "Notification Settings Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Choose the times to receive alerts for expenses and goals."
+          }
+        }
+      }
+    },
+    "notification_settings_title" : {
+      "comment" : "Notification Settings Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Notification Settings"
           }
         }
       }

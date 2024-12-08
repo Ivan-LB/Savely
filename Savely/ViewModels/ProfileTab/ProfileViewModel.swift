@@ -16,6 +16,10 @@ class ProfileViewModel: ObservableObject {
     @AppStorage("darkModeEnabled") var darkMode: Bool = false // Sincronizado automáticamente
     @Published var expenseReminders: Bool = true
     @Published var goalAlerts: Bool = true
+    
+    @Published var showAlert: Bool = false
+    @Published var alertMessage: String = ""
+
 
     init() {
         Task {
@@ -39,13 +43,18 @@ class ProfileViewModel: ObservableObject {
 
     func updatePersonalInformation() async {
         guard let uid = AuthenticationManager.shared.currentUser?.uid else {
+            alertMessage = "User not authenticated."
+            showAlert = true
             return
         }
         do {
             try await UserManager.shared.updateUser(userId: uid, displayName: displayName, email: email)
             try await AuthenticationManager.shared.updateEmail(email: email)
+            alertMessage = "Your personal information has been updated successfully."
+            showAlert = true
         } catch {
-            print("Error updating user data: \(error)")
+            alertMessage = "Failed to update your information: \(error.localizedDescription)"
+            showAlert = true
         }
     }
 

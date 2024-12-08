@@ -83,6 +83,8 @@
 		1DE4B4EC2CEC4EE3006C8F65 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4EB2CEC4EE3006C8F65 /* AppViewModel.swift */; };
 		1DE4B4EF2CEC514B006C8F65 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4EE2CEC514B006C8F65 /* ProfileViewModel.swift */; };
 		1DE4B4F12CEC5174006C8F65 /* UserManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4F02CEC5174006C8F65 /* UserManagerExtension.swift */; };
+		1DE9FE0E2D063AF20069AA64 /* NotificationSettingsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE0D2D063AF20069AA64 /* NotificationSettingsStepView.swift */; };
+		1DE9FE102D063BC80069AA64 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE0F2D063BC80069AA64 /* NotificationManager.swift */; };
 		82D33CE22CEC66D200BE005E /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE12CEC66D200BE005E /* TextRecognizer.swift */; };
 		82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */; };
 /* End PBXBuildFile section */
@@ -182,6 +184,8 @@
 		1DE4B4EB2CEC4EE3006C8F65 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		1DE4B4EE2CEC514B006C8F65 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1DE4B4F02CEC5174006C8F65 /* UserManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerExtension.swift; sourceTree = "<group>"; };
+		1DE9FE0D2D063AF20069AA64 /* NotificationSettingsStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsStepView.swift; sourceTree = "<group>"; };
+		1DE9FE0F2D063BC80069AA64 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		82D33CE12CEC66D200BE005E /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConfirmationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -244,6 +248,7 @@
 		1D88B7CA2CC6EA38009B6538 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1DE9FE0F2D063BC80069AA64 /* NotificationManager.swift */,
 				1D88B7CB2CC6EA47009B6538 /* CameraManager.swift */,
 				1DE4B4D92CEBF60B006C8F65 /* AuthenticationManager.swift */,
 				1DE4B4E42CEBFAD4006C8F65 /* UserManager.swift */,
@@ -433,6 +438,7 @@
 		1DC0140B2CE5AF4A009A46E1 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				1DE9FE0D2D063AF20069AA64 /* NotificationSettingsStepView.swift */,
 				1DC0140C2CE5AF59009A46E1 /* OnboardingView.swift */,
 				1DC0140E2CE5AF81009A46E1 /* OnboardingStepView.swift */,
 			);
@@ -735,6 +741,7 @@
 				1DE4B4EF2CEC514B006C8F65 /* ProfileViewModel.swift in Sources */,
 				1D36698D2CC6CB4100E84FF9 /* SplashScreenView.swift in Sources */,
 				82D33CE22CEC66D200BE005E /* TextRecognizer.swift in Sources */,
+				1DE9FE102D063BC80069AA64 /* NotificationManager.swift in Sources */,
 				1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */,
 				1DE4B4EC2CEC4EE3006C8F65 /* AppViewModel.swift in Sources */,
 				1DC258432CC61D3A0002DDE3 /* CardView.swift in Sources */,
@@ -756,6 +763,7 @@
 				1DC258522CC62A5B0002DDE3 /* TabsView.swift in Sources */,
 				1DC014082CE5AE80009A46E1 /* LoginView.swift in Sources */,
 				1DE4B4E52CEBFAD4006C8F65 /* UserManager.swift in Sources */,
+				1DE9FE0E2D063AF20069AA64 /* NotificationSettingsStepView.swift in Sources */,
 				1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */,
 				1DAF5D132CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift in Sources */,
 				1DAF5D282CEE9DCF001C0AF3 /* OpenAIModels.swift in Sources */,

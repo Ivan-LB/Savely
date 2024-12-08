@@ -156,6 +156,9 @@ struct ProfileView: View {
                 .padding(.vertical)
             }
             .background(Color("backgroundColor"))
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(title: Text("Notice"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
     }
 }
