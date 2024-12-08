@@ -34,14 +34,13 @@ struct ProfileView: View {
                                     .padding()
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.green)
+                                    .background(Color("secondaryGreen"))
                                     .foregroundStyle(.white)
                                     .cornerRadius(10)
                             }
                         }
                         .padding()
                     }
-                    .padding(.horizontal)
 
                     // Settings Card
                     CardView {
@@ -74,7 +73,6 @@ struct ProfileView: View {
                                 .font(.title3)
                                 .fontWeight(.bold)
                             Button(action: {
-                                // Change password
                                 Task {
                                     try AuthenticationManager.shared.signOut()
                                 }
@@ -83,12 +81,11 @@ struct ProfileView: View {
                                     .padding()
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.green)
+                                    .background(Color("secondaryGreen"))
                                     .foregroundStyle(.white)
                                     .cornerRadius(10)
                             }
                             Button(action: {
-                                // Change password
                                 Task {
                                     try AuthenticationManager.shared.signOut()
                                 }
@@ -97,7 +94,7 @@ struct ProfileView: View {
                                     .padding()
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.red)
+                                    .background(Color("primaryRed"))
                                     .foregroundStyle(.white)
                                     .cornerRadius(10)
                             }
@@ -105,9 +102,7 @@ struct ProfileView: View {
                         .padding(.horizontal)
                         .padding(.bottom)
                     }
-                    .padding(.horizontal)
 
-                    // Achievements Card with NavigationLink
                     CardView {
                         VStack(alignment: .leading, spacing: 15) {
                             Text(Strings.Profile.achievementsTitle)
@@ -118,7 +113,7 @@ struct ProfileView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "star.fill")
-                                        .foregroundStyle(.yellow)
+                                        .foregroundStyle(Color("primaryYellow"))
                                     Text(Strings.Profile.viewAchievements)
                                         .fontWeight(.bold)
                                         .foregroundStyle(.green)
@@ -131,8 +126,7 @@ struct ProfileView: View {
                         }
                         .padding()
                     }
-                    .padding(.horizontal)
-                    
+
                     CardView {
                         VStack(alignment: .leading, spacing: 15) {
                             Text(Strings.Profile.previousTipsTitle)
@@ -143,7 +137,7 @@ struct ProfileView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "lightbulb.fill")
-                                        .foregroundStyle(.yellow)
+                                        .foregroundStyle(Color("primaryYellow"))
                                     Text(Strings.Profile.seePreviousTipsLabel)
                                         .fontWeight(.bold)
                                         .foregroundStyle(.green)
@@ -156,15 +150,13 @@ struct ProfileView: View {
                         }
                         .padding()
                     }
-                    .padding(.horizontal)
                 }
                 .padding(.vertical)
             }
-            .background(Color(UIColor.systemGray6))
+            .background(Color("backgroundColor"))
         }
     }
 }
-
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
