@@ -36,7 +36,7 @@ struct TipsAndSuggestionsView: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(Color("tipOfTheDaryBackgroundColor"))
+        .background(Color("terciaryGreen"))
         .cornerRadius(UIConstants.UICornerRadius.cornerRadiusMedium)
         .shadow(radius: UIConstants.UIShadow.shadow)
         .onAppear {

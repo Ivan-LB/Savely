@@ -195,6 +195,41 @@ struct Strings {
             "receive_tips_label",
             value: "Get personalized tips to improve your financial health.",
             comment: "Receive Tips Label")
+        static let notificationSettingsTitle = NSLocalizedString(
+            "notification_settings_title",
+            value: "Notification Settings",
+            comment: "Notification Settings Title")
+        static let notificationSettingsDescription = NSLocalizedString(
+            "notification_settings_description",
+            value: "Choose the times to receive alerts for expenses and goals.",
+            comment: "Notification Settings Description")
+        static let expenseReminderTimeLabel = NSLocalizedString(
+            "expense_reminder_time_label",
+            value: "Expense Reminder Time",
+            comment: "Expense Reminder Time Label")
+        static let goalAlertTimeLabel = NSLocalizedString(
+            "goal_alert_time_label",
+            value: "Goal Alert Time",
+            comment: "Goal Alert Time Label")
+    }
+
+    struct Notifications {
+        static let expenseReminderTitle = NSLocalizedString(
+            "expense_reminder_title",
+            value: "Expense Reminder",
+            comment: "Expense Reminder Title")
+        static let expenseReminderBody = NSLocalizedString(
+            "expense_reminder_body",
+            value: "Don't forget to log your expenses today!",
+            comment: "Expense Reminder Body")
+        static let goalAlertTitle = NSLocalizedString(
+            "goal_alert_title",
+            value: "Goal Reminder",
+            comment: "Goal Alert Title")
+        static let goalAlertBody = NSLocalizedString(
+            "goal_alert_body",
+            value: "Check your goals and track your progress!",
+            comment: "Goal Alert Body")
     }
     
     struct DashboardTab {
@@ -296,6 +331,14 @@ struct Strings {
     
     
     struct Profile {
+        static let expenseReminderPickerTitle = NSLocalizedString(
+            "expense_reminder_picker_title",
+            value: "Select Expense Reminder Time",
+            comment: "Select Expense Reminder Time Title")
+        static let goalAlertPickerTitle = NSLocalizedString(
+            "goal_alert_picker_title",
+            value: "Select Goal Alert Time",
+            comment: "Select Goal Alert Time Title")
         static let personalInformationTitle = NSLocalizedString(
             "personal_information_title",
             value: "Personal Information",
@@ -490,6 +533,11 @@ struct Strings {
             "no_button",
             value: "No",
             comment: "No Button")
+        
+        static let saveButton = NSLocalizedString(
+            "save_button",
+            value: "Save",
+            comment: "Save Button")
     }
     
     struct Camera {

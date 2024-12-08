@@ -485,6 +485,54 @@
         }
       }
     },
+    "expense_reminder_body" : {
+      "comment" : "Expense Reminder Body",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Don't forget to log your expenses today!"
+          }
+        }
+      }
+    },
+    "expense_reminder_picker_title" : {
+      "comment" : "Select Expense Reminder Time Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select Expense Reminder Time"
+          }
+        }
+      }
+    },
+    "expense_reminder_time_label" : {
+      "comment" : "Expense Reminder Time Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense Reminder Time"
+          }
+        }
+      }
+    },
+    "expense_reminder_title" : {
+      "comment" : "Expense Reminder Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense Reminder"
+          }
+        }
+      }
+    },
     "expense_reminders_label" : {
       "comment" : "Expense Reminders Label",
       "extractionState" : "extracted_with_value",
@@ -661,6 +709,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "General"
+          }
+        }
+      }
+    },
+    "goal_alert_body" : {
+      "comment" : "Goal Alert Body",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check your goals and track your progress!"
+          }
+        }
+      }
+    },
+    "goal_alert_picker_title" : {
+      "comment" : "Select Goal Alert Time Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select Goal Alert Time"
+          }
+        }
+      }
+    },
+    "goal_alert_time_label" : {
+      "comment" : "Goal Alert Time Label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goal Alert Time"
+          }
+        }
+      }
+    },
+    "goal_alert_title" : {
+      "comment" : "Goal Alert Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goal Reminder"
           }
         }
       }
@@ -959,6 +1055,33 @@
         }
       }
     },
+    "Notice" : {
+
+    },
+    "notification_settings_description" : {
+      "comment" : "Notification Settings Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Choose the times to receive alerts for expenses and goals."
+          }
+        }
+      }
+    },
+    "notification_settings_title" : {
+      "comment" : "Notification Settings Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Notification Settings"
+          }
+        }
+      }
+    },
     "notifications_title" : {
       "comment" : "Notifications Title",
       "extractionState" : "extracted_with_value",
@@ -1220,6 +1343,18 @@
         }
       }
     },
+    "save_button" : {
+      "comment" : "Save Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Save"
+          }
+        }
+      }
+    },
     "savely_app_title" : {
       "comment" : "Savely App Title",
       "extractionState" : "extracted_with_value",
@@ -1339,6 +1474,9 @@
           }
         }
       }
+    },
+    "Select Time" : {
+
     },
     "select_tab_placeholder" : {
       "comment" : "Select Tab Placeholder",

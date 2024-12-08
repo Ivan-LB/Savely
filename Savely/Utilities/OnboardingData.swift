@@ -7,8 +7,10 @@
 
 import Foundation
 
+import Foundation
+
 struct OnboardingData {
-    static let steps = [
+    static let steps: [OnboardingStepModel] = [
         OnboardingStepModel(
             image: "dollarsign.circle",
             title: Strings.Onboarding.setGoalsTitle,
@@ -28,6 +30,11 @@ struct OnboardingData {
             image: "lightbulb",
             title: Strings.Onboarding.receiveTipsTitle,
             description: Strings.Onboarding.receiveTipsLabel
+        ),
+        OnboardingStepModel(
+            image: "bell",
+            title: Strings.Onboarding.notificationSettingsTitle,
+            description: Strings.Onboarding.notificationSettingsDescription
         )
     ]
 }
