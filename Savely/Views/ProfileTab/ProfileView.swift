@@ -34,14 +34,13 @@ struct ProfileView: View {
                                     .padding()
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.green)
-                                    .foregroundColor(.white)
+                                    .background(Color("secondaryGreen"))
+                                    .foregroundStyle(.white)
                                     .cornerRadius(10)
                             }
                         }
                         .padding()
                     }
-                    .padding(.horizontal)
 
                     // Settings Card
                     CardView {
@@ -62,7 +61,9 @@ struct ProfileView: View {
                             Text(Strings.Profile.appPreferencesTitle)
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            Toggle(Strings.Profile.darkModeLabel, isOn: $viewModel.darkMode)
+                            Toggle(isOn: $viewModel.darkMode) {
+                                Text(Strings.Profile.darkModeLabel)
+                            }
                         }
                         .padding(.horizontal)
 
@@ -74,7 +75,6 @@ struct ProfileView: View {
                                 .font(.title3)
                                 .fontWeight(.bold)
                             Button(action: {
-                                // Change password
                                 Task {
                                     try AuthenticationManager.shared.signOut()
                                 }
@@ -83,12 +83,11 @@ struct ProfileView: View {
                                     .padding()
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.green)
-                                    .foregroundColor(.white)
+                                    .background(Color("secondaryGreen"))
+                                    .foregroundStyle(.white)
                                     .cornerRadius(10)
                             }
                             Button(action: {
-                                // Change password
                                 Task {
                                     try AuthenticationManager.shared.signOut()
                                 }
@@ -97,17 +96,15 @@ struct ProfileView: View {
                                     .padding()
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.red)
-                                    .foregroundColor(.white)
+                                    .background(Color("primaryRed"))
+                                    .foregroundStyle(.white)
                                     .cornerRadius(10)
                             }
                         }
                         .padding(.horizontal)
                         .padding(.bottom)
                     }
-                    .padding(.horizontal)
 
-                    // Achievements Card with NavigationLink
                     CardView {
                         VStack(alignment: .leading, spacing: 15) {
                             Text(Strings.Profile.achievementsTitle)
@@ -118,10 +115,10 @@ struct ProfileView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "star.fill")
-                                        .foregroundColor(.yellow)
+                                        .foregroundStyle(Color("primaryYellow"))
                                     Text(Strings.Profile.viewAchievements)
                                         .fontWeight(.bold)
-                                        .foregroundColor(.green)
+                                        .foregroundStyle(.green)
                                 }
                                 .padding()
                                 .frame(maxWidth: .infinity)
@@ -131,8 +128,7 @@ struct ProfileView: View {
                         }
                         .padding()
                     }
-                    .padding(.horizontal)
-                    
+
                     CardView {
                         VStack(alignment: .leading, spacing: 15) {
                             Text(Strings.Profile.previousTipsTitle)
@@ -143,10 +139,10 @@ struct ProfileView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "lightbulb.fill")
-                                        .foregroundColor(.yellow)
+                                        .foregroundStyle(Color("primaryYellow"))
                                     Text(Strings.Profile.seePreviousTipsLabel)
                                         .fontWeight(.bold)
-                                        .foregroundColor(.green)
+                                        .foregroundStyle(.green)
                                 }
                                 .padding()
                                 .frame(maxWidth: .infinity)
@@ -156,15 +152,13 @@ struct ProfileView: View {
                         }
                         .padding()
                     }
-                    .padding(.horizontal)
                 }
                 .padding(.vertical)
             }
-            .background(Color(UIColor.systemGray6))
+            .background(Color("backgroundColor"))
         }
     }
 }
-
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {

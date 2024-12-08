@@ -17,7 +17,7 @@ struct SplashScreenView: View {
                 ContentView()
             } else {
                 ZStack {
-                    Color("PrimaryBlack")
+                    Color("backgroundColor")
                     VStack {
                         Image("AppUtilityIcon")
                             .resizable()
@@ -25,7 +25,7 @@ struct SplashScreenView: View {
                             .frame(width: 200, height: 200)
                             .opacity(isAnimating ? 1.0 : 0.5)
                             .scaleEffect(isAnimating ? 1.2 : 1.0)
-                            .foregroundColor(.green)
+                            .foregroundStyle(Color.primaryGreen)
                             .animation(.easeInOut(duration: 1.5), value: isAnimating)
                             .onAppear {
                                 isAnimating = true
@@ -40,7 +40,7 @@ struct SplashScreenView: View {
                         Text(Strings.SplashScreen.savelyAppTitle)
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundColor(.green)
+                            .foregroundStyle(Color.primaryGreen)
                             .opacity(isAnimating ? 1.0 : 0.5)
                             .scaleEffect(isAnimating ? 1.2 : 1.0)
                             .animation(.easeInOut(duration: 1.5), value: isAnimating)

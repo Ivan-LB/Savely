@@ -36,18 +36,18 @@ struct GoalsView: View {
                     }) {
                         Text(Strings.Buttons.newGoalButton)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.green)
+                            .background(Color("primaryPurple"))
                             .cornerRadius(10)
                     }
                     .disabled(viewModel.modelContext == nil)
                 }
                 .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 2)
+                .background(Color("cardBackgroundColor"))
+                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
+                .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
 
                 // Lista de metas
@@ -55,7 +55,7 @@ struct GoalsView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         HStack {
                             Image(systemName: "target")
-                                .foregroundColor(goal.color)
+                                .foregroundStyle(goal.color)
                             Text(goal.name)
                                 .font(.title3)
                                 .fontWeight(.bold)
@@ -64,7 +64,7 @@ struct GoalsView: View {
                                 viewModel.setFavorite(goal: goal)
                             }) {
                                 Image(systemName: goal.isFavorite ? "star.fill" : "star")
-                                    .foregroundColor(goal.isFavorite ? .yellow : .gray)
+                                    .foregroundStyle(goal.isFavorite ? .yellow : .gray)
                             }
                         }
                         ProgressView(value: goal.progress)
@@ -82,7 +82,7 @@ struct GoalsView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.white)
+                    .background(Color("cardBackgroundColor"))
                     .cornerRadius(10)
                     .shadow(radius: UIConstants.UIShadow.shadow)
                     .padding(.horizontal)
@@ -90,7 +90,7 @@ struct GoalsView: View {
             }
             .padding(.vertical)
         }
-        .background(Color(UIColor.systemGray6))
+        .background(Color("backgroundColor"))
         .onAppear {
             if viewModel.modelContext == nil {
                 print("Setting modelContext in viewModel")

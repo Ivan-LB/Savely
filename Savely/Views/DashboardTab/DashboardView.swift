@@ -23,7 +23,7 @@ struct DashboardView: View {
                 Text(Strings.DashboardTab.welcomeHeader)
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundStyle(Color.green)
+                    .foregroundStyle(Color.primaryGreen)
                     .padding(.horizontal)
                 
                 // Overview Card
@@ -58,34 +58,41 @@ struct DashboardView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.white)
+                .background(Color("cardBackgroundColor"))
                 .cornerRadius(10)
                 .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
 
                 // Quick Actions
-                HStack() {
+                HStack {
                     QuickActionButton(
-                        iconName: "creditcard.fill",
-                        label: Strings.Buttons.addIncomeButton,
+                        iconName: "plus.circle.fill",
+                        label: Strings.Buttons.newGoalButton,
+                        backgroundColor: Color("primaryPurple"),
                         action: {
-//                            viewModel.showAddIncome()
+//                            viewModel.showAddGoal()
                         }
                     )
+                    
                     Spacer()
+
                     QuickActionButton(
                         iconName: "camera.fill",
                         label: Strings.Buttons.addExpenseButton,
+                        backgroundColor: Color("primaryRed"),
                         action: {
 //                            viewModel.showAddExpense()
                         }
                     )
+                    
                     Spacer()
+                    
                     QuickActionButton(
-                        iconName: "plus.circle.fill",
-                        label: Strings.Buttons.newGoalButton,
+                        iconName: "creditcard.fill",
+                        label: Strings.Buttons.addIncomeButton,
+                        backgroundColor: Color("primaryBlue"),
                         action: {
-//                            viewModel.showAddGoal()
+//                            viewModel.showAddIncome()
                         }
                     )
                 }
@@ -93,11 +100,12 @@ struct DashboardView: View {
 
                 // Tip of the Day Card
                 TipsAndSuggestionsView()
+                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     .padding(.horizontal)
             }
             .padding(.vertical)
         }
-        .background(Color(UIColor.systemGray6))
+        .background(Color("backgroundColor"))
 //        .sheet(isPresented: $viewModel.showingAddGoalModal) {
 //            AddGoalView()
 //                .environmentObject(viewModel.goalsViewModel)
@@ -112,12 +120,3 @@ struct DashboardView: View {
 //        }
     }
 }
-
-//struct DashboardContainerView: View {
-//    @Environment(\.modelContext) private var modelContext
-//    
-//    var body: some View {
-//        DashboardView()
-//            .environmentObject(DashboardViewModel(modelContext: modelContext))
-//    }
-//}

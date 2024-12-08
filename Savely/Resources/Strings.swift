@@ -76,6 +76,10 @@ struct Strings {
     }
     
     struct Achievements {
+        static let title = NSLocalizedString(
+            "title",
+            value: "Achievements",
+            comment: "Title for achievements")
         static let firstGoalTitle = NSLocalizedString(
             "first_goal_title",
             value: "First Goal Achieved",
@@ -528,7 +532,7 @@ struct Strings {
             value: "Blue",
             comment: "Blue Color")
         static let yellowColor = NSLocalizedString(
-            "yellowColor",
+            "yellow_Color",
             value: "Yellow",
             comment: "Yellow Color")
         static let redColor = NSLocalizedString(

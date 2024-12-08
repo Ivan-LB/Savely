@@ -19,10 +19,10 @@ struct CardView<Content: View>: View {
         VStack {
             content
         }
-        .background(Color.white)
-        .cornerRadius(10)
+        .background(Color("cardBackgroundColor"))
+        .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
         .shadow(radius: UIConstants.UIShadow.shadow)
-        .padding(.horizontal, 5)
+        .padding(.horizontal)
     }
 }
 

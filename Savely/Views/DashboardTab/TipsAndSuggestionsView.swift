@@ -16,25 +16,27 @@ struct TipsAndSuggestionsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Image(systemName: "lightbulb")
-                    .foregroundColor(.blue)
+                Spacer()
+                Image(systemName: "lightbulb.fill")
+                    .foregroundStyle(Color.primaryYellow)
                 Text(Strings.DashboardTab.tipOfTheDayTitle)
                     .font(.title3)
                     .fontWeight(.bold)
+                Spacer()
             }
             if let tip = viewModel.currentTip {
                 Markdown(tip.content)
                     .font(.body)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             } else {
                 Text(Strings.DashboardTab.loadingTipLabel)
                     .font(.body)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             }
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(Color.green.opacity(0.1))
+        .background(Color("tipOfTheDaryBackgroundColor"))
         .cornerRadius(UIConstants.UICornerRadius.cornerRadiusMedium)
         .shadow(radius: UIConstants.UIShadow.shadow)
         .onAppear {
