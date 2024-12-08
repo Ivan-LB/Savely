@@ -9,13 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct DashboardView: View {
-//    @EnvironmentObject var viewModel: DashboardViewModel
     @Query var goals: [GoalModel]
-    
     var favoriteGoal: GoalModel? {
         return goals.first(where: { $0.isFavorite })
     }
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -23,9 +21,9 @@ struct DashboardView: View {
                 Text(Strings.DashboardTab.welcomeHeader)
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundStyle(Color.primaryGreen)
+                    .foregroundStyle(Color("primaryGreen"))
                     .padding(.horizontal)
-                
+
                 // Overview Card
                 VStack(spacing: 15) {
                     Text(Strings.DashboardTab.savingsSummaryTitle)
@@ -33,17 +31,14 @@ struct DashboardView: View {
                         .fontWeight(.bold)
                     if let goal = favoriteGoal {
                         ZStack {
-                            // Círculo de fondo en gris
                             Circle()
                                 .stroke(Color.gray.opacity(0.3), lineWidth: 8)
                                 .frame(width: 160, height: 160)
-                            // Círculo de progreso en el color de la meta
                             Circle()
                                 .trim(from: 0, to: goal.progress)
                                 .stroke(goal.color, lineWidth: 8)
                                 .frame(width: 160, height: 160)
                                 .rotationEffect(.degrees(-90))
-                            // Texto del porcentaje de progreso
                             Text("\(Int(goal.progress * 100))%")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
@@ -63,41 +58,6 @@ struct DashboardView: View {
                 .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
 
-                // Quick Actions
-                HStack {
-                    QuickActionButton(
-                        iconName: "plus.circle.fill",
-                        label: Strings.Buttons.newGoalButton,
-                        backgroundColor: Color("primaryPurple"),
-                        action: {
-//                            viewModel.showAddGoal()
-                        }
-                    )
-                    
-                    Spacer()
-
-                    QuickActionButton(
-                        iconName: "camera.fill",
-                        label: Strings.Buttons.addExpenseButton,
-                        backgroundColor: Color("primaryRed"),
-                        action: {
-//                            viewModel.showAddExpense()
-                        }
-                    )
-                    
-                    Spacer()
-                    
-                    QuickActionButton(
-                        iconName: "creditcard.fill",
-                        label: Strings.Buttons.addIncomeButton,
-                        backgroundColor: Color("primaryBlue"),
-                        action: {
-//                            viewModel.showAddIncome()
-                        }
-                    )
-                }
-                .padding(.horizontal)
-
                 // Tip of the Day Card
                 TipsAndSuggestionsView()
                     .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
@@ -106,17 +66,11 @@ struct DashboardView: View {
             .padding(.vertical)
         }
         .background(Color("backgroundColor"))
-//        .sheet(isPresented: $viewModel.showingAddGoalModal) {
-//            AddGoalView()
-//                .environmentObject(viewModel.goalsViewModel)
-//        }
-//        .sheet(isPresented: $viewModel.showingAddIncomeModal) {
-//            AddIncomeView()
-//                .environmentObject(viewModel.incomesViewModel)
-//        }
-//        .sheet(isPresented: $viewModel.showingAddExpenseModal) {
-//            AddExpenseView()
-//                .environmentObject(viewModel.expensesViewModel)
-//        }
+    }
+}
+
+struct DashboardView_Previews: PreviewProvider {
+    static var previews: some View {
+        DashboardView()
     }
 }

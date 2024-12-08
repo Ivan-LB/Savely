@@ -14,51 +14,39 @@ class DashboardViewModel: ObservableObject {
     @Published var goalsViewModel: GoalsViewModel
     @Published var incomesViewModel: IncomesTrackerViewModel
     @Published var expensesViewModel: ExpenseTrackerViewModel
-    
+
     // Propiedades para controlar la presentación de sheets
     @Published var showingAddGoalModal: Bool = false
     @Published var showingAddIncomeModal: Bool = false
     @Published var showingAddExpenseModal: Bool = false
+
+    @Published var addGoalSheetHeight: CGFloat = .zero
+    @Published var addIncomeSheetHeight: CGFloat = .zero
+    @Published var addExpenseSheetHeight: CGFloat = .zero
     
-    // Reference al ModelContext
-    var modelContext: ModelContext {
-        didSet {
-            goalsViewModel.modelContext = modelContext
-            incomesViewModel.modelContext = modelContext
-            expensesViewModel.modelContext = modelContext
-        }
-    }
-    
-    init(modelContext: ModelContext) {
+    @Published var modelContext: ModelContext?
+
+    init(modelContext: ModelContext?) {
         self.modelContext = modelContext
-        self.goalsViewModel = GoalsViewModel(modelContext: modelContext)
         self.incomesViewModel = IncomesTrackerViewModel(modelContext: modelContext)
+        self.goalsViewModel = GoalsViewModel(modelContext: modelContext)
         self.expensesViewModel = ExpenseTrackerViewModel(modelContext: modelContext)
     }
-    
-    // Métodos para mostrar las sheets
+
+    func setModelContext(_ context: ModelContext) {
+        modelContext = context
+        incomesViewModel.setModelContext(context)
+    }
+
     func showAddGoal() {
         showingAddGoalModal = true
     }
-    
+
     func showAddIncome() {
         showingAddIncomeModal = true
     }
-    
+
     func showAddExpense() {
         showingAddExpenseModal = true
-    }
-    
-    // Métodos para ocultar las sheets si es necesario
-    func hideAddGoal() {
-        showingAddGoalModal = false
-    }
-    
-    func hideAddIncome() {
-        showingAddIncomeModal = false
-    }
-    
-    func hideAddExpense() {
-        showingAddExpenseModal = false
     }
 }
