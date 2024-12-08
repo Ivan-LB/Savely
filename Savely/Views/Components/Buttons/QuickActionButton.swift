@@ -27,7 +27,7 @@ struct QuickActionButton: View {
                     .foregroundColor(.white)
             }
             .padding()
-            .background(Color.green)
+            .background(Color("primaryGreen"))
             .frame(width: .infinity, height: .infinity)
             .cornerRadius(UIConstants.UICornerRadius.cornerRadiusMedium)
         })

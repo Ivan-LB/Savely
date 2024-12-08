@@ -23,7 +23,7 @@ struct DashboardView: View {
                 Text(Strings.DashboardTab.welcomeHeader)
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundStyle(Color.green)
+                    .foregroundStyle(Color.primaryGreen)
                     .padding(.horizontal)
                 
                 // Overview Card
@@ -58,7 +58,7 @@ struct DashboardView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.white)
+                .background(Color("cardBackgroundColor"))
                 .cornerRadius(10)
                 .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
@@ -93,11 +93,12 @@ struct DashboardView: View {
 
                 // Tip of the Day Card
                 TipsAndSuggestionsView()
+                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     .padding(.horizontal)
             }
             .padding(.vertical)
         }
-        .background(Color(UIColor.systemGray6))
+        .background(Color("GeneralBackground"))
 //        .sheet(isPresented: $viewModel.showingAddGoalModal) {
 //            AddGoalView()
 //                .environmentObject(viewModel.goalsViewModel)

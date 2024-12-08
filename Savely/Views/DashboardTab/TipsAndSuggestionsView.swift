@@ -16,11 +16,13 @@ struct TipsAndSuggestionsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
+                Spacer()
                 Image(systemName: "lightbulb")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.yellow)
                 Text(Strings.DashboardTab.tipOfTheDayTitle)
                     .font(.title3)
                     .fontWeight(.bold)
+                Spacer()
             }
             if let tip = viewModel.currentTip {
                 Markdown(tip.content)
@@ -34,7 +36,7 @@ struct TipsAndSuggestionsView: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(Color.green.opacity(0.1))
+        .background(Color("tipOfTheDaryBackgroundColor"))
         .cornerRadius(UIConstants.UICornerRadius.cornerRadiusMedium)
         .shadow(radius: UIConstants.UIShadow.shadow)
         .onAppear {
