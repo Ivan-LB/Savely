@@ -532,7 +532,7 @@ struct Strings {
             value: "Blue",
             comment: "Blue Color")
         static let yellowColor = NSLocalizedString(
-            "yellowColor",
+            "yellow_Color",
             value: "Yellow",
             comment: "Yellow Color")
         static let redColor = NSLocalizedString(
