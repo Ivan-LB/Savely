@@ -76,6 +76,10 @@ struct Strings {
     }
     
     struct Achievements {
+        static let title = NSLocalizedString(
+            "title",
+            value: "Achievements",
+            comment: "Title for achievements")
         static let firstGoalTitle = NSLocalizedString(
             "first_goal_title",
             value: "First Goal Achieved",

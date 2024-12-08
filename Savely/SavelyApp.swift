@@ -13,10 +13,12 @@ import IQKeyboardManagerSwift
 @main
 struct SavelyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @AppStorage("darkModeEnabled") private var darkModeEnabled = false
     
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
+                .preferredColorScheme(darkModeEnabled ? .dark : .light)
         }
         .modelContainer(for: [TipModel.self, IncomeModel.self, ExpenseModel.self, GoalModel.self])
     }

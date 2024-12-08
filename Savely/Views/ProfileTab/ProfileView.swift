@@ -61,7 +61,9 @@ struct ProfileView: View {
                             Text(Strings.Profile.appPreferencesTitle)
                                 .font(.title3)
                                 .fontWeight(.bold)
-                            Toggle(Strings.Profile.darkModeLabel, isOn: $viewModel.darkMode)
+                            Toggle(isOn: $viewModel.darkMode) {
+                                Text(Strings.Profile.darkModeLabel)
+                            }
                         }
                         .padding(.horizontal)
 

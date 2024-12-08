@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 import Combine
 
 @MainActor
 class ProfileViewModel: ObservableObject {
     @Published var displayName: String = ""
     @Published var email: String = ""
-    @Published var darkMode: Bool = false
+    @AppStorage("darkModeEnabled") var darkMode: Bool = false // Sincronizado automáticamente
     @Published var expenseReminders: Bool = true
     @Published var goalAlerts: Bool = true
 
@@ -30,7 +31,7 @@ class ProfileViewModel: ObservableObject {
             let user = try await UserManager.shared.getUser(userId: uid)
             self.displayName = user.displayName ?? ""
             self.email = user.email ?? ""
-            // Carga otras preferencias si las tienes almacenadas
+            // Puedes cargar otras preferencias aquí si es necesario
         } catch {
             print("Error fetching user data: \(error)")
         }
@@ -41,9 +42,7 @@ class ProfileViewModel: ObservableObject {
             return
         }
         do {
-            // Actualiza la información en Firestore
             try await UserManager.shared.updateUser(userId: uid, displayName: displayName, email: email)
-            // Opcional: Actualiza el correo electrónico en Firebase Auth
             try await AuthenticationManager.shared.updateEmail(email: email)
         } catch {
             print("Error updating user data: \(error)")
@@ -53,7 +52,6 @@ class ProfileViewModel: ObservableObject {
     func signOut() {
         do {
             try AuthenticationManager.shared.signOut()
-            // El AppViewModel manejará el cambio de estado de autenticación
         } catch {
             print("Error signing out: \(error)")
         }
