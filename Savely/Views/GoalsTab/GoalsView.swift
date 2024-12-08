@@ -39,13 +39,13 @@ struct GoalsView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.green)
+                            .background(Color("goalButtonColor"))
                             .cornerRadius(10)
                     }
                     .disabled(viewModel.modelContext == nil)
                 }
                 .padding()
-                .background(Color.white)
+                .background(Color("cardBackgroundColor"))
                 .cornerRadius(10)
                 .shadow(radius: 2)
                 .padding(.horizontal)
@@ -82,7 +82,7 @@ struct GoalsView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.white)
+                    .background(Color("cardBackgroundColor"))
                     .cornerRadius(10)
                     .shadow(radius: UIConstants.UIShadow.shadow)
                     .padding(.horizontal)
@@ -90,7 +90,7 @@ struct GoalsView: View {
             }
             .padding(.vertical)
         }
-        .background(Color(UIColor.systemGray6))
+        .background(Color("backgroundColor"))
         .onAppear {
             if viewModel.modelContext == nil {
                 print("Setting modelContext in viewModel")

@@ -64,28 +64,35 @@ struct DashboardView: View {
                 .padding(.horizontal)
 
                 // Quick Actions
-                HStack() {
+                HStack {
                     QuickActionButton(
-                        iconName: "creditcard.fill",
-                        label: Strings.Buttons.addIncomeButton,
+                        iconName: "plus.circle.fill",
+                        label: Strings.Buttons.newGoalButton,
+                        backgroundColor: Color("goalButtonColor"),
                         action: {
-//                            viewModel.showAddIncome()
+//                            viewModel.showAddGoal()
                         }
                     )
+                    
                     Spacer()
+
                     QuickActionButton(
                         iconName: "camera.fill",
                         label: Strings.Buttons.addExpenseButton,
+                        backgroundColor: Color("expenseButtonColor"),
                         action: {
 //                            viewModel.showAddExpense()
                         }
                     )
+                    
                     Spacer()
+                    
                     QuickActionButton(
-                        iconName: "plus.circle.fill",
-                        label: Strings.Buttons.newGoalButton,
+                        iconName: "creditcard.fill",
+                        label: Strings.Buttons.addIncomeButton,
+                        backgroundColor: Color("incomeButtonColor"),
                         action: {
-//                            viewModel.showAddGoal()
+//                            viewModel.showAddIncome()
                         }
                     )
                 }
@@ -113,12 +120,3 @@ struct DashboardView: View {
 //        }
     }
 }
-
-//struct DashboardContainerView: View {
-//    @Environment(\.modelContext) private var modelContext
-//    
-//    var body: some View {
-//        DashboardView()
-//            .environmentObject(DashboardViewModel(modelContext: modelContext))
-//    }
-//}

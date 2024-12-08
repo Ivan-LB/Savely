@@ -10,6 +10,7 @@ import SwiftUI
 struct QuickActionButton: View {
     var iconName: String
     var label: String
+    var backgroundColor: Color
     let action: () -> Void
 
     var body: some View {
@@ -27,15 +28,15 @@ struct QuickActionButton: View {
                     .foregroundColor(.white)
             }
             .padding()
-            .background(Color("primaryGreen"))
-            .frame(width: .infinity, height: .infinity)
+            .frame(maxWidth: .infinity, minHeight: 50)
+            .background(backgroundColor)
             .cornerRadius(UIConstants.UICornerRadius.cornerRadiusMedium)
         })
     }
 }
 
 #Preview {
-    QuickActionButton(iconName: "camera", label: Strings.Buttons.addExpenseButton, action: {
-        print("Hola")
+    QuickActionButton(iconName: "camera", label: "Add Expense", backgroundColor: Color.red, action: {
+        print("Button pressed")
     })
 }
