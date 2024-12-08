@@ -331,6 +331,14 @@ struct Strings {
     
     
     struct Profile {
+        static let expenseReminderPickerTitle = NSLocalizedString(
+            "expense_reminder_picker_title",
+            value: "Select Expense Reminder Time",
+            comment: "Select Expense Reminder Time Title")
+        static let goalAlertPickerTitle = NSLocalizedString(
+            "goal_alert_picker_title",
+            value: "Select Goal Alert Time",
+            comment: "Select Goal Alert Time Title")
         static let personalInformationTitle = NSLocalizedString(
             "personal_information_title",
             value: "Personal Information",
@@ -525,6 +533,11 @@ struct Strings {
             "no_button",
             value: "No",
             comment: "No Button")
+        
+        static let saveButton = NSLocalizedString(
+            "save_button",
+            value: "Save",
+            comment: "Save Button")
     }
     
     struct Camera {

@@ -10,7 +10,10 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     @EnvironmentObject var appViewModel: AppViewModel
-    
+
+    @State private var expenseReminderSheetHeight: CGFloat = .zero
+    @State private var goalAlertSheetHeight: CGFloat = .zero
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -159,7 +162,52 @@ struct ProfileView: View {
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(title: Text("Notice"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
             }
+            .sheet(isPresented: $viewModel.showExpenseReminderPicker) {
+                NotificationTimePicker(
+                    title: Strings.Profile.expenseReminderPickerTitle,
+                    selectedTime: $viewModel.selectedExpenseReminderTime,
+                    onSave: {_ in 
+                        viewModel.showExpenseReminderPicker = false
+                        viewModel.saveExpenseReminderTime()
+                    }
+                )
+                .overlay {
+                    GeometryReader { geometry in
+                        Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
+                    }
+                }
+                .onPreferenceChange(InnerHeightPreferenceKey.self) { height in
+                    expenseReminderSheetHeight = height
+                }
+                .presentationDetents([.height(expenseReminderSheetHeight)])
+            }
+            .sheet(isPresented: $viewModel.showGoalAlertPicker) {
+                NotificationTimePicker(
+                    title: Strings.Profile.goalAlertPickerTitle,
+                    selectedTime: $viewModel.selectedGoalAlertTime,
+                    onSave: {_ in 
+                        viewModel.showGoalAlertPicker = false
+                        viewModel.saveGoalAlertTime()
+                    }
+                )
+                .overlay {
+                    GeometryReader { geometry in
+                        Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
+                    }
+                }
+                .onPreferenceChange(InnerHeightPreferenceKey.self) { height in
+                    goalAlertSheetHeight = height
+                }
+                .presentationDetents([.height(goalAlertSheetHeight)])
+            }
         }
+    }
+}
+
+struct InnerHeightPreferenceKey: PreferenceKey {
+    static let defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
 

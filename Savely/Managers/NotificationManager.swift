@@ -11,22 +11,29 @@ import UserNotifications
 class NotificationManager {
     static let shared = NotificationManager()
     
-    func scheduleNotification(title: String, body: String, date: Date) {
+    func scheduleNotification(title: String, body: String, identifier: String, date: Date) -> String? {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         content.sound = .default
 
-        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        let triggerDate = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
 
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 print("Error scheduling notification: \(error)")
             }
         }
+
+        return identifier
+    }
+
+    func cancelNotification(with identifier: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+        print("Notification with identifier \(identifier) cancelled.")
     }
     
     func requestAuthorization() {

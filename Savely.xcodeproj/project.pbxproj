@@ -85,6 +85,7 @@
 		1DE4B4F12CEC5174006C8F65 /* UserManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4F02CEC5174006C8F65 /* UserManagerExtension.swift */; };
 		1DE9FE0E2D063AF20069AA64 /* NotificationSettingsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE0D2D063AF20069AA64 /* NotificationSettingsStepView.swift */; };
 		1DE9FE102D063BC80069AA64 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE0F2D063BC80069AA64 /* NotificationManager.swift */; };
+		1DE9FE122D0650150069AA64 /* NotificationTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE112D0650150069AA64 /* NotificationTimePicker.swift */; };
 		82D33CE22CEC66D200BE005E /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE12CEC66D200BE005E /* TextRecognizer.swift */; };
 		82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */; };
 /* End PBXBuildFile section */
@@ -186,6 +187,7 @@
 		1DE4B4F02CEC5174006C8F65 /* UserManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerExtension.swift; sourceTree = "<group>"; };
 		1DE9FE0D2D063AF20069AA64 /* NotificationSettingsStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsStepView.swift; sourceTree = "<group>"; };
 		1DE9FE0F2D063BC80069AA64 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		1DE9FE112D0650150069AA64 /* NotificationTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimePicker.swift; sourceTree = "<group>"; };
 		82D33CE12CEC66D200BE005E /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConfirmationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -419,6 +421,7 @@
 		1DC014042CDE00F7009A46E1 /* ProfileTab */ = {
 			isa = PBXGroup;
 			children = (
+				1DE9FE112D0650150069AA64 /* NotificationTimePicker.swift */,
 				1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */,
 				1DAF5D1F2CEE9767001C0AF3 /* TipHistoryView.swift */,
 				1DC2583B2CC081D90002DDE3 /* ProfileView.swift */,
@@ -780,6 +783,7 @@
 				1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */,
 				1DAF5D312CEEE743001C0AF3 /* AddExpenseView.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
+				1DE9FE122D0650150069AA64 /* NotificationTimePicker.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,
 				1DAF5D1B2CEDC118001C0AF3 /* GoalsViewModel.swift in Sources */,
 				1DC014112CE5AFAE009A46E1 /* OnboardingStepModel.swift in Sources */,

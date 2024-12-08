@@ -497,6 +497,18 @@
         }
       }
     },
+    "expense_reminder_picker_title" : {
+      "comment" : "Select Expense Reminder Time Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select Expense Reminder Time"
+          }
+        }
+      }
+    },
     "expense_reminder_time_label" : {
       "comment" : "Expense Reminder Time Label",
       "extractionState" : "extracted_with_value",
@@ -713,6 +725,18 @@
         }
       }
     },
+    "goal_alert_picker_title" : {
+      "comment" : "Select Goal Alert Time Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select Goal Alert Time"
+          }
+        }
+      }
+    },
     "goal_alert_time_label" : {
       "comment" : "Goal Alert Time Label",
       "extractionState" : "extracted_with_value",
@@ -732,7 +756,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Goal Alert"
+            "value" : "Goal Reminder"
           }
         }
       }
@@ -1319,6 +1343,18 @@
         }
       }
     },
+    "save_button" : {
+      "comment" : "Save Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Save"
+          }
+        }
+      }
+    },
     "savely_app_title" : {
       "comment" : "Savely App Title",
       "extractionState" : "extracted_with_value",
@@ -1438,6 +1474,9 @@
           }
         }
       }
+    },
+    "Select Time" : {
+
     },
     "select_tab_placeholder" : {
       "comment" : "Select Tab Placeholder",

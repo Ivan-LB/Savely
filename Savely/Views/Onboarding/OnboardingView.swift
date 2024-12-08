@@ -72,16 +72,23 @@ struct OnboardingView: View {
     }
 
     private func saveNotificationTimes() {
-        NotificationManager.shared.scheduleNotification(
+        if let expenseReminderID = NotificationManager.shared.scheduleNotification(
             title: Strings.Notifications.expenseReminderTitle,
             body: Strings.Notifications.expenseReminderBody,
+            identifier: "expenseReminder",
             date: expenseReminderTime
-        )
-        NotificationManager.shared.scheduleNotification(
+        ) {
+            print("Expense Reminder Scheduled: \(expenseReminderID)")
+        }
+
+        if let goalAlertID = NotificationManager.shared.scheduleNotification(
             title: Strings.Notifications.goalAlertTitle,
             body: Strings.Notifications.goalAlertBody,
+            identifier: "goalAlert",
             date: goalAlertTime
-        )
+        ) {
+            print("Goal Alert Scheduled: \(goalAlertID)")
+        }
     }
 }
 
