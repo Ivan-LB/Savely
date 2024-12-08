@@ -31,7 +31,7 @@ struct ExpenseTrackerView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.green)
+                    .background(Color("primaryBlue")) // Color para el botón
                     .cornerRadius(10)
                     .padding(.horizontal)
                 }
@@ -55,12 +55,12 @@ struct ExpenseTrackerView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.blue)
+                            .background(Color("primaryRed")) // Color para el botón de agregar gasto
                             .cornerRadius(10)
                     }
                 }
                 .padding()
-                .background(Color.white)
+                .background(Color("cardBackgroundColor")) // Fondo de tarjeta
                 .cornerRadius(10)
                 .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
@@ -91,32 +91,33 @@ struct ExpenseTrackerView: View {
                                 // Acción para editar gasto (opcional)
                             }) {
                                 Image(systemName: "pencil")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(Color("primaryBlue")) // Color para botón de editar
                             }
                             .padding(.leading, 10)
                             Button(action: {
                                 viewModel.deleteExpense(expense)
                             }) {
                                 Image(systemName: "trash")
-                                    .foregroundColor(.red)
+                                    .foregroundColor(Color("primaryRed")) // Color para botón de eliminar
                             }
                             .padding(.leading, 10)
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal)
-                        .border(Color.gray.opacity(0.2), width: 1)
+                        .background(Color("cardBackgroundColor")) // Fondo de cada tarjeta de gasto
+                        .cornerRadius(10)
+                        .shadow(radius: 4)
                     }
                 }
                 .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.white)
+                .background(Color("cardBackgroundColor")) // Fondo de sección
                 .cornerRadius(10)
-                .shadow(radius: UIConstants.UIShadow.shadow)
+                .shadow(radius: 4)
                 .padding(.horizontal)
             }
             .padding(.vertical)
         }
-        .background(Color(UIColor.systemGray6))
+        .background(Color("backgroundColor")) // Fondo principal
         .onAppear {
             if viewModel.modelContext == nil {
                 viewModel.setModelContext(modelContext)

@@ -39,7 +39,7 @@ struct GoalsView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color("goalButtonColor"))
+                            .background(Color("secondaryGreen"))
                             .cornerRadius(10)
                     }
                     .disabled(viewModel.modelContext == nil)

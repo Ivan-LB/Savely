@@ -68,7 +68,7 @@ struct DashboardView: View {
                     QuickActionButton(
                         iconName: "plus.circle.fill",
                         label: Strings.Buttons.newGoalButton,
-                        backgroundColor: Color("goalButtonColor"),
+                        backgroundColor: Color("secondaryGreen"),
                         action: {
 //                            viewModel.showAddGoal()
                         }
@@ -79,7 +79,7 @@ struct DashboardView: View {
                     QuickActionButton(
                         iconName: "camera.fill",
                         label: Strings.Buttons.addExpenseButton,
-                        backgroundColor: Color("expenseButtonColor"),
+                        backgroundColor: Color("primaryRed"),
                         action: {
 //                            viewModel.showAddExpense()
                         }
@@ -90,7 +90,7 @@ struct DashboardView: View {
                     QuickActionButton(
                         iconName: "creditcard.fill",
                         label: Strings.Buttons.addIncomeButton,
-                        backgroundColor: Color("incomeButtonColor"),
+                        backgroundColor: Color("primaryBlue"),
                         action: {
 //                            viewModel.showAddIncome()
                         }
@@ -105,7 +105,7 @@ struct DashboardView: View {
             }
             .padding(.vertical)
         }
-        .background(Color("GeneralBackground"))
+        .background(Color("backgroundColor"))
 //        .sheet(isPresented: $viewModel.showingAddGoalModal) {
 //            AddGoalView()
 //                .environmentObject(viewModel.goalsViewModel)
