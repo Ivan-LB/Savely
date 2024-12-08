@@ -15,6 +15,7 @@ struct IncomesTrackerView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
+                // Formulario para agregar ingresos
                 VStack(spacing: 15) {
                     TextField(Strings.ExpenseTrackerTab.descriptionPlaceholderLabel, text: $viewModel.incomeDescription)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -26,19 +27,20 @@ struct IncomesTrackerView: View {
                     }) {
                         Text(Strings.IncomesTrackerView.addIncomeLabel)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.blue)
+                            .background(Color("primaryBlue"))
                             .cornerRadius(10)
                     }
                 }
                 .padding()
-                .background(Color.white)
-                .cornerRadius(10)
+                .background(Color("cardBackgroundColor"))
+                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                 .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
 
+                // Lista de ingresos recientes
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Text(Strings.IncomesTrackerView.recentIncomesTitle)
@@ -54,7 +56,7 @@ struct IncomesTrackerView: View {
                                     .fontWeight(.bold)
                                 Text(DateFormatter.localizedString(from: income.date, dateStyle: .short, timeStyle: .none))
                                     .font(.subheadline)
-                                    .foregroundColor(.gray)
+                                    .foregroundStyle(.gray)
                             }
                             Spacer()
                             Text(String(format: "$%.2f", income.amount))
@@ -64,32 +66,33 @@ struct IncomesTrackerView: View {
                                 // Acción para editar ingreso (opcional)
                             }) {
                                 Image(systemName: "pencil")
-                                    .foregroundColor(.blue)
+                                    .foregroundStyle(Color("secondaryBlue"))
                             }
                             .padding(.leading, 10)
                             Button(action: {
                                 viewModel.deleteIncome(income)
                             }) {
                                 Image(systemName: "trash")
-                                    .foregroundColor(.red)
+                                    .foregroundStyle(Color("primaryRed"))
                             }
                             .padding(.leading, 10)
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal, 10)
-                        .border(Color.gray.opacity(0.2), width: 1)
+                        .background(Color("cardBackgroundColor"))
+                        .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
+                        .shadow(radius: UIConstants.UIShadow.shadow)
                     }
                 }
                 .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.white)
-                .cornerRadius(UIConstants.UICornerRadius.cornerRadiusMedium)
-                .shadow(radius: UIConstants.UIShadow.shadow)
+                .background(Color("listBackgroundColor"))
+                .cornerRadius(10)
+                .shadow(radius: 4)
                 .padding(.horizontal)
             }
             .padding(.vertical)
         }
-        .background(Color(UIColor.systemGray6))
+        .background(Color("backgroundColor"))
         .onAppear {
             if viewModel.modelContext == nil {
                 viewModel.setModelContext(modelContext)

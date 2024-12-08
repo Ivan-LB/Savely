@@ -17,8 +17,8 @@ struct TipsAndSuggestionsView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Spacer()
-                Image(systemName: "lightbulb")
-                    .foregroundColor(.yellow)
+                Image(systemName: "lightbulb.fill")
+                    .foregroundStyle(Color.primaryYellow)
                 Text(Strings.DashboardTab.tipOfTheDayTitle)
                     .font(.title3)
                     .fontWeight(.bold)
@@ -27,11 +27,11 @@ struct TipsAndSuggestionsView: View {
             if let tip = viewModel.currentTip {
                 Markdown(tip.content)
                     .font(.body)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             } else {
                 Text(Strings.DashboardTab.loadingTipLabel)
                     .font(.body)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             }
         }
         .padding()

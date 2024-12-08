@@ -19,7 +19,7 @@ struct PrimaryButton: View {
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.green)
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .fontWeight(.bold)
                 .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
         }

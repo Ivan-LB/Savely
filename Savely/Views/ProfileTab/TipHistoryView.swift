@@ -17,11 +17,11 @@ struct TipHistoryView: View {
             VStack(alignment: .leading, spacing: 5) {
                 Markdown(tip.content)
                     .font(.body)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
                     .lineLimit(nil)
                 Text(tip.date, style: .date)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
             }
             .padding(.vertical, 5)
         }

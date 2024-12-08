@@ -68,7 +68,7 @@ struct DashboardView: View {
                     QuickActionButton(
                         iconName: "plus.circle.fill",
                         label: Strings.Buttons.newGoalButton,
-                        backgroundColor: Color("secondaryGreen"),
+                        backgroundColor: Color("primaryPurple"),
                         action: {
 //                            viewModel.showAddGoal()
                         }

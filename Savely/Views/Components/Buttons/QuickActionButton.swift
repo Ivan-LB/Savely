@@ -22,10 +22,10 @@ struct QuickActionButton: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                 Text(label)
                     .font(.footnote)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
             }
             .padding()
             .frame(maxWidth: .infinity, minHeight: 50)

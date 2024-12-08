@@ -35,7 +35,7 @@ struct ProfileView: View {
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
                                     .background(Color.green)
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(.white)
                                     .cornerRadius(10)
                             }
                         }
@@ -84,7 +84,7 @@ struct ProfileView: View {
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
                                     .background(Color.green)
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(.white)
                                     .cornerRadius(10)
                             }
                             Button(action: {
@@ -98,7 +98,7 @@ struct ProfileView: View {
                                     .fontWeight(.bold)
                                     .frame(maxWidth: .infinity)
                                     .background(Color.red)
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(.white)
                                     .cornerRadius(10)
                             }
                         }
@@ -118,10 +118,10 @@ struct ProfileView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "star.fill")
-                                        .foregroundColor(.yellow)
+                                        .foregroundStyle(.yellow)
                                     Text(Strings.Profile.viewAchievements)
                                         .fontWeight(.bold)
-                                        .foregroundColor(.green)
+                                        .foregroundStyle(.green)
                                 }
                                 .padding()
                                 .frame(maxWidth: .infinity)
@@ -143,10 +143,10 @@ struct ProfileView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "lightbulb.fill")
-                                        .foregroundColor(.yellow)
+                                        .foregroundStyle(.yellow)
                                     Text(Strings.Profile.seePreviousTipsLabel)
                                         .fontWeight(.bold)
-                                        .foregroundColor(.green)
+                                        .foregroundStyle(.green)
                                 }
                                 .padding()
                                 .frame(maxWidth: .infinity)

@@ -22,16 +22,16 @@ struct ExpenseTrackerView: View {
                 }) {
                     HStack {
                         Image(systemName: "camera")
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .font(.title)
                         Text(Strings.Buttons.scanReceiptButton)
                             .font(.headline)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color("primaryBlue")) // Color para el botón
+                    .background(Color("primaryYellow"))
                     .cornerRadius(10)
                     .padding(.horizontal)
                 }
@@ -52,16 +52,16 @@ struct ExpenseTrackerView: View {
                     }) {
                         Text(Strings.Buttons.addExpenseButton)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color("primaryRed")) // Color para el botón de agregar gasto
+                            .background(Color("primaryRed"))
                             .cornerRadius(10)
                     }
                 }
                 .padding()
-                .background(Color("cardBackgroundColor")) // Fondo de tarjeta
-                .cornerRadius(10)
+                .background(Color("cardBackgroundColor"))
+                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                 .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
 
@@ -81,7 +81,7 @@ struct ExpenseTrackerView: View {
                                     .fontWeight(.bold)
                                 Text(DateFormatter.localizedString(from: expense.date, dateStyle: .short, timeStyle: .none))
                                     .font(.subheadline)
-                                    .foregroundColor(.gray)
+                                    .foregroundStyle(.gray)
                             }
                             Spacer()
                             Text(String(format: "$%.2f", expense.amount))
@@ -91,33 +91,33 @@ struct ExpenseTrackerView: View {
                                 // Acción para editar gasto (opcional)
                             }) {
                                 Image(systemName: "pencil")
-                                    .foregroundColor(Color("primaryBlue")) // Color para botón de editar
+                                    .foregroundStyle(Color("secondaryBlue"))
                             }
                             .padding(.leading, 10)
                             Button(action: {
                                 viewModel.deleteExpense(expense)
                             }) {
                                 Image(systemName: "trash")
-                                    .foregroundColor(Color("primaryRed")) // Color para botón de eliminar
+                                    .foregroundStyle(Color("primaryRed"))
                             }
                             .padding(.leading, 10)
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal)
-                        .background(Color("cardBackgroundColor")) // Fondo de cada tarjeta de gasto
-                        .cornerRadius(10)
-                        .shadow(radius: 4)
+                        .background(Color("cardBackgroundColor"))
+                        .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
+                        .shadow(radius: UIConstants.UIShadow.shadow)
                     }
                 }
                 .padding()
-                .background(Color("cardBackgroundColor")) // Fondo de sección
+                .background(Color("listBackgroundColor"))
                 .cornerRadius(10)
                 .shadow(radius: 4)
                 .padding(.horizontal)
             }
             .padding(.vertical)
         }
-        .background(Color("backgroundColor")) // Fondo principal
+        .background(Color("backgroundColor"))
         .onAppear {
             if viewModel.modelContext == nil {
                 viewModel.setModelContext(modelContext)
