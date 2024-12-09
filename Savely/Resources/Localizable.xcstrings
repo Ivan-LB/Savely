@@ -395,6 +395,18 @@
         }
       }
     },
+    "download_weekly_report_button" : {
+      "comment" : "Download Weekly Report Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Download Weekly Report"
+          }
+        }
+      }
+    },
     "email_placeholder_title" : {
       "comment" : "Email Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -1894,6 +1906,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gastos Semanales"
+          }
+        }
+      }
+    },
+    "weekly_report_title" : {
+      "comment" : "Weekly Report Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Weekly Report"
           }
         }
       }

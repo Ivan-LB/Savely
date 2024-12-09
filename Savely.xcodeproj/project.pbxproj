@@ -82,6 +82,7 @@
 		1DE9FE102D063BC80069AA64 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE0F2D063BC80069AA64 /* NotificationManager.swift */; };
 		1DE9FE122D0650150069AA64 /* NotificationTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE112D0650150069AA64 /* NotificationTimePicker.swift */; };
 		1DE9FE152D0664A60069AA64 /* ReportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE142D0664A60069AA64 /* ReportsViewModel.swift */; };
+		1DE9FE172D066EE20069AA64 /* ReportsPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */; };
 		82D33CE22CEC66D200BE005E /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE12CEC66D200BE005E /* TextRecognizer.swift */; };
 		82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */; };
 /* End PBXBuildFile section */
@@ -180,6 +181,7 @@
 		1DE9FE0F2D063BC80069AA64 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		1DE9FE112D0650150069AA64 /* NotificationTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimePicker.swift; sourceTree = "<group>"; };
 		1DE9FE142D0664A60069AA64 /* ReportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewModel.swift; sourceTree = "<group>"; };
+		1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsPDFGenerator.swift; sourceTree = "<group>"; };
 		82D33CE12CEC66D200BE005E /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConfirmationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,6 +265,7 @@
 		1D88B7D62CC9FA28009B6538 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */,
 				82D33CE12CEC66D200BE005E /* TextRecognizer.swift */,
 				1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */,
 				1DE4B4CF2CE5F2D6006C8F65 /* OnboardingData.swift */,
@@ -756,6 +759,7 @@
 				1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */,
 				82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */,
 				1DE4B4DC2CEBF812006C8F65 /* AuthDataResultModel.swift in Sources */,
+				1DE9FE172D066EE20069AA64 /* ReportsPDFGenerator.swift in Sources */,
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
