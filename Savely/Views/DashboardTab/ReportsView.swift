@@ -98,6 +98,7 @@ struct ReportsView: View {
         .shadow(radius: UIConstants.UIShadow.shadow)
         .onAppear {
             viewModel.setModelContext(modelContext)
+            viewModel.fetchReportData()
         }
     }
 }

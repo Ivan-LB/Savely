@@ -352,6 +352,11 @@ struct Strings {
             value: "Email",
             comment: "Email Placeholder Label")
         
+        static let weeklyReportTitle = NSLocalizedString(
+            "weekly_report_title",
+            value: "Weekly Report",
+            comment: "Weekly Report Title")
+        
         static let notificationTitle = NSLocalizedString(
             "notifications_title",
             value: "Notifications",
@@ -493,6 +498,11 @@ struct Strings {
             "add_new_goal_button",
             value: "Add New Goal",
             comment: "Add New Goal Button")
+        
+        static let downloadWeeklyReportButton = NSLocalizedString(
+            "download_weekly_report_button",
+            value: "Download Weekly Report",
+            comment: "Download Weekly Report Button")
         
         static let updateInformationButton = NSLocalizedString(
             "update_information_button",

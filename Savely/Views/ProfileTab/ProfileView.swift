@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     @EnvironmentObject var appViewModel: AppViewModel
+    @Environment(\.modelContext) private var modelContext
 
     @State private var expenseReminderSheetHeight: CGFloat = .zero
     @State private var goalAlertSheetHeight: CGFloat = .zero
@@ -39,7 +40,7 @@ struct ProfileView: View {
                                     .frame(maxWidth: .infinity)
                                     .background(Color("secondaryGreen"))
                                     .foregroundStyle(.white)
-                                    .cornerRadius(10)
+                                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                             }
                         }
                         .padding()
@@ -101,7 +102,7 @@ struct ProfileView: View {
                                     .frame(maxWidth: .infinity)
                                     .background(Color("primaryRed"))
                                     .foregroundStyle(.white)
-                                    .cornerRadius(10)
+                                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                             }
                         }
                         .padding(.horizontal)
@@ -126,7 +127,7 @@ struct ProfileView: View {
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .background(Color.green.opacity(0.1))
-                                .cornerRadius(10)
+                                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                             }
                         }
                         .padding()
@@ -150,7 +151,34 @@ struct ProfileView: View {
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .background(Color.green.opacity(0.1))
-                                .cornerRadius(10)
+                                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
+                            }
+                        }
+                        .padding()
+                    }
+                    
+                    CardView {
+                        VStack(alignment: .leading, spacing: 15) {
+                            Text(Strings.Profile.weeklyReportTitle)
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Button(action: {
+                                viewModel.generateWeeklyReportPDF()
+                            }) {
+                                HStack {
+                                    Image(systemName: "doc.fill")
+                                        .foregroundStyle(Color("primaryYellow"))
+                                    Text(Strings.Buttons.downloadWeeklyReportButton)
+                                        .bold()
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color("primaryBlue"))
+                                .foregroundColor(.white)
+                                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
+                            }
+                            .alert(isPresented: $viewModel.showAlert) {
+                                Alert(title: Text("Notice"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
                             }
                         }
                         .padding()
@@ -199,6 +227,9 @@ struct ProfileView: View {
                     goalAlertSheetHeight = height
                 }
                 .presentationDetents([.height(goalAlertSheetHeight)])
+            }
+            .onAppear {
+                viewModel.setModelContext(modelContext)
             }
         }
     }
