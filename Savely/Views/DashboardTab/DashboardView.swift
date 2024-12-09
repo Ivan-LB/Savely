@@ -57,10 +57,11 @@ struct DashboardView: View {
                 .cornerRadius(10)
                 .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
-
-                // Tip of the Day Card
+                
+                ReportsView()
+                    .padding(.horizontal)
+                
                 TipsAndSuggestionsView()
-                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     .padding(.horizontal)
             }
             .padding(.vertical)

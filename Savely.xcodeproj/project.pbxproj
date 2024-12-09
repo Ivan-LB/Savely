@@ -81,6 +81,7 @@
 		1DE9FE0E2D063AF20069AA64 /* NotificationSettingsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE0D2D063AF20069AA64 /* NotificationSettingsStepView.swift */; };
 		1DE9FE102D063BC80069AA64 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE0F2D063BC80069AA64 /* NotificationManager.swift */; };
 		1DE9FE122D0650150069AA64 /* NotificationTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE112D0650150069AA64 /* NotificationTimePicker.swift */; };
+		1DE9FE152D0664A60069AA64 /* ReportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE142D0664A60069AA64 /* ReportsViewModel.swift */; };
 		82D33CE22CEC66D200BE005E /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE12CEC66D200BE005E /* TextRecognizer.swift */; };
 		82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */; };
 /* End PBXBuildFile section */
@@ -178,6 +179,7 @@
 		1DE9FE0D2D063AF20069AA64 /* NotificationSettingsStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsStepView.swift; sourceTree = "<group>"; };
 		1DE9FE0F2D063BC80069AA64 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		1DE9FE112D0650150069AA64 /* NotificationTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimePicker.swift; sourceTree = "<group>"; };
+		1DE9FE142D0664A60069AA64 /* ReportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewModel.swift; sourceTree = "<group>"; };
 		82D33CE12CEC66D200BE005E /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConfirmationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +216,7 @@
 		1D3669842CC62EDD00E84FF9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1DE9FE132D06649C0069AA64 /* Dashboard */,
 				1DAF5D1C2CEE9680001C0AF3 /* Tips */,
 				1DAF5D192CEDC103001C0AF3 /* GoalsTab */,
 				1DAF5D142CEDB690001C0AF3 /* Camera */,
@@ -550,6 +553,14 @@
 			path = ProfileTab;
 			sourceTree = "<group>";
 		};
+		1DE9FE132D06649C0069AA64 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				1DE9FE142D0664A60069AA64 /* ReportsViewModel.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -753,6 +764,7 @@
 				1DAF5D1B2CEDC118001C0AF3 /* GoalsViewModel.swift in Sources */,
 				1DC014112CE5AFAE009A46E1 /* OnboardingStepModel.swift in Sources */,
 				1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */,
+				1DE9FE152D0664A60069AA64 /* ReportsViewModel.swift in Sources */,
 				1DC0140F2CE5AF81009A46E1 /* OnboardingStepView.swift in Sources */,
 				1DAF5D262CEE9C13001C0AF3 /* OpenAIClient.swift in Sources */,
 				1DC2584D2CC629890002DDE3 /* MonthlySavingModel.swift in Sources */,
