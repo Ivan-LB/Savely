@@ -107,12 +107,6 @@
         }
       }
     },
-    "Agregar Gasto" : {
-
-    },
-    "Agregar Ingreso" : {
-
-    },
     "already_have_and_account_label" : {
       "comment" : "Already have an account Label",
       "extractionState" : "extracted_with_value",
@@ -130,6 +124,9 @@
           }
         }
       }
+    },
+    "Amount" : {
+
     },
     "amount_placeholder_label" : {
       "comment" : "Amount Placeholder Label",
@@ -184,12 +181,6 @@
           }
         }
       }
-    },
-    "Cancelar" : {
-
-    },
-    "Cantidad" : {
-
     },
     "Cargando..." : {
 
@@ -383,7 +374,7 @@
         }
       }
     },
-    "Descripción" : {
+    "Description" : {
 
     },
     "description_placeholder_label" : {
@@ -403,12 +394,6 @@
           }
         }
       }
-    },
-    "Detalles del Gasto" : {
-
-    },
-    "Detalles del Ingreso" : {
-
     },
     "email_placeholder_title" : {
       "comment" : "Email Placeholder Label",
@@ -452,6 +437,9 @@
         }
       }
     },
+    "End Date" : {
+
+    },
     "enter_email_and_password_label" : {
       "comment" : "Enter your email and password to sign in Label",
       "extractionState" : "extracted_with_value",
@@ -465,6 +453,9 @@
       }
     },
     "Error" : {
+
+    },
+    "Expense Distribution" : {
 
     },
     "expense_distribution_label" : {
@@ -604,6 +595,9 @@
           }
         }
       }
+    },
+    "Fetch Report" : {
+
     },
     "filter_button" : {
       "comment" : "Filter Button",
@@ -869,6 +863,9 @@
         }
       }
     },
+    "Income Distribution" : {
+
+    },
     "incomes_tab_string" : {
       "comment" : "Incomes Tab String",
       "extractionState" : "extracted_with_value",
@@ -1006,6 +1003,9 @@
           }
         }
       }
+    },
+    "No data available for the selected dates." : {
+
     },
     "no_button" : {
       "comment" : "No Button",
@@ -1568,6 +1568,9 @@
         }
       }
     },
+    "Start Date" : {
+
+    },
     "start_button" : {
       "comment" : "Start Button",
       "extractionState" : "extracted_with_value",
@@ -1849,6 +1852,9 @@
           }
         }
       }
+    },
+    "Weekly Report" : {
+
     },
     "weekly_budget_description" : {
       "comment" : "Description for achieving the weekly budget goal",
