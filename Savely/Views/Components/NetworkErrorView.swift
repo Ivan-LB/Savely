@@ -17,12 +17,12 @@ struct NetworkErrorView: View {
                 .frame(width: 80, height: 80)
                 .foregroundColor(.yellow)
 
-            Text("Limited Connectivity")
+            Text(Strings.NetworkError.limitedConnectionHeader)
                 .font(.title)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
 
-            Text("Your device is offline. Features like Tips may not work, but the app is fully functional offline.")
+            Text(Strings.NetworkError.deviceNotConnectedToInternetBody)
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.gray)
@@ -31,13 +31,13 @@ struct NetworkErrorView: View {
             Button(action: {
                 isPresented = false
             }) {
-                Text("Continue")
+                Text(Strings.Buttons.continueButton)
                     .frame(maxWidth: .infinity)
                     .padding()
                     .fontWeight(.bold)
                     .background(Color("primaryGreen"))
                     .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
             }
             .padding(.horizontal)
         }

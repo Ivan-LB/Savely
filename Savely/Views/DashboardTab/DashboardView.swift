@@ -54,7 +54,7 @@ struct DashboardView: View {
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(Color("cardBackgroundColor"))
-                .cornerRadius(10)
+                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                 .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
                 

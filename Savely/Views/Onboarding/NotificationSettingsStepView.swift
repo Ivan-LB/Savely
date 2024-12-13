@@ -36,8 +36,8 @@ struct NotificationSettingsStepView: View {
             }
             .padding()
             .background(Color("cardBackgroundColor"))
-            .cornerRadius(10)
-            .shadow(radius: 4)
+            .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
+            .shadow(radius: UIConstants.UIShadow.shadow)
             .padding(.horizontal)
 
             Spacer()
