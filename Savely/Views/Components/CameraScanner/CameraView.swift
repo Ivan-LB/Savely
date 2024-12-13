@@ -60,7 +60,7 @@ struct CameraView: View {
                 )
                 .frame(width: 300, height: 400)
                 .background(Color.white)
-                .cornerRadius(20)
+                .cornerRadius(UIConstants.UICornerRadius.cornerRadiusMedium)
                 .shadow(radius: UIConstants.UIShadow.shadowBig)
             }
         }

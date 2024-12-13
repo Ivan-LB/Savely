@@ -17,7 +17,7 @@ struct OnboardingView: View {
     var body: some View {
         VStack {
             TabView(selection: $currentStep) {
-                ForEach(0..<onboardingSteps.count, id: \ .self) { index in
+                ForEach(0..<onboardingSteps.count, id: \.self) { index in
                     onboardingStepView(for: index)
                         .tag(index)
                 }
@@ -59,14 +59,21 @@ struct OnboardingView: View {
         if currentStep < onboardingSteps.count - 1 {
             currentStep += 1
         } else {
-            saveNotificationTimes()
-            Task {
-                do {
-                    try await UserManager.shared.updateOnboardingStatus(isComplete: true)
-                    appViewModel.isOnboardingComplete = true
-                } catch {
-                    print("Error updating onboarding status: \(error)")
-                }
+            completeOnboarding()
+        }
+    }
+
+    private func completeOnboarding() {
+        saveNotificationTimes()
+        
+        Task {
+            do {
+                try await UserManager.shared.updateOnboardingStatus(isComplete: true)
+                appViewModel.isOnboardingComplete = true
+                UserDefaults.standard.set(true, forKey: "isOnboardingComplete")
+                UserDefaults.standard.synchronize()
+            } catch {
+                print("Error updating onboarding status: \(error)")
             }
         }
     }

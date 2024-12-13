@@ -15,10 +15,11 @@ import UserNotifications
 struct SavelyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @AppStorage("darkModeEnabled") private var darkModeEnabled = false
-    
+
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
+                .environmentObject(AppViewModel())
                 .preferredColorScheme(darkModeEnabled ? .dark : .light)
                 .onAppear {
                     NotificationManager.shared.requestAuthorization()
@@ -34,7 +35,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         FirebaseApp.configure()
         IQKeyboardManager.shared.resignOnTouchOutside = true
         UNUserNotificationCenter.current().delegate = self
-        
         return true
     }
 

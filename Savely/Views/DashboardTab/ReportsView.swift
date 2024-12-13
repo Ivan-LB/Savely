@@ -44,7 +44,7 @@ struct ReportsView: View {
                     .padding()
                     .background(Color("primaryBlue"))
                     .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     Spacer()
                 }
             }

@@ -32,7 +32,7 @@ struct ExpenseTrackerView: View {
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color("primaryYellow"))
-                    .cornerRadius(10)
+                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     .padding(.horizontal)
                 }
                 .sheet(isPresented: $showCameraView) {
@@ -56,7 +56,7 @@ struct ExpenseTrackerView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(Color("primaryRed"))
-                            .cornerRadius(10)
+                            .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     }
                 }
                 .padding()
@@ -111,8 +111,8 @@ struct ExpenseTrackerView: View {
                 }
                 .padding()
                 .background(Color("listBackgroundColor"))
-                .cornerRadius(10)
-                .shadow(radius: 4)
+                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
+                .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
             }
             .padding(.vertical)

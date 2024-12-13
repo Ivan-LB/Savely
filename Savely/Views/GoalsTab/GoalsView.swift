@@ -40,7 +40,7 @@ struct GoalsView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(Color("primaryPurple"))
-                            .cornerRadius(10)
+                            .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     }
                     .disabled(viewModel.modelContext == nil)
                 }
@@ -83,7 +83,7 @@ struct GoalsView: View {
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color("cardBackgroundColor"))
-                    .cornerRadius(10)
+                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     .shadow(radius: UIConstants.UIShadow.shadow)
                     .padding(.horizontal)
                 }

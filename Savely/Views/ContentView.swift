@@ -11,23 +11,28 @@ struct ContentView: View {
     @StateObject private var appViewModel = AppViewModel()
 
     var body: some View {
-        switch appViewModel.appState {
-        case .loading:
-            LoadingView()
-                .transition(.opacity)
-                .environmentObject(appViewModel)
-        case .loggedOut:
-            LoginView()
-                .transition(.slide)
-                .environmentObject(appViewModel)
-        case .onboarding:
-            OnboardingView()
-                .transition(.slide)
-                .environmentObject(appViewModel)
-        case .main:
-            MainNavigationView()
-                .transition(.slide)
-                .environmentObject(appViewModel)
+        ZStack {
+            switch appViewModel.appState {
+            case .loading:
+                LoadingView()
+                    .transition(.opacity)
+                    .environmentObject(appViewModel)
+            case .loggedOut:
+                LoginView()
+                    .transition(.slide)
+                    .environmentObject(appViewModel)
+            case .onboarding:
+                OnboardingView()
+                    .transition(.slide)
+                    .environmentObject(appViewModel)
+            case .main:
+                MainNavigationView()
+                    .transition(.slide)
+                    .environmentObject(appViewModel)
+            }
+        }
+        .sheet(isPresented: $appViewModel.showNetworkWarning) {
+            NetworkErrorView(isPresented: $appViewModel.showNetworkWarning)
         }
     }
 }

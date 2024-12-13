@@ -31,7 +31,7 @@ struct IncomesTrackerView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(Color("primaryBlue"))
-                            .cornerRadius(10)
+                            .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     }
                 }
                 .padding()
@@ -86,8 +86,8 @@ struct IncomesTrackerView: View {
                 }
                 .padding()
                 .background(Color("listBackgroundColor"))
-                .cornerRadius(10)
-                .shadow(radius: 4)
+                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
+                .shadow(radius: UIConstants.UIShadow.shadow)
                 .padding(.horizontal)
             }
             .padding(.vertical)
