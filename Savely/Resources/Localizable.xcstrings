@@ -266,8 +266,17 @@
         }
       }
     },
-    "Continue" : {
-
+    "continue_button" : {
+      "comment" : "Continue Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Continue"
+          }
+        }
+      }
     },
     "create_account_button" : {
       "comment" : "Create Account Button",
@@ -394,6 +403,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descripción"
+          }
+        }
+      }
+    },
+    "device_not_connected_to_internet_body" : {
+      "comment" : "Device not connected to internet Body",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your device is offline. Features like Tips may not work, but the app is fully functional offline."
           }
         }
       }
@@ -911,8 +932,17 @@
         }
       }
     },
-    "Limited Connectivity" : {
-
+    "limited_connection_header" : {
+      "comment" : "Limited Connection Header",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Limited Connectivity"
+          }
+        }
+      }
     },
     "loading_tip_label" : {
       "comment" : "Loading Tip Label",
@@ -1999,9 +2029,6 @@
           }
         }
       }
-    },
-    "Your device is offline. Features like Tips may not work, but the app is fully functional offline." : {
-
     }
   },
   "version" : "1.0"
