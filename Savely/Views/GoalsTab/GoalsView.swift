@@ -23,7 +23,7 @@ struct GoalsView: View {
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     // Selección de color
-                    Picker("Color", selection: $viewModel.selectedColor) {
+                    Picker(Strings.GoalsView.colorLabel, selection: $viewModel.selectedColor) {
                         Text(Strings.GoalsView.greenColor).tag(GoalColor.green)
                         Text(Strings.GoalsView.blueColor).tag(GoalColor.blue)
                         Text(Strings.GoalsView.yellowColor).tag(GoalColor.yellow)
@@ -98,7 +98,7 @@ struct GoalsView: View {
             }
         }
         .alert(isPresented: $viewModel.showError) {
-            Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text(Strings.Errors.errorLabel), message: Text(viewModel.errorMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
         }
     }
 }

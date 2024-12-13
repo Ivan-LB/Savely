@@ -21,13 +21,13 @@ struct ReportsView: View {
         VStack(alignment: .leading, spacing: 20) {
             // Date Picker
             VStack(alignment: .leading, spacing: 15) {
-                Text("Weekly Report")
+                Text(Strings.Profile.weeklyReportTitle)
                     .font(.title)
                     .fontWeight(.bold)
 
                 VStack {
-                    DatePicker("Start Date", selection: $viewModel.startDate, displayedComponents: .date)
-                    DatePicker("End Date", selection: $viewModel.endDate, displayedComponents: .date)
+                    DatePicker(Strings.ReportsView.startDateLabel, selection: $viewModel.startDate, displayedComponents: .date)
+                    DatePicker(Strings.ReportsView.endDateLabel, selection: $viewModel.endDate, displayedComponents: .date)
                 }
                 
                 HStack {
@@ -37,7 +37,7 @@ struct ReportsView: View {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle())
                         } else {
-                            Text("Fetch Report")
+                            Text(Strings.Buttons.fetchReportButton)
                                 .fontWeight(.bold)
                         }
                     }
@@ -52,14 +52,14 @@ struct ReportsView: View {
             // Income Chart
             if !viewModel.weeklyIncomes.isEmpty {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Income Distribution")
+                    Text(Strings.ReportsView.incomeDistributionLabel)
                         .font(.title3)
                         .fontWeight(.bold)
 
                     Chart(viewModel.weeklyIncomes) { income in
                         BarMark(
-                            x: .value("Description", income.incomeDescription),
-                            y: .value("Amount", income.amount)
+                            x: .value(Strings.ExpenseTrackerTab.descriptionPlaceholderLabel, income.incomeDescription),
+                            y: .value(Strings.ExpenseTrackerTab.amountPlaceholderLabel, income.amount)
                         )
                     }
                     .frame(height: 200)
@@ -69,24 +69,24 @@ struct ReportsView: View {
             // Expense Chart
             if !viewModel.weeklyExpenses.isEmpty {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Expense Distribution")
+                    Text(Strings.ReportsView.expenseDistributionLabel)
                         .font(.title3)
                         .fontWeight(.bold)
 
                     Chart(viewModel.weeklyExpenses) { expense in
                         SectorMark(
-                            angle: .value("Amount", expense.amount),
+                            angle: .value(Strings.ExpenseTrackerTab.amountPlaceholderLabel, expense.amount),
                             innerRadius: .ratio(0.5),
                             outerRadius: .ratio(1.0)
                         )
-                        .foregroundStyle(by: .value("Description", expense.expenseDescription))
+                        .foregroundStyle(by: .value(Strings.ExpenseTrackerTab.descriptionPlaceholderLabel, expense.expenseDescription))
                     }
                     .frame(height: 200)
                 }
             }
 
             if viewModel.weeklyIncomes.isEmpty && viewModel.weeklyExpenses.isEmpty {
-                Text("No data available for the selected dates.")
+                Text(Strings.ReportsView.noDataLabel)
                     .font(.callout)
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .center)

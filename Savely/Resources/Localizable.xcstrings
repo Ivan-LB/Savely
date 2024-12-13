@@ -1,5 +1,6 @@
 {
   "sourceLanguage" : "en",
+  "version" : "1.0",
   "strings" : {
     "" : {
 
@@ -12,6 +13,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "$%1$.2f / $%2$.2f"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "$%1$.2f / $%2$.2f"
           }
         }
@@ -39,16 +46,16 @@
       "comment" : "Add Expense Button",
       "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Add Expense"
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Add Expense"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agregar Gasto"
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agregar Gasto"
           }
         }
       }
@@ -57,16 +64,16 @@
       "comment" : "Add Income Button",
       "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Add Income"
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Add Income"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agregar Ingreso"
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agregar Ingreso"
           }
         }
       }
@@ -75,16 +82,16 @@
       "comment" : "Add Income Label",
       "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Add Income"
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Add Income"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agregar Ingreso"
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agregar Ingreso"
           }
         }
       }
@@ -93,28 +100,28 @@
       "comment" : "Add New Goal Button",
       "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Add New Goal"
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Add New Goal"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agregar Nueva Meta"
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agregar Nueva Meta"
           }
         }
       }
     },
     "already_have_and_account_label" : {
-      "comment" : "Already have an account Label",
-      "extractionState" : "extracted_with_value",
+      "comment": "Already have an account Label",
+      "extractionState": "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Don't have an account?"
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Don't have an account?"
           }
         },
         "es-419" : {
@@ -125,21 +132,18 @@
         }
       }
     },
-    "Amount" : {
-
-    },
     "amount_placeholder_label" : {
-      "comment" : "Amount Placeholder Label",
-      "extractionState" : "extracted_with_value",
+      "comment": "Amount Placeholder Label",
+      "extractionState": "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Amount"
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Amount"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
+        "es-419": {
+          "stringUnit": {
             "state" : "translated",
             "value" : "Cantidad"
           }
@@ -147,58 +151,55 @@
       }
     },
     "app_preferences_title" : {
-      "comment" : "App Preferences Title",
-      "extractionState" : "extracted_with_value",
+      "comment": "App Preferences Title",
+      "extractionState": "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "App Preferences"
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "App Preferences"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preferencias de la Aplicación"
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferencias de la Aplicación"
           }
         }
       }
     },
     "blue_color" : {
-      "comment" : "Blue Color",
-      "extractionState" : "extracted_with_value",
+      "comment": "Blue Color",
+      "extractionState": "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Blue"
+        "en":{
+          "stringUnit": {
+            "state":"new",
+            "value":"Blue"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Azul"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Azul"
           }
         }
       }
     },
-    "Cargando..." : {
-
-    },
     "category_placeholder" : {
       "comment" : "Category Placeholder",
-      "extractionState" : "extracted_with_value",
+      "extractionState": "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Category"
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Category"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoria"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Categoria"
           }
         }
       }
@@ -207,37 +208,52 @@
       "comment" : "Change Password Button",
       "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Change Password"
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Change Password"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cambiar Contraseña"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Cambiar Contraseña"
           }
         }
       }
     },
-    "Color" : {
-
+    "color_label" : {
+      "comment": "Color Label",
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state":"new",
+            "value":"Color"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Color"
+          }
+        }
+      }
     },
     "confirm_password_string" : {
       "comment" : "Confirm Password String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Confirm Password"
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Confirm Password"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Confirmar Contraseña"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Confirmar Contraseña"
           }
         }
       }
@@ -245,1791 +261,2360 @@
     "consistent_savings_description" : {
       "comment" : "Description for consistent monthly savings",
       "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have maintained consistent monthly savings for three months."
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have maintained consistent monthly savings for three months."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ha mantenido ahorros mensuales constantes durante tres meses."
           }
         }
       }
     },
     "consistent_savings_title" : {
       "comment" : "Title for consistent monthly savings",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Consistent Monthly Savings"
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Consistent Monthly Savings"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ahorros Mensuales Constantes"
           }
         }
       }
     },
     "continue_button" : {
-      "comment" : "Continue Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Continue"
+      "comment":"Continue Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Continue"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Continuar"
           }
         }
       }
     },
     "create_account_button" : {
-      "comment" : "Create Account Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Create Account"
+      "comment":"Create Account Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Create Account"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crear una cuenta"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Crear una cuenta"
           }
         }
       }
     },
     "create_account_title" : {
-      "comment" : "Create Account Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Create your account!"
+      "comment":"Create Account Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Create your account!"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Crea tú cuenta!"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"¡Crea tú cuenta!"
           }
         }
       }
     },
     "creating_account_label" : {
-      "comment" : "Creating Account Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "By creating an account, I accept Savely's"
+      "comment":"Creating Account Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"By creating an account, I accept Savely's"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Al crear una cuenta, acepto los"
           }
         }
       }
     },
     "dark_mode_label" : {
-      "comment" : "Dark Mode Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Dark Mode"
+      "comment":"Dark Mode Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Dark Mode"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modo Oscuro"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Modo Oscuro"
           }
         }
       }
     },
     "dashboard_tab_string" : {
-      "comment" : "Dashboard Tab String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Dashboard"
+      "comment":"Dashboard Tab String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Dashboard"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Panel"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Panel"
           }
         }
       }
     },
     "debt_paid_off_description" : {
-      "comment" : "Description for paying off debt",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have paid off a major debt."
+      "comment":"Description for paying off debt",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have paid off a major debt."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ha pagado una deuda importante."
           }
         }
       }
     },
     "debt_paid_off_title" : {
-      "comment" : "Title for paying off debt",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Debt Paid Off"
+      "comment":"Title for paying off debt",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Debt Paid Off"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Deuda Saldada"
           }
         }
       }
     },
-    "Description" : {
-
-    },
     "description_placeholder_label" : {
-      "comment" : "Description Placeholder Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Description"
+      "comment":"Description Placeholder Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Description"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Descripción"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Descripción"
           }
         }
       }
     },
     "device_not_connected_to_internet_body" : {
-      "comment" : "Device not connected to internet Body",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Your device is offline. Features like Tips may not work, but the app is fully functional offline."
+      "comment":"Device not connected to internet Body",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Your device is offline. Features like Tips may not work, but the app is fully functional offline."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Su dispositivo está desconectado. Funciones como Consejos pueden no funcionar, pero la aplicación sigue siendo completamente funcional sin conexión."
           }
         }
       }
     },
     "download_weekly_report_button" : {
-      "comment" : "Download Weekly Report Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Download Weekly Report"
+      "comment":"Download Weekly Report Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Download Weekly Report"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Descargar Reporte Semanal"
           }
         }
       }
     },
     "email_placeholder_title" : {
-      "comment" : "Email Placeholder Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Email"
+      "comment":"Email Placeholder Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Email"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Correo Electrónico"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Correo Electrónico"
           }
         }
       }
     },
     "emergency_fund_description" : {
-      "comment" : "Description for establishing an emergency fund",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have created an emergency fund worth three months of expenses."
+      "comment":"Description for establishing an emergency fund",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have created an emergency fund worth three months of expenses."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ha creado un fondo de emergencia equivalente a tres meses de gastos."
           }
         }
       }
     },
     "emergency_fund_title" : {
-      "comment" : "Title for establishing an emergency fund",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Emergency Fund Established"
-          }
-        }
-      }
-    },
-    "End Date" : {
-
-    },
-    "enter_email_and_password_label" : {
-      "comment" : "Enter your email and password to sign in Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Enter your email and password to sign in."
-          }
-        }
-      }
-    },
-    "Error" : {
-
-    },
-    "Expense Distribution" : {
-
-    },
-    "expense_distribution_label" : {
-      "comment" : "Expense Distribution Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Expense Distribution"
+      "comment":"Title for establishing an emergency fund",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Emergency Fund Established"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Distribución de Gastos"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Fondo de Emergencia Establecido"
+          }
+        }
+      }
+    },
+    "end_date_label" : {
+      "comment":"End Date Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"End Date"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Fecha de Finalización"
+          }
+        }
+      }
+    },
+    "enter_email_and_password_label" : {
+      "comment":"Enter your email and password to sign in Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Enter your email and password to sign in."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ingrese su correo electrónico y contraseña para iniciar sesión."
+          }
+        }
+      }
+    },
+    "error_label" : {
+      "comment":"Error Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Error"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Error"
+          }
+        }
+      }
+    },
+    "expense_distribution_label" : {
+      "comment":"Expense Distribution Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Expense Distribution"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Distribución de Gastos"
           }
         }
       }
     },
     "expense_reminder_body" : {
-      "comment" : "Expense Reminder Body",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Don't forget to log your expenses today!"
+      "comment":"Expense Reminder Body",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Don't forget to log your expenses today!"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"¡No olvide registrar sus gastos hoy!"
           }
         }
       }
     },
     "expense_reminder_picker_title" : {
-      "comment" : "Select Expense Reminder Time Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Select Expense Reminder Time"
+      "comment":"Select Expense Reminder Time Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Select Expense Reminder Time"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Seleccione la Hora del Recordatorio de Gastos"
           }
         }
       }
     },
     "expense_reminder_time_label" : {
-      "comment" : "Expense Reminder Time Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Expense Reminder Time"
+      "comment":"Expense Reminder Time Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Expense Reminder Time"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Hora de Recordatorio de Gastos"
           }
         }
       }
     },
     "expense_reminder_title" : {
-      "comment" : "Expense Reminder Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Expense Reminder"
+      "comment":"Expense Reminder Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Expense Reminder"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Recordatorio de Gastos"
           }
         }
       }
     },
     "expense_reminders_label" : {
-      "comment" : "Expense Reminders Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Expense Reminders"
+      "comment":"Expense Reminders Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Expense Reminders"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recordatorios de Gastos"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Recordatorios de Gastos"
           }
         }
       }
     },
     "expenses_tab_string" : {
-      "comment" : "Expenses Tab String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Expenses"
+      "comment":"Expenses Tab String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Expenses"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gastos"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Gastos"
           }
         }
       }
     },
     "export_report_button" : {
-      "comment" : "Export Report Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Export Report"
+      "comment":"Export Report Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Export Report"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exportar Reporte"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Exportar Reporte"
           }
         }
       }
     },
     "favorites_placeholder" : {
-      "comment" : "Favorites Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Favorites"
+      "comment":"Favorites Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Favorites"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Favoritos"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Favoritos"
           }
         }
       }
     },
-    "Fetch Report" : {
-
-    },
-    "filter_button" : {
-      "comment" : "Filter Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Filter"
+    "fetch_report_button" : {
+      "comment":"Fetch Report Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Fetch Report"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filtrar"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Obtener Reporte"
+          }
+        }
+      }
+    },
+    "filter_button" : {
+      "comment":"Filter Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Filter"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Filtrar"
           }
         }
       }
     },
     "first_goal_description" : {
-      "comment" : "Description for achieving the first goal",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have reached your first savings goal."
+      "comment":"Description for achieving the first goal",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have reached your first savings goal."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ha alcanzado su primera meta de ahorros."
           }
         }
       }
     },
     "first_goal_title" : {
-      "comment" : "Title for achieving the first goal",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "First Goal Achieved"
+      "comment":"Title for achieving the first goal",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"First Goal Achieved"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Primera Meta Alcanzada"
           }
         }
       }
     },
     "first_investment_description" : {
-      "comment" : "Description for making the first investment",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have made your first investment towards your financial future."
+      "comment":"Description for making the first investment",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have made your first investment towards your financial future."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ha realizado su primera inversión para su futuro financiero."
           }
         }
       }
     },
     "first_investment_title" : {
-      "comment" : "Title for making the first investment",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "First Investment Made"
+      "comment":"Title for making the first investment",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"First Investment Made"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Primera Inversión Realizada"
           }
         }
       }
     },
     "forgot_password_label" : {
-      "comment" : "Forgot Password Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Forgot password?"
+      "comment":"Forgot Password Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Forgot password?"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"¿Olvidó su contraseña?"
           }
         }
       }
     },
     "full_name_placeholder" : {
-      "comment" : "Full Name Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Full Name"
+      "comment":"Full Name Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Full Name"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Nombre Completo"
           }
         }
       }
     },
     "general_placeholder" : {
-      "comment" : "General Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "General"
+      "comment":"General Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"General"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "General"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"General"
           }
         }
       }
     },
     "goal_alert_body" : {
-      "comment" : "Goal Alert Body",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Check your goals and track your progress!"
+      "comment":"Goal Alert Body",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Check your goals and track your progress!"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"¡Revise sus metas y siga su progreso!"
           }
         }
       }
     },
     "goal_alert_picker_title" : {
-      "comment" : "Select Goal Alert Time Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Select Goal Alert Time"
+      "comment":"Select Goal Alert Time Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Select Goal Alert Time"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Seleccione la Hora de Alerta de Metas"
           }
         }
       }
     },
     "goal_alert_time_label" : {
-      "comment" : "Goal Alert Time Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal Alert Time"
+      "comment":"Goal Alert Time Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Goal Alert Time"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Hora de Alerta de Metas"
           }
         }
       }
     },
     "goal_alert_title" : {
-      "comment" : "Goal Alert Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal Reminder"
+      "comment":"Goal Alert Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Goal Reminder"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Recordatorio de Metas"
           }
         }
       }
     },
     "goal_alerts_label" : {
-      "comment" : "Goal Alerts Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal Alerts"
+      "comment":"Goal Alerts Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Goal Alerts"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alertas de Metas"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Alertas de Metas"
           }
         }
       }
     },
     "goal_amount_placeholder" : {
-      "comment" : "Goal Amount Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal amount"
+      "comment":"Goal Amount Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Goal amount"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Cantidad de la meta"
           }
         }
       }
     },
     "goal_details_headline" : {
-      "comment" : "Goal Details Headline",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal details"
+      "comment":"Goal Details Headline",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Goal details"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Detalles de la meta"
           }
         }
       }
     },
     "goal_name_placeholder" : {
-      "comment" : "Goal Name Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal name"
+      "comment":"Goal Name Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Goal name"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Nombre de la meta"
           }
         }
       }
     },
     "goals_tab_string" : {
-      "comment" : "Goals Tab String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goals"
+      "comment":"Goals Tab String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Goals"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Metas"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Metas"
           }
         }
       }
     },
     "green_color" : {
-      "comment" : "Green Color",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Green"
+      "comment":"Green Color",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Green"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Verde"
           }
         }
       }
     },
     "high_savings_rate_description" : {
-      "comment" : "Description for achieving a high savings rate",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have saved more than 20% of your income this month."
+      "comment":"Description for achieving a high savings rate",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have saved more than 20% of your income this month."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ha ahorrado más del 20% de sus ingresos este mes."
           }
         }
       }
     },
     "high_savings_rate_title" : {
-      "comment" : "Title for achieving a high savings rate",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "High Savings Rate"
+      "comment":"Title for achieving a high savings rate",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"High Savings Rate"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Alta Tasa de Ahorro"
           }
         }
       }
     },
-    "Income Distribution" : {
-
-    },
-    "incomes_tab_string" : {
-      "comment" : "Incomes Tab String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Incomes"
+    "income_distribution_label" : {
+      "comment":"Income Distribution Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Income Distribution"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingresos"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Distribución de Ingresos"
+          }
+        }
+      }
+    },
+    "incomes_tab_string" : {
+      "comment":"Incomes Tab String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Incomes"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ingresos"
           }
         }
       }
     },
     "is_it_rigth_label" : {
-      "comment" : "Is It Ritght Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Is it right?"
+      "comment":"Is It Right Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Is it right?"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"¿Es correcto?"
           }
         }
       }
     },
     "limited_connection_header" : {
-      "comment" : "Limited Connection Header",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Limited Connectivity"
+      "comment":"Limited Connection Header",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Limited Connectivity"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Conectividad Limitada"
           }
         }
       }
     },
     "loading_tip_label" : {
-      "comment" : "Loading Tip Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Loading tip..."
+      "comment":"Loading Tip Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Loading tip..."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Cargando consejo..."
           }
         }
       }
     },
     "log_in_string" : {
-      "comment" : "Log In String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Log in to your existant account"
+      "comment":"Log In String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Log in to your existant account"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Inicie sesión en su cuenta existente"
           }
         }
       }
     },
     "monthly_goal_label" : {
-      "comment" : "Monthly Goal Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Monthly Goal"
+      "comment":"Monthly Goal Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Monthly Goal"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meta Mensual"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Meta Mensual"
           }
         }
       }
     },
     "monthly_summary_placeholder" : {
-      "comment" : "Monthly Summary Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Monthly Summary"
+      "comment":"Monthly Summary Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Monthly Summary"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resumen Mensual"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Resumen Mensual"
           }
         }
       }
     },
     "months_placeholder" : {
-      "comment" : "Months Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Months"
+      "comment":"Months Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Months"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meses"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Meses"
           }
         }
       }
     },
     "name_placeholder_label" : {
-      "comment" : "Name Placeholder Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Name"
+      "comment":"Name Placeholder Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Name"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Nombre"
           }
         }
       }
     },
     "next_button" : {
-      "comment" : "Next Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Next"
+      "comment":"Next Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Next"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Siguiente"
           }
         }
       }
     },
-    "No data available for the selected dates." : {
-
-    },
     "no_button" : {
-      "comment" : "No Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "No"
+      "comment":"No Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"No"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"No"
+          }
+        }
+      }
+    },
+    "no_data_label" : {
+      "comment":"No Data Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"No data available for the selected dates."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"No hay datos disponibles para las fechas seleccionadas."
           }
         }
       }
     },
     "no_goal_recently" : {
-      "comment" : "No Goal Recently Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "No goals recently"
+      "comment":"No Goal Recently Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"No goals recently"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Sin metas recientemente"
           }
         }
       }
     },
     "no_unnecessary_spending_description" : {
-      "comment" : "Description for avoiding unnecessary spending",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have avoided unnecessary spending for a whole month."
+      "comment":"Description for avoiding unnecessary spending",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have avoided unnecessary spending for a whole month."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ha evitado gastos innecesarios durante un mes entero."
           }
         }
       }
     },
     "no_unnecessary_spending_title" : {
-      "comment" : "Title for avoiding unnecessary spending",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "No Unnecessary Spending"
+      "comment":"Title for avoiding unnecessary spending",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"No Unnecessary Spending"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Sin Gastos Innecesarios"
           }
         }
       }
     },
-    "Notice" : {
-
+    "notice_label" : {
+      "comment":"Notice Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Notice"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Aviso"
+          }
+        }
+      }
     },
     "notification_settings_description" : {
-      "comment" : "Notification Settings Description",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Choose the times to receive alerts for expenses and goals."
+      "comment":"Notification Settings Description",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Choose the times to receive alerts for expenses and goals."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Elija los horarios para recibir alertas sobre gastos y metas."
           }
         }
       }
     },
     "notification_settings_title" : {
-      "comment" : "Notification Settings Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Notification Settings"
+      "comment":"Notification Settings Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Notification Settings"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Configuración de Notificaciones"
           }
         }
       }
     },
     "notifications_title" : {
-      "comment" : "Notifications Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Notifications"
+      "comment":"Notifications Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Notifications"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notificaciones"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Notificaciones"
           }
         }
       }
     },
-    "OK" : {
-
+    "ok_button" : {
+      "comment":"OK Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"OK"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"OK"
+          }
+        }
+      }
     },
     "other_way_to_connect_label" : {
-      "comment" : "Other Way to Connect",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Or connect using"
+      "comment":"Other Way to Connect",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Or connect using"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"O conéctese usando"
           }
         }
       }
     },
     "password_string" : {
-      "comment" : "Password String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Password"
+      "comment":"Password String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Password"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Contraseña"
           }
         }
       }
     },
     "passwords_dont_match" : {
-      "comment" : "Passwords Doesnt Match",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Passwords doesn't match"
+      "comment":"Passwords Doesnt Match",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Passwords doesn't match"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Las contraseñas no coinciden"
           }
         }
       }
     },
     "personal_information_title" : {
-      "comment" : "Personal Information Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Personal Information"
+      "comment":"Personal Information Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Personal Information"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Información Personal"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Información Personal"
           }
         }
       }
     },
     "personalized_placeholder" : {
-      "comment" : "Personalized Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Personalized"
+      "comment":"Personalized Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Personalized"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personalizados"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Personalizados"
           }
         }
       }
     },
     "pick_date_label" : {
-      "comment" : "Pick Date Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Pick Date"
+      "comment":"Pick Date Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Pick Date"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecciona Fecha"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Selecciona Fecha"
           }
         }
       }
     },
     "pick_time_period" : {
-      "comment" : "Pick Time Period Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Pick Time Period"
+      "comment":"Pick Time Period Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Pick Time Period"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecciona Periodo de Tiempo"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Selecciona Periodo de Tiempo"
           }
         }
       }
     },
     "please_confirm_value_title" : {
-      "comment" : "Please Confirm Value Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Please Confirm Value"
+      "comment":"Please Confirm Value Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Please Confirm Value"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Por favor confirme el valor"
           }
         }
       }
     },
     "previous_tips_title" : {
-      "comment" : "Previous Tips",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Previous Tips"
+      "comment":"Previous Tips",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Previous Tips"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Consejos Anteriores"
           }
         }
       }
     },
     "profile_tab_string" : {
-      "comment" : "Profile Tab String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Profile"
+      "comment":"Profile Tab String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Profile"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perfil"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Perfil"
           }
         }
       }
     },
     "receive_tips_label" : {
-      "comment" : "Receive Tips Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Get personalized tips to improve your financial health."
+      "comment":"Receive Tips Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Get personalized tips to improve your financial health."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Obtenga consejos personalizados para mejorar su salud financiera."
           }
         }
       }
     },
     "receive_tips_title" : {
-      "comment" : "Receive Tips Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Receive Tips"
+      "comment":"Receive Tips Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Receive Tips"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Recibir Consejos"
           }
         }
       }
     },
     "recent_expenses_title" : {
-      "comment" : "Recent Expenses Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Recent Expenses"
+      "comment":"Recent Expenses Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Recent Expenses"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gastos Recientes"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Gastos Recientes"
           }
         }
       }
     },
     "recent_incomes_title" : {
-      "comment" : "Recent Incomes Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Recent Incomes"
+      "comment":"Recent Incomes Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Recent Incomes"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingresos Recientes"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ingresos Recientes"
           }
         }
       }
     },
     "red_color" : {
-      "comment" : "Red Color",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Red"
+      "comment":"Red Color",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Red"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Rojo"
           }
         }
       }
     },
     "reports_tab_string" : {
-      "comment" : "Reports Tab String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Reports"
+      "comment":"Reports Tab String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Reports"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reportes"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Reportes"
           }
         }
       }
     },
     "save_button" : {
-      "comment" : "Save Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Save"
+      "comment":"Save Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Save"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Guardar"
           }
         }
       }
     },
     "savely_app_title" : {
-      "comment" : "Savely App Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Savely"
+      "comment":"Savely App Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Savely"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Savely"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Savely"
           }
         }
       }
     },
     "savings_placeholder" : {
-      "comment" : "Savings Placeholcer\nSavings Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Savings"
+      "comment":"Savings Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Savings"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ahorros"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ahorros"
           }
         }
       }
     },
     "savings_summary_title" : {
-      "comment" : "Savings Summary Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Savings Summary"
+      "comment":"Savings Summary Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Savings Summary"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resumen de Ahorros"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Resumen de Ahorros"
           }
         }
       }
     },
     "savings_trend_label" : {
-      "comment" : "Savings Trend Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Savings Trend"
+      "comment":"Savings Trend Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Savings Trend"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tendencia de Ahorros"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Tendencia de Ahorros"
           }
         }
       }
     },
     "scan_receipt_button" : {
-      "comment" : "Scan Receipt Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Scan Receipt"
+      "comment":"Scan Receipt Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Scan Receipt"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escanear Recibo"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Escanear Recibo"
           }
         }
       }
     },
     "security_title" : {
-      "comment" : "Security Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Security"
+      "comment":"Security Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Security"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seguridad"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Seguridad"
           }
         }
       }
     },
     "see_previous_tips_label" : {
-      "comment" : "See Previous Tips Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "See previous tips"
+      "comment":"See Previous Tips Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"See previous tips"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ver consejos anteriores"
           }
         }
       }
     },
-    "Select Time" : {
-
-    },
     "select_tab_placeholder" : {
-      "comment" : "Select Tab Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Select Tab"
+      "comment":"Select Tab Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Select Tab"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecciona Pestaña"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Selecciona Pestaña"
+          }
+        }
+      }
+    },
+    "select_time_placeholder" : {
+      "comment":"Select Time Placeholder",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Select Time"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Seleccionar Hora"
           }
         }
       }
     },
     "set_goals_label" : {
-      "comment" : "Set Goals Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Define your financial objectives and work towards achieving them."
+      "comment":"Set Goals Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Define your financial objectives and work towards achieving them."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Defina sus objetivos financieros y trabaje para alcanzarlos."
           }
         }
       }
     },
     "set_goals_title" : {
-      "comment" : "Set Goals Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Set Goals"
+      "comment":"Set Goals Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Set Goals"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Definir Metas"
           }
         }
       }
     },
     "sign_in_string" : {
-      "comment" : "Sign In String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sign In"
+      "comment":"Sign In String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Sign In"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Iniciar Sesión"
           }
         }
       }
     },
     "sign_out_button" : {
-      "comment" : "Sign Out Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sign Out"
+      "comment":"Sign Out Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Sign Out"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Cerrar Sesión"
           }
         }
       }
     },
     "sign_up_label" : {
-      "comment" : "Sign Up Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sign Up"
+      "comment":"Sign Up Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Sign Up"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Registrarse"
           }
         }
       }
     },
     "sign_up_to_get_started" : {
-      "comment" : "Sign Up To Get Started",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sign up to get started"
+      "comment":"Sign Up To Get Started",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Sign up to get started"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Regístrese para comenzar"
           }
         }
       }
     },
-    "Start Date" : {
-
-    },
     "start_button" : {
-      "comment" : "Start Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Start"
+      "comment":"Start Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Start"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Iniciar"
+          }
+        }
+      }
+    },
+    "start_date_label" : {
+      "comment":"Start Date Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Start Date"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Fecha de Inicio"
           }
         }
       }
     },
     "subscription_cleanup_description" : {
-      "comment" : "Description for canceling unused subscriptions",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have canceled unused subscriptions to reduce your monthly expenses."
+      "comment":"Description for canceling unused subscriptions",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have canceled unused subscriptions to reduce your monthly expenses."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ha cancelado suscripciones sin uso para reducir sus gastos mensuales."
           }
         }
       }
     },
     "subscription_cleanup_title" : {
-      "comment" : "Title for canceling unused subscriptions",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Subscription Clean-up"
+      "comment":"Title for canceling unused subscriptions",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Subscription Clean-up"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Limpieza de Suscripciones"
           }
         }
       }
     },
     "take_another_photo_label" : {
-      "comment" : "Take Another Photo Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Take another photo"
+      "comment":"Take Another Photo Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Take another photo"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Tomar otra foto"
           }
         }
       }
     },
     "terms_of_service_label" : {
-      "comment" : "Terms of Service Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Terms of Service"
+      "comment":"Terms of Service Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Terms of Service"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Términos del Servicio"
           }
         }
       }
     },
     "this_month_label" : {
-      "comment" : "This Month Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "This Month"
+      "comment":"This Month Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"This Month"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este Mes"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Este Mes"
           }
         }
       }
     },
     "this_trimester_period" : {
-      "comment" : "This Trimester Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "This Trimester"
+      "comment":"This Trimester Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"This Trimester"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este Trimestre"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Este Trimestre"
           }
         }
       }
     },
     "this_year_period" : {
-      "comment" : "This Year Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "This Year"
+      "comment":"This Year Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"This Year"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este Año"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Este Año"
           }
         }
       }
     },
     "three_goals_description" : {
-      "comment" : "Description for achieving three goals",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have achieved three different savings goals."
+      "comment":"Description for achieving three goals",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have achieved three different savings goals."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ha logrado tres metas de ahorro diferentes."
           }
         }
       }
     },
     "three_goals_title" : {
-      "comment" : "Title for achieving three goals",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Three Goals Achieved"
+      "comment":"Title for achieving three goals",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Three Goals Achieved"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Tres Metas Alcanzadas"
           }
         }
       }
     },
     "tip_of_the_day_title" : {
-      "comment" : "Tip of the Day Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Tip of the Day"
+      "comment":"Tip of the Day Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Tip of the Day"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Consejo del Día"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Consejo del Día"
           }
         }
       }
     },
     "tips_and_suggestion_title" : {
-      "comment" : "Tips and Suggestions Tittle",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Tips and Suggestions"
+      "comment":"Tips and Suggestions Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Tips and Suggestions"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Consejos y Sugerencias"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Consejos y Sugerencias"
           }
         }
       }
     },
     "tips_history_title" : {
-      "comment" : "Tips History Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Tips History"
+      "comment":"Tips History Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Tips History"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Historial de Consejos"
           }
         }
       }
     },
     "title" : {
-      "comment" : "Title for achievements",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Achievements"
+      "comment":"Title for achievements\nTitle for loading view",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Achievements"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Logros"
           }
         }
       }
     },
     "track_expenses_label" : {
-      "comment" : "Track Expenses Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Record and categorize your expenses to understand your spending habits."
+      "comment":"Track Expenses Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Record and categorize your expenses to understand your spending habits."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Registre y categorice sus gastos para entender sus hábitos de consumo."
           }
         }
       }
     },
     "track_expenses_title" : {
-      "comment" : "Track Expenses Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Track Your Expenses"
+      "comment":"Track Expenses Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Track Your Expenses"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Controle sus Gastos"
           }
         }
       }
     },
     "track_incomes_label" : {
-      "comment" : "Track Incomes Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Record your income to better plan your budget and reach your savings goals."
+      "comment":"Track Incomes Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Record your income to better plan your budget and reach your savings goals."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Registre sus ingresos para planificar mejor su presupuesto y alcanzar sus metas de ahorro."
           }
         }
       }
     },
     "track_incomes_title" : {
-      "comment" : "Track Incomes Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Track Your Income"
+      "comment":"Track Incomes Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Track Your Income"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Controle sus Ingresos"
           }
         }
       }
     },
     "update_information_button" : {
-      "comment" : "Update Information Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Update Information"
+      "comment":"Update Information Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Update Information"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actualizar Información"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Actualizar Información"
           }
         }
       }
     },
     "view_achievements" : {
-      "comment" : "View Achievements Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "View Achievements"
+      "comment":"View Achievements Label",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"View Achievements"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ver Logros"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Ver Logros"
           }
         }
       }
     },
-    "Weekly Report" : {
-
-    },
     "weekly_budget_description" : {
-      "comment" : "Description for achieving the weekly budget goal",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have successfully stayed within your budget for a whole week."
+      "comment":"Description for achieving the weekly budget goal",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"You have successfully stayed within your budget for a whole week."
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Se ha mantenido dentro de su presupuesto durante una semana completa."
           }
         }
       }
     },
     "weekly_budget_title" : {
-      "comment" : "Title for achieving the weekly budget goal",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Weekly Budget Goal"
+      "comment":"Title for achieving the weekly budget goal",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Weekly Budget Goal"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Meta Presupuestaria Semanal"
           }
         }
       }
     },
     "weekly_expenses_title" : {
-      "comment" : "Weekly Expenses Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Weekly Expenses"
+      "comment":"Weekly Expenses Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Weekly Expenses"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gastos Semanales"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Gastos Semanales"
           }
         }
       }
     },
     "weekly_report_title" : {
-      "comment" : "Weekly Report Title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Weekly Report"
+      "comment":"Weekly Report Title",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Weekly Report"
+          }
+        },
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Reporte Semanal"
           }
         }
       }
     },
     "welcome_back_string" : {
-      "comment" : "Welcome Back String",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Welcome Back!"
+      "comment":"Welcome Back String",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Welcome Back!"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bienvenido de Vuelta!"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"¡Bienvenido de Vuelta!"
           }
         }
       }
     },
     "welcome_header" : {
-      "comment" : "Welcome to Savely Header",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Welcome to Savely"
+      "comment":"Welcome to Savely Header",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Welcome to Savely"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bienvenido a Savely"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Bienvenido a Savely"
           }
         }
       }
     },
     "yellow_Color" : {
-      "comment" : "Yellow Color",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Yellow"
+      "comment":"Yellow Color",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Yellow"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Amarillo"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Amarillo"
           }
         }
       }
     },
     "yes_button" : {
-      "comment" : "Yes Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Yes"
+      "comment":"Yes Button",
+      "extractionState":"extracted_with_value",
+      "localizations":{
+        "en":{
+          "stringUnit":{
+            "state":"new",
+            "value":"Yes"
           }
         },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sí"
+        "es-419":{
+          "stringUnit":{
+            "state":"translated",
+            "value":"Sí"
           }
         }
       }
     }
-  },
-  "version" : "1.0"
+  }
 }

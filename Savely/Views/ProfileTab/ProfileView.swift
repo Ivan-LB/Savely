@@ -178,7 +178,7 @@ struct ProfileView: View {
                                 .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                             }
                             .alert(isPresented: $viewModel.showAlert) {
-                                Alert(title: Text("Notice"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                                Alert(title: Text(Strings.Errors.noticeLabel), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
                             }
                         }
                         .padding()
@@ -188,7 +188,7 @@ struct ProfileView: View {
             }
             .background(Color("backgroundColor"))
             .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text("Notice"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                Alert(title: Text(Strings.Errors.noticeLabel), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
             }
             .sheet(isPresented: $viewModel.showExpenseReminderPicker) {
                 NotificationTimePicker(

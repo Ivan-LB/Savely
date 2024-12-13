@@ -40,7 +40,7 @@ struct ContentView: View {
 struct LoadingView: View {
     var body: some View {
         VStack {
-            ProgressView("Cargando...")
+            ProgressView(Strings.LoadingView.title)
                 .progressViewStyle(CircularProgressViewStyle(tint: .green))
                 .scaleEffect(1.5)
         }
