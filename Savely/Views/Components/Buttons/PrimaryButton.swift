@@ -23,7 +23,6 @@ struct PrimaryButton: View {
                 .fontWeight(.bold)
                 .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
         }
-        .padding(.horizontal)
     }
 }
 
