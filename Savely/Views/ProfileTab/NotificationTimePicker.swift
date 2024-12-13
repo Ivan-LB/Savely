@@ -20,7 +20,7 @@ struct NotificationTimePicker: View {
                 .multilineTextAlignment(.center)
 
             DatePicker(
-                "Select Time",
+                Strings.Placeholders.selectTimePLaceholder,
                 selection: $selectedTime,
                 displayedComponents: .hourAndMinute
             )

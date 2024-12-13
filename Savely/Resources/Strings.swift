@@ -75,6 +75,13 @@ struct Strings {
             comment: "Passwords Doesnt Match")
     }
     
+    struct LoadingView {
+        static let title = NSLocalizedString(
+            "title",
+            value: "Loading...",
+            comment: "Title for loading view")
+    }
+    
     struct Achievements {
         static let title = NSLocalizedString(
             "title",
@@ -327,6 +334,22 @@ struct Strings {
             "savings_trend_label",
             value: "Savings Trend",
             comment: "Savings Trend Label")
+        static let startDateLabel = NSLocalizedString(
+            "start_date_label",
+            value: "Start Date",
+            comment: "Start Date Label")
+        static let endDateLabel = NSLocalizedString(
+            "end_date_label",
+            value: "End Date",
+            comment: "End Date Label")
+        static let incomeDistributionLabel = NSLocalizedString(
+            "income_distribution_label",
+            value: "Income Distribution",
+            comment: "Income Distribution Label")
+        static let noDataLabel = NSLocalizedString(
+            "no_data_label",
+            value: "No data available for the selected dates.",
+            comment: "No Data Label")
     }
     
     
@@ -411,6 +434,17 @@ struct Strings {
             comment: "Tips History Title")
     }
     
+    struct Errors{
+        static let noticeLabel = NSLocalizedString(
+            "notice_label",
+            value: "Notice",
+            comment: "Notice Label")
+        static let errorLabel = NSLocalizedString(
+            "error_label",
+            value: "Error",
+            comment: "Error Label")
+    }
+    
     struct Placeholders {
         static let personalizedPlaceholder = NSLocalizedString(
             "personalized_placeholder",
@@ -448,6 +482,10 @@ struct Strings {
             "select_tab_placeholder",
             value: "Select Tab",
             comment: "Select Tab Placeholder")
+        static let selectTimePLaceholder = NSLocalizedString(
+            "select_time_placeholder",
+            value: "Select Time",
+            comment: "Select Time Placeholder")
     }
     
     struct Tabs {
@@ -564,6 +602,16 @@ struct Strings {
             "continue_button",
             value: "Continue",
             comment: "Continue Button")
+        
+        static let fetchReportButton = NSLocalizedString(
+            "fetch_report_button",
+            value: "Fetch Report",
+            comment: "Fetch Report Button")
+        
+        static let okButton = NSLocalizedString(
+            "ok_button",
+            value: "OK",
+            comment: "OK Button")
     }
     
     struct Camera {
@@ -613,5 +661,9 @@ struct Strings {
             "red_color",
             value: "Red",
             comment: "Red Color")
+        static let colorLabel = NSLocalizedString(
+            "color_label",
+            value: "Color",
+            comment: "Color Label")
     }
 }
