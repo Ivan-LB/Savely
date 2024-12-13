@@ -16,23 +16,35 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
+                // Login Illustration
                 Image("LoginVector")
                     .resizable()
-                    .foregroundStyle(.green)
+                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     .scaledToFit()
-                Text(Strings.Authentication.welcomeBackString)
-                    .font(.title)
-                    .fontWeight(.bold)
-                Text(Strings.Authentication.logInString)
-                    .opacity(0.6)
                 
+                // Welcome Text
+                VStack(spacing: 5) {
+                    Text(Strings.Authentication.welcomeBackString)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                    Text(Strings.Authentication.logInString)
+                        .opacity(0.7)
+                        .foregroundColor(colorScheme == .dark ? .gray : .black)
+                }
+                
+                // Input Fields
                 VStack(spacing: 15) {
                     CustomTextfield(placeholder: Strings.Profile.emailPlaceholderLabel, value: $viewModel.email)
                         .keyboardType(.emailAddress)
+                        .background(Color(UIColor.systemGray6))
+                        .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     HybridTextField(text: $viewModel.password, titleKey: Strings.Authentication.passwordString)
+                        .background(Color(UIColor.systemGray6))
+                        .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                 }
-                .padding(.horizontal)
                 
+                // Sign-In Button
                 PrimaryButton(action: {
                     Task {
                         do {
@@ -45,10 +57,13 @@ struct LoginView: View {
                 
                 Spacer()
                 
+                // Alternative Connection Text
                 Text(Strings.Authentication.otherWayToConnectLabel)
                     .font(.subheadline)
-                    .opacity(0.6)
+                    .opacity(0.7)
+                    .foregroundColor(colorScheme == .dark ? .gray : .black)
                 
+                // Apple Sign-In Button
                 Button(action: {
                     Task {
                         do {
@@ -58,28 +73,30 @@ struct LoginView: View {
                         }
                     }
                 }, label: {
-                    SignInWithAppleButtonViewRepresentable(type: .signIn, style: .black)
+                    SignInWithAppleButtonViewRepresentable(type: .signIn, style: colorScheme == .dark ? .white : .black)
                         .allowsHitTesting(false)
                 })
                 .frame(height: 50)
-                .padding(.horizontal)
                 
                 Spacer()
                 
-                HStack{
+                // Sign-Up Navigation
+                HStack {
                     Spacer()
                     Text(Strings.Authentication.dontHaveAccount)
+                        .foregroundColor(colorScheme == .dark ? .gray : .black)
                     NavigationLink {
                         SignUpView()
                     } label: {
                         Text(Strings.Authentication.signUpLabel)
-                            .foregroundStyle(.green)
+                            .foregroundColor(Color("primaryGreen"))
                             .fontWeight(.bold)
                     }
                     Spacer()
                 }
             }
             .padding()
+            .background(colorScheme == .dark ? Color.black : Color.white)
             .navigationBarHidden(true)
         }
     }
