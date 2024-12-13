@@ -266,6 +266,9 @@
         }
       }
     },
+    "Continue" : {
+
+    },
     "create_account_button" : {
       "comment" : "Create Account Button",
       "extractionState" : "extracted_with_value",
@@ -907,6 +910,9 @@
           }
         }
       }
+    },
+    "Limited Connectivity" : {
+
     },
     "loading_tip_label" : {
       "comment" : "Loading Tip Label",
@@ -1993,6 +1999,9 @@
           }
         }
       }
+    },
+    "Your device is offline. Features like Tips may not work, but the app is fully functional offline." : {
+
     }
   },
   "version" : "1.0"
