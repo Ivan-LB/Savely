@@ -477,6 +477,17 @@ struct Strings {
             comment: "Profile Tab String")
     }
     
+    struct NetworkError {
+        static let limitedConnectionHeader = NSLocalizedString(
+            "limited_connection_header",
+            value: "Limited Connectivity",
+            comment: "Limited Connection Header")
+        static let deviceNotConnectedToInternetBody = NSLocalizedString(
+            "device_not_connected_to_internet_body",
+            value: "Your device is offline. Features like Tips may not work, but the app is fully functional offline.",
+            comment: "Device not connected to internet Body")
+    }
+    
     struct Buttons {
         static let addIncomeButton = NSLocalizedString(
             "add_income_button",
@@ -548,6 +559,11 @@ struct Strings {
             "save_button",
             value: "Save",
             comment: "Save Button")
+        
+        static let continueButton = NSLocalizedString(
+            "continue_button",
+            value: "Continue",
+            comment: "Continue Button")
     }
     
     struct Camera {
