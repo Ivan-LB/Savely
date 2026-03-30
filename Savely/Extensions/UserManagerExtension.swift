@@ -10,14 +10,18 @@ import Firebase
 
 extension UserManager {
     func updateUser(userId: String, displayName: String?, email: String?) async throws {
-        var data: [String: Any] = [:]
-        if let displayName = displayName {
-            data["display_name"] = displayName
+        let docRef = Firestore.firestore().collection("users").document(userId)
+        var updateData: [String: Any] = [:]
+        
+        if let displayName = displayName, !displayName.isEmpty {
+            updateData["display_name"] = displayName
         }
-        if let email = email {
-            data["email"] = email
+        if let email = email, !email.isEmpty {
+            updateData["email"] = email
         }
-        let userDocRef = Firestore.firestore().collection("users").document(userId)
-        try await userDocRef.updateData(data)
+        
+        if !updateData.isEmpty {
+            try await docRef.updateData(updateData)
+        }
     }
 }

@@ -30,8 +30,6 @@
 		1DAF5D2B2CEEA943001C0AF3 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1DAF5D2A2CEEA943001C0AF3 /* MarkdownUI */; };
 		1DAF5D332CEEE7AA001C0AF3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D322CEEE7AA001C0AF3 /* Notifications.swift */; };
 		1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */; };
-		1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */; };
-		1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */; };
 		1DC014082CE5AE80009A46E1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014072CE5AE80009A46E1 /* LoginView.swift */; };
 		1DC0140A2CE5AEBF009A46E1 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014092CE5AEBF009A46E1 /* SignUpView.swift */; };
 		1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC0140C2CE5AF59009A46E1 /* OnboardingView.swift */; };
@@ -63,7 +61,6 @@
 		1DE4B4CA2CE5DC36006C8F65 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1DE4B4C92CE5DC36006C8F65 /* FirebaseAuth */; };
 		1DE4B4CC2CE5DC3B006C8F65 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1DE4B4CB2CE5DC3B006C8F65 /* FirebaseFirestore */; };
 		1DE4B4D02CE5F2D6006C8F65 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4CF2CE5F2D6006C8F65 /* OnboardingData.swift */; };
-		1DE4B4D22CE5F681006C8F65 /* AchievementsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4D12CE5F681006C8F65 /* AchievementsData.swift */; };
 		1DE4B4D42CE60032006C8F65 /* HybridTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4D32CE60032006C8F65 /* HybridTextField.swift */; };
 		1DE4B4D62CE7AF93006C8F65 /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4D52CE7AF93006C8F65 /* CustomTextfield.swift */; };
 		1DE4B4D82CE7B10E006C8F65 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B4D72CE7B10E006C8F65 /* PrimaryButton.swift */; };
@@ -84,6 +81,8 @@
 		1DE9FE152D0664A60069AA64 /* ReportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE142D0664A60069AA64 /* ReportsViewModel.swift */; };
 		1DE9FE172D066EE20069AA64 /* ReportsPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */; };
 		1DEACCDE2D0BE6340084CC39 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEACCDD2D0BE6340084CC39 /* NetworkErrorView.swift */; };
+		1DF579C32F673822009A41B3 /* WeeklyInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF579C22F673819009A41B3 /* WeeklyInsightsView.swift */; };
+		1DF579C52F673A8B009A41B3 /* InsightRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF579C42F673A8B009A41B3 /* InsightRow.swift */; };
 		82D33CE22CEC66D200BE005E /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE12CEC66D200BE005E /* TextRecognizer.swift */; };
 		82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */; };
 /* End PBXBuildFile section */
@@ -128,8 +127,6 @@
 		1DAF5D272CEE9DCF001C0AF3 /* OpenAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIModels.swift; sourceTree = "<group>"; };
 		1DAF5D322CEEE7AA001C0AF3 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		1DC013FA2CDB575F009A46E1 /* IncomesTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerView.swift; sourceTree = "<group>"; };
-		1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
-		1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
 		1DC014072CE5AE80009A46E1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1DC014092CE5AEBF009A46E1 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1DC0140C2CE5AF59009A46E1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -162,7 +159,6 @@
 		1DC258532CC62B530002DDE3 /* TipsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsListView.swift; sourceTree = "<group>"; };
 		1DC258552CC62BAB0002DDE3 /* TipCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCardView.swift; sourceTree = "<group>"; };
 		1DE4B4CF2CE5F2D6006C8F65 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
-		1DE4B4D12CE5F681006C8F65 /* AchievementsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsData.swift; sourceTree = "<group>"; };
 		1DE4B4D32CE60032006C8F65 /* HybridTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HybridTextField.swift; sourceTree = "<group>"; };
 		1DE4B4D52CE7AF93006C8F65 /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		1DE4B4D72CE7B10E006C8F65 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
@@ -184,6 +180,8 @@
 		1DE9FE142D0664A60069AA64 /* ReportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewModel.swift; sourceTree = "<group>"; };
 		1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsPDFGenerator.swift; sourceTree = "<group>"; };
 		1DEACCDD2D0BE6340084CC39 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
+		1DF579C22F673819009A41B3 /* WeeklyInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyInsightsView.swift; sourceTree = "<group>"; };
+		1DF579C42F673A8B009A41B3 /* InsightRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRow.swift; sourceTree = "<group>"; };
 		82D33CE12CEC66D200BE005E /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConfirmationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -271,7 +269,6 @@
 				82D33CE12CEC66D200BE005E /* TextRecognizer.swift */,
 				1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */,
 				1DE4B4CF2CE5F2D6006C8F65 /* OnboardingData.swift */,
-				1DE4B4D12CE5F681006C8F65 /* AchievementsData.swift */,
 				1DE4B4DF2CEBF909006C8F65 /* SignInWithAppleHelper.swift */,
 				1DAF5D252CEE9C13001C0AF3 /* OpenAIClient.swift */,
 				1DAF5D322CEEE7AA001C0AF3 /* Notifications.swift */,
@@ -399,8 +396,8 @@
 		1DC014042CDE00F7009A46E1 /* ProfileTab */ = {
 			isa = PBXGroup;
 			children = (
+				1DF579C22F673819009A41B3 /* WeeklyInsightsView.swift */,
 				1DE9FE112D0650150069AA64 /* NotificationTimePicker.swift */,
-				1DC013FC2CDDFA15009A46E1 /* AchievementsView.swift */,
 				1DAF5D1F2CEE9767001C0AF3 /* TipHistoryView.swift */,
 				1DC2583B2CC081D90002DDE3 /* ProfileView.swift */,
 			);
@@ -514,6 +511,7 @@
 		1DC258402CC61D250002DDE3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1DF579C42F673A8B009A41B3 /* InsightRow.swift */,
 				1DEACCDD2D0BE6340084CC39 /* NetworkErrorView.swift */,
 				1DAF5D042CED94F1001C0AF3 /* Tips */,
 				1DAF5D032CED94DD001C0AF3 /* TextFields */,
@@ -532,7 +530,6 @@
 				1DC2584A2CC629540002DDE3 /* ExpenseModel.swift */,
 				1DC2584C2CC629890002DDE3 /* MonthlySavingModel.swift */,
 				1DC2584E2CC62A160002DDE3 /* TipModel.swift */,
-				1DC013FE2CDDFA46009A46E1 /* AchievementModel.swift */,
 				1DC014102CE5AFAD009A46E1 /* OnboardingStepModel.swift */,
 				1DE4B4DB2CEBF812006C8F65 /* AuthDataResultModel.swift */,
 				1DE4B4E62CEBFAF8006C8F65 /* DBUserModel.swift */,
@@ -714,7 +711,6 @@
 			files = (
 				1DC2584B2CC629540002DDE3 /* ExpenseModel.swift in Sources */,
 				1D88B7CC2CC6EA47009B6538 /* CameraManager.swift in Sources */,
-				1DC014052CDE09E6009A46E1 /* AchievementsView.swift in Sources */,
 				1DC2583C2CC081D90002DDE3 /* ProfileView.swift in Sources */,
 				1DE4B4DA2CEBF60B006C8F65 /* AuthenticationManager.swift in Sources */,
 				1DE4B4E32CEBFAA5006C8F65 /* LoginViewModel.swift in Sources */,
@@ -724,7 +720,6 @@
 				1DC258572CC62DF20002DDE3 /* ExpenseTrackerView.swift in Sources */,
 				1DC258542CC62B530002DDE3 /* TipsListView.swift in Sources */,
 				1DC2583A2CC081A40002DDE3 /* TipsAndSuggestionsView.swift in Sources */,
-				1DE4B4D22CE5F681006C8F65 /* AchievementsData.swift in Sources */,
 				1DE4B4D62CE7AF93006C8F65 /* CustomTextfield.swift in Sources */,
 				1DE4B4EF2CEC514B006C8F65 /* ProfileViewModel.swift in Sources */,
 				1D36698D2CC6CB4100E84FF9 /* SplashScreenView.swift in Sources */,
@@ -759,12 +754,13 @@
 				1DAF5D202CEE9767001C0AF3 /* TipHistoryView.swift in Sources */,
 				1DE4B4F12CEC5174006C8F65 /* UserManagerExtension.swift in Sources */,
 				1DE4B4E92CEC018E006C8F65 /* SignUpViewModel.swift in Sources */,
-				1DC013FF2CDDFA46009A46E1 /* AchievementModel.swift in Sources */,
+				1DF579C52F673A8B009A41B3 /* InsightRow.swift in Sources */,
 				82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */,
 				1DE4B4DC2CEBF812006C8F65 /* AuthDataResultModel.swift in Sources */,
 				1DE9FE172D066EE20069AA64 /* ReportsPDFGenerator.swift in Sources */,
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */,
+				1DF579C32F673822009A41B3 /* WeeklyInsightsView.swift in Sources */,
 				1DC258562CC62BAB0002DDE3 /* TipCardView.swift in Sources */,
 				1DE9FE122D0650150069AA64 /* NotificationTimePicker.swift in Sources */,
 				1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */,

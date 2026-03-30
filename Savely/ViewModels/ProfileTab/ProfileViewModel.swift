@@ -39,6 +39,13 @@ class ProfileViewModel: ObservableObject {
     @Published var isLoading: Bool = false
 
     private var modelContext: ModelContext?
+    
+    // Computed properties for new UI
+    var newTipsCount: Int {
+        // This would ideally come from your tips data
+        // For now, returning a placeholder value
+        return 12
+    }
 
     init(modelContext: ModelContext? = nil) {
         self.modelContext = modelContext

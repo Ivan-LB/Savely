@@ -11,225 +11,262 @@ struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     @EnvironmentObject var appViewModel: AppViewModel
     @Environment(\.modelContext) private var modelContext
-
-    @State private var expenseReminderSheetHeight: CGFloat = .zero
-    @State private var goalAlertSheetHeight: CGFloat = .zero
+    @State private var showingEditProfile = false
 
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    // Personal Information Card
-                    CardView {
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text(Strings.Profile.personalInformationTitle)
-                                .font(.title3)
-                                .fontWeight(.bold)
-                            TextField(Strings.Profile.namePlaceholderLabel, text: $viewModel.displayName)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                            TextField(Strings.Profile.emailPlaceholderLabel, text: $viewModel.email)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                            Button(action: {
-                                Task {
-                                    await viewModel.updatePersonalInformation()
-                                }
-                            }) {
-                                Label(Strings.Buttons.updateInformationButton, systemImage: "person.fill")
-                                    .padding()
-                                    .fontWeight(.bold)
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color("secondaryGreen"))
-                                    .foregroundStyle(.white)
-                                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
-                            }
+                VStack(spacing: 24) {
+                    // Profile Header Card
+                    ProfileHeaderCard(
+                        displayName: viewModel.displayName,
+                        email: viewModel.email,
+                        onUpdateTapped: {
+                            showingEditProfile = true
                         }
-                        .padding()
-                    }
-
-                    // Settings Card
-                    CardView {
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text(Strings.Profile.notificationTitle)
-                                .font(.title3)
-                                .fontWeight(.bold)
-                            Toggle(Strings.Profile.expenseRemindersLabel, isOn: $viewModel.expenseReminders)
-                            Toggle(Strings.Profile.goalAlertsLabel, isOn: $viewModel.goalAlerts)
-                        }
-                        .padding(.top)
-                        .padding(.horizontal)
-
-                        Divider()
-                            .padding(.horizontal)
-
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text(Strings.Profile.appPreferencesTitle)
-                                .font(.title3)
-                                .fontWeight(.bold)
-                            Toggle(isOn: $viewModel.darkMode) {
-                                Text(Strings.Profile.darkModeLabel)
-                            }
-                        }
-                        .padding(.horizontal)
-
-                        Divider()
-                            .padding(.horizontal)
-
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text(Strings.Profile.securityTitle)
-                                .font(.title3)
-                                .fontWeight(.bold)
-                            Button(action: {
-                                Task {
-                                    try AuthenticationManager.shared.signOut()
-                                }
-                            }) {
-                                Label(Strings.Buttons.changePasswordButton, systemImage: "key.fill")
-                                    .padding()
-                                    .fontWeight(.bold)
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color("secondaryGreen"))
-                                    .foregroundStyle(.white)
-                                    .cornerRadius(10)
-                            }
-                            Button(action: {
-                                Task {
-                                    try AuthenticationManager.shared.signOut()
-                                }
-                            }) {
-                                Label(Strings.Buttons.signOutButton, systemImage: "arrowshape.turn.up.backward.fill")
-                                    .padding()
-                                    .fontWeight(.bold)
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color("primaryRed"))
-                                    .foregroundStyle(.white)
-                                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
-                            }
-                        }
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    }
-
-                    CardView {
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text(Strings.Profile.achievementsTitle)
-                                .font(.title3)
-                                .fontWeight(.bold)
-                            NavigationLink {
-                                AchievementsView()
-                            } label: {
-                                HStack {
-                                    Image(systemName: "star.fill")
-                                        .foregroundStyle(Color("primaryYellow"))
-                                    Text(Strings.Profile.viewAchievements)
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(.green)
-                                }
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.green.opacity(0.1))
-                                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
-                            }
-                        }
-                        .padding()
-                    }
-
-                    CardView {
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text(Strings.Profile.previousTipsTitle)
-                                .font(.title3)
-                                .fontWeight(.bold)
-                            NavigationLink {
-                                TipHistoryView()
-                            } label: {
-                                HStack {
-                                    Image(systemName: "lightbulb.fill")
-                                        .foregroundStyle(Color("primaryYellow"))
-                                    Text(Strings.Profile.seePreviousTipsLabel)
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(.green)
-                                }
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.green.opacity(0.1))
-                                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
-                            }
-                        }
-                        .padding()
-                    }
+                    )
+                    .padding(.horizontal)
+                    .padding(.top)
                     
-                    CardView {
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text(Strings.Profile.weeklyReportTitle)
-                                .font(.title3)
-                                .fontWeight(.bold)
-                            Button(action: {
-                                viewModel.generateWeeklyReportPDF()
-                            }) {
-                                HStack {
-                                    Image(systemName: "doc.fill")
-                                        .foregroundStyle(Color("primaryYellow"))
-                                    Text(Strings.Buttons.downloadWeeklyReportButton)
-                                        .bold()
+                    WeeklyInsightsView()
+                    
+                    // Settings Section
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("SETTINGS")
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.secondary)
+                            .padding(.horizontal)
+                        
+                        VStack(spacing: 0) {
+                            SettingsToggleRow(
+                                icon: "bell.fill",
+                                title: "Notifications",
+                                isOn: $viewModel.expenseReminders
+                            )
+                            
+                            Divider()
+                                .padding(.leading, 60)
+                            
+                            SettingsToggleRow(
+                                icon: "moon.fill",
+                                title: "Dark Mode",
+                                isOn: $viewModel.darkMode
+                            )
+                            
+                            Divider()
+                                .padding(.leading, 60)
+                            
+                            SettingsNavigationRow(
+                                icon: "lock.shield.fill",
+                                title: "Change Password",
+                                iconColor: .primary,
+                                onTap: {
+                                    // Handle password change
                                 }
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color("primaryBlue"))
-                                .foregroundColor(.white)
-                                .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
-                            }
-                            .alert(isPresented: $viewModel.showAlert) {
-                                Alert(title: Text(Strings.Errors.noticeLabel), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
-                            }
+                            )
+                            
+                            Divider()
+                                .padding(.leading, 60)
+                            
+                            SettingsNavigationRow(
+                                icon: "rectangle.portrait.and.arrow.right",
+                                title: "Sign Out",
+                                iconColor: .red,
+                                textColor: .red,
+                                onTap: {
+                                    Task {
+                                        try? AuthenticationManager.shared.signOut()
+                                    }
+                                }
+                            )
                         }
-                        .padding()
+                        .background(Color(.systemBackground))
+                        .cornerRadius(16)
+                        .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 2)
+                        .padding(.horizontal)
                     }
                 }
-                .padding(.vertical)
+                .padding(.bottom, 24)
             }
-            .background(Color("backgroundColor"))
+            .background(Color(.systemGroupedBackground))
             .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text(Strings.Errors.noticeLabel), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
-            }
-            .sheet(isPresented: $viewModel.showExpenseReminderPicker) {
-                NotificationTimePicker(
-                    title: Strings.Profile.expenseReminderPickerTitle,
-                    selectedTime: $viewModel.selectedExpenseReminderTime,
-                    onSave: {_ in 
-                        viewModel.showExpenseReminderPicker = false
-                        viewModel.saveExpenseReminderTime()
-                    }
+                Alert(
+                    title: Text(Strings.Errors.noticeLabel),
+                    message: Text(viewModel.alertMessage),
+                    dismissButton: .default(Text(Strings.Buttons.okButton))
                 )
-                .overlay {
-                    GeometryReader { geometry in
-                        Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
-                    }
-                }
-                .onPreferenceChange(InnerHeightPreferenceKey.self) { height in
-                    expenseReminderSheetHeight = height
-                }
-                .presentationDetents([.height(expenseReminderSheetHeight)])
             }
-            .sheet(isPresented: $viewModel.showGoalAlertPicker) {
-                NotificationTimePicker(
-                    title: Strings.Profile.goalAlertPickerTitle,
-                    selectedTime: $viewModel.selectedGoalAlertTime,
-                    onSave: {_ in 
-                        viewModel.showGoalAlertPicker = false
-                        viewModel.saveGoalAlertTime()
-                    }
-                )
-                .overlay {
-                    GeometryReader { geometry in
-                        Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
-                    }
-                }
-                .onPreferenceChange(InnerHeightPreferenceKey.self) { height in
-                    goalAlertSheetHeight = height
-                }
-                .presentationDetents([.height(goalAlertSheetHeight)])
+            .sheet(isPresented: $showingEditProfile) {
+                EditProfileSheet(viewModel: viewModel)
             }
             .onAppear {
                 viewModel.setModelContext(modelContext)
+            }
+        }
+    }
+}
+
+// MARK: - Profile Header Card
+struct ProfileHeaderCard: View {
+    let displayName: String
+    let email: String
+    let onUpdateTapped: () -> Void
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            // Avatar
+            ZStack {
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [Color(red: 0.85, green: 0.75, blue: 0.7), Color(red: 0.9, green: 0.85, blue: 0.8)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 80, height: 80)
+                
+                Image(systemName: "person.fill")
+                    .font(.system(size: 40))
+                    .foregroundStyle(.white.opacity(0.8))
+            }
+            
+            // Name and Email
+            VStack(alignment: .leading, spacing: 4) {
+                Text(displayName.isEmpty ? "User" : displayName)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.primary)
+                
+                Text(email.isEmpty ? "user@example.com" : email)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                
+                Button(action: onUpdateTapped) {
+                    Text("Update")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 8)
+                        .background(Color(red: 0.3, green: 0.5, blue: 0.4))
+                        .cornerRadius(20)
+                }
+                .padding(.top, 4)
+            }
+            
+            Spacer()
+        }
+        .padding(20)
+        .background(Color(.systemBackground))
+        .cornerRadius(16)
+        .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 2)
+    }
+}
+
+// MARK: - Settings Toggle Row
+struct SettingsToggleRow: View {
+    let icon: String
+    let title: String
+    @Binding var isOn: Bool
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            // Icon
+            Image(systemName: icon)
+                .font(.system(size: 20))
+                .foregroundStyle(.primary)
+                .frame(width: 28)
+            
+            // Title
+            Text(title)
+                .font(.body)
+                .foregroundStyle(.primary)
+            
+            Spacer()
+            
+            // Toggle
+            Toggle("", isOn: $isOn)
+                .labelsHidden()
+                .tint(Color(red: 0.3, green: 0.5, blue: 0.4))
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .contentShape(Rectangle())
+    }
+}
+
+// MARK: - Settings Navigation Row
+struct SettingsNavigationRow: View {
+    let icon: String
+    let title: String
+    var iconColor: Color = .primary
+    var textColor: Color = .primary
+    let onTap: () -> Void
+    
+    var body: some View {
+        Button(action: onTap) {
+            HStack(spacing: 16) {
+                // Icon
+                Image(systemName: icon)
+                    .font(.system(size: 20))
+                    .foregroundStyle(iconColor)
+                    .frame(width: 28)
+                
+                // Title
+                Text(title)
+                    .font(.body)
+                    .foregroundStyle(textColor)
+                
+                Spacer()
+                
+                // Chevron
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+// MARK: - Edit Profile Sheet
+struct EditProfileSheet: View {
+    @ObservedObject var viewModel: ProfileViewModel
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    TextField("Display Name", text: $viewModel.displayName)
+                    TextField("Email", text: $viewModel.email)
+                        .textContentType(.emailAddress)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+                }
+            }
+            .navigationTitle("Edit Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        Task {
+                            await viewModel.updatePersonalInformation()
+                            dismiss()
+                        }
+                    }
+                    .fontWeight(.semibold)
+                }
             }
         }
     }

@@ -8,20 +8,30 @@
 import SwiftUI
 
 struct CustomTextfield: View {
+    let label: String
     let placeholder: String
     @Binding var value: String
     
     var body: some View {
-        TextField(placeholder, text: $value)
-            .padding()
-            .autocorrectionDisabled()
-            .background(
-                RoundedRectangle(cornerRadius: UIConstants.UICornerRadius.cornerRadius)
-                    .stroke(Color.black, lineWidth: UIConstants.UILineWidth.lineWidth)
-            )
+        VStack(alignment: .leading) {
+            Text(label)
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundStyle(.primary)
+            TextField(placeholder, text: $value)
+                .padding(16)
+                .font(.body)
+                .autocorrectionDisabled()
+                .keyboardType(.emailAddress)
+                .background(
+                    RoundedRectangle(cornerRadius: UIConstants.UICornerRadius.cornerRadius)
+                        .stroke(Color(UIColor.systemGray4), lineWidth: UIConstants.UILineWidth.lineWidth)
+                )
+                .background(Color(.systemGray6))
+        }
     }
 }
 
 #Preview {
-    CustomTextfield(placeholder: Strings.Authentication.fullNamePlaceholder, value: .constant("Hola"))
+    CustomTextfield(label: "Hello", placeholder: Strings.Authentication.fullNamePlaceholder, value: .constant("Hola"))
 }

@@ -82,93 +82,6 @@ struct Strings {
             comment: "Title for loading view")
     }
     
-    struct Achievements {
-        static let title = NSLocalizedString(
-            "title",
-            value: "Achievements",
-            comment: "Title for achievements")
-        static let firstGoalTitle = NSLocalizedString(
-            "first_goal_title",
-            value: "First Goal Achieved",
-            comment: "Title for achieving the first goal")
-        static let firstGoalDescription = NSLocalizedString(
-            "first_goal_description",
-            value: "You have reached your first savings goal.",
-            comment: "Description for achieving the first goal")
-        static let threeGoalsTitle = NSLocalizedString(
-            "three_goals_title",
-            value: "Three Goals Achieved",
-            comment: "Title for achieving three goals")
-        static let threeGoalsDescription = NSLocalizedString(
-            "three_goals_description",
-            value: "You have achieved three different savings goals.",
-            comment: "Description for achieving three goals")
-        static let consistentSavingsTitle = NSLocalizedString(
-            "consistent_savings_title",
-            value: "Consistent Monthly Savings",
-            comment: "Title for consistent monthly savings")
-        static let consistentSavingsDescription = NSLocalizedString(
-            "consistent_savings_description",
-            value: "You have maintained consistent monthly savings for three months.",
-            comment: "Description for consistent monthly savings")
-        static let noUnnecessarySpendingTitle = NSLocalizedString(
-            "no_unnecessary_spending_title",
-            value: "No Unnecessary Spending",
-            comment: "Title for avoiding unnecessary spending")
-        static let noUnnecessarySpendingDescription = NSLocalizedString(
-            "no_unnecessary_spending_description",
-            value: "You have avoided unnecessary spending for a whole month.",
-            comment: "Description for avoiding unnecessary spending")
-        static let weeklyBudgetTitle = NSLocalizedString(
-            "weekly_budget_title",
-            value: "Weekly Budget Goal",
-            comment: "Title for achieving the weekly budget goal")
-        static let weeklyBudgetDescription = NSLocalizedString(
-            "weekly_budget_description",
-            value: "You have successfully stayed within your budget for a whole week.",
-            comment: "Description for achieving the weekly budget goal")
-        static let emergencyFundTitle = NSLocalizedString(
-            "emergency_fund_title",
-            value: "Emergency Fund Established",
-            comment: "Title for establishing an emergency fund")
-        static let emergencyFundDescription = NSLocalizedString(
-            "emergency_fund_description",
-            value: "You have created an emergency fund worth three months of expenses.",
-            comment: "Description for establishing an emergency fund")
-        static let highSavingsRateTitle = NSLocalizedString(
-            "high_savings_rate_title",
-            value: "High Savings Rate",
-            comment: "Title for achieving a high savings rate")
-        static let highSavingsRateDescription = NSLocalizedString(
-            "high_savings_rate_description",
-            value: "You have saved more than 20% of your income this month.",
-            comment: "Description for achieving a high savings rate")
-        static let firstInvestmentTitle = NSLocalizedString(
-            "first_investment_title",
-            value: "First Investment Made",
-            comment: "Title for making the first investment")
-        static let firstInvestmentDescription = NSLocalizedString(
-            "first_investment_description",
-            value: "You have made your first investment towards your financial future.",
-            comment: "Description for making the first investment")
-        static let subscriptionCleanupTitle = NSLocalizedString(
-            "subscription_cleanup_title",
-            value: "Subscription Clean-up",
-            comment: "Title for canceling unused subscriptions")
-        static let subscriptionCleanupDescription = NSLocalizedString(
-            "subscription_cleanup_description",
-            value: "You have canceled unused subscriptions to reduce your monthly expenses.",
-            comment: "Description for canceling unused subscriptions")
-        static let debtPaidOffTitle = NSLocalizedString(
-            "debt_paid_off_title",
-            value: "Debt Paid Off",
-            comment: "Title for paying off debt")
-        static let debtPaidOffDescription = NSLocalizedString(
-            "debt_paid_off_description",
-            value: "You have paid off a major debt.",
-            comment: "Description for paying off debt")
-    }
-    
     struct Onboarding {
         static let setGoalsTitle = NSLocalizedString(
             "set_goals_title",
@@ -407,16 +320,6 @@ struct Strings {
             "security_title",
             value: "Security",
             comment: "Security Title")
-        
-        static let achievementsTitle = NSLocalizedString(
-            "achievements_title",
-            value: "Achievements and Medals",
-            comment: "Achievements Title")
-        
-        static let viewAchievements = NSLocalizedString(
-            "view_achievements",
-            value: "View Achievements",
-            comment: "View Achievements Label")
         
         static let previousTipsTitle = NSLocalizedString(
             "previous_tips_title",

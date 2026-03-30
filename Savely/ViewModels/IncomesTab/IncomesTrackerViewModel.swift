@@ -26,6 +26,43 @@ class IncomesTrackerViewModel: ObservableObject {
         }
     }
     
+    var totalIncomeThisMonth: Double {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        guard let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: now)) else {
+            return 0
+        }
+        
+        return incomes
+            .filter { $0.date >= startOfMonth }
+            .reduce(0) { $0 + $1.amount }
+    }
+    
+    var percentageChange: Double {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        guard let startOfThisMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: now)),
+              let startOfLastMonth = calendar.date(byAdding: .month, value: -1, to: startOfThisMonth) else {
+            return 0
+        }
+        
+        let thisMonthTotal = incomes
+            .filter { $0.date >= startOfThisMonth }
+            .reduce(0) { $0 + $1.amount }
+        
+        let lastMonthTotal = incomes
+            .filter { $0.date >= startOfLastMonth && $0.date < startOfThisMonth }
+            .reduce(0) { $0 + $1.amount }
+        
+        guard lastMonthTotal > 0 else {
+            return thisMonthTotal > 0 ? 100 : 0
+        }
+        
+        return ((thisMonthTotal - lastMonthTotal) / lastMonthTotal) * 100
+    }
+    
     func setModelContext(_ context: ModelContext) {
         self.modelContext = context
         fetchIncomes()

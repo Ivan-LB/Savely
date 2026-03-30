@@ -34,21 +34,21 @@ struct SignUpView: View {
 
                 // Input Fields
                 VStack(spacing: 15) {
-                    CustomTextfield(placeholder: Strings.Authentication.fullNamePlaceholder, value: $viewModel.fullName)
+                    CustomTextfield(label: "Full Name", placeholder: Strings.Authentication.fullNamePlaceholder, value: $viewModel.fullName)
                         .autocapitalization(.words)
                         .background(Color(UIColor.systemGray6))
                         .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
 
-                    CustomTextfield(placeholder: Strings.Profile.emailPlaceholderLabel, value: $viewModel.email)
+                    CustomTextfield(label: "Email" ,placeholder: Strings.Profile.emailPlaceholderLabel, value: $viewModel.email)
                         .keyboardType(.emailAddress)
                         .background(Color(UIColor.systemGray6))
                         .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
 
-                    HybridTextField(text: $viewModel.password, titleKey: Strings.Authentication.passwordString)
+                    HybridTextField(text: $viewModel.password, label: "Password", titleKey: Strings.Authentication.passwordString)
                         .background(Color(UIColor.systemGray6))
                         .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
 
-                    HybridTextField(text: $viewModel.confirmPassword, titleKey: Strings.Authentication.confirmPasswordString)
+                    HybridTextField(text: $viewModel.confirmPassword, label: "Confirm Password", titleKey: Strings.Authentication.confirmPasswordString)
                         .background(Color(UIColor.systemGray6))
                         .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     

@@ -35,13 +35,19 @@ struct LoginView: View {
                 
                 // Input Fields
                 VStack(spacing: 15) {
-                    CustomTextfield(placeholder: Strings.Profile.emailPlaceholderLabel, value: $viewModel.email)
-                        .keyboardType(.emailAddress)
-                        .background(Color(UIColor.systemGray6))
-                        .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
-                    HybridTextField(text: $viewModel.password, titleKey: Strings.Authentication.passwordString)
-                        .background(Color(UIColor.systemGray6))
-                        .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
+                    CustomTextfield(label: "Email", placeholder: Strings.Profile.emailPlaceholderLabel, value: $viewModel.email)
+                    HybridTextField(text: $viewModel.password, label: "Password", titleKey: Strings.Authentication.passwordString)
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            // Handle forgot password
+                        }) {
+                            Text("Forgot password?")
+                                .font(.subheadline)
+                                .foregroundStyle(Color(red: 0.3, green: 0.5, blue: 0.4))
+                        }
+                    }
                 }
                 
                 // Sign-In Button
@@ -57,11 +63,23 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                // Alternative Connection Text
-                Text(Strings.Authentication.otherWayToConnectLabel)
-                    .font(.subheadline)
-                    .opacity(0.7)
-                    .foregroundColor(colorScheme == .dark ? .gray : .black)
+                HStack {
+                    Rectangle()
+                        .fill(Color(.systemGray4))
+                        .frame(height: 1)
+                    
+                    Text("OR")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 12)
+                    
+                    Rectangle()
+                        .fill(Color(.systemGray4))
+                        .frame(height: 1)
+                }
+                
+                Spacer()
                 
                 // Apple Sign-In Button
                 Button(action: {

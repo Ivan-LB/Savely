@@ -37,7 +37,7 @@ extension AuthenticationManager {
     
     func updateEmail(email: String) async throws {
         guard let user = Auth.auth().currentUser else {
-            throw URLError(.badServerResponse)
+            throw URLError(.badURL)
         }
         
         try await user.updateEmail(to: email)
