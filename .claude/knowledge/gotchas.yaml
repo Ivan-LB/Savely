@@ -14,9 +14,9 @@
   how-to-apply: Any time you write or copy an xcodebuild command — for CI, for local docs, for agent prompts.
 
 - id: deployment-target-floor-ios-26
-  summary: iOS 26.0 is the minimum deployment target for the Savely app target.
-  why: User explicitly chose this to use modern APIs (@Observable, NavigationStack, Swift Testing, Observation framework). Project default is currently 17.0 and tests are 17.5 — those are out of sync and will be aligned by build-ci-specialist.
-  how-to-apply: Free to use iOS 26 APIs. Don't add #available(iOS 17, *) checks. Don't fall back to ObservableObject for new view models.
+  summary: iOS 26.0 is the minimum deployment target across all targets and the project default.
+  why: User explicitly chose this to use modern APIs (@Observable, NavigationStack, Swift Testing, Observation framework). All six IPHONEOS_DEPLOYMENT_TARGET values in project.pbxproj are now 26.0; UI test targets inherit it from the project default.
+  how-to-apply: Free to use iOS 26 APIs. Don't add #available(iOS 17, *) checks. Don't fall back to ObservableObject for new view models. If you ever bump the project default, bump every per-target override too — mismatches break @testable import with "minimum deployment target" errors.
 
 - id: secrets-are-gitignored
   summary: Savely/Config.plist and Savely/GoogleService-Info.plist contain secrets and must never be committed.
