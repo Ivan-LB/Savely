@@ -656,7 +656,7 @@ struct WarmQuickDepositView: View {
 
             Button(action: saveDeposit) {
                 let goalName = selectedGoal.map { $0.name.components(separatedBy: ",").first ?? $0.name }
-                Text(goalName != nil ? "Add $\(Int(selectedPreset)) to \(goalName!)" : "Select a goal")
+                Text(goalName.map { "Add $\(Int(selectedPreset)) to \($0)" } ?? "Select a goal")
                     .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
                     .frame(maxWidth: .infinity).frame(height: 50)
                     .background(selectedGoal != nil ? Color.warmGreen : Color.warmInkMuted)

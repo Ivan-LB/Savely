@@ -122,7 +122,8 @@ class ProfileViewModel: ObservableObject {
     private func fetchWeeklyIncome(from startDate: Date, to endDate: Date, in context: ModelContext) async throws -> [IncomeModel] {
         print("fetchWeeklyIncome: Fetching incomes...")
         let adjustedStartDate = Calendar.current.startOfDay(for: startDate)
-        let adjustedEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+        guard let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: endDate) else { return [] }
+        let adjustedEndDate = Calendar.current.startOfDay(for: nextDay)
 
         let fetchDescriptor = FetchDescriptor<IncomeModel>(
             predicate: #Predicate {
@@ -139,7 +140,8 @@ class ProfileViewModel: ObservableObject {
     private func fetchWeeklyExpenses(from startDate: Date, to endDate: Date, in context: ModelContext) async throws -> [ExpenseModel] {
         print("fetchWeeklyExpenses: Fetching expenses...")
         let adjustedStartDate = Calendar.current.startOfDay(for: startDate)
-        let adjustedEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+        guard let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: endDate) else { return [] }
+        let adjustedEndDate = Calendar.current.startOfDay(for: nextDay)
 
         let fetchDescriptor = FetchDescriptor<ExpenseModel>(
             predicate: #Predicate {
