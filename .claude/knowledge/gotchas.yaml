@@ -23,6 +23,11 @@
   why: They hold the OpenAI API key and Firebase config respectively. Leaking them on a public repo means key rotation + potential abuse charges.
   how-to-apply: Before any commit, grep the staged diff for these paths. If present, stop and tell the user.
 
+- id: ui-tests-skipped-on-ci
+  summary: SavelyUITests bundle is excluded from CI execution via -skip-testing — compilation only, no run.
+  why: The Xcode UI test template ships SavelyUITestsLaunchTests with XCTApplicationLaunchMetric which runs the app launch ~8 times measuring performance, taking ~5–10 min and flaking when one iteration exceeds the std-dev threshold. The template tests assert nothing meaningful — they only measure launch time, which is noisy on shared runners. Burning that many minutes for no signal is wasteful.
+  how-to-apply: Leave -skip-testing:SavelyUITests in .github/workflows/ci.yml's Test step until qa-tester writes real UI tests that exercise actual user paths. When real UI tests exist, drop the flag (or narrow it to skip only the template's launch-perf tests). Build step still compiles the bundle, so breaking changes to UI test code are still caught.
+
 - id: ci-needs-placeholder-config-plist
   summary: CI must generate a placeholder Config.plist before xcodebuild because the Xcode project lists it as a required build input.
   why: Config.plist is gitignored, so a fresh checkout (incl. CI runners) does not have it. xcodebuild fails with "Build input file cannot be found" before compilation even starts. The OpenAI key itself is not needed — CI never makes the network call — only the file with the right shape.

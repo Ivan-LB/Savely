@@ -99,12 +99,23 @@ jobs:
             | xcbeautify --renderer github-actions
 
       - name: Test
+        # Skip the SavelyUITests bundle on CI. The Xcode template ships
+        # SavelyUITestsLaunchTests with XCTApplicationLaunchMetric, which
+        # runs the app launch ~8 times measuring performance — that takes
+        # ~5–10 min and flakes on shared runners (one slow iteration blows
+        # the std-dev threshold and the whole bundle fails). The template
+        # tests cover no real behavior.
+        #
+        # Compilation of SavelyUITests is still verified by the Build step,
+        # so we still catch breakages. When qa-tester writes real UI tests,
+        # remove the -skip-testing flag.
         run: |
           set -o pipefail
           xcodebuild test \
             -project Savely.xcodeproj \
             -scheme "$SCHEME" \
             -destination "$DESTINATION" \
+            -skip-testing:SavelyUITests \
             -resultBundlePath build/TestResults.xcresult \
             CODE_SIGNING_ALLOWED=NO \
             | xcbeautify --renderer github-actions
