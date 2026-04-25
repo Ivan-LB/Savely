@@ -15,7 +15,6 @@ Savely.xcodeproj/project.xcworkspace
 Pods
 Savely.xcworkspace/contents.xcworkspacedata
 Savely.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
-*.xcscheme
 Savely/Config.plist
 
 # Xcode user state (broader patterns)
