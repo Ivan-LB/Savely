@@ -22,3 +22,8 @@
   summary: Savely/Config.plist and Savely/GoogleService-Info.plist contain secrets and must never be committed.
   why: They hold the OpenAI API key and Firebase config respectively. Leaking them on a public repo means key rotation + potential abuse charges.
   how-to-apply: Before any commit, grep the staged diff for these paths. If present, stop and tell the user.
+
+- id: ci-needs-placeholder-config-plist
+  summary: CI must generate a placeholder Config.plist before xcodebuild because the Xcode project lists it as a required build input.
+  why: Config.plist is gitignored, so a fresh checkout (incl. CI runners) does not have it. xcodebuild fails with "Build input file cannot be found" before compilation even starts. The OpenAI key itself is not needed — CI never makes the network call — only the file with the right shape.
+  how-to-apply: In .github/workflows/ci.yml, write a minimal plist with the OPENAI_API_KEY field before the Resolve SPM / Build steps. If GoogleService-Info.plist later stops being tracked, apply the same pattern (and use a real Firebase config from a GitHub secret if you ever need a working Firebase build on CI).

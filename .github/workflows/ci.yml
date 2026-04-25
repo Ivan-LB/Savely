@@ -62,6 +62,24 @@ jobs:
         # how to tighten this over time.
         run: swiftlint lint --reporter github-actions-logging
 
+      - name: Generate placeholder Config.plist
+        # Config.plist holds the OpenAI API key locally and is gitignored.
+        # The Xcode project lists it as a required build input, so xcodebuild
+        # fails on a fresh checkout if the file is absent — even though CI
+        # never actually calls the OpenAI API. Write a placeholder with the
+        # right shape so the Resources copy phase succeeds.
+        run: |
+          cat > Savely/Config.plist <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>OPENAI_API_KEY</key>
+              <string>ci-placeholder-not-a-real-key</string>
+          </dict>
+          </plist>
+          PLIST
+
       - name: Resolve SPM packages
         run: |
           xcodebuild \
