@@ -1,0 +1,96 @@
+name: ci
+
+# Runs on every PR (any base) and on every push to dev/main.
+# Skips draft PRs to save macOS minutes.
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev, main]
+
+# Cancel old runs if a new commit lands on the same branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build & test
+    runs-on: macos-15
+    if: github.event.pull_request.draft == false || github.event_name == 'push'
+
+    env:
+      # Pin Xcode so build behavior is reproducible.
+      # Bump when you upgrade local Xcode and want CI to follow.
+      XCODE_VERSION: "26.0"
+      SCHEME: "Savely"
+      DESTINATION: "platform=iOS Simulator,name=iPhone 16 Pro"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode ${{ env.XCODE_VERSION }}
+        run: |
+          # If the requested version isn't installed on the runner,
+          # this will fail loudly — pick a version that's available.
+          # See: https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md
+          sudo xcode-select -s "/Applications/Xcode_${XCODE_VERSION}.app" || \
+            sudo xcode-select -s "/Applications/Xcode.app"
+          xcodebuild -version
+
+      - name: Cache SPM packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData/**/SourcePackages
+            ~/Library/Caches/org.swift.swiftpm
+          key: spm-${{ runner.os }}-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            spm-${{ runner.os }}-
+
+      - name: Install SwiftLint
+        run: |
+          brew install swiftlint
+          swiftlint version
+
+      - name: SwiftLint
+        run: swiftlint --strict
+
+      - name: Resolve SPM packages
+        run: |
+          xcodebuild \
+            -project Savely.xcodeproj \
+            -scheme "$SCHEME" \
+            -resolvePackageDependencies
+
+      - name: Build
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Savely.xcodeproj \
+            -scheme "$SCHEME" \
+            -configuration Debug \
+            -destination "$DESTINATION" \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcbeautify --renderer github-actions
+
+      - name: Test
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project Savely.xcodeproj \
+            -scheme "$SCHEME" \
+            -destination "$DESTINATION" \
+            -resultBundlePath build/TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcbeautify --renderer github-actions
+
+      - name: Upload xcresult on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults-${{ github.run_id }}
+          path: build/TestResults.xcresult
+          retention-days: 7
