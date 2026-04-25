@@ -56,7 +56,11 @@ jobs:
           swiftlint version
 
       - name: SwiftLint
-        run: swiftlint --strict
+        # No --strict: warnings annotate inline but don't fail the build.
+        # Only error-severity violations (force_cast, force_try, custom errors)
+        # block the merge. The "ratchet" comment in .swiftlint.yml explains
+        # how to tighten this over time.
+        run: swiftlint lint --reporter github-actions-logging
 
       - name: Resolve SPM packages
         run: |

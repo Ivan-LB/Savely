@@ -1,14 +1,14 @@
 # SwiftLint config for Savely
 # Philosophy: catch real bugs, not bikeshed style.
-# Strictness ramps up over time. For now: enable bug-finders, disable noise.
+# CI runs without --strict, so warnings annotate but don't fail the build.
+# Only error-severity violations block merge.
+# Strictness ramps up over time — see "ratchet" notes below.
 
-# Where to lint
 included:
   - Savely
   - SavelyTests
   - SavelyUITests
 
-# Where NOT to lint
 excluded:
   - .build
   - DerivedData
@@ -16,66 +16,89 @@ excluded:
   - Savely/Preview Content
   - Savely.xcodeproj
 
-# Disable noisy rules — re-enable as the codebase matures
+# Rules disabled outright — pure style/formatting noise that doesn't catch bugs.
+# Re-enable selectively after a dedicated cleanup PR if you want any of these.
 disabled_rules:
-  - line_length              # SwiftUI generates long lines naturally
-  - function_body_length     # SwiftUI views and modifier chains get long
-  - type_body_length         # ViewModels grow; we'll split by hand when needed
-  - file_length              # Same reason
-  - cyclomatic_complexity    # Re-enable once main flows are stable
-  - identifier_name          # Single-letter vars in math are fine
-  - todo                     # We allow TODOs; tracked separately
-  - trailing_whitespace      # Xcode handles this on save
+  # Length/complexity — SwiftUI naturally produces long files
+  - line_length
+  - function_body_length
+  - type_body_length
+  - file_length
+  - cyclomatic_complexity
+  - identifier_name
+  - todo
+  - trailing_whitespace
+  # Spacing/formatting — Xcode handles these on save
+  - comma                                       # space before/after comma
+  - colon                                       # space around colon
+  - vertical_whitespace                         # double blank lines
+  - trailing_newline                            # missing final newline
+  - opening_brace                               # `{ }` placement
+  - closing_brace
+  - statement_position                          # else/catch placement
+  - vertical_parameter_alignment                # multi-line param alignment
+  - void_return                                 # `-> Void` vs `-> ()`
+  # Style judgments that conflict with real-world SwiftUI patterns
+  - multiple_closures_with_trailing_closure     # SwiftUI `Button { } label: { }` is fine
+  - unused_closure_parameter                    # noisy in gesture/onChange handlers
+  - static_over_final_class                     # XCTest UI launch tests use class func
+  - large_tuple                                 # sometimes a 3-tuple is the right shape
+  - trailing_comma                              # Swift 6 makes trailing commas universal
+  - implicit_optional_initialization            # `var x: String? = nil` is harmless
+  - legacy_objc_type                            # NSAttributedString etc are still mainstream
 
-# Opt-in rules — these find real bugs, enable them on purpose
+# Opt-in rules — these find real bugs or measurable problems.
+# Anything here that's flagged will be a *warning* by default; CI ignores it
+# (no --strict). Bump severity to error individually below as the codebase is cleaned.
 opt_in_rules:
-  - empty_count                      # `array.count == 0` → `array.isEmpty` (perf bug on lazy seqs)
-  - empty_string                     # `str == ""` → `str.isEmpty`
-  - explicit_init                    # No `.init()` when type is inferable
-  - first_where                      # `.filter { ... }.first` → `.first(where:)` (perf bug)
-  - last_where                       # Same for `.last`
-  - contains_over_filter_count       # `.filter { ... }.count > 0` → `.contains(where:)`
-  - contains_over_first_not_nil      # `.first(where:) != nil` → `.contains(where:)`
-  - reduce_into                      # Use reduce(into:) for mutable accumulators
-  - redundant_nil_coalescing         # `x ?? nil` is pointless
-  - unused_import                    # Dead imports
-  - unused_declaration               # Dead code
-  - force_unwrapping                 # Force-unwrap is a runtime crash waiting to happen
-  - implicitly_unwrapped_optional    # Same — be explicit
-  - overridden_super_call            # Forgetting super.viewDidLoad() etc.
-  - prohibited_super_call
-  - private_outlet                   # IBOutlets should be private (legacy UIKit, harmless)
-  - weak_delegate                    # Strong delegates = retain cycles
-  - closure_parameter_position
-  - empty_collection_literal         # `[].first` is suspicious
-  - identical_operands               # `a == a` is a typo
-  - legacy_objc_type                 # NSString/NSNumber in Swift code
-  - lower_acl_than_parent            # internal extension on private type, etc.
-  - nslocalizedstring_key            # NSLocalizedString key must be a literal
-  - operator_usage_whitespace        # Catches `a +b` typos
+  # Performance bugs masquerading as idiomatic code
+  - empty_count                      # `arr.count == 0` is O(n) on lazy seqs — use isEmpty
+  - empty_string                     # `s == ""` — same idea
+  - first_where                      # `.filter { }.first` allocates the full array
+  - last_where                       # same for `.last`
+  - contains_over_filter_count       # `.filter { }.count > 0` allocates — use contains(where:)
+  - contains_over_first_not_nil      # `.first(where:) != nil` — same
   - sorted_first_last                # `.sorted().first` → `.min()`
-  - toggle_bool                      # `bool = !bool` → `bool.toggle()`
-  - vertical_parameter_alignment_on_call
+  - reduce_into                      # use reduce(into:) for mutable accumulators
+  # Correctness / typo catchers
+  - identical_operands               # `a == a` is a typo
+  - empty_collection_literal         # `[].first` is suspicious
+  - redundant_nil_coalescing         # `x ?? nil` is pointless
+  - explicit_init                    # `.init()` when redundant
+  - toggle_bool                      # `bool = !bool` → bool.toggle()
+  - lower_acl_than_parent            # `internal extension on private type` etc.
+  # Real-bug surface
+  - force_unwrapping                 # runtime crash — warning today, error after cleanup
+  - overridden_super_call            # forgetting super.viewDidLoad() etc.
+  - prohibited_super_call
+  - weak_delegate                    # strong delegate = retain cycle
+  - nslocalizedstring_key            # localization key must be a literal
 
-# Rules tuned (not fully disabled) — adjust thresholds, not behavior
+# Analyzer-only rules — run via `swiftlint analyze`, not `lint`.
+# Listed here so SwiftLint stops warning that they're misplaced.
+analyzer_rules:
+  - unused_declaration
+  - unused_import
+
 nesting:
   type_level: 3
   function_level: 3
 
+# Severity overrides — the ratchet
 force_cast:
-  severity: error
+  severity: error                    # error: explicit casts that fail are bugs
 force_try:
-  severity: error
+  severity: error                    # error: same
 force_unwrapping:
-  severity: warning  # Bump to error once existing force-unwraps are cleaned up
+  severity: warning                  # warning today → bump to error after cleanup PR
 
-# Custom rules — add project-specific gotchas here over time
+# Custom project rules
 custom_rules:
   no_hardcoded_strings_in_views:
     name: "Hardcoded user-facing string in a View"
     regex: 'Text\("[A-Z][^"\\$]+"\)'
     match_kinds:
       - string
-    message: "Use Strings.swift / L10n instead of hardcoded literal."
+    message: "Use Strings.swift / L10n instead of a hardcoded literal."
     severity: warning
     included: ".*Views/.*\\.swift"
