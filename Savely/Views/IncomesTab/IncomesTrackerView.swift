@@ -1,255 +1,213 @@
-//
-//  IncomesTrackerView.swift
-//  Savely
-//
-//  Created by Ivan Lorenzana Belli on 05/11/24.
-//
-
 import SwiftUI
 import SwiftData
 
 struct IncomesTrackerView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel = IncomesTrackerViewModel()
+    @FocusState private var focusedField: Field?
+
+    enum Field: Hashable { case description, amount }
+
+    // 7-month bar heights (most recent = current month)
+    private var barData: [(String, Double)] {
+        let calendar = Calendar.current
+        let now = Date()
+        return (0..<7).reversed().map { offset in
+            let date = calendar.date(byAdding: .month, value: -offset, to: now) ?? now
+            let total = viewModel.incomes.filter {
+                calendar.isDate($0.date, equalTo: date, toGranularity: .month)
+            }.reduce(0) { $0 + $1.amount }
+            let f = DateFormatter(); f.dateFormat = "MMM"
+            return (f.string(from: date), total)
+        }
+    }
+    private var maxBar: Double { max(barData.map(\.1).max() ?? 1, 1) }
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                // Total Income Card
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Total Income This Month")
-                        .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.9))
-                    
-                    Text(String(format: "$%.2f", viewModel.totalIncomeThisMonth))
-                        .font(.system(size: 42, weight: .bold))
-                        .foregroundStyle(.white)
-                    
-                    HStack(spacing: 4) {
-                        Image(systemName: "arrow.up.right")
-                            .font(.caption)
-                        Text(String(format: "+%.1f%% from last month", viewModel.percentageChange))
-                            .font(.subheadline)
-                    }
-                    .foregroundStyle(.white.opacity(0.9))
+            VStack(spacing: 14) {
+                // — Header —
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Income")
+                        .font(.system(size: 34, weight: .regular, design: .serif))
+                        .foregroundStyle(Color.warmInk)
+                    Text("April · \(formattedAmount(viewModel.totalIncomeThisMonth))")
+                        .font(.system(size: 13))
+                        .foregroundStyle(Color.warmInkMuted)
                 }
-                .padding(24)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(
-                    LinearGradient(
-                        colors: [Color(red: 0.3, green: 0.5, blue: 0.4), Color(red: 0.25, green: 0.45, blue: 0.35)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .cornerRadius(20)
-                .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 5)
-                .padding(.horizontal)
-                .padding(.top)
+                .padding(.top, 8)
 
-                // Add New Income Section
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("Add New Income")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.primary)
-                    
-                    HStack(spacing: 12) {
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text("DESCRIPTION")
-                                .font(.caption)
-                                .fontWeight(.medium)
-                                .foregroundStyle(.secondary)
-                            
-                            TextField("e.g., Freelance Project", text: $viewModel.incomeDescription)
-                                .padding(12)
-                                .background(Color(.systemGray6))
-                                .cornerRadius(10)
-                        }
-                        
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text("AMOUNT")
-                                .font(.caption)
-                                .fontWeight(.medium)
-                                .foregroundStyle(.secondary)
-                            
-                            HStack {
-                                Text("$")
-                                    .foregroundStyle(.secondary)
-                                TextField("0.00", text: $viewModel.amount)
-                                    .keyboardType(.decimalPad)
-                            }
-                            .padding(12)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
-                        }
-                    }
-                    
-                    Button(action: {
-                        viewModel.addIncome()
-                    }) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "plus.circle.fill")
-                                .font(.system(size: 18))
-                            Text("Add Income")
-                                .fontWeight(.semibold)
-                        }
-                        .foregroundStyle(.white)
-                        .padding(16)
-                        .frame(maxWidth: .infinity)
-                        .background(
-                            LinearGradient(
-                                colors: [Color(red: 0.3, green: 0.5, blue: 0.4), Color(red: 0.25, green: 0.45, blue: 0.35)],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .cornerRadius(12)
-                    }
-                }
-                .padding(20)
-                .background(Color(.systemBackground))
-                .cornerRadius(16)
-                .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 2)
-                .padding(.horizontal)
-
-                // Recent Activity Section
-                VStack(alignment: .leading, spacing: 16) {
+                // — 7-month trend chart —
+                VStack(alignment: .leading, spacing: 14) {
                     HStack {
-                        Text("Recent Activity")
-                            .font(.title3)
-                            .fontWeight(.bold)
+                        Text("7-month trend")
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundStyle(Color.warmInkMuted)
+                            .tracking(0.6)
+                            .textCase(.uppercase)
                         Spacer()
-                        Button("See All") {
-                            // Action for see all
-                        }
-                        .font(.subheadline)
-                        .foregroundStyle(Color(red: 0.3, green: 0.5, blue: 0.4))
-                    }
-                    
-                    if viewModel.incomes.isEmpty {
-                        Text("No recent activity")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(.vertical, 40)
-                    } else {
-                        ForEach(viewModel.incomes.prefix(10)) { income in
-                            IncomeActivityRow(income: income) {
-                                viewModel.deleteIncome(income)
+                        if viewModel.percentageChange > 0 {
+                            HStack(spacing: 3) {
+                                Image(systemName: "arrow.up").font(.system(size: 10, weight: .semibold))
+                                Text(String(format: "+%.0f%%", viewModel.percentageChange))
+                                    .font(.system(size: 13, weight: .semibold))
                             }
+                            .foregroundStyle(Color.warmGreen)
                         }
+                    }
+                    HStack(alignment: .bottom, spacing: 8) {
+                        ForEach(Array(barData.enumerated()), id: \.offset) { idx, bar in
+                            VStack(spacing: 6) {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(idx == barData.count - 1 ? Color.warmGreen : Color.warmGreenSoft)
+                                    .frame(height: max(4, CGFloat(bar.1 / maxBar) * 80))
+                                Text(bar.0)
+                                    .font(.system(size: 10))
+                                    .foregroundStyle(Color.warmInkMuted)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .bottom)
+                        }
+                    }
+                    .frame(height: 100, alignment: .bottom)
+                }
+                .padding(18)
+                .background(Color.warmSurface)
+                .cornerRadius(20)
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.warmLine, lineWidth: 1))
+
+                // — Inline add —
+                HStack(spacing: 10) {
+                    TextField("Source…", text: $viewModel.incomeDescription)
+                        .font(.system(size: 14))
+                        .padding(.horizontal, 12)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 40)
+                        .background(Color.warmBg)
+                        .cornerRadius(10)
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.warmLineSoft, lineWidth: 1))
+                        .focused($focusedField, equals: .description)
+
+                    HStack(spacing: 0) {
+                        Text("$").foregroundStyle(Color.warmInkMuted).padding(.leading, 8)
+                        TextField("0.00", text: $viewModel.amount)
+                            .keyboardType(.decimalPad)
+                            .font(.system(size: 14))
+                            .monospacedDigit()
+                            .frame(width: 70)
+                            .focused($focusedField, equals: .amount)
+                    }
+                    .frame(height: 40)
+                    .background(Color.warmBg)
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.warmLineSoft, lineWidth: 1))
+
+                    Button(action: { viewModel.addIncome(); focusedField = nil }) {
+                        Image(systemName: "plus")
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundStyle(.white)
+                            .frame(width: 40, height: 40)
+                            .background(Color.warmGreen)
+                            .cornerRadius(10)
                     }
                 }
-                .padding(.horizontal)
-                .padding(.bottom)
+                .padding(14)
+                .background(Color.warmSurface)
+                .cornerRadius(18)
+                .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.warmLine, lineWidth: 1))
+
+                // — History —
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("History")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundStyle(Color.warmInkMuted)
+                        .tracking(1)
+                        .textCase(.uppercase)
+                        .padding(.leading, 4)
+
+                    if viewModel.incomes.isEmpty {
+                        VStack(spacing: 10) {
+                            Image(systemName: "tray").font(.system(size: 40)).foregroundStyle(Color.warmInkMuted)
+                            Text("No income yet").font(.system(size: 16, weight: .semibold)).foregroundStyle(Color.warmInkSoft)
+                        }
+                        .frame(maxWidth: .infinity).padding(.vertical, 44)
+                    } else {
+                        VStack(spacing: 0) {
+                            ForEach(Array(viewModel.incomes.prefix(20).enumerated()), id: \.element.id) { idx, income in
+                                IncomeRowWarm(income: income, onDelete: { viewModel.deleteIncome(income) })
+                                if idx < min(viewModel.incomes.count - 1, 19) {
+                                    Divider().padding(.leading, 58).overlay(Color.warmLineSoft)
+                                }
+                            }
+                        }
+                        .background(Color.warmSurface)
+                        .cornerRadius(16)
+                        .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.warmLine, lineWidth: 1))
+                    }
+                }
+
+                Spacer(minLength: 16)
             }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 24)
         }
-        .background(Color(.systemGroupedBackground))
-        .onAppear {
-            if viewModel.modelContext == nil {
-                viewModel.setModelContext(modelContext)
-            }
-        }
+        .background(Color.warmBg)
+        .navigationBarHidden(true)
+        .onAppear { if viewModel.modelContext == nil { viewModel.setModelContext(modelContext) } }
+    }
+
+    private func formattedAmount(_ v: Double) -> String {
+        let f = NumberFormatter(); f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 0
+        return f.string(from: NSNumber(value: v)) ?? "$0"
     }
 }
 
-struct IncomeActivityRow: View {
+// MARK: - Income Row (warm style)
+
+struct IncomeRowWarm: View {
     let income: IncomeModel
     let onDelete: () -> Void
     @State private var showDeleteConfirmation = false
-    
+
     var body: some View {
-        HStack(spacing: 16) {
-            // Icon
-            ZStack {
-                Circle()
-                    .fill(iconBackgroundColor)
-                    .frame(width: 48, height: 48)
-                
-                Image(systemName: iconName)
-                    .font(.system(size: 20))
-                    .foregroundStyle(iconColor)
-            }
-            
-            // Description and Date
-            VStack(alignment: .leading, spacing: 4) {
+        HStack(spacing: 12) {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.warmGreenSoft)
+                .frame(width: 36, height: 36)
+                .overlay(Image(systemName: "arrow.up").font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmGreen))
+
+            VStack(alignment: .leading, spacing: 2) {
                 Text(income.incomeDescription)
-                    .font(.body)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.primary)
-                
-                Text(formatDateTime(income.date))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(Color.warmInk)
+                Text(shortDate(income.date))
+                    .font(.system(size: 12))
+                    .foregroundStyle(Color.warmInkMuted)
             }
-            
             Spacer()
-            
-            // Amount and Status
-            VStack(alignment: .trailing, spacing: 4) {
-                Text(String(format: "+$%.2f", income.amount))
-                    .font(.body)
-                    .fontWeight(.bold)
-                    .foregroundStyle(Color(red: 0.2, green: 0.6, blue: 0.3))
-                
-                Text("COMPLETED")
-                    .font(.system(size: 9, weight: .medium))
-                    .foregroundStyle(Color(red: 0.2, green: 0.6, blue: 0.3).opacity(0.7))
-            }
+            Text("+\(formattedAmount(income.amount))")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(Color.warmGreen)
+                .monospacedDigit()
         }
-        .padding(16)
-        .background(Color(.systemBackground))
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+        .padding(.horizontal, 14).padding(.vertical, 14)
         .contextMenu {
-            Button(role: .destructive) {
-                showDeleteConfirmation = true
-            } label: {
-                Label("Delete", systemImage: "trash")
-            }
+            Button(role: .destructive, action: { showDeleteConfirmation = true }) { Label("Delete", systemImage: "trash") }
         }
-        .alert("Delete Income", isPresented: $showDeleteConfirmation) {
-            Button("Cancel", role: .cancel) { }
-            Button("Delete", role: .destructive) {
-                onDelete()
-            }
-        } message: {
-            Text("Are you sure you want to delete this income?")
-        }
+        .confirmationDialog("Delete Income", isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
+            Button("Delete", role: .destructive) { onDelete() }
+            Button("Cancel", role: .cancel) {}
+        } message: { Text("Are you sure you want to delete this income?") }
     }
-    
-    private var iconName: String {
-        let description = income.incomeDescription.lowercased()
-        
-        if description.contains("salary") || description.contains("monthly") {
-            return "briefcase.fill"
-        } else if description.contains("freelance") || description.contains("design") || description.contains("project") {
-            return "paintbrush.fill"
-        } else if description.contains("stock") || description.contains("dividend") || description.contains("investment") {
-            return "building.columns.fill"
-        } else if description.contains("sale") || description.contains("marketplace") || description.contains("sell") {
-            return "tag.fill"
-        } else {
-            return "dollarsign.circle.fill"
-        }
+
+    private func shortDate(_ d: Date) -> String {
+        let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"
+        return f.string(from: d)
     }
-    
-    private var iconColor: Color {
-        Color(red: 0.3, green: 0.5, blue: 0.4)
-    }
-    
-    private var iconBackgroundColor: Color {
-        Color(red: 0.3, green: 0.5, blue: 0.4).opacity(0.15)
-    }
-    
-    private func formatDateTime(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd, yyyy • hh:mm a"
-        return formatter.string(from: date)
+    private func formattedAmount(_ v: Double) -> String {
+        let f = NumberFormatter(); f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 2
+        return f.string(from: NSNumber(value: v)) ?? "$0"
     }
 }
 
-#Preview {
-    IncomesTrackerView()
-}
+#Preview { IncomesTrackerView() }

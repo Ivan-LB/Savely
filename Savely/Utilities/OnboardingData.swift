@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct OnboardingData {
     static let steps: [OnboardingStepModel] = [
         OnboardingStepModel(
@@ -38,28 +36,3 @@ struct OnboardingData {
         )
     ]
 }
-
-//struct OnboardingData {
-//    static let steps = [
-//        OnboardingStep(
-//            image: "dollarsign.circle",
-//            title: "Establece Metas",
-//            description: "Define tus objetivos financieros y trabaja para alcanzarlos."
-//        ),
-//        OnboardingStep(
-//            image: "chart.bar",
-//            title: "Rastrea tus Gastos",
-//            description: "Registra y categoriza tus gastos para entender tus hábitos financieros."
-//        ),
-//        OnboardingStep(
-//            image: "creditcard",
-//            title: "Rastrea tus ingresos",
-//            description: "Registra tus ingresos para planificar mejor tu presupuesto y alcanzar tus metas de ahorro."
-//        ),
-//        OnboardingStep(
-//            image: "lightbulb",
-//            title: "Recibe Consejos",
-//            description: "Obtén consejos personalizados para mejorar tu salud financiera."
-//        )
-//    ]
-//}

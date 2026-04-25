@@ -4,8 +4,52 @@
     "" : {
 
     },
-    "-$%@" : {
+    " for 18 months" : {
 
+    },
+    " of %lld" : {
+
+    },
+    " to repeat your last action." : {
+
+    },
+    ".00" : {
+
+    },
+    "**Auto-move $230** to Kyoto from this paycheck?" : {
+
+    },
+    "/wk" : {
+
+    },
+    "%" : {
+
+    },
+    "%@ is on your home screen.\nAdd the first dollar?" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld active · %@ saved of %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld active · %2$@ saved of %3$@"
+          }
+        }
+      }
+    },
+    "%lld earned,\n%lld to go." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld earned,\n%2$lld to go."
+          }
+        }
+      }
     },
     "%lld new saving tips" : {
 
@@ -13,16 +57,29 @@
     "%lld%%" : {
 
     },
-    "••••••••" : {
+    "+" : {
 
     },
-    "+$%@" : {
+    "+%@" : {
+
+    },
+    "+$" : {
+
+    },
+    "~$%lld/mo" : {
+
+    },
+    "−%@" : {
+
+    },
+    "−$" : {
 
     },
     "$" : {
 
     },
     "$%.2f / $%.2f" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -38,20 +95,34 @@
         }
       }
     },
-    "$%@ to go" : {
+    "$%@" : {
 
     },
-    "$%lld / $%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "$%1$lld / $%2$lld"
-          }
-        }
-      }
+    "$%lld" : {
+
+    },
+    "$%lld/week" : {
+
+    },
+    "$0" : {
+
+    },
+    "0" : {
+
     },
     "0.00" : {
+
+    },
+    "7-month trend" : {
+
+    },
+    "A goal is a name, a number, and a date.\nSavely takes care of the rest." : {
+
+    },
+    "About " : {
+
+    },
+    "Achievements" : {
 
     },
     "achievements_title" : {
@@ -72,25 +143,43 @@
         }
       }
     },
-    "ACTIVE GOAL" : {
+    "Add %@ to %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add %1$@ to %2$@"
+          }
+        }
+      }
+    },
+    "Add $%@ to %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add $%1$@ to %2$@"
+          }
+        }
+      }
+    },
+    "Add $%lld to %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add $%1$lld to %2$@"
+          }
+        }
+      }
+    },
+    "Add a deposit" : {
 
     },
-    "Active Goals" : {
+    "Add deposit" : {
 
     },
-    "ADD EXPENSE" : {
-
-    },
-    "Add Income" : {
-
-    },
-    "Add New Goal" : {
-
-    },
-    "Add New Income" : {
-
-    },
-    "Add your first expense to get started" : {
+    "Add your first expense above" : {
 
     },
     "add_expense_button" : {
@@ -165,6 +254,9 @@
         }
       }
     },
+    "ALMOST THERE" : {
+
+    },
     "already_have_and_account_label" : {
       "comment" : "Already have an account Label",
       "extractionState" : "extracted_with_value",
@@ -182,12 +274,6 @@
           }
         }
       }
-    },
-    "Amount" : {
-
-    },
-    "AMOUNT" : {
-
     },
     "amount_placeholder_label" : {
       "comment" : "Amount Placeholder Label",
@@ -225,6 +311,9 @@
         }
       }
     },
+    "April · %@" : {
+
+    },
     "Are you sure you want to delete this expense?" : {
 
     },
@@ -232,6 +321,15 @@
 
     },
     "Are you sure you want to delete this income?" : {
+
+    },
+    "Auto-move on payday" : {
+
+    },
+    "Back to home" : {
+
+    },
+    "Badges unlock as you save — no pressure." : {
 
     },
     "blue_color" : {
@@ -291,7 +389,7 @@
         }
       }
     },
-    "Color" : {
+    "COLOR" : {
 
     },
     "color_label" : {
@@ -311,9 +409,6 @@
           }
         }
       }
-    },
-    "COMPLETED" : {
-
     },
     "confirm_password_string" : {
       "comment" : "Confirm Password String",
@@ -369,6 +464,9 @@
         }
       }
     },
+    "Continue" : {
+
+    },
     "continue_button" : {
       "comment" : "Continue Button",
       "extractionState" : "extracted_with_value",
@@ -387,10 +485,7 @@
         }
       }
     },
-    "Create Goal" : {
-
-    },
-    "Create your first goal to get started" : {
+    "Create your first goal" : {
 
     },
     "create_account_button" : {
@@ -483,6 +578,9 @@
         }
       }
     },
+    "Day one" : {
+
+    },
     "debt_paid_off_description" : {
       "comment" : "Description for paying off debt",
       "extractionState" : "stale",
@@ -531,12 +629,6 @@
     "Delete Income" : {
 
     },
-    "Description" : {
-
-    },
-    "DESCRIPTION" : {
-
-    },
     "description_placeholder_label" : {
       "comment" : "Description Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -554,9 +646,6 @@
           }
         }
       }
-    },
-    "Details" : {
-
     },
     "device_not_connected_to_internet_body" : {
       "comment" : "Device not connected to internet Body",
@@ -579,9 +668,6 @@
     "Display Name" : {
 
     },
-    "Don't have an account?" : {
-
-    },
     "download_weekly_report_button" : {
       "comment" : "Download Weekly Report Button",
       "extractionState" : "extracted_with_value",
@@ -600,16 +686,16 @@
         }
       }
     },
-    "e.g., Freelance Project" : {
+    "e.g. Kyoto, autumn '26" : {
+
+    },
+    "Edit anything" : {
 
     },
     "Edit Profile" : {
 
     },
     "Email" : {
-
-    },
-    "Email Address" : {
 
     },
     "email_placeholder_title" : {
@@ -720,6 +806,9 @@
         }
       }
     },
+    "Expense" : {
+
+    },
     "expense_distribution_label" : {
       "comment" : "Expense Distribution Label",
       "extractionState" : "extracted_with_value",
@@ -828,6 +917,9 @@
         }
       }
     },
+    "Expenses" : {
+
+    },
     "expenses_tab_string" : {
       "comment" : "Expenses Tab String",
       "extractionState" : "extracted_with_value",
@@ -863,6 +955,12 @@
           }
         }
       }
+    },
+    "FAVORITE" : {
+
+    },
+    "FAVORITE GOAL" : {
+
     },
     "favorites_placeholder" : {
       "comment" : "Favorites Placeholder",
@@ -1047,7 +1145,13 @@
         }
       }
     },
-    "Goal Name" : {
+    "Give it a name\nyou'll recognize." : {
+
+    },
+    "Goal" : {
+
+    },
+    "Goal · %@" : {
 
     },
     "goal_alert_body" : {
@@ -1194,6 +1298,9 @@
         }
       }
     },
+    "Goals" : {
+
+    },
     "goals_tab_string" : {
       "comment" : "Goals Tab String",
       "extractionState" : "extracted_with_value",
@@ -1266,6 +1373,15 @@
         }
       }
     },
+    "History" : {
+
+    },
+    "HOW MUCH" : {
+
+    },
+    "Income" : {
+
+    },
     "income_distribution_label" : {
       "comment" : "Income Distribution Label",
       "extractionState" : "extracted_with_value",
@@ -1320,6 +1436,9 @@
         }
       }
     },
+    "LIFETIME INCOME" : {
+
+    },
     "limited_connection_header" : {
       "comment" : "Limited Connection Header",
       "extractionState" : "extracted_with_value",
@@ -1337,6 +1456,9 @@
           }
         }
       }
+    },
+    "Live preview" : {
+
     },
     "loading_tip_label" : {
       "comment" : "Loading Tip Label",
@@ -1356,6 +1478,12 @@
         }
       }
     },
+    "Log expense" : {
+
+    },
+    "Log income" : {
+
+    },
     "log_in_string" : {
       "comment" : "Log In String",
       "extractionState" : "extracted_with_value",
@@ -1374,7 +1502,7 @@
         }
       }
     },
-    "Manage your finances smarter with Savely" : {
+    "Merchant · Today" : {
 
     },
     "monthly_goal_label" : {
@@ -1431,6 +1559,15 @@
         }
       }
     },
+    "Move money" : {
+
+    },
+    "Move money toward %@." : {
+
+    },
+    "NAME" : {
+
+    },
     "name_placeholder_label" : {
       "comment" : "Name Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -1449,10 +1586,10 @@
         }
       }
     },
-    "name@example.com" : {
+    "New" : {
 
     },
-    "NET FLOW" : {
+    "New goal · " : {
 
     },
     "next_button" : {
@@ -1473,19 +1610,22 @@
         }
       }
     },
-    "No Active Goal" : {
+    "No active goal" : {
 
     },
     "No expenses yet" : {
 
     },
-    "No goals yet" : {
+    "No goals yet — create one first." : {
 
     },
-    "No recent activity" : {
+    "No income yet" : {
 
     },
-    "No tips available" : {
+    "No tip for today yet — check back soon." : {
+
+    },
+    "No transactions yet" : {
 
     },
     "no_button" : {
@@ -1578,6 +1718,12 @@
         }
       }
     },
+    "NOTE" : {
+
+    },
+    "Nothing here yet — let's plant the first one." : {
+
+    },
     "notice_label" : {
       "comment" : "Notice Label",
       "extractionState" : "extracted_with_value",
@@ -1650,7 +1796,10 @@
         }
       }
     },
-    "of $%@" : {
+    "of %@" : {
+
+    },
+    "of $%lld" : {
 
     },
     "ok_button" : {
@@ -1671,7 +1820,10 @@
         }
       }
     },
-    "OR" : {
+    "Optional note" : {
+
+    },
+    "or" : {
 
     },
     "other_way_to_connect_label" : {
@@ -1691,6 +1843,9 @@
           }
         }
       }
+    },
+    "PACE" : {
+
     },
     "Password" : {
 
@@ -1770,6 +1925,9 @@
         }
       }
     },
+    "Pick what to log right now." : {
+
+    },
     "pick_date_label" : {
       "comment" : "Pick Date Label",
       "extractionState" : "extracted_with_value",
@@ -1805,6 +1963,12 @@
           }
         }
       }
+    },
+    "Plant goal" : {
+
+    },
+    "Planted." : {
+
     },
     "please_confirm_value_title" : {
       "comment" : "Please Confirm Value Title",
@@ -1860,6 +2024,9 @@
         }
       }
     },
+    "Progress overall" : {
+
+    },
     "Ready for review" : {
 
     },
@@ -1899,7 +2066,7 @@
         }
       }
     },
-    "Recent Activity" : {
+    "Recent" : {
 
     },
     "recent_expenses_title" : {
@@ -1956,9 +2123,6 @@
         }
       }
     },
-    "Reports" : {
-
-    },
     "reports_tab_string" : {
       "comment" : "Reports Tab String",
       "extractionState" : "extracted_with_value",
@@ -1980,6 +2144,9 @@
     "Save" : {
 
     },
+    "Save with intention" : {
+
+    },
     "save_button" : {
       "comment" : "Save Button",
       "extractionState" : "extracted_with_value",
@@ -1998,7 +2165,10 @@
         }
       }
     },
-    "Savely AI Tip" : {
+    "SAVED" : {
+
+    },
+    "Savely" : {
 
     },
     "savely_app_title" : {
@@ -2073,6 +2243,9 @@
         }
       }
     },
+    "Scan a receipt" : {
+
+    },
     "scan_receipt_button" : {
       "comment" : "Scan Receipt Button",
       "extractionState" : "extracted_with_value",
@@ -2109,7 +2282,10 @@
         }
       }
     },
-    "See All" : {
+    "See all" : {
+
+    },
+    "See all ›" : {
 
     },
     "see_previous_tips_label" : {
@@ -2129,6 +2305,9 @@
           }
         }
       }
+    },
+    "Select a goal" : {
+
     },
     "select_tab_placeholder" : {
       "comment" : "Select Tab Placeholder",
@@ -2166,7 +2345,7 @@
         }
       }
     },
-    "Set a goal to track your progress" : {
+    "Set $%lld aside the day after each paycheck." : {
 
     },
     "set_goals_label" : {
@@ -2204,18 +2383,6 @@
           }
         }
       }
-    },
-    "SETTINGS" : {
-
-    },
-    "Sign In" : {
-
-    },
-    "Sign in with Apple" : {
-
-    },
-    "Sign Up" : {
-
     },
     "sign_in_string" : {
       "comment" : "Sign In String",
@@ -2289,6 +2456,18 @@
         }
       }
     },
+    "Skip" : {
+
+    },
+    "Source · Today" : {
+
+    },
+    "Source…" : {
+
+    },
+    "Star a goal to see it here" : {
+
+    },
     "start_button" : {
       "comment" : "Start Button",
       "extractionState" : "extracted_with_value",
@@ -2361,6 +2540,15 @@
         }
       }
     },
+    "SUGGESTED PACE" : {
+
+    },
+    "SYMBOL" : {
+
+    },
+    "Take a look\nbefore we start." : {
+
+    },
     "take_another_photo_label" : {
       "comment" : "Take Another Photo Label",
       "extractionState" : "extracted_with_value",
@@ -2379,9 +2567,6 @@
         }
       }
     },
-    "Target Amount" : {
-
-    },
     "terms_of_service_label" : {
       "comment" : "Terms of Service Label",
       "extractionState" : "extracted_with_value",
@@ -2399,6 +2584,12 @@
           }
         }
       }
+    },
+    "That's **about one less takeout per week**. Doable." : {
+
+    },
+    "This is what you'll see on your dashboard." : {
+
     },
     "this_month_label" : {
       "comment" : "This Month Label",
@@ -2490,7 +2681,13 @@
         }
       }
     },
+    "TIMING" : {
+
+    },
     "Tip History" : {
+
+    },
+    "TIP OF THE DAY" : {
 
     },
     "tip_of_the_day_title" : {
@@ -2510,6 +2707,12 @@
           }
         }
       }
+    },
+    "Tip: be specific. Try a specific name like Kyoto trip '26." : {
+
+    },
+    "Tip: long-press " : {
+
     },
     "tips_and_suggestion_title" : {
       "comment" : "Tips and Suggestions Tittle",
@@ -2565,7 +2768,20 @@
         }
       }
     },
-    "Total Income This Month" : {
+    "To hit **$%lld** by **%@**." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To hit **$%1$lld** by **%2$@**."
+          }
+        }
+      }
+    },
+    "TO WHICH GOAL" : {
+
+    },
+    "Total income logged in Savely" : {
 
     },
     "track_expenses_label" : {
@@ -2640,9 +2856,6 @@
         }
       }
     },
-    "Update" : {
-
-    },
     "update_information_button" : {
       "comment" : "Update Information Button",
       "extractionState" : "extracted_with_value",
@@ -2661,9 +2874,6 @@
         }
       }
     },
-    "View All" : {
-
-    },
     "view_achievements" : {
       "comment" : "View Achievements Label",
       "extractionState" : "stale",
@@ -2681,6 +2891,9 @@
           }
         }
       }
+    },
+    "We'll read the total and category" : {
+
     },
     "WEEKLY INSIGHTS" : {
 
@@ -2760,10 +2973,7 @@
         }
       }
     },
-    "Welcome Back" : {
-
-    },
-    "Welcome to Savely" : {
+    "Welcome\nback." : {
 
     },
     "welcome_back_string" : {
@@ -2802,6 +3012,24 @@
         }
       }
     },
+    "What are you saving for?" : {
+
+    },
+    "What did you buy?" : {
+
+    },
+    "WHAT YOU'RE SAVING FOR" : {
+
+    },
+    "What's the\nfinish line?" : {
+
+    },
+    "What's the move?" : {
+
+    },
+    "When do you\nwant this by?" : {
+
+    },
     "yellow_Color" : {
       "comment" : "Yellow Color",
       "extractionState" : "extracted_with_value",
@@ -2819,6 +3047,9 @@
           }
         }
       }
+    },
+    "YES" : {
+
     },
     "yes_button" : {
       "comment" : "Yes Button",
@@ -2838,7 +3069,7 @@
         }
       }
     },
-    "Your financial health is looking good today." : {
+    "Your goals are waiting." : {
 
     }
   },

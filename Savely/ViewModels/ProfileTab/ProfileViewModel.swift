@@ -30,10 +30,6 @@ class ProfileViewModel: ObservableObject {
 
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
-    @Published var showExpenseReminderPicker: Bool = false
-    @Published var showGoalAlertPicker: Bool = false
-    @Published var selectedExpenseReminderTime: Date = Date()
-    @Published var selectedGoalAlertTime: Date = Date()
     @Published var weeklyIncomes: [IncomeModel] = []
     @Published var weeklyExpenses: [ExpenseModel] = []
     @Published var isLoading: Bool = false
@@ -224,37 +220,15 @@ class ProfileViewModel: ObservableObject {
     }
 
     func handleExpenseReminderToggle() {
-        if expenseReminders {
-            showExpenseReminderPicker = true
-        } else {
+        if !expenseReminders {
             NotificationManager.shared.cancelNotification(with: "expenseReminder")
         }
     }
 
     func handleGoalAlertToggle() {
-        if goalAlerts {
-            showGoalAlertPicker = true
-        } else {
+        if !goalAlerts {
             NotificationManager.shared.cancelNotification(with: "goalAlert")
         }
-    }
-
-    func saveExpenseReminderTime() {
-        _ = NotificationManager.shared.scheduleNotification(
-            title: Strings.Notifications.expenseReminderTitle,
-            body: Strings.Notifications.expenseReminderBody,
-            identifier: "expenseReminder",
-            date: selectedExpenseReminderTime
-        )
-    }
-
-    func saveGoalAlertTime() {
-        _ = NotificationManager.shared.scheduleNotification(
-            title: Strings.Notifications.goalAlertTitle,
-            body: Strings.Notifications.goalAlertBody,
-            identifier: "goalAlert",
-            date: selectedGoalAlertTime
-        )
     }
 
     func signOut() {
