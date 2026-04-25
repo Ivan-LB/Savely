@@ -62,12 +62,14 @@ jobs:
         # how to tighten this over time.
         run: swiftlint lint --reporter github-actions-logging
 
-      - name: Generate placeholder Config.plist
-        # Config.plist holds the OpenAI API key locally and is gitignored.
-        # The Xcode project lists it as a required build input, so xcodebuild
-        # fails on a fresh checkout if the file is absent — even though CI
-        # never actually calls the OpenAI API. Write a placeholder with the
-        # right shape so the Resources copy phase succeeds.
+      - name: Generate placeholder secrets
+        # Both Config.plist (OpenAI) and GoogleService-Info.plist (Firebase)
+        # are gitignored locally, but the Xcode project lists them as
+        # required build inputs. xcodebuild fails on a fresh checkout if
+        # either is absent. CI never calls OpenAI or initializes Firebase
+        # (FirebaseApp.configure() runs from AppDelegate at app launch,
+        # and we skip the UI test bundle that would launch the app), so
+        # placeholders with the right shape are sufficient.
         run: |
           cat > Savely/Config.plist <<'PLIST'
           <?xml version="1.0" encoding="UTF-8"?>
@@ -76,6 +78,39 @@ jobs:
           <dict>
               <key>OPENAI_API_KEY</key>
               <string>ci-placeholder-not-a-real-key</string>
+          </dict>
+          </plist>
+          PLIST
+
+          cat > Savely/GoogleService-Info.plist <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>API_KEY</key>
+              <string>AIzaSy_ci_placeholder_not_a_real_key</string>
+              <key>GCM_SENDER_ID</key>
+              <string>000000000000</string>
+              <key>PLIST_VERSION</key>
+              <string>1</string>
+              <key>BUNDLE_ID</key>
+              <string>IvanLB.Savely</string>
+              <key>PROJECT_ID</key>
+              <string>savely-ci-placeholder</string>
+              <key>STORAGE_BUCKET</key>
+              <string>savely-ci-placeholder.appspot.com</string>
+              <key>IS_ADS_ENABLED</key>
+              <false/>
+              <key>IS_ANALYTICS_ENABLED</key>
+              <false/>
+              <key>IS_APPINVITE_ENABLED</key>
+              <true/>
+              <key>IS_GCM_ENABLED</key>
+              <true/>
+              <key>IS_SIGNIN_ENABLED</key>
+              <true/>
+              <key>GOOGLE_APP_ID</key>
+              <string>1:000000000000:ios:0000000000000000000000</string>
           </dict>
           </plist>
           PLIST
