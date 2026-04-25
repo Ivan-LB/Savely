@@ -24,7 +24,7 @@ echo "🔍 Running SwiftLint on staged files…"
 # Lint only the staged files (faster than full project)
 echo "$staged_swift_files" | while read -r file; do
   if [[ -f "$file" ]]; then
-    swiftlint lint --quiet --strict --use-script-input-files <<< "$file" || {
+    swiftlint lint --quiet --strict "$file" || {
       echo ""
       echo "❌ SwiftLint failed. Fix the issues above, then re-stage and commit."
       echo "   To bypass (NOT recommended), use: git commit --no-verify"
