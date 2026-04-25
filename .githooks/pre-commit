@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Pre-commit hook: run SwiftLint on staged Swift files.
+# Saves CI minutes by catching lint errors before they reach GitHub.
+#
+# Activated by running scripts/install-hooks.sh once after cloning.
+
+set -euo pipefail
+
+# Skip if SwiftLint isn't installed — it's optional locally.
+if ! command -v swiftlint >/dev/null 2>&1; then
+  echo "ℹ️  SwiftLint not installed — skipping. Install with: brew install swiftlint"
+  exit 0
+fi
+
+# Only lint staged .swift files
+staged_swift_files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.swift$' || true)
+
+if [[ -z "$staged_swift_files" ]]; then
+  exit 0
+fi
+
+echo "🔍 Running SwiftLint on staged files…"
+
+# Lint only the staged files (faster than full project)
+echo "$staged_swift_files" | while read -r file; do
+  if [[ -f "$file" ]]; then
+    swiftlint lint --quiet --strict --use-script-input-files <<< "$file" || {
+      echo ""
+      echo "❌ SwiftLint failed. Fix the issues above, then re-stage and commit."
+      echo "   To bypass (NOT recommended), use: git commit --no-verify"
+      exit 1
+    }
+  fi
+done
+
+echo "✅ SwiftLint clean."
