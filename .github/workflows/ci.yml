@@ -1,0 +1,129 @@
+name: ci
+
+# Runs on every PR (any base) and on every push to dev/main.
+# Skips draft PRs to save macOS minutes.
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev, main]
+
+# Cancel old runs if a new commit lands on the same branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build & test
+    runs-on: macos-15
+    if: github.event.pull_request.draft == false || github.event_name == 'push'
+
+    env:
+      # Pin Xcode so build behavior is reproducible.
+      # Bump when you upgrade local Xcode and want CI to follow.
+      XCODE_VERSION: "26.0"
+      SCHEME: "Savely"
+      DESTINATION: "platform=iOS Simulator,name=iPhone 16 Pro"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode ${{ env.XCODE_VERSION }}
+        run: |
+          # If the requested version isn't installed on the runner,
+          # this will fail loudly — pick a version that's available.
+          # See: https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md
+          sudo xcode-select -s "/Applications/Xcode_${XCODE_VERSION}.app" || \
+            sudo xcode-select -s "/Applications/Xcode.app"
+          xcodebuild -version
+
+      - name: Cache SPM packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData/**/SourcePackages
+            ~/Library/Caches/org.swift.swiftpm
+          key: spm-${{ runner.os }}-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            spm-${{ runner.os }}-
+
+      - name: Install SwiftLint
+        run: |
+          brew install swiftlint
+          swiftlint version
+
+      - name: SwiftLint
+        # No --strict: warnings annotate inline but don't fail the build.
+        # Only error-severity violations (force_cast, force_try, custom errors)
+        # block the merge. The "ratchet" comment in .swiftlint.yml explains
+        # how to tighten this over time.
+        run: swiftlint lint --reporter github-actions-logging
+
+      - name: Generate placeholder Config.plist
+        # Config.plist holds the OpenAI API key locally and is gitignored.
+        # The Xcode project lists it as a required build input, so xcodebuild
+        # fails on a fresh checkout if the file is absent — even though CI
+        # never actually calls the OpenAI API. Write a placeholder with the
+        # right shape so the Resources copy phase succeeds.
+        run: |
+          cat > Savely/Config.plist <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>OPENAI_API_KEY</key>
+              <string>ci-placeholder-not-a-real-key</string>
+          </dict>
+          </plist>
+          PLIST
+
+      - name: Resolve SPM packages
+        run: |
+          xcodebuild \
+            -project Savely.xcodeproj \
+            -scheme "$SCHEME" \
+            -resolvePackageDependencies
+
+      - name: Build
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Savely.xcodeproj \
+            -scheme "$SCHEME" \
+            -configuration Debug \
+            -destination "$DESTINATION" \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcbeautify --renderer github-actions
+
+      - name: Test
+        # Skip the SavelyUITests bundle on CI. The Xcode template ships
+        # SavelyUITestsLaunchTests with XCTApplicationLaunchMetric, which
+        # runs the app launch ~8 times measuring performance — that takes
+        # ~5–10 min and flakes on shared runners (one slow iteration blows
+        # the std-dev threshold and the whole bundle fails). The template
+        # tests cover no real behavior.
+        #
+        # Compilation of SavelyUITests is still verified by the Build step,
+        # so we still catch breakages. When qa-tester writes real UI tests,
+        # remove the -skip-testing flag.
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project Savely.xcodeproj \
+            -scheme "$SCHEME" \
+            -destination "$DESTINATION" \
+            -skip-testing:SavelyUITests \
+            -resultBundlePath build/TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcbeautify --renderer github-actions
+
+      - name: Upload xcresult on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults-${{ github.run_id }}
+          path: build/TestResults.xcresult
+          retention-days: 7
