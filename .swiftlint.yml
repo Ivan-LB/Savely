@@ -90,7 +90,7 @@ force_cast:
 force_try:
   severity: error                    # error: same
 force_unwrapping:
-  severity: warning                  # warning today → bump to error after cleanup PR
+  severity: error
 
 # Custom project rules
 custom_rules:

@@ -87,10 +87,11 @@ class CameraManager: NSObject, ObservableObject {
     }
 
     func setPreviewLayer(to view: UIView) {
-        previewLayer = AVCaptureVideoPreviewLayer(session: session)
-        previewLayer?.videoGravity = .resizeAspectFill
-        previewLayer?.frame = view.bounds
-        view.layer.insertSublayer(previewLayer!, at: 0)
+        let layer = AVCaptureVideoPreviewLayer(session: session)
+        layer.videoGravity = .resizeAspectFill
+        layer.frame = view.bounds
+        previewLayer = layer
+        view.layer.insertSublayer(layer, at: 0)
     }
 
     func capturePhoto() {

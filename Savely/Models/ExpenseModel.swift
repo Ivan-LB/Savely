@@ -29,7 +29,11 @@ extension ExpenseModel {
         print("Fetching expenses from \(startDate) to \(endDate)")
 
         // Precompute adjusted end date
-        let adjustedEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+        guard let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: endDate) else {
+            print("Error computing adjusted end date for expense fetch")
+            return []
+        }
+        let adjustedEndDate = Calendar.current.startOfDay(for: nextDay)
 
         let fetchDescriptor = FetchDescriptor<ExpenseModel>(
             predicate: #Predicate {

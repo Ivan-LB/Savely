@@ -74,7 +74,8 @@ class ReportsViewModel: ObservableObject {
         print("Fetching weekly incomes...")
 
         let adjustedStartDate = Calendar.current.startOfDay(for: startDate)
-        let adjustedEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+        guard let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: endDate) else { return [] }
+        let adjustedEndDate = Calendar.current.startOfDay(for: nextDay)
 
         let fetchDescriptor = FetchDescriptor<IncomeModel>(
             predicate: #Predicate {
@@ -89,7 +90,8 @@ class ReportsViewModel: ObservableObject {
         print("Fetching weekly expenses...")
 
         let adjustedStartDate = Calendar.current.startOfDay(for: startDate)
-        let adjustedEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+        guard let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: endDate) else { return [] }
+        let adjustedEndDate = Calendar.current.startOfDay(for: nextDay)
 
         let fetchDescriptor = FetchDescriptor<ExpenseModel>(
             predicate: #Predicate {
