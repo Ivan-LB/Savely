@@ -25,7 +25,10 @@ jobs:
       # Bump when you upgrade local Xcode and want CI to follow.
       XCODE_VERSION: "26.0"
       SCHEME: "Savely"
-      DESTINATION: "platform=iOS Simulator,name=iPhone 16 Pro"
+      # DESTINATION is picked dynamically per run (see "Pick a simulator") —
+      # hardcoding a device name breaks whenever GitHub rolls the runner
+      # image to an Xcode whose simulator lineup dropped that model
+      # (bit us 2026-08-15: the image lost "iPhone 16 Pro" mid-day).
 
     steps:
       - name: Checkout
@@ -39,6 +42,19 @@ jobs:
           sudo xcode-select -s "/Applications/Xcode_${XCODE_VERSION}.app" || \
             sudo xcode-select -s "/Applications/Xcode.app"
           xcodebuild -version
+
+      - name: Pick a simulator
+        # Use whatever iPhone the selected Xcode actually ships — resilient
+        # to runner-image updates changing the simulator lineup.
+        run: |
+          DEVICE=$(xcrun simctl list devices available | grep -m1 -oE 'iPhone [^(]+' | sed 's/ *$//')
+          if [ -z "$DEVICE" ]; then
+            echo "No iPhone simulator available on this runner:"
+            xcrun simctl list devices available
+            exit 1
+          fi
+          echo "Using simulator: $DEVICE"
+          echo "DESTINATION=platform=iOS Simulator,name=$DEVICE" >> "$GITHUB_ENV"
 
       - name: Install SwiftLint
         run: |

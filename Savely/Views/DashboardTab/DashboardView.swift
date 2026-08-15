@@ -78,8 +78,10 @@ struct DashboardView: View {
                     EmptyGoalCard()
                 }
 
-                // — Tip of the day —
-                TipOfTheDayCard(viewModel: tipsViewModel)
+                // — Tip of the day (hidden for the App Store release, FeatureFlags.tipsEnabled) —
+                if FeatureFlags.tipsEnabled {
+                    TipOfTheDayCard(viewModel: tipsViewModel)
+                }
 
                 // — Monthly summary —
                 HStack(spacing: 10) {
@@ -136,7 +138,8 @@ struct DashboardView: View {
         .background(Color.warmBg)
         .navigationBarHidden(true)
         .onAppear {
-            if tipsViewModel.modelContext == nil {
+            // No tip generation at all while the flag is off — not just hidden UI.
+            if FeatureFlags.tipsEnabled && tipsViewModel.modelContext == nil {
                 tipsViewModel.setModelContext(modelContext)
             }
         }

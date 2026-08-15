@@ -11,55 +11,61 @@ struct OnboardingView: View {
     @State private var currentStep = 0
     @State private var expenseReminderTime = Date()
     @State private var goalAlertTime = Date()
-    let onboardingSteps = OnboardingData.steps
+    let featureSteps = OnboardingData.steps
     @EnvironmentObject var appViewModel: AppViewModel
 
+    /// welcome + feature steps + notifications
+    private var pageCount: Int { featureSteps.count + 2 }
+    private var isLastStep: Bool { currentStep == pageCount - 1 }
+
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             TabView(selection: $currentStep) {
-                ForEach(0..<onboardingSteps.count, id: \.self) { index in
-                    onboardingStepView(for: index)
-                        .tag(index)
+                WelcomeStepView()
+                    .tag(0)
+                ForEach(Array(featureSteps.enumerated()), id: \.offset) { index, step in
+                    OnboardingStepView(step: step)
+                        .tag(index + 1)
                 }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-
-            Button(action: {
-                handleButtonTap()
-            }) {
-                Text(currentStep < onboardingSteps.count - 1 ? Strings.Buttons.nextButton : Strings.Buttons.startButton)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .fontWeight(.bold)
-                    .background(Color("primaryGreen"))
-                    .foregroundColor(.white)
-                    .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
-            }
-            .padding()
-        }
-        .background(Color("backgroundColor"))
-    }
-
-    private func onboardingStepView(for index: Int) -> some View {
-        if index == onboardingSteps.count - 1 {
-            return AnyView(
                 NotificationSettingsStepView(
                     expenseReminderTime: $expenseReminderTime,
                     goalAlertTime: $goalAlertTime
                 )
-            )
-        } else {
-            return AnyView(
-                OnboardingStepView(step: onboardingSteps[index])
-            )
+                .tag(pageCount - 1)
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+
+            // Custom page dots — the active one stretches into a pill.
+            HStack(spacing: 7) {
+                ForEach(0..<pageCount, id: \.self) { i in
+                    Capsule()
+                        .fill(i == currentStep ? Color.warmGreen : Color.warmLine)
+                        .frame(width: i == currentStep ? 22 : 7, height: 7)
+                        .animation(.spring(response: 0.35, dampingFraction: 0.9), value: currentStep)
+                }
+            }
+            .padding(.bottom, 20)
+
+            Button(action: handleButtonTap) {
+                Text(isLastStep ? Strings.Buttons.startButton : Strings.Buttons.nextButton)
+                    .font(.system(size: 16, weight: .semibold))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(Color.warmGreen)
+                    .foregroundColor(.white)
+                    .cornerRadius(16)
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 16)
         }
+        .background(Color.warmBg.ignoresSafeArea())
     }
 
     private func handleButtonTap() {
-        if currentStep < onboardingSteps.count - 1 {
-            currentStep += 1
-        } else {
+        if isLastStep {
             completeOnboarding()
+        } else {
+            withAnimation { currentStep += 1 }
         }
     }
 
@@ -91,4 +97,5 @@ struct OnboardingView: View {
 
 #Preview {
     OnboardingView()
+        .environmentObject(AppViewModel())
 }

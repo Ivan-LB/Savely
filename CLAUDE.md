@@ -98,6 +98,7 @@ These are invariants that future changes must respect. They were discovered duri
 6. **Localization rule:** all user-facing strings go through `Resources/Strings.swift` constants and are registered in `Localizable.xcstrings`. No hardcoded literals in views.
 7. **Singletons own external I/O:** `AuthenticationManager.shared`, `UserManager.shared`, `NotificationManager.shared`, `CameraManager.shared`, `OpenAIClient.shared`. Manager bodies are split across `Managers/<Name>.swift` and `Extensions/<Name>Extension.swift`.
 8. **`main` and `dev` are protected.** PRs only, CI must be green, no force-push. No auto-merge — the developer merges manually.
+9. **AI tips are feature-flagged OFF for the App Store release** (`FeatureFlags.tipsEnabled`, `Savely/Utilities/FeatureFlags.swift`). Every tips surface checks the flag; tips code is not deleted — the flag is the off switch. See `gotchas.yaml#tips-behind-feature-flag`.
 9. **Solo workflow:** one PR at a time. For non-trivial calls (architecture, dependencies, new patterns), present options with trade-offs instead of deciding silently.
 
 ---

@@ -32,11 +32,13 @@ struct WeeklyInsightsView: View {
             .buttonStyle(PlainButtonStyle())
             .padding(.horizontal)
             
-            NavigationLink(destination: TipHistoryView()) {
-                TipHistoryRow(newTipsCount: viewModel.newTipsCount)
+            if FeatureFlags.tipsEnabled {
+                NavigationLink(destination: TipHistoryView()) {
+                    TipHistoryRow(newTipsCount: viewModel.newTipsCount)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .padding(.horizontal)
             }
-            .buttonStyle(PlainButtonStyle())
-            .padding(.horizontal)
         }
     }
 }

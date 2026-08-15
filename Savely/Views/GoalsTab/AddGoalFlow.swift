@@ -69,7 +69,10 @@ struct AddGoalFlowView: View {
             current: 0,
             target: state.amount,
             color: state.color,
-            isFavorite: state.isFavorite
+            isFavorite: state.isFavorite,
+            autoMoveEnabled: state.autoDeposit,
+            autoMoveAmount: state.monthlyPace.rounded(),
+            deadline: state.deadline
         )
         modelContext.insert(goal)
         try? modelContext.save()

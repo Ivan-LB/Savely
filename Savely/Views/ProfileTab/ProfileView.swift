@@ -6,6 +6,8 @@ struct ProfileView: View {
     @EnvironmentObject var appViewModel: AppViewModel
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \IncomeModel.date, order: .reverse) private var incomes: [IncomeModel]
+    @Query private var expenses: [ExpenseModel]
+    @Query private var goals: [GoalModel]
     @State private var showingEditProfile = false
     @State private var showingAchievements = false
     @State private var showingTipHistory = false
@@ -124,8 +126,10 @@ struct ProfileView: View {
                         SettingsNavRow(icon: "doc.text.fill", title: "Weekly PDF report", onTap: {})
                     }
 
-                    ProfileSection(header: "About") {
-                        SettingsNavRow(icon: "sparkles", title: "Tip history", detail: "128 tips", onTap: { showingTipHistory = true })
+                    if FeatureFlags.tipsEnabled {
+                        ProfileSection(header: "About") {
+                            SettingsNavRow(icon: "sparkles", title: "Tip history", detail: "128 tips", onTap: { showingTipHistory = true })
+                        }
                     }
 
                     Spacer(minLength: 16)
@@ -145,16 +149,25 @@ struct ProfileView: View {
         }
     }
 
-    // Badge previews (static mock — real achievements system can be wired later)
+    // Badge previews — the first six real achievement states (AchievementEngine,
+    // 2026-08). Unlocked show their tile colors; locked show a lock.
     private struct BadgePreview { let icon: String; let bg: Color; let color: Color; let unlocked: Bool }
-    private var badgePreviews: [BadgePreview] { [
-        BadgePreview(icon: "star.fill",   bg: Color.warmAmberSoft, color: Color.warmAmber, unlocked: true),
-        BadgePreview(icon: "checkmark",   bg: Color.warmGreenSoft, color: Color.warmGreen, unlocked: true),
-        BadgePreview(icon: "target",      bg: Color.warmSkySoft,   color: Color.warmSky,   unlocked: true),
-        BadgePreview(icon: "medal.fill",  bg: Color.warmClaySoft,  color: Color.warmClay,  unlocked: true),
-        BadgePreview(icon: "lock.fill",   bg: Color.warmBg,        color: Color.warmInkMuted, unlocked: false),
-        BadgePreview(icon: "lock.fill",   bg: Color.warmBg,        color: Color.warmInkMuted, unlocked: false),
-    ] }
+    private var badgePreviews: [BadgePreview] {
+        let states = AchievementEngine.evaluate(AchievementInput(
+            incomeTotal: incomes.reduce(0) { $0 + $1.amount },
+            incomeCount: incomes.count,
+            expenseCount: expenses.count,
+            loggedDates: incomes.map(\.date) + expenses.map(\.date),
+            goalCount: goals.count,
+            bestGoalProgress: goals.map(\.progress).max() ?? 0,
+            completedGoalCount: goals.filter { $0.progress >= 1 }.count
+        ))
+        return states.prefix(6).map { state in
+            state.unlocked
+                ? BadgePreview(icon: state.icon, bg: state.tileBackground, color: state.tileColor, unlocked: true)
+                : BadgePreview(icon: "lock.fill", bg: Color.warmBg, color: Color.warmInkMuted, unlocked: false)
+        }
+    }
 
     private func formattedAmount(_ v: Double) -> String {
         let f = NumberFormatter()

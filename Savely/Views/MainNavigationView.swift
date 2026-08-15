@@ -429,15 +429,42 @@ struct WarmQuickExpenseView: View {
 
 struct WarmQuickIncomeView: View {
     @Environment(\.modelContext) private var modelContext
+    @Query private var goals: [GoalModel]
+    @Query private var allIncomes: [IncomeModel]
+    @Query private var allExpenses: [ExpenseModel]
     let onBack: () -> Void; let onSave: () -> Void
 
     @State private var amountStr = "0"
     @State private var description = ""
     @State private var selectedSource = "Paycheck"
+    @State private var autoMoveArmed = false
     @StateObject private var vm = IncomesTrackerViewModel()
 
     private let sources = ["Paycheck", "Freelance", "Gift", "Other"]
     private var canSave: Bool { amountStr != "0" }
+    private var enteredAmount: Double { Double(amountStr) ?? 0 }
+
+    /// This month's flows — the affordability input for the suggestion.
+    private func monthTotal(_ dates: [(Date, Double)]) -> Double {
+        let calendar = Calendar.current
+        let now = Date()
+        return dates
+            .filter { calendar.isDate($0.0, equalTo: now, toGranularity: .month) }
+            .reduce(0) { $0 + $1.1 }
+    }
+
+    /// Live suggestion — recomputes as the keypad changes, so the offered
+    /// amount can never exceed the income being logged nor what this
+    /// month's income-vs-expense margin can actually spare.
+    private var autoMoveSuggestion: AutoMoveSuggestion? {
+        guard FeatureFlags.autoMoveSuggestionsEnabled else { return nil }
+        return AutoMoveSuggestion.compute(
+            goals: goals,
+            incomeAmount: enteredAmount,
+            monthIncomeTotal: monthTotal(allIncomes.map { ($0.date, $0.amount) }),
+            monthExpenseTotal: monthTotal(allExpenses.map { ($0.date, $0.amount) })
+        )
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -497,21 +524,34 @@ struct WarmQuickIncomeView: View {
             }
             .padding(.horizontal, 20).padding(.top, 20)
 
-            // Auto-move hint banner
-            HStack(spacing: 10) {
-                Image(systemName: "sparkles")
-                    .font(.system(size: 13)).foregroundStyle(Color.warmGreen)
-                    .frame(width: 32, height: 32).background(Color.warmSurface).cornerRadius(10)
-                Text("**Auto-move $230** to Kyoto from this paycheck?")
-                    .font(.system(size: 12)).foregroundStyle(Color.warmGreenDeep)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Button("YES") {}
-                    .font(.system(size: 11, weight: .bold)).foregroundStyle(.white)
+            // Auto-move suggestion — computed live from real goals with
+            // payday auto-move enabled. YES only ARMS it; the deposit is
+            // applied together with the income save (see saveAndDismiss).
+            if let suggestion = autoMoveSuggestion {
+                HStack(spacing: 10) {
+                    Image(systemName: autoMoveArmed ? "checkmark.circle.fill" : "sparkles")
+                        .font(.system(size: 13)).foregroundStyle(Color.warmGreen)
+                        .frame(width: 32, height: 32).background(Color.warmSurface).cornerRadius(10)
+                    Text(bannerText(for: suggestion))
+                        .font(.system(size: 12)).foregroundStyle(Color.warmGreenDeep)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Button(autoMoveArmed ? "UNDO" : "YES") {
+                        withAnimation(.spring(response: 0.35, dampingFraction: 0.9)) {
+                            autoMoveArmed.toggle()
+                        }
+                    }
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundStyle(autoMoveArmed ? Color.warmGreenDeep : .white)
                     .padding(.horizontal, 10).padding(.vertical, 6)
-                    .background(Color.warmGreen).clipShape(Capsule())
+                    .background(autoMoveArmed ? Color.warmSurface : Color.warmGreen)
+                    .clipShape(Capsule())
+                    .overlay(Capsule().stroke(autoMoveArmed ? Color.warmGreen : Color.clear, lineWidth: 1))
+                }
+                .padding(12).background(Color.warmGreenSoft).cornerRadius(14)
+                .padding(.horizontal, 20).padding(.top, 18)
+                .transition(.opacity.combined(with: .move(edge: .top)))
+                .animation(.spring(response: 0.35, dampingFraction: 0.9), value: autoMoveArmed)
             }
-            .padding(12).background(Color.warmGreenSoft).cornerRadius(14)
-            .padding(.horizontal, 20).padding(.top, 18)
 
             Spacer(minLength: 0)
             WarmKeypad(amountStr: $amountStr)
@@ -519,10 +559,28 @@ struct WarmQuickIncomeView: View {
         .onAppear { vm.setModelContext(modelContext) }
     }
 
+    private func bannerText(for suggestion: AutoMoveSuggestion) -> AttributedString {
+        let amount = "$\(Int(suggestion.amount))"
+        let origin = selectedSource == "Paycheck" ? "paycheck" : "income"
+        let raw = autoMoveArmed
+            ? "**Moving \(amount)** to \(suggestion.goal.name) when you save."
+            : "**Auto-move \(amount)** to \(suggestion.goal.name) from this \(origin)?"
+        return (try? AttributedString(markdown: raw)) ?? AttributedString(raw)
+    }
+
     private func saveAndDismiss() {
         guard canSave, let amt = Double(amountStr), amt > 0 else { return }
+        // Snapshot the suggestion BEFORE the income insert mutates the
+        // month totals — this is exactly what the banner was showing.
+        let armedSuggestion = autoMoveArmed ? autoMoveSuggestion : nil
         vm.incomeDescription = description.isEmpty ? selectedSource : description
-        vm.amount = amountStr; vm.addIncome(); onSave()
+        vm.amount = amountStr
+        vm.addIncome()
+        if let suggestion = armedSuggestion {
+            suggestion.apply()
+            try? modelContext.save()
+        }
+        onSave()
     }
 }
 

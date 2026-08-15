@@ -205,71 +205,8 @@ struct SplashScreenView: View {
     }
 }
 
-// MARK: - Sprout geometry (120-unit design space, shared with the app icon)
-
-private func sproutPoint(_ x: CGFloat, _ y: CGFloat, in rect: CGRect) -> CGPoint {
-    CGPoint(x: rect.minX + x / 120 * rect.width, y: rect.minY + y / 120 * rect.height)
-}
-
-private struct SproutStemShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        p.move(to: sproutPoint(60, 87, in: rect))
-        p.addCurve(
-            to: sproutPoint(60, 56, in: rect),
-            control1: sproutPoint(52, 76, in: rect),
-            control2: sproutPoint(68, 68, in: rect)
-        )
-        return p
-    }
-}
-
-private struct SeedShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        let center = sproutPoint(60, 92, in: rect)
-        let radius = 9 / 120 * rect.width
-        return Path(ellipseIn: CGRect(
-            x: center.x - radius, y: center.y - radius,
-            width: radius * 2, height: radius * 2
-        ))
-    }
-}
-
-private struct SproutLeafShape: Shape {
-    enum Side { case left, right }
-    let side: Side
-
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        p.move(to: sproutPoint(60, 56, in: rect))
-        switch side {
-        case .left:
-            p.addCurve(
-                to: sproutPoint(36, 26, in: rect),
-                control1: sproutPoint(42, 54, in: rect),
-                control2: sproutPoint(34, 40, in: rect)
-            )
-            p.addCurve(
-                to: sproutPoint(60, 56, in: rect),
-                control1: sproutPoint(52, 28, in: rect),
-                control2: sproutPoint(60, 42, in: rect)
-            )
-        case .right:
-            p.addCurve(
-                to: sproutPoint(82, 28, in: rect),
-                control1: sproutPoint(74, 52, in: rect),
-                control2: sproutPoint(82, 40, in: rect)
-            )
-            p.addCurve(
-                to: sproutPoint(60, 56, in: rect),
-                control1: sproutPoint(68, 30, in: rect),
-                control2: sproutPoint(60, 42, in: rect)
-            )
-        }
-        p.closeSubpath()
-        return p
-    }
-}
+// Sprout geometry lives in Views/Components/SproutMark.swift (shared with
+// the static in-app mark) — this file animates those shapes directly.
 
 #Preview {
     SplashScreenView()

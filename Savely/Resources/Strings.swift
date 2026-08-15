@@ -57,6 +57,30 @@ struct Strings {
             "goal_alert_time_label",
             value: "Goal Alert Time",
             comment: "Goal Alert Time Label")
+        static let welcomeTitle = NSLocalizedString(
+            "onboarding_welcome_title",
+            value: "Yours, and only yours",
+            comment: "Onboarding welcome step title (privacy)")
+        static let welcomeLabel = NSLocalizedString(
+            "onboarding_welcome_label",
+            value: "No accounts, no cloud. Your money data lives on your iPhone and never leaves it.",
+            comment: "Onboarding welcome step description (privacy)")
+        static let trackMoneyTitle = NSLocalizedString(
+            "track_money_title",
+            value: "Track Your Money",
+            comment: "Onboarding merged income/expense tracking step title")
+        static let trackMoneyLabel = NSLocalizedString(
+            "track_money_label",
+            value: "Log income and expenses in seconds and understand where your money goes.",
+            comment: "Onboarding merged income/expense tracking step description")
+        static let scanReceiptsTitle = NSLocalizedString(
+            "scan_receipts_title",
+            value: "Scan Receipts",
+            comment: "Onboarding receipt scanning step title")
+        static let scanReceiptsLabel = NSLocalizedString(
+            "scan_receipts_label",
+            value: "Point the camera at a receipt and Savely reads the total for you.",
+            comment: "Onboarding receipt scanning step description")
     }
 
     struct Notifications {
