@@ -1814,6 +1814,30 @@
         }
       }
     },
+    "onboarding_welcome_label" : {
+      "comment" : "Onboarding welcome step description (privacy)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No accounts, no cloud. Your money data lives on your iPhone and never leaves it."
+          }
+        }
+      }
+    },
+    "onboarding_welcome_title" : {
+      "comment" : "Onboarding welcome step title (privacy)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yours, and only yours"
+          }
+        }
+      }
+    },
     "Optional note" : {
 
     },
@@ -2248,6 +2272,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Escanear Recibo"
+          }
+        }
+      }
+    },
+    "scan_receipts_label" : {
+      "comment" : "Onboarding receipt scanning step description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Point the camera at a receipt and Savely reads the total for you."
+          }
+        }
+      }
+    },
+    "scan_receipts_title" : {
+      "comment" : "Onboarding receipt scanning step title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Scan Receipts"
           }
         }
       }
@@ -2840,6 +2888,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Controle sus Ingresos"
+          }
+        }
+      }
+    },
+    "track_money_label" : {
+      "comment" : "Onboarding merged income/expense tracking step description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Log income and expenses in seconds and understand where your money goes."
+          }
+        }
+      }
+    },
+    "track_money_title" : {
+      "comment" : "Onboarding merged income/expense tracking step title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Track Your Money"
           }
         }
       }

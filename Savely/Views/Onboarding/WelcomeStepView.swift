@@ -1,40 +1,33 @@
 //
-//  OnboardingStep.swift
+//  WelcomeStepView.swift
 //  Savely
 //
-//  Created by Ivan Lorenzana Belli on 13/11/24.
+//  Created by Ivan Lorenzana Belli on 15/08/26.
 //
 
 import SwiftUI
 
-/// One feature page of onboarding, Warm Meadow style: soft color tile with
-/// the glyph, serif title, muted body. A short entrance (tile settles,
-/// text rises) runs once per page; Reduce Motion shows everything at once.
-struct OnboardingStepView: View {
-    let step: OnboardingStepModel
+/// First onboarding page: the sprout mark plus the local-first promise —
+/// the one thing worth saying before anything else now that Savely has no
+/// accounts (2026-08). Same entrance rhythm as the feature steps.
+struct WelcomeStepView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var appeared = false
 
     var body: some View {
         VStack(spacing: 28) {
-            RoundedRectangle(cornerRadius: 28)
-                .fill(step.tileBackground)
-                .frame(width: 96, height: 96)
-                .overlay(
-                    Image(systemName: step.image)
-                        .font(.system(size: 40, weight: .medium))
-                        .foregroundStyle(step.tileColor)
-                )
+            SproutMark()
+                .frame(width: 110, height: 110)
                 .scaleEffect(appeared ? 1 : 0.92)
                 .opacity(appeared ? 1 : 0)
 
             VStack(spacing: 12) {
-                Text(step.title)
+                Text(Strings.Onboarding.welcomeTitle)
                     .font(.system(size: 30, weight: .regular, design: .serif))
                     .foregroundStyle(Color.warmInk)
                     .multilineTextAlignment(.center)
 
-                Text(step.description)
+                Text(Strings.Onboarding.welcomeLabel)
                     .font(.system(size: 15))
                     .foregroundStyle(Color.warmInkSoft)
                     .multilineTextAlignment(.center)
@@ -59,7 +52,7 @@ struct OnboardingStepView: View {
 }
 
 #Preview {
-    OnboardingStepView(step: OnboardingData.steps[0])
+    WelcomeStepView()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.warmBg)
 }
