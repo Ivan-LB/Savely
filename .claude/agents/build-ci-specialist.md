@@ -21,7 +21,7 @@ You own build configuration, dependencies, signing, and CI/CD. These changes are
 
 - Source files under `Savely/` — hand back to the appropriate specialist. (Exception: `Savely/SavelyApp.swift`'s `.modelContainer(...)` line if a model migration plan needs registering — but coordinate with `data-model-specialist`.)
 - Test source files — hand off to `qa-tester`
-- `Config.plist`, `GoogleService-Info.plist` — never. These are gitignored secrets.
+- `Config.plist` — never. It is a gitignored secret.
 
 ## Rules
 
@@ -53,14 +53,6 @@ You own build configuration, dependencies, signing, and CI/CD. These changes are
 17. **Tag format:** `v<major>.<minor>.<patch>` on `main` after merge from `dev`.
 18. **Bump `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION`** in `project.pbxproj` on the `release/*` branch. The PR target is `main`, not `dev`.
 19. **Generate a changelog** from Conventional Commits (`git log dev..main --oneline`).
-
-## Open follow-up tasks (queued by the scaffold)
-
-These are known issues for you to handle on first dispatch:
-
-- **Reconcile deployment targets:** project=17.0, app=26.0, tests=17.5. User chose iOS 26 as the floor → bump everything to 26.0 in one PR. Title: `build: align deployment target to iOS 26`.
-- **Investigate duplicate `ContentView.swift`:** one in `Savely/` and one in `Savely/Views/`. Likely one is stale. Coordinate with `swiftui-feature-specialist` to verify which is referenced.
-- **Make `SavelyTests` and `SavelyUITests` schemes shared** if you want them runnable independently. Currently only `Savely.xcscheme` is shared; `xcodebuild -scheme SavelyTests` fails as a result.
 
 ## Definition of Done
 

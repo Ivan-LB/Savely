@@ -65,17 +65,7 @@ struct OnboardingView: View {
 
     private func completeOnboarding() {
         saveNotificationTimes()
-        
-        Task {
-            do {
-                try await UserManager.shared.updateOnboardingStatus(isComplete: true)
-                appViewModel.isOnboardingComplete = true
-                UserDefaults.standard.set(true, forKey: "isOnboardingComplete")
-                UserDefaults.standard.synchronize()
-            } catch {
-                print("Error updating onboarding status: \(error)")
-            }
-        }
+        appViewModel.completeOnboarding()
     }
 
     private func saveNotificationTimes() {

@@ -1,3 +1,12 @@
+# Firebase (REMOVED 2026-08)
+
+> Firebase (Auth + Firestore) was removed entirely — see
+> `docs/plans/remove-auth-firebase.md`. The app is local-first with no
+> accounts; profile data lives in UserDefaults, domain data in SwiftData.
+> This file is kept as historical reference for what the integration
+> looked like. The Firebase project itself should be deleted in the
+> console so the plist in public git history points at a dead project.
+
 # Firebase
 
 How Savely uses Firebase, what's stored where, and the rules for changing it.

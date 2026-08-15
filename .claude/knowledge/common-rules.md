@@ -6,7 +6,7 @@ Every specialist follows these. Listed once here so the agent files don't repeat
 
 1. `xcodebuild build -scheme Savely -destination 'platform=iOS Simulator,name=iPhone 16 Pro'` succeeds.
 2. `xcodebuild test -scheme Savely -destination 'platform=iOS Simulator,name=iPhone 16 Pro'` passes.
-3. `swiftlint --strict` exits 0 (soft-skip until SwiftLint is installed).
+3. `swiftlint lint --strict` exits 0. Force-unwrap severity is `error`; the pre-commit hook runs SwiftLint on staged Swift files automatically.
 4. No hardcoded user-facing strings — everything routed through `Resources/Strings.swift`.
 5. No secrets staged. See list below.
 6. `CLAUDE.md` updated if a new invariant is introduced.
@@ -33,7 +33,6 @@ If a hook fails, the commit didn't happen. Fix the issue, re-stage, create a **n
 | Path / pattern | What it is |
 |---|---|
 | `Savely/Config.plist` | OpenAI API key |
-| `Savely/GoogleService-Info.plist` | Firebase config |
 | `.env`, `.env.*` | Environment files |
 | `*.mobileprovision`, `*.provisionprofile` | Provisioning profiles |
 | `*.p12`, `*.cer`, `*.certSigningRequest` | Signing certs |

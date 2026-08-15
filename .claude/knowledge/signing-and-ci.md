@@ -51,7 +51,7 @@ Steps:
 1. **Checkout** — `actions/checkout@v4`.
 2. **Select Xcode** — pins to a specific Xcode version. Without this, GitHub silently bumps Xcode and your builds break "for no reason."
 3. **Cache SPM** — caches `~/Library/Developer/Xcode/DerivedData/.../SourcePackages` keyed on `Package.resolved`'s hash. Saves ~60–90s per run when nothing changed.
-4. **SwiftLint** — `swiftlint --strict` exits non-zero on any violation. This is the cheapest gate, runs first.
+4. **SwiftLint** — `swiftlint lint --reporter github-actions-logging` (no `--strict`). Warnings annotate inline; only error-severity rules block the merge. `force_unwrapping`, `force_cast`, and `force_try` are all `error` after the Task 3 ratchet flip.
 5. **Build** — `xcodebuild build` for the `Savely` scheme. Fails fast if compilation breaks.
 6. **Test** — `xcodebuild test`. Emits `.xcresult` bundle.
 7. **Upload artifact** — the `.xcresult` is uploaded so you can download it and open in Xcode when CI fails. Without this you're stuck reading 5,000 lines of CI logs.
@@ -92,15 +92,6 @@ Today, the CI workflow needs **no secrets** (it doesn't sign or upload). When `r
 - `MATCH_PASSWORD` — encrypts the signing certs repo (if using fastlane match)
 
 **Never** echo a secret in a workflow. **Never** `set -x` in a step that touches one.
-
-## Deployment target reality (open task)
-
-Current state:
-- Project default: `IPHONEOS_DEPLOYMENT_TARGET = 17.0`
-- App target: `26.0`
-- Test targets: `17.5`
-
-User decision: **iOS 26 is the floor everywhere.** First job for `build-ci-specialist` is to align all three to `26.0` in one PR (`build: align deployment target to iOS 26`).
 
 ## Releases (future)
 
