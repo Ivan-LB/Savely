@@ -73,6 +73,12 @@ English-only); ReportsView's charts group by raw free text, making the
 
 ## Recommended roadmap (3 PRs, in this order)
 
+> Executable implementation plans (self-contained, written for a fresh
+> session with no shared context):
+> [PR A](pr-a-honesty-correctness.md) ·
+> [PR B](pr-b-real-categories.md) ·
+> [PR C](pr-c-goals-complete.md)
+
 ### PR A — Honesty & correctness (fix what lies or corrupts)
 1. **Remove the favorite-goal coupling** (finding #1) — deposits become
    the only mutation path. Regression test for the double-count.
@@ -87,9 +93,9 @@ English-only); ReportsView's charts group by raw free text, making the
 `category: String?` on ExpenseModel + `source: String?` on IncomeModel
 (additive migration). Persist the chips that already exist; list falls
 back to keyword inference for legacy rows. Unblocks per-source income
-breakdown, meaningful category charts, future budgets. Consider
-resurfacing ReportsView (reachable from Money tab) once its charts mean
-something.
+breakdown, meaningful category charts, future budgets. ReportsView gets
+resurrected with a Profile entry point once its charts mean something
+(decision in the PR B plan).
 
 ### PR C — Goals, completed (the biggest CRUD hole + deposit ledger)
 1. **Goal edit sheet** wired to both dead pencils (name/target/deadline/
