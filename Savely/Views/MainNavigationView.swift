@@ -497,21 +497,24 @@ struct WarmQuickIncomeView: View {
             }
             .padding(.horizontal, 20).padding(.top, 20)
 
-            // Auto-move hint banner
-            HStack(spacing: 10) {
-                Image(systemName: "sparkles")
-                    .font(.system(size: 13)).foregroundStyle(Color.warmGreen)
-                    .frame(width: 32, height: 32).background(Color.warmSurface).cornerRadius(10)
-                Text("**Auto-move $230** to Kyoto from this paycheck?")
-                    .font(.system(size: 12)).foregroundStyle(Color.warmGreenDeep)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Button("YES") {}
-                    .font(.system(size: 11, weight: .bold)).foregroundStyle(.white)
-                    .padding(.horizontal, 10).padding(.vertical, 6)
-                    .background(Color.warmGreen).clipShape(Capsule())
+            // Auto-move hint banner — placeholder UI, hidden until the
+            // suggestion is computed from real goals (FeatureFlags).
+            if FeatureFlags.autoMoveSuggestionsEnabled {
+                HStack(spacing: 10) {
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 13)).foregroundStyle(Color.warmGreen)
+                        .frame(width: 32, height: 32).background(Color.warmSurface).cornerRadius(10)
+                    Text("**Auto-move $230** to Kyoto from this paycheck?")
+                        .font(.system(size: 12)).foregroundStyle(Color.warmGreenDeep)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Button("YES") {}
+                        .font(.system(size: 11, weight: .bold)).foregroundStyle(.white)
+                        .padding(.horizontal, 10).padding(.vertical, 6)
+                        .background(Color.warmGreen).clipShape(Capsule())
+                }
+                .padding(12).background(Color.warmGreenSoft).cornerRadius(14)
+                .padding(.horizontal, 20).padding(.top, 18)
             }
-            .padding(12).background(Color.warmGreenSoft).cornerRadius(14)
-            .padding(.horizontal, 20).padding(.top, 18)
 
             Spacer(minLength: 0)
             WarmKeypad(amountStr: $amountStr)
