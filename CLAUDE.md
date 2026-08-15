@@ -8,7 +8,7 @@ Front door for Claude Code sessions in this repo. **Read this file first**, then
 
 ## What this is
 
-Savely is a personal finance iOS app (iOS 26+) built with SwiftUI + SwiftData + Firebase. Solo developer. CI runs on GitHub Actions (`.github/workflows/ci.yml`); the pre-commit hook runs SwiftLint on staged Swift files locally.
+Savely is a personal finance iOS app (iOS 26+) built with SwiftUI + SwiftData — local-first, no accounts (Firebase/auth removed 2026-08, see docs/plans/remove-auth-firebase.md). Solo developer. CI runs on GitHub Actions (`.github/workflows/ci.yml`); the pre-commit hook runs SwiftLint on staged Swift files locally.
 
 ---
 
@@ -73,7 +73,6 @@ Savely/
 ├── Assets.xcassets/           # Images + ColorPalette
 ├── Savely.entitlements        # Sign in with Apple
 ├── Config.plist               # OpenAI API key — GITIGNORED
-└── GoogleService-Info.plist   # Firebase creds — GITIGNORED
 
 SavelyTests/                   # XCTest unit tests (skeleton only today)
 SavelyUITests/                 # XCTest UI tests (skeleton only today)
@@ -93,7 +92,7 @@ These are invariants that future changes must respect. They were discovered duri
 
 1. **Signing is automatic, team `ZHLD96SP29`.** Don't switch to manual signing. Don't edit signing build settings.
 2. **No `.xcconfig` files exist** — all settings live in `project.pbxproj`. Touching pbxproj is risky; prefer Xcode UI edits and review the diff carefully.
-3. **Secrets are gitignored:** `Savely/Config.plist` (OpenAI), `GoogleService-Info.plist` (Firebase), anything matching `.env*`. Never commit these. Never paste their contents.
+3. **Secrets are gitignored:** `Savely/Config.plist` (OpenAI), anything matching `.env*`. Never commit these. Never paste their contents.
 4. **iOS 26.0 is the minimum deployment target** for the app target. Use modern APIs freely (`@Observable`, `NavigationStack`, Swift Testing, etc.).
 5. **Only `Savely.xcscheme` is shared and tracked** in `Savely.xcodeproj/xcshareddata/xcschemes/`. Test commands must use `-scheme Savely`, never `-scheme SavelyTests`.
 6. **Localization rule:** all user-facing strings go through `Resources/Strings.swift` constants and are registered in `Localizable.xcstrings`. No hardcoded literals in views.
@@ -108,7 +107,6 @@ These are invariants that future changes must respect. They were discovered duri
 | Path / pattern | What it is |
 |---|---|
 | `Savely/Config.plist` | OpenAI API key |
-| `Savely/GoogleService-Info.plist` | Firebase config |
 | `.env`, `.env.*` | Any environment files |
 | `*.mobileprovision`, `*.provisionprofile` | Provisioning profiles |
 | `*.p12`, `*.cer`, `*.certSigningRequest` | Signing certs |

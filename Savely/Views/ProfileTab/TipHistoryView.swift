@@ -7,15 +7,17 @@
 
 import SwiftUI
 import SwiftData
-import MarkdownUI
 
 struct TipHistoryView: View {
     @Query(sort: \TipModel.date, order: .reverse) var tips: [TipModel]
-    
+
     var body: some View {
         List(tips) { tip in
             VStack(alignment: .leading, spacing: 5) {
-                Markdown(tip.content)
+                // Native markdown (replaced MarkdownUI): tips are short
+                // OpenAI strings — inline styling (bold/italic/links) is all
+                // they use, so AttributedString's inline parser is enough.
+                Text(attributedTip(tip.content))
                     .font(.body)
                     .foregroundStyle(.primary)
                     .lineLimit(nil)
@@ -27,5 +29,12 @@ struct TipHistoryView: View {
         }
         .listStyle(PlainListStyle())
         .navigationTitle(Strings.Profile.tipsHistoryTitle)
+    }
+
+    private func attributedTip(_ content: String) -> AttributedString {
+        (try? AttributedString(
+            markdown: content,
+            options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)
+        )) ?? AttributedString(content)
     }
 }

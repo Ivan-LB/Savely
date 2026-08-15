@@ -49,9 +49,6 @@ struct ProfileView: View {
                             Text(viewModel.displayName.isEmpty ? "User" : viewModel.displayName)
                                 .font(.system(size: 22, weight: .regular, design: .serif))
                                 .foregroundStyle(Color.warmInk)
-                            Text(viewModel.email.isEmpty ? "—" : viewModel.email)
-                                .font(.system(size: 13))
-                                .foregroundStyle(Color.warmInkMuted)
                         }
                         Spacer()
                         Button(action: { showingEditProfile = true }) {
@@ -124,17 +121,11 @@ struct ProfileView: View {
                         WarmDivider()
                         SettingsToggleRow(icon: "moon.fill", title: "Dark Mode", isOn: $viewModel.darkMode)
                         WarmDivider()
-                        SettingsNavRow(icon: "lock.shield.fill", title: "Change Password", onTap: {})
-                        WarmDivider()
                         SettingsNavRow(icon: "doc.text.fill", title: "Weekly PDF report", onTap: {})
                     }
 
                     ProfileSection(header: "About") {
                         SettingsNavRow(icon: "sparkles", title: "Tip history", detail: "128 tips", onTap: { showingTipHistory = true })
-                        WarmDivider()
-                        SettingsNavRow(icon: "rectangle.portrait.and.arrow.right", title: "Sign out", color: Color.warmClay, onTap: {
-                            Task { try? AuthenticationManager.shared.signOut() }
-                        })
                     }
 
                     Spacer(minLength: 16)
@@ -271,15 +262,13 @@ struct EditProfileSheet: View {
             Form {
                 Section {
                     TextField("Display Name", text: $viewModel.displayName)
-                    TextField("Email", text: $viewModel.email)
-                        .textContentType(.emailAddress).keyboardType(.emailAddress).autocapitalization(.none)
                 }
             }
             .navigationTitle("Edit Profile").navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") { Task { await viewModel.updatePersonalInformation(); dismiss() } }.fontWeight(.semibold)
+                    Button("Save") { viewModel.updatePersonalInformation(); dismiss() }.fontWeight(.semibold)
                 }
             }
         }

@@ -21,7 +21,7 @@ You own build configuration, dependencies, signing, and CI/CD. These changes are
 
 - Source files under `Savely/` — hand back to the appropriate specialist. (Exception: `Savely/SavelyApp.swift`'s `.modelContainer(...)` line if a model migration plan needs registering — but coordinate with `data-model-specialist`.)
 - Test source files — hand off to `qa-tester`
-- `Config.plist`, `GoogleService-Info.plist` — never. These are gitignored secrets.
+- `Config.plist` — never. It is a gitignored secret.
 
 ## Rules
 

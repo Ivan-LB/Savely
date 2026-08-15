@@ -33,7 +33,6 @@ If a hook fails, the commit didn't happen. Fix the issue, re-stage, create a **n
 | Path / pattern | What it is |
 |---|---|
 | `Savely/Config.plist` | OpenAI API key |
-| `Savely/GoogleService-Info.plist` | Firebase config |
 | `.env`, `.env.*` | Environment files |
 | `*.mobileprovision`, `*.provisionprofile` | Provisioning profiles |
 | `*.p12`, `*.cer`, `*.certSigningRequest` | Signing certs |

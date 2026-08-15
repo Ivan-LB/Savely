@@ -15,7 +15,6 @@ import SwiftData
 @MainActor
 class ProfileViewModel: ObservableObject {
     @Published var displayName: String = ""
-    @Published var email: String = ""
     @AppStorage("darkModeEnabled") var darkMode: Bool = false
     @Published var expenseReminders: Bool = true {
         didSet {
@@ -45,10 +44,7 @@ class ProfileViewModel: ObservableObject {
 
     init(modelContext: ModelContext? = nil) {
         self.modelContext = modelContext
-        print("ProfileViewModel initialized.")
-        Task {
-            await fetchUserData()
-        }
+        self.displayName = UserDefaults.standard.string(forKey: "displayName") ?? ""
         if modelContext != nil {
             fetchWeeklyReportData(
                 startDate: Calendar.current.startOfWeek(for: Date()),
@@ -64,27 +60,6 @@ class ProfileViewModel: ObservableObject {
             startDate: Calendar.current.startOfWeek(for: Date()),
             endDate: Date()
         )
-    }
-
-    func fetchUserData() async {
-        guard let uid = AuthenticationManager.shared.currentUser?.uid else {
-            alertMessage = "User not authenticated."
-            showAlert = true
-            return
-        }
-
-        do {
-            let user = try await UserManager.shared.getUser(userId: uid)
-            DispatchQueue.main.async {
-                self.displayName = user.displayName ?? "Unknown"
-                self.email = user.email ?? "Unknown"
-            }
-        } catch {
-            DispatchQueue.main.async {
-                self.alertMessage = "Failed to fetch user data: \(error.localizedDescription)"
-                self.showAlert = true
-            }
-        }
     }
 
     func fetchWeeklyReportData(startDate: Date, endDate: Date) {
@@ -204,21 +179,12 @@ class ProfileViewModel: ObservableObject {
     }
 
 
-    func updatePersonalInformation() async {
-        guard let uid = AuthenticationManager.shared.currentUser?.uid else {
-            alertMessage = "User not authenticated."
-            showAlert = true
-            return
-        }
-        do {
-            try await UserManager.shared.updateUser(userId: uid, displayName: displayName, email: email)
-            try await AuthenticationManager.shared.updateEmail(email: email)
-            alertMessage = "Your personal information has been updated successfully."
-            showAlert = true
-        } catch {
-            alertMessage = "Failed to update your information: \(error.localizedDescription)"
-            showAlert = true
-        }
+    /// Local-only since the auth removal: the display name lives in
+    /// UserDefaults ("displayName", shared with AppViewModel), nowhere else.
+    func updatePersonalInformation() {
+        UserDefaults.standard.set(displayName, forKey: "displayName")
+        alertMessage = "Your personal information has been updated successfully."
+        showAlert = true
     }
 
     func handleExpenseReminderToggle() {
@@ -230,14 +196,6 @@ class ProfileViewModel: ObservableObject {
     func handleGoalAlertToggle() {
         if !goalAlerts {
             NotificationManager.shared.cancelNotification(with: "goalAlert")
-        }
-    }
-
-    func signOut() {
-        do {
-            try AuthenticationManager.shared.signOut()
-        } catch {
-            print("Error signing out: \(error)")
         }
     }
 }

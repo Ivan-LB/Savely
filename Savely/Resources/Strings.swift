@@ -8,80 +8,6 @@
 import Foundation
 
 struct Strings {
-    struct Authentication {
-        static let createAccountTitle = NSLocalizedString(
-            "create_account_title",
-            value: "Create your account!",
-            comment: "Create Account Title")
-        static let signUpToGetStarted = NSLocalizedString(
-            "sign_up_to_get_started",
-            value: "Sign up to get started",
-            comment: "Sign Up To Get Started")
-        static let fullNamePlaceholder = NSLocalizedString(
-            "full_name_placeholder",
-            value: "Full Name",
-            comment: "Full Name Placeholder")
-        static let forgotPasswordLabel = NSLocalizedString(
-            "forgot_password_label",
-            value: "Forgot password?",
-            comment: "Forgot Password Label")
-        static let passwordString = NSLocalizedString(
-            "password_string",
-            value: "Password",
-            comment: "Password String")
-        static let confirmPasswordString = NSLocalizedString(
-            "confirm_password_string",
-            value: "Confirm Password",
-            comment: "Confirm Password String")
-        static let signInString = NSLocalizedString(
-            "sign_in_string",
-            value: "Sign In",
-            comment: "Sign In String")
-        static let logInString = NSLocalizedString(
-            "log_in_string",
-            value: "Log in to your existant account",
-            comment: "Log In String")
-        static let signUpLabel = NSLocalizedString(
-            "sign_up_label",
-            value: "Sign Up",
-            comment: "Sign Up Label")
-        static let welcomeBackString = NSLocalizedString(
-            "welcome_back_string",
-            value: "Welcome Back!", 
-            comment: "Welcome Back String")
-        static let enterEmailAndPasswordLabel = NSLocalizedString(
-            "enter_email_and_password_label",
-            value: "Enter your email and password to sign in.",
-            comment: "Enter your email and password to sign in Label")
-        static let otherWayToConnectLabel = NSLocalizedString(
-            "other_way_to_connect_label",
-            value: "Or connect using",
-            comment: "Other Way to Connect")
-        static let dontHaveAccount = NSLocalizedString(
-            "already_have_and_account_label",
-            value: "Don't have an account?",
-            comment: "Already have an account Label")
-        static let creatingAccountLabel = NSLocalizedString(
-            "creating_account_label",
-            value: "By creating an account, I accept Savely's",
-            comment: "Creating Account Label")
-        static let termsOfServiceLabel = NSLocalizedString(
-            "terms_of_service_label",
-            value: "Terms of Service",
-            comment: "Terms of Service Label")
-        static let passwordDontMatch = NSLocalizedString(
-            "passwords_dont_match",
-            value: "Passwords doesn't match",
-            comment: "Passwords Doesnt Match")
-    }
-    
-    struct LoadingView {
-        static let title = NSLocalizedString(
-            "title",
-            value: "Loading...",
-            comment: "Title for loading view")
-    }
-    
     struct Onboarding {
         static let setGoalsTitle = NSLocalizedString(
             "set_goals_title",
@@ -460,14 +386,6 @@ struct Strings {
             "update_information_button",
             value: "Update Information",
             comment: "Update Information Button")
-        static let changePasswordButton = NSLocalizedString(
-            "change_password_button",
-            value: "Change Password",
-            comment: "Change Password Button")
-        static let signOutButton = NSLocalizedString(
-            "sign_out_button",
-            value: "Sign Out",
-            comment: "Sign Out Button")
         
         static let scanReceiptButton = NSLocalizedString(
             "scan_receipt_button",
