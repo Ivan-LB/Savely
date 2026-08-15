@@ -65,6 +65,34 @@ badge for the now-hidden tips). Replaced with a real engine:
   the existing target) — streak edge cases (empty, duplicates, gap resets,
   month boundary, unordered input) + threshold/clamping logic.
 
+## 4. Payday auto-move suggestion — built for real
+
+Iván's call (2026-08-15): the App Store version SHOULD have this kind of
+recommendation, done properly — so the placeholder banner ("$230 to
+Kyoto", YES did nothing) became a real feature instead of staying hidden:
+
+- **`GoalModel` gains `autoMoveEnabled`, `autoMoveAmount` and `deadline`**
+  (additive defaults, automatic lightweight migration). The AddGoalFlow
+  wizard always asked for all three ("Auto-move on payday" toggle, pace,
+  target date) but never persisted any of them — now it does.
+- **`Utilities/AutoMoveSuggestion.swift`** — the priority question Iván
+  raised ("¿cómo se hace el cálculo de prioridades?") answered with flows:
+  - *Which goal*: favorite first (explicit user signal); else the most
+    urgent = highest required weekly pace (`remaining ÷ weeks to
+    deadline`); open-ended goals rank last, by lowest progress.
+  - *How much*: min(configured pace, remaining to target, income being
+    logged, **month margin** = month incomes + this income − month
+    expenses). An under-water month suggests nothing — money the month
+    already spent is not "savable". Recomputed live from the keypad;
+    nothing below $1 suggested.
+- **YES arms, Save executes**: the deposit applies only together with the
+  income save, using the exact clamp of the manual "Deposit to a goal"
+  flow. Undo available while armed. No move without a saved income.
+- `FeatureFlags.autoMoveSuggestionsEnabled` flips to **true** and stays as
+  the kill switch. Unit tests in `AutoMoveSuggestionTests` (16 cases: eligibility,
+  favorite/urgency/progress priority, income/target/month-margin caps,
+  under-water month, apply clamps).
+
 ## Shared
 
 - `Views/Components/SproutMark.swift` — the sprout shapes extracted from

@@ -66,6 +66,16 @@ class GoalModel: Identifiable {
     var target: Double
     var colorRawValue: String
     var isFavorite: Bool
+    /// Payday auto-move (2026-08): the AddGoalFlow wizard always ASKED for
+    /// this but never persisted it — these fields make the promise real.
+    /// Defaults keep existing stores migrating additively.
+    var autoMoveEnabled: Bool = false
+    /// Suggested amount to move each payday (whole dollars, from the wizard's monthly pace).
+    var autoMoveAmount: Double = 0
+    /// Target date from the wizard (also collected-but-unpersisted before
+    /// 2026-08). Optional: pre-existing goals have none and rank last in
+    /// auto-move urgency until one is set.
+    var deadline: Date?
 
     var progress: Double {
         return target > 0 ? min(current / target, 1.0) : 0
@@ -79,12 +89,15 @@ class GoalModel: Identifiable {
         return GoalColor(rawValue: colorRawValue)?.trackColor ?? .warmGreenSoft
     }
 
-    init(id: UUID = UUID(), name: String, current: Double = 0.0, target: Double, color: GoalColor, isFavorite: Bool = false) {
+    init(id: UUID = UUID(), name: String, current: Double = 0.0, target: Double, color: GoalColor, isFavorite: Bool = false, autoMoveEnabled: Bool = false, autoMoveAmount: Double = 0, deadline: Date? = nil) {
         self.id = id
         self.name = name
         self.current = current
         self.target = target
         self.colorRawValue = color.rawValue
         self.isFavorite = isFavorite
+        self.autoMoveEnabled = autoMoveEnabled
+        self.autoMoveAmount = autoMoveAmount
+        self.deadline = deadline
     }
 }

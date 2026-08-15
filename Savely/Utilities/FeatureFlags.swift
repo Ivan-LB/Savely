@@ -21,12 +21,13 @@ enum FeatureFlags {
     /// Weekly Insights' tip row, and the onboarding "Receive Tips" step.
     static let tipsEnabled = false
 
-    /// The "Auto-move $X to <goal> from this paycheck?" banner in the
-    /// Log-income sheet. Today it is a NON-FUNCTIONAL placeholder (hardcoded
-    /// $230/"Kyoto", the YES button does nothing) — hidden for the App Store
-    /// release (decision: 2026-08-15). Iván likes the idea: when it's built
-    /// for real, it should compute the suggestion from actual goals with
-    /// auto-deposit enabled (see AddGoalFlow's "Auto-move on payday"
-    /// toggle), then this flag flips on.
-    static let autoMoveSuggestionsEnabled = false
+    /// The "Auto-move $X to <goal> from this paycheck?" suggestion in the
+    /// Log-income sheet. Built for real on 2026-08-15 (it started life as a
+    /// hardcoded placeholder): the suggestion is computed live from goals
+    /// with payday auto-move enabled (`AutoMoveSuggestion.compute` — one
+    /// goal, favorite first, amount capped by the pace, the remaining
+    /// target, and the income being logged), YES only arms it, and the
+    /// deposit applies together with the income save. ON for the App Store
+    /// release; this flag remains as the kill switch.
+    static let autoMoveSuggestionsEnabled = true
 }
