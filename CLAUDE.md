@@ -150,6 +150,17 @@ The orchestrator (`.claude/protocols/orchestrator.md`) handles full classificati
 
 ---
 
+## Design context
+
+- `PRODUCT.md` — who Savely is for, brand personality (Warm · Patient ·
+  Discreet), anti-references, design principles, and the **WCAG AA
+  whole-app** commitment. Read before any UI work.
+- `DESIGN.md` — the Warm Meadow visual system as it exists today (tokens
+  in the frontmatter are normative). New UI must match it; do not restyle.
+- Roadmap for the profile / dark mode / accessibility work:
+  `docs/plans/pr-d-profile.md` → `pr-d2-adaptive-palette.md` →
+  `pr-d3-accessibility.md`.
+
 ## Pointers
 
 - Orchestrator: `.claude/protocols/orchestrator.md`
