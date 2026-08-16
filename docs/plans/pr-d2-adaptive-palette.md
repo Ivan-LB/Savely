@@ -115,8 +115,31 @@ Note `green` splits into *text/icon* (lightened for dark) and *fill*
 white text; only green *as ink* brightens. That is what keeps dark from
 reading as a different brand.
 
+## Also in this PR (owner's request, 2026-08-16): drop the "User" identity
+
+There is no account, so the monogram + "User" card on Profile and the
+`person.fill` circle in the Dashboard greeting (`DashboardView.swift:~63-71`)
+are placeholders for an identity the app deliberately does not have.
+Remove both:
+
+- **Profile:** delete the identity card. Move its one useful line —
+  "Saving since <month>" / "Just getting started" — into the lifetime
+  income card as its subtitle (replacing "Total income logged in Savely").
+- **Dashboard:** delete the amber `person.fill` circle from the greeting
+  row; the greeting keeps its date + "Evening." only.
+- **Display name:** with the card gone nothing reaches `EditProfileSheet`.
+  Delete the sheet, `ProfileViewModel.displayName` /
+  `updatePersonalInformation()`, and `AppViewModel.currentUserName` +
+  its `"displayName"` UserDefaults key. Also drop the now-unused
+  `Strings.Profile.editNameHint` and its catalog entry. Confirm nothing
+  else reads `"displayName"` (grep) before deleting.
+
+Sequenced as its own commit (commit 0 below) so it can be reverted alone.
+
 ## Commits
 
+0. **Drop the identity placeholders** (Profile card, Dashboard avatar,
+   display-name plumbing) as described above.
 1. **Palette:** dynamic-color helper + all 18 tokens get a dark value + the
    new role tokens. Build must be green with **no call-site changes** yet.
 2. **Sweep the hardcodes:** route the 97 sites through tokens, screen by
