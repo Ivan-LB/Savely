@@ -24,13 +24,15 @@ import Foundation
 /// **How much** — never more than reality allows:
 /// `min(configured pace, remaining to target, the income being logged,
 /// the month's affordable margin)`. The margin is
-/// `month incomes + this income − month expenses`: if the month is under
-/// water even counting this paycheck, nothing is suggested — money the
-/// month already spent should not be "saved" into a goal.
+/// `month incomes + this income − month expenses − month deposits`: if the
+/// month is under water even counting this paycheck, nothing is suggested —
+/// money the month already spent, or already moved into goals, should not
+/// be "saved" into a goal again.
 ///
 /// **When it moves** — never before the income is saved. YES only arms the
-/// banner; the deposit applies with the save, using the same clamp as the
-/// manual "Deposit to a goal" flow.
+/// banner; the deposit is recorded with the save through
+/// `GoalDeposits.record(source: .autoMove)`, the same path every manual
+/// deposit takes.
 struct AutoMoveSuggestion {
     let goal: GoalModel
     let amount: Double
@@ -43,6 +45,7 @@ struct AutoMoveSuggestion {
         incomeAmount: Double,
         monthIncomeTotal: Double = 0,
         monthExpenseTotal: Double = 0,
+        monthDepositTotal: Double = 0,
         now: Date = Date(),
         calendar: Calendar = .current
     ) -> AutoMoveSuggestion? {
@@ -77,18 +80,12 @@ struct AutoMoveSuggestion {
         // Affordability: what this month can actually spare, counting the
         // income being logged. Callers that pass no month totals get the
         // plain income cap.
-        let monthMargin = monthIncomeTotal + incomeAmount - monthExpenseTotal
+        let monthMargin = monthIncomeTotal + incomeAmount - monthExpenseTotal - monthDepositTotal
         let remaining = pick.target - pick.current
         let raw = min(pick.autoMoveAmount, remaining, incomeAmount, max(0, monthMargin))
         let amount = (raw * 100).rounded() / 100
         guard amount >= minimumAmount else { return nil }
 
         return AutoMoveSuggestion(goal: pick, amount: amount)
-    }
-
-    /// Applies the armed suggestion — the exact clamp the manual
-    /// "Deposit to a goal" flow uses (`WarmQuickDepositView.saveDeposit`).
-    func apply() {
-        goal.current = min(goal.current + amount, goal.target)
     }
 }

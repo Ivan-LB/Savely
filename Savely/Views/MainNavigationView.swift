@@ -397,6 +397,9 @@ struct WarmQuickExpenseView: View {
             WarmKeypad(amountStr: $amountStr)
         }
         .onAppear { vm.setModelContext(modelContext) }
+        .alert(isPresented: $vm.showError) {
+            Alert(title: Text(Strings.Errors.errorLabel), message: Text(vm.errorMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
+        }
     }
 
     private func saveAndDismiss() {
@@ -415,6 +418,7 @@ struct WarmQuickIncomeView: View {
     @Query private var goals: [GoalModel]
     @Query private var allIncomes: [IncomeModel]
     @Query private var allExpenses: [ExpenseModel]
+    @Query private var allDeposits: [DepositModel]
     let onBack: () -> Void; let onSave: () -> Void
 
     @State private var amountStr = "0"
@@ -445,7 +449,8 @@ struct WarmQuickIncomeView: View {
             goals: goals,
             incomeAmount: enteredAmount,
             monthIncomeTotal: monthTotal(allIncomes.map { ($0.date, $0.amount) }),
-            monthExpenseTotal: monthTotal(allExpenses.map { ($0.date, $0.amount) })
+            monthExpenseTotal: monthTotal(allExpenses.map { ($0.date, $0.amount) }),
+            monthDepositTotal: GoalDeposits.monthTotal(allDeposits)
         )
     }
 
@@ -540,6 +545,9 @@ struct WarmQuickIncomeView: View {
             WarmKeypad(amountStr: $amountStr)
         }
         .onAppear { vm.setModelContext(modelContext) }
+        .alert(isPresented: $vm.showError) {
+            Alert(title: Text(Strings.Errors.errorLabel), message: Text(vm.errorMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
+        }
     }
 
     private func bannerText(for suggestion: AutoMoveSuggestion) -> AttributedString {
@@ -560,8 +568,18 @@ struct WarmQuickIncomeView: View {
         vm.amount = amountStr
         vm.addIncome(source: selectedSource)
         if let suggestion = armedSuggestion {
-            suggestion.apply()
-            try? modelContext.save()
+            do {
+                try GoalDeposits.record(
+                    goal: suggestion.goal, amount: suggestion.amount,
+                    note: "Payday auto-move", source: .autoMove, context: modelContext
+                )
+            } catch {
+                // The income itself is already saved; the move failing must
+                // not lose it. Surface through the income VM's alert.
+                vm.errorMessage = "Income saved, but the auto-move to \(suggestion.goal.name) failed."
+                vm.showError = true
+                return
+            }
         }
         onSave()
     }
@@ -576,6 +594,7 @@ struct WarmQuickDepositView: View {
 
     @State private var selectedGoal: GoalModel?
     @State private var selectedPreset: Double = 50
+    @State private var errorMessage: String?
     private let presets: [Double] = [25, 50, 100, 250]
 
     var body: some View {
@@ -712,13 +731,21 @@ struct WarmQuickDepositView: View {
                 selectedGoal = goals.first(where: { $0.isFavorite }) ?? goals.first
             }
         }
+        .alert("Couldn't save the deposit", isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(errorMessage ?? "")
+        }
     }
 
     private func saveDeposit() {
         guard let goal = selectedGoal, selectedPreset > 0 else { return }
-        goal.current = min(goal.current + selectedPreset, goal.target)
-        try? modelContext.save()
-        onSave()
+        do {
+            try GoalDeposits.record(goal: goal, amount: selectedPreset, source: .manual, context: modelContext)
+            onSave()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 }
 

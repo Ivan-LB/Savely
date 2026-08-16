@@ -83,20 +83,6 @@ final class AutoMoveSuggestionTests: XCTestCase {
         XCTAssertEqual(s.goal.name, "Behind")
     }
 
-    func testApplyClampsAtTarget() {
-        let g = goal("Trip", target: 1000, current: 950, pace: 100)
-        let s = AutoMoveSuggestion(goal: g, amount: 100)
-        s.apply()
-        XCTAssertEqual(g.current, 1000)
-    }
-
-    func testApplyAddsAmount() {
-        let g = goal("Trip", target: 1000, current: 200, pace: 100)
-        let s = AutoMoveSuggestion(goal: g, amount: 100)
-        s.apply()
-        XCTAssertEqual(g.current, 300)
-    }
-
     // MARK: - Deadline urgency priority
 
     func testMoreUrgentDeadlineWins() throws {
@@ -157,5 +143,27 @@ final class AutoMoveSuggestionTests: XCTestCase {
             monthIncomeTotal: 2000, monthExpenseTotal: 800
         ))
         XCTAssertEqual(s.amount, 100)
+    }
+
+    // MARK: - Month margin subtracts money already moved into goals
+
+    func testMonthDepositsReduceTheMargin() throws {
+        let g = goal("Trip", target: 1000, current: 0, favorite: true, pace: 300)
+        // Month so far: 500 in, 100 out, and 350 already deposited into goals.
+        // Logging 100 more: margin = 500 + 100 - 100 - 350 = 150 → capped at 150.
+        let s = try XCTUnwrap(AutoMoveSuggestion.compute(
+            goals: [g], incomeAmount: 100, monthIncomeTotal: 500,
+            monthExpenseTotal: 100, monthDepositTotal: 350, now: now, calendar: calendar
+        ))
+        XCTAssertEqual(s.amount, 100) // also capped by the income being logged
+        let s2 = try XCTUnwrap(AutoMoveSuggestion.compute(
+            goals: [g], incomeAmount: 400, monthIncomeTotal: 500,
+            monthExpenseTotal: 100, monthDepositTotal: 350, now: now, calendar: calendar
+        ))
+        XCTAssertEqual(s2.amount, 300) // pace cap: margin is 450, pace is 300
+        XCTAssertNil(AutoMoveSuggestion.compute(
+            goals: [g], incomeAmount: 100, monthIncomeTotal: 500,
+            monthExpenseTotal: 100, monthDepositTotal: 600, now: now, calendar: calendar
+        )) // deposits already ate the month: 500 + 100 - 100 - 600 < 0
     }
 }

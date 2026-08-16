@@ -290,6 +290,7 @@ struct DepositSheet: View {
     @Environment(\.dismiss) private var dismiss
     @State private var amountText = ""
     @State private var note = ""
+    @State private var errorMessage: String?
     private let quickAmounts: [Double] = [25, 50, 100, 250]
 
     var body: some View {
@@ -369,15 +370,23 @@ struct DepositSheet: View {
         .background(Color.warmSurface)
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.hidden)
+        .alert("Couldn't save the deposit", isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(errorMessage ?? "")
+        }
     }
 
     private var depositAmount: Double? { Double(amountText) }
 
     private func saveDeposit() {
         guard let amt = depositAmount, amt > 0 else { return }
-        goal.current = min(goal.current + amt, goal.target)
-        try? modelContext.save()
-        dismiss()
+        do {
+            try GoalDeposits.record(goal: goal, amount: amt, note: note, source: .manual, context: modelContext)
+            dismiss()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 }
 
