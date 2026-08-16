@@ -31,10 +31,9 @@ enum FeatureFlags {
     /// release; this flag remains as the kill switch.
     static let autoMoveSuggestionsEnabled = true
 
-    /// The Dark Mode switch in Profile. The palette in `Color+Warm.swift`
-    /// is still light-only, so flipping the switch changed nothing except
-    /// the status bar. Hidden until the adaptive palette lands
-    /// (docs/plans/pr-d2-adaptive-palette.md), which flips this back on.
-    /// The `@AppStorage("darkModeEnabled")` plumbing stays in place.
-    static let darkModeEnabled = false
+    /// The Dark Mode switch in Profile. ON since the adaptive palette
+    /// (Color+Warm.swift carries a dark value per token). The switch is an
+    /// absolute override — off forces light, on forces dark; the system
+    /// appearance is not followed (owner's decision, 2026-08-16).
+    static let darkModeEnabled = true
 }
