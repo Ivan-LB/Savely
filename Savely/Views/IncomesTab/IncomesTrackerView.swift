@@ -107,9 +107,9 @@ struct IncomesTrackerView: View {
                     Button(action: { viewModel.addIncome(); focusedField = nil }) {
                         Image(systemName: "plus")
                             .font(.system(size: 15, weight: .semibold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.warmOnGreen)
                             .frame(width: 40, height: 40)
-                            .background(Color.warmGreen)
+                            .background(Color.warmGreenFill)
                             .cornerRadius(10)
                     }
                 }

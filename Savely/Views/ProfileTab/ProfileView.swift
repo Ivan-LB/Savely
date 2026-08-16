@@ -87,26 +87,26 @@ struct ProfileView: View {
     private var lifetimeIncomeCard: some View {
         ZStack(alignment: .topTrailing) {
             Circle()
-                .fill(Color.white.opacity(0.08))
+                .fill(Color.warmOnGreen.opacity(0.08))
                 .frame(width: 140, height: 140)
                 .offset(x: 30, y: -20)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("LIFETIME INCOME")
                     .font(.system(size: 11, weight: .semibold))
-                    .foregroundStyle(Color.white.opacity(0.7))
+                    .foregroundStyle(Color.warmOnGreen.opacity(0.7))
                     .tracking(0.8)
                 Text(formattedAmount(lifetimeIncome))
                     .font(.system(size: 40, weight: .regular, design: .serif))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.warmOnGreen)
                 Text(savingSinceSubtitle)
                     .font(.system(size: 13))
-                    .foregroundStyle(Color.white.opacity(0.75))
+                    .foregroundStyle(Color.warmOnGreen.opacity(0.75))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(20)
         }
-        .background(Color.warmGreen)
+        .background(Color.warmGreenFill)
         .cornerRadius(22)
         .clipped()
         .accessibilityElement(children: .combine)

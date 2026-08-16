@@ -42,8 +42,8 @@ struct ReportsView: View {
                         }
                     }
                     .padding()
-                    .background(Color("primaryBlue"))
-                    .foregroundColor(.white)
+                    .background(Color.warmSky)
+                    .foregroundColor(Color.warmOnGreen)
                     .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
                     Spacer()
                 }
@@ -93,9 +93,8 @@ struct ReportsView: View {
             }
         }
         .padding()
-        .background(Color("listBackgroundColor"))
+        .background(Color.warmSurface)
         .cornerRadius(UIConstants.UICornerRadius.cornerRadiusMedium)
-        .shadow(radius: UIConstants.UIShadow.shadow)
         .onAppear {
             viewModel.setModelContext(modelContext)
             viewModel.fetchReportData()

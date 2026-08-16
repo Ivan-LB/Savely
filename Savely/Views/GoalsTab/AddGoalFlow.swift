@@ -176,7 +176,6 @@ struct AddGoalStep1View: View {
                     .background(Color.warmSurface)
                     .clipShape(Capsule())
                     .overlay(Capsule().stroke(Color.warmLine, lineWidth: 1))
-                    .shadow(color: .black.opacity(0.04), radius: 12, y: 4)
                     Spacer()
                 }
                 .padding(.bottom, 20)
@@ -203,7 +202,6 @@ struct AddGoalStep1View: View {
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(nameFocused ? Color.warmGreen : Color.warmLine, lineWidth: nameFocused ? 1.5 : 1)
                     )
-                    .shadow(color: nameFocused ? Color.warmGreenSoft : .clear, radius: 0, x: 0, y: 0)
                     Text("Tip: be specific. Try a specific name like Kyoto trip '26.")
                         .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted).padding(.leading, 4)
                 }
@@ -245,9 +243,8 @@ struct AddGoalStep1View: View {
                                     .fill(gc.color)
                                     .frame(width: 38, height: 38)
                                     .overlay(
-                                        Circle().stroke(Color.white, lineWidth: isOn ? 3 : 0)
+                                        Circle().stroke(Color.warmSurface, lineWidth: isOn ? 3 : 0)
                                     )
-                                    .shadow(color: isOn ? gc.color.opacity(0.5) : .clear, radius: 4, y: 2)
                             }
                             .buttonStyle(.plain)
                             .animation(.easeInOut(duration: 0.15), value: state.color)
@@ -258,9 +255,9 @@ struct AddGoalStep1View: View {
 
                 Button(action: onNext) {
                     Text("Continue")
-                        .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
+                        .font(.system(size: 15, weight: .semibold)).foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(state.name.isEmpty ? Color.warmInkMuted : Color.warmGreen)
+                        .background(state.name.isEmpty ? Color.warmInkMuted : Color.warmGreenFill)
                         .cornerRadius(14)
                 }
                 .disabled(state.name.isEmpty)
@@ -357,9 +354,9 @@ struct AddGoalStep2View: View {
                 WarmKeypad(amountStr: $state.amountStr)
                 Button(action: onNext) {
                     Text("Continue")
-                        .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
+                        .font(.system(size: 15, weight: .semibold)).foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(state.amount > 0 ? Color.warmGreen : Color.warmInkMuted)
+                        .background(state.amount > 0 ? Color.warmGreenFill : Color.warmInkMuted)
                         .cornerRadius(14)
                 }
                 .disabled(state.amount <= 0)
@@ -403,24 +400,24 @@ struct AddGoalStep3View: View {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(spacing: 6) {
                         Image(systemName: "sparkles")
-                            .font(.system(size: 11, weight: .bold)).foregroundStyle(.white.opacity(0.85))
+                            .font(.system(size: 11, weight: .bold)).foregroundStyle(Color.warmOnGreen.opacity(0.85))
                         Text("SUGGESTED PACE")
-                            .font(.system(size: 11, weight: .bold)).foregroundStyle(.white.opacity(0.85)).tracking(1.2)
+                            .font(.system(size: 11, weight: .bold)).foregroundStyle(Color.warmOnGreen.opacity(0.85)).tracking(1.2)
                     }
                     HStack(alignment: .firstTextBaseline) {
                         Text("$\(Int(state.weeklyPace))")
-                            .font(.system(size: 38, weight: .regular, design: .serif)).foregroundStyle(.white)
+                            .font(.system(size: 38, weight: .regular, design: .serif)).foregroundStyle(Color.warmOnGreen)
                         Text("/wk")
-                            .font(.system(size: 18)).foregroundStyle(.white.opacity(0.7)).padding(.leading, 2)
+                            .font(.system(size: 18)).foregroundStyle(Color.warmOnGreen.opacity(0.7)).padding(.leading, 2)
                         Spacer()
                         Text("~$\(Int(state.monthlyPace))/mo")
-                            .font(.system(size: 13)).foregroundStyle(.white.opacity(0.85))
+                            .font(.system(size: 13)).foregroundStyle(Color.warmOnGreen.opacity(0.85))
                     }
                     Text("To hit **$\(Int(state.amount))** by **\(formattedDeadline)**.")
-                        .font(.system(size: 13)).foregroundStyle(.white.opacity(0.85))
+                        .font(.system(size: 13)).foregroundStyle(Color.warmOnGreen.opacity(0.85))
                 }
                 .padding(18)
-                .background(Color.warmGreen)
+                .background(Color.warmGreenFill)
                 .cornerRadius(22)
                 .padding(.horizontal, 20).padding(.bottom, 16)
 
@@ -482,9 +479,9 @@ struct AddGoalStep3View: View {
 
                 Button(action: onNext) {
                     Text("Continue")
-                        .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
+                        .font(.system(size: 15, weight: .semibold)).foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(Color.warmGreen).cornerRadius(14)
+                        .background(Color.warmGreenFill).cornerRadius(14)
                 }
                 .padding(.horizontal, 20).padding(.bottom, 32)
             }
@@ -532,9 +529,9 @@ struct MiniCalendarView: View {
                     Button(action: { selectDay(day) }) {
                         Text("\(day)")
                             .font(.system(size: 13, weight: isSelected ? .semibold : .regular))
-                            .foregroundStyle(isSelected ? .white : Color.warmInk)
+                            .foregroundStyle(isSelected ? Color.warmOnGreen : Color.warmInk)
                             .frame(maxWidth: .infinity).frame(height: 32)
-                            .background(isSelected ? Color.warmGreen : Color.clear)
+                            .background(isSelected ? Color.warmGreenFill : Color.clear)
                             .cornerRadius(10)
                     }
                     .buttonStyle(.plain)
@@ -651,7 +648,7 @@ struct AddGoalStep4View: View {
                 .background(Color.warmSurface)
                 .cornerRadius(24)
                 .overlay(RoundedRectangle(cornerRadius: 24).stroke(Color.warmLine, lineWidth: 1))
-                .shadow(color: .black.opacity(0.05), radius: 16, y: 6)
+                .shadow(color: Color.warmShadow, radius: 16, y: 6)
                 .padding(.horizontal, 20).padding(.bottom, 20)
 
                 // Recap toggles
@@ -672,7 +669,7 @@ struct AddGoalStep4View: View {
                     Image(systemName: "sparkles")
                         .font(.system(size: 13)).foregroundStyle(Color.warmAmber)
                     Text("That's **about one less takeout per week**. Doable.")
-                        .font(.system(size: 12)).foregroundStyle(Color(red: 0.478, green: 0.337, blue: 0.094))
+                        .font(.system(size: 12)).foregroundStyle(Color.warmAmberDeep)
                 }
                 .padding(16)
                 .background(Color.warmAmberSoft)
@@ -688,9 +685,9 @@ struct AddGoalStep4View: View {
                             Text("Plant goal")
                                 .font(.system(size: 15, weight: .semibold))
                         }
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(Color.warmGreen).cornerRadius(14)
+                        .background(Color.warmGreenFill).cornerRadius(14)
                     }
                     Button(action: onBack) {
                         Text("Edit anything")
@@ -744,12 +741,12 @@ struct AddGoalSuccessView: View {
 
     var body: some View {
         ZStack {
-            Color.warmGreen.ignoresSafeArea()
+            Color.warmGreenFill.ignoresSafeArea()
 
             GeometryReader { geo in
                 ForEach(Array(dots.enumerated()), id: \.offset) { _, dot in
                     Circle()
-                        .fill(dot.3 ? Color.warmAmber : Color.white)
+                        .fill(dot.3 ? Color.warmAmber : Color.warmOnGreen)
                         .frame(width: dot.2, height: dot.2)
                         .opacity(0.5)
                         .position(x: geo.size.width * dot.0, y: geo.size.height * dot.1)
@@ -760,24 +757,24 @@ struct AddGoalSuccessView: View {
                 Spacer()
 
                 ZStack {
-                    Circle().fill(Color.white.opacity(0.14)).frame(width: 132, height: 132)
-                    Circle().fill(Color.white).frame(width: 88, height: 88)
+                    Circle().fill(Color.warmOnGreen.opacity(0.14)).frame(width: 132, height: 132)
+                    Circle().fill(Color.warmOnGreen).frame(width: 88, height: 88)
                         .overlay(
                             Image(systemName: "checkmark")
                                 .font(.system(size: 36, weight: .semibold))
-                                .foregroundStyle(Color.warmGreen)
+                                .foregroundStyle(Color.warmGreenFill)
                         )
                 }
                 .padding(.bottom, 28)
 
                 Text("Planted.")
                     .font(.system(size: 42, weight: .regular, design: .serif))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.warmOnGreen)
                     .padding(.bottom, 12)
 
                 Text("\(state.name) is on your home screen.\nAdd the first dollar?")
                     .font(.system(size: 15))
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(Color.warmOnGreen.opacity(0.85))
                     .multilineTextAlignment(.center)
                     .lineSpacing(4)
                     .padding(.horizontal, 40)
@@ -790,16 +787,16 @@ struct AddGoalSuccessView: View {
                             Image(systemName: "plus").font(.system(size: 14, weight: .semibold))
                             Text("Add a deposit").font(.system(size: 15, weight: .semibold))
                         }
-                        .foregroundStyle(Color.warmGreen)
+                        .foregroundStyle(Color.warmGreenFill)
                         .frame(maxWidth: .infinity).frame(height: 52)
-                        .background(Color.white).cornerRadius(14)
+                        .background(Color.warmOnGreen).cornerRadius(14)
                     }
                     Button(action: onHome) {
                         Text("Back to home")
-                            .font(.system(size: 15, weight: .medium)).foregroundStyle(.white)
+                            .font(.system(size: 15, weight: .medium)).foregroundStyle(Color.warmOnGreen)
                             .frame(maxWidth: .infinity).frame(height: 52)
-                            .background(Color.white.opacity(0.15)).cornerRadius(14)
-                            .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.white.opacity(0.25), lineWidth: 1))
+                            .background(Color.warmOnGreen.opacity(0.15)).cornerRadius(14)
+                            .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.warmOnGreen.opacity(0.25), lineWidth: 1))
                     }
                 }
                 .padding(.horizontal, 28).padding(.bottom, 52)

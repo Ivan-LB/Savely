@@ -39,8 +39,8 @@ struct TotalConfirmationView: View {
                     Text(Strings.Buttons.noButton)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.gray)
-                        .foregroundStyle(Color.white)
+                        .background(Color.warmInkMuted)
+                        .foregroundStyle(Color.warmOnGreen)
                         .cornerRadius(10)
                 }
                 
@@ -50,8 +50,8 @@ struct TotalConfirmationView: View {
                     Text(Strings.Buttons.yesButton)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.green)
-                        .foregroundStyle(Color.white)
+                        .background(Color.warmGreenFill)
+                        .foregroundStyle(Color.warmOnGreen)
                         .cornerRadius(10)
                 }
             }

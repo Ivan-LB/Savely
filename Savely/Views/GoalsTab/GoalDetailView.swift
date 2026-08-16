@@ -214,7 +214,7 @@ struct DepositCard: View {
             Button(action: saveDeposit) {
                 Text(amountText.isEmpty ? "Add deposit" : "Add $\(amountText) to \(goalFirstName)")
                     .font(.system(size: 15, weight: .semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.warmOnGreen)
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
                     .background(goal.color)
@@ -227,7 +227,7 @@ struct DepositCard: View {
         .background(Color.warmSurface)
         .cornerRadius(24)
         .overlay(RoundedRectangle(cornerRadius: 24).stroke(Color.warmLine, lineWidth: 1))
-        .shadow(color: .black.opacity(0.06), radius: 16, x: 0, y: 8)
+        .shadow(color: Color.warmShadow, radius: 16, x: 0, y: 8)
     }
 
     private var depositAmount: Double? { Double(amountText) }

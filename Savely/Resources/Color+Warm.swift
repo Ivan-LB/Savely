@@ -24,7 +24,7 @@ extension Color {
     // surface* (CTAs, the income card, the selected radio) that carries
     // white content, and stays deep in both schemes.
     static let warmGreen       = Color(light: 0x2F6B4A, dark: 0x78B58F)
-    static let warmGreenFill   = Color(light: 0x2F6B4A, dark: 0x357A55)
+    static let warmGreenFill   = Color(light: 0x2F6B4A, dark: 0x357A55) // also "green that stays deep" as ink on white pills
     static let warmGreenDeep   = Color(light: 0x1F4A33, dark: 0xB6DCC4)
     static let warmGreenSoft   = Color(light: 0xE8F0EA, dark: 0x22382C)
     static let warmGreenTint   = Color(light: 0xF2F7F3, dark: 0x1B2A21)
@@ -32,6 +32,8 @@ extension Color {
     // Category tints — a glyph on a soft tile, never a fill.
     static let warmAmber       = Color(light: 0xC48A2A, dark: 0xDEA64A)
     static let warmAmberSoft   = Color(light: 0xF6ECD6, dark: 0x3A2F19)
+    /// Amber as *text* on an amber-soft banner (the accent itself is too light to read at 12pt).
+    static let warmAmberDeep   = Color(light: 0x7A5618, dark: 0xEBC27A)
     static let warmClay        = Color(light: 0xB85C42, dark: 0xD9846A)
     static let warmClaySoft    = Color(light: 0xF6E1D8, dark: 0x3D2721)
     static let warmSky         = Color(light: 0x4A7BA6, dark: 0x7EA9D0)
@@ -49,12 +51,16 @@ extension Color {
     static let warmTrack       = Color(light: 0xEDE6D4, dark: 0x3A362E)
     /// The hero-card lift and the "+" shell shadow — the only shadows by rule.
     static let warmShadow      = Color(light: 0x000000, dark: 0x000000, lightAlpha: 0.06, darkAlpha: 0.45)
+    /// The raised "+" shell's shadow (deeper than the hero lift).
+    static let warmShellShadow = Color(light: 0x000000, dark: 0x000000, lightAlpha: 0.18, darkAlpha: 0.60)
 }
 
-private extension Color {
+extension Color {
     /// A trait-aware color from two hex values (0xRRGGBB) and per-scheme
     /// alphas. Resolved by UIKit at draw time, so it follows the window's
     /// `preferredColorScheme` and system appearance without any view code.
+    /// Internal so `GoalColor` (Models/GoalModel.swift) can define its
+    /// per-goal accents the same way; views should use the named tokens.
     init(light: UInt32, dark: UInt32, lightAlpha: CGFloat = 1, darkAlpha: CGFloat = 1) {
         self.init(uiColor: UIColor { traits in
             let isDark = traits.userInterfaceStyle == .dark

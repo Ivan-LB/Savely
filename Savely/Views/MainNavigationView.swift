@@ -73,12 +73,12 @@ struct WarmTabBar: View {
             Button(action: onAddTapped) {
                 Image(systemName: "plus")
                     .font(.system(size: 22, weight: .semibold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(isExpanded ? Color.warmOnGreen : Color.warmOnInk)
                     .frame(width: 52, height: 52)
-                    .background(isExpanded ? Color.warmGreen : Color.warmInk)
+                    .background(isExpanded ? Color.warmGreenFill : Color.warmInk)
                     .cornerRadius(18)
                     .shadow(
-                        color: (isExpanded ? Color.warmGreen : .black).opacity(isExpanded ? 0.38 : 0.18),
+                        color: isExpanded ? Color.warmGreenFill.opacity(0.38) : Color.warmShellShadow,
                         radius: 10, x: 0, y: 4
                     )
                     .rotationEffect(.degrees(isExpanded ? 45 : 0))
@@ -172,8 +172,7 @@ private let quickActions: [QuickAction] = [
     QuickAction(icon: "target",       label: "Deposit to a goal", sub: "Move money toward a goal",     bg: .warmSkySoft,   fg: .warmSky,   target: .deposit,  isNewGoal: false),
     QuickAction(icon: "camera",       label: "Scan a receipt",    sub: "We'll read the total",          bg: .warmClaySoft,  fg: .warmClay,  target: .expense,  isNewGoal: false),
     QuickAction(icon: "plus",         label: "New goal",          sub: "Start something new",
-                bg: Color(red: 0.925, green: 0.910, blue: 0.957),
-                fg: Color(red: 0.490, green: 0.416, blue: 0.722), target: nil, isNewGoal: true),
+                bg: .warmLilacSoft, fg: .warmLilac, target: nil, isNewGoal: true),
 ]
 
 struct WarmActionSheet: View {
@@ -526,9 +525,9 @@ struct WarmQuickIncomeView: View {
                         }
                     }
                     .font(.system(size: 11, weight: .bold))
-                    .foregroundStyle(autoMoveArmed ? Color.warmGreenDeep : .white)
+                    .foregroundStyle(autoMoveArmed ? Color.warmGreenDeep : Color.warmOnGreen)
                     .padding(.horizontal, 10).padding(.vertical, 6)
-                    .background(autoMoveArmed ? Color.warmSurface : Color.warmGreen)
+                    .background(autoMoveArmed ? Color.warmSurface : Color.warmGreenFill)
                     .clipShape(Capsule())
                     .overlay(Capsule().stroke(autoMoveArmed ? Color.warmGreen : Color.clear, lineWidth: 1))
                 }
@@ -649,7 +648,7 @@ struct WarmQuickDepositView: View {
                                             .overlay(
                                                 Text(goal.name.prefix(1).uppercased())
                                                     .font(.system(size: 16, weight: .regular, design: .serif))
-                                                    .foregroundStyle(.white)
+                                                    .foregroundStyle(Color.warmOnGreen)
                                             )
                                         VStack(alignment: .leading, spacing: 4) {
                                             Text(goal.name)
@@ -669,9 +668,9 @@ struct WarmQuickDepositView: View {
                                             Circle().stroke(isOn ? Color.warmGreen : Color.warmLine, lineWidth: 2)
                                                 .frame(width: 22, height: 22)
                                             if isOn {
-                                                Circle().fill(Color.warmGreen).frame(width: 22, height: 22)
+                                                Circle().fill(Color.warmGreenFill).frame(width: 22, height: 22)
                                                 Image(systemName: "checkmark")
-                                                    .font(.system(size: 10, weight: .bold)).foregroundStyle(.white)
+                                                    .font(.system(size: 10, weight: .bold)).foregroundStyle(Color.warmOnGreen)
                                             }
                                         }
                                     }
@@ -700,9 +699,9 @@ struct WarmQuickDepositView: View {
             Button(action: saveDeposit) {
                 let goalName = selectedGoal.map { $0.name.components(separatedBy: ",").first ?? $0.name }
                 Text(goalName.map { "Add $\(Int(selectedPreset)) to \($0)" } ?? "Select a goal")
-                    .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
+                    .font(.system(size: 15, weight: .semibold)).foregroundStyle(Color.warmOnGreen)
                     .frame(maxWidth: .infinity).frame(height: 50)
-                    .background(selectedGoal != nil ? Color.warmGreen : Color.warmInkMuted)
+                    .background(selectedGoal != nil ? Color.warmGreenFill : Color.warmInkMuted)
                     .cornerRadius(14)
             }
             .disabled(selectedGoal == nil)

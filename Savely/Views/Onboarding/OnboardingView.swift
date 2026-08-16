@@ -47,8 +47,8 @@ struct OnboardingView: View {
                     .font(.system(size: 16, weight: .semibold))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(Color.warmGreen)
-                    .foregroundColor(.white)
+                    .background(Color.warmGreenFill)
+                    .foregroundColor(Color.warmOnGreen)
                     .cornerRadius(16)
             }
             .padding(.horizontal, 20)

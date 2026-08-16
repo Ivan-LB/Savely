@@ -51,7 +51,7 @@ struct ReportsPDFGenerator {
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: 28),
             .paragraphStyle: paragraphStyle,
-            .foregroundColor: UIColor.white
+            .foregroundColor: UIColor.white // deliberate: PDF is paper, not the app
         ]
 
         title.draw(in: CGRect(x: 0, y: 300, width: pageWidth, height: 50), withAttributes: attributes)

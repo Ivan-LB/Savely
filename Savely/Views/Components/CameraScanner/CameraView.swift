@@ -25,7 +25,7 @@ struct CameraView: View {
                         Image(systemName: "xmark.circle.fill")
                             .resizable()
                             .frame(width: 40, height: 40)
-                            .foregroundColor(.white)
+                            .foregroundColor(.white) // deliberate: drawn over the live camera feed
                             .padding()
                     }
                     Spacer()
@@ -39,7 +39,7 @@ struct CameraView: View {
                         Image(systemName: "camera.circle.fill")
                             .resizable()
                             .frame(width: 70, height: 70)
-                            .foregroundColor(.white)
+                            .foregroundColor(.white) // deliberate: drawn over the live camera feed
                     }
                     .padding(.bottom, 30)
                     Spacer()
@@ -59,9 +59,8 @@ struct CameraView: View {
                     }
                 )
                 .frame(width: 300, height: 400)
-                .background(Color.white)
+                .background(Color.warmSurface)
                 .cornerRadius(UIConstants.UICornerRadius.cornerRadiusMedium)
-                .shadow(radius: UIConstants.UIShadow.shadowBig)
             }
         }
         .onAppear {
