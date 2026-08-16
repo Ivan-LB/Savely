@@ -22,6 +22,7 @@ struct SavelyApp: App {
                 .honorsReduceMotion()
                 .onAppear {
                     NotificationManager.shared.requestAuthorization()
+                    KeyboardDismisser.install()
                 }
         }
         .modelContainer(for: [TipModel.self, IncomeModel.self, ExpenseModel.self, GoalModel.self, DepositModel.self])

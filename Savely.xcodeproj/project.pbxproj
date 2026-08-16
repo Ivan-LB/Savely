@@ -17,6 +17,7 @@
 		A11A0016C0DE5AFE10000016 /* GoalEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0015C0DE5AFE10000015 /* GoalEditSheet.swift */; };
 		A11A0018C0DE5AFE10000018 /* GoalEditValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0017C0DE5AFE10000017 /* GoalEditValidation.swift */; };
 		A11A001CC0DE5AFE1000001C /* GoalPace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A001BC0DE5AFE1000001B /* GoalPace.swift */; };
+		A11A0024C0DE5AFE10000024 /* KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0023C0DE5AFE10000023 /* KeyboardDismisser.swift */; };
 		A11A0008C0DE5AFE10000008 /* ReminderSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0007C0DE5AFE10000007 /* ReminderSettingsTests.swift */; };
 		A11A000EC0DE5AFE1000000E /* CategoryPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A000DC0DE5AFE1000000D /* CategoryPersistenceTests.swift */; };
 		A11A0014C0DE5AFE10000014 /* GoalDepositsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0013C0DE5AFE10000013 /* GoalDepositsTests.swift */; };
@@ -118,6 +119,7 @@
 		A11A0015C0DE5AFE10000015 /* GoalEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditSheet.swift; sourceTree = "<group>"; };
 		A11A0017C0DE5AFE10000017 /* GoalEditValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditValidation.swift; sourceTree = "<group>"; };
 		A11A001BC0DE5AFE1000001B /* GoalPace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPace.swift; sourceTree = "<group>"; };
+		A11A0023C0DE5AFE10000023 /* KeyboardDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismisser.swift; sourceTree = "<group>"; };
 		A11A0007C0DE5AFE10000007 /* ReminderSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsTests.swift; sourceTree = "<group>"; };
 		A11A000DC0DE5AFE1000000D /* CategoryPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPersistenceTests.swift; sourceTree = "<group>"; };
 		A11A0013C0DE5AFE10000013 /* GoalDepositsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDepositsTests.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				A11A0011C0DE5AFE10000011 /* GoalDeposits.swift */,
 				A11A0017C0DE5AFE10000017 /* GoalEditValidation.swift */,
 				A11A001BC0DE5AFE1000001B /* GoalPace.swift */,
+				A11A0023C0DE5AFE10000023 /* KeyboardDismisser.swift */,
 				12789AD27FF1A7114156F945 /* AchievementEngine.swift */,
 				693B815A380D566280140319 /* FeatureFlags.swift */,
 				1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */,
@@ -711,6 +714,7 @@
 				A11A0016C0DE5AFE10000016 /* GoalEditSheet.swift in Sources */,
 				A11A0018C0DE5AFE10000018 /* GoalEditValidation.swift in Sources */,
 				A11A001CC0DE5AFE1000001C /* GoalPace.swift in Sources */,
+				A11A0024C0DE5AFE10000024 /* KeyboardDismisser.swift in Sources */,
 				F764EBD092BA4435466DD9AA /* AchievementEngine.swift in Sources */,
 				ED04D2F84390584EB7EC0615 /* WelcomeStepView.swift in Sources */,
 				699FCB7F699B1E9C9C644AF3 /* SproutMark.swift in Sources */,

@@ -17,6 +17,29 @@ struct CameraView: View {
         ZStack {
             CameraPreview(cameraManager: viewModel.cameraManager)
                 .edgesIgnoringSafeArea(.all)
+
+            // No back camera (simulator) or access denied — say so instead of
+            // leaving a frozen black preview.
+            if !viewModel.isCameraAvailable {
+                VStack(spacing: 10) {
+                    Image(systemName: "camera.badge.ellipsis")
+                        .warmFont(36)
+                        .foregroundStyle(.white.opacity(0.85))
+                    Text("Camera not available")
+                        .warmFont(17, weight: .semibold)
+                        .foregroundStyle(.white)
+                    Text("Allow camera access in Settings, or use a device with a camera.")
+                        .warmFont(13)
+                        .foregroundStyle(.white.opacity(0.75))
+                        .multilineTextAlignment(.center)
+                }
+                .padding(24)
+                .frame(maxWidth: 300)
+                .background(Color.black.opacity(0.55))
+                .cornerRadius(20)
+                .accessibilityElement(children: .combine)
+            }
+
             VStack {
                 HStack {
                     Button(action: {
