@@ -14,12 +14,17 @@ class IncomeModel {
     var incomeDescription: String
     var amount: Double
     var date: Date
+    /// The source chip the user picked when logging ("Paycheck",
+    /// "Freelance", "Gift", "Other"). `nil` for rows logged before sources
+    /// were stored.
+    var source: String?
 
-    init(incomeDescription: String, amount: Double, date: Date) {
+    init(incomeDescription: String, amount: Double, date: Date, source: String? = nil) {
         self.id = UUID()
         self.incomeDescription = incomeDescription
         self.amount = amount
         self.date = date
+        self.source = source
     }
 }
 

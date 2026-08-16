@@ -316,13 +316,10 @@ func formatKeypadAmount(_ raw: String) -> String {
 
 // MARK: - Quick expense
 
-private let expenseCats: [(label: String, bg: Color, fg: Color)] = [
-    ("Coffee",   .warmAmberSoft, .warmAmber),
-    ("Food",     .warmGreenSoft, .warmGreen),
-    ("Transit",  .warmSkySoft,   .warmSky),
-    ("Shopping", .warmClaySoft,  .warmClay),
-    ("Other",    .warmBg,        .warmInkSoft),
-]
+/// The expense chips, straight from the canonical categories (what gets stored).
+private let expenseCats: [(label: String, bg: Color, fg: Color)] = ExpenseCategory.allCases.map {
+    ($0.label, $0.tileBackground, $0 == .other ? Color.warmInkSoft : $0.tileColor)
+}
 
 struct WarmQuickExpenseView: View {
     @Environment(\.modelContext) private var modelContext
@@ -330,7 +327,7 @@ struct WarmQuickExpenseView: View {
 
     @State private var amountStr = "0"
     @State private var description = ""
-    @State private var selectedCat = "Coffee"
+    @State private var selectedCat = ExpenseCategory.coffee.label
     @StateObject private var vm = ExpenseTrackerViewModel()
 
     private var canSave: Bool { amountStr != "0" }
@@ -404,8 +401,10 @@ struct WarmQuickExpenseView: View {
 
     private func saveAndDismiss() {
         guard canSave, let amt = Double(amountStr), amt > 0 else { return }
+        // Description and category are independent: the chip is stored as
+        // the category always, and only stands in for an empty description.
         vm.expenseDescription = description.isEmpty ? selectedCat : description
-        vm.amount = amountStr; vm.addExpense(); onSave()
+        vm.amount = amountStr; vm.addExpense(category: selectedCat); onSave()
     }
 }
 
@@ -420,11 +419,11 @@ struct WarmQuickIncomeView: View {
 
     @State private var amountStr = "0"
     @State private var description = ""
-    @State private var selectedSource = "Paycheck"
+    @State private var selectedSource = IncomeSource.paycheck.label
     @State private var autoMoveArmed = false
     @StateObject private var vm = IncomesTrackerViewModel()
 
-    private let sources = ["Paycheck", "Freelance", "Gift", "Other"]
+    private let sources = IncomeSource.allCases.map(\.label)
     private var canSave: Bool { amountStr != "0" }
     private var enteredAmount: Double { Double(amountStr) ?? 0 }
 
@@ -545,7 +544,7 @@ struct WarmQuickIncomeView: View {
 
     private func bannerText(for suggestion: AutoMoveSuggestion) -> AttributedString {
         let amount = "$\(Int(suggestion.amount))"
-        let origin = selectedSource == "Paycheck" ? "paycheck" : "income"
+        let origin = selectedSource == IncomeSource.paycheck.label ? "paycheck" : "income"
         let raw = autoMoveArmed
             ? "**Moving \(amount)** to \(suggestion.goal.name) when you save."
             : "**Auto-move \(amount)** to \(suggestion.goal.name) from this \(origin)?"
@@ -559,7 +558,7 @@ struct WarmQuickIncomeView: View {
         let armedSuggestion = autoMoveArmed ? autoMoveSuggestion : nil
         vm.incomeDescription = description.isEmpty ? selectedSource : description
         vm.amount = amountStr
-        vm.addIncome()
+        vm.addIncome(source: selectedSource)
         if let suggestion = armedSuggestion {
             suggestion.apply()
             try? modelContext.save()

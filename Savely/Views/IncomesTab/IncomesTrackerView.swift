@@ -180,18 +180,26 @@ struct IncomeRowWarm: View {
     let onDelete: () -> Void
     @State private var showDeleteConfirmation = false
 
+    /// Stored source, if any. Legacy rows (nil) keep the plain arrow and
+    /// show no tag — a guessed source would be a lie.
+    private var source: IncomeSource? { IncomeSource.display(stored: income.source) }
+
     var body: some View {
         HStack(spacing: 12) {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.warmGreenSoft)
                 .frame(width: 36, height: 36)
-                .overlay(Image(systemName: "arrow.up").font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmGreen))
+                .overlay(
+                    Image(systemName: source?.icon ?? "arrow.up")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundStyle(Color.warmGreen)
+                )
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(income.incomeDescription)
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundStyle(Color.warmInk)
-                Text(shortDate(income.date))
+                Text(source.map { "\($0.label) · \(shortDate(income.date))" } ?? shortDate(income.date))
                     .font(.system(size: 12))
                     .foregroundStyle(Color.warmInkMuted)
             }

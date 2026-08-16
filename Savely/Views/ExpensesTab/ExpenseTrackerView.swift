@@ -229,34 +229,14 @@ struct ExpenseRowWarm: View {
         } message: { Text("Are you sure you want to delete this expense?") }
     }
 
-    private var expenseIcon: String {
-        let d = expense.expenseDescription.lowercased()
-        if d.contains("coffee") || d.contains("cafe") { return "cup.and.saucer.fill" }
-        if d.contains("grocery") || d.contains("groceries") || d.contains("whole foods") { return "cart.fill" }
-        if d.contains("uber") || d.contains("lyft") || d.contains("transit") || d.contains("muni") { return "car.fill" }
-        if d.contains("movie") || d.contains("entertainment") { return "tv.fill" }
-        if d.contains("restaurant") || d.contains("food") { return "fork.knife" }
-        return "creditcard.fill"
+    /// Stored chip first; keyword inference only for rows that predate it.
+    private var category: ExpenseCategory {
+        ExpenseCategory.display(stored: expense.category, description: expense.expenseDescription)
     }
-    private var iconBg: Color {
-        let d = expense.expenseDescription.lowercased()
-        if d.contains("coffee") || d.contains("cafe") { return Color.warmAmberSoft }
-        if d.contains("grocery") || d.contains("whole foods") { return Color.warmGreenSoft }
-        return Color.warmClaySoft
-    }
-    private var iconColor: Color {
-        let d = expense.expenseDescription.lowercased()
-        if d.contains("coffee") || d.contains("cafe") { return Color.warmAmber }
-        if d.contains("grocery") || d.contains("whole foods") { return Color.warmGreen }
-        return Color.warmClay
-    }
-    private var categoryLabel: String {
-        let d = expense.expenseDescription.lowercased()
-        if d.contains("coffee") || d.contains("cafe") { return "Coffee" }
-        if d.contains("grocery") || d.contains("groceries") { return "Groceries" }
-        if d.contains("uber") || d.contains("lyft") || d.contains("muni") { return "Transit" }
-        return "Expense"
-    }
+    private var expenseIcon: String { category.icon }
+    private var iconBg: Color { category.tileBackground }
+    private var iconColor: Color { category.tileColor }
+    private var categoryLabel: String { category.label }
     private func formattedAmount(_ v: Double) -> String {
         let f = NumberFormatter(); f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 2
         return f.string(from: NSNumber(value: v)) ?? "$0"
