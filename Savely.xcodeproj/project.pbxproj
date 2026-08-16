@@ -45,6 +45,7 @@
 		1DC014132CE5B0C5009A46E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC014122CE5B0C5009A46E1 /* ContentView.swift */; };
 		1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */; };
 		1DC2580C2CC07DCF0002DDE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */; };
+		A11A000AC0DE5AFE1000000A /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = A11A0009C0DE5AFE10000009 /* AppIcon.icon */; };
 		1DC2580F2CC07DCF0002DDE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DC2580E2CC07DCF0002DDE3 /* Preview Assets.xcassets */; };
 		1DC258192CC07DCF0002DDE3 /* SavelyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258182CC07DCF0002DDE3 /* SavelyTests.swift */; };
 		1DC258232CC07DCF0002DDE3 /* SavelyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC258222CC07DCF0002DDE3 /* SavelyUITests.swift */; };
@@ -135,6 +136,7 @@
 		1DC258042CC07DCC0002DDE3 /* Savely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Savely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavelyApp.swift; sourceTree = "<group>"; };
 		1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A11A0009C0DE5AFE10000009 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		1DC2580E2CC07DCF0002DDE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1DC258142CC07DCF0002DDE3 /* SavelyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SavelyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC258182CC07DCF0002DDE3 /* SavelyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavelyTests.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				1D3669842CC62EDD00E84FF9 /* ViewModels */,
 				1DC258072CC07DCC0002DDE3 /* SavelyApp.swift */,
 				1DC2580B2CC07DCF0002DDE3 /* Assets.xcassets */,
+				A11A0009C0DE5AFE10000009 /* AppIcon.icon */,
 				1DC2580D2CC07DCF0002DDE3 /* Preview Content */,
 				1DAF5D212CEE9989001C0AF3 /* Info.plist */,
 				1DAF5D232CEE9AF4001C0AF3 /* Config.plist */,
@@ -625,6 +628,7 @@
 			files = (
 				1DC2580F2CC07DCF0002DDE3 /* Preview Assets.xcassets in Resources */,
 				1DC2580C2CC07DCF0002DDE3 /* Assets.xcassets in Resources */,
+				A11A000AC0DE5AFE1000000A /* AppIcon.icon in Resources */,
 				1DAF5D242CEE9AF4001C0AF3 /* Config.plist in Resources */,
 				1D36698B2CC62FD700E84FF9 /* Localizable.xcstrings in Resources */,
 			);

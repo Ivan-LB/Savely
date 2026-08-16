@@ -807,9 +807,6 @@
         }
       }
     },
-    "Display Name" : {
-
-    },
     "download_weekly_report_button" : {
       "comment" : "Download Weekly Report Button",
       "extractionState" : "extracted_with_value",
@@ -832,9 +829,6 @@
 
     },
     "Edit anything" : {
-
-    },
-    "Edit Profile" : {
 
     },
     "email_placeholder_title" : {
@@ -3017,9 +3011,6 @@
       }
     },
     "TO WHICH GOAL" : {
-
-    },
-    "Total income logged in Savely" : {
 
     },
     "track_expenses_label" : {

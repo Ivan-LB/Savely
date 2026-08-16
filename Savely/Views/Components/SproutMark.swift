@@ -83,7 +83,8 @@ struct SproutLeafShape: Shape {
 /// (deep greens on whatever background the caller provides).
 struct SproutMark: View {
     var leafPrimary: Color = .warmGreen
-    var leafSecondary: Color = Color(red: 0.216, green: 0.475, blue: 0.353) // #37795a — brand mark, deliberately fixed
+    /// The shaded leaf: the icon's #37795a in light, its dark-icon #5d9c7c in dark.
+    var leafSecondary: Color = Color(light: 0x37795A, dark: 0x5D9C7C)
     var seed: Color = .warmAmber
     /// Stem line width as a fraction of the mark's width (icon uses 5.5/120).
     var stemWidthRatio: CGFloat = 5.5 / 120
