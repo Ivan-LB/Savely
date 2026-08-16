@@ -49,14 +49,6 @@ struct Strings {
             "notification_settings_description",
             value: "Choose the times to receive alerts for expenses and goals.",
             comment: "Notification Settings Description")
-        static let expenseReminderTimeLabel = NSLocalizedString(
-            "expense_reminder_time_label",
-            value: "Expense Reminder Time",
-            comment: "Expense Reminder Time Label")
-        static let goalAlertTimeLabel = NSLocalizedString(
-            "goal_alert_time_label",
-            value: "Goal Alert Time",
-            comment: "Goal Alert Time Label")
         static let welcomeTitle = NSLocalizedString(
             "onboarding_welcome_title",
             value: "Yours, and only yours",
@@ -261,7 +253,87 @@ struct Strings {
             "dark_mode_label",
             value: "Dark Mode",
             comment: "Dark Mode Label")
-        
+
+        // Reminders (settings + onboarding)
+        static let reminderTimeLabel = NSLocalizedString(
+            "reminder_time_label",
+            value: "Time",
+            comment: "Label next to the reminder time picker")
+        static let notificationsDeniedHint = NSLocalizedString(
+            "notifications_denied_hint",
+            value: "Notifications are off for Savely in iOS Settings.",
+            comment: "Shown instead of the reminder switches when permission is denied")
+        static let openSettingsButton = NSLocalizedString(
+            "open_settings_button",
+            value: "Open Settings",
+            comment: "Button that opens the iOS Settings app")
+
+        // Identity + stats
+        static let savingSinceLabel = NSLocalizedString(
+            "saving_since_label",
+            value: "Saving since %@",
+            comment: "Subtitle under the display name; %@ is a month and year")
+        static let justStartedLabel = NSLocalizedString(
+            "just_started_label",
+            value: "Just getting started",
+            comment: "Subtitle under the display name when nothing is logged yet")
+        static let editNameHint = NSLocalizedString(
+            "edit_name_hint",
+            value: "Tap to edit your name",
+            comment: "Accessibility hint on the identity card")
+        static let statSavedLabel = NSLocalizedString(
+            "stat_saved_label",
+            value: "Saved",
+            comment: "Stat cell: total saved across goals")
+        static let statMovementsLabel = NSLocalizedString(
+            "stat_movements_label",
+            value: "Movements",
+            comment: "Stat cell: number of incomes + expenses logged")
+        static let statActiveGoalsLabel = NSLocalizedString(
+            "stat_active_goals_label",
+            value: "Active goals",
+            comment: "Stat cell: goals not yet complete")
+
+        // Achievements
+        static let nextAchievementLabel = NSLocalizedString(
+            "next_achievement_label",
+            value: "Next up",
+            comment: "Kicker above the closest locked achievement")
+        static let allAchievementsUnlockedLabel = NSLocalizedString(
+            "all_achievements_unlocked_label",
+            value: "Every achievement unlocked",
+            comment: "Shown when nothing is left to unlock")
+
+        // Data & privacy
+        static let dataPrivacyTitle = NSLocalizedString(
+            "data_privacy_title",
+            value: "Data & privacy",
+            comment: "Section header")
+        static let dataStaysLocalLabel = NSLocalizedString(
+            "data_stays_local_label",
+            value: "Your data never leaves this iPhone.",
+            comment: "One-line intro of the Data & privacy section")
+        static let deleteAllDataLabel = NSLocalizedString(
+            "delete_all_data_label",
+            value: "Delete all data",
+            comment: "Destructive row")
+        static let deleteAllDataConfirmTitle = NSLocalizedString(
+            "delete_all_data_confirm_title",
+            value: "Delete all data?",
+            comment: "Confirmation dialog title")
+        static let deleteAllDataConfirmMessage = NSLocalizedString(
+            "delete_all_data_confirm_message",
+            value: "Every income, expense and goal will be removed from this iPhone. Your name and reminder settings stay. This cannot be undone.",
+            comment: "Confirmation dialog message")
+        static let deleteAllDataConfirmButton = NSLocalizedString(
+            "delete_all_data_confirm_button",
+            value: "Delete everything",
+            comment: "Destructive confirm button")
+        static let deleteDataFailedMessage = NSLocalizedString(
+            "delete_data_failed_message",
+            value: "Couldn't delete your data. Please try again.",
+            comment: "Alert when deletion fails")
+
         static let securityTitle = NSLocalizedString(
             "security_title",
             value: "Security",
@@ -448,6 +520,10 @@ struct Strings {
             "ok_button",
             value: "OK",
             comment: "OK Button")
+        static let cancelButton = NSLocalizedString(
+            "cancel_button",
+            value: "Cancel",
+            comment: "Cancel Button")
     }
     
     struct Camera {

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @State private var currentStep = 0
-    @State private var expenseReminderTime = Date()
-    @State private var goalAlertTime = Date()
+    @State private var reminders = ReminderPreferences.defaults()
     let featureSteps = OnboardingData.steps
     @EnvironmentObject var appViewModel: AppViewModel
 
@@ -27,11 +26,8 @@ struct OnboardingView: View {
                     OnboardingStepView(step: step)
                         .tag(index + 1)
                 }
-                NotificationSettingsStepView(
-                    expenseReminderTime: $expenseReminderTime,
-                    goalAlertTime: $goalAlertTime
-                )
-                .tag(pageCount - 1)
+                NotificationSettingsStepView(preferences: $reminders)
+                    .tag(pageCount - 1)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
 
@@ -70,28 +66,11 @@ struct OnboardingView: View {
     }
 
     private func completeOnboarding() {
-        saveNotificationTimes()
+        // Persist first, then schedule only what was left on — the Profile
+        // tab reads the same store, so the two can never disagree.
+        ReminderStore().save(reminders)
+        NotificationManager.shared.apply(reminders)
         appViewModel.completeOnboarding()
-    }
-
-    private func saveNotificationTimes() {
-        if let expenseReminderID = NotificationManager.shared.scheduleNotification(
-            title: Strings.Notifications.expenseReminderTitle,
-            body: Strings.Notifications.expenseReminderBody,
-            identifier: "expenseReminder",
-            date: expenseReminderTime
-        ) {
-            print("Expense Reminder Scheduled: \(expenseReminderID)")
-        }
-
-        if let goalAlertID = NotificationManager.shared.scheduleNotification(
-            title: Strings.Notifications.goalAlertTitle,
-            body: Strings.Notifications.goalAlertBody,
-            identifier: "goalAlert",
-            date: goalAlertTime
-        ) {
-            print("Goal Alert Scheduled: \(goalAlertID)")
-        }
     }
 }
 

@@ -30,4 +30,11 @@ enum FeatureFlags {
     /// deposit applies together with the income save. ON for the App Store
     /// release; this flag remains as the kill switch.
     static let autoMoveSuggestionsEnabled = true
+
+    /// The Dark Mode switch in Profile. The palette in `Color+Warm.swift`
+    /// is still light-only, so flipping the switch changed nothing except
+    /// the status bar. Hidden until the adaptive palette lands
+    /// (docs/plans/pr-d2-adaptive-palette.md), which flips this back on.
+    /// The `@AppStorage("darkModeEnabled")` plumbing stays in place.
+    static let darkModeEnabled = false
 }
