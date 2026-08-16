@@ -6,6 +6,7 @@ struct ExpenseTrackerView: View {
     @StateObject private var viewModel = ExpenseTrackerViewModel()
     @State private var showCameraView = false
     @FocusState private var focusedField: Field?
+    @ScaledMetric(relativeTo: .subheadline) private var amountFieldWidth: CGFloat = 70
 
     enum Field: Hashable { case description, amount }
 
@@ -43,10 +44,10 @@ struct ExpenseTrackerView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Expenses")
-                            .font(.system(size: 34, weight: .regular, design: .serif))
+                            .warmFont(34, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInk)
                         Text("\(currentMonthName) · \(formattedTotal)")
-                            .font(.system(size: 13))
+                            .warmFont(13)
                             .foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
@@ -59,18 +60,18 @@ struct ExpenseTrackerView: View {
                         RoundedRectangle(cornerRadius: 12)
                             .fill(Color.warmOnInk.opacity(0.1))
                             .frame(width: 44, height: 44)
-                            .overlay(Image(systemName: "camera.fill").font(.system(size: 18)).foregroundStyle(Color.warmOnInk))
+                            .overlay(Image(systemName: "camera.fill").warmFont(18).foregroundStyle(Color.warmOnInk))
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Scan a receipt")
-                                .font(.system(size: 15, weight: .semibold))
+                                .warmFont(15, weight: .semibold)
                                 .foregroundStyle(Color.warmOnInk)
                             Text("We'll read the total and category")
-                                .font(.system(size: 12))
+                                .warmFont(12)
                                 .foregroundStyle(Color.warmOnInk.opacity(0.65))
                         }
                         Spacer()
                         Image(systemName: "chevron.right")
-                            .font(.system(size: 14))
+                            .warmFont(14)
                             .foregroundStyle(Color.warmOnInk.opacity(0.6))
                     }
                     .padding(16)
@@ -85,7 +86,7 @@ struct ExpenseTrackerView: View {
                 // — Inline add —
                 HStack(spacing: 10) {
                     TextField("What did you buy?", text: $viewModel.expenseDescription)
-                        .font(.system(size: 14))
+                        .warmFont(14)
                         .foregroundStyle(Color.warmInk)
                         .padding(.horizontal, 12)
                         .frame(maxWidth: .infinity)
@@ -99,10 +100,10 @@ struct ExpenseTrackerView: View {
                         Text("$").foregroundStyle(Color.warmInkMuted).padding(.leading, 8)
                         TextField("0.00", text: $viewModel.amount)
                             .keyboardType(.decimalPad)
-                            .font(.system(size: 14))
+                            .warmFont(14)
                             .monospacedDigit()
                             .padding(.vertical, 0)
-                            .frame(width: 70)
+                            .frame(width: amountFieldWidth)
                             .focused($focusedField, equals: .amount)
                     }
                     .frame(height: 40)
@@ -112,12 +113,14 @@ struct ExpenseTrackerView: View {
 
                     Button(action: { viewModel.addExpense(); focusedField = nil }) {
                         Image(systemName: "plus")
-                            .font(.system(size: 15, weight: .semibold))
+                            .warmFont(15, weight: .semibold)
                             .foregroundStyle(Color.warmOnGreen)
                             .frame(width: 40, height: 40)
                             .background(Color.warmGreenFill)
                             .cornerRadius(10)
+                            .tappable44()
                     }
+                    .accessibilityLabel("Add expense")
                 }
                 .padding(14)
                 .background(Color.warmSurface)
@@ -127,9 +130,9 @@ struct ExpenseTrackerView: View {
                 // — Grouped list —
                 if viewModel.expenses.isEmpty {
                     VStack(spacing: 10) {
-                        Image(systemName: "tray").font(.system(size: 40)).foregroundStyle(Color.warmInkMuted)
-                        Text("No expenses yet").font(.system(size: 16, weight: .semibold)).foregroundStyle(Color.warmInkSoft)
-                        Text("Add your first expense above").font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                        Image(systemName: "tray").warmFont(40).foregroundStyle(Color.warmInkMuted)
+                        Text("No expenses yet").warmFont(16, weight: .semibold).foregroundStyle(Color.warmInkSoft)
+                        Text("Add your first expense above").warmFont(13).foregroundStyle(Color.warmInkMuted)
                     }
                     .frame(maxWidth: .infinity).padding(.vertical, 44)
                 } else {
@@ -137,7 +140,7 @@ struct ExpenseTrackerView: View {
                         ForEach(groupedExpenses, id: \.0) { group in
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(group.0)
-                                    .font(.system(size: 11, weight: .semibold))
+                                    .warmFont(11, weight: .semibold)
                                     .foregroundStyle(Color.warmInkMuted)
                                     .tracking(1)
                                     .textCase(.uppercase)
@@ -203,23 +206,28 @@ struct ExpenseRowWarm: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(iconBg)
                 .frame(width: 36, height: 36)
-                .overlay(Image(systemName: expenseIcon).font(.system(size: 15)).foregroundStyle(iconColor))
+                .overlay(Image(systemName: expenseIcon).warmFont(15).foregroundStyle(iconColor))
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(expense.expenseDescription)
-                    .font(.system(size: 14, weight: .semibold))
+                    .warmFont(14, weight: .semibold)
                     .foregroundStyle(Color.warmInk)
                 Text(categoryLabel)
-                    .font(.system(size: 12))
+                    .warmFont(12)
                     .foregroundStyle(Color.warmInkMuted)
             }
             Spacer()
             Text("−\(formattedAmount(expense.amount))")
-                .font(.system(size: 14, weight: .semibold))
+                .warmFont(14, weight: .semibold)
                 .foregroundStyle(Color.warmInk)
                 .monospacedDigit()
         }
         .padding(.horizontal, 14).padding(.vertical, 12)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text("\(expense.expenseDescription), \(categoryLabel)"))
+        .accessibilityValue(Text("minus \(formattedAmount(expense.amount))"))
+        .accessibilityHint("Long press to delete")
         .contextMenu {
             Button(role: .destructive, action: { showDeleteConfirmation = true }) { Label("Delete", systemImage: "trash") }
         }

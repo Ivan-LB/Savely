@@ -71,7 +71,7 @@ struct SplashScreenView: View {
                         HStack(spacing: 0) {
                             ForEach(0..<letters.count, id: \.self) { i in
                                 Text(String(letters[i]))
-                                    .font(.system(size: 52, weight: .regular, design: .serif))
+                                    .warmFont(52, weight: .regular, design: .serif)
                                     .foregroundStyle(cream)
                                     .opacity(wordVisible ? 1 : 0)
                                     .offset(y: wordVisible ? 0 : 18)
@@ -93,7 +93,7 @@ struct SplashScreenView: View {
 
                         // Tagline
                         Text("Save with intention")
-                            .font(.system(size: 11, weight: .medium))
+                            .warmFont(11, weight: .medium)
                             .foregroundStyle(cream.opacity(0.82))
                             .tracking(4)
                             .textCase(.uppercase)

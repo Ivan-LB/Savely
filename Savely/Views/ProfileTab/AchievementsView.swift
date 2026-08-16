@@ -34,11 +34,11 @@ struct AchievementsView: View {
                 // Heading
                 VStack(alignment: .leading, spacing: 6) {
                     Text("\(earned) earned,\n\(states.count - earned) to go.")
-                        .font(.system(size: 32, weight: .regular, design: .serif))
+                        .warmFont(32, weight: .regular, design: .serif)
                         .foregroundStyle(Color.warmInk)
                         .lineSpacing(2)
                     Text("Badges unlock as you save — no pressure.")
-                        .font(.system(size: 14))
+                        .warmFont(14)
                         .foregroundStyle(Color.warmInkMuted)
                 }
                 .padding(.top, 8)
@@ -107,7 +107,7 @@ struct AchievementRow: View {
                 .overlay(RoundedRectangle(cornerRadius: 14).stroke(badge.unlocked ? Color.clear : Color.warmLine, lineWidth: 1))
                 .overlay(
                     Image(systemName: badge.icon)
-                        .font(.system(size: 20, weight: badge.unlocked ? .semibold : .regular))
+                        .warmFont(20, weight: badge.unlocked ? .semibold : .regular)
                         .foregroundStyle(badge.unlocked ? badge.tileColor : Color.warmInkMuted)
                 )
                 .scaleEffect(celebrate ? 1.12 : 1)
@@ -119,10 +119,10 @@ struct AchievementRow: View {
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(badge.title)
-                    .font(.system(size: 14, weight: .semibold))
+                    .warmFont(14, weight: .semibold)
                     .foregroundStyle(badge.unlocked ? Color.warmInk : Color.warmInkSoft)
                 Text(badge.subtitle)
-                    .font(.system(size: 12))
+                    .warmFont(12)
                     .foregroundStyle(Color.warmInkMuted)
 
                 // Progress bar for locked badges — fills to its real value on appear.
@@ -141,7 +141,7 @@ struct AchievementRow: View {
                         }
                         .frame(height: 4)
                         Text("\(Int(badge.progress * 100))%")
-                            .font(.system(size: 11))
+                            .warmFont(11)
                             .foregroundStyle(Color.warmInkMuted)
                             .monospacedDigit()
                     }
@@ -151,7 +151,7 @@ struct AchievementRow: View {
             Spacer()
             if badge.unlocked {
                 Image(systemName: "checkmark")
-                    .font(.system(size: 16, weight: .medium))
+                    .warmFont(16, weight: .medium)
                     .foregroundStyle(Color.warmGreen)
             }
         }
@@ -160,6 +160,9 @@ struct AchievementRow: View {
         .cornerRadius(16)
         .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.warmLine, lineWidth: 1))
         .opacity(badge.unlocked ? 1 : 0.88)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text("\(badge.title), \(badge.subtitle)"))
+        .accessibilityValue(badge.unlocked ? Text("Unlocked") : Text("\(Int(badge.progress * 100)) percent"))
     }
 }
 

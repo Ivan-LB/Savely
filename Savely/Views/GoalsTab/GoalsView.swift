@@ -45,17 +45,19 @@ struct GoalsView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Goals")
-                            .font(.system(size: 34, weight: .regular, design: .serif))
+                            .warmFont(34, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInk)
                         Text("\(activeGoals.count) active · \(formattedAmount(totalSaved)) saved of \(formattedAmount(totalTarget))")
-                            .font(.system(size: 14)).foregroundStyle(Color.warmInkMuted)
+                            .warmFont(14).foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
                     Button(action: { showAddGoalFlow = true }) {
                         Image(systemName: "plus")
-                            .font(.system(size: 18, weight: .semibold)).foregroundStyle(Color.warmOnInk)
+                            .warmFont(18, weight: .semibold).foregroundStyle(Color.warmOnInk)
                             .frame(width: 40, height: 40).background(Color.warmInk).cornerRadius(14)
+                            .tappable44()
                     }
+                    .accessibilityLabel("New goal")
                 }
                 .padding(.top, 8)
 
@@ -63,11 +65,11 @@ struct GoalsView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Text("Progress overall")
-                            .font(.system(size: 12, weight: .semibold)).foregroundStyle(Color.warmInkMuted)
+                            .warmFont(12, weight: .semibold).foregroundStyle(Color.warmInkMuted)
                             .tracking(0.6).textCase(.uppercase)
                         Spacer()
                         Text("\(Int(overallProgress * 100))%")
-                            .font(.system(size: 22, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                            .warmFont(22, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                     }
                     GeometryReader { geo in
                         HStack(spacing: 0) {
@@ -94,7 +96,7 @@ struct GoalsView: View {
                 if !completedGoals.isEmpty {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Completed")
-                            .font(.system(size: 11, weight: .semibold))
+                            .warmFont(11, weight: .semibold)
                             .foregroundStyle(Color.warmInkMuted)
                             .tracking(1)
                             .textCase(.uppercase)
@@ -163,16 +165,18 @@ struct GoalsEmptyStateView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Goals")
-                            .font(.system(size: 34, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                            .warmFont(34, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                         Text("Nothing here yet — let's plant the first one.")
-                            .font(.system(size: 14)).foregroundStyle(Color.warmInkMuted)
+                            .warmFont(14).foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
                     Button(action: onCreateGoal) {
                         Image(systemName: "plus")
-                            .font(.system(size: 18, weight: .semibold)).foregroundStyle(Color.warmOnInk)
+                            .warmFont(18, weight: .semibold).foregroundStyle(Color.warmOnInk)
                             .frame(width: 40, height: 40).background(Color.warmInk).cornerRadius(14)
+                            .tappable44()
                     }
+                    .accessibilityLabel("New goal")
                 }
                 .padding(.top, 8).padding(.horizontal, 20).padding(.bottom, 28)
 
@@ -187,11 +191,11 @@ struct GoalsEmptyStateView: View {
                             ZStack {
                                 Circle().fill(Color.warmGreenSoft).frame(width: 64, height: 64)
                                 Image(systemName: "target")
-                                    .font(.system(size: 26)).foregroundStyle(Color.warmGreen)
+                                    .warmFont(26).foregroundStyle(Color.warmGreen)
                             }
                         }
                         Text("Day one")
-                            .font(.system(size: 10, weight: .bold)).foregroundStyle(Color.warmAmber)
+                            .warmFont(10, weight: .bold).foregroundStyle(Color.warmAmber)
                             .tracking(0.8).textCase(.uppercase)
                             .padding(.horizontal, 10).padding(.vertical, 4)
                             .background(Color.warmAmberSoft).clipShape(Capsule())
@@ -202,17 +206,17 @@ struct GoalsEmptyStateView: View {
 
                     VStack(spacing: 10) {
                         Text("What are you saving for?")
-                            .font(.system(size: 28, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                            .warmFont(28, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                             .multilineTextAlignment(.center)
                         Text("A goal is a name, a number, and a date.\nSavely takes care of the rest.")
-                            .font(.system(size: 14)).foregroundStyle(Color.warmInkSoft)
+                            .warmFont(14).foregroundStyle(Color.warmInkSoft)
                             .multilineTextAlignment(.center).lineSpacing(3)
                     }
 
                     Button(action: onCreateGoal) {
                         HStack(spacing: 8) {
-                            Image(systemName: "plus").font(.system(size: 14, weight: .semibold))
-                            Text("Create your first goal").font(.system(size: 15, weight: .semibold))
+                            Image(systemName: "plus").warmFont(14, weight: .semibold)
+                            Text("Create your first goal").warmFont(15, weight: .semibold)
                         }
                         .foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
@@ -224,8 +228,8 @@ struct GoalsEmptyStateView: View {
                         ForEach([("🌿","Emergency fund"),("✈️","A trip"),("🏡","Down payment")], id: \.0) { item in
                             Button(action: onCreateGoal) {
                                 HStack(spacing: 6) {
-                                    Text(item.0).font(.system(size: 13))
-                                    Text(item.1).font(.system(size: 12)).foregroundStyle(Color.warmInkSoft)
+                                    Text(item.0).warmFont(13)
+                                    Text(item.1).warmFont(12).foregroundStyle(Color.warmInkSoft)
                                 }
                                 .padding(.horizontal, 12).padding(.vertical, 8)
                                 .background(Color.warmBg)
@@ -278,29 +282,31 @@ struct WarmGoalCard: View {
                     .fill(goal.color).frame(width: 44, height: 44)
                     .overlay(
                         Text(goal.name.prefix(1).uppercased())
-                            .font(.system(size: 22, weight: .regular, design: .serif)).foregroundStyle(Color.warmOnGreen)
+                            .warmFont(22, weight: .regular, design: .serif).foregroundStyle(Color.warmOnGreen)
                     )
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 5) {
                         Text(goal.name)
-                            .font(.system(size: 15, weight: .semibold)).foregroundStyle(Color.warmInk).lineLimit(1)
+                            .warmFont(15, weight: .semibold).foregroundStyle(Color.warmInk).lineLimit(1)
                         if goal.isFavorite {
-                            Image(systemName: "star.fill").font(.system(size: 12)).foregroundStyle(Color.warmAmber)
+                            Image(systemName: "star.fill").warmFont(12).foregroundStyle(Color.warmAmber)
                         }
                     }
                     Text(pace.label)
-                        .font(.system(size: 12))
+                        .warmFont(12)
                         .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmInkMuted)
                 }
                 Spacer()
                 VStack(alignment: .trailing, spacing: 2) {
                     Text("\(Int(goal.progress * 100))%")
-                        .font(.system(size: 18, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                        .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                     Button(action: onFavoriteToggle) {
                         Image(systemName: goal.isFavorite ? "star.fill" : "star")
-                            .font(.system(size: 16))
+                            .warmFont(16)
                             .foregroundStyle(goal.isFavorite ? Color.warmAmber : Color.warmInkMuted)
+                            .tappable44()
                     }
+                    .accessibilityLabel(goal.isFavorite ? "Remove from favorites" : "Make favorite")
                 }
             }
 
@@ -315,15 +321,18 @@ struct WarmGoalCard: View {
 
             HStack {
                 Text(formattedAmount(goal.current))
-                    .font(.system(size: 12)).foregroundStyle(Color.warmInkSoft).monospacedDigit()
+                    .warmFont(12).foregroundStyle(Color.warmInkSoft).monospacedDigit()
                 Spacer()
                 Text("of \(formattedAmount(goal.target))")
-                    .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted).monospacedDigit()
+                    .warmFont(12).foregroundStyle(Color.warmInkMuted).monospacedDigit()
             }
         }
         .padding(16)
         .background(Color.warmSurface).cornerRadius(18)
         .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.warmLine, lineWidth: 1))
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(Text("\(goal.name)\(goal.isFavorite ? String(localized: ", favorite") : ""), \(pace.label)"))
+        .accessibilityValue(Text("\(Int(goal.progress * 100)) percent, \(formattedAmount(goal.current)) of \(formattedAmount(goal.target))"))
         .contextMenu {
             Button(role: .destructive, action: { showDeleteConfirmation = true }) {
                 Label("Delete", systemImage: "trash")

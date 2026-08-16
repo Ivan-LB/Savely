@@ -23,12 +23,12 @@ struct WelcomeStepView: View {
 
             VStack(spacing: 12) {
                 Text(Strings.Onboarding.welcomeTitle)
-                    .font(.system(size: 30, weight: .regular, design: .serif))
+                    .warmFont(30, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                     .multilineTextAlignment(.center)
 
                 Text(Strings.Onboarding.welcomeLabel)
-                    .font(.system(size: 15))
+                    .warmFont(15)
                     .foregroundStyle(Color.warmInkSoft)
                     .multilineTextAlignment(.center)
                     .lineSpacing(3)

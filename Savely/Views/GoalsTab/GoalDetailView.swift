@@ -24,16 +24,16 @@ struct GoalDetailView: View {
                     if goal.isFavorite {
                         HStack(spacing: 5) {
                             Image(systemName: "star.fill")
-                                .font(.system(size: 11))
+                                .warmFont(11)
                                 .foregroundStyle(Color.warmAmber)
                             Text("FAVORITE")
-                                .font(.system(size: 11, weight: .semibold))
+                                .warmFont(11, weight: .semibold)
                                 .foregroundStyle(Color.warmInkMuted)
                                 .tracking(0.8)
                         }
                     }
                     Text(goal.name)
-                        .font(.system(size: 36, weight: .regular, design: .serif))
+                        .warmFont(36, weight: .regular, design: .serif)
                         .foregroundStyle(Color.warmInk)
                         .lineSpacing(2)
                 }
@@ -54,20 +54,23 @@ struct GoalDetailView: View {
                     VStack(spacing: 4) {
                         HStack(alignment: .lastTextBaseline, spacing: 2) {
                             Text("\(Int(goal.progress * 100))")
-                                .font(.system(size: 52, weight: .regular, design: .serif))
+                                .warmFont(52, weight: .regular, design: .serif)
                                 .foregroundStyle(Color.warmInk)
                             Text("%")
-                                .font(.system(size: 26))
+                                .warmFont(26)
                                 .foregroundStyle(Color.warmInkMuted)
                         }
                         Text(formattedAmount(goal.current) + " of " + formattedAmount(goal.target))
-                            .font(.system(size: 12))
+                            .warmFont(12)
                             .foregroundStyle(Color.warmInkMuted)
                             .tracking(0.5)
                     }
                 }
                 .frame(width: 200, height: 200)
                 .padding(.bottom, 12)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Progress")
+                .accessibilityValue(Text("\(Int(goal.progress * 100)) percent, \(formattedAmount(goal.current)) of \(formattedAmount(goal.target))"))
 
                 // — Status · deadline —
                 HStack(spacing: 6) {
@@ -76,7 +79,7 @@ struct GoalDetailView: View {
                         .frame(width: 6, height: 6)
                         .accessibilityHidden(true)
                     Text(statusLine)
-                        .font(.system(size: 13, weight: .medium))
+                        .warmFont(13, weight: .medium)
                         .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmInkSoft)
                 }
                 .padding(.bottom, 20)
@@ -108,7 +111,7 @@ struct GoalDetailView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: { showingEdit = true }) {
                     Image(systemName: "pencil")
-                        .font(.system(size: 14))
+                        .warmFont(14)
                         .foregroundStyle(Color.warmInk)
                         .frame(width: 36, height: 36)
                         .background(Color.warmSurface)
@@ -146,12 +149,12 @@ struct StatPill: View {
     var body: some View {
         VStack(spacing: 4) {
             Text(label)
-                .font(.system(size: 10, weight: .semibold))
+                .warmFont(10, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(0.6)
                 .textCase(.uppercase)
             Text(value)
-                .font(.system(size: 18, weight: .regular, design: .serif))
+                .warmFont(18, weight: .regular, design: .serif)
                 .foregroundStyle(Color.warmInk)
         }
         .padding(.vertical, 12)
@@ -179,25 +182,25 @@ struct DepositCard: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Add a deposit")
-                    .font(.system(size: 22, weight: .regular, design: .serif))
+                    .warmFont(22, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                 Text("Move money toward \(goal.name.components(separatedBy: ",").first ?? goal.name).")
-                    .font(.system(size: 13))
+                    .warmFont(13)
                     .foregroundStyle(Color.warmInkMuted)
             }
 
             // Amount
             HStack(alignment: .lastTextBaseline, spacing: 4) {
                 Text("$")
-                    .font(.system(size: 48, weight: .regular, design: .serif))
+                    .warmFont(48, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInkMuted)
                 TextField("0", text: $amountText)
-                    .font(.system(size: 64, weight: .regular, design: .serif))
+                    .warmFont(64, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                     .keyboardType(.decimalPad)
                     .frame(maxWidth: .infinity)
                 Text(".00")
-                    .font(.system(size: 32, weight: .regular, design: .serif))
+                    .warmFont(32, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInkMuted)
             }
 
@@ -207,7 +210,7 @@ struct DepositCard: View {
                     let isSelected = amountText == String(Int(amt))
                     Button(action: { amountText = String(Int(amt)) }) {
                         Text("$\(Int(amt))")
-                            .font(.system(size: 13, weight: .semibold))
+                            .warmFont(13, weight: .semibold)
                             .foregroundStyle(isSelected ? goal.color : Color.warmInkMuted)
                             .padding(.horizontal, 14)
                             .padding(.vertical, 8)
@@ -221,11 +224,11 @@ struct DepositCard: View {
             // Note field
             VStack(alignment: .leading, spacing: 6) {
                 Text("NOTE")
-                    .font(.system(size: 11, weight: .semibold))
+                    .warmFont(11, weight: .semibold)
                     .foregroundStyle(Color.warmInkMuted)
                     .tracking(0.8)
                 TextField("Optional note", text: $note)
-                    .font(.system(size: 14))
+                    .warmFont(14)
                     .padding(14)
                     .frame(height: 44)
                     .background(Color.warmBg)
@@ -236,7 +239,7 @@ struct DepositCard: View {
             // CTA
             Button(action: saveDeposit) {
                 Text(amountText.isEmpty ? "Add deposit" : "Add $\(amountText) to \(goalFirstName)")
-                    .font(.system(size: 15, weight: .semibold))
+                    .warmFont(15, weight: .semibold)
                     .foregroundStyle(Color.warmOnGreen)
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
@@ -292,7 +295,7 @@ struct DepositHistorySection: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("History")
-                .font(.system(size: 11, weight: .semibold))
+                .warmFont(11, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(1)
                 .textCase(.uppercase)
@@ -301,7 +304,7 @@ struct DepositHistorySection: View {
 
             if deposits.isEmpty {
                 Text("No deposits yet — the first one lands here.")
-                    .font(.system(size: 13))
+                    .warmFont(13)
                     .foregroundStyle(Color.warmInkSoft)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 14).padding(.vertical, 18)
@@ -337,7 +340,7 @@ struct DepositRow: View {
                 .frame(width: 36, height: 36)
                 .overlay(
                     Image(systemName: isAuto ? "sparkles" : "arrow.down.to.line")
-                        .font(.system(size: 14, weight: .medium))
+                        .warmFont(14, weight: .medium)
                         .foregroundStyle(Color.warmGreen)
                 )
                 .accessibilityHidden(true)
@@ -345,11 +348,11 @@ struct DepositRow: View {
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 6) {
                     Text(relativeDate(deposit.date))
-                        .font(.system(size: 14, weight: .semibold))
+                        .warmFont(14, weight: .semibold)
                         .foregroundStyle(Color.warmInk)
                     if isAuto {
                         Text("AUTO")
-                            .font(.system(size: 9, weight: .bold))
+                            .warmFont(9, weight: .bold)
                             .foregroundStyle(Color.warmGreenDeep)
                             .tracking(0.6)
                             .padding(.horizontal, 6).padding(.vertical, 2)
@@ -359,14 +362,14 @@ struct DepositRow: View {
                 }
                 if let note = deposit.note {
                     Text(note)
-                        .font(.system(size: 12))
+                        .warmFont(12)
                         .foregroundStyle(Color.warmInkSoft)
                         .lineLimit(2)
                 }
             }
             Spacer()
             Text("+\(formattedAmount(deposit.amount))")
-                .font(.system(size: 14, weight: .semibold))
+                .warmFont(14, weight: .semibold)
                 .foregroundStyle(Color.warmGreen)
                 .monospacedDigit()
         }

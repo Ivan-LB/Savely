@@ -23,7 +23,7 @@ struct NotificationSettingsStepView: View {
                 .frame(width: 96, height: 96)
                 .overlay(
                     Image(systemName: "bell")
-                        .font(.system(size: 40, weight: .medium))
+                        .warmFont(40, weight: .medium)
                         .foregroundStyle(Color.warmClay)
                 )
                 .scaleEffect(appeared ? 1 : 0.92)
@@ -32,12 +32,12 @@ struct NotificationSettingsStepView: View {
 
             VStack(spacing: 12) {
                 Text(Strings.Onboarding.notificationSettingsTitle)
-                    .font(.system(size: 30, weight: .regular, design: .serif))
+                    .warmFont(30, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                     .multilineTextAlignment(.center)
 
                 Text(Strings.Onboarding.notificationSettingsDescription)
-                    .font(.system(size: 15))
+                    .warmFont(15)
                     .foregroundStyle(Color.warmInkSoft)
                     .multilineTextAlignment(.center)
                     .lineSpacing(3)

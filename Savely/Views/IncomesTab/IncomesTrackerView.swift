@@ -5,6 +5,7 @@ struct IncomesTrackerView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel = IncomesTrackerViewModel()
     @FocusState private var focusedField: Field?
+    @ScaledMetric(relativeTo: .subheadline) private var amountFieldWidth: CGFloat = 70
 
     enum Field: Hashable { case description, amount }
 
@@ -29,10 +30,10 @@ struct IncomesTrackerView: View {
                 // — Header —
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Income")
-                        .font(.system(size: 34, weight: .regular, design: .serif))
+                        .warmFont(34, weight: .regular, design: .serif)
                         .foregroundStyle(Color.warmInk)
                     Text("\(currentMonthName) · \(formattedAmount(viewModel.totalIncomeThisMonth))")
-                        .font(.system(size: 13))
+                        .warmFont(13)
                         .foregroundStyle(Color.warmInkMuted)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -42,7 +43,7 @@ struct IncomesTrackerView: View {
                 VStack(alignment: .leading, spacing: 14) {
                     HStack {
                         Text("7-month trend")
-                            .font(.system(size: 12, weight: .semibold))
+                            .warmFont(12, weight: .semibold)
                             .foregroundStyle(Color.warmInkMuted)
                             .tracking(0.6)
                             .textCase(.uppercase)
@@ -52,11 +53,14 @@ struct IncomesTrackerView: View {
                         let isUp = viewModel.percentageChange >= 0
                         HStack(spacing: 3) {
                             Image(systemName: isUp ? "arrow.up" : "arrow.down")
-                                .font(.system(size: 10, weight: .semibold))
+                                .warmFont(10, weight: .semibold)
                             Text(String(format: "%+.0f%%", viewModel.percentageChange))
-                                .font(.system(size: 13, weight: .semibold))
+                                .warmFont(13, weight: .semibold)
                         }
                         .foregroundStyle(isUp ? Color.warmGreen : Color.warmClay)
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("Month over month")
+                        .accessibilityValue(Text("\(isUp ? String(localized: "up") : String(localized: "down")) \(Int(abs(viewModel.percentageChange))) percent"))
                     }
                     HStack(alignment: .bottom, spacing: 8) {
                         ForEach(Array(barData.enumerated()), id: \.offset) { idx, bar in
@@ -65,7 +69,7 @@ struct IncomesTrackerView: View {
                                     .fill(idx == barData.count - 1 ? Color.warmGreen : Color.warmGreenSoft)
                                     .frame(height: max(4, CGFloat(bar.1 / maxBar) * 80))
                                 Text(bar.0)
-                                    .font(.system(size: 10))
+                                    .warmFont(10)
                                     .foregroundStyle(Color.warmInkMuted)
                             }
                             .frame(maxWidth: .infinity, alignment: .bottom)
@@ -81,7 +85,7 @@ struct IncomesTrackerView: View {
                 // — Inline add —
                 HStack(spacing: 10) {
                     TextField("Source…", text: $viewModel.incomeDescription)
-                        .font(.system(size: 14))
+                        .warmFont(14)
                         .padding(.horizontal, 12)
                         .frame(maxWidth: .infinity)
                         .frame(height: 40)
@@ -94,9 +98,9 @@ struct IncomesTrackerView: View {
                         Text("$").foregroundStyle(Color.warmInkMuted).padding(.leading, 8)
                         TextField("0.00", text: $viewModel.amount)
                             .keyboardType(.decimalPad)
-                            .font(.system(size: 14))
+                            .warmFont(14)
                             .monospacedDigit()
-                            .frame(width: 70)
+                            .frame(width: amountFieldWidth)
                             .focused($focusedField, equals: .amount)
                     }
                     .frame(height: 40)
@@ -106,12 +110,14 @@ struct IncomesTrackerView: View {
 
                     Button(action: { viewModel.addIncome(); focusedField = nil }) {
                         Image(systemName: "plus")
-                            .font(.system(size: 15, weight: .semibold))
+                            .warmFont(15, weight: .semibold)
                             .foregroundStyle(Color.warmOnGreen)
                             .frame(width: 40, height: 40)
                             .background(Color.warmGreenFill)
                             .cornerRadius(10)
+                            .tappable44()
                     }
+                    .accessibilityLabel("Add income")
                 }
                 .padding(14)
                 .background(Color.warmSurface)
@@ -121,7 +127,7 @@ struct IncomesTrackerView: View {
                 // — History —
                 VStack(alignment: .leading, spacing: 8) {
                     Text("History")
-                        .font(.system(size: 11, weight: .semibold))
+                        .warmFont(11, weight: .semibold)
                         .foregroundStyle(Color.warmInkMuted)
                         .tracking(1)
                         .textCase(.uppercase)
@@ -129,8 +135,8 @@ struct IncomesTrackerView: View {
 
                     if viewModel.incomes.isEmpty {
                         VStack(spacing: 10) {
-                            Image(systemName: "tray").font(.system(size: 40)).foregroundStyle(Color.warmInkMuted)
-                            Text("No income yet").font(.system(size: 16, weight: .semibold)).foregroundStyle(Color.warmInkSoft)
+                            Image(systemName: "tray").warmFont(40).foregroundStyle(Color.warmInkMuted)
+                            Text("No income yet").warmFont(16, weight: .semibold).foregroundStyle(Color.warmInkSoft)
                         }
                         .frame(maxWidth: .infinity).padding(.vertical, 44)
                     } else {
@@ -191,25 +197,30 @@ struct IncomeRowWarm: View {
                 .frame(width: 36, height: 36)
                 .overlay(
                     Image(systemName: source?.icon ?? "arrow.up")
-                        .font(.system(size: 14, weight: .medium))
+                        .warmFont(14, weight: .medium)
                         .foregroundStyle(Color.warmGreen)
                 )
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(income.incomeDescription)
-                    .font(.system(size: 14, weight: .semibold))
+                    .warmFont(14, weight: .semibold)
                     .foregroundStyle(Color.warmInk)
                 Text(source.map { "\($0.label) · \(shortDate(income.date))" } ?? shortDate(income.date))
-                    .font(.system(size: 12))
+                    .warmFont(12)
                     .foregroundStyle(Color.warmInkMuted)
             }
             Spacer()
             Text("+\(formattedAmount(income.amount))")
-                .font(.system(size: 14, weight: .semibold))
+                .warmFont(14, weight: .semibold)
                 .foregroundStyle(Color.warmGreen)
                 .monospacedDigit()
         }
         .padding(.horizontal, 14).padding(.vertical, 14)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text("\(income.incomeDescription), \(source.map { "\($0.label), " } ?? "")\(shortDate(income.date))"))
+        .accessibilityValue(Text("plus \(formattedAmount(income.amount))"))
+        .accessibilityHint("Long press to delete")
         .contextMenu {
             Button(role: .destructive, action: { showDeleteConfirmation = true }) { Label("Delete", systemImage: "trash") }
         }

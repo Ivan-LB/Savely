@@ -44,7 +44,7 @@ struct OnboardingView: View {
 
             Button(action: handleButtonTap) {
                 Text(isLastStep ? Strings.Buttons.startButton : Strings.Buttons.nextButton)
-                    .font(.system(size: 16, weight: .semibold))
+                    .warmFont(16, weight: .semibold)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .background(Color.warmGreenFill)

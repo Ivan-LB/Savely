@@ -22,20 +22,21 @@ struct OnboardingStepView: View {
                 .frame(width: 96, height: 96)
                 .overlay(
                     Image(systemName: step.image)
-                        .font(.system(size: 40, weight: .medium))
+                        .warmFont(40, weight: .medium)
                         .foregroundStyle(step.tileColor)
                 )
                 .scaleEffect(appeared ? 1 : 0.92)
                 .opacity(appeared ? 1 : 0)
+                .accessibilityHidden(true)
 
             VStack(spacing: 12) {
                 Text(step.title)
-                    .font(.system(size: 30, weight: .regular, design: .serif))
+                    .warmFont(30, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                     .multilineTextAlignment(.center)
 
                 Text(step.description)
-                    .font(.system(size: 15))
+                    .warmFont(15)
                     .foregroundStyle(Color.warmInkSoft)
                     .multilineTextAlignment(.center)
                     .lineSpacing(3)
