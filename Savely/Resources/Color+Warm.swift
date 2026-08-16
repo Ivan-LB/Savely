@@ -15,7 +15,7 @@ extension Color {
     static let warmSurface     = Color(light: 0xFFFFFF, dark: 0x262420)
     static let warmInk         = Color(light: 0x1A1A17, dark: 0xF2EFE7)
     static let warmInkSoft     = Color(light: 0x55524C, dark: 0xC6C1B5)
-    static let warmInkMuted    = Color(light: 0x8C8880, dark: 0x9D978A)
+    static let warmInkMuted    = Color(light: 0x746F66, dark: 0x9D978A) // light was #8c8880 (3.2:1); #746f66 clears AA text at 4.5:1
     static let warmLine        = Color(light: 0x1E190F, dark: 0xF2EFE7, lightAlpha: 0.08, darkAlpha: 0.10)
     static let warmLineSoft    = Color(light: 0x1E190F, dark: 0xF2EFE7, lightAlpha: 0.04, darkAlpha: 0.05)
 
@@ -30,7 +30,7 @@ extension Color {
     static let warmGreenTint   = Color(light: 0xF2F7F3, dark: 0x1B2A21)
 
     // Category tints — a glyph on a soft tile, never a fill.
-    static let warmAmber       = Color(light: 0xC48A2A, dark: 0xDEA64A)
+    static let warmAmber       = Color(light: 0xA8741C, dark: 0xDEA64A) // light was #c48a2a (2.6:1 on amber-soft); #a8741c clears 3:1 for glyphs
     static let warmAmberSoft   = Color(light: 0xF6ECD6, dark: 0x3A2F19)
     /// Amber as *text* on an amber-soft banner (the accent itself is too light to read at 12pt).
     static let warmAmberDeep   = Color(light: 0x7A5618, dark: 0xEBC27A)
