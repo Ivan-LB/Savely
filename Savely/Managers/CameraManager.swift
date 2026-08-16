@@ -31,59 +31,81 @@ class CameraManager: NSObject, ObservableObject {
 
     var isProcessingFrame = false
 
+    /// False on devices without a back camera (the simulator) or when the
+    /// user denied camera access — the view shows a message instead of a
+    /// frozen black preview.
+    @Published var isCameraAvailable = true
+    private var isConfigured = false
+
     func startSession() {
-        sessionQueue.async {
-            self.configureSession()
-            self.session.startRunning()
+        AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
+            guard let self else { return }
+            guard granted else {
+                DispatchQueue.main.async { self.isCameraAvailable = false }
+                return
+            }
+            self.sessionQueue.async {
+                guard self.configureSessionIfNeeded() else { return }
+                if !self.session.isRunning { self.session.startRunning() }
+            }
         }
     }
 
     func stopSession() {
         sessionQueue.async {
-            self.session.stopRunning()
+            if self.session.isRunning { self.session.stopRunning() }
         }
     }
 
-    private func configureSession() {
+    /// Configures the session exactly once. Every exit path commits the
+    /// configuration — `startRunning()` between begin/commit is a crash.
+    /// Returns false when there is nothing to run (no camera).
+    @discardableResult
+    private func configureSessionIfNeeded() -> Bool {
+        if isConfigured { return true }
         session.beginConfiguration()
+        defer { session.commitConfiguration() }
         session.sessionPreset = .photo
 
         guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
-            print("No se pudo acceder a la cámara trasera.")
-            return
+            print("No back camera on this device.")
+            DispatchQueue.main.async { self.isCameraAvailable = false }
+            return false
         }
 
         do {
             let videoDeviceInput = try AVCaptureDeviceInput(device: videoDevice)
-            if session.canAddInput(videoDeviceInput) {
-                session.addInput(videoDeviceInput)
-            } else {
-                print("No se pudo agregar entrada de cámara a la sesión.")
-                return
+            guard session.canAddInput(videoDeviceInput) else {
+                print("Could not add the camera input.")
+                DispatchQueue.main.async { self.isCameraAvailable = false }
+                return false
             }
+            session.addInput(videoDeviceInput)
         } catch {
-            print("Error al crear entrada de cámara: \(error)")
-            return
+            print("Could not create the camera input: \(error)")
+            DispatchQueue.main.async { self.isCameraAvailable = false }
+            return false
         }
 
-        if session.canAddOutput(photoOutput) {
-            session.addOutput(photoOutput)
-        } else {
-            print("No se pudo agregar salida de foto a la sesión.")
-            return
+        guard session.canAddOutput(photoOutput) else {
+            print("Could not add the photo output.")
+            DispatchQueue.main.async { self.isCameraAvailable = false }
+            return false
         }
+        session.addOutput(photoOutput)
 
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "video_output_queue"))
-        if session.canAddOutput(videoOutput) {
-            session.addOutput(videoOutput)
-            videoOutput.alwaysDiscardsLateVideoFrames = true
-            videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
-        } else {
-            print("No se pudo agregar salida de video a la sesión.")
-            return
+        guard session.canAddOutput(videoOutput) else {
+            print("Could not add the video output.")
+            DispatchQueue.main.async { self.isCameraAvailable = false }
+            return false
         }
+        session.addOutput(videoOutput)
+        videoOutput.alwaysDiscardsLateVideoFrames = true
+        videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
 
-        session.commitConfiguration()
+        isConfigured = true
+        return true
     }
 
     func setPreviewLayer(to view: UIView) {
@@ -92,6 +114,12 @@ class CameraManager: NSObject, ObservableObject {
         layer.frame = view.bounds
         previewLayer = layer
         view.layer.insertSublayer(layer, at: 0)
+    }
+
+    /// Keeps the preview filling the view when it is laid out (sheet vs
+    /// full-screen, rotation).
+    func layoutPreviewLayer(in view: UIView) {
+        previewLayer?.frame = view.bounds
     }
 
     func capturePhoto() {

@@ -16,6 +16,7 @@ class CameraViewModel: ObservableObject, Identifiable {
     @Published var alternativeTotals: [String] = []
     @Published var isRectangleDetected: Bool = false
     @Published var detectedRectangle: VNRectangleObservation?
+    @Published var isCameraAvailable: Bool = true
 
     private let textRecognizer = TextRecognizer()
     private var cancellables = Set<AnyCancellable>()
@@ -48,6 +49,11 @@ class CameraViewModel: ObservableObject, Identifiable {
         cameraManager.$detectedRectangle
             .receive(on: RunLoop.main)
             .assign(to: \.detectedRectangle, on: self)
+            .store(in: &cancellables)
+
+        cameraManager.$isCameraAvailable
+            .receive(on: RunLoop.main)
+            .assign(to: \.isCameraAvailable, on: self)
             .store(in: &cancellables)
     }
 
