@@ -18,7 +18,7 @@ struct MainNavigationView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                NavigationStack { DashboardView() }.tag(0)
+                NavigationStack { DashboardView(onSeeAll: { selectedTab = 2 }) }.tag(0)
                 NavigationStack { GoalsView(showAddGoalFlow: $showAddGoalFlow) }.tag(1)
                 NavigationStack { MoneyView() }.tag(2)
                 NavigationStack { ProfileView() }.tag(3)
@@ -248,22 +248,7 @@ struct WarmActionSheet: View {
             .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.warmLine, lineWidth: 1))
             .padding(.horizontal, 20)
 
-            HStack(spacing: 8) {
-                Image(systemName: "sparkles")
-                    .font(.system(size: 11)).foregroundStyle(Color.warmAmber)
-                (Text("Tip: long-press ") +
-                 Text("+").fontWeight(.bold).foregroundColor(Color.warmInk) +
-                 Text(" to repeat your last action."))
-                    .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(14)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [4]))
-                    .foregroundStyle(Color.warmLine)
-            )
-            .padding(.horizontal, 20).padding(.top, 14).padding(.bottom, 28)
+            Spacer(minLength: 28)
         }
         .background(Color.warmBg)
     }

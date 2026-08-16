@@ -123,7 +123,7 @@ struct ProfileView: View {
                         WarmDivider()
                         SettingsToggleRow(icon: "moon.fill", title: "Dark Mode", isOn: $viewModel.darkMode)
                         WarmDivider()
-                        SettingsNavRow(icon: "doc.text.fill", title: "Weekly PDF report", onTap: {})
+                        SettingsNavRow(icon: "doc.text.fill", title: "Weekly PDF report", onTap: { viewModel.generateWeeklyReportPDF() })
                     }
 
                     if FeatureFlags.tipsEnabled {
