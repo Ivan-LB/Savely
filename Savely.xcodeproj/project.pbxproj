@@ -80,6 +80,8 @@
 		1DE9FE172D066EE20069AA64 /* ReportsPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */; };
 		1DEACCDE2D0BE6340084CC39 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEACCDD2D0BE6340084CC39 /* NetworkErrorView.swift */; };
 		1DF7228E2F9C182300320B38 /* Color+Warm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7228D2F9C182300320B38 /* Color+Warm.swift */; };
+		A11A0020C0DE5AFE10000020 /* Font+Warm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A001FC0DE5AFE1000001F /* Font+Warm.swift */; };
+		A11A0022C0DE5AFE10000022 /* WarmTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0021C0DE5AFE10000021 /* WarmTypeTests.swift */; };
 		1DF722902F9C18FE00320B38 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7228F2F9C18FE00320B38 /* GoalDetailView.swift */; };
 		1DF722922F9C19CE00320B38 /* MoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF722912F9C19CE00320B38 /* MoneyView.swift */; };
 		1DF722942F9C19E600320B38 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF722932F9C19E600320B38 /* AchievementsView.swift */; };
@@ -184,6 +186,8 @@
 		1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsPDFGenerator.swift; sourceTree = "<group>"; };
 		1DEACCDD2D0BE6340084CC39 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		1DF7228D2F9C182300320B38 /* Color+Warm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Warm.swift"; sourceTree = "<group>"; };
+		A11A001FC0DE5AFE1000001F /* Font+Warm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Warm.swift"; sourceTree = "<group>"; };
+		A11A0021C0DE5AFE10000021 /* WarmTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmTypeTests.swift; sourceTree = "<group>"; };
 		1DF7228F2F9C18FE00320B38 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
 		1DF722912F9C19CE00320B38 /* MoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyView.swift; sourceTree = "<group>"; };
 		1DF722932F9C19E600320B38 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				1D3669882CC62F9100E84FF9 /* UIConstants.swift */,
 				1D36698A2CC62FD700E84FF9 /* Localizable.xcstrings */,
 				1DF7228D2F9C182300320B38 /* Color+Warm.swift */,
+				A11A001FC0DE5AFE1000001F /* Font+Warm.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				A11A0013C0DE5AFE10000013 /* GoalDepositsTests.swift */,
 				A11A0019C0DE5AFE10000019 /* GoalEditValidationTests.swift */,
 				A11A001DC0DE5AFE1000001D /* GoalPaceTests.swift */,
+				A11A0021C0DE5AFE10000021 /* WarmTypeTests.swift */,
 				62FA742D1E24F010F3273E30 /* AchievementEngineTests.swift */,
 				1DC258182CC07DCF0002DDE3 /* SavelyTests.swift */,
 			);
@@ -725,6 +731,7 @@
 				1DC013FB2CDB575F009A46E1 /* IncomesTrackerView.swift in Sources */,
 				1D3669872CC62F8200E84FF9 /* Strings.swift in Sources */,
 				1DF7228E2F9C182300320B38 /* Color+Warm.swift in Sources */,
+				A11A0020C0DE5AFE10000020 /* Font+Warm.swift in Sources */,
 				1DE9FE0E2D063AF20069AA64 /* NotificationSettingsStepView.swift in Sources */,
 				1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */,
 				1DAF5D132CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift in Sources */,
@@ -763,6 +770,7 @@
 				A11A0014C0DE5AFE10000014 /* GoalDepositsTests.swift in Sources */,
 				A11A001AC0DE5AFE1000001A /* GoalEditValidationTests.swift in Sources */,
 				A11A001EC0DE5AFE1000001E /* GoalPaceTests.swift in Sources */,
+				A11A0022C0DE5AFE10000022 /* WarmTypeTests.swift in Sources */,
 				510740529955B0B1E6EA730D /* AchievementEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
