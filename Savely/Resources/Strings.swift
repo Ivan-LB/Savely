@@ -135,10 +135,6 @@ struct Strings {
             "tips_and_suggestion_title",
             value: "Tips and Suggestions",
             comment: "Tips and Suggestions Tittle")
-        static let goalDetailsHeadline = NSLocalizedString(
-            "goal_details_headline",
-            value: "Goal details",
-            comment: "Goal Details Headline")
     }
     
     struct ExpenseTrackerTab {
@@ -396,11 +392,6 @@ struct Strings {
             "export_report_button",
             value: "Export Report",
             comment: "Export Report Button")
-        static let newGoalButton = NSLocalizedString(
-            "add_new_goal_button",
-            value: "Add New Goal",
-            comment: "Add New Goal Button")
-        
         static let downloadWeeklyReportButton = NSLocalizedString(
             "download_weekly_report_button",
             value: "Download Weekly Report",
@@ -482,14 +473,6 @@ struct Strings {
     }
     
     struct GoalsView {
-        static let goalNamePlaceholder = NSLocalizedString(
-            "goal_name_placeholder",
-            value: "Goal name",
-            comment: "Goal Name Placeholder")
-        static let goalAmountPlaceholder = NSLocalizedString(
-            "goal_amount_placeholder",
-            value: "Goal amount",
-            comment: "Goal Amount Placeholder")
         static let greenColor = NSLocalizedString(
             "green_color",
             value: "Green",
