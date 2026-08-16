@@ -63,7 +63,10 @@ class ExpenseTrackerViewModel: ObservableObject {
         }
     }
 
-    func addExpense() {
+    /// - Parameter category: the chip picked in the quick-add sheet. The
+    ///   inline Money-tab form and the receipt scanner pass nothing — their
+    ///   rows display through keyword inference instead.
+    func addExpense(category: String? = nil) {
         guard let modelContext = modelContext else { return }
         guard let amountValue = parseAmount(amount) else {
             // Used to return silently, so a typo just did nothing at all.
@@ -75,7 +78,8 @@ class ExpenseTrackerViewModel: ObservableObject {
         let newExpense = ExpenseModel(
             expenseDescription: expenseDescription,
             amount: amountValue,
-            date: Date()
+            date: Date(),
+            category: category
         )
         modelContext.insert(newExpense)
 

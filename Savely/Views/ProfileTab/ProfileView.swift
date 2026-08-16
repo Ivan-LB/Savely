@@ -10,6 +10,7 @@ struct ProfileView: View {
     @Query private var expenses: [ExpenseModel]
     @Query private var goals: [GoalModel]
     @State private var showingAchievements = false
+    @State private var showingReports = false
     @State private var showingTipHistory = false
     @State private var showingDeleteDialog = false
     @State private var showingDeleteFinalConfirm = false
@@ -77,6 +78,7 @@ struct ProfileView: View {
             Text(Strings.Profile.deleteAllDataConfirmMessage)
         }
         .navigationDestination(isPresented: $showingAchievements) { AchievementsView() }
+        .navigationDestination(isPresented: $showingReports) { ReportsView() }
         .navigationDestination(isPresented: $showingTipHistory) { TipHistoryView() }
         .onAppear { viewModel.setModelContext(modelContext) }
         .task { await viewModel.refreshReminderState() }
@@ -251,6 +253,8 @@ struct ProfileView: View {
             .padding(.horizontal, 16).padding(.vertical, 14)
             WarmDivider()
             SettingsNavRow(icon: "doc.text.fill", title: "Weekly PDF report", onTap: { viewModel.generateWeeklyReportPDF() })
+            WarmDivider()
+            SettingsNavRow(icon: "chart.bar", title: "Reports", onTap: { showingReports = true })
             WarmDivider()
             SettingsNavRow(icon: "trash", title: Strings.Profile.deleteAllDataLabel, color: Color.warmClay, onTap: { showingDeleteDialog = true })
         }

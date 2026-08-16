@@ -14,12 +14,18 @@ class ExpenseModel {
     var expenseDescription: String
     var amount: Double
     var date: Date
+    /// The chip the user picked when logging ("Coffee", "Food", "Transit",
+    /// "Shopping", "Other"). `nil` for rows logged before categories were
+    /// stored and for scanned receipts — display then falls back to keyword
+    /// inference, but the guess is never written back here.
+    var category: String?
 
-    init(expenseDescription: String, amount: Double, date: Date) {
+    init(expenseDescription: String, amount: Double, date: Date, category: String? = nil) {
         self.id = UUID()
         self.expenseDescription = expenseDescription
         self.amount = amount
         self.date = date
+        self.category = category
     }
 }
 

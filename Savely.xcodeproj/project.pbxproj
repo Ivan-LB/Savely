@@ -11,7 +11,9 @@
 		DE826483AC71FF3EC2A603B7 /* AutoMoveSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774124079B5BEC3DD37C743 /* AutoMoveSuggestion.swift */; };
 		A11A0002C0DE5AFE10000002 /* AmountParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0001C0DE5AFE10000001 /* AmountParsing.swift */; };
 		A11A0006C0DE5AFE10000006 /* ReminderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0005C0DE5AFE10000005 /* ReminderSettings.swift */; };
+		A11A000CC0DE5AFE1000000C /* MoneyCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A000BC0DE5AFE1000000B /* MoneyCategories.swift */; };
 		A11A0008C0DE5AFE10000008 /* ReminderSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0007C0DE5AFE10000007 /* ReminderSettingsTests.swift */; };
+		A11A000EC0DE5AFE1000000E /* CategoryPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A000DC0DE5AFE1000000D /* CategoryPersistenceTests.swift */; };
 		A11A0004C0DE5AFE10000004 /* AmountParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0003C0DE5AFE10000003 /* AmountParsingTests.swift */; };
 		510740529955B0B1E6EA730D /* AchievementEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FA742D1E24F010F3273E30 /* AchievementEngineTests.swift */; };
 		F764EBD092BA4435466DD9AA /* AchievementEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12789AD27FF1A7114156F945 /* AchievementEngine.swift */; };
@@ -100,7 +102,9 @@
 		F774124079B5BEC3DD37C743 /* AutoMoveSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMoveSuggestion.swift; sourceTree = "<group>"; };
 		A11A0001C0DE5AFE10000001 /* AmountParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountParsing.swift; sourceTree = "<group>"; };
 		A11A0005C0DE5AFE10000005 /* ReminderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettings.swift; sourceTree = "<group>"; };
+		A11A000BC0DE5AFE1000000B /* MoneyCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCategories.swift; sourceTree = "<group>"; };
 		A11A0007C0DE5AFE10000007 /* ReminderSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsTests.swift; sourceTree = "<group>"; };
+		A11A000DC0DE5AFE1000000D /* CategoryPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPersistenceTests.swift; sourceTree = "<group>"; };
 		A11A0003C0DE5AFE10000003 /* AmountParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountParsingTests.swift; sourceTree = "<group>"; };
 		62FA742D1E24F010F3273E30 /* AchievementEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEngineTests.swift; sourceTree = "<group>"; };
 		12789AD27FF1A7114156F945 /* AchievementEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEngine.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 				F774124079B5BEC3DD37C743 /* AutoMoveSuggestion.swift */,
 				A11A0001C0DE5AFE10000001 /* AmountParsing.swift */,
 				A11A0005C0DE5AFE10000005 /* ReminderSettings.swift */,
+				A11A000BC0DE5AFE1000000B /* MoneyCategories.swift */,
 				12789AD27FF1A7114156F945 /* AchievementEngine.swift */,
 				693B815A380D566280140319 /* FeatureFlags.swift */,
 				1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */,
@@ -443,6 +448,7 @@
 				9AFC2151C01A7FBD2947EB51 /* AutoMoveSuggestionTests.swift */,
 				A11A0003C0DE5AFE10000003 /* AmountParsingTests.swift */,
 				A11A0007C0DE5AFE10000007 /* ReminderSettingsTests.swift */,
+				A11A000DC0DE5AFE1000000D /* CategoryPersistenceTests.swift */,
 				62FA742D1E24F010F3273E30 /* AchievementEngineTests.swift */,
 				1DC258182CC07DCF0002DDE3 /* SavelyTests.swift */,
 			);
@@ -669,6 +675,7 @@
 				DE826483AC71FF3EC2A603B7 /* AutoMoveSuggestion.swift in Sources */,
 				A11A0002C0DE5AFE10000002 /* AmountParsing.swift in Sources */,
 				A11A0006C0DE5AFE10000006 /* ReminderSettings.swift in Sources */,
+				A11A000CC0DE5AFE1000000C /* MoneyCategories.swift in Sources */,
 				F764EBD092BA4435466DD9AA /* AchievementEngine.swift in Sources */,
 				ED04D2F84390584EB7EC0615 /* WelcomeStepView.swift in Sources */,
 				699FCB7F699B1E9C9C644AF3 /* SproutMark.swift in Sources */,
@@ -723,6 +730,7 @@
 				AA28B8C8B38F312A7623F2D2 /* AutoMoveSuggestionTests.swift in Sources */,
 				A11A0004C0DE5AFE10000004 /* AmountParsingTests.swift in Sources */,
 				A11A0008C0DE5AFE10000008 /* ReminderSettingsTests.swift in Sources */,
+				A11A000EC0DE5AFE1000000E /* CategoryPersistenceTests.swift in Sources */,
 				510740529955B0B1E6EA730D /* AchievementEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

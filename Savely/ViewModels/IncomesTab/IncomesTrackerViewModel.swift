@@ -100,7 +100,9 @@ class IncomesTrackerViewModel: ObservableObject {
         }
     }
 
-    func addIncome() {
+    /// - Parameter source: the chip picked in the quick-add sheet; the inline
+    ///   Money-tab form passes nothing.
+    func addIncome(source: String? = nil) {
         guard let modelContext = modelContext else { return }
         guard let amountValue = parseAmount(amount) else {
             // Used to return silently, so a typo just did nothing at all.
@@ -112,7 +114,8 @@ class IncomesTrackerViewModel: ObservableObject {
         let newIncome = IncomeModel(
             incomeDescription: incomeDescription,
             amount: amountValue,
-            date: Date()
+            date: Date(),
+            source: source
         )
         modelContext.insert(newIncome)
 
