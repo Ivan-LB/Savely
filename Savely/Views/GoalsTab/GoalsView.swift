@@ -49,7 +49,7 @@ struct GoalsView: View {
                     Spacer()
                     Button(action: { showAddGoalFlow = true }) {
                         Image(systemName: "plus")
-                            .font(.system(size: 18, weight: .semibold)).foregroundStyle(.white)
+                            .font(.system(size: 18, weight: .semibold)).foregroundStyle(Color.warmOnInk)
                             .frame(width: 40, height: 40).background(Color.warmInk).cornerRadius(14)
                     }
                 }
@@ -124,7 +124,7 @@ struct GoalsEmptyStateView: View {
                     Spacer()
                     Button(action: onCreateGoal) {
                         Image(systemName: "plus")
-                            .font(.system(size: 18, weight: .semibold)).foregroundStyle(.white)
+                            .font(.system(size: 18, weight: .semibold)).foregroundStyle(Color.warmOnInk)
                             .frame(width: 40, height: 40).background(Color.warmInk).cornerRadius(14)
                     }
                 }
@@ -136,7 +136,7 @@ struct GoalsEmptyStateView: View {
                     ZStack(alignment: .topTrailing) {
                         ZStack {
                             Circle()
-                                .stroke(Color(red: 0.89, green: 0.867, blue: 0.816), lineWidth: 14)
+                                .stroke(Color.warmTrack, lineWidth: 14)
                                 .frame(width: 160, height: 160)
                             ZStack {
                                 Circle().fill(Color.warmGreenSoft).frame(width: 64, height: 64)
@@ -168,9 +168,9 @@ struct GoalsEmptyStateView: View {
                             Image(systemName: "plus").font(.system(size: 14, weight: .semibold))
                             Text("Create your first goal").font(.system(size: 15, weight: .semibold))
                         }
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(Color.warmGreen).cornerRadius(14)
+                        .background(Color.warmGreenFill).cornerRadius(14)
                     }
 
                     // Suggestion chips
@@ -221,7 +221,7 @@ struct WarmGoalCard: View {
                     .fill(goal.color).frame(width: 44, height: 44)
                     .overlay(
                         Text(goal.name.prefix(1).uppercased())
-                            .font(.system(size: 22, weight: .regular, design: .serif)).foregroundStyle(.white)
+                            .font(.system(size: 22, weight: .regular, design: .serif)).foregroundStyle(Color.warmOnGreen)
                     )
                 VStack(alignment: .leading, spacing: 3) {
                     HStack(spacing: 5) {

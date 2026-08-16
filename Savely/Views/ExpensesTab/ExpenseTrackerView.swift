@@ -57,21 +57,21 @@ struct ExpenseTrackerView: View {
                 Button(action: { showCameraView = true }) {
                     HStack(spacing: 14) {
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.white.opacity(0.1))
+                            .fill(Color.warmOnInk.opacity(0.1))
                             .frame(width: 44, height: 44)
-                            .overlay(Image(systemName: "camera.fill").font(.system(size: 18)).foregroundStyle(.white))
+                            .overlay(Image(systemName: "camera.fill").font(.system(size: 18)).foregroundStyle(Color.warmOnInk))
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Scan a receipt")
                                 .font(.system(size: 15, weight: .semibold))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color.warmOnInk)
                             Text("We'll read the total and category")
                                 .font(.system(size: 12))
-                                .foregroundStyle(Color.white.opacity(0.65))
+                                .foregroundStyle(Color.warmOnInk.opacity(0.65))
                         }
                         Spacer()
                         Image(systemName: "chevron.right")
                             .font(.system(size: 14))
-                            .foregroundStyle(Color.white.opacity(0.6))
+                            .foregroundStyle(Color.warmOnInk.opacity(0.6))
                     }
                     .padding(16)
                     .background(Color.warmInk)
@@ -113,9 +113,9 @@ struct ExpenseTrackerView: View {
                     Button(action: { viewModel.addExpense(); focusedField = nil }) {
                         Image(systemName: "plus")
                             .font(.system(size: 15, weight: .semibold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.warmOnGreen)
                             .frame(width: 40, height: 40)
-                            .background(Color.warmGreen)
+                            .background(Color.warmGreenFill)
                             .cornerRadius(10)
                     }
                 }

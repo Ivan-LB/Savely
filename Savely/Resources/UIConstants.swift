@@ -30,9 +30,4 @@ struct UIConstants {
         static let smallBody = Font.custom("Roboto", size: 12)
     }
     
-    enum UIShadow {
-        static let shadow = 2.0
-        static let shadowMedium = 5.0
-        static let shadowBig = 10.0
-    }
 }

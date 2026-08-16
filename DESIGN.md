@@ -2,23 +2,54 @@
 name: Savely
 description: A warm, patient, local-first savings app — the Warm Meadow system
 colors:
+  # light / dark — every token is trait-aware (Color+Warm.swift). Light is normative for the look; dark is "the notebook under a lamp".
   bg: "#f6f4ee"
+  bg-dark: "#161512"
   surface: "#ffffff"
+  surface-dark: "#262420"
   ink: "#1a1a17"
+  ink-dark: "#f2efe7"
   ink-soft: "#55524c"
-  ink-muted: "#8c8880"
+  ink-soft-dark: "#c6c1b5"
+  ink-muted: "#746f66"
+  ink-muted-dark: "#9d978a"
   line: "rgba(30, 25, 15, 0.08)"
+  line-dark: "rgba(242, 239, 231, 0.10)"
   line-soft: "rgba(30, 25, 15, 0.04)"
+  line-soft-dark: "rgba(242, 239, 231, 0.05)"
   green: "#2f6b4a"
+  green-dark: "#78b58f"
+  green-fill: "#2f6b4a"
+  green-fill-dark: "#367c56"
   green-deep: "#1f4a33"
+  green-deep-dark: "#b6dcc4"
   green-soft: "#e8f0ea"
+  green-soft-dark: "#22382c"
   green-tint: "#f2f7f3"
-  amber: "#c48a2a"
+  green-tint-dark: "#1b2a21"
+  amber: "#a8741c"
+  amber-dark: "#dea64a"
+  amber-deep: "#7a5618"
+  amber-deep-dark: "#ebc27a"
   amber-soft: "#f6ecd6"
+  amber-soft-dark: "#3a2f19"
   clay: "#b85c42"
+  clay-dark: "#d9846a"
   clay-soft: "#f6e1d8"
+  clay-soft-dark: "#3d2721"
   sky: "#4a7ba6"
+  sky-dark: "#7ea9d0"
   sky-soft: "#dce8f2"
+  sky-soft-dark: "#1e2d3b"
+  lilac: "#7d6ab8"
+  lilac-dark: "#b3a4dc"
+  lilac-soft: "#ece8f4"
+  lilac-soft-dark: "#2e2740"
+  on-green: "#ffffff"
+  on-ink: "#ffffff"
+  on-ink-dark: "#161512"
+  track: "#ede6d4"
+  track-dark: "#3a362e"
 typography:
   display:
     fontFamily: "system serif (New York)"
@@ -66,13 +97,13 @@ spacing:
   hero: "24pt"
 components:
   button-primary:
-    backgroundColor: "{colors.green}"
-    textColor: "#ffffff"
+    backgroundColor: "{colors.green-fill}"
+    textColor: "{colors.on-green}"
     rounded: "{rounded.control}"
     height: "48–50pt"
   button-primary-dark-shell:
     backgroundColor: "{colors.ink}"
-    textColor: "#ffffff"
+    textColor: "{colors.on-ink}"
     rounded: "18pt"
     size: "52pt"
   button-icon-outline:
@@ -141,16 +172,17 @@ KPI grids and pie charts; cold gray-on-white spreadsheets.
 
 ## Colors
 
-A warm neutral ground with a single committed green; everything else is a soft tint that holds an icon.
+A warm neutral ground with a single committed green; everything else is a soft tint that holds an icon. Every token is trait-aware: dark mode is the same notebook under a lamp — same hues at low chroma, ink flips light, the `-soft` tints become deep tints of their own hue, and the one green splits into *ink* (brightens) and *fill* (stays deep). Depth in dark is the hairline (`line-dark`, warm white 10%), exactly as in light.
 
 ### Primary
-- **Meadow Green** (`green`, #2f6b4a): the only saturated color. Primary buttons, income figures, active tab, progress rings, selected-state text. It is what "growing" looks like.
+- **Meadow Green** (`green`, #2f6b4a): the only saturated color, used *as ink* — income figures, active tab, progress rings and bars, selected-state text, toggle tint. It brightens to #78b58f in dark. It is what "growing" looks like.
+- **Meadow Green Fill** (`green-fill`, #2f6b4a light / #367c56 dark): green *as a surface* — primary buttons, the income card, the Planted screen, the selected radio. Stays deep in dark so its white content (`on-green`) keeps ≥5:1.
 - **Meadow Green Deep** (`green-deep`, #1f4a33): text on green-soft chips and banners; darker end of the ring gradient.
 - **Meadow Green Soft** (`green-soft`, #e8f0ea): selected chip fill, income icon tile, the auto-move banner. Never text.
 - **Meadow Green Tint** (`green-tint`, #f2f7f3): selected row background in goal pickers; the tip-of-the-day card. The quietest possible "this one".
 
 ### Secondary (category tints — icons and chips only)
-- **Amber** (`amber`, #c48a2a) on **Amber Soft** (`amber-soft`, #f6ecd6): coffee / expense category, the "favorite" star, the identity monogram tile.
+- **Amber** (`amber`, #a8741c) on **Amber Soft** (`amber-soft`, #f6ecd6): coffee / expense category, the "favorite" star. Was #c48a2a (2.6:1 on its tile); corrected in PR D2 to 3.5:1 for glyphs. **Amber Deep** (`amber-deep`, #7a5618) is amber as *text* on an amber-soft banner.
 - **Clay** (`clay`, #b85c42) on **Clay Soft** (`clay-soft`, #f6e1d8): shopping / receipt scanning tile; the *only* negative-trend color (income badge going down).
 - **Sky** (`sky`, #4a7ba6) on **Sky Soft** (`sky-soft`, #dce8f2): goals / transit tile.
 
@@ -159,7 +191,7 @@ A warm neutral ground with a single committed green; everything else is a soft t
 - **Paper** (`surface`, #ffffff): cards, rows, action sheets, tab bar. Sits on the ground with a hairline, never a shadow.
 - **Warm Ink** (`ink`, #1a1a17): all display and title type; primary body; the dark "+" shell and the scan-receipt banner.
 - **Warm Ink Soft** (`ink-soft`, #55524c): body copy under a title, unselected chip text, settings icons.
-- **Warm Ink Muted** (`ink-muted`, #8c8880): metadata — dates, "August · $500", uppercase section labels, placeholders. **Measured 3.2:1 on ground / 3.5:1 on paper: passes AA only as large text (≥18pt or bold ≥14pt).** Its current use at 12–13pt regular is a known AA gap, tracked in `docs/plans/pr-d-profile.md`.
+- **Warm Ink Muted** (`ink-muted`, #746f66): metadata — dates, "August · $500", uppercase section labels, placeholders. Was #8c8880 (3.2:1, failing AA at 12–13pt); corrected in PR D2 to 4.5:1 on the ground / 5.0 on paper — same warm-ink family, one step darker.
 - **Hairline** (`line`, 8% warm black) and **Hairline Soft** (`line-soft`, 4%): card borders and row dividers respectively. This *is* the depth system.
 
 ### Named Rules
@@ -270,5 +302,5 @@ A 36–44pt rounded square (10–12pt radius) in a `-soft` tint holding one 14�
 - **Don't** fill a button with amber, clay or sky, and don't use a `-soft` tint as a card background.
 - **Don't** bold the serif or use it below 18pt.
 - **Don't** introduce gradients, glass, or a second accent hue.
-- **Don't** hardcode `.white` / `Color(red:…)` in a view — every color goes through `Color+Warm.swift`, which is the single place a dark scheme can be introduced.
+- **Don't** hardcode `.white` / `Color(red:…)` in a view — every color goes through `Color+Warm.swift`, where each token carries its light and dark value. White content on a green fill is `on-green`; on an ink fill it is `on-ink` (which flips to the ground in dark). The only literals left are deliberate and commented: the splash frame, the sprout mark, camera-overlay controls, the PDF.
 - **Don't** invent a new kicker or eyebrow style; the existing 11pt uppercase tracked label is the one and only.

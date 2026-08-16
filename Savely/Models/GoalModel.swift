@@ -21,37 +21,39 @@ enum GoalColor: String, Codable, CaseIterable, Identifiable {
 
     var color: Color {
         switch self {
+        // Dark variants sit a step lighter (≥3:1 against the dark surface,
+        // like the light ones against paper); see pr-d2-adaptive-palette.md.
         case .green:    return .warmGreen
-        case .sage:     return Color(red: 0.357, green: 0.549, blue: 0.408)
-        case .teal:     return Color(red: 0.196, green: 0.498, blue: 0.498)
+        case .sage:     return Color(light: 0x5B8C68, dark: 0x75A582)
+        case .teal:     return Color(light: 0x327F7F, dark: 0x40A4A4)
         case .blue:     return .warmSky
-        case .navy:     return Color(red: 0.212, green: 0.318, blue: 0.537)
-        case .purple:   return Color(red: 0.584, green: 0.357, blue: 0.537)
-        case .lavender: return Color(red: 0.490, green: 0.416, blue: 0.675)
-        case .rose:     return Color(red: 0.651, green: 0.337, blue: 0.455)
+        case .navy:     return Color(light: 0x365189, dark: 0x4A6EB7)
+        case .purple:   return Color(light: 0x955B89, dark: 0xAC77A1)
+        case .lavender: return Color(light: 0x7D6AAC, dark: 0x9A8BBE)
+        case .rose:     return Color(light: 0xA65674, dark: 0xB8778F)
         case .yellow:   return .warmAmber
-        case .coral:    return Color(red: 0.780, green: 0.424, blue: 0.306)
+        case .coral:    return Color(light: 0xC76C4E, dark: 0xD38C75)
         case .red:      return .warmClay
-        case .brown:    return Color(red: 0.565, green: 0.369, blue: 0.235)
-        case .olive:    return Color(red: 0.431, green: 0.490, blue: 0.196)
+        case .brown:    return Color(light: 0x905E3C, dark: 0xB4764B)
+        case .olive:    return Color(light: 0x6E7D32, dark: 0x8EA141)
         }
     }
 
     var trackColor: Color {
         switch self {
         case .green:    return .warmGreenSoft
-        case .sage:     return Color(red: 0.855, green: 0.922, blue: 0.878)
-        case .teal:     return Color(red: 0.820, green: 0.925, blue: 0.925)
+        case .sage:     return Color(light: 0xDAEBE0, dark: 0x283E2E)
+        case .teal:     return Color(light: 0xD1ECEC, dark: 0x283E3E)
         case .blue:     return .warmSkySoft
-        case .navy:     return Color(red: 0.820, green: 0.855, blue: 0.941)
-        case .purple:   return Color(red: 0.937, green: 0.886, blue: 0.937)
-        case .lavender: return Color(red: 0.882, green: 0.871, blue: 0.961)
-        case .rose:     return Color(red: 0.949, green: 0.867, blue: 0.898)
+        case .navy:     return Color(light: 0xD1DAF0, dark: 0x282F3E)
+        case .purple:   return Color(light: 0xEFE2EF, dark: 0x3E283A)
+        case .lavender: return Color(light: 0xE1DEF5, dark: 0x2E283E)
+        case .rose:     return Color(light: 0xF2DDE5, dark: 0x3E2830)
         case .yellow:   return .warmAmberSoft
-        case .coral:    return Color(red: 0.965, green: 0.886, blue: 0.859)
+        case .coral:    return Color(light: 0xF6E2DB, dark: 0x3E2D28)
         case .red:      return .warmClaySoft
-        case .brown:    return Color(red: 0.937, green: 0.890, blue: 0.855)
-        case .olive:    return Color(red: 0.898, green: 0.929, blue: 0.839)
+        case .brown:    return Color(light: 0xEFE3DA, dark: 0x3E3128)
+        case .olive:    return Color(light: 0xE5EDD6, dark: 0x3A3E28)
         }
     }
 

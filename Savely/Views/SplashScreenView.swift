@@ -26,6 +26,9 @@ struct SplashScreenView: View {
     private let letters = Array("Savely")
 
     // Dark-variant palette (matches AppIcon's dark appearance)
+    // Deliberate constants: the splash is the same dark-green frame in both
+    // appearances (it is the brand moment, not a screen), so it does not use
+    // the adaptive tokens.
     private let bgInk = Color(red: 0.122, green: 0.169, blue: 0.137)      // #1f2b23
     private let leafLight = Color(red: 0.490, green: 0.722, blue: 0.596)  // #7db898
     private let leafShaded = Color(red: 0.365, green: 0.612, blue: 0.486) // #5d9c7c

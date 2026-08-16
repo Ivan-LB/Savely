@@ -9,20 +9,16 @@ struct ProfileView: View {
     @Query(sort: \IncomeModel.date, order: .reverse) private var incomes: [IncomeModel]
     @Query private var expenses: [ExpenseModel]
     @Query private var goals: [GoalModel]
-    @State private var showingEditProfile = false
     @State private var showingAchievements = false
     @State private var showingTipHistory = false
     @State private var showingDeleteDialog = false
     @State private var showingDeleteFinalConfirm = false
 
     private var lifetimeIncome: Double { incomes.reduce(0) { $0 + $1.amount } }
-    private var displayInitial: String {
-        viewModel.displayName.first.map { String($0).uppercased() } ?? "U"
-    }
 
     // "Saving since <month>" — the first movement ever logged. Nothing
     // logged yet is a deliberate state, not an empty label.
-    private var identitySubtitle: String {
+    private var savingSinceSubtitle: String {
         let firstDate = (incomes.map(\.date) + expenses.map(\.date)).min()
         guard let firstDate else { return Strings.Profile.justStartedLabel }
         let month = firstDate.formatted(.dateTime.month(.wide).year())
@@ -36,10 +32,8 @@ struct ProfileView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 14) {
-                identityCard
-                    .padding(.top, 8)
-
                 lifetimeIncomeCard
+                    .padding(.top, 8)
 
                 statsStrip
 
@@ -82,77 +76,37 @@ struct ProfileView: View {
         } message: {
             Text(Strings.Profile.deleteAllDataConfirmMessage)
         }
-        .sheet(isPresented: $showingEditProfile) { EditProfileSheet(viewModel: viewModel) }
         .navigationDestination(isPresented: $showingAchievements) { AchievementsView() }
         .navigationDestination(isPresented: $showingTipHistory) { TipHistoryView() }
         .onAppear { viewModel.setModelContext(modelContext) }
         .task { await viewModel.refreshReminderState() }
     }
 
-    // MARK: - Identity
-
-    private var identityCard: some View {
-        Button(action: { showingEditProfile = true }) {
-            HStack(spacing: 16) {
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.warmAmberSoft)
-                    .frame(width: 64, height: 64)
-                    .overlay(
-                        Text(displayInitial)
-                            .font(.system(size: 30, weight: .regular, design: .serif))
-                            .foregroundStyle(Color.warmAmber)
-                    )
-                    .accessibilityHidden(true)
-
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(viewModel.displayName.isEmpty ? "User" : viewModel.displayName)
-                        .font(.system(size: 22, weight: .regular, design: .serif))
-                        .foregroundStyle(Color.warmInk)
-                    Text(identitySubtitle)
-                        .font(.system(size: 13))
-                        .foregroundStyle(Color.warmInkSoft)
-                }
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 13))
-                    .foregroundStyle(Color.warmInkMuted)
-                    .accessibilityHidden(true)
-            }
-            .padding(20)
-            .background(Color.warmSurface)
-            .cornerRadius(22)
-            .overlay(RoundedRectangle(cornerRadius: 22).stroke(Color.warmLine, lineWidth: 1))
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .accessibilityHint(Strings.Profile.editNameHint)
-    }
-
-    // MARK: - Lifetime income (unchanged)
+    // MARK: - Lifetime income
 
     private var lifetimeIncomeCard: some View {
         ZStack(alignment: .topTrailing) {
             Circle()
-                .fill(Color.white.opacity(0.08))
+                .fill(Color.warmOnGreen.opacity(0.08))
                 .frame(width: 140, height: 140)
                 .offset(x: 30, y: -20)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("LIFETIME INCOME")
                     .font(.system(size: 11, weight: .semibold))
-                    .foregroundStyle(Color.white.opacity(0.7))
+                    .foregroundStyle(Color.warmOnGreen.opacity(0.7))
                     .tracking(0.8)
                 Text(formattedAmount(lifetimeIncome))
                     .font(.system(size: 40, weight: .regular, design: .serif))
-                    .foregroundStyle(.white)
-                Text("Total income logged in Savely")
+                    .foregroundStyle(Color.warmOnGreen)
+                Text(savingSinceSubtitle)
                     .font(.system(size: 13))
-                    .foregroundStyle(Color.white.opacity(0.75))
+                    .foregroundStyle(Color.warmOnGreen.opacity(0.75))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(20)
         }
-        .background(Color.warmGreen)
+        .background(Color.warmGreenFill)
         .cornerRadius(22)
         .clipped()
         .accessibilityElement(children: .combine)
@@ -530,34 +484,6 @@ struct SettingsNavRow: View {
         }
         .buttonStyle(.plain)
     }
-}
-
-// MARK: - Edit Profile Sheet (unchanged)
-
-struct EditProfileSheet: View {
-    @ObservedObject var viewModel: ProfileViewModel
-    @Environment(\.dismiss) private var dismiss
-    var body: some View {
-        NavigationView {
-            Form {
-                Section {
-                    TextField("Display Name", text: $viewModel.displayName)
-                }
-            }
-            .navigationTitle("Edit Profile").navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") { viewModel.updatePersonalInformation(); dismiss() }.fontWeight(.semibold)
-                }
-            }
-        }
-    }
-}
-
-struct InnerHeightPreferenceKey: PreferenceKey {
-    static let defaultValue: CGFloat = .zero
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = nextValue() }
 }
 
 #Preview {

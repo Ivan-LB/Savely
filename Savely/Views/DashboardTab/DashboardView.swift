@@ -52,26 +52,17 @@ struct DashboardView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                // — Greeting —
-                HStack(alignment: .center) {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(formattedDate)
-                            .font(.system(size: 13))
-                            .foregroundStyle(Color.warmInkMuted)
-                        Text(greeting + ".")
-                            .font(.system(size: 30, weight: .regular, design: .serif))
-                            .foregroundStyle(Color.warmInk)
-                    }
-                    Spacer()
-                    Circle()
-                        .fill(Color.warmAmberSoft)
-                        .frame(width: 40, height: 40)
-                        .overlay(
-                            Image(systemName: "person.fill")
-                                .font(.system(size: 18))
-                                .foregroundStyle(Color.warmAmber)
-                        )
+                // — Greeting — (no avatar: there is no account, so no
+                // person to represent)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(formattedDate)
+                        .font(.system(size: 13))
+                        .foregroundStyle(Color.warmInkMuted)
+                    Text(greeting + ".")
+                        .font(.system(size: 30, weight: .regular, design: .serif))
+                        .foregroundStyle(Color.warmInk)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 8)
 
                 // — Hero Goal Card —
@@ -198,7 +189,7 @@ struct HeroGoalCard: View {
                 HStack(alignment: .center, spacing: 20) {
                     ZStack {
                         Circle()
-                            .stroke(Color(red: 0.93, green: 0.90, blue: 0.83), lineWidth: 12)
+                            .stroke(Color.warmTrack, lineWidth: 12)
                         Circle()
                             .trim(from: 0, to: goal.progress)
                             .stroke(Color.warmGreen, style: StrokeStyle(lineWidth: 12, lineCap: .round))
@@ -251,10 +242,10 @@ struct HeroGoalCard: View {
                             Text("Add deposit")
                                 .font(.system(size: 15, weight: .semibold))
                         }
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity)
                         .frame(height: 48)
-                        .background(Color.warmGreen)
+                        .background(Color.warmGreenFill)
                         .cornerRadius(14)
                     }
 
@@ -272,7 +263,7 @@ struct HeroGoalCard: View {
         .background(Color.warmSurface)
         .cornerRadius(24)
         .overlay(RoundedRectangle(cornerRadius: 24).stroke(Color.warmLine, lineWidth: 1))
-        .shadow(color: Color.black.opacity(0.04), radius: 12, x: 0, y: 4)
+        .shadow(color: Color.warmShadow, radius: 12, x: 0, y: 4)
         .sheet(isPresented: $showDepositSheet) {
             DepositSheet(goal: goal, modelContext: modelContext)
         }
@@ -363,10 +354,10 @@ struct DepositSheet: View {
                     Button(action: saveDeposit) {
                         Text("Add \(amountText.isEmpty ? "" : "$\(amountText)") to \(goal.name.components(separatedBy: ",").first ?? goal.name)")
                             .font(.system(size: 15, weight: .semibold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.warmOnGreen)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
-                            .background(Color.warmGreen)
+                            .background(Color.warmGreenFill)
                             .cornerRadius(14)
                     }
                     .disabled(depositAmount == nil)

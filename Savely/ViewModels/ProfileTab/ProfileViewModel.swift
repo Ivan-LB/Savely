@@ -14,7 +14,6 @@ import SwiftData
 
 @MainActor
 class ProfileViewModel: ObservableObject {
-    @Published var displayName: String = ""
     @AppStorage("darkModeEnabled") var darkMode: Bool = false
 
     /// The persisted reminder choices. Mutate through the `setReminder…`
@@ -41,7 +40,6 @@ class ProfileViewModel: ObservableObject {
         self.reminderStore = reminderStore
         self.notifications = notifications
         self.reminders = reminderStore.load()
-        self.displayName = UserDefaults.standard.string(forKey: "displayName") ?? ""
         if modelContext != nil {
             fetchWeeklyReportData(
                 startDate: Calendar.current.startOfWeek(for: Date()),
@@ -242,12 +240,4 @@ class ProfileViewModel: ObservableObject {
         }
     }
 
-
-    /// Local-only since the auth removal: the display name lives in
-    /// UserDefaults ("displayName", shared with AppViewModel), nowhere else.
-    func updatePersonalInformation() {
-        UserDefaults.standard.set(displayName, forKey: "displayName")
-        alertMessage = "Your personal information has been updated successfully."
-        showAlert = true
-    }
 }
