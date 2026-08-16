@@ -10,6 +10,9 @@
     " of %lld" : {
 
     },
+    "—" : {
+
+    },
     ".00" : {
 
     },
@@ -324,6 +327,9 @@
     "Are you sure you want to delete this income?" : {
 
     },
+    "AUTO" : {
+
+    },
     "Auto-move on payday" : {
 
     },
@@ -350,6 +356,9 @@
           }
         }
       }
+    },
+    "Can't save yet" : {
+
     },
     "Cancel" : {
 
@@ -432,6 +441,9 @@
         }
       }
     },
+    "Completed" : {
+
+    },
     "confirm_password_string" : {
       "comment" : "Confirm Password String",
       "extractionState" : "stale",
@@ -506,6 +518,12 @@
           }
         }
       }
+    },
+    "Couldn't save the deposit" : {
+
+    },
+    "Couldn't save the goal" : {
+
     },
     "Create your first goal" : {
 
@@ -835,6 +853,9 @@
 
     },
     "Edit anything" : {
+
+    },
+    "Edit goal" : {
 
     },
     "email_placeholder_title" : {
@@ -1269,6 +1290,9 @@
     "Goal · %@" : {
 
     },
+    "Goal name" : {
+
+    },
     "goal_alert_body" : {
       "comment" : "Goal Alert Body",
       "extractionState" : "extracted_with_value",
@@ -1692,6 +1716,12 @@
     "No active goal" : {
 
     },
+    "no date" : {
+
+    },
+    "No deposits yet — the first one lands here." : {
+
+    },
     "No expenses yet" : {
 
     },
@@ -1699,6 +1729,9 @@
 
     },
     "No income yet" : {
+
+    },
+    "No target date — save at your own pace." : {
 
     },
     "No tip for today yet — check back soon." : {
@@ -1899,6 +1932,9 @@
     "of $%lld" : {
 
     },
+    "OK" : {
+
+    },
     "ok_button" : {
       "comment" : "OK Button",
       "extractionState" : "extracted_with_value",
@@ -2054,6 +2090,9 @@
           }
         }
       }
+    },
+    "Pick the amount later in the goal's settings." : {
+
     },
     "Pick what to log right now." : {
 
@@ -2790,9 +2829,6 @@
     "SUGGESTED PACE" : {
 
     },
-    "SYMBOL" : {
-
-    },
     "Take a look\nbefore we start." : {
 
     },
@@ -2813,6 +2849,9 @@
           }
         }
       }
+    },
+    "Target date" : {
+
     },
     "terms_of_service_label" : {
       "comment" : "Terms of Service Label",
