@@ -111,15 +111,16 @@ class GoalsViewModel: ObservableObject {
     }
 
 
+    /// Toggles the star: tapping the current favorite un-favorites it;
+    /// tapping another goal moves the star there. At most one favorite.
     func setFavorite(goal: GoalModel) {
         guard let modelContext = modelContext else { return }
 
-        // Desmarcar todas las metas excepto la seleccionada
+        let wasFavorite = goal.isFavorite
         for existingGoal in goals where existingGoal.isFavorite && existingGoal.id != goal.id {
             existingGoal.isFavorite = false
         }
-        // Marcar la meta seleccionada como favorita
-        goal.isFavorite = true
+        goal.isFavorite = !wasFavorite
 
         // Guardar el contexto después de modificar las metas
         do {

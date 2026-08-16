@@ -163,6 +163,7 @@ struct HeroGoalCard: View {
     let goal: GoalModel
     let modelContext: ModelContext
     @State private var showDepositSheet = false
+    @State private var showEditSheet = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -249,13 +250,14 @@ struct HeroGoalCard: View {
                         .cornerRadius(14)
                     }
 
-                    Button(action: {}) {
+                    Button(action: { showEditSheet = true }) {
                         Image(systemName: "pencil")
                             .font(.system(size: 16))
                             .foregroundStyle(Color.warmInk)
                             .frame(width: 48, height: 48)
                             .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.warmLine, lineWidth: 1))
                     }
+                    .accessibilityLabel("Edit goal")
                 }
             }
             .padding(24)
@@ -266,6 +268,9 @@ struct HeroGoalCard: View {
         .shadow(color: Color.warmShadow, radius: 12, x: 0, y: 4)
         .sheet(isPresented: $showDepositSheet) {
             DepositSheet(goal: goal, modelContext: modelContext)
+        }
+        .sheet(isPresented: $showEditSheet) {
+            GoalEditSheet(goal: goal)
         }
     }
 

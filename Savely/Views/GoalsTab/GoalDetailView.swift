@@ -5,6 +5,7 @@ struct GoalDetailView: View {
     @Bindable var goal: GoalModel
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @State private var showingEdit = false
 
     var body: some View {
         ScrollView {
@@ -84,7 +85,7 @@ struct GoalDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {}) {
+                Button(action: { showingEdit = true }) {
                     Image(systemName: "pencil")
                         .font(.system(size: 14))
                         .foregroundStyle(Color.warmInk)
@@ -93,8 +94,10 @@ struct GoalDetailView: View {
                         .cornerRadius(12)
                         .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.warmLine, lineWidth: 1))
                 }
+                .accessibilityLabel("Edit goal")
             }
         }
+        .sheet(isPresented: $showingEdit) { GoalEditSheet(goal: goal) }
     }
 
     private var perWeek: Double {
