@@ -276,6 +276,9 @@
         }
       }
     },
+    "Amount" : {
+
+    },
     "amount_placeholder_label" : {
       "comment" : "Amount Placeholder Label",
       "extractionState" : "extracted_with_value",
@@ -368,6 +371,9 @@
           }
         }
       }
+    },
+    "Category" : {
+
     },
     "category_placeholder" : {
       "comment" : "Category Placeholder",
@@ -938,9 +944,6 @@
           }
         }
       }
-    },
-    "Expense" : {
-
     },
     "expense_distribution_label" : {
       "comment" : "Expense Distribution Label",
@@ -2265,6 +2268,9 @@
         }
       }
     },
+    "Reports" : {
+
+    },
     "reports_tab_string" : {
       "comment" : "Reports Tab String",
       "extractionState" : "extracted_with_value",
@@ -2641,6 +2647,9 @@
       }
     },
     "Skip" : {
+
+    },
+    "Source" : {
 
     },
     "Source · Today" : {

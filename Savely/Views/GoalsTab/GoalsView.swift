@@ -8,6 +8,10 @@ struct GoalsView: View {
 
     private var totalSaved:    Double { viewModel.goals.reduce(0) { $0 + $1.current } }
     private var totalTarget:   Double { viewModel.goals.reduce(0) { $0 + $1.target } }
+    private var activeGoals:    [GoalModel] { viewModel.goals.filter { $0.progress < 1 } }
+    private var completedGoals: [GoalModel] { viewModel.goals.filter { $0.progress >= 1 } }
+    @State private var celebrating: Set<UUID> = []
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private var overallProgress: Double { totalTarget > 0 ? min(totalSaved / totalTarget, 1.0) : 0 }
 
     var body: some View {
@@ -43,7 +47,7 @@ struct GoalsView: View {
                         Text("Goals")
                             .font(.system(size: 34, weight: .regular, design: .serif))
                             .foregroundStyle(Color.warmInk)
-                        Text("\(viewModel.goals.count) active · \(formattedAmount(totalSaved)) saved of \(formattedAmount(totalTarget))")
+                        Text("\(activeGoals.count) active · \(formattedAmount(totalSaved)) saved of \(formattedAmount(totalTarget))")
                             .font(.system(size: 14)).foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
@@ -81,21 +85,63 @@ struct GoalsView: View {
                 .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.warmLine, lineWidth: 1))
 
                 VStack(spacing: 12) {
-                    ForEach(viewModel.goals) { goal in
-                        NavigationLink(destination: GoalDetailView(goal: goal)) {
-                            WarmGoalCard(
-                                goal: goal,
-                                onFavoriteToggle: { viewModel.setFavorite(goal: goal) },
-                                onDelete: { viewModel.deleteGoal(goal) }
-                            )
-                        }
-                        .buttonStyle(.plain)
+                    ForEach(activeGoals) { goal in
+                        goalLink(goal)
                     }
+                }
+
+                // — Completed — out of the active count, one-time celebration
+                if !completedGoals.isEmpty {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Completed")
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundStyle(Color.warmInkMuted)
+                            .tracking(1)
+                            .textCase(.uppercase)
+                            .padding(.leading, 4)
+                            .accessibilityAddTraits(.isHeader)
+                        ForEach(completedGoals) { goal in
+                            goalLink(goal)
+                                .scaleEffect(celebrating.contains(goal.id) ? 1.03 : 1)
+                                .shadow(
+                                    color: Color.warmAmber.opacity(celebrating.contains(goal.id) ? 0.45 : 0),
+                                    radius: celebrating.contains(goal.id) ? 14 : 0
+                                )
+                                .animation(.spring(response: 0.4, dampingFraction: 0.8), value: celebrating)
+                        }
+                    }
+                    .padding(.top, 8)
                 }
 
                 Spacer(minLength: 16)
             }
             .padding(.horizontal, 20).padding(.bottom, 24)
+        }
+        .onAppear { celebrateNewCompletions() }
+        .onChange(of: completedGoals.map(\.id)) { celebrateNewCompletions() }
+    }
+
+    private func goalLink(_ goal: GoalModel) -> some View {
+        NavigationLink(destination: GoalDetailView(goal: goal)) {
+            WarmGoalCard(
+                goal: goal,
+                onFavoriteToggle: { viewModel.setFavorite(goal: goal) },
+                onDelete: { viewModel.deleteGoal(goal) }
+            )
+        }
+        .buttonStyle(.plain)
+    }
+
+    /// Pops a just-completed goal once, then remembers it (mirrors
+    /// AchievementStore). Reduce Motion: no pop, still remembered.
+    private func celebrateNewCompletions() {
+        let fresh = GoalCelebrationStore.newlyCompleted(completedGoals)
+        guard !fresh.isEmpty else { return }
+        GoalCelebrationStore.markCelebrated(completedGoals)
+        guard !reduceMotion else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            celebrating = fresh
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) { celebrating = [] }
         }
     }
 
@@ -213,6 +259,17 @@ struct WarmGoalCard: View {
     let onFavoriteToggle: () -> Void
     let onDelete: () -> Void
     @State private var showDeleteConfirmation = false
+    @Query private var goalDeposits: [DepositModel]
+
+    init(goal: GoalModel, onFavoriteToggle: @escaping () -> Void, onDelete: @escaping () -> Void) {
+        self.goal = goal
+        self.onFavoriteToggle = onFavoriteToggle
+        self.onDelete = onDelete
+        let goalID = goal.id
+        _goalDeposits = Query(filter: #Predicate<DepositModel> { $0.goalID == goalID })
+    }
+
+    private var pace: GoalPace { GoalPace.compute(goal: goal, deposits: goalDeposits) }
 
     var body: some View {
         VStack(spacing: 12) {
@@ -231,8 +288,9 @@ struct WarmGoalCard: View {
                             Image(systemName: "star.fill").font(.system(size: 12)).foregroundStyle(Color.warmAmber)
                         }
                     }
-                    Text(paceText)
-                        .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
+                    Text(pace.label)
+                        .font(.system(size: 12))
+                        .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmInkMuted)
                 }
                 Spacer()
                 VStack(alignment: .trailing, spacing: 2) {
@@ -277,10 +335,6 @@ struct WarmGoalCard: View {
         } message: {
             Text("Are you sure you want to delete this goal?")
         }
-    }
-
-    private var paceText: String {
-        goal.progress >= 1.0 ? "Complete!" : goal.progress > 0.5 ? "On track" : "In progress"
     }
 
     private func formattedAmount(_ v: Double) -> String {

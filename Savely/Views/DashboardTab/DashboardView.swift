@@ -163,6 +163,17 @@ struct HeroGoalCard: View {
     let goal: GoalModel
     let modelContext: ModelContext
     @State private var showDepositSheet = false
+    @State private var showEditSheet = false
+    @Query private var goalDeposits: [DepositModel]
+
+    init(goal: GoalModel, modelContext: ModelContext) {
+        self.goal = goal
+        self.modelContext = modelContext
+        let goalID = goal.id
+        _goalDeposits = Query(filter: #Predicate<DepositModel> { $0.goalID == goalID })
+    }
+
+    private var pace: GoalPace { GoalPace.compute(goal: goal, deposits: goalDeposits) }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -226,9 +237,9 @@ struct HeroGoalCard: View {
                                 .font(.system(size: 11, weight: .semibold))
                                 .foregroundStyle(Color.warmInkMuted)
                                 .tracking(0.8)
-                            Text(paceText)
+                            Text(pace.label)
                                 .font(.system(size: 14, weight: .semibold))
-                                .foregroundStyle(Color.warmGreen)
+                                .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmGreen)
                         }
                     }
                 }
@@ -249,13 +260,14 @@ struct HeroGoalCard: View {
                         .cornerRadius(14)
                     }
 
-                    Button(action: {}) {
+                    Button(action: { showEditSheet = true }) {
                         Image(systemName: "pencil")
                             .font(.system(size: 16))
                             .foregroundStyle(Color.warmInk)
                             .frame(width: 48, height: 48)
                             .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.warmLine, lineWidth: 1))
                     }
+                    .accessibilityLabel("Edit goal")
                 }
             }
             .padding(24)
@@ -267,10 +279,9 @@ struct HeroGoalCard: View {
         .sheet(isPresented: $showDepositSheet) {
             DepositSheet(goal: goal, modelContext: modelContext)
         }
-    }
-
-    private var paceText: String {
-        goal.progress >= 1.0 ? "Complete!" : "On track"
+        .sheet(isPresented: $showEditSheet) {
+            GoalEditSheet(goal: goal)
+        }
     }
 
     private func formattedAmount(_ v: Double) -> String {
@@ -290,6 +301,7 @@ struct DepositSheet: View {
     @Environment(\.dismiss) private var dismiss
     @State private var amountText = ""
     @State private var note = ""
+    @State private var errorMessage: String?
     private let quickAmounts: [Double] = [25, 50, 100, 250]
 
     var body: some View {
@@ -369,15 +381,23 @@ struct DepositSheet: View {
         .background(Color.warmSurface)
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.hidden)
+        .alert("Couldn't save the deposit", isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(errorMessage ?? "")
+        }
     }
 
     private var depositAmount: Double? { Double(amountText) }
 
     private func saveDeposit() {
         guard let amt = depositAmount, amt > 0 else { return }
-        goal.current = min(goal.current + amt, goal.target)
-        try? modelContext.save()
-        dismiss()
+        do {
+            try GoalDeposits.record(goal: goal, amount: amt, note: note, source: .manual, context: modelContext)
+            dismiss()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 }
 

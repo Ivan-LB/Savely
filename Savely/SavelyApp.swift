@@ -23,7 +23,7 @@ struct SavelyApp: App {
                     NotificationManager.shared.requestAuthorization()
                 }
         }
-        .modelContainer(for: [TipModel.self, IncomeModel.self, ExpenseModel.self, GoalModel.self])
+        .modelContainer(for: [TipModel.self, IncomeModel.self, ExpenseModel.self, GoalModel.self, DepositModel.self])
     }
 }
 

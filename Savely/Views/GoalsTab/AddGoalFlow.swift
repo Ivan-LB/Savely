@@ -5,26 +5,28 @@ import SwiftData
 
 final class AddGoalState: ObservableObject {
     @Published var name: String = ""
-    @Published var emoji: String = "✈️"
     @Published var color: GoalColor = .green
     @Published var amountStr: String = "0"
+    /// The calendar always holds a date so MiniCalendarView's binding stays
+    /// non-optional; `hasDeadline` says whether it counts. "No date" flips it
+    /// off; picking any day or duration flips it back on.
     @Published var deadline: Date = Calendar.current.date(byAdding: .month, value: 18, to: Date()) ?? Date()
+    @Published var hasDeadline: Bool = true
     @Published var autoDeposit: Bool = true
-    @Published var showReminders: Bool = true
     @Published var isFavorite: Bool = false
 
     var amount: Double { Double(amountStr) ?? 0 }
 
+    /// Required pace to the chosen date; 0 without a date (pace is undefined
+    /// then — the user sets an auto-move amount later in the edit sheet).
     var weeklyPace: Double {
-        let weeks = max(1, Calendar.current.dateComponents([.weekOfYear], from: Date(), to: deadline).weekOfYear ?? 78)
-        return amount / Double(weeks)
+        guard hasDeadline else { return 0 }
+        return GoalPace.requiredWeeklyPace(remaining: amount, deadline: deadline, now: Date()) ?? 0
     }
 
-    var monthlyPace: Double { weeklyPace * 4.33 }
+    var monthlyPace: Double { weeklyPace * GoalPace.weeksPerMonth }
 
-    func weeksBetweenNowAndDeadline() -> Int {
-        max(1, Calendar.current.dateComponents([.weekOfYear], from: Date(), to: deadline).weekOfYear ?? 78)
-    }
+    var canPlant: Bool { !name.trimmingCharacters(in: .whitespaces).isEmpty && amount > 0 }
 }
 
 // MARK: - Flow container
@@ -35,14 +37,22 @@ struct AddGoalFlowView: View {
     @StateObject private var state = AddGoalState()
     @State private var step = 1
     @State private var showSuccess = false
+    @State private var plantedGoal: GoalModel?
+    @State private var showDeposit = false
+    @State private var saveError: String?
 
     var body: some View {
         if showSuccess {
             AddGoalSuccessView(
                 state: state,
-                onDeposit: { isPresented = false },
+                onDeposit: { showDeposit = true },
                 onHome: { isPresented = false }
             )
+            .sheet(isPresented: $showDeposit, onDismiss: { isPresented = false }) {
+                if let goal = plantedGoal {
+                    DepositSheet(goal: goal, modelContext: modelContext)
+                }
+            }
         } else {
             Group {
                 switch step {
@@ -59,24 +69,35 @@ struct AddGoalFlowView: View {
                 removal: .move(edge: .leading)
             ))
             .animation(.spring(response: 0.35, dampingFraction: 0.85), value: step)
+            .alert("Couldn't save the goal", isPresented: Binding(get: { saveError != nil }, set: { if !$0 { saveError = nil } })) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(saveError ?? "")
+            }
         }
     }
 
     private func plantGoal() {
-        guard !state.name.isEmpty, state.amount > 0 else { return }
+        guard state.canPlant else { return } // the button is disabled before this; belt and braces
         let goal = GoalModel(
-            name: state.name,
+            name: state.name.trimmingCharacters(in: .whitespaces),
             current: 0,
             target: state.amount,
             color: state.color,
             isFavorite: state.isFavorite,
             autoMoveEnabled: state.autoDeposit,
-            autoMoveAmount: state.monthlyPace.rounded(),
-            deadline: state.deadline
+            autoMoveAmount: state.hasDeadline ? state.monthlyPace.rounded() : 0,
+            deadline: state.hasDeadline ? state.deadline : nil
         )
         modelContext.insert(goal)
-        try? modelContext.save()
-        withAnimation(.easeInOut(duration: 0.4)) { showSuccess = true }
+        do {
+            try modelContext.save()
+            plantedGoal = goal
+            withAnimation(.easeInOut(duration: 0.4)) { showSuccess = true }
+        } catch {
+            modelContext.delete(goal)
+            saveError = "Please try again."
+        }
     }
 }
 
@@ -86,6 +107,7 @@ struct AddGoalHeader: View {
     let step: Int; let total: Int
     let onBack: () -> Void; let onSkip: () -> Void
     var showClose: Bool = false
+    var showSkip: Bool = true
 
     var body: some View {
         VStack(spacing: 0) {
@@ -106,11 +128,15 @@ struct AddGoalHeader: View {
                 + Text("\(step)").font(.system(size: 13, weight: .semibold)).foregroundColor(Color.warmInk)
                 + Text(" of \(total)").font(.system(size: 13)).foregroundColor(Color.warmInkMuted)
                 Spacer()
-                Button(action: onSkip) {
-                    Text("Skip")
-                        .font(.system(size: 13))
-                        .foregroundStyle(Color.warmInkMuted)
-                        .frame(width: 36, height: 36)
+                if showSkip {
+                    Button(action: onSkip) {
+                        Text("Skip")
+                            .font(.system(size: 13))
+                            .foregroundStyle(Color.warmInkMuted)
+                            .frame(width: 36, height: 36)
+                    }
+                } else {
+                    Color.clear.frame(width: 36, height: 36)
                 }
             }
             .padding(.horizontal, 20)
@@ -130,9 +156,8 @@ struct AddGoalHeader: View {
     }
 }
 
-// MARK: - Step 1: Intent — name, emoji, color
+// MARK: - Step 1: Intent — name, color
 
-private let goalEmojis = ["✈️", "🏡", "🌿", "🚗", "💍", "🎓", "🎁", "🏥"]
 
 struct AddGoalStep1View: View {
     @ObservedObject var state: AddGoalState
@@ -160,10 +185,7 @@ struct AddGoalStep1View: View {
                 HStack {
                     Spacer()
                     HStack(spacing: 12) {
-                        ZStack {
-                            Circle().fill(state.color.trackColor).frame(width: 44, height: 44)
-                            Text(state.emoji).font(.system(size: 22))
-                        }
+                        GoalInitialCircle(name: state.name, color: state.color, size: 44)
                         VStack(alignment: .leading, spacing: 2) {
                             Text(state.name.isEmpty ? "Your goal name" : state.name)
                                 .font(.system(size: 20, weight: .regular, design: .serif))
@@ -204,30 +226,6 @@ struct AddGoalStep1View: View {
                     )
                     Text("Tip: be specific. Try a specific name like Kyoto trip '26.")
                         .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted).padding(.leading, 4)
-                }
-                .padding(.horizontal, 20).padding(.bottom, 24)
-
-                // Emoji picker
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("SYMBOL")
-                        .font(.system(size: 11, weight: .semibold)).foregroundStyle(Color.warmInkMuted).tracking(0.8)
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 8), spacing: 8) {
-                        ForEach(goalEmojis, id: \.self) { e in
-                            let isOn = state.emoji == e
-                            Button(action: { state.emoji = e }) {
-                                Text(e).font(.system(size: 20))
-                                    .frame(width: 44, height: 44)
-                                    .background(isOn ? state.color.trackColor : Color.warmSurface)
-                                    .cornerRadius(12)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .stroke(isOn ? state.color.color : Color.warmLine, lineWidth: isOn ? 1.5 : 1)
-                                    )
-                            }
-                            .buttonStyle(.plain)
-                            .animation(.easeInOut(duration: 0.15), value: state.emoji)
-                        }
-                    }
                 }
                 .padding(.horizontal, 20).padding(.bottom, 24)
 
@@ -291,10 +289,7 @@ struct AddGoalStep2View: View {
 
             // Goal name chip
             HStack(spacing: 10) {
-                ZStack {
-                    Circle().fill(state.color.trackColor).frame(width: 28, height: 28)
-                    Text(state.emoji).font(.system(size: 14))
-                }
+                GoalInitialCircle(name: state.name, color: state.color, size: 28)
                 Text(state.name)
                     .font(.system(size: 13)).foregroundStyle(Color.warmInkSoft)
             }
@@ -405,15 +400,17 @@ struct AddGoalStep3View: View {
                             .font(.system(size: 11, weight: .bold)).foregroundStyle(Color.warmOnGreen.opacity(0.85)).tracking(1.2)
                     }
                     HStack(alignment: .firstTextBaseline) {
-                        Text("$\(Int(state.weeklyPace))")
+                        Text(state.hasDeadline ? "$\(Int(state.weeklyPace))" : "—")
                             .font(.system(size: 38, weight: .regular, design: .serif)).foregroundStyle(Color.warmOnGreen)
                         Text("/wk")
                             .font(.system(size: 18)).foregroundStyle(Color.warmOnGreen.opacity(0.7)).padding(.leading, 2)
                         Spacer()
-                        Text("~$\(Int(state.monthlyPace))/mo")
+                        Text(state.hasDeadline ? "~$\(Int(state.monthlyPace))/mo" : "no date")
                             .font(.system(size: 13)).foregroundStyle(Color.warmOnGreen.opacity(0.85))
                     }
-                    Text("To hit **$\(Int(state.amount))** by **\(formattedDeadline)**.")
+                    Text(state.hasDeadline
+                         ? "To hit **$\(Int(state.amount))** by **\(formattedDeadline)**."
+                         : "No target date — save at your own pace.")
                         .font(.system(size: 13)).foregroundStyle(Color.warmOnGreen.opacity(0.85))
                 }
                 .padding(18)
@@ -421,8 +418,10 @@ struct AddGoalStep3View: View {
                 .cornerRadius(22)
                 .padding(.horizontal, 20).padding(.bottom, 16)
 
-                // Mini calendar
+                // Mini calendar — picking a day turns the date back on
                 MiniCalendarView(displayMonth: $displayMonth, selectedDate: $state.deadline)
+                    .opacity(state.hasDeadline ? 1 : 0.45)
+                    .onChange(of: state.deadline) { state.hasDeadline = true; selectedDuration = -2 }
                     .padding(.horizontal, 20).padding(.bottom, 14)
 
                 // Duration presets
@@ -433,10 +432,12 @@ struct AddGoalStep3View: View {
                             Button(action: {
                                 if let m = preset.months {
                                     selectedDuration = m
+                                    state.hasDeadline = true
                                     state.deadline = Calendar.current.date(byAdding: .month, value: m, to: Date()) ?? Date()
                                     displayMonth = state.deadline
                                 } else {
                                     selectedDuration = -1
+                                    state.hasDeadline = false
                                 }
                             }) {
                                 Text(preset.label)
@@ -463,11 +464,13 @@ struct AddGoalStep3View: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Auto-move on payday")
                             .font(.system(size: 14, weight: .semibold)).foregroundStyle(Color.warmInk)
-                        Text("Set $\(Int(state.monthlyPace)) aside the day after each paycheck.")
+                        Text(state.hasDeadline
+                             ? "Set $\(Int(state.monthlyPace)) aside the day after each paycheck."
+                             : "Pick the amount later in the goal's settings.")
                             .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
-                    Toggle("", isOn: $state.autoDeposit)
+                    Toggle("Auto-move on payday", isOn: $state.autoDeposit)
                         .labelsHidden()
                         .tint(Color.warmGreen)
                 }
@@ -490,6 +493,7 @@ struct AddGoalStep3View: View {
     }
 
     private var formattedDeadline: String {
+        guard state.hasDeadline else { return "—" }
         let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"
         return f.string(from: state.deadline)
     }
@@ -582,7 +586,7 @@ struct AddGoalStep4View: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                AddGoalHeader(step: 4, total: 4, onBack: onBack, onSkip: {})
+                AddGoalHeader(step: 4, total: 4, onBack: onBack, onSkip: {}, showSkip: false)
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("ALMOST THERE")
@@ -595,10 +599,7 @@ struct AddGoalStep4View: View {
                 // Hero preview card
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 12) {
-                        ZStack {
-                            Circle().fill(state.color.trackColor).frame(width: 44, height: 44)
-                            Text(state.emoji).font(.system(size: 22))
-                        }
+                        GoalInitialCircle(name: state.name, color: state.color, size: 44)
                         VStack(alignment: .leading, spacing: 3) {
                             Text(state.name)
                                 .font(.system(size: 22, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
@@ -632,7 +633,9 @@ struct AddGoalStep4View: View {
                     .frame(height: 8).padding(.bottom, 14)
 
                     HStack(spacing: 6) {
-                        ForEach([("Per week","$\(Int(state.weeklyPace))"),("Per month","$\(Int(state.monthlyPace))"),("By",shortDeadline)], id: \.0) { item in
+                        ForEach([("Per week", state.hasDeadline ? "$\(Int(state.weeklyPace))" : "—"),
+                                 ("Per month", state.hasDeadline ? "$\(Int(state.monthlyPace))" : "—"),
+                                 ("By", shortDeadline)], id: \.0) { item in
                             VStack(spacing: 4) {
                                 Text(item.0)
                                     .font(.system(size: 9)).foregroundStyle(Color.warmInkMuted).textCase(.uppercase).tracking(0.8)
@@ -653,9 +656,7 @@ struct AddGoalStep4View: View {
 
                 // Recap toggles
                 VStack(spacing: 0) {
-                    RecapToggleRow(label: "Auto-move", sub: "On — $\(Int(state.monthlyPace)) each payday", isOn: $state.autoDeposit)
-                    Divider().padding(.horizontal, 16)
-                    RecapToggleRow(label: "Reminders", sub: "Friday mornings", isOn: $state.showReminders)
+                    RecapToggleRow(label: "Auto-move", sub: state.hasDeadline ? "On — $\(Int(state.monthlyPace)) each payday" : "On — amount set later", isOn: $state.autoDeposit)
                     Divider().padding(.horizontal, 16)
                     RecapToggleRow(label: "Favorite", sub: "Show on home screen", isOn: $state.isFavorite)
                 }
@@ -689,6 +690,8 @@ struct AddGoalStep4View: View {
                         .frame(maxWidth: .infinity).frame(height: 50)
                         .background(Color.warmGreenFill).cornerRadius(14)
                     }
+                    .disabled(!state.canPlant)
+                    .opacity(state.canPlant ? 1 : 0.4)
                     Button(action: onBack) {
                         Text("Edit anything")
                             .font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
@@ -702,9 +705,11 @@ struct AddGoalStep4View: View {
     }
 
     private var formattedDeadline: String {
+        guard state.hasDeadline else { return "No date" }
         let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"; return f.string(from: state.deadline)
     }
     private var shortDeadline: String {
+        guard state.hasDeadline else { return "—" }
         let f = DateFormatter(); f.dateFormat = "MMM ''yy"; return f.string(from: state.deadline)
     }
 }
@@ -720,7 +725,7 @@ struct RecapToggleRow: View {
                 Text(sub).font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
             }
             Spacer()
-            Toggle("", isOn: $isOn).labelsHidden().tint(Color.warmGreen)
+            Toggle(label, isOn: $isOn).labelsHidden().tint(Color.warmGreen)
         }
         .padding(.horizontal, 16).padding(.vertical, 14)
     }
@@ -802,5 +807,23 @@ struct AddGoalSuccessView: View {
                 .padding(.horizontal, 28).padding(.bottom, 52)
             }
         }
+    }
+}
+
+// MARK: - Goal initial (the pattern WarmGoalCard / WarmQuickDepositView use)
+
+struct GoalInitialCircle: View {
+    let name: String
+    let color: GoalColor
+    let size: CGFloat
+
+    var body: some View {
+        ZStack {
+            Circle().fill(color.color).frame(width: size, height: size)
+            Text(name.first.map { String($0).uppercased() } ?? "·")
+                .font(.system(size: size * 0.5, weight: .regular, design: .serif))
+                .foregroundStyle(Color.warmOnGreen)
+        }
+        .accessibilityHidden(true)
     }
 }
