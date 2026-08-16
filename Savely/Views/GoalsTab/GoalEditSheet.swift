@@ -21,6 +21,8 @@ struct GoalEditSheet: View {
     @State private var autoMoveText: String
     @State private var color: GoalColor
     @State private var errorMessage: String?
+    @ScaledMetric(relativeTo: .body) private var targetFieldWidth: CGFloat = 110
+    @ScaledMetric(relativeTo: .body) private var autoFieldWidth: CGFloat = 90
 
     init(goal: GoalModel) {
         self.goal = goal
@@ -46,7 +48,7 @@ struct GoalEditSheet: View {
                     card {
                         fieldRow(label: "Name") {
                             TextField("Goal name", text: $draft.name)
-                                .font(.system(size: 15))
+                                .warmFont(15)
                                 .foregroundStyle(Color.warmInk)
                                 .multilineTextAlignment(.trailing)
                         }
@@ -56,11 +58,11 @@ struct GoalEditSheet: View {
                                 Text("$").foregroundStyle(Color.warmInkMuted)
                                 TextField("0", text: $targetText)
                                     .keyboardType(.decimalPad)
-                                    .font(.system(size: 15))
+                                    .warmFont(15)
                                     .foregroundStyle(Color.warmInk)
                                     .monospacedDigit()
                                     .multilineTextAlignment(.trailing)
-                                    .frame(width: 110)
+                                    .frame(width: targetFieldWidth)
                                     .onChange(of: targetText) { draft.target = parseAmount(targetText) ?? 0 }
                             }
                         }
@@ -118,11 +120,11 @@ struct GoalEditSheet: View {
                                         Text("$").foregroundStyle(Color.warmInkMuted)
                                         TextField("0", text: $autoMoveText)
                                             .keyboardType(.decimalPad)
-                                            .font(.system(size: 15))
+                                            .warmFont(15)
                                             .foregroundStyle(Color.warmInk)
                                             .monospacedDigit()
                                             .multilineTextAlignment(.trailing)
-                                            .frame(width: 90)
+                                            .frame(width: autoFieldWidth)
                                             .onChange(of: autoMoveText) { draft.autoMoveAmount = parseAmount(autoMoveText) ?? 0 }
                                     }
                                 }
@@ -189,7 +191,7 @@ struct GoalEditSheet: View {
 
     private func sectionLabel(_ text: String) -> some View {
         Text(text.uppercased())
-            .font(.system(size: 11, weight: .semibold))
+            .warmFont(11, weight: .semibold)
             .foregroundStyle(Color.warmInkMuted)
             .tracking(0.8)
             .padding(.leading, 4)
@@ -199,7 +201,7 @@ struct GoalEditSheet: View {
     private func fieldRow<Content: View>(label: String, @ViewBuilder content: () -> Content) -> some View {
         HStack(spacing: 16) {
             Text(label)
-                .font(.system(size: 14, weight: .medium))
+                .warmFont(14, weight: .medium)
                 .foregroundStyle(Color.warmInk)
             Spacer(minLength: 12)
             content()
@@ -209,7 +211,7 @@ struct GoalEditSheet: View {
 
     private func toggleRow(_ title: String, isOn: Binding<Bool>) -> some View {
         Toggle(isOn: isOn) {
-            Text(title).font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmInk)
+            Text(title).warmFont(14, weight: .medium).foregroundStyle(Color.warmInk)
         }
         .tint(Color.warmGreen)
         .padding(.horizontal, 16).padding(.vertical, 12)

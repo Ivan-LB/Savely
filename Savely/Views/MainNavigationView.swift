@@ -72,7 +72,7 @@ struct WarmTabBar: View {
 
             Button(action: onAddTapped) {
                 Image(systemName: "plus")
-                    .font(.system(size: 22, weight: .semibold))
+                    .warmFont(22, weight: .semibold)
                     .foregroundStyle(isExpanded ? Color.warmOnGreen : Color.warmOnInk)
                     .frame(width: 52, height: 52)
                     .background(isExpanded ? Color.warmGreenFill : Color.warmInk)
@@ -109,9 +109,9 @@ struct WarmTabBarItem: View {
         Button(action: { selectedTab = tag }) {
             VStack(spacing: 4) {
                 Image(systemName: icon)
-                    .font(.system(size: 22, weight: isActive ? .semibold : .regular))
+                    .warmFont(22, weight: isActive ? .semibold : .regular)
                 Text(label)
-                    .font(.system(size: 10, weight: isActive ? .semibold : .medium))
+                    .warmFont(10, weight: isActive ? .semibold : .medium)
             }
             .foregroundStyle(isActive ? Color.warmGreen : Color.warmInkMuted)
             .frame(maxWidth: .infinity)
@@ -187,12 +187,12 @@ struct WarmActionSheet: View {
 
             HStack(alignment: .center) {
                 Text("What's the move?")
-                    .font(.system(size: 24, weight: .regular, design: .serif))
+                    .warmFont(24, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                 Spacer()
                 Button(action: onDismiss) {
                     Image(systemName: "xmark")
-                        .font(.system(size: 11, weight: .medium))
+                        .warmFont(11, weight: .medium)
                         .foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
                         .background(Color.warmSurface)
@@ -203,7 +203,7 @@ struct WarmActionSheet: View {
             .padding(.horizontal, 20)
 
             Text("Pick what to log right now.")
-                .font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                .warmFont(13).foregroundStyle(Color.warmInkMuted)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 20).padding(.top, 2).padding(.bottom, 18)
 
@@ -215,22 +215,22 @@ struct WarmActionSheet: View {
                     }) {
                         HStack(spacing: 14) {
                             Image(systemName: action.icon)
-                                .font(.system(size: 16))
+                                .warmFont(16)
                                 .foregroundStyle(action.fg)
                                 .frame(width: 40, height: 40)
                                 .background(action.bg)
                                 .cornerRadius(12)
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(action.label)
-                                    .font(.system(size: 15, weight: .semibold))
+                                    .warmFont(15, weight: .semibold)
                                     .foregroundStyle(Color.warmInk)
                                 Text(action.sub)
-                                    .font(.system(size: 12))
+                                    .warmFont(12)
                                     .foregroundStyle(Color.warmInkMuted)
                             }
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .font(.system(size: 11, weight: .medium))
+                                .warmFont(11, weight: .medium)
                                 .foregroundStyle(Color.warmInkMuted)
                         }
                         .padding(.horizontal, 16).padding(.vertical, 14)
@@ -268,10 +268,10 @@ struct WarmKeypad: View {
                         Group {
                             if key == "⌫" {
                                 Image(systemName: "delete.left")
-                                    .font(.system(size: 20, weight: .light))
+                                    .warmFont(20, weight: .light)
                             } else {
                                 Text(key)
-                                    .font(.system(size: 24, weight: .regular, design: .serif))
+                                    .warmFont(24, weight: .regular, design: .serif)
                             }
                         }
                         .foregroundStyle(Color.warmInk)
@@ -340,15 +340,15 @@ struct WarmQuickExpenseView: View {
             HStack {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmInkSoft)
+                        .warmFont(14, weight: .medium).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
                 }
                 Spacer()
                 Text("Log expense")
-                    .font(.system(size: 18, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Button("Save", action: saveAndDismiss)
-                    .font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.warmGreen)
+                    .warmFont(13, weight: .semibold).foregroundStyle(Color.warmGreen)
                     .opacity(canSave ? 1 : 0.4).disabled(!canSave)
             }
             .padding(.horizontal, 20).padding(.bottom, 4)
@@ -357,15 +357,15 @@ struct WarmQuickExpenseView: View {
 
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text("−$")
-                    .font(.system(size: 32, weight: .regular, design: .serif)).foregroundStyle(Color.warmInkMuted)
+                    .warmFont(32, weight: .regular, design: .serif).foregroundStyle(Color.warmInkMuted)
                 Text(formatKeypadAmount(amountStr))
-                    .font(.system(size: 72, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(72, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                     .monospacedDigit().minimumScaleFactor(0.4).lineLimit(1)
             }
             .padding(.top, 8)
 
             TextField("Merchant · Today", text: $description)
-                .font(.system(size: 12)).foregroundStyle(Color.warmInkSoft)
+                .warmFont(12).foregroundStyle(Color.warmInkSoft)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 16).padding(.vertical, 7)
                 .background(Color.warmSurface).clipShape(Capsule())
@@ -378,7 +378,7 @@ struct WarmQuickExpenseView: View {
                         let isOn = selectedCat == cat.label
                         Button(action: { selectedCat = cat.label }) {
                             Text(cat.label)
-                                .font(.system(size: 13, weight: .semibold))
+                                .warmFont(13, weight: .semibold)
                                 .foregroundStyle(isOn ? cat.fg : Color.warmInkSoft)
                                 .padding(.horizontal, 14).padding(.vertical, 8)
                                 .background(isOn ? cat.bg : Color.clear)
@@ -462,15 +462,15 @@ struct WarmQuickIncomeView: View {
             HStack {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmInkSoft)
+                        .warmFont(14, weight: .medium).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
                 }
                 Spacer()
                 Text("Log income")
-                    .font(.system(size: 18, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Button("Save", action: saveAndDismiss)
-                    .font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.warmGreen)
+                    .warmFont(13, weight: .semibold).foregroundStyle(Color.warmGreen)
                     .opacity(canSave ? 1 : 0.4).disabled(!canSave)
             }
             .padding(.horizontal, 20).padding(.bottom, 4)
@@ -479,15 +479,15 @@ struct WarmQuickIncomeView: View {
 
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text("+$")
-                    .font(.system(size: 32, weight: .regular, design: .serif)).foregroundStyle(Color.warmGreen)
+                    .warmFont(32, weight: .regular, design: .serif).foregroundStyle(Color.warmGreen)
                 Text(formatKeypadAmount(amountStr))
-                    .font(.system(size: 72, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(72, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                     .monospacedDigit().minimumScaleFactor(0.4).lineLimit(1)
             }
             .padding(.top, 8)
 
             TextField("Source · Today", text: $description)
-                .font(.system(size: 12)).foregroundStyle(Color.warmInkSoft)
+                .warmFont(12).foregroundStyle(Color.warmInkSoft)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 16).padding(.vertical, 7)
                 .background(Color.warmSurface).clipShape(Capsule())
@@ -499,7 +499,7 @@ struct WarmQuickIncomeView: View {
                     let isOn = selectedSource == src
                     Button(action: { selectedSource = src }) {
                         Text(src)
-                            .font(.system(size: 13, weight: .semibold))
+                            .warmFont(13, weight: .semibold)
                             .foregroundStyle(isOn ? Color.warmGreenDeep : Color.warmInkSoft)
                             .padding(.horizontal, 14).padding(.vertical, 8)
                             .background(isOn ? Color.warmGreenSoft : Color.clear)
@@ -518,17 +518,17 @@ struct WarmQuickIncomeView: View {
             if let suggestion = autoMoveSuggestion {
                 HStack(spacing: 10) {
                     Image(systemName: autoMoveArmed ? "checkmark.circle.fill" : "sparkles")
-                        .font(.system(size: 13)).foregroundStyle(Color.warmGreen)
+                        .warmFont(13).foregroundStyle(Color.warmGreen)
                         .frame(width: 32, height: 32).background(Color.warmSurface).cornerRadius(10)
                     Text(bannerText(for: suggestion))
-                        .font(.system(size: 12)).foregroundStyle(Color.warmGreenDeep)
+                        .warmFont(12).foregroundStyle(Color.warmGreenDeep)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Button(autoMoveArmed ? "UNDO" : "YES") {
                         withAnimation(.spring(response: 0.35, dampingFraction: 0.9)) {
                             autoMoveArmed.toggle()
                         }
                     }
-                    .font(.system(size: 11, weight: .bold))
+                    .warmFont(11, weight: .bold)
                     .foregroundStyle(autoMoveArmed ? Color.warmGreenDeep : Color.warmOnGreen)
                     .padding(.horizontal, 10).padding(.vertical, 6)
                     .background(autoMoveArmed ? Color.warmSurface : Color.warmGreenFill)
@@ -605,12 +605,12 @@ struct WarmQuickDepositView: View {
             HStack {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmInkSoft)
+                        .warmFont(14, weight: .medium).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
                 }
                 Spacer()
                 Text("Move money")
-                    .font(.system(size: 18, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Color.clear.frame(width: 32, height: 32)
             }
@@ -620,9 +620,9 @@ struct WarmQuickDepositView: View {
             VStack(spacing: 12) {
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
                     Text("$")
-                        .font(.system(size: 28, weight: .regular, design: .serif)).foregroundStyle(Color.warmInkMuted)
+                        .warmFont(28, weight: .regular, design: .serif).foregroundStyle(Color.warmInkMuted)
                     Text("\(Int(selectedPreset))")
-                        .font(.system(size: 60, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                        .warmFont(60, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                         .monospacedDigit()
                 }
                 HStack(spacing: 6) {
@@ -630,7 +630,7 @@ struct WarmQuickDepositView: View {
                         let isOn = selectedPreset == p
                         Button(action: { selectedPreset = p }) {
                             Text("$\(Int(p))")
-                                .font(.system(size: 12, weight: .semibold))
+                                .warmFont(12, weight: .semibold)
                                 .foregroundStyle(isOn ? Color.warmGreenDeep : Color.warmInkSoft)
                                 .padding(.horizontal, 12).padding(.vertical, 6)
                                 .background(isOn ? Color.warmGreenSoft : Color.clear)
@@ -647,12 +647,12 @@ struct WarmQuickDepositView: View {
             // Goal picker
             VStack(alignment: .leading, spacing: 8) {
                 Text("TO WHICH GOAL")
-                    .font(.system(size: 11, weight: .semibold)).foregroundStyle(Color.warmInkMuted).tracking(0.8)
+                    .warmFont(11, weight: .semibold).foregroundStyle(Color.warmInkMuted).tracking(0.8)
                     .padding(.horizontal, 20)
 
                 if goals.isEmpty {
                     Text("No goals yet — create one first.")
-                        .font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                        .warmFont(13).foregroundStyle(Color.warmInkMuted)
                         .padding(.horizontal, 20)
                 } else {
                     ScrollView {
@@ -665,12 +665,12 @@ struct WarmQuickDepositView: View {
                                             .frame(width: 36, height: 36)
                                             .overlay(
                                                 Text(goal.name.prefix(1).uppercased())
-                                                    .font(.system(size: 16, weight: .regular, design: .serif))
+                                                    .warmFont(16, weight: .regular, design: .serif)
                                                     .foregroundStyle(Color.warmOnGreen)
                                             )
                                         VStack(alignment: .leading, spacing: 4) {
                                             Text(goal.name)
-                                                .font(.system(size: 14, weight: .semibold)).foregroundStyle(Color.warmInk)
+                                                .warmFont(14, weight: .semibold).foregroundStyle(Color.warmInk)
                                                 .lineLimit(1)
                                             GeometryReader { geo in
                                                 ZStack(alignment: .leading) {
@@ -688,7 +688,7 @@ struct WarmQuickDepositView: View {
                                             if isOn {
                                                 Circle().fill(Color.warmGreenFill).frame(width: 22, height: 22)
                                                 Image(systemName: "checkmark")
-                                                    .font(.system(size: 10, weight: .bold)).foregroundStyle(Color.warmOnGreen)
+                                                    .warmFont(10, weight: .bold).foregroundStyle(Color.warmOnGreen)
                                             }
                                         }
                                     }
@@ -717,7 +717,7 @@ struct WarmQuickDepositView: View {
             Button(action: saveDeposit) {
                 let goalName = selectedGoal.map { $0.name.components(separatedBy: ",").first ?? $0.name }
                 Text(goalName.map { "Add $\(Int(selectedPreset)) to \($0)" } ?? "Select a goal")
-                    .font(.system(size: 15, weight: .semibold)).foregroundStyle(Color.warmOnGreen)
+                    .warmFont(15, weight: .semibold).foregroundStyle(Color.warmOnGreen)
                     .frame(maxWidth: .infinity).frame(height: 50)
                     .background(selectedGoal != nil ? Color.warmGreenFill : Color.warmInkMuted)
                     .cornerRadius(14)

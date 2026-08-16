@@ -56,10 +56,10 @@ struct DashboardView: View {
                 // person to represent)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(formattedDate)
-                        .font(.system(size: 13))
+                        .warmFont(13)
                         .foregroundStyle(Color.warmInkMuted)
                     Text(greeting + ".")
-                        .font(.system(size: 30, weight: .regular, design: .serif))
+                        .warmFont(30, weight: .regular, design: .serif)
                         .foregroundStyle(Color.warmInk)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -87,12 +87,12 @@ struct DashboardView: View {
                 VStack(spacing: 0) {
                     HStack {
                         Text("Recent")
-                            .font(.system(size: 20, weight: .regular, design: .serif))
+                            .warmFont(20, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInk)
                         Spacer()
                         Button(action: onSeeAll) {
                             Text("See all")
-                                .font(.system(size: 13, weight: .medium))
+                                .warmFont(13, weight: .medium)
                                 .foregroundStyle(Color.warmGreen)
                         }
                         .buttonStyle(.plain)
@@ -102,10 +102,10 @@ struct DashboardView: View {
                     if recentTransactions.isEmpty {
                         VStack(spacing: 8) {
                             Image(systemName: "tray")
-                                .font(.system(size: 36))
+                                .warmFont(36)
                                 .foregroundStyle(Color.warmInkMuted)
                             Text("No transactions yet")
-                                .font(.system(size: 14))
+                                .warmFont(14)
                                 .foregroundStyle(Color.warmInkMuted)
                         }
                         .frame(maxWidth: .infinity)
@@ -182,10 +182,10 @@ struct HeroGoalCard: View {
                 HStack {
                     HStack(spacing: 6) {
                         Image(systemName: "star.fill")
-                            .font(.system(size: 12))
+                            .warmFont(12)
                             .foregroundStyle(Color.warmAmber)
                         Text("FAVORITE GOAL")
-                            .font(.system(size: 11, weight: .semibold))
+                            .warmFont(11, weight: .semibold)
                             .foregroundStyle(Color.warmInkMuted)
                             .tracking(0.8)
                     }
@@ -193,7 +193,7 @@ struct HeroGoalCard: View {
                 }
 
                 Text(goal.name)
-                    .font(.system(size: 26, weight: .regular, design: .serif))
+                    .warmFont(26, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
 
                 // Ring + stats
@@ -208,10 +208,10 @@ struct HeroGoalCard: View {
                         VStack(spacing: 0) {
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
                                 Text("\(Int(goal.progress * 100))")
-                                    .font(.system(size: 36, weight: .regular, design: .serif))
+                                    .warmFont(36, weight: .regular, design: .serif)
                                     .foregroundStyle(Color.warmInk)
                                 Text("%")
-                                    .font(.system(size: 18))
+                                    .warmFont(18)
                                     .foregroundStyle(Color.warmInkMuted)
                             }
                         }
@@ -221,24 +221,24 @@ struct HeroGoalCard: View {
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("SAVED")
-                                .font(.system(size: 11, weight: .semibold))
+                                .warmFont(11, weight: .semibold)
                                 .foregroundStyle(Color.warmInkMuted)
                                 .tracking(0.8)
                             Text(formattedAmount(goal.current))
-                                .font(.system(size: 24, weight: .regular, design: .serif))
+                                .warmFont(24, weight: .regular, design: .serif)
                                 .foregroundStyle(Color.warmInk)
                             Text("of \(formattedAmount(goal.target))")
-                                .font(.system(size: 12))
+                                .warmFont(12)
                                 .foregroundStyle(Color.warmInkMuted)
                         }
 
                         VStack(alignment: .leading, spacing: 2) {
                             Text("PACE")
-                                .font(.system(size: 11, weight: .semibold))
+                                .warmFont(11, weight: .semibold)
                                 .foregroundStyle(Color.warmInkMuted)
                                 .tracking(0.8)
                             Text(pace.label)
-                                .font(.system(size: 14, weight: .semibold))
+                                .warmFont(14, weight: .semibold)
                                 .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmGreen)
                         }
                     }
@@ -249,9 +249,9 @@ struct HeroGoalCard: View {
                     Button(action: { showDepositSheet = true }) {
                         HStack(spacing: 6) {
                             Image(systemName: "plus")
-                                .font(.system(size: 14, weight: .semibold))
+                                .warmFont(14, weight: .semibold)
                             Text("Add deposit")
-                                .font(.system(size: 15, weight: .semibold))
+                                .warmFont(15, weight: .semibold)
                         }
                         .foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity)
@@ -262,7 +262,7 @@ struct HeroGoalCard: View {
 
                     Button(action: { showEditSheet = true }) {
                         Image(systemName: "pencil")
-                            .font(.system(size: 16))
+                            .warmFont(16)
                             .foregroundStyle(Color.warmInk)
                             .frame(width: 48, height: 48)
                             .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.warmLine, lineWidth: 1))
@@ -312,19 +312,19 @@ struct DepositSheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Add a deposit")
-                        .font(.system(size: 22, weight: .regular, design: .serif))
+                        .warmFont(22, weight: .regular, design: .serif)
                         .foregroundStyle(Color.warmInk)
                     Text("Move money toward \(goal.name.components(separatedBy: ",").first ?? goal.name).")
-                        .font(.system(size: 13))
+                        .warmFont(13)
                         .foregroundStyle(Color.warmInkMuted)
 
                     // Large amount
                     HStack(alignment: .lastTextBaseline, spacing: 4) {
                         Text("$")
-                            .font(.system(size: 48, weight: .regular, design: .serif))
+                            .warmFont(48, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInkMuted)
                         TextField("0", text: $amountText)
-                            .font(.system(size: 64, weight: .regular, design: .serif))
+                            .warmFont(64, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInk)
                             .keyboardType(.decimalPad)
                             .frame(maxWidth: .infinity)
@@ -337,7 +337,7 @@ struct DepositSheet: View {
                             let isSelected = amountText == String(Int(amt))
                             Button(action: { amountText = String(Int(amt)) }) {
                                 Text("$\(Int(amt))")
-                                    .font(.system(size: 13, weight: .semibold))
+                                    .warmFont(13, weight: .semibold)
                                     .foregroundStyle(isSelected ? Color.warmGreenDeep : Color.warmInkMuted)
                                     .padding(.horizontal, 14)
                                     .padding(.vertical, 8)
@@ -351,11 +351,11 @@ struct DepositSheet: View {
                     // Note
                     VStack(alignment: .leading, spacing: 6) {
                         Text("NOTE")
-                            .font(.system(size: 11, weight: .semibold))
+                            .warmFont(11, weight: .semibold)
                             .foregroundStyle(Color.warmInkMuted)
                             .tracking(0.8)
                         TextField("Optional note", text: $note)
-                            .font(.system(size: 14))
+                            .warmFont(14)
                             .padding(14)
                             .frame(height: 44)
                             .background(Color.warmBg)
@@ -365,7 +365,7 @@ struct DepositSheet: View {
 
                     Button(action: saveDeposit) {
                         Text("Add \(amountText.isEmpty ? "" : "$\(amountText)") to \(goal.name.components(separatedBy: ",").first ?? goal.name)")
-                            .font(.system(size: 15, weight: .semibold))
+                            .warmFont(15, weight: .semibold)
                             .foregroundStyle(Color.warmOnGreen)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
@@ -407,13 +407,13 @@ struct EmptyGoalCard: View {
     var body: some View {
         VStack(spacing: 14) {
             Image(systemName: "target")
-                .font(.system(size: 40))
+                .warmFont(40)
                 .foregroundStyle(Color.warmInkMuted)
             Text("No active goal")
-                .font(.system(size: 17, weight: .semibold))
+                .warmFont(17, weight: .semibold)
                 .foregroundStyle(Color.warmInkSoft)
             Text("Star a goal to see it here")
-                .font(.system(size: 14))
+                .warmFont(14)
                 .foregroundStyle(Color.warmInkMuted)
         }
         .frame(maxWidth: .infinity)
@@ -433,23 +433,23 @@ struct TipOfTheDayCard: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 6) {
                 Image(systemName: "sparkles")
-                    .font(.system(size: 12, weight: .semibold))
+                    .warmFont(12, weight: .semibold)
                     .foregroundStyle(Color.warmGreen)
                 Text("TIP OF THE DAY")
-                    .font(.system(size: 11, weight: .bold))
+                    .warmFont(11, weight: .bold)
                     .foregroundStyle(Color.warmGreen)
                     .tracking(1)
             }
 
             if let tip = viewModel.currentTip {
                 Text(tip.content)
-                    .font(.system(size: 17, weight: .regular, design: .serif))
+                    .warmFont(17, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                     .lineSpacing(3)
                     .fixedSize(horizontal: false, vertical: true)
             } else {
                 Text("No tip for today yet — check back soon.")
-                    .font(.system(size: 17, weight: .regular, design: .serif))
+                    .warmFont(17, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInkSoft)
             }
         }
@@ -472,18 +472,18 @@ struct MonthlySummaryCell: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(label)
-                .font(.system(size: 11, weight: .semibold))
+                .warmFont(11, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(0.8)
             Text(formattedAmount(value))
-                .font(.system(size: 20, weight: .regular, design: .serif))
+                .warmFont(20, weight: .regular, design: .serif)
                 .foregroundStyle(Color.warmInk)
             if let change = change {
                 HStack(spacing: 4) {
                     Image(systemName: positive ? "arrow.up" : "arrow.down")
-                        .font(.system(size: 9, weight: .semibold))
+                        .warmFont(9, weight: .semibold)
                     Text(change)
-                        .font(.system(size: 11, weight: .semibold))
+                        .warmFont(11, weight: .semibold)
                 }
                 .foregroundStyle(positive ? Color.warmGreen : Color.warmClay)
             }
@@ -516,23 +516,23 @@ struct RecentTransactionRow: View {
                     .fill(iconBg)
                     .frame(width: 34, height: 34)
                 Image(systemName: txn.isExpense ? "arrow.down" : "arrow.up")
-                    .font(.system(size: 14, weight: .medium))
+                    .warmFont(14, weight: .medium)
                     .foregroundStyle(iconColor)
             }
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(txn.description)
-                    .font(.system(size: 14, weight: .semibold))
+                    .warmFont(14, weight: .semibold)
                     .foregroundStyle(Color.warmInk)
                 Text(shortDate(txn.date))
-                    .font(.system(size: 12))
+                    .warmFont(12)
                     .foregroundStyle(Color.warmInkMuted)
             }
 
             Spacer()
 
             Text(formattedAmount)
-                .font(.system(size: 14, weight: .semibold))
+                .warmFont(14, weight: .semibold)
                 .foregroundStyle(txn.isExpense ? Color.warmInk : Color.warmGreen)
         }
         .padding(.horizontal, 14)

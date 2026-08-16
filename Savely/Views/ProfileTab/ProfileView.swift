@@ -95,14 +95,14 @@ struct ProfileView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("LIFETIME INCOME")
-                    .font(.system(size: 11, weight: .semibold))
+                    .warmFont(11, weight: .semibold)
                     .foregroundStyle(Color.warmOnGreen.opacity(0.7))
                     .tracking(0.8)
                 Text(formattedAmount(lifetimeIncome))
-                    .font(.system(size: 40, weight: .regular, design: .serif))
+                    .warmFont(40, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmOnGreen)
                 Text(savingSinceSubtitle)
-                    .font(.system(size: 13))
+                    .warmFont(13)
                     .foregroundStyle(Color.warmOnGreen.opacity(0.75))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -150,12 +150,12 @@ struct ProfileView: View {
         VStack(spacing: 12) {
             HStack {
                 Text("Achievements")
-                    .font(.system(size: 18, weight: .regular, design: .serif))
+                    .warmFont(18, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                 Spacer()
                 Button(action: { showingAchievements = true }) {
                     Text("See all ›")
-                        .font(.system(size: 13, weight: .medium))
+                        .warmFont(13, weight: .medium)
                         .foregroundStyle(Color.warmGreen)
                 }
             }
@@ -176,7 +176,7 @@ struct ProfileView: View {
                 NextAchievementRow(state: next)
             } else {
                 Text(Strings.Profile.allAchievementsUnlockedLabel)
-                    .font(.system(size: 13))
+                    .warmFont(13)
                     .foregroundStyle(Color.warmInkSoft)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -241,12 +241,12 @@ struct ProfileView: View {
         ProfileSection(header: Strings.Profile.dataPrivacyTitle) {
             HStack(spacing: 16) {
                 Image(systemName: "lock.shield")
-                    .font(.system(size: 18))
+                    .warmFont(18)
                     .foregroundStyle(Color.warmGreen)
                     .frame(width: 28)
                     .accessibilityHidden(true)
                 Text(Strings.Profile.dataStaysLocalLabel)
-                    .font(.system(size: 13))
+                    .warmFont(13)
                     .foregroundStyle(Color.warmInkSoft)
                 Spacer()
             }
@@ -276,14 +276,14 @@ struct ProfileStatCell: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(label)
-                .font(.system(size: 11, weight: .semibold))
+                .warmFont(11, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(0.8)
                 .textCase(.uppercase)
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
             Text(value)
-                .font(.system(size: 20, weight: .regular, design: .serif))
+                .warmFont(20, weight: .regular, design: .serif)
                 .foregroundStyle(Color.warmInk)
                 .monospacedDigit()
                 .lineLimit(1)
@@ -306,7 +306,7 @@ struct NextAchievementRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(Strings.Profile.nextAchievementLabel)
-                .font(.system(size: 11, weight: .semibold))
+                .warmFont(11, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(0.8)
                 .textCase(.uppercase)
@@ -315,15 +315,15 @@ struct NextAchievementRow: View {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(state.tileBackground)
                     .frame(width: 36, height: 36)
-                    .overlay(Image(systemName: state.icon).font(.system(size: 15)).foregroundStyle(state.tileColor))
+                    .overlay(Image(systemName: state.icon).warmFont(15).foregroundStyle(state.tileColor))
                     .accessibilityHidden(true)
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(state.title)
-                        .font(.system(size: 14, weight: .semibold))
+                        .warmFont(14, weight: .semibold)
                         .foregroundStyle(Color.warmInk)
                     Text(state.subtitle)
-                        .font(.system(size: 12))
+                        .warmFont(12)
                         .foregroundStyle(Color.warmInkSoft)
                     GeometryReader { geo in
                         ZStack(alignment: .leading) {
@@ -337,7 +337,7 @@ struct NextAchievementRow: View {
                 }
                 Spacer()
                 Text("\(Int(state.progress * 100))%")
-                    .font(.system(size: 13, weight: .semibold))
+                    .warmFont(13, weight: .semibold)
                     .foregroundStyle(Color.warmInkSoft)
                     .monospacedDigit()
             }
@@ -355,18 +355,18 @@ struct NotificationsDeniedRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: "bell.slash")
-                .font(.system(size: 18))
+                .warmFont(18)
                 .foregroundStyle(Color.warmInkSoft)
                 .frame(width: 28)
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 6) {
                 Text(Strings.Profile.notificationsDeniedHint)
-                    .font(.system(size: 13))
+                    .warmFont(13)
                     .foregroundStyle(Color.warmInkSoft)
                     .fixedSize(horizontal: false, vertical: true)
                 Button(action: onOpenSettings) {
                     Text(Strings.Profile.openSettingsButton)
-                        .font(.system(size: 13, weight: .medium))
+                        .warmFont(13, weight: .medium)
                         .foregroundStyle(Color.warmGreen)
                 }
             }
@@ -385,7 +385,7 @@ struct ReminderTimeRow: View {
         HStack(spacing: 16) {
             Color.clear.frame(width: 28)
             Text(Strings.Profile.reminderTimeLabel)
-                .font(.system(size: 14))
+                .warmFont(14)
                 .foregroundStyle(Color.warmInkSoft)
             Spacer()
             DatePicker(Strings.Profile.reminderTimeLabel, selection: $time, displayedComponents: .hourAndMinute)
@@ -404,7 +404,7 @@ struct BadgeTile: View {
         RoundedRectangle(cornerRadius: 14)
             .fill(bg)
             .overlay(RoundedRectangle(cornerRadius: 14).stroke(unlocked ? Color.clear : Color.warmLine, lineWidth: 1))
-            .overlay(Image(systemName: icon).font(.system(size: 18, weight: unlocked ? .semibold : .regular)).foregroundStyle(color))
+            .overlay(Image(systemName: icon).warmFont(18, weight: unlocked ? .semibold : .regular).foregroundStyle(color))
             .frame(maxWidth: .infinity)
             .aspectRatio(1, contentMode: .fit)
     }
@@ -418,7 +418,7 @@ struct ProfileSection<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(header.uppercased())
-                .font(.system(size: 11, weight: .semibold))
+                .warmFont(11, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(0.8)
                 .padding(.leading, 4)
@@ -448,12 +448,12 @@ struct SettingsToggleRow: View {
     var body: some View {
         HStack(spacing: 16) {
             Image(systemName: icon)
-                .font(.system(size: 18))
+                .warmFont(18)
                 .foregroundStyle(Color.warmInkSoft)
                 .frame(width: 28)
                 .accessibilityHidden(true)
             Toggle(isOn: $isOn) {
-                Text(title).font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmInk)
+                Text(title).warmFont(14, weight: .medium).foregroundStyle(Color.warmInk)
             }
             .tint(Color.warmGreen)
         }
@@ -471,16 +471,16 @@ struct SettingsNavRow: View {
         Button(action: onTap) {
             HStack(spacing: 16) {
                 Image(systemName: icon)
-                    .font(.system(size: 18))
+                    .warmFont(18)
                     .foregroundStyle(color)
                     .frame(width: 28)
-                Text(title).font(.system(size: 14, weight: .medium)).foregroundStyle(color == Color.warmInkSoft ? Color.warmInk : color)
+                Text(title).warmFont(14, weight: .medium).foregroundStyle(color == Color.warmInkSoft ? Color.warmInk : color)
                 Spacer()
                 if let d = detail {
-                    Text(d).font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                    Text(d).warmFont(13).foregroundStyle(Color.warmInkMuted)
                 }
                 if color != Color.warmClay {
-                    Image(systemName: "chevron.right").font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
+                    Image(systemName: "chevron.right").warmFont(12).foregroundStyle(Color.warmInkMuted)
                 }
             }
             .padding(.horizontal, 16).padding(.vertical, 14)

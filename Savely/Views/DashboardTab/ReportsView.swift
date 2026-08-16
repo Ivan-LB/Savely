@@ -57,10 +57,10 @@ struct ReportsView: View {
                 // — Header —
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Reports")
-                        .font(.system(size: 34, weight: .regular, design: .serif))
+                        .warmFont(34, weight: .regular, design: .serif)
                         .foregroundStyle(Color.warmInk)
                     Text(rangeSubtitle)
-                        .font(.system(size: 13))
+                        .warmFont(13)
                         .foregroundStyle(Color.warmInkMuted)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -116,9 +116,9 @@ struct ReportsView: View {
 
                 if !viewModel.isLoading && incomeBySource.isEmpty && expensesByCategory.isEmpty {
                     VStack(spacing: 10) {
-                        Image(systemName: "chart.bar").font(.system(size: 36)).foregroundStyle(Color.warmInkMuted)
+                        Image(systemName: "chart.bar").warmFont(36).foregroundStyle(Color.warmInkMuted)
                         Text(Strings.ReportsView.noDataLabel)
-                            .font(.system(size: 14))
+                            .warmFont(14)
                             .foregroundStyle(Color.warmInkSoft)
                             .multilineTextAlignment(.center)
                     }
@@ -146,7 +146,7 @@ struct ReportsView: View {
     private func dateRow(_ title: String, selection: Binding<Date>) -> some View {
         HStack(spacing: 16) {
             Text(title)
-                .font(.system(size: 14, weight: .medium))
+                .warmFont(14, weight: .medium)
                 .foregroundStyle(Color.warmInk)
             Spacer()
             DatePicker(title, selection: selection, displayedComponents: .date)
@@ -159,7 +159,7 @@ struct ReportsView: View {
     private func chartCard<Content: View>(title: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(title)
-                .font(.system(size: 18, weight: .regular, design: .serif))
+                .warmFont(18, weight: .regular, design: .serif)
                 .foregroundStyle(Color.warmInk)
             content()
         }
