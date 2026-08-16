@@ -68,6 +68,9 @@ struct GoalDetailView: View {
                 }
                 .frame(width: 200, height: 200)
                 .padding(.bottom, 12)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Progress")
+                .accessibilityValue(Text("\(Int(goal.progress * 100)) percent, \(formattedAmount(goal.current)) of \(formattedAmount(goal.target))"))
 
                 // — Status · deadline —
                 HStack(spacing: 6) {

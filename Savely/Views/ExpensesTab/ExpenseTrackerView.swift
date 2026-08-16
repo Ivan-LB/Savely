@@ -118,7 +118,9 @@ struct ExpenseTrackerView: View {
                             .frame(width: 40, height: 40)
                             .background(Color.warmGreenFill)
                             .cornerRadius(10)
+                            .tappable44()
                     }
+                    .accessibilityLabel("Add expense")
                 }
                 .padding(14)
                 .background(Color.warmSurface)
@@ -205,6 +207,7 @@ struct ExpenseRowWarm: View {
                 .fill(iconBg)
                 .frame(width: 36, height: 36)
                 .overlay(Image(systemName: expenseIcon).warmFont(15).foregroundStyle(iconColor))
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(expense.expenseDescription)
@@ -221,6 +224,10 @@ struct ExpenseRowWarm: View {
                 .monospacedDigit()
         }
         .padding(.horizontal, 14).padding(.vertical, 12)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text("\(expense.expenseDescription), \(categoryLabel)"))
+        .accessibilityValue(Text("minus \(formattedAmount(expense.amount))"))
+        .accessibilityHint("Long press to delete")
         .contextMenu {
             Button(role: .destructive, action: { showDeleteConfirmation = true }) { Label("Delete", systemImage: "trash") }
         }

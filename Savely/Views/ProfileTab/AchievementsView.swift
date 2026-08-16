@@ -160,6 +160,9 @@ struct AchievementRow: View {
         .cornerRadius(16)
         .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.warmLine, lineWidth: 1))
         .opacity(badge.unlocked ? 1 : 0.88)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text("\(badge.title), \(badge.subtitle)"))
+        .accessibilityValue(badge.unlocked ? Text("Unlocked") : Text("\(Int(badge.progress * 100)) percent"))
     }
 }
 

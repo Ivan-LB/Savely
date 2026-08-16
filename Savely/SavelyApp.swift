@@ -19,6 +19,7 @@ struct SavelyApp: App {
             SplashScreenView()
                 .environmentObject(AppViewModel())
                 .preferredColorScheme(darkModeEnabled ? .dark : .light)
+                .honorsReduceMotion()
                 .onAppear {
                     NotificationManager.shared.requestAuthorization()
                 }

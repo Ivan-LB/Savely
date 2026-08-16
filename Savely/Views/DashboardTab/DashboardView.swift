@@ -184,6 +184,7 @@ struct HeroGoalCard: View {
                         Image(systemName: "star.fill")
                             .warmFont(12)
                             .foregroundStyle(Color.warmAmber)
+                            .accessibilityHidden(true)
                         Text("FAVORITE GOAL")
                             .warmFont(11, weight: .semibold)
                             .foregroundStyle(Color.warmInkMuted)
@@ -217,6 +218,9 @@ struct HeroGoalCard: View {
                         }
                     }
                     .frame(width: 132, height: 132)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(Text("Progress"))
+                    .accessibilityValue(Text("\(Int(goal.progress * 100)) percent"))
 
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 2) {
@@ -381,6 +385,7 @@ struct DepositSheet: View {
         .background(Color.warmSurface)
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.hidden)
+        .honorsReduceMotion()
         .alert("Couldn't save the deposit", isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
             Button("OK", role: .cancel) {}
         } message: {
@@ -493,6 +498,7 @@ struct MonthlySummaryCell: View {
         .background(Color.warmSurface)
         .cornerRadius(16)
         .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.warmLine, lineWidth: 1))
+        .accessibilityElement(children: .combine)
     }
 
     private func formattedAmount(_ v: Double) -> String {
@@ -537,6 +543,9 @@ struct RecentTransactionRow: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text("\(txn.isExpense ? String(localized: "Expense") : String(localized: "Income")), \(txn.description), \(shortDate(txn.date))"))
+        .accessibilityValue(Text(formattedAmount))
     }
 
     private var iconBg: Color  { txn.isExpense ? Color.warmAmberSoft : Color.warmGreenSoft }

@@ -122,7 +122,9 @@ struct AddGoalHeader: View {
                         .background(Color.warmSurface)
                         .cornerRadius(12)
                         .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.warmLine, lineWidth: 1))
+                        .tappable44()
                 }
+                .accessibilityLabel(showClose ? "Close" : "Back")
                 Spacer()
                 Text("New goal · ")
                     .font(.system(size: headerSize))
@@ -216,7 +218,9 @@ struct AddGoalStep1View: View {
                             Button(action: { state.name = "" }) {
                                 Image(systemName: "xmark.circle.fill")
                                     .warmFont(16).foregroundStyle(Color.warmInkMuted)
+                                    .tappable44()
                             }
+                            .accessibilityLabel("Clear name")
                         }
                     }
                     .padding(14)
@@ -515,14 +519,18 @@ struct MiniCalendarView: View {
                 Button(action: shiftMonth(-1)) {
                     Image(systemName: "chevron.left").warmFont(13).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 28, height: 28).cornerRadius(8)
+                        .tappable44()
                 }
+                .accessibilityLabel("Previous month")
                 Spacer()
                 Text(monthTitle).warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Button(action: shiftMonth(1)) {
                     Image(systemName: "chevron.right").warmFont(13).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 28, height: 28).cornerRadius(8)
+                        .tappable44()
                 }
+                .accessibilityLabel("Next month")
             }
             .padding(.bottom, 14)
 

@@ -58,6 +58,9 @@ struct IncomesTrackerView: View {
                                 .warmFont(13, weight: .semibold)
                         }
                         .foregroundStyle(isUp ? Color.warmGreen : Color.warmClay)
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("Month over month")
+                        .accessibilityValue(Text("\(isUp ? String(localized: "up") : String(localized: "down")) \(Int(abs(viewModel.percentageChange))) percent"))
                     }
                     HStack(alignment: .bottom, spacing: 8) {
                         ForEach(Array(barData.enumerated()), id: \.offset) { idx, bar in
@@ -112,7 +115,9 @@ struct IncomesTrackerView: View {
                             .frame(width: 40, height: 40)
                             .background(Color.warmGreenFill)
                             .cornerRadius(10)
+                            .tappable44()
                     }
+                    .accessibilityLabel("Add income")
                 }
                 .padding(14)
                 .background(Color.warmSurface)
@@ -195,6 +200,7 @@ struct IncomeRowWarm: View {
                         .warmFont(14, weight: .medium)
                         .foregroundStyle(Color.warmGreen)
                 )
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(income.incomeDescription)
@@ -211,6 +217,10 @@ struct IncomeRowWarm: View {
                 .monospacedDigit()
         }
         .padding(.horizontal, 14).padding(.vertical, 14)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text("\(income.incomeDescription), \(source.map { "\($0.label), " } ?? "")\(shortDate(income.date))"))
+        .accessibilityValue(Text("plus \(formattedAmount(income.amount))"))
+        .accessibilityHint("Long press to delete")
         .contextMenu {
             Button(role: .destructive, action: { showDeleteConfirmation = true }) { Label("Delete", systemImage: "trash") }
         }

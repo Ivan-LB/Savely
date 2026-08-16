@@ -116,3 +116,25 @@ extension UIContentSizeCategory {
         }
     }
 }
+
+// MARK: - Reduce Motion
+
+extension View {
+    /// Under Reduce Motion every animation in this subtree becomes instant —
+    /// entrances, springs, ring fills, celebrations. Applied at each root
+    /// (app, sheets, full-screen covers) because presented views are their
+    /// own tree.
+    func honorsReduceMotion() -> some View {
+        modifier(ReduceMotionModifier())
+    }
+}
+
+private struct ReduceMotionModifier: ViewModifier {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func body(content: Content) -> some View {
+        content.transaction { transaction in
+            if reduceMotion { transaction.animation = nil }
+        }
+    }
+}

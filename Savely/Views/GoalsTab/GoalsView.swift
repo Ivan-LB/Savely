@@ -55,7 +55,9 @@ struct GoalsView: View {
                         Image(systemName: "plus")
                             .warmFont(18, weight: .semibold).foregroundStyle(Color.warmOnInk)
                             .frame(width: 40, height: 40).background(Color.warmInk).cornerRadius(14)
+                            .tappable44()
                     }
+                    .accessibilityLabel("New goal")
                 }
                 .padding(.top, 8)
 
@@ -172,7 +174,9 @@ struct GoalsEmptyStateView: View {
                         Image(systemName: "plus")
                             .warmFont(18, weight: .semibold).foregroundStyle(Color.warmOnInk)
                             .frame(width: 40, height: 40).background(Color.warmInk).cornerRadius(14)
+                            .tappable44()
                     }
+                    .accessibilityLabel("New goal")
                 }
                 .padding(.top, 8).padding(.horizontal, 20).padding(.bottom, 28)
 
@@ -300,7 +304,9 @@ struct WarmGoalCard: View {
                         Image(systemName: goal.isFavorite ? "star.fill" : "star")
                             .warmFont(16)
                             .foregroundStyle(goal.isFavorite ? Color.warmAmber : Color.warmInkMuted)
+                            .tappable44()
                     }
+                    .accessibilityLabel(goal.isFavorite ? "Remove from favorites" : "Make favorite")
                 }
             }
 
@@ -324,6 +330,9 @@ struct WarmGoalCard: View {
         .padding(16)
         .background(Color.warmSurface).cornerRadius(18)
         .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.warmLine, lineWidth: 1))
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(Text("\(goal.name)\(goal.isFavorite ? String(localized: ", favorite") : ""), \(pace.label)"))
+        .accessibilityValue(Text("\(Int(goal.progress * 100)) percent, \(formattedAmount(goal.current)) of \(formattedAmount(goal.target))"))
         .contextMenu {
             Button(role: .destructive, action: { showDeleteConfirmation = true }) {
                 Label("Delete", systemImage: "trash")

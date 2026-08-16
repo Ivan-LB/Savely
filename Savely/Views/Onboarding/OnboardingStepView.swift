@@ -27,6 +27,7 @@ struct OnboardingStepView: View {
                 )
                 .scaleEffect(appeared ? 1 : 0.92)
                 .opacity(appeared ? 1 : 0)
+                .accessibilityHidden(true)
 
             VStack(spacing: 12) {
                 Text(step.title)

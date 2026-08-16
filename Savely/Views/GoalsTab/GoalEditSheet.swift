@@ -157,6 +157,7 @@ struct GoalEditSheet: View {
         }
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
+        .honorsReduceMotion()
     }
 
     // MARK: - Save

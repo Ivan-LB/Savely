@@ -47,6 +47,7 @@ struct MainNavigationView: View {
                     }
                 }
             )
+            .honorsReduceMotion()
             .presentationBackground(Color.warmBg)
             .presentationCornerRadius(28)
             .presentationDetents(quickScreen == .actionSheet ? [.height(540)] : [.large])
@@ -54,6 +55,7 @@ struct MainNavigationView: View {
         }
         .fullScreenCover(isPresented: $showAddGoalFlow) {
             AddGoalFlowView(isPresented: $showAddGoalFlow)
+                .honorsReduceMotion()
         }
     }
 }
@@ -83,6 +85,8 @@ struct WarmTabBar: View {
                     )
                     .rotationEffect(.degrees(isExpanded ? 45 : 0))
             }
+            .accessibilityLabel(isExpanded ? "Close" : "Add")
+            .accessibilityHint("Log an expense, income, deposit, or new goal")
             .animation(.spring(response: 0.28, dampingFraction: 0.65), value: isExpanded)
             .frame(maxWidth: .infinity)
             .offset(y: -14)
@@ -97,6 +101,8 @@ struct WarmTabBar: View {
         .overlay(alignment: .top) {
             Rectangle().fill(Color.warmLine).frame(height: 1)
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityAddTraits(.isTabBar)
     }
 }
 
@@ -119,6 +125,8 @@ struct WarmTabBarItem: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(label)
+        .accessibilityAddTraits(isActive ? [.isSelected] : [])
     }
 }
 
@@ -198,7 +206,9 @@ struct WarmActionSheet: View {
                         .background(Color.warmSurface)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.warmLine, lineWidth: 1))
+                        .tappable44()
                 }
+                .accessibilityLabel("Close")
             }
             .padding(.horizontal, 20)
 
@@ -279,6 +289,7 @@ struct WarmKeypad: View {
                         .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(key == "⌫" ? "Delete" : key == "." ? "Decimal point" : key)
                 }
             }
             .background(Color.warmSurface)
@@ -342,7 +353,9 @@ struct WarmQuickExpenseView: View {
                     Image(systemName: "chevron.left")
                         .warmFont(14, weight: .medium).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
+                        .tappable44()
                 }
+                .accessibilityLabel("Back")
                 Spacer()
                 Text("Log expense")
                     .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
@@ -363,6 +376,9 @@ struct WarmQuickExpenseView: View {
                     .monospacedDigit().minimumScaleFactor(0.4).lineLimit(1)
             }
             .padding(.top, 8)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(Text("Expense amount"))
+            .accessibilityValue(Text("\(amountStr) dollars"))
 
             TextField("Merchant · Today", text: $description)
                 .warmFont(12).foregroundStyle(Color.warmInkSoft)
@@ -464,7 +480,9 @@ struct WarmQuickIncomeView: View {
                     Image(systemName: "chevron.left")
                         .warmFont(14, weight: .medium).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
+                        .tappable44()
                 }
+                .accessibilityLabel("Back")
                 Spacer()
                 Text("Log income")
                     .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
@@ -485,6 +503,9 @@ struct WarmQuickIncomeView: View {
                     .monospacedDigit().minimumScaleFactor(0.4).lineLimit(1)
             }
             .padding(.top, 8)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(Text("Income amount"))
+            .accessibilityValue(Text("\(amountStr) dollars"))
 
             TextField("Source · Today", text: $description)
                 .warmFont(12).foregroundStyle(Color.warmInkSoft)
@@ -607,7 +628,9 @@ struct WarmQuickDepositView: View {
                     Image(systemName: "chevron.left")
                         .warmFont(14, weight: .medium).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
+                        .tappable44()
                 }
+                .accessibilityLabel("Back")
                 Spacer()
                 Text("Move money")
                     .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
