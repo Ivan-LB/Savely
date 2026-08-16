@@ -10,7 +10,7 @@ import SwiftUI
 import Vision
 import Combine
 
-class CameraViewModel: ObservableObject {
+class CameraViewModel: ObservableObject, Identifiable {
     @Published var showConfirmation = false
     @Published var detectedTotal: String = ""
     @Published var alternativeTotals: [String] = []

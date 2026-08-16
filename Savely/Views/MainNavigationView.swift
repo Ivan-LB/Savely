@@ -14,6 +14,12 @@ struct MainNavigationView: View {
     @State private var showActionSheet = false
     @State private var quickScreen: QuickAddScreen = .actionSheet
     @State private var showAddGoalFlow = false
+    @Environment(\.modelContext) private var modelContext
+    /// The receipt scanner presented from the "+" sheet. It writes through
+    /// its own expense view model, exactly like the Money tab's banner does;
+    /// the Money tab hears about the new row through the posted notification.
+    @StateObject private var scanExpenseVM = ExpenseTrackerViewModel()
+    @State private var scanner: CameraViewModel?
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -45,6 +51,13 @@ struct MainNavigationView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                         showAddGoalFlow = true
                     }
+                },
+                onScan: {
+                    showActionSheet = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                        scanExpenseVM.setModelContext(modelContext)
+                        scanner = CameraViewModel(expenseViewModel: scanExpenseVM)
+                    }
                 }
             )
             .honorsReduceMotion()
@@ -56,6 +69,9 @@ struct MainNavigationView: View {
         .fullScreenCover(isPresented: $showAddGoalFlow) {
             AddGoalFlowView(isPresented: $showAddGoalFlow)
                 .honorsReduceMotion()
+        }
+        .fullScreenCover(item: $scanner) { vm in
+            CameraView(viewModel: vm)
         }
     }
 }
@@ -140,6 +156,7 @@ struct WarmQuickAddContainer: View {
     @Binding var screen: QuickAddScreen
     let onDismiss: () -> Void
     let onNewGoal: () -> Void
+    let onScan: () -> Void
 
     var body: some View {
         Group {
@@ -148,7 +165,8 @@ struct WarmQuickAddContainer: View {
                 WarmActionSheet(
                     onSelect: { s in withAnimation(.spring(response: 0.32, dampingFraction: 0.82)) { screen = s } },
                     onDismiss: onDismiss,
-                    onNewGoal: onNewGoal
+                    onNewGoal: onNewGoal,
+                    onScan: onScan
                 )
             case .expense:
                 WarmQuickExpenseView(
@@ -174,23 +192,25 @@ struct WarmQuickAddContainer: View {
 // MARK: - Action sheet
 
 private struct QuickAction {
+    enum Kind { case screen(QuickAddScreen), newGoal, scan }
     let icon: String; let label: String; let sub: String
-    let bg: Color; let fg: Color; let target: QuickAddScreen?; let isNewGoal: Bool
+    let bg: Color; let fg: Color; let kind: Kind
 }
 
 private let quickActions: [QuickAction] = [
-    QuickAction(icon: "wallet.pass",  label: "Log expense",       sub: "Coffee, groceries, anything",  bg: .warmAmberSoft, fg: .warmAmber, target: .expense,  isNewGoal: false),
-    QuickAction(icon: "arrow.up",     label: "Log income",        sub: "Paycheck, gift, side work",    bg: .warmGreenSoft, fg: .warmGreen, target: .income,   isNewGoal: false),
-    QuickAction(icon: "target",       label: "Deposit to a goal", sub: "Move money toward a goal",     bg: .warmSkySoft,   fg: .warmSky,   target: .deposit,  isNewGoal: false),
-    QuickAction(icon: "camera",       label: "Scan a receipt",    sub: "We'll read the total",          bg: .warmClaySoft,  fg: .warmClay,  target: .expense,  isNewGoal: false),
+    QuickAction(icon: "wallet.pass",  label: "Log expense",       sub: "Coffee, groceries, anything",  bg: .warmAmberSoft, fg: .warmAmber, kind: .screen(.expense)),
+    QuickAction(icon: "arrow.up",     label: "Log income",        sub: "Paycheck, gift, side work",    bg: .warmGreenSoft, fg: .warmGreen, kind: .screen(.income)),
+    QuickAction(icon: "target",       label: "Deposit to a goal", sub: "Move money toward a goal",     bg: .warmSkySoft,   fg: .warmSky,   kind: .screen(.deposit)),
+    QuickAction(icon: "camera",       label: "Scan a receipt",    sub: "We'll read the total",          bg: .warmClaySoft,  fg: .warmClay,  kind: .scan),
     QuickAction(icon: "plus",         label: "New goal",          sub: "Start something new",
-                bg: .warmLilacSoft, fg: .warmLilac, target: nil, isNewGoal: true),
+                bg: .warmLilacSoft, fg: .warmLilac, kind: .newGoal),
 ]
 
 struct WarmActionSheet: View {
     let onSelect: (QuickAddScreen) -> Void
     let onDismiss: () -> Void
     let onNewGoal: () -> Void
+    let onScan: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -224,8 +244,11 @@ struct WarmActionSheet: View {
             VStack(spacing: 0) {
                 ForEach(Array(quickActions.enumerated()), id: \.offset) { i, action in
                     Button(action: {
-                        if action.isNewGoal { onNewGoal() }
-                        else if let t = action.target { onSelect(t) }
+                        switch action.kind {
+                        case .screen(let target): onSelect(target)
+                        case .newGoal: onNewGoal()
+                        case .scan: onScan()
+                        }
                     }) {
                         HStack(spacing: 14) {
                             Image(systemName: action.icon)
