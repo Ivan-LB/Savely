@@ -57,9 +57,9 @@ struct AutoMoveSuggestion {
         guard !eligible.isEmpty else { return nil }
 
         func requiredWeeklyPace(_ goal: GoalModel) -> Double? {
-            guard let deadline = goal.deadline, deadline > now else { return nil }
-            let weeks = max(1, calendar.dateComponents([.weekOfYear], from: now, to: deadline).weekOfYear ?? 1)
-            return (goal.target - goal.current) / Double(weeks)
+            GoalPace.requiredWeeklyPace(
+                remaining: goal.target - goal.current, deadline: goal.deadline, now: now, calendar: calendar
+            )
         }
 
         let pick = eligible.sorted { a, b in

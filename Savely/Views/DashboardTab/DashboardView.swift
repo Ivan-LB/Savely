@@ -164,6 +164,16 @@ struct HeroGoalCard: View {
     let modelContext: ModelContext
     @State private var showDepositSheet = false
     @State private var showEditSheet = false
+    @Query private var goalDeposits: [DepositModel]
+
+    init(goal: GoalModel, modelContext: ModelContext) {
+        self.goal = goal
+        self.modelContext = modelContext
+        let goalID = goal.id
+        _goalDeposits = Query(filter: #Predicate<DepositModel> { $0.goalID == goalID })
+    }
+
+    private var pace: GoalPace { GoalPace.compute(goal: goal, deposits: goalDeposits) }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -227,9 +237,9 @@ struct HeroGoalCard: View {
                                 .font(.system(size: 11, weight: .semibold))
                                 .foregroundStyle(Color.warmInkMuted)
                                 .tracking(0.8)
-                            Text(paceText)
+                            Text(pace.label)
                                 .font(.system(size: 14, weight: .semibold))
-                                .foregroundStyle(Color.warmGreen)
+                                .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmGreen)
                         }
                     }
                 }
@@ -272,10 +282,6 @@ struct HeroGoalCard: View {
         .sheet(isPresented: $showEditSheet) {
             GoalEditSheet(goal: goal)
         }
-    }
-
-    private var paceText: String {
-        goal.progress >= 1.0 ? "Complete!" : "On track"
     }
 
     private func formattedAmount(_ v: Double) -> String {

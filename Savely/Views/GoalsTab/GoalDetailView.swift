@@ -6,6 +6,15 @@ struct GoalDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @State private var showingEdit = false
+    @Query private var goalDeposits: [DepositModel]
+
+    init(goal: GoalModel) {
+        self.goal = goal
+        let goalID = goal.id
+        _goalDeposits = Query(filter: #Predicate<DepositModel> { $0.goalID == goalID })
+    }
+
+    private var pace: GoalPace { GoalPace.compute(goal: goal, deposits: goalDeposits) }
 
     var body: some View {
         ScrollView {
@@ -58,13 +67,25 @@ struct GoalDetailView: View {
                     }
                 }
                 .frame(width: 200, height: 200)
-                .padding(.bottom, 24)
+                .padding(.bottom, 12)
+
+                // — Status · deadline —
+                HStack(spacing: 6) {
+                    Circle()
+                        .fill(pace.status == .behind ? Color.warmClay : Color.warmGreen)
+                        .frame(width: 6, height: 6)
+                        .accessibilityHidden(true)
+                    Text(statusLine)
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmInkSoft)
+                }
+                .padding(.bottom, 20)
 
                 // — Stat pills —
                 HStack(spacing: 8) {
                     StatPill(label: "Remaining", value: formattedAmount(max(0, goal.target - goal.current)), accent: goal.color)
-                    StatPill(label: "Per week", value: formattedAmount(perWeek), accent: goal.color)
-                    StatPill(label: "ETA", value: etaString, accent: goal.color)
+                    StatPill(label: "Needed / wk", value: pace.requiredWeekly.map { formattedAmount($0) } ?? "—", accent: goal.color)
+                    StatPill(label: "ETA", value: pace.etaText(), accent: goal.color)
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
@@ -100,19 +121,12 @@ struct GoalDetailView: View {
         .sheet(isPresented: $showingEdit) { GoalEditSheet(goal: goal) }
     }
 
-    private var perWeek: Double {
-        let remaining = max(0, goal.target - goal.current)
-        return remaining / 24
-    }
-
-    private var etaString: String {
-        guard goal.progress < 1.0 else { return "Done!" }
-        let remaining = goal.target - goal.current
-        guard remaining > 0 else { return "Done!" }
-        let weeksLeft = remaining / max(1, perWeek)
-        let eta = Calendar.current.date(byAdding: .weekOfYear, value: Int(weeksLeft), to: Date()) ?? Date()
-        let f = DateFormatter(); f.dateFormat = "MMM d"
-        return f.string(from: eta)
+    /// "On track · by Jun 12" / "Behind · by Jun 12" / "On track · no target date" / "Complete!"
+    private var statusLine: String {
+        if pace.status == .complete { return pace.label }
+        guard let deadline = goal.deadline else { return "\(pace.label) · no target date" }
+        let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"
+        return "\(pace.label) · by \(f.string(from: deadline)) · \(formattedAmount(pace.actualWeekly))/wk"
     }
 
     private func formattedAmount(_ v: Double) -> String {
