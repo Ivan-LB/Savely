@@ -103,6 +103,10 @@ struct WarmTabBar: View {
         }
         .accessibilityElement(children: .contain)
         .accessibilityAddTraits(.isTabBar)
+        // Like UITabBar: labels stop growing at the largest non-accessibility
+        // size — five items in 4 columns cannot carry AX text; VoiceOver
+        // labels and the 44pt targets carry accessibility here.
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
     }
 }
 
@@ -294,6 +298,9 @@ struct WarmKeypad: View {
             }
             .background(Color.warmSurface)
         }
+        // A numeric keypad, like the system one, keeps its key size; the
+        // amount above it scales instead.
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
     }
 
     private func tap(_ key: String) {

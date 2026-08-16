@@ -216,6 +216,7 @@ A warm neutral ground with a single committed green; everything else is a soft t
 - **Body** (regular 400 / strong 600, 14–15pt): row primary text, descriptions, button labels. Row titles are 600; supporting copy 400.
 - **Label** (600, 11–13pt, tracking 0.8–1pt, uppercase): section kickers ("FAVORITE GOAL", "SETTINGS", "HISTORY", "7-MONTH TREND") and metadata lines. This is an incumbent, committed convention — one kicker style used consistently, not a new pattern to add elsewhere.
 - **Figures**: every money figure uses `.monospacedDigit()`. Non-tabular money is a bug.
+- **Dynamic Type**: every size above is applied with `.warmFont(size, weight:, design:)` (`Font+Warm.swift`), which is pixel-identical at the default content size and scales on the curve of the nearest system text style. Never `.font(.system(size:))`. The tab bar and the numeric keypad cap at `xxxLarge`, as UIKit's do.
 
 ### Named Rules
 **The Serif-Names, Sans-Explains Rule.** If it is the name of a thing or the number that matters, it is serif. If it tells you what to do with it, it is sans.
