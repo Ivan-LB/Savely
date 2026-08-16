@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-/// Last onboarding page — the only functional one (pick reminder times).
+/// Last onboarding page — the only functional one: opt in or out of each
+/// reminder and pick its time. The same `ReminderPreferences` the Profile
+/// tab edits later, so the two never disagree.
 /// Warm Meadow: clay tile, serif title, bordered surface card, no shadows.
 struct NotificationSettingsStepView: View {
-    @Binding var expenseReminderTime: Date
-    @Binding var goalAlertTime: Date
+    @Binding var preferences: ReminderPreferences
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var appeared = false
 
@@ -27,6 +28,7 @@ struct NotificationSettingsStepView: View {
                 )
                 .scaleEffect(appeared ? 1 : 0.92)
                 .opacity(appeared ? 1 : 0)
+                .accessibilityHidden(true)
 
             VStack(spacing: 12) {
                 Text(Strings.Onboarding.notificationSettingsTitle)
@@ -45,29 +47,19 @@ struct NotificationSettingsStepView: View {
             .offset(y: appeared ? 0 : 10)
 
             VStack(spacing: 0) {
-                HStack {
-                    Text(Strings.Onboarding.expenseReminderTimeLabel)
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundStyle(Color.warmInk)
-                    Spacer()
-                    DatePicker("", selection: $expenseReminderTime, displayedComponents: .hourAndMinute)
-                        .labelsHidden()
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-
+                reminderRows(
+                    title: Strings.Profile.expenseRemindersLabel,
+                    icon: "bell.fill",
+                    enabled: $preferences.expenseEnabled,
+                    time: $preferences.expenseTime
+                )
                 WarmDivider()
-
-                HStack {
-                    Text(Strings.Onboarding.goalAlertTimeLabel)
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundStyle(Color.warmInk)
-                    Spacer()
-                    DatePicker("", selection: $goalAlertTime, displayedComponents: .hourAndMinute)
-                        .labelsHidden()
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
+                reminderRows(
+                    title: Strings.Profile.goalAlertsLabel,
+                    icon: "target",
+                    enabled: $preferences.goalEnabled,
+                    time: $preferences.goalTime
+                )
             }
             .background(Color.warmSurface)
             .cornerRadius(16)
@@ -88,10 +80,18 @@ struct NotificationSettingsStepView: View {
             }
         }
     }
+
+    @ViewBuilder
+    private func reminderRows(title: String, icon: String, enabled: Binding<Bool>, time: Binding<Date>) -> some View {
+        SettingsToggleRow(icon: icon, title: title, isOn: enabled)
+        if enabled.wrappedValue {
+            ReminderTimeRow(time: time)
+        }
+    }
 }
 
 #Preview {
-    NotificationSettingsStepView(expenseReminderTime: .constant(Date()), goalAlertTime: .constant(Date()))
+    NotificationSettingsStepView(preferences: .constant(.defaults()))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.warmBg)
 }
