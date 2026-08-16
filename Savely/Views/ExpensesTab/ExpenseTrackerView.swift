@@ -78,7 +78,9 @@ struct ExpenseTrackerView: View {
                     .background(Color.warmInk)
                     .cornerRadius(20)
                 }
-                .sheet(isPresented: $showCameraView) {
+                // Full screen, same as the "+" shortcut — the scanner is a
+                // camera, not a form.
+                .fullScreenCover(isPresented: $showCameraView) {
                     let cameraViewModel = CameraViewModel(expenseViewModel: viewModel)
                     CameraView(viewModel: cameraViewModel)
                 }
