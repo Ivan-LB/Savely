@@ -31,7 +31,7 @@ struct IncomesTrackerView: View {
                     Text("Income")
                         .font(.system(size: 34, weight: .regular, design: .serif))
                         .foregroundStyle(Color.warmInk)
-                    Text("April · \(formattedAmount(viewModel.totalIncomeThisMonth))")
+                    Text("\(currentMonthName) · \(formattedAmount(viewModel.totalIncomeThisMonth))")
                         .font(.system(size: 13))
                         .foregroundStyle(Color.warmInkMuted)
                 }
@@ -47,14 +47,16 @@ struct IncomesTrackerView: View {
                             .tracking(0.6)
                             .textCase(.uppercase)
                         Spacer()
-                        if viewModel.percentageChange > 0 {
-                            HStack(spacing: 3) {
-                                Image(systemName: "arrow.up").font(.system(size: 10, weight: .semibold))
-                                Text(String(format: "+%.0f%%", viewModel.percentageChange))
-                                    .font(.system(size: 13, weight: .semibold))
-                            }
-                            .foregroundStyle(Color.warmGreen)
+                        // Shown in both directions: a finance app that hides a
+                        // month-over-month drop is not worth trusting.
+                        let isUp = viewModel.percentageChange >= 0
+                        HStack(spacing: 3) {
+                            Image(systemName: isUp ? "arrow.up" : "arrow.down")
+                                .font(.system(size: 10, weight: .semibold))
+                            Text(String(format: "%+.0f%%", viewModel.percentageChange))
+                                .font(.system(size: 13, weight: .semibold))
                         }
+                        .foregroundStyle(isUp ? Color.warmGreen : Color.warmClay)
                     }
                     HStack(alignment: .bottom, spacing: 8) {
                         ForEach(Array(barData.enumerated()), id: \.offset) { idx, bar in
@@ -153,7 +155,16 @@ struct IncomesTrackerView: View {
         }
         .background(Color.warmBg)
         .navigationBarHidden(true)
-        .onAppear { if viewModel.modelContext == nil { viewModel.setModelContext(modelContext) } }
+        // Unconditional: MoneyView keeps both trackers alive in a ZStack, so
+        // this fires rarely — but when it does, the list must not be stale.
+        .onAppear { viewModel.setModelContext(modelContext) }
+        .alert(isPresented: $viewModel.showError) {
+            Alert(title: Text(Strings.Errors.errorLabel), message: Text(viewModel.errorMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
+        }
+    }
+
+    private var currentMonthName: String {
+        Date().formatted(.dateTime.month(.wide))
     }
 
     private func formattedAmount(_ v: Double) -> String {

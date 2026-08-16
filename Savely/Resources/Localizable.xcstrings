@@ -10,13 +10,7 @@
     " of %lld" : {
 
     },
-    " to repeat your last action." : {
-
-    },
     ".00" : {
-
-    },
-    "**Auto-move $230** to Kyoto from this paycheck?" : {
 
     },
     "/wk" : {
@@ -24,6 +18,16 @@
     },
     "%" : {
 
+    },
+    "%@ · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
     },
     "%@ is on your home screen.\nAdd the first dollar?" : {
 
@@ -51,13 +55,7 @@
         }
       }
     },
-    "%lld new saving tips" : {
-
-    },
     "%lld%%" : {
-
-    },
-    "+" : {
 
     },
     "+%@" : {
@@ -236,24 +234,6 @@
         }
       }
     },
-    "add_new_goal_button" : {
-      "comment" : "Add New Goal Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Add New Goal"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agregar Nueva Meta"
-          }
-        }
-      }
-    },
     "ALMOST THERE" : {
 
     },
@@ -310,9 +290,6 @@
           }
         }
       }
-    },
-    "April · %@" : {
-
     },
     "Are you sure you want to delete this expense?" : {
 
@@ -1238,60 +1215,6 @@
         }
       }
     },
-    "goal_amount_placeholder" : {
-      "comment" : "Goal Amount Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal amount"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cantidad de la meta"
-          }
-        }
-      }
-    },
-    "goal_details_headline" : {
-      "comment" : "Goal Details Headline",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal details"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detalles de la meta"
-          }
-        }
-      }
-    },
-    "goal_name_placeholder" : {
-      "comment" : "Goal Name Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal name"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre de la meta"
-          }
-        }
-      }
-    },
     "Goals" : {
 
     },
@@ -1898,9 +1821,6 @@
         }
       }
     },
-    "PDF" : {
-
-    },
     "personal_information_title" : {
       "comment" : "Personal Information Title",
       "extractionState" : "extracted_with_value",
@@ -2037,9 +1957,6 @@
       }
     },
     "Progress overall" : {
-
-    },
-    "Ready for review" : {
 
     },
     "receive_tips_label" : {
@@ -2720,9 +2637,6 @@
     "TIMING" : {
 
     },
-    "Tip History" : {
-
-    },
     "TIP OF THE DAY" : {
 
     },
@@ -2745,9 +2659,6 @@
       }
     },
     "Tip: be specific. Try a specific name like Kyoto trip '26." : {
-
-    },
-    "Tip: long-press " : {
 
     },
     "tips_and_suggestion_title" : {
@@ -2916,6 +2827,9 @@
         }
       }
     },
+    "UNDO" : {
+
+    },
     "update_information_button" : {
       "comment" : "Update Information Button",
       "extractionState" : "extracted_with_value",
@@ -2953,12 +2867,6 @@
       }
     },
     "We'll read the total and category" : {
-
-    },
-    "WEEKLY INSIGHTS" : {
-
-    },
-    "Weekly Report" : {
 
     },
     "weekly_budget_description" : {

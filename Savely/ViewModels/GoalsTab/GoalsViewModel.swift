@@ -21,19 +21,15 @@ class GoalsViewModel: ObservableObject {
 
     var modelContext: ModelContext? {
         didSet {
-            guard let modelContext = modelContext, !isNotificationsSetup else { return }
+            guard modelContext != nil else { return }
             fetchGoals()
-            setupNotifications()
         }
     }
-    
-    private var isNotificationsSetup = false
-    
+
     init(modelContext: ModelContext? = nil) {
         self.modelContext = modelContext
         if modelContext != nil {
             fetchGoals()
-            setupNotifications()
         }
     }
 
@@ -155,70 +151,8 @@ class GoalsViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Configurar Observadores de Notificaciones
-
-    private func setupNotifications() {
-        guard !isNotificationsSetup else { return }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleIncomeAdded(_:)), name: .incomeAdded, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleIncomeDeleted(_:)), name: .incomeDeleted, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleExpenseAdded(_:)), name: .expenseAdded, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleExpenseDeleted(_:)), name: .expenseDeleted, object: nil)
-        
-        isNotificationsSetup = true
-    }
-    
-    @objc private func handleIncomeAdded(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let amount = userInfo["amount"] as? Double else { return }
-        
-        updateFavoriteGoalProgress(by: amount)
-    }
-
-    @objc private func handleIncomeDeleted(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let amount = userInfo["amount"] as? Double else { return }
-        
-        updateFavoriteGoalProgress(by: -amount)
-    }
-
-    @objc private func handleExpenseAdded(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let amount = userInfo["amount"] as? Double else { return }
-        
-        updateFavoriteGoalProgress(by: -amount)
-    }
-
-    @objc private func handleExpenseDeleted(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let amount = userInfo["amount"] as? Double else { return }
-        
-        updateFavoriteGoalProgress(by: amount)
-    }
-
-    private func updateFavoriteGoalProgress(by amount: Double) {
-        guard let modelContext = modelContext else { return }
-        guard let favoriteGoal = goals.first(where: { $0.isFavorite }) else {
-            print("No favorite goal found to update progress.")
-            return
-        }
-        
-        favoriteGoal.current += amount
-        favoriteGoal.current = max(min(favoriteGoal.current, favoriteGoal.target), 0) // Limitar entre 0 y target
-        
-        do {
-            try modelContext.save()
-            print("Favorite goal progress updated by \(amount). New current: \(favoriteGoal.current)")
-        } catch {
-            print("Error updating favorite goal progress: \(error)")
-            errorMessage = "Error al actualizar el progreso de la meta favorita."
-            showError = true
-        }
-        
-        fetchGoals()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+    // Income and expense logging deliberately do NOT touch goal progress.
+    // Goal money moves only through the explicit deposit flows and the
+    // payday auto-move (AutoMoveSuggestion.apply), which is the single
+    // place that turns an income into savings.
 }

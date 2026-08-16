@@ -45,20 +45,11 @@ struct ExpenseTrackerView: View {
                         Text("Expenses")
                             .font(.system(size: 34, weight: .regular, design: .serif))
                             .foregroundStyle(Color.warmInk)
-                        Text("April · \(formattedTotal)")
+                        Text("\(currentMonthName) · \(formattedTotal)")
                             .font(.system(size: 13))
                             .foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
-                    Button(action: {}) {
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 16))
-                            .foregroundStyle(Color.warmInk)
-                            .frame(width: 40, height: 40)
-                            .background(Color.warmSurface)
-                            .cornerRadius(14)
-                            .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.warmLine, lineWidth: 1))
-                    }
                 }
                 .padding(.top, 8)
 
@@ -175,16 +166,28 @@ struct ExpenseTrackerView: View {
         }
         .background(Color.warmBg)
         .navigationBarHidden(true)
-        .onAppear { if viewModel.modelContext == nil { viewModel.setModelContext(modelContext) } }
+        // Unconditional: MoneyView keeps both trackers alive in a ZStack, so
+        // this fires rarely — but when it does, the list must not be stale.
+        .onAppear { viewModel.setModelContext(modelContext) }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(Strings.Errors.errorLabel), message: Text(viewModel.errorMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
         }
     }
 
+    private var currentMonthName: String {
+        Date().formatted(.dateTime.month(.wide))
+    }
+
+    /// Scoped to the current month so the label and the number agree — this
+    /// used to sum every expense ever logged under an "April" header.
     private var formattedTotal: String {
+        let calendar = Calendar.current
+        let monthTotal = viewModel.expenses
+            .filter { calendar.isDate($0.date, equalTo: Date(), toGranularity: .month) }
+            .reduce(0) { $0 + $1.amount }
         let f = NumberFormatter()
         f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 0
-        return f.string(from: NSNumber(value: viewModel.expenses.reduce(0) { $0 + $1.amount })) ?? "$0"
+        return f.string(from: NSNumber(value: monthTotal)) ?? "$0"
     }
 }
 
@@ -215,7 +218,6 @@ struct ExpenseRowWarm: View {
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundStyle(Color.warmInk)
                 .monospacedDigit()
-            Image(systemName: "chevron.right").font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
         }
         .padding(.horizontal, 14).padding(.vertical, 12)
         .contextMenu {

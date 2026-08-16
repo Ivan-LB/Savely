@@ -4,6 +4,9 @@ import SwiftData
 // MARK: - Dashboard
 
 struct DashboardView: View {
+    /// Set by `MainNavigationView` so "See all" can switch to the Money tab.
+    var onSeeAll: () -> Void = {}
+
     @Query(sort: \ExpenseModel.date, order: .reverse) private var expenses: [ExpenseModel]
     @Query(sort: \IncomeModel.date, order: .reverse)  private var incomes: [IncomeModel]
     @Query private var goals: [GoalModel]
@@ -96,9 +99,12 @@ struct DashboardView: View {
                             .font(.system(size: 20, weight: .regular, design: .serif))
                             .foregroundStyle(Color.warmInk)
                         Spacer()
-                        Text("See all")
-                            .font(.system(size: 13, weight: .medium))
-                            .foregroundStyle(Color.warmGreen)
+                        Button(action: onSeeAll) {
+                            Text("See all")
+                                .font(.system(size: 13, weight: .medium))
+                                .foregroundStyle(Color.warmGreen)
+                        }
+                        .buttonStyle(.plain)
                     }
                     .padding(.bottom, 10)
 
@@ -182,12 +188,6 @@ struct HeroGoalCard: View {
                             .tracking(0.8)
                     }
                     Spacer()
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 14))
-                        .foregroundStyle(Color.warmInkMuted)
-                        .frame(width: 32, height: 32)
-                        .background(Color.warmBg)
-                        .cornerRadius(10)
                 }
 
                 Text(goal.name)

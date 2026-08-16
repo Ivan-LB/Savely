@@ -19,10 +19,28 @@ class ExpenseTrackerViewModel: ObservableObject {
 
     var modelContext: ModelContext?
 
+    private var observerTokens: [NSObjectProtocol] = []
+
     init(modelContext: ModelContext? = nil) {
         self.modelContext = modelContext
         if modelContext != nil {
             fetchExpenses()
+        }
+        observeExpenseChanges()
+    }
+
+    deinit {
+        observerTokens.forEach { NotificationCenter.default.removeObserver($0) }
+    }
+
+    /// The global "+" sheet saves through its own view-model instance, so this
+    /// instance only hears about a new expense through the notifications that
+    /// `addExpense`/`deleteExpense` post. Without this the Money tab's list
+    /// stayed stale until the app relaunched.
+    private func observeExpenseChanges() {
+        let refresh: (Notification) -> Void = { [weak self] _ in self?.fetchExpenses() }
+        observerTokens = [.expenseAdded, .expenseDeleted].map { name in
+            NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main, using: refresh)
         }
     }
 
@@ -47,29 +65,34 @@ class ExpenseTrackerViewModel: ObservableObject {
 
     func addExpense() {
         guard let modelContext = modelContext else { return }
-        if let amountValue = Double(amount) {
-            let newExpense = ExpenseModel(
-                expenseDescription: expenseDescription,
-                amount: amountValue,
-                date: Date()
-            )
-            modelContext.insert(newExpense)
-            
-            do {
-                try modelContext.save()
-                print("New expense saved successfully")
-                
-                NotificationCenter.default.post(name: .expenseAdded, object: nil, userInfo: ["amount": amountValue])
-            } catch {
-                print("Error saving new expense: \(error)")
-                errorMessage = "Error al guardar el gasto."
-                showError = true
-            }
-            
-            expenseDescription = ""
-            amount = ""
-            fetchExpenses()
+        guard let amountValue = parseAmount(amount) else {
+            // Used to return silently, so a typo just did nothing at all.
+            errorMessage = "Enter a valid amount greater than zero."
+            showError = true
+            return
         }
+
+        let newExpense = ExpenseModel(
+            expenseDescription: expenseDescription,
+            amount: amountValue,
+            date: Date()
+        )
+        modelContext.insert(newExpense)
+
+        do {
+            try modelContext.save()
+            print("New expense saved successfully")
+
+            NotificationCenter.default.post(name: .expenseAdded, object: nil, userInfo: ["amount": amountValue])
+        } catch {
+            print("Error saving new expense: \(error)")
+            errorMessage = "Error al guardar el gasto."
+            showError = true
+        }
+
+        expenseDescription = ""
+        amount = ""
+        fetchExpenses()
     }
 
     func deleteExpense(_ expense: ExpenseModel) {
