@@ -9,11 +9,10 @@ import Foundation
 import Network
 
 /// App-level state. Local-first since the auth removal (2026-08): there is
-/// no account — the app goes straight from launch to onboarding (first run)
-/// or the main tabs. Profile data (display name) lives in UserDefaults.
+/// no account and no profile — the app goes straight from launch to
+/// onboarding (first run) or the main tabs.
 class AppViewModel: ObservableObject {
     @Published var isOnboardingComplete: Bool
-    @Published var currentUserName: String
     @Published var showNetworkWarning: Bool = false // For modal warning about limited features
 
     private let monitor = NWPathMonitor()
@@ -25,7 +24,6 @@ class AppViewModel: ObservableObject {
 
     init() {
         self.isOnboardingComplete = UserDefaults.standard.bool(forKey: "isOnboardingComplete")
-        self.currentUserName = UserDefaults.standard.string(forKey: "displayName") ?? ""
         self.startNetworkMonitoring()
     }
 
@@ -36,11 +34,6 @@ class AppViewModel: ObservableObject {
     func completeOnboarding() {
         isOnboardingComplete = true
         UserDefaults.standard.set(true, forKey: "isOnboardingComplete")
-    }
-
-    func updateDisplayName(_ name: String) {
-        currentUserName = name
-        UserDefaults.standard.set(name, forKey: "displayName")
     }
 
     private func startNetworkMonitoring() {

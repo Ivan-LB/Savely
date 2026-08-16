@@ -52,26 +52,17 @@ struct DashboardView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                // — Greeting —
-                HStack(alignment: .center) {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(formattedDate)
-                            .font(.system(size: 13))
-                            .foregroundStyle(Color.warmInkMuted)
-                        Text(greeting + ".")
-                            .font(.system(size: 30, weight: .regular, design: .serif))
-                            .foregroundStyle(Color.warmInk)
-                    }
-                    Spacer()
-                    Circle()
-                        .fill(Color.warmAmberSoft)
-                        .frame(width: 40, height: 40)
-                        .overlay(
-                            Image(systemName: "person.fill")
-                                .font(.system(size: 18))
-                                .foregroundStyle(Color.warmAmber)
-                        )
+                // — Greeting — (no avatar: there is no account, so no
+                // person to represent)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(formattedDate)
+                        .font(.system(size: 13))
+                        .foregroundStyle(Color.warmInkMuted)
+                    Text(greeting + ".")
+                        .font(.system(size: 30, weight: .regular, design: .serif))
+                        .foregroundStyle(Color.warmInk)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 8)
 
                 // — Hero Goal Card —

@@ -277,10 +277,6 @@ struct Strings {
             "just_started_label",
             value: "Just getting started",
             comment: "Subtitle under the display name when nothing is logged yet")
-        static let editNameHint = NSLocalizedString(
-            "edit_name_hint",
-            value: "Tap to edit your name",
-            comment: "Accessibility hint on the identity card")
         static let statSavedLabel = NSLocalizedString(
             "stat_saved_label",
             value: "Saved",

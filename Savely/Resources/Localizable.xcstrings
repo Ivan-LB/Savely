@@ -837,24 +837,6 @@
     "Edit Profile" : {
 
     },
-    "edit_name_hint" : {
-      "comment" : "Accessibility hint on the identity card",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Tap to edit your name"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca para editar tu nombre"
-          }
-        }
-      }
-    },
     "email_placeholder_title" : {
       "comment" : "Email Placeholder Label",
       "extractionState" : "extracted_with_value",
