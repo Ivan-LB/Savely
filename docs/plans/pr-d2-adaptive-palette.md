@@ -97,7 +97,7 @@ pairs ≥ 3.0.
 | line | warm black 8% | warm white 10% | — |
 | line-soft | warm black 4% | warm white 5% | — |
 | green (text/icon) | `#2f6b4a` | `#78b58f` | 7.7 / 6.9 ✓ |
-| green-fill (CTA, income card) | `#2f6b4a` | `#2f6b4a` (unchanged, white text 6.3 ✓) | ✓ |
+| green-fill (CTA, income card) | `#2f6b4a` | `#367c56` (white text 5.0 ✓, ≥3:1 vs surface) | ✓ |
 | green-deep (text on green-soft) | `#1f4a33` | `#b6dcc4` | 8.4 on green-soft ✓ |
 | green-soft | `#e8f0ea` | `#22382c` | — |
 | green-tint | `#f2f7f3` | `#1b2a21` | — |

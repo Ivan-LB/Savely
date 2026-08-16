@@ -24,7 +24,7 @@ extension Color {
     // surface* (CTAs, the income card, the selected radio) that carries
     // white content, and stays deep in both schemes.
     static let warmGreen       = Color(light: 0x2F6B4A, dark: 0x78B58F)
-    static let warmGreenFill   = Color(light: 0x2F6B4A, dark: 0x357A55) // also "green that stays deep" as ink on white pills
+    static let warmGreenFill   = Color(light: 0x2F6B4A, dark: 0x367C56) // also "green that stays deep" as ink on white pills
     static let warmGreenDeep   = Color(light: 0x1F4A33, dark: 0xB6DCC4)
     static let warmGreenSoft   = Color(light: 0xE8F0EA, dark: 0x22382C)
     static let warmGreenTint   = Color(light: 0xF2F7F3, dark: 0x1B2A21)
