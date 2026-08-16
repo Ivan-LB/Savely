@@ -55,6 +55,9 @@
         }
       }
     },
+    "%lld percent" : {
+
+    },
     "%lld%%" : {
 
     },
@@ -63,348 +66,6 @@
     },
     "+$" : {
 
-    },
-    "all_achievements_unlocked_label" : {
-      "comment" : "Shown when nothing is left to unlock",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Every achievement unlocked"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todos los logros desbloqueados"
-          }
-        }
-      }
-    },
-    "cancel_button" : {
-      "comment" : "Cancel Button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Cancel"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancelar"
-          }
-        }
-      }
-    },
-    "data_privacy_title" : {
-      "comment" : "Section header",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Data & privacy"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Datos y privacidad"
-          }
-        }
-      }
-    },
-    "data_stays_local_label" : {
-      "comment" : "One-line intro of the Data & privacy section",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Your data never leaves this iPhone."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tus datos nunca salen de este iPhone."
-          }
-        }
-      }
-    },
-    "delete_all_data_confirm_button" : {
-      "comment" : "Destructive confirm button",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Delete everything"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Borrar todo"
-          }
-        }
-      }
-    },
-    "delete_all_data_confirm_message" : {
-      "comment" : "Confirmation dialog message",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Every income, expense and goal will be removed from this iPhone. Your name and reminder settings stay. This cannot be undone."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se eliminarán todos los ingresos, gastos y metas de este iPhone. Tu nombre y tus recordatorios se conservan. Esto no se puede deshacer."
-          }
-        }
-      }
-    },
-    "delete_all_data_confirm_title" : {
-      "comment" : "Confirmation dialog title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Delete all data?"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Borrar todos los datos?"
-          }
-        }
-      }
-    },
-    "delete_all_data_label" : {
-      "comment" : "Destructive row",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Delete all data"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Borrar todos los datos"
-          }
-        }
-      }
-    },
-    "delete_data_failed_message" : {
-      "comment" : "Alert when deletion fails",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Couldn't delete your data. Please try again."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se pudieron borrar tus datos. Inténtalo de nuevo."
-          }
-        }
-      }
-    },
-    "edit_name_hint" : {
-      "comment" : "Accessibility hint on the identity card",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Tap to edit your name"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca para editar tu nombre"
-          }
-        }
-      }
-    },
-    "just_started_label" : {
-      "comment" : "Subtitle under the display name when nothing is logged yet",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Just getting started"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apenas empezando"
-          }
-        }
-      }
-    },
-    "next_achievement_label" : {
-      "comment" : "Kicker above the closest locked achievement",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Next up"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Siguiente"
-          }
-        }
-      }
-    },
-    "notifications_denied_hint" : {
-      "comment" : "Shown instead of the reminder switches when permission is denied",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Notifications are off for Savely in iOS Settings."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Las notificaciones de Savely están desactivadas en Ajustes de iOS."
-          }
-        }
-      }
-    },
-    "open_settings_button" : {
-      "comment" : "Button that opens the iOS Settings app",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Open Settings"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abrir Ajustes"
-          }
-        }
-      }
-    },
-    "reminder_time_label" : {
-      "comment" : "Label next to the reminder time picker",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Time"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hora"
-          }
-        }
-      }
-    },
-    "saving_since_label" : {
-      "comment" : "Subtitle under the display name; %@ is a month and year",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Saving since %@"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ahorrando desde %@"
-          }
-        }
-      }
-    },
-    "stat_active_goals_label" : {
-      "comment" : "Stat cell: goals not yet complete",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Active goals"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Metas activas"
-          }
-        }
-      }
-    },
-    "stat_movements_label" : {
-      "comment" : "Stat cell: number of incomes + expenses logged",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Movements"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Movimientos"
-          }
-        }
-      }
-    },
-    "stat_saved_label" : {
-      "comment" : "Stat cell: total saved across goals",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Saved"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ahorrado"
-          }
-        }
-      }
     },
     "~$%lld/mo" : {
 
@@ -576,6 +237,24 @@
         }
       }
     },
+    "all_achievements_unlocked_label" : {
+      "comment" : "Shown when nothing is left to unlock",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Every achievement unlocked"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los logros desbloqueados"
+          }
+        }
+      }
+    },
     "ALMOST THERE" : {
 
     },
@@ -671,6 +350,24 @@
     },
     "Cancel" : {
 
+    },
+    "cancel_button" : {
+      "comment" : "Cancel Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cancel"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
     },
     "category_placeholder" : {
       "comment" : "Category Placeholder",
@@ -897,6 +594,42 @@
         }
       }
     },
+    "data_privacy_title" : {
+      "comment" : "Section header",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Data & privacy"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos y privacidad"
+          }
+        }
+      }
+    },
+    "data_stays_local_label" : {
+      "comment" : "One-line intro of the Data & privacy section",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your data never leaves this iPhone."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus datos nunca salen de este iPhone."
+          }
+        }
+      }
+    },
     "Day one" : {
 
     },
@@ -947,6 +680,96 @@
     },
     "Delete Income" : {
 
+    },
+    "delete_all_data_confirm_button" : {
+      "comment" : "Destructive confirm button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete everything"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar todo"
+          }
+        }
+      }
+    },
+    "delete_all_data_confirm_message" : {
+      "comment" : "Confirmation dialog message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Every income, expense and goal will be removed from this iPhone. Your name and reminder settings stay. This cannot be undone."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se eliminarán todos los ingresos, gastos y metas de este iPhone. Tu nombre y tus recordatorios se conservan. Esto no se puede deshacer."
+          }
+        }
+      }
+    },
+    "delete_all_data_confirm_title" : {
+      "comment" : "Confirmation dialog title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete all data?"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Borrar todos los datos?"
+          }
+        }
+      }
+    },
+    "delete_all_data_label" : {
+      "comment" : "Destructive row",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete all data"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar todos los datos"
+          }
+        }
+      }
+    },
+    "delete_data_failed_message" : {
+      "comment" : "Alert when deletion fails",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Couldn't delete your data. Please try again."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron borrar tus datos. Inténtalo de nuevo."
+          }
+        }
+      }
     },
     "description_placeholder_label" : {
       "comment" : "Description Placeholder Label",
@@ -1013,6 +836,24 @@
     },
     "Edit Profile" : {
 
+    },
+    "edit_name_hint" : {
+      "comment" : "Accessibility hint on the identity card",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tap to edit your name"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca para editar tu nombre"
+          }
+        }
+      }
     },
     "email_placeholder_title" : {
       "comment" : "Email Placeholder Label",
@@ -1659,6 +1500,24 @@
         }
       }
     },
+    "just_started_label" : {
+      "comment" : "Subtitle under the display name when nothing is logged yet",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Just getting started"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apenas empezando"
+          }
+        }
+      }
+    },
     "LIFETIME INCOME" : {
 
     },
@@ -1814,6 +1673,24 @@
     },
     "New goal · " : {
 
+    },
+    "next_achievement_label" : {
+      "comment" : "Kicker above the closest locked achievement",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Next up"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
+        }
+      }
     },
     "next_button" : {
       "comment" : "Next Button",
@@ -2001,6 +1878,24 @@
         }
       }
     },
+    "notifications_denied_hint" : {
+      "comment" : "Shown instead of the reminder switches when permission is denied",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Notifications are off for Savely in iOS Settings."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las notificaciones de Savely están desactivadas en Ajustes de iOS."
+          }
+        }
+      }
+    },
     "notifications_title" : {
       "comment" : "Notifications Title",
       "extractionState" : "extracted_with_value",
@@ -2063,6 +1958,24 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Yours, and only yours"
+          }
+        }
+      }
+    },
+    "open_settings_button" : {
+      "comment" : "Button that opens the iOS Settings app",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open Settings"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Ajustes"
           }
         }
       }
@@ -2358,6 +2271,24 @@
         }
       }
     },
+    "reminder_time_label" : {
+      "comment" : "Label next to the reminder time picker",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Time"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hora"
+          }
+        }
+      }
+    },
     "reports_tab_string" : {
       "comment" : "Reports Tab String",
       "extractionState" : "extracted_with_value",
@@ -2420,6 +2351,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Savely"
+          }
+        }
+      }
+    },
+    "saving_since_label" : {
+      "comment" : "Subtitle under the display name; %@ is a month and year",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Saving since %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorrando desde %@"
           }
         }
       }
@@ -2759,6 +2708,60 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fecha de Inicio"
+          }
+        }
+      }
+    },
+    "stat_active_goals_label" : {
+      "comment" : "Stat cell: goals not yet complete",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Active goals"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metas activas"
+          }
+        }
+      }
+    },
+    "stat_movements_label" : {
+      "comment" : "Stat cell: number of incomes + expenses logged",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Movements"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movimientos"
+          }
+        }
+      }
+    },
+    "stat_saved_label" : {
+      "comment" : "Stat cell: total saved across goals",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Saved"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorrado"
           }
         }
       }
