@@ -19,7 +19,7 @@ struct MainNavigationView: View {
     /// its own expense view model, exactly like the Money tab's banner does;
     /// the Money tab hears about the new row through the posted notification.
     @StateObject private var scanExpenseVM = ExpenseTrackerViewModel()
-    @State private var scanner: CameraViewModel?
+    @State private var scanner: ReceiptScanModel?
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -56,7 +56,7 @@ struct MainNavigationView: View {
                     showActionSheet = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                         scanExpenseVM.setModelContext(modelContext)
-                        scanner = CameraViewModel(expenseViewModel: scanExpenseVM)
+                        scanner = ReceiptScanModel(expenseStore: scanExpenseVM)
                     }
                 }
             )
@@ -70,8 +70,8 @@ struct MainNavigationView: View {
             AddGoalFlowView(isPresented: $showAddGoalFlow)
                 .honorsReduceMotion()
         }
-        .fullScreenCover(item: $scanner) { vm in
-            CameraView(viewModel: vm)
+        .fullScreenCover(item: $scanner) { model in
+            ReceiptScanFlowView(model: model)
         }
     }
 }
@@ -201,7 +201,7 @@ private let quickActions: [QuickAction] = [
     QuickAction(icon: "wallet.pass",  label: "Log expense",       sub: "Coffee, groceries, anything",  bg: .warmAmberSoft, fg: .warmAmber, kind: .screen(.expense)),
     QuickAction(icon: "arrow.up",     label: "Log income",        sub: "Paycheck, gift, side work",    bg: .warmGreenSoft, fg: .warmGreen, kind: .screen(.income)),
     QuickAction(icon: "target",       label: "Deposit to a goal", sub: "Move money toward a goal",     bg: .warmSkySoft,   fg: .warmSky,   kind: .screen(.deposit)),
-    QuickAction(icon: "camera",       label: "Scan a receipt",    sub: "We'll read the total",          bg: .warmClaySoft,  fg: .warmClay,  kind: .scan),
+    QuickAction(icon: "camera",       label: "Scan a receipt",    sub: "We'll read the total, merchant and date", bg: .warmClaySoft, fg: .warmClay, kind: .scan),
     QuickAction(icon: "plus",         label: "New goal",          sub: "Start something new",
                 bg: .warmLilacSoft, fg: .warmLilac, kind: .newGoal),
 ]

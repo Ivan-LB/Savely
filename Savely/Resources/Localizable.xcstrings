@@ -10,6 +10,634 @@
     " of %lld" : {
 
     },
+    "error_invalid_amount" : {
+      "comment" : "Shown when an amount is empty, not a number, or not positive",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enter a valid amount greater than zero."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escribe un monto válido mayor que cero."
+          }
+        }
+      }
+    },
+    "error_save_expense_failed" : {
+      "comment" : "Shown when writing an expense to the local store fails",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We couldn't save the expense. Please try again."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pudimos guardar el gasto. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "scan_alternatives_label" : {
+      "comment" : "Label above the alternative amount chips",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Also on the receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También en el recibo"
+          }
+        }
+      }
+    },
+    "scan_amount_accessibility_label" : {
+      "comment" : "Accessibility label of the amount on the review screen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense amount"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monto del gasto"
+          }
+        }
+      }
+    },
+    "scan_camera_starting_body" : {
+      "comment" : "Shown when the shutter was tapped before the camera was ready",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The camera is still starting — try again in a moment."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La cámara aún está iniciando — inténtalo de nuevo en un momento."
+          }
+        }
+      }
+    },
+    "scan_camera_unavailable_body" : {
+      "comment" : "Body when the camera cannot start",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Allow camera access in Settings, or choose a receipt photo instead."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permite el acceso a la cámara en Ajustes, o elige una foto del recibo."
+          }
+        }
+      }
+    },
+    "scan_camera_unavailable_title" : {
+      "comment" : "Shown when the camera cannot start",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Camera not available"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cámara no disponible"
+          }
+        }
+      }
+    },
+    "scan_close_label" : {
+      "comment" : "Accessibility label of the close button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Close"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        }
+      }
+    },
+    "scan_date_from_receipt_note" : {
+      "comment" : "Note next to the date when it was read from the receipt",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "from the receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "del recibo"
+          }
+        }
+      }
+    },
+    "scan_date_label" : {
+      "comment" : "Label of the date picker on the review screen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha"
+          }
+        }
+      }
+    },
+    "scan_date_today_note" : {
+      "comment" : "Note next to the date when it defaulted to today",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "today — change it if the receipt is older"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hoy — cámbiala si el recibo es de otro día"
+          }
+        }
+      }
+    },
+    "scan_enter_amount_error" : {
+      "comment" : "Shown when saving with no amount",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enter a valid amount greater than zero."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escribe un monto válido mayor que cero."
+          }
+        }
+      }
+    },
+    "scan_export_dump_label" : {
+      "comment" : "DEBUG-only button that shares what OCR read as JSON",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Export OCR dump"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar OCR (JSON)"
+          }
+        }
+      }
+    },
+    "scan_guide_hint" : {
+      "comment" : "Hint under the camera guide frame",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Frame the whole receipt — flat, in good light."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encuadra todo el recibo — plano y con buena luz."
+          }
+        }
+      }
+    },
+    "scan_import_failed_body" : {
+      "comment" : "Shown when a photo picked from the library could not be loaded",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We couldn't open that photo. Try another one, or take a new picture."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pudimos abrir esa foto. Prueba con otra o toma una nueva."
+          }
+        }
+      }
+    },
+    "scan_import_photos_label" : {
+      "comment" : "Button that opens the photo picker to import a receipt",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Choose from Photos"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir de Fotos"
+          }
+        }
+      }
+    },
+    "scan_merchant_placeholder" : {
+      "comment" : "Placeholder of the merchant field on the review screen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Merchant"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comercio"
+          }
+        }
+      }
+    },
+    "scan_open_settings_label" : {
+      "comment" : "Button that opens the app's Settings page",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open Settings"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Ajustes"
+          }
+        }
+      }
+    },
+    "scan_privacy_note" : {
+      "comment" : "Reassurance shown in the scanner",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Read on your iPhone. The photo never leaves your phone."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se lee en tu iPhone. La foto nunca sale de tu teléfono."
+          }
+        }
+      }
+    },
+    "scan_processing_label" : {
+      "comment" : "Shown while OCR runs",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reading the receipt…"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leyendo el recibo…"
+          }
+        }
+      }
+    },
+    "scan_read_failed_body" : {
+      "comment" : "Body when capture or reading fails",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Try again with the receipt flat and well lit, or enter the amount yourself."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inténtalo de nuevo con el recibo plano y bien iluminado, o escribe el monto tú mismo."
+          }
+        }
+      }
+    },
+    "scan_read_failed_title" : {
+      "comment" : "Title when capture or reading fails",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We couldn't read this one"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pudimos leer este recibo"
+          }
+        }
+      }
+    },
+    "scan_receipt_thumbnail_label" : {
+      "comment" : "Accessibility label of the receipt thumbnail",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Photo of the receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto del recibo"
+          }
+        }
+      }
+    },
+    "scan_retake_label" : {
+      "comment" : "Button that goes back to the camera",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Retake"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repetir"
+          }
+        }
+      }
+    },
+    "scan_retry_label" : {
+      "comment" : "Retry button after a failed read",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Try again"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intentar de nuevo"
+          }
+        }
+      }
+    },
+    "scan_review_lead_none" : {
+      "comment" : "Lead copy on the review screen when no amount was found",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We couldn't find a total. Enter it below."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No encontramos un total. Escríbelo abajo."
+          }
+        }
+      }
+    },
+    "scan_review_lead_read" : {
+      "comment" : "Lead copy on the review screen when a total was found",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We read this — is it right?"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leímos esto — ¿está bien?"
+          }
+        }
+      }
+    },
+    "scan_review_lead_unsure" : {
+      "comment" : "Lead copy on the review screen when the total is a low-confidence guess",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We're not sure about the total — please check it."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No estamos seguros del total — revísalo, por favor."
+          }
+        }
+      }
+    },
+    "scan_review_title" : {
+      "comment" : "Title of the review screen after a scan",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check the receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revisa el recibo"
+          }
+        }
+      }
+    },
+    "scan_save_expense_label" : {
+      "comment" : "Primary button on the review screen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Save expense"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar gasto"
+          }
+        }
+      }
+    },
+    "scan_scanned_receipt_description" : {
+      "comment" : "Description saved when the receipt had no readable merchant",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Scanned receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recibo escaneado"
+          }
+        }
+      }
+    },
+    "scan_shutter_label" : {
+      "comment" : "Accessibility label of the shutter button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Take photo"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tomar foto"
+          }
+        }
+      }
+    },
+    "scan_torch_off_label" : {
+      "comment" : "Accessibility label of the torch button when on",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Turn flash off"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apagar flash"
+          }
+        }
+      }
+    },
+    "scan_torch_on_label" : {
+      "comment" : "Accessibility label of the torch button when off",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Turn flash on"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encender flash"
+          }
+        }
+      }
+    },
+    "We'll read the total, merchant and date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We'll read the total, merchant and date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leemos el total, el comercio y la fecha"
+          }
+        }
+      }
+    },
     "—" : {
 
     },

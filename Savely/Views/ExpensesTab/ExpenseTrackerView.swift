@@ -4,7 +4,7 @@ import SwiftData
 struct ExpenseTrackerView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel = ExpenseTrackerViewModel()
-    @State private var showCameraView = false
+    @State private var scanner: ReceiptScanModel?
     @FocusState private var focusedField: Field?
     @ScaledMetric(relativeTo: .subheadline) private var amountFieldWidth: CGFloat = 70
 
@@ -55,7 +55,7 @@ struct ExpenseTrackerView: View {
                 .padding(.top, 8)
 
                 // — Scan receipt banner —
-                Button(action: { showCameraView = true }) {
+                Button(action: { scanner = ReceiptScanModel(expenseStore: viewModel) }) {
                     HStack(spacing: 14) {
                         RoundedRectangle(cornerRadius: 12)
                             .fill(Color.warmOnInk.opacity(0.1))
@@ -65,7 +65,7 @@ struct ExpenseTrackerView: View {
                             Text("Scan a receipt")
                                 .warmFont(15, weight: .semibold)
                                 .foregroundStyle(Color.warmOnInk)
-                            Text("We'll read the total and category")
+                            Text("We'll read the total, merchant and date")
                                 .warmFont(12)
                                 .foregroundStyle(Color.warmOnInk.opacity(0.65))
                         }
@@ -79,10 +79,10 @@ struct ExpenseTrackerView: View {
                     .cornerRadius(20)
                 }
                 // Full screen, same as the "+" shortcut — the scanner is a
-                // camera, not a form.
-                .fullScreenCover(isPresented: $showCameraView) {
-                    let cameraViewModel = CameraViewModel(expenseViewModel: viewModel)
-                    CameraView(viewModel: cameraViewModel)
+                // camera, not a form. The model is owned here (@State) so
+                // a body re-run while the cover is up cannot recreate it.
+                .fullScreenCover(item: $scanner) { model in
+                    ReceiptScanFlowView(model: model)
                 }
 
                 // — Inline add —

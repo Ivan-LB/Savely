@@ -36,4 +36,13 @@ enum FeatureFlags {
     /// absolute override — off forces light, on forces dark; the system
     /// appearance is not followed (owner's decision, 2026-08-16).
     static let darkModeEnabled = true
+
+    /// Receipt capture surface. OFF = Savely's own Warm Meadow camera
+    /// (guide frame, torch, gallery import). ON = Apple's
+    /// VNDocumentCameraViewController (edge detection, auto-capture,
+    /// perspective correction, system chrome). Both feed the same OCR →
+    /// ReceiptParser → review screen. Kept as a flag so the two can be
+    /// compared on a real device — the Simulator has no camera for either
+    /// (decision recorded in docs/spikes/receipt-scan-spike.md, D5).
+    static let useSystemDocumentCamera = false
 }

@@ -15,9 +15,10 @@ class ExpenseModel {
     var amount: Double
     var date: Date
     /// The chip the user picked when logging ("Coffee", "Food", "Transit",
-    /// "Shopping", "Other"). `nil` for rows logged before categories were
-    /// stored and for scanned receipts — display then falls back to keyword
-    /// inference, but the guess is never written back here.
+    /// "Shopping", "Other"). Scanned receipts store the chip confirmed on the
+    /// review screen. `nil` only for rows logged before categories were
+    /// stored — display then falls back to keyword inference, but the guess
+    /// is never written back here.
     var category: String?
 
     init(expenseDescription: String, amount: Double, date: Date, category: String? = nil) {

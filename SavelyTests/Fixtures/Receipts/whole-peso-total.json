@@ -1,0 +1,113 @@
+{
+ "id": "whole-peso-total",
+ "source": "hand-authored: whole-peso total with a currency sign and no decimals (not a real receipt)",
+ "locale": "es_MX",
+ "now": "2026-08-16T12:00:00Z",
+ "lines": [
+  {
+   "text": "ESTACIONAMIENTO PLAZA",
+   "box": {
+    "x": 0.05,
+    "y": 0.02,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TICKET 004512",
+   "box": {
+    "x": 0.05,
+    "y": 0.052000000000000005,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "2 HORAS",
+   "box": {
+    "x": 0.05,
+    "y": 0.084,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "$250",
+   "box": {
+    "x": 0.7,
+    "y": 0.085,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TOTAL",
+   "box": {
+    "x": 0.05,
+    "y": 0.116,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "$250",
+   "box": {
+    "x": 0.7,
+    "y": 0.117,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "PAGO",
+   "box": {
+    "x": 0.05,
+    "y": 0.14800000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "$300",
+   "box": {
+    "x": 0.7,
+    "y": 0.14900000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "CAMBIO",
+   "box": {
+    "x": 0.05,
+    "y": 0.18000000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "$50",
+   "box": {
+    "x": 0.7,
+    "y": 0.18100000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  }
+ ],
+ "expected": {
+  "total": 250,
+  "category": "Transit",
+  "confidence": "high"
+ }
+}

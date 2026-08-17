@@ -1,0 +1,178 @@
+{
+ "id": "costco-no-separators",
+ "source": "hand-authored warehouse ticket with 5-digit amounts and no thousands separators (not a real receipt)",
+ "locale": "es_MX",
+ "now": "2026-08-16T12:00:00Z",
+ "lines": [
+  {
+   "text": "COSTCO WHOLESALE",
+   "box": {
+    "x": 0.2,
+    "width": 0.6,
+    "height": 0.034,
+    "y": 0.02
+   },
+   "confidence": 1
+  },
+  {
+   "text": "IMPORTADORA PRIMEX SA DE CV",
+   "box": {
+    "x": 0.05,
+    "y": 0.052000000000000005,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TIJUANA #123",
+   "box": {
+    "x": 0.05,
+    "y": 0.084,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TV 65 PULGADAS",
+   "box": {
+    "x": 0.05,
+    "y": 0.116,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "11999.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.117,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "CABLE HDMI",
+   "box": {
+    "x": 0.05,
+    "y": 0.14800000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "499.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.14900000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "SUBTOTAL",
+   "box": {
+    "x": 0.05,
+    "y": 0.18000000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "12499.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.18100000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "IVA",
+   "box": {
+    "x": 0.05,
+    "y": 0.21200000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "1999.84",
+   "box": {
+    "x": 0.7,
+    "y": 0.21300000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TOTAL",
+   "box": {
+    "x": 0.05,
+    "y": 0.24400000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "14498.84",
+   "box": {
+    "x": 0.7,
+    "y": 0.24500000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TARJETA",
+   "box": {
+    "x": 0.05,
+    "y": 0.276,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "14498.84",
+   "box": {
+    "x": 0.7,
+    "y": 0.277,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "16/08/26 11:02",
+   "box": {
+    "x": 0.05,
+    "y": 0.30800000000000005,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  }
+ ],
+ "expected": {
+  "total": 14498.84,
+  "alternativesInclude": [
+   12499.0
+  ],
+  "merchant": "Costco",
+  "date": "2026-08-16",
+  "category": "Food",
+  "confidence": "high"
+ }
+}

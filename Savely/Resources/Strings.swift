@@ -360,6 +360,14 @@ struct Strings {
             "error_label",
             value: "Error",
             comment: "Error Label")
+        static let invalidAmount = NSLocalizedString(
+            "error_invalid_amount",
+            value: "Enter a valid amount greater than zero.",
+            comment: "Shown when an amount is empty, not a number, or not positive")
+        static let saveExpenseFailed = NSLocalizedString(
+            "error_save_expense_failed",
+            value: "We couldn't save the expense. Please try again.",
+            comment: "Shown when writing an expense to the local store fails")
     }
     
     struct Placeholders {
@@ -535,6 +543,140 @@ struct Strings {
             "please_confirm_value_title",
             value: "Please Confirm Value",
             comment: "Please Confirm Value Title")
+
+        // Capture
+        static let guideHint = NSLocalizedString(
+            "scan_guide_hint",
+            value: "Frame the whole receipt — flat, in good light.",
+            comment: "Hint under the camera guide frame")
+        static let shutterLabel = NSLocalizedString(
+            "scan_shutter_label",
+            value: "Take photo",
+            comment: "Accessibility label of the shutter button")
+        static let torchOnLabel = NSLocalizedString(
+            "scan_torch_on_label",
+            value: "Turn flash on",
+            comment: "Accessibility label of the torch button when off")
+        static let torchOffLabel = NSLocalizedString(
+            "scan_torch_off_label",
+            value: "Turn flash off",
+            comment: "Accessibility label of the torch button when on")
+        static let importFromPhotosLabel = NSLocalizedString(
+            "scan_import_photos_label",
+            value: "Choose from Photos",
+            comment: "Button that opens the photo picker to import a receipt")
+        static let closeLabel = NSLocalizedString(
+            "scan_close_label",
+            value: "Close",
+            comment: "Accessibility label of the close button")
+        static let cameraUnavailableTitle = NSLocalizedString(
+            "scan_camera_unavailable_title",
+            value: "Camera not available",
+            comment: "Shown when the camera cannot start")
+        static let cameraStartingBody = NSLocalizedString(
+            "scan_camera_starting_body",
+            value: "The camera is still starting — try again in a moment.",
+            comment: "Shown when the shutter was tapped before the camera was ready")
+        static let importFailedBody = NSLocalizedString(
+            "scan_import_failed_body",
+            value: "We couldn't open that photo. Try another one, or take a new picture.",
+            comment: "Shown when a photo picked from the library could not be loaded")
+        static let cameraUnavailableBody = NSLocalizedString(
+            "scan_camera_unavailable_body",
+            value: "Allow camera access in Settings, or choose a receipt photo instead.",
+            comment: "Body when the camera cannot start")
+        static let openSettingsLabel = NSLocalizedString(
+            "scan_open_settings_label",
+            value: "Open Settings",
+            comment: "Button that opens the app's Settings page")
+        static let privacyNote = NSLocalizedString(
+            "scan_privacy_note",
+            value: "Read on your iPhone. The photo never leaves your phone.",
+            comment: "Reassurance shown in the scanner")
+
+        // Reading
+        static let processingLabel = NSLocalizedString(
+            "scan_processing_label",
+            value: "Reading the receipt…",
+            comment: "Shown while OCR runs")
+        static let readFailedTitle = NSLocalizedString(
+            "scan_read_failed_title",
+            value: "We couldn't read this one",
+            comment: "Title when capture or reading fails")
+        static let readFailedBody = NSLocalizedString(
+            "scan_read_failed_body",
+            value: "Try again with the receipt flat and well lit, or enter the amount yourself.",
+            comment: "Body when capture or reading fails")
+        static let retryLabel = NSLocalizedString(
+            "scan_retry_label",
+            value: "Try again",
+            comment: "Retry button after a failed read")
+
+        // Review
+        static let reviewTitle = NSLocalizedString(
+            "scan_review_title",
+            value: "Check the receipt",
+            comment: "Title of the review screen after a scan")
+        static let reviewLeadRead = NSLocalizedString(
+            "scan_review_lead_read",
+            value: "We read this — is it right?",
+            comment: "Lead copy on the review screen when a total was found")
+        static let reviewLeadUnsure = NSLocalizedString(
+            "scan_review_lead_unsure",
+            value: "We're not sure about the total — please check it.",
+            comment: "Lead copy on the review screen when the total is a low-confidence guess")
+        static let reviewLeadNone = NSLocalizedString(
+            "scan_review_lead_none",
+            value: "We couldn't find a total. Enter it below.",
+            comment: "Lead copy on the review screen when no amount was found")
+        static let alternativesLabel = NSLocalizedString(
+            "scan_alternatives_label",
+            value: "Also on the receipt",
+            comment: "Label above the alternative amount chips")
+        static let merchantPlaceholder = NSLocalizedString(
+            "scan_merchant_placeholder",
+            value: "Merchant",
+            comment: "Placeholder of the merchant field on the review screen")
+        static let dateLabel = NSLocalizedString(
+            "scan_date_label",
+            value: "Date",
+            comment: "Label of the date picker on the review screen")
+        static let dateFromReceiptNote = NSLocalizedString(
+            "scan_date_from_receipt_note",
+            value: "from the receipt",
+            comment: "Note next to the date when it was read from the receipt")
+        static let dateTodayNote = NSLocalizedString(
+            "scan_date_today_note",
+            value: "today — change it if the receipt is older",
+            comment: "Note next to the date when it defaulted to today")
+        static let retakeLabel = NSLocalizedString(
+            "scan_retake_label",
+            value: "Retake",
+            comment: "Button that goes back to the camera")
+        static let saveExpenseLabel = NSLocalizedString(
+            "scan_save_expense_label",
+            value: "Save expense",
+            comment: "Primary button on the review screen")
+        static let amountAccessibilityLabel = NSLocalizedString(
+            "scan_amount_accessibility_label",
+            value: "Expense amount",
+            comment: "Accessibility label of the amount on the review screen")
+        static let enterAmountError = NSLocalizedString(
+            "scan_enter_amount_error",
+            value: "Enter a valid amount greater than zero.",
+            comment: "Shown when saving with no amount")
+        static let scannedReceiptDescription = NSLocalizedString(
+            "scan_scanned_receipt_description",
+            value: "Scanned receipt",
+            comment: "Description saved when the receipt had no readable merchant")
+        static let receiptThumbnailLabel = NSLocalizedString(
+            "scan_receipt_thumbnail_label",
+            value: "Photo of the receipt",
+            comment: "Accessibility label of the receipt thumbnail")
+        static let exportDumpLabel = NSLocalizedString(
+            "scan_export_dump_label",
+            value: "Export OCR dump",
+            comment: "DEBUG-only button that shares what OCR read as JSON")
     }
     
     struct SplashScreen {
