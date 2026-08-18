@@ -6,6 +6,7 @@ import SwiftUI
 /// sequence is skipped for Reduce Motion users (single crossfade instead).
 struct SplashScreenView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.modelContext) private var modelContext
     @State private var isSplashEnded = false
 
     // Sprout
@@ -104,7 +105,21 @@ struct SplashScreenView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .onAppear(perform: runAnimation)
+            .onAppear(perform: seedForScreenshotsIfRequested)
         }
+    }
+
+    /// DEBUG + `-SavelyScreenshotSeed` only: replace the store with the
+    /// fictional App Store dataset before the main screens appear.
+    private func seedForScreenshotsIfRequested() {
+        #if DEBUG
+        guard ScreenshotSeed.isRequested else { return }
+        do {
+            try ScreenshotSeed.apply(to: modelContext)
+        } catch {
+            print("Screenshot seed failed: \(error)")
+        }
+        #endif
     }
 
     /// The sprout mark, drawn natively so each part can animate:

@@ -1,7 +1,7 @@
 # App Store screenshots — direction & production plan
 
 **Date:** 2026-08-17
-**Status:** direction chosen (this doc); production is the next job (Opus, ultracode).
+**Status:** direction chosen and PRODUCED — the en-US set is rendered (`Design/ScreenshotKit`, output in `build/upload/`). es-MX set deferred (owner: English-only for this release).
 **Owner decision needed:** none blocking — the choices below are recommendations
 with the alternatives kept; flip anything before production starts.
 
@@ -208,3 +208,25 @@ the trend badge is genuinely negative. Fictional merchants only; no real names.
   Profile in v1, onboarding as the PPO alternate.
 - Any objection to the drawn warm-ink bezel (vs Apple's silver product bezel)? The ink
   bezel keeps "warmth by type and tint, not chrome" and is the same on both themes.
+
+---
+
+## 8. Produced (2026-08-18)
+
+`Design/ScreenshotKit/` renders the set end to end:
+
+- `Savely/Utilities/ScreenshotSeed.swift` (DEBUG, `-SavelyScreenshotSeed`) wipes the
+  Simulator store and seeds the fictional dataset of §3 — Trip to Oaxaca 42 %
+  "On track · by Dec 12, 2026 · $125/wk"; Laptop 17 % "Behind · by Mar 1, 2027 ·
+  $25/wk" with ETA "1+ year"; a $1,240 paycheck offering a $150 auto-move; a
+  −22 % month-over-month drop in the 7-month trend; fictional merchants only.
+- `SavelyUITests/StoreScreenshotTourUITests` drives the eight screens and attaches
+  the raw 1320×2868 captures; `collect.sh` renames them.
+- `compose.swift` renders each page with SwiftUI `ImageRenderer` on macOS, so the
+  type is the real New York / SF Pro. Copy for all eight frames lives in that file.
+- Output flattened to alpha-free sRGB in `build/upload/` (8 × 1320×2868 PNG,
+  138–309 KB). Upload to the 6.9" slot only; Apple scales the rest.
+
+Deferred: the es-MX set (needs the ~139 en-only strings and the hard-coded
+`On track`/`Behind`/`1+ year`/`/wk`/greeting/date-pattern literals localized
+first), the full-dark PPO treatment, and the payday-first order test.
