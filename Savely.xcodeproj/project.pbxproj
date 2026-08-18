@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120AE56C41CBD54B070A8436 /* ScreenshotSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E18C2383669F09FCC4748 /* ScreenshotSeed.swift */; };
+		F25F23C6EEAA47853BFA137D /* StoreScreenshotTourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */; };
 		C5DDD46B40453371BD90C01A /* ReceiptScanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */; };
 		7479BDFD4C96ED1C9E05A119 /* ReceiptOCRIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7AF8AF4BCB197FCA023DC6 /* ReceiptOCRIntegrationTests.swift */; };
 		31A69355DA4D561A928D09D7 /* DocumentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA345E04E3ACA1DEDFCDD2 /* DocumentCameraView.swift */; };
@@ -120,6 +122,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F11E18C2383669F09FCC4748 /* ScreenshotSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotSeed.swift; sourceTree = "<group>"; };
+		46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreScreenshotTourUITests.swift; sourceTree = "<group>"; };
 		C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScanUITests.swift; sourceTree = "<group>"; };
 		4A7AF8AF4BCB197FCA023DC6 /* ReceiptOCRIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptOCRIntegrationTests.swift; sourceTree = "<group>"; };
 		D2DA345E04E3ACA1DEDFCDD2 /* DocumentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraView.swift; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 		1D88B7D62CC9FA28009B6538 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F11E18C2383669F09FCC4748 /* ScreenshotSeed.swift */,
 				D2C90599A224DF05C1C7BC95 /* ReceiptOCR.swift */,
 				5A440101E954A364F752379E /* Receipt */,
 				F774124079B5BEC3DD37C743 /* AutoMoveSuggestion.swift */,
@@ -530,6 +535,7 @@
 		1DC258212CC07DCF0002DDE3 /* SavelyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */,
 				C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */,
 				1DC258222CC07DCF0002DDE3 /* SavelyUITests.swift */,
 				1DC258242CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift */,
@@ -736,6 +742,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				120AE56C41CBD54B070A8436 /* ScreenshotSeed.swift in Sources */,
 				31A69355DA4D561A928D09D7 /* DocumentCameraView.swift in Sources */,
 				15C9F87752F242860A062A9C /* ReceiptScanFlowView.swift in Sources */,
 				6BEBD87A257D196FC2B5F572 /* ReceiptReviewView.swift in Sources */,
@@ -834,6 +841,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25F23C6EEAA47853BFA137D /* StoreScreenshotTourUITests.swift in Sources */,
 				C5DDD46B40453371BD90C01A /* ReceiptScanUITests.swift in Sources */,
 				1DC258252CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift in Sources */,
 				1DC258232CC07DCF0002DDE3 /* SavelyUITests.swift in Sources */,
@@ -1024,7 +1032,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1060,7 +1068,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1082,7 +1090,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Savely.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Savely";
 			};
 			name = Debug;
@@ -1105,7 +1113,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Savely.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Savely";
 			};
 			name = Release;
@@ -1126,7 +1134,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Savely;
 			};
 			name = Debug;
@@ -1147,7 +1155,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Savely;
 			};
 			name = Release;
