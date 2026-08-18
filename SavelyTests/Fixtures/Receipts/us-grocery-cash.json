@@ -1,0 +1,238 @@
+{
+ "id": "us-grocery-cash",
+ "source": "hand-authored US grocery receipt, month-first date, cash/change (not a real receipt)",
+ "locale": "en_US",
+ "now": "2026-08-16T12:00:00Z",
+ "lines": [
+  {
+   "text": "TRADER JOE'S",
+   "box": {
+    "x": 0.25,
+    "width": 0.5,
+    "height": 0.034,
+    "y": 0.02
+   },
+   "confidence": 1
+  },
+  {
+   "text": "1090 3RD AVE SAN DIEGO CA",
+   "box": {
+    "x": 0.05,
+    "y": 0.052000000000000005,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "STORE #189   (619) 555-0100",
+   "box": {
+    "x": 0.05,
+    "y": 0.084,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "BANANAS",
+   "box": {
+    "x": 0.05,
+    "y": 0.116,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "1.99",
+   "box": {
+    "x": 0.7,
+    "y": 0.117,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "OAT MILK",
+   "box": {
+    "x": 0.05,
+    "y": 0.14800000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "3.49",
+   "box": {
+    "x": 0.7,
+    "y": 0.14900000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "CHICKEN BURRITO",
+   "box": {
+    "x": 0.05,
+    "y": 0.18000000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "12.01",
+   "box": {
+    "x": 0.7,
+    "y": 0.18100000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "SUBTOTAL",
+   "box": {
+    "x": 0.05,
+    "y": 0.21200000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "17.49",
+   "box": {
+    "x": 0.7,
+    "y": 0.21300000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TAX",
+   "box": {
+    "x": 0.05,
+    "y": 0.24400000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "1.53",
+   "box": {
+    "x": 0.7,
+    "y": 0.24500000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TOTAL",
+   "box": {
+    "x": 0.05,
+    "y": 0.276,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "19.02",
+   "box": {
+    "x": 0.7,
+    "y": 0.277,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "CASH",
+   "box": {
+    "x": 0.05,
+    "y": 0.30800000000000005,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "20.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.30900000000000005,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "CHANGE",
+   "box": {
+    "x": 0.05,
+    "y": 0.3400000000000001,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "0.98",
+   "box": {
+    "x": 0.7,
+    "y": 0.3410000000000001,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "ITEMS 3",
+   "box": {
+    "x": 0.05,
+    "y": 0.3720000000000001,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "08/14/2026 5:32 PM",
+   "box": {
+    "x": 0.05,
+    "y": 0.40400000000000014,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "THANK YOU FOR SHOPPING",
+   "box": {
+    "x": 0.05,
+    "y": 0.43600000000000017,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  }
+ ],
+ "expected": {
+  "total": 19.02,
+  "alternativesInclude": [
+   17.49
+  ],
+  "merchant": "Trader Joe's",
+  "date": "2026-08-14",
+  "category": "Food",
+  "confidence": "high"
+ }
+}

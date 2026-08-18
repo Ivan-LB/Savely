@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5DDD46B40453371BD90C01A /* ReceiptScanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */; };
+		7479BDFD4C96ED1C9E05A119 /* ReceiptOCRIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7AF8AF4BCB197FCA023DC6 /* ReceiptOCRIntegrationTests.swift */; };
+		31A69355DA4D561A928D09D7 /* DocumentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA345E04E3ACA1DEDFCDD2 /* DocumentCameraView.swift */; };
+		15C9F87752F242860A062A9C /* ReceiptScanFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A17E22922859025B4DEE1D /* ReceiptScanFlowView.swift */; };
+		6BEBD87A257D196FC2B5F572 /* ReceiptReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5F5E26408477F8E6C59BC /* ReceiptReviewView.swift */; };
+		5A923D851E1F0A9DE0182E2A /* ReceiptScanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410C0D1F40524DF8CFE25021 /* ReceiptScanModel.swift */; };
+		CEBCEA30F32B686EB71A2866 /* ReceiptOCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C90599A224DF05C1C7BC95 /* ReceiptOCR.swift */; };
+		46C940AC7FC071D52F7037C9 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 9FDC7BEFB3FA01CDB951DBBA /* Fixtures */; };
+		EB84DBEF8B09F9EB1E7AAFF6 /* ReceiptFixtureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F50EC75E1A4FF9BE4992A /* ReceiptFixtureTests.swift */; };
+		9AB16553AE439FAB12574217 /* ReceiptParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2405B0A3780703DFC27C9 /* ReceiptParserTests.swift */; };
+		098D870F358FFD061FE47F1A /* ReceiptParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B73ADB53C98937307DBAA /* ReceiptParser.swift */; };
+		5522F0A81CBF724D40756A20 /* ReceiptDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B90A9EEB228FE2A1132DFD /* ReceiptDateParser.swift */; };
+		5C26C81FFC3D8C3867044BB4 /* ReceiptAmountGrammar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D129592F5E1D668ECF4C3 /* ReceiptAmountGrammar.swift */; };
+		6A21AE5F9EDE58BDDB5A1514 /* ReceiptVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA22FF0B24D8017909BA914 /* ReceiptVocabulary.swift */; };
+		21A73EF62C20FDA050059206 /* OCRLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA2F094D50821E2DA0497A4 /* OCRLine.swift */; };
 		AA28B8C8B38F312A7623F2D2 /* AutoMoveSuggestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC2151C01A7FBD2947EB51 /* AutoMoveSuggestionTests.swift */; };
 		DE826483AC71FF3EC2A603B7 /* AutoMoveSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774124079B5BEC3DD37C743 /* AutoMoveSuggestion.swift */; };
 		A11A0002C0DE5AFE10000002 /* AmountParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0001C0DE5AFE10000001 /* AmountParsing.swift */; };
@@ -37,11 +52,9 @@
 		1D88B7CF2CC6EB62009B6538 /* CameraManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7CE2CC6EB62009B6538 /* CameraManagerExtension.swift */; };
 		1D88B7D12CC6EBB4009B6538 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D02CC6EBB4009B6538 /* CameraView.swift */; };
 		1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */; };
-		1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */; };
 		1DAF5D092CED9CA3001C0AF3 /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D082CED9CA3001C0AF3 /* IncomeModel.swift */; };
 		1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D0B2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift */; };
 		1DAF5D132CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D122CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift */; };
-		1DAF5D162CEDB69B001C0AF3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */; };
 		1DAF5D1B2CEDC118001C0AF3 /* GoalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D1A2CEDC118001C0AF3 /* GoalsViewModel.swift */; };
 		1DAF5D1E2CEE9695001C0AF3 /* TipsAndSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D1D2CEE9695001C0AF3 /* TipsAndSuggestionViewModel.swift */; };
 		1DAF5D202CEE9767001C0AF3 /* TipHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAF5D1F2CEE9767001C0AF3 /* TipHistoryView.swift */; };
@@ -87,8 +100,6 @@
 		1DF722922F9C19CE00320B38 /* MoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF722912F9C19CE00320B38 /* MoneyView.swift */; };
 		1DF722942F9C19E600320B38 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF722932F9C19E600320B38 /* AchievementsView.swift */; };
 		1DF722962F9C2FA400320B38 /* AddGoalFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF722952F9C2FA400320B38 /* AddGoalFlow.swift */; };
-		82D33CE22CEC66D200BE005E /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE12CEC66D200BE005E /* TextRecognizer.swift */; };
-		82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +120,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScanUITests.swift; sourceTree = "<group>"; };
+		4A7AF8AF4BCB197FCA023DC6 /* ReceiptOCRIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptOCRIntegrationTests.swift; sourceTree = "<group>"; };
+		D2DA345E04E3ACA1DEDFCDD2 /* DocumentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraView.swift; sourceTree = "<group>"; };
+		06A17E22922859025B4DEE1D /* ReceiptScanFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScanFlowView.swift; sourceTree = "<group>"; };
+		0CA5F5E26408477F8E6C59BC /* ReceiptReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptReviewView.swift; sourceTree = "<group>"; };
+		410C0D1F40524DF8CFE25021 /* ReceiptScanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScanModel.swift; sourceTree = "<group>"; };
+		D2C90599A224DF05C1C7BC95 /* ReceiptOCR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptOCR.swift; sourceTree = "<group>"; };
+		9FDC7BEFB3FA01CDB951DBBA /* Fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fixtures; sourceTree = "<group>"; };
+		9C6F50EC75E1A4FF9BE4992A /* ReceiptFixtureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptFixtureTests.swift; sourceTree = "<group>"; };
+		10A2405B0A3780703DFC27C9 /* ReceiptParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParserTests.swift; sourceTree = "<group>"; };
+		740B73ADB53C98937307DBAA /* ReceiptParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParser.swift; sourceTree = "<group>"; };
+		20B90A9EEB228FE2A1132DFD /* ReceiptDateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDateParser.swift; sourceTree = "<group>"; };
+		505D129592F5E1D668ECF4C3 /* ReceiptAmountGrammar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptAmountGrammar.swift; sourceTree = "<group>"; };
+		AEA22FF0B24D8017909BA914 /* ReceiptVocabulary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptVocabulary.swift; sourceTree = "<group>"; };
+		CFA2F094D50821E2DA0497A4 /* OCRLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRLine.swift; sourceTree = "<group>"; };
 		9AFC2151C01A7FBD2947EB51 /* AutoMoveSuggestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMoveSuggestionTests.swift; sourceTree = "<group>"; };
 		F774124079B5BEC3DD37C743 /* AutoMoveSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMoveSuggestion.swift; sourceTree = "<group>"; };
 		A11A0001C0DE5AFE10000001 /* AmountParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountParsing.swift; sourceTree = "<group>"; };
@@ -139,11 +165,9 @@
 		1D88B7CE2CC6EB62009B6538 /* CameraManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManagerExtension.swift; sourceTree = "<group>"; };
 		1D88B7D02CC6EBB4009B6538 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
-		1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRUtilities.swift; sourceTree = "<group>"; };
 		1DAF5D082CED9CA3001C0AF3 /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
 		1DAF5D0B2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesTrackerViewModel.swift; sourceTree = "<group>"; };
 		1DAF5D122CEDB421001C0AF3 /* ExpensesTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTrackerViewModel.swift; sourceTree = "<group>"; };
-		1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		1DAF5D1A2CEDC118001C0AF3 /* GoalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewModel.swift; sourceTree = "<group>"; };
 		1DAF5D1D2CEE9695001C0AF3 /* TipsAndSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsAndSuggestionViewModel.swift; sourceTree = "<group>"; };
 		1DAF5D1F2CEE9767001C0AF3 /* TipHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipHistoryView.swift; sourceTree = "<group>"; };
@@ -194,8 +218,6 @@
 		1DF722912F9C19CE00320B38 /* MoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyView.swift; sourceTree = "<group>"; };
 		1DF722932F9C19E600320B38 /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		1DF722952F9C2FA400320B38 /* AddGoalFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoalFlow.swift; sourceTree = "<group>"; };
-		82D33CE12CEC66D200BE005E /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
-		82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConfirmationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +245,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A440101E954A364F752379E /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				740B73ADB53C98937307DBAA /* ReceiptParser.swift */,
+				20B90A9EEB228FE2A1132DFD /* ReceiptDateParser.swift */,
+				505D129592F5E1D668ECF4C3 /* ReceiptAmountGrammar.swift */,
+				AEA22FF0B24D8017909BA914 /* ReceiptVocabulary.swift */,
+				CFA2F094D50821E2DA0497A4 /* OCRLine.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
 		1D3669842CC62EDD00E84FF9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +304,8 @@
 		1D88B7D62CC9FA28009B6538 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D2C90599A224DF05C1C7BC95 /* ReceiptOCR.swift */,
+				5A440101E954A364F752379E /* Receipt */,
 				F774124079B5BEC3DD37C743 /* AutoMoveSuggestion.swift */,
 				A11A0001C0DE5AFE10000001 /* AmountParsing.swift */,
 				A11A0005C0DE5AFE10000005 /* ReminderSettings.swift */,
@@ -281,8 +317,6 @@
 				12789AD27FF1A7114156F945 /* AchievementEngine.swift */,
 				693B815A380D566280140319 /* FeatureFlags.swift */,
 				1DE9FE162D066EE20069AA64 /* ReportsPDFGenerator.swift */,
-				82D33CE12CEC66D200BE005E /* TextRecognizer.swift */,
-				1D88B7D72CC9FA34009B6538 /* OCRUtilities.swift */,
 				1DE4B4CF2CE5F2D6006C8F65 /* OnboardingData.swift */,
 				1DAF5D252CEE9C13001C0AF3 /* OpenAIClient.swift */,
 				1DAF5D322CEEE7AA001C0AF3 /* Notifications.swift */,
@@ -293,7 +327,9 @@
 		1DAF5D022CED9481001C0AF3 /* CameraScanner */ = {
 			isa = PBXGroup;
 			children = (
-				82D33CE32CEC66F200BE005E /* TotalConfirmationView.swift */,
+				D2DA345E04E3ACA1DEDFCDD2 /* DocumentCameraView.swift */,
+				06A17E22922859025B4DEE1D /* ReceiptScanFlowView.swift */,
+				0CA5F5E26408477F8E6C59BC /* ReceiptReviewView.swift */,
 				1D88B7D22CC9F70C009B6538 /* CameraPreview.swift */,
 				1D88B7D02CC6EBB4009B6538 /* CameraView.swift */,
 			);
@@ -342,7 +378,7 @@
 		1DAF5D142CEDB690001C0AF3 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				1DAF5D152CEDB69B001C0AF3 /* CameraViewModel.swift */,
+				410C0D1F40524DF8CFE25021 /* ReceiptScanModel.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -473,6 +509,10 @@
 		1DC258172CC07DCF0002DDE3 /* SavelyTests */ = {
 			isa = PBXGroup;
 			children = (
+				4A7AF8AF4BCB197FCA023DC6 /* ReceiptOCRIntegrationTests.swift */,
+				9FDC7BEFB3FA01CDB951DBBA /* Fixtures */,
+				9C6F50EC75E1A4FF9BE4992A /* ReceiptFixtureTests.swift */,
+				10A2405B0A3780703DFC27C9 /* ReceiptParserTests.swift */,
 				9AFC2151C01A7FBD2947EB51 /* AutoMoveSuggestionTests.swift */,
 				A11A0003C0DE5AFE10000003 /* AmountParsingTests.swift */,
 				A11A0007C0DE5AFE10000007 /* ReminderSettingsTests.swift */,
@@ -490,6 +530,7 @@
 		1DC258212CC07DCF0002DDE3 /* SavelyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */,
 				1DC258222CC07DCF0002DDE3 /* SavelyUITests.swift */,
 				1DC258242CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift */,
 			);
@@ -677,6 +718,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46C940AC7FC071D52F7037C9 /* Fixtures in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +736,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A69355DA4D561A928D09D7 /* DocumentCameraView.swift in Sources */,
+				15C9F87752F242860A062A9C /* ReceiptScanFlowView.swift in Sources */,
+				6BEBD87A257D196FC2B5F572 /* ReceiptReviewView.swift in Sources */,
+				5A923D851E1F0A9DE0182E2A /* ReceiptScanModel.swift in Sources */,
+				CEBCEA30F32B686EB71A2866 /* ReceiptOCR.swift in Sources */,
+				098D870F358FFD061FE47F1A /* ReceiptParser.swift in Sources */,
+				5522F0A81CBF724D40756A20 /* ReceiptDateParser.swift in Sources */,
+				5C26C81FFC3D8C3867044BB4 /* ReceiptAmountGrammar.swift in Sources */,
+				6A21AE5F9EDE58BDDB5A1514 /* ReceiptVocabulary.swift in Sources */,
+				21A73EF62C20FDA050059206 /* OCRLine.swift in Sources */,
 				1DC2584B2CC629540002DDE3 /* ExpenseModel.swift in Sources */,
 				1D88B7CC2CC6EA47009B6538 /* CameraManager.swift in Sources */,
 				1DF722942F9C19E600320B38 /* AchievementsView.swift in Sources */,
@@ -719,12 +771,10 @@
 				ED04D2F84390584EB7EC0615 /* WelcomeStepView.swift in Sources */,
 				699FCB7F699B1E9C9C644AF3 /* SproutMark.swift in Sources */,
 				8DA6B54FCD7F5EA515DBC1CC /* FeatureFlags.swift in Sources */,
-				82D33CE22CEC66D200BE005E /* TextRecognizer.swift in Sources */,
 				1DE9FE102D063BC80069AA64 /* NotificationManager.swift in Sources */,
 				1DF722902F9C18FE00320B38 /* GoalDetailView.swift in Sources */,
 				1D88B7D32CC9F70C009B6538 /* CameraPreview.swift in Sources */,
 				1DE4B4EC2CEC4EE3006C8F65 /* AppViewModel.swift in Sources */,
-				1DAF5D162CEDB69B001C0AF3 /* CameraViewModel.swift in Sources */,
 				1DC0140D2CE5AF59009A46E1 /* OnboardingView.swift in Sources */,
 				1DAF5D332CEEE7AA001C0AF3 /* Notifications.swift in Sources */,
 				1DC258322CC07DF40002DDE3 /* DashboardView.swift in Sources */,
@@ -743,7 +793,6 @@
 				1DC258082CC07DCC0002DDE3 /* SavelyApp.swift in Sources */,
 				1DF722962F9C2FA400320B38 /* AddGoalFlow.swift in Sources */,
 				1DAF5D202CEE9767001C0AF3 /* TipHistoryView.swift in Sources */,
-				82D33CE42CEC66F200BE005E /* TotalConfirmationView.swift in Sources */,
 				1DE9FE172D066EE20069AA64 /* ReportsPDFGenerator.swift in Sources */,
 				1D3669892CC62F9100E84FF9 /* UIConstants.swift in Sources */,
 				1DAF5D0C2CEDA6C0001C0AF3 /* IncomesTrackerViewModel.swift in Sources */,
@@ -752,7 +801,6 @@
 				1DEACCDE2D0BE6340084CC39 /* NetworkErrorView.swift in Sources */,
 				1DAF5D1B2CEDC118001C0AF3 /* GoalsViewModel.swift in Sources */,
 				1DC014112CE5AFAE009A46E1 /* OnboardingStepModel.swift in Sources */,
-				1D88B7D82CC9FA34009B6538 /* OCRUtilities.swift in Sources */,
 				1DE9FE152D0664A60069AA64 /* ReportsViewModel.swift in Sources */,
 				1DC0140F2CE5AF81009A46E1 /* OnboardingStepView.swift in Sources */,
 				1DAF5D262CEE9C13001C0AF3 /* OpenAIClient.swift in Sources */,
@@ -766,6 +814,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7479BDFD4C96ED1C9E05A119 /* ReceiptOCRIntegrationTests.swift in Sources */,
+				EB84DBEF8B09F9EB1E7AAFF6 /* ReceiptFixtureTests.swift in Sources */,
+				9AB16553AE439FAB12574217 /* ReceiptParserTests.swift in Sources */,
 				1DC258192CC07DCF0002DDE3 /* SavelyTests.swift in Sources */,
 				AA28B8C8B38F312A7623F2D2 /* AutoMoveSuggestionTests.swift in Sources */,
 				A11A0004C0DE5AFE10000004 /* AmountParsingTests.swift in Sources */,
@@ -783,6 +834,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5DDD46B40453371BD90C01A /* ReceiptScanUITests.swift in Sources */,
 				1DC258252CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift in Sources */,
 				1DC258232CC07DCF0002DDE3 /* SavelyUITests.swift in Sources */,
 			);

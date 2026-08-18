@@ -68,7 +68,7 @@ Savely/
 ├── Views/                     # SwiftUI screens; ContentView.swift here owns AppState routing
 ├── Managers/                  # Singletons that touch the outside world
 ├── Extensions/                # <Manager>Extension.swift — split implementations
-├── Utilities/                 # OpenAIClient, OCR, helpers
+├── Utilities/                 # OpenAIClient, ReceiptOCR + Receipt/ (parser), helpers
 ├── Resources/                 # Strings.swift, Localizable.xcstrings, Color+Warm.swift, UIConstants.swift
 ├── Assets.xcassets/           # Images + ColorPalette
 ├── Savely.entitlements        # Sign in with Apple
@@ -96,7 +96,8 @@ These are invariants that future changes must respect. They were discovered duri
 4. **iOS 26.0 is the minimum deployment target** for the app target. Use modern APIs freely (`@Observable`, `NavigationStack`, Swift Testing, etc.).
 5. **Only `Savely.xcscheme` is shared and tracked** in `Savely.xcodeproj/xcshareddata/xcschemes/`. Test commands must use `-scheme Savely`, never `-scheme SavelyTests`.
 6. **Localization rule:** all user-facing strings go through `Resources/Strings.swift` constants and are registered in `Localizable.xcstrings`. No hardcoded literals in views.
-7. **Singletons own external I/O:** `AuthenticationManager.shared`, `UserManager.shared`, `NotificationManager.shared`, `CameraManager.shared`, `OpenAIClient.shared`. Manager bodies are split across `Managers/<Name>.swift` and `Extensions/<Name>Extension.swift`.
+7. **Managers own external I/O:** `NotificationManager.shared`, `OpenAIClient.shared` are singletons; `CameraManager` is one instance per scan session, owned by `ReceiptScanModel` (no `.shared` — the old singleton went with the 2026-08 scanner rewrite). Manager bodies are split across `Managers/<Name>.swift` and `Extensions/<Name>Extension.swift`.
+10. **Receipt scanning stays on-device.** Capture → `ReceiptOCR` (Vision, orientation + es/en languages) → `ReceiptParser` (pure, fixture-tested in `SavelyTests/Fixtures/Receipts`) → review screen. No network, no cloud OCR, no image persisted. Rationale and the option survey: `docs/spikes/receipt-scan-spike.md`. Extraction rules change ONLY with a fixture that proves them; fixtures are anonymized JSON OCR dumps, never images.
 8. **`main` and `dev` are protected.** PRs only, CI must be green, no force-push. No auto-merge — the developer merges manually.
 9. **AI tips are feature-flagged OFF for the App Store release** (`FeatureFlags.tipsEnabled`, `Savely/Utilities/FeatureFlags.swift`). Every tips surface checks the flag; tips code is not deleted — the flag is the off switch. See `gotchas.yaml#tips-behind-feature-flag`.
 9. **Solo workflow:** one PR at a time. For non-trivial calls (architecture, dependencies, new patterns), present options with trade-offs instead of deciding silently.

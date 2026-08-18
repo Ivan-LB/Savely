@@ -1,0 +1,92 @@
+{
+ "id": "no-total-label",
+ "source": "hand-authored: a note with prices but no total label at all (not a real receipt)",
+ "locale": "es_MX",
+ "now": "2026-08-16T12:00:00Z",
+ "lines": [
+  {
+   "text": "NOTA",
+   "box": {
+    "x": 0.05,
+    "y": 0.02,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "LIMPIEZA",
+   "box": {
+    "x": 0.05,
+    "y": 0.052000000000000005,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "300.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.053000000000000005,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "MATERIAL",
+   "box": {
+    "x": 0.05,
+    "y": 0.084,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "120.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.085,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "",
+   "box": {
+    "x": 0.05,
+    "y": 0.116,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "420.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.117,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "GRACIAS",
+   "box": {
+    "x": 0.05,
+    "y": 0.14800000000000002,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  }
+ ],
+ "expected": {
+  "total": 420.0,
+  "confidence": "low"
+ }
+}
