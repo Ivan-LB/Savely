@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F25F23C6EEAA47853BFA137D /* StoreScreenshotTourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */; };
 		AA28B8C8B38F312A7623F2D2 /* AutoMoveSuggestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC2151C01A7FBD2947EB51 /* AutoMoveSuggestionTests.swift */; };
 		DE826483AC71FF3EC2A603B7 /* AutoMoveSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774124079B5BEC3DD37C743 /* AutoMoveSuggestion.swift */; };
 		A11A0002C0DE5AFE10000002 /* AmountParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A0001C0DE5AFE10000001 /* AmountParsing.swift */; };
@@ -109,6 +110,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreScreenshotTourUITests.swift; sourceTree = "<group>"; };
 		9AFC2151C01A7FBD2947EB51 /* AutoMoveSuggestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMoveSuggestionTests.swift; sourceTree = "<group>"; };
 		F774124079B5BEC3DD37C743 /* AutoMoveSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoMoveSuggestion.swift; sourceTree = "<group>"; };
 		A11A0001C0DE5AFE10000001 /* AmountParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountParsing.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 		1DC258212CC07DCF0002DDE3 /* SavelyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */,
 				1DC258222CC07DCF0002DDE3 /* SavelyUITests.swift */,
 				1DC258242CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift */,
 			);
@@ -783,6 +786,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25F23C6EEAA47853BFA137D /* StoreScreenshotTourUITests.swift in Sources */,
 				1DC258252CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift in Sources */,
 				1DC258232CC07DCF0002DDE3 /* SavelyUITests.swift in Sources */,
 			);
