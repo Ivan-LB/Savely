@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F25F23C6EEAA47853BFA137D /* StoreScreenshotTourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */; };
 		C5DDD46B40453371BD90C01A /* ReceiptScanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */; };
 		7479BDFD4C96ED1C9E05A119 /* ReceiptOCRIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7AF8AF4BCB197FCA023DC6 /* ReceiptOCRIntegrationTests.swift */; };
 		31A69355DA4D561A928D09D7 /* DocumentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DA345E04E3ACA1DEDFCDD2 /* DocumentCameraView.swift */; };
@@ -120,6 +121,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreScreenshotTourUITests.swift; sourceTree = "<group>"; };
 		C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScanUITests.swift; sourceTree = "<group>"; };
 		4A7AF8AF4BCB197FCA023DC6 /* ReceiptOCRIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptOCRIntegrationTests.swift; sourceTree = "<group>"; };
 		D2DA345E04E3ACA1DEDFCDD2 /* DocumentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraView.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 		1DC258212CC07DCF0002DDE3 /* SavelyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */,
 				C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */,
 				1DC258222CC07DCF0002DDE3 /* SavelyUITests.swift */,
 				1DC258242CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift */,
@@ -834,6 +837,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25F23C6EEAA47853BFA137D /* StoreScreenshotTourUITests.swift in Sources */,
 				C5DDD46B40453371BD90C01A /* ReceiptScanUITests.swift in Sources */,
 				1DC258252CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift in Sources */,
 				1DC258232CC07DCF0002DDE3 /* SavelyUITests.swift in Sources */,
