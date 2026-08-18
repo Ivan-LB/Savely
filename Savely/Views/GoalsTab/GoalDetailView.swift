@@ -15,6 +15,7 @@ struct GoalDetailView: View {
     }
 
     private var pace: GoalPace { GoalPace.compute(goal: goal, deposits: goalDeposits) }
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
         ScrollView {
@@ -84,8 +85,13 @@ struct GoalDetailView: View {
                 }
                 .padding(.bottom, 20)
 
-                // — Stat pills —
-                HStack(spacing: 8) {
+                // — Stat pills — three across, or stacked once the type is
+                // an accessibility size: at AX5 a third of the width wraps
+                // "$1,480" onto two lines, which reads as "$1,48" and "0".
+                let statLayout = typeSize.isAccessibilitySize
+                    ? AnyLayout(VStackLayout(spacing: 8))
+                    : AnyLayout(HStackLayout(spacing: 8))
+                statLayout {
                     StatPill(label: "Remaining", value: formattedAmount(max(0, goal.target - goal.current)), accent: goal.color)
                     StatPill(label: "Needed / wk", value: pace.requiredWeekly.map { formattedAmount($0) } ?? "—", accent: goal.color)
                     StatPill(label: "ETA", value: pace.etaText(), accent: goal.color)

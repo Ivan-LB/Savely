@@ -237,7 +237,7 @@ struct ReceiptReviewView: View {
             HStack(spacing: 8) {
                 ForEach(ExpenseCategory.allCases) { cat in
                     let isOn = review.wrappedValue.category == cat
-                    let fg = cat == .other ? Color.warmInkSoft : cat.tileColor
+                    let fg = cat.tileTextColor
                     Button(action: { review.wrappedValue.category = cat }) {
                         Text(cat.label)
                             .warmFont(13, weight: .semibold)

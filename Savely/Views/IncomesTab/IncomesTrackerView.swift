@@ -88,7 +88,7 @@ struct IncomesTrackerView: View {
                         .warmFont(14)
                         .padding(.horizontal, 12)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 40)
+                        .frame(minHeight: 40)
                         .background(Color.warmBg)
                         .cornerRadius(10)
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.warmLineSoft, lineWidth: 1))
@@ -103,7 +103,7 @@ struct IncomesTrackerView: View {
                             .frame(width: amountFieldWidth)
                             .focused($focusedField, equals: .amount)
                     }
-                    .frame(height: 40)
+                    .frame(minHeight: 40)
                     .background(Color.warmBg)
                     .cornerRadius(10)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.warmLineSoft, lineWidth: 1))
