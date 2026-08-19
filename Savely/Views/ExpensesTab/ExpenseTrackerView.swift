@@ -92,7 +92,7 @@ struct ExpenseTrackerView: View {
                         .foregroundStyle(Color.warmInk)
                         .padding(.horizontal, 12)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 40)
+                        .frame(minHeight: 40)
                         .background(Color.warmBg)
                         .cornerRadius(10)
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.warmLineSoft, lineWidth: 1))
@@ -108,7 +108,7 @@ struct ExpenseTrackerView: View {
                             .frame(width: amountFieldWidth)
                             .focused($focusedField, equals: .amount)
                     }
-                    .frame(height: 40)
+                    .frame(minHeight: 40)
                     .background(Color.warmBg)
                     .cornerRadius(10)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.warmLineSoft, lineWidth: 1))

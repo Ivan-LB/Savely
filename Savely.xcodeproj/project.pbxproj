@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		120AE56C41CBD54B070A8436 /* ScreenshotSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E18C2383669F09FCC4748 /* ScreenshotSeed.swift */; };
+		A11Y0AUD17BUILDFILE00000 /* AccessibilityAuditUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11Y0AUD17FILEREF0000000 /* AccessibilityAuditUITests.swift */; };
 		F25F23C6EEAA47853BFA137D /* StoreScreenshotTourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */; };
 		C5DDD46B40453371BD90C01A /* ReceiptScanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */; };
 		7479BDFD4C96ED1C9E05A119 /* ReceiptOCRIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7AF8AF4BCB197FCA023DC6 /* ReceiptOCRIntegrationTests.swift */; };
@@ -123,6 +124,7 @@
 
 /* Begin PBXFileReference section */
 		F11E18C2383669F09FCC4748 /* ScreenshotSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotSeed.swift; sourceTree = "<group>"; };
+		A11Y0AUD17FILEREF0000000 /* AccessibilityAuditUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityAuditUITests.swift; sourceTree = "<group>"; };
 		46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreScreenshotTourUITests.swift; sourceTree = "<group>"; };
 		C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScanUITests.swift; sourceTree = "<group>"; };
 		4A7AF8AF4BCB197FCA023DC6 /* ReceiptOCRIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptOCRIntegrationTests.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 		1DC258212CC07DCF0002DDE3 /* SavelyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				A11Y0AUD17FILEREF0000000 /* AccessibilityAuditUITests.swift */,
 				46D0412010EDA0CEB30538B1 /* StoreScreenshotTourUITests.swift */,
 				C696EE6BA0906CAD429D0881 /* ReceiptScanUITests.swift */,
 				1DC258222CC07DCF0002DDE3 /* SavelyUITests.swift */,
@@ -841,6 +844,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11Y0AUD17BUILDFILE00000 /* AccessibilityAuditUITests.swift in Sources */,
 				F25F23C6EEAA47853BFA137D /* StoreScreenshotTourUITests.swift in Sources */,
 				C5DDD46B40453371BD90C01A /* ReceiptScanUITests.swift in Sources */,
 				1DC258252CC07DCF0002DDE3 /* SavelyUITestsLaunchTests.swift in Sources */,

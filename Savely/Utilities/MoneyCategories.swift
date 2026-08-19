@@ -52,6 +52,19 @@ enum ExpenseCategory: String, CaseIterable, Identifiable {
         }
     }
 
+    /// `tileColor` is sized for a glyph (3:1 on the tint). A chip label is
+    /// text and needs 4.5:1, so the selected chips read from here instead —
+    /// see the "deep" tokens in Color+Warm.swift.
+    var tileTextColor: Color {
+        switch self {
+        case .coffee: return .warmAmberDeep
+        case .food: return .warmGreen
+        case .transit: return .warmSkyDeep
+        case .shopping: return .warmClayDeep
+        case .other: return .warmInkSoft
+        }
+    }
+
     /// The category to *show* for a row: the stored chip when there is one,
     /// otherwise a keyword guess. The guess is display-only — it is never
     /// written back to the store.

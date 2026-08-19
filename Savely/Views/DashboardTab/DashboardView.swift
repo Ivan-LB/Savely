@@ -64,6 +64,12 @@ struct DashboardView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 8)
+                // One heading for VoiceOver: "Good afternoon. Tuesday, August 18"
+                // instead of the bare "Afternoon." the audit flags as
+                // not human-readable.
+                .accessibilityElement(children: .ignore)
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityLabel(Text("Good \(greeting.lowercased()). \(formattedDate)"))
 
                 // — Hero Goal Card —
                 if let goal = favoriteGoal {
@@ -94,6 +100,7 @@ struct DashboardView: View {
                             Text("See all")
                                 .warmFont(13, weight: .medium)
                                 .foregroundStyle(Color.warmGreen)
+                                .tappable44()
                         }
                         .buttonStyle(.plain)
                     }

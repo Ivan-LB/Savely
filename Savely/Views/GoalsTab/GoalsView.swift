@@ -264,6 +264,7 @@ struct WarmGoalCard: View {
     let onDelete: () -> Void
     @State private var showDeleteConfirmation = false
     @Query private var goalDeposits: [DepositModel]
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     init(goal: GoalModel, onFavoriteToggle: @escaping () -> Void, onDelete: @escaping () -> Void) {
         self.goal = goal
@@ -277,36 +278,26 @@ struct WarmGoalCard: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            HStack(spacing: 12) {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(goal.color).frame(width: 44, height: 44)
-                    .overlay(
-                        Text(goal.name.prefix(1).uppercased())
-                            .warmFont(22, weight: .regular, design: .serif).foregroundStyle(Color.warmOnGreen)
-                    )
-                VStack(alignment: .leading, spacing: 3) {
-                    HStack(spacing: 5) {
-                        Text(goal.name)
-                            .warmFont(15, weight: .semibold).foregroundStyle(Color.warmInk).lineLimit(1)
-                        if goal.isFavorite {
-                            Image(systemName: "star.fill").warmFont(12).foregroundStyle(Color.warmAmber)
-                        }
+            // Identity left, percent + favorite right — until the type is an
+            // accessibility size, where the name needs the whole width
+            // ("Trip to Oaxaca" became "Trip t…") and the figures drop below.
+            if typeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 10) {
+                    identity
+                    HStack(alignment: .firstTextBaseline) {
+                        percent
+                        Spacer(minLength: 8)
+                        favoriteButton
                     }
-                    Text(pace.label)
-                        .warmFont(12)
-                        .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmInkMuted)
                 }
-                Spacer()
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text("\(Int(goal.progress * 100))%")
-                        .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
-                    Button(action: onFavoriteToggle) {
-                        Image(systemName: goal.isFavorite ? "star.fill" : "star")
-                            .warmFont(16)
-                            .foregroundStyle(goal.isFavorite ? Color.warmAmber : Color.warmInkMuted)
-                            .tappable44()
+            } else {
+                HStack(spacing: 12) {
+                    identity
+                    Spacer(minLength: 8)
+                    VStack(alignment: .trailing, spacing: 2) {
+                        percent
+                        favoriteButton
                     }
-                    .accessibilityLabel(goal.isFavorite ? "Remove from favorites" : "Make favorite")
                 }
             }
 
@@ -344,6 +335,45 @@ struct WarmGoalCard: View {
         } message: {
             Text("Are you sure you want to delete this goal?")
         }
+    }
+
+    private var identity: some View {
+        HStack(spacing: 12) {
+            RoundedRectangle(cornerRadius: 12)
+                .fill(goal.color).frame(width: 44, height: 44)
+                .overlay(
+                    Text(goal.name.prefix(1).uppercased())
+                        .warmFont(22, weight: .regular, design: .serif).foregroundStyle(Color.warmOnGreen)
+                )
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(alignment: .firstTextBaseline, spacing: 5) {
+                    Text(goal.name)
+                        .warmFont(15, weight: .semibold).foregroundStyle(Color.warmInk).lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
+                    if goal.isFavorite {
+                        Image(systemName: "star.fill").warmFont(12).foregroundStyle(Color.warmAmber)
+                    }
+                }
+                Text(pace.label)
+                    .warmFont(12)
+                    .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmInkMuted)
+            }
+        }
+    }
+
+    private var percent: some View {
+        Text("\(Int(goal.progress * 100))%")
+            .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
+    }
+
+    private var favoriteButton: some View {
+        Button(action: onFavoriteToggle) {
+            Image(systemName: goal.isFavorite ? "star.fill" : "star")
+                .warmFont(16)
+                .foregroundStyle(goal.isFavorite ? Color.warmAmber : Color.warmInkMuted)
+                .tappable44()
+        }
+        .accessibilityLabel(goal.isFavorite ? "Remove from favorites" : "Make favorite")
     }
 
     private func formattedAmount(_ v: Double) -> String {

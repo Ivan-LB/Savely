@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct ProfileView: View {
+    @Environment(\.dynamicTypeSize) private var typeSize
     @StateObject private var viewModel = ProfileViewModel()
     @EnvironmentObject var appViewModel: AppViewModel
     @Environment(\.modelContext) private var modelContext
@@ -94,16 +95,19 @@ struct ProfileView: View {
                 .offset(x: 30, y: -20)
 
             VStack(alignment: .leading, spacing: 4) {
+                // Full-opacity white on the green fill: 6.3:1 light, 5.0:1
+                // dark. The .7/.75 washes read as "secondary" but landed at
+                // 4.0/3.4 in dark, under the 4.5 a label needs.
                 Text("LIFETIME INCOME")
                     .warmFont(11, weight: .semibold)
-                    .foregroundStyle(Color.warmOnGreen.opacity(0.7))
+                    .foregroundStyle(Color.warmOnGreen)
                     .tracking(0.8)
                 Text(formattedAmount(lifetimeIncome))
                     .warmFont(40, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmOnGreen)
                 Text(savingSinceSubtitle)
                     .warmFont(13)
-                    .foregroundStyle(Color.warmOnGreen.opacity(0.75))
+                    .foregroundStyle(Color.warmOnGreen)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(20)
@@ -117,7 +121,12 @@ struct ProfileView: View {
     // MARK: - Stats
 
     private var statsStrip: some View {
-        HStack(spacing: 10) {
+        // Three across, or stacked at accessibility type sizes so the labels
+        // and figures keep one line each instead of wrapping into slivers.
+        let layout = typeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(spacing: 10))
+            : AnyLayout(HStackLayout(spacing: 10))
+        return layout {
             ProfileStatCell(label: Strings.Profile.statSavedLabel, value: formattedAmount(totalSaved))
             ProfileStatCell(label: Strings.Profile.statMovementsLabel, value: "\(movementCount)")
             ProfileStatCell(label: Strings.Profile.statActiveGoalsLabel, value: "\(activeGoalCount)")
@@ -157,6 +166,7 @@ struct ProfileView: View {
                     Text("See all ›")
                         .warmFont(13, weight: .medium)
                         .foregroundStyle(Color.warmGreen)
+                        .tappable44()
                 }
             }
 
@@ -275,13 +285,14 @@ struct ProfileStatCell: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
+            // Wrap rather than shrink: a third of the width at AX sizes cannot
+            // hold "ACTIVE GOALS" on one line, and the audit flags the clip.
             Text(label)
                 .warmFont(11, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(0.8)
                 .textCase(.uppercase)
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
+                .fixedSize(horizontal: false, vertical: true)
             Text(value)
                 .warmFont(20, weight: .regular, design: .serif)
                 .foregroundStyle(Color.warmInk)

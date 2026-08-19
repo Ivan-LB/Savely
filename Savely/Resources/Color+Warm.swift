@@ -41,6 +41,18 @@ extension Color {
     static let warmLilac       = Color(light: 0x7D6AB8, dark: 0xB3A4DC)
     static let warmLilacSoft   = Color(light: 0xECE8F4, dark: 0x2E2740)
 
+    // The accents above are glyph colors: they clear 3:1 on their own soft
+    // tint, which is the bar for an icon, and fail the 4.5:1 a *label* needs
+    // (clay 3.59, sky 3.61, lilac 3.76 in light). The "deep" pair is the same
+    // hue taken down in lightness until it clears 5:1 — use it whenever the
+    // accent carries words, as `warmAmberDeep` already did. Dark keeps the
+    // accent itself: on the dark tints it already reads (clay 4.94, sky 5.67,
+    // lilac 6.26). Ratios recomputed 2026-08-18 against Apple's Sufficient
+    // Contrast criteria after XCUIAccessibilityAudit flagged the chips.
+    static let warmClayDeep    = Color(light: 0x944A35, dark: 0xD9846A) // 5.07 on clay-soft
+    static let warmSkyDeep     = Color(light: 0x3C6487, dark: 0x7EA9D0) // 5.01 on sky-soft
+    static let warmLilacDeep   = Color(light: 0x6953AD, dark: 0xB3A4DC) // 5.06 on lilac-soft
+
     // Roles that used to be hardcoded at call sites.
     /// Content drawn on `warmGreenFill` (button labels, the income card copy).
     static let warmOnGreen     = Color(light: 0xFFFFFF, dark: 0xFFFFFF)

@@ -23,13 +23,20 @@ struct MainNavigationView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
+            // `.toolbar(.hidden, for: .tabBar)` goes on each child, not on the
+            // TabView: applied outside, the system tab bar is invisible but
+            // still in the accessibility tree as four unlabelled buttons
+            // (XCUIAccessibilityAudit: "Element has no description" ×4).
             TabView(selection: $selectedTab) {
-                NavigationStack { DashboardView(onSeeAll: { selectedTab = 2 }) }.tag(0)
-                NavigationStack { GoalsView(showAddGoalFlow: $showAddGoalFlow) }.tag(1)
-                NavigationStack { MoneyView() }.tag(2)
-                NavigationStack { ProfileView() }.tag(3)
+                NavigationStack { DashboardView(onSeeAll: { selectedTab = 2 }) }
+                    .toolbar(.hidden, for: .tabBar).tag(0)
+                NavigationStack { GoalsView(showAddGoalFlow: $showAddGoalFlow) }
+                    .toolbar(.hidden, for: .tabBar).tag(1)
+                NavigationStack { MoneyView() }
+                    .toolbar(.hidden, for: .tabBar).tag(2)
+                NavigationStack { ProfileView() }
+                    .toolbar(.hidden, for: .tabBar).tag(3)
             }
-            .toolbar(.hidden, for: .tabBar)
             .tint(Color.warmGreen)
 
             WarmTabBar(
@@ -359,7 +366,7 @@ func formatKeypadAmount(_ raw: String) -> String {
 
 /// The expense chips, straight from the canonical categories (what gets stored).
 private let expenseCats: [(label: String, bg: Color, fg: Color)] = ExpenseCategory.allCases.map {
-    ($0.label, $0.tileBackground, $0 == .other ? Color.warmInkSoft : $0.tileColor)
+    ($0.label, $0.tileBackground, $0.tileTextColor)
 }
 
 struct WarmQuickExpenseView: View {
