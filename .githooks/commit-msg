@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# Commit-msg hook: enforce Conventional Commits format.
+#
+# Format:
+#   <type>(<optional scope>): <imperative summary>
+#
+# Allowed types: feat, fix, refactor, chore, docs, ci, build, test, style, perf
+#
+# Examples:
+#   feat(goals): add edit-goal flow
+#   fix(expenses): clamp negative amounts to zero
+#   chore(deps): bump firebase-ios-sdk to 11.6.0
+#
+# Activated by running scripts/install-hooks.sh once after cloning.
+
+set -euo pipefail
+
+commit_msg_file="$1"
+first_line=$(head -n 1 "$commit_msg_file")
+
+# Allow merge / revert / fixup commits to bypass the format check
+if [[ "$first_line" =~ ^(Merge|Revert|fixup!|squash!) ]]; then
+  exit 0
+fi
+
+# Conventional Commits regex: <type>(<scope>)?: <subject>
+pattern='^(feat|fix|refactor|chore|docs|ci|build|test|style|perf)(\([a-z0-9-]+\))?!?: .{1,72}$'
+
+if [[ ! "$first_line" =~ $pattern ]]; then
+  echo ""
+  echo "❌ Commit message does not follow Conventional Commits."
+  echo ""
+  echo "   Got:      $first_line"
+  echo ""
+  echo "   Expected: <type>(<optional scope>): <imperative summary, ≤72 chars>"
+  echo ""
+  echo "   Allowed types:"
+  echo "     feat      — new user-facing feature"
+  echo "     fix       — bug fix"
+  echo "     refactor  — restructure, no behavior change"
+  echo "     chore     — tooling, deps, misc"
+  echo "     docs      — documentation only"
+  echo "     ci        — CI/CD config"
+  echo "     build     — build system, project settings"
+  echo "     test      — adding or updating tests"
+  echo "     style     — formatting, whitespace"
+  echo "     perf      — performance improvement"
+  echo ""
+  echo "   Examples:"
+  echo "     feat(goals): add edit-goal flow"
+  echo "     fix(expenses): clamp negative amounts to zero"
+  echo "     ci: cache SPM packages in PR workflow"
+  echo ""
+  exit 1
+fi
+
+# Subject must not end with a period
+if [[ "$first_line" =~ \.$ ]]; then
+  echo "❌ Commit subject must not end with a period."
+  exit 1
+fi
+
+# Subject after `:` should start lowercase (imperative mood usually does)
+subject=$(echo "$first_line" | sed -E 's/^[a-z]+(\([a-z0-9-]+\))?!?: //')
+if [[ "$subject" =~ ^[A-Z] ]]; then
+  echo "⚠️  Subject starts with a capital letter; Conventional Commits prefers lowercase imperative."
+  echo "    Got: $subject"
+  # Warn but don't block — capitalized proper nouns are sometimes legit
+fi
+
+exit 0

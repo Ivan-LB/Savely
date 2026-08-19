@@ -8,80 +8,6 @@
 import Foundation
 
 struct Strings {
-    struct Authentication {
-        static let createAccountTitle = NSLocalizedString(
-            "create_account_title",
-            value: "Create your account!",
-            comment: "Create Account Title")
-        static let signUpToGetStarted = NSLocalizedString(
-            "sign_up_to_get_started",
-            value: "Sign up to get started",
-            comment: "Sign Up To Get Started")
-        static let fullNamePlaceholder = NSLocalizedString(
-            "full_name_placeholder",
-            value: "Full Name",
-            comment: "Full Name Placeholder")
-        static let forgotPasswordLabel = NSLocalizedString(
-            "forgot_password_label",
-            value: "Forgot password?",
-            comment: "Forgot Password Label")
-        static let passwordString = NSLocalizedString(
-            "password_string",
-            value: "Password",
-            comment: "Password String")
-        static let confirmPasswordString = NSLocalizedString(
-            "confirm_password_string",
-            value: "Confirm Password",
-            comment: "Confirm Password String")
-        static let signInString = NSLocalizedString(
-            "sign_in_string",
-            value: "Sign In",
-            comment: "Sign In String")
-        static let logInString = NSLocalizedString(
-            "log_in_string",
-            value: "Log in to your existant account",
-            comment: "Log In String")
-        static let signUpLabel = NSLocalizedString(
-            "sign_up_label",
-            value: "Sign Up",
-            comment: "Sign Up Label")
-        static let welcomeBackString = NSLocalizedString(
-            "welcome_back_string",
-            value: "Welcome Back!", 
-            comment: "Welcome Back String")
-        static let enterEmailAndPasswordLabel = NSLocalizedString(
-            "enter_email_and_password_label",
-            value: "Enter your email and password to sign in.",
-            comment: "Enter your email and password to sign in Label")
-        static let otherWayToConnectLabel = NSLocalizedString(
-            "other_way_to_connect_label",
-            value: "Or connect using",
-            comment: "Other Way to Connect")
-        static let dontHaveAccount = NSLocalizedString(
-            "already_have_and_account_label",
-            value: "Don't have an account?",
-            comment: "Already have an account Label")
-        static let creatingAccountLabel = NSLocalizedString(
-            "creating_account_label",
-            value: "By creating an account, I accept Savely's",
-            comment: "Creating Account Label")
-        static let termsOfServiceLabel = NSLocalizedString(
-            "terms_of_service_label",
-            value: "Terms of Service",
-            comment: "Terms of Service Label")
-        static let passwordDontMatch = NSLocalizedString(
-            "passwords_dont_match",
-            value: "Passwords doesn't match",
-            comment: "Passwords Doesnt Match")
-    }
-    
-    struct LoadingView {
-        static let title = NSLocalizedString(
-            "title",
-            value: "Loading...",
-            comment: "Title for loading view")
-    }
-    
     struct Onboarding {
         static let setGoalsTitle = NSLocalizedString(
             "set_goals_title",
@@ -123,14 +49,30 @@ struct Strings {
             "notification_settings_description",
             value: "Choose the times to receive alerts for expenses and goals.",
             comment: "Notification Settings Description")
-        static let expenseReminderTimeLabel = NSLocalizedString(
-            "expense_reminder_time_label",
-            value: "Expense Reminder Time",
-            comment: "Expense Reminder Time Label")
-        static let goalAlertTimeLabel = NSLocalizedString(
-            "goal_alert_time_label",
-            value: "Goal Alert Time",
-            comment: "Goal Alert Time Label")
+        static let welcomeTitle = NSLocalizedString(
+            "onboarding_welcome_title",
+            value: "Yours, and only yours",
+            comment: "Onboarding welcome step title (privacy)")
+        static let welcomeLabel = NSLocalizedString(
+            "onboarding_welcome_label",
+            value: "No accounts, no cloud. Your money data lives on your iPhone and never leaves it.",
+            comment: "Onboarding welcome step description (privacy)")
+        static let trackMoneyTitle = NSLocalizedString(
+            "track_money_title",
+            value: "Track Your Money",
+            comment: "Onboarding merged income/expense tracking step title")
+        static let trackMoneyLabel = NSLocalizedString(
+            "track_money_label",
+            value: "Log income and expenses in seconds and understand where your money goes.",
+            comment: "Onboarding merged income/expense tracking step description")
+        static let scanReceiptsTitle = NSLocalizedString(
+            "scan_receipts_title",
+            value: "Scan Receipts",
+            comment: "Onboarding receipt scanning step title")
+        static let scanReceiptsLabel = NSLocalizedString(
+            "scan_receipts_label",
+            value: "Point the camera at a receipt and Savely reads the total for you.",
+            comment: "Onboarding receipt scanning step description")
     }
 
     struct Notifications {
@@ -185,10 +127,6 @@ struct Strings {
             "tips_and_suggestion_title",
             value: "Tips and Suggestions",
             comment: "Tips and Suggestions Tittle")
-        static let goalDetailsHeadline = NSLocalizedString(
-            "goal_details_headline",
-            value: "Goal details",
-            comment: "Goal Details Headline")
     }
     
     struct ExpenseTrackerTab {
@@ -315,7 +253,83 @@ struct Strings {
             "dark_mode_label",
             value: "Dark Mode",
             comment: "Dark Mode Label")
-        
+
+        // Reminders (settings + onboarding)
+        static let reminderTimeLabel = NSLocalizedString(
+            "reminder_time_label",
+            value: "Time",
+            comment: "Label next to the reminder time picker")
+        static let notificationsDeniedHint = NSLocalizedString(
+            "notifications_denied_hint",
+            value: "Notifications are off for Savely in iOS Settings.",
+            comment: "Shown instead of the reminder switches when permission is denied")
+        static let openSettingsButton = NSLocalizedString(
+            "open_settings_button",
+            value: "Open Settings",
+            comment: "Button that opens the iOS Settings app")
+
+        // Identity + stats
+        static let savingSinceLabel = NSLocalizedString(
+            "saving_since_label",
+            value: "Saving since %@",
+            comment: "Subtitle under the display name; %@ is a month and year")
+        static let justStartedLabel = NSLocalizedString(
+            "just_started_label",
+            value: "Just getting started",
+            comment: "Subtitle under the display name when nothing is logged yet")
+        static let statSavedLabel = NSLocalizedString(
+            "stat_saved_label",
+            value: "Saved",
+            comment: "Stat cell: total saved across goals")
+        static let statMovementsLabel = NSLocalizedString(
+            "stat_movements_label",
+            value: "Movements",
+            comment: "Stat cell: number of incomes + expenses logged")
+        static let statActiveGoalsLabel = NSLocalizedString(
+            "stat_active_goals_label",
+            value: "Active goals",
+            comment: "Stat cell: goals not yet complete")
+
+        // Achievements
+        static let nextAchievementLabel = NSLocalizedString(
+            "next_achievement_label",
+            value: "Next up",
+            comment: "Kicker above the closest locked achievement")
+        static let allAchievementsUnlockedLabel = NSLocalizedString(
+            "all_achievements_unlocked_label",
+            value: "Every achievement unlocked",
+            comment: "Shown when nothing is left to unlock")
+
+        // Data & privacy
+        static let dataPrivacyTitle = NSLocalizedString(
+            "data_privacy_title",
+            value: "Data & privacy",
+            comment: "Section header")
+        static let dataStaysLocalLabel = NSLocalizedString(
+            "data_stays_local_label",
+            value: "Your data never leaves this iPhone.",
+            comment: "One-line intro of the Data & privacy section")
+        static let deleteAllDataLabel = NSLocalizedString(
+            "delete_all_data_label",
+            value: "Delete all data",
+            comment: "Destructive row")
+        static let deleteAllDataConfirmTitle = NSLocalizedString(
+            "delete_all_data_confirm_title",
+            value: "Delete all data?",
+            comment: "Confirmation dialog title")
+        static let deleteAllDataConfirmMessage = NSLocalizedString(
+            "delete_all_data_confirm_message",
+            value: "Every income, expense and goal will be removed from this iPhone. Your name and reminder settings stay. This cannot be undone.",
+            comment: "Confirmation dialog message")
+        static let deleteAllDataConfirmButton = NSLocalizedString(
+            "delete_all_data_confirm_button",
+            value: "Delete everything",
+            comment: "Destructive confirm button")
+        static let deleteDataFailedMessage = NSLocalizedString(
+            "delete_data_failed_message",
+            value: "Couldn't delete your data. Please try again.",
+            comment: "Alert when deletion fails")
+
         static let securityTitle = NSLocalizedString(
             "security_title",
             value: "Security",
@@ -346,6 +360,14 @@ struct Strings {
             "error_label",
             value: "Error",
             comment: "Error Label")
+        static let invalidAmount = NSLocalizedString(
+            "error_invalid_amount",
+            value: "Enter a valid amount greater than zero.",
+            comment: "Shown when an amount is empty, not a number, or not positive")
+        static let saveExpenseFailed = NSLocalizedString(
+            "error_save_expense_failed",
+            value: "We couldn't save the expense. Please try again.",
+            comment: "Shown when writing an expense to the local store fails")
     }
     
     struct Placeholders {
@@ -446,11 +468,6 @@ struct Strings {
             "export_report_button",
             value: "Export Report",
             comment: "Export Report Button")
-        static let newGoalButton = NSLocalizedString(
-            "add_new_goal_button",
-            value: "Add New Goal",
-            comment: "Add New Goal Button")
-        
         static let downloadWeeklyReportButton = NSLocalizedString(
             "download_weekly_report_button",
             value: "Download Weekly Report",
@@ -460,14 +477,6 @@ struct Strings {
             "update_information_button",
             value: "Update Information",
             comment: "Update Information Button")
-        static let changePasswordButton = NSLocalizedString(
-            "change_password_button",
-            value: "Change Password",
-            comment: "Change Password Button")
-        static let signOutButton = NSLocalizedString(
-            "sign_out_button",
-            value: "Sign Out",
-            comment: "Sign Out Button")
         
         static let scanReceiptButton = NSLocalizedString(
             "scan_receipt_button",
@@ -515,6 +524,10 @@ struct Strings {
             "ok_button",
             value: "OK",
             comment: "OK Button")
+        static let cancelButton = NSLocalizedString(
+            "cancel_button",
+            value: "Cancel",
+            comment: "Cancel Button")
     }
     
     struct Camera {
@@ -530,6 +543,140 @@ struct Strings {
             "please_confirm_value_title",
             value: "Please Confirm Value",
             comment: "Please Confirm Value Title")
+
+        // Capture
+        static let guideHint = NSLocalizedString(
+            "scan_guide_hint",
+            value: "Frame the whole receipt — flat, in good light.",
+            comment: "Hint under the camera guide frame")
+        static let shutterLabel = NSLocalizedString(
+            "scan_shutter_label",
+            value: "Take photo",
+            comment: "Accessibility label of the shutter button")
+        static let torchOnLabel = NSLocalizedString(
+            "scan_torch_on_label",
+            value: "Turn flash on",
+            comment: "Accessibility label of the torch button when off")
+        static let torchOffLabel = NSLocalizedString(
+            "scan_torch_off_label",
+            value: "Turn flash off",
+            comment: "Accessibility label of the torch button when on")
+        static let importFromPhotosLabel = NSLocalizedString(
+            "scan_import_photos_label",
+            value: "Choose from Photos",
+            comment: "Button that opens the photo picker to import a receipt")
+        static let closeLabel = NSLocalizedString(
+            "scan_close_label",
+            value: "Close",
+            comment: "Accessibility label of the close button")
+        static let cameraUnavailableTitle = NSLocalizedString(
+            "scan_camera_unavailable_title",
+            value: "Camera not available",
+            comment: "Shown when the camera cannot start")
+        static let cameraStartingBody = NSLocalizedString(
+            "scan_camera_starting_body",
+            value: "The camera is still starting — try again in a moment.",
+            comment: "Shown when the shutter was tapped before the camera was ready")
+        static let importFailedBody = NSLocalizedString(
+            "scan_import_failed_body",
+            value: "We couldn't open that photo. Try another one, or take a new picture.",
+            comment: "Shown when a photo picked from the library could not be loaded")
+        static let cameraUnavailableBody = NSLocalizedString(
+            "scan_camera_unavailable_body",
+            value: "Allow camera access in Settings, or choose a receipt photo instead.",
+            comment: "Body when the camera cannot start")
+        static let openSettingsLabel = NSLocalizedString(
+            "scan_open_settings_label",
+            value: "Open Settings",
+            comment: "Button that opens the app's Settings page")
+        static let privacyNote = NSLocalizedString(
+            "scan_privacy_note",
+            value: "Read on your iPhone. The photo never leaves your phone.",
+            comment: "Reassurance shown in the scanner")
+
+        // Reading
+        static let processingLabel = NSLocalizedString(
+            "scan_processing_label",
+            value: "Reading the receipt…",
+            comment: "Shown while OCR runs")
+        static let readFailedTitle = NSLocalizedString(
+            "scan_read_failed_title",
+            value: "We couldn't read this one",
+            comment: "Title when capture or reading fails")
+        static let readFailedBody = NSLocalizedString(
+            "scan_read_failed_body",
+            value: "Try again with the receipt flat and well lit, or enter the amount yourself.",
+            comment: "Body when capture or reading fails")
+        static let retryLabel = NSLocalizedString(
+            "scan_retry_label",
+            value: "Try again",
+            comment: "Retry button after a failed read")
+
+        // Review
+        static let reviewTitle = NSLocalizedString(
+            "scan_review_title",
+            value: "Check the receipt",
+            comment: "Title of the review screen after a scan")
+        static let reviewLeadRead = NSLocalizedString(
+            "scan_review_lead_read",
+            value: "We read this — is it right?",
+            comment: "Lead copy on the review screen when a total was found")
+        static let reviewLeadUnsure = NSLocalizedString(
+            "scan_review_lead_unsure",
+            value: "We're not sure about the total — please check it.",
+            comment: "Lead copy on the review screen when the total is a low-confidence guess")
+        static let reviewLeadNone = NSLocalizedString(
+            "scan_review_lead_none",
+            value: "We couldn't find a total. Enter it below.",
+            comment: "Lead copy on the review screen when no amount was found")
+        static let alternativesLabel = NSLocalizedString(
+            "scan_alternatives_label",
+            value: "Also on the receipt",
+            comment: "Label above the alternative amount chips")
+        static let merchantPlaceholder = NSLocalizedString(
+            "scan_merchant_placeholder",
+            value: "Merchant",
+            comment: "Placeholder of the merchant field on the review screen")
+        static let dateLabel = NSLocalizedString(
+            "scan_date_label",
+            value: "Date",
+            comment: "Label of the date picker on the review screen")
+        static let dateFromReceiptNote = NSLocalizedString(
+            "scan_date_from_receipt_note",
+            value: "from the receipt",
+            comment: "Note next to the date when it was read from the receipt")
+        static let dateTodayNote = NSLocalizedString(
+            "scan_date_today_note",
+            value: "today — change it if the receipt is older",
+            comment: "Note next to the date when it defaulted to today")
+        static let retakeLabel = NSLocalizedString(
+            "scan_retake_label",
+            value: "Retake",
+            comment: "Button that goes back to the camera")
+        static let saveExpenseLabel = NSLocalizedString(
+            "scan_save_expense_label",
+            value: "Save expense",
+            comment: "Primary button on the review screen")
+        static let amountAccessibilityLabel = NSLocalizedString(
+            "scan_amount_accessibility_label",
+            value: "Expense amount",
+            comment: "Accessibility label of the amount on the review screen")
+        static let enterAmountError = NSLocalizedString(
+            "scan_enter_amount_error",
+            value: "Enter a valid amount greater than zero.",
+            comment: "Shown when saving with no amount")
+        static let scannedReceiptDescription = NSLocalizedString(
+            "scan_scanned_receipt_description",
+            value: "Scanned receipt",
+            comment: "Description saved when the receipt had no readable merchant")
+        static let receiptThumbnailLabel = NSLocalizedString(
+            "scan_receipt_thumbnail_label",
+            value: "Photo of the receipt",
+            comment: "Accessibility label of the receipt thumbnail")
+        static let exportDumpLabel = NSLocalizedString(
+            "scan_export_dump_label",
+            value: "Export OCR dump",
+            comment: "DEBUG-only button that shares what OCR read as JSON")
     }
     
     struct SplashScreen {
@@ -540,14 +687,6 @@ struct Strings {
     }
     
     struct GoalsView {
-        static let goalNamePlaceholder = NSLocalizedString(
-            "goal_name_placeholder",
-            value: "Goal name",
-            comment: "Goal Name Placeholder")
-        static let goalAmountPlaceholder = NSLocalizedString(
-            "goal_amount_placeholder",
-            value: "Goal amount",
-            comment: "Goal Amount Placeholder")
         static let greenColor = NSLocalizedString(
             "green_color",
             value: "Green",

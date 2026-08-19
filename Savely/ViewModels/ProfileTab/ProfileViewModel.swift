@@ -14,19 +14,14 @@ import SwiftData
 
 @MainActor
 class ProfileViewModel: ObservableObject {
-    @Published var displayName: String = ""
-    @Published var email: String = ""
     @AppStorage("darkModeEnabled") var darkMode: Bool = false
-    @Published var expenseReminders: Bool = true {
-        didSet {
-            handleExpenseReminderToggle()
-        }
-    }
-    @Published var goalAlerts: Bool = true {
-        didSet {
-            handleGoalAlertToggle()
-        }
-    }
+
+    /// The persisted reminder choices. Mutate through the `setReminder…`
+    /// methods so the change is saved and the pending request follows.
+    @Published private(set) var reminders: ReminderPreferences
+    /// True when iOS notification permission is denied — the settings rows
+    /// then explain instead of pretending a switch does something.
+    @Published private(set) var notificationsDenied: Bool = false
 
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
@@ -35,20 +30,16 @@ class ProfileViewModel: ObservableObject {
     @Published var isLoading: Bool = false
 
     private var modelContext: ModelContext?
-    
-    // Computed properties for new UI
-    var newTipsCount: Int {
-        // This would ideally come from your tips data
-        // For now, returning a placeholder value
-        return 12
-    }
+    private let reminderStore: ReminderStore
+    private let notifications: NotificationManager
 
-    init(modelContext: ModelContext? = nil) {
+    init(modelContext: ModelContext? = nil,
+         reminderStore: ReminderStore = ReminderStore(),
+         notifications: NotificationManager = .shared) {
         self.modelContext = modelContext
-        print("ProfileViewModel initialized.")
-        Task {
-            await fetchUserData()
-        }
+        self.reminderStore = reminderStore
+        self.notifications = notifications
+        self.reminders = reminderStore.load()
         if modelContext != nil {
             fetchWeeklyReportData(
                 startDate: Calendar.current.startOfWeek(for: Date()),
@@ -66,24 +57,70 @@ class ProfileViewModel: ObservableObject {
         )
     }
 
-    func fetchUserData() async {
-        guard let uid = AuthenticationManager.shared.currentUser?.uid else {
-            alertMessage = "User not authenticated."
-            showAlert = true
-            return
-        }
+    // MARK: - Reminders
 
+    /// Call on appear: refreshes the permission state and, for installs
+    /// that onboarded before preferences were persisted, seeds the times
+    /// from whatever request is still pending.
+    func refreshReminderState() async {
+        notificationsDenied = await notifications.authorizationStatus() == .denied
+        guard !reminderStore.hasSavedPreferences else { return }
+        var seeded = reminders
+        for kind in ReminderKind.allCases {
+            if let pending = await notifications.pendingReminderTime(for: kind) {
+                seeded.setTime(pending, for: kind)
+                seeded.setEnabled(true, for: kind)
+            } else {
+                // No pending request for a pre-preferences install means the
+                // user turned it off (the old toggle only ever cancelled).
+                seeded.setEnabled(false, for: kind)
+            }
+        }
+        reminders = seeded
+        reminderStore.save(seeded)
+    }
+
+    func setReminder(_ kind: ReminderKind, enabled: Bool) {
+        var next = reminders
+        next.setEnabled(enabled, for: kind)
+        commit(next, kind: kind)
+    }
+
+    func setReminder(_ kind: ReminderKind, time: Date) {
+        var next = reminders
+        next.setTime(time, for: kind)
+        commit(next, kind: kind)
+    }
+
+    private func commit(_ next: ReminderPreferences, kind: ReminderKind) {
+        guard next != reminders else { return }
+        reminders = next
+        reminderStore.save(next)
+        notifications.apply(
+            ReminderPlanner.action(enabled: next.isEnabled(kind), time: next.time(for: kind)),
+            to: kind
+        )
+    }
+
+    // MARK: - Data
+
+    /// Deletes every movement, goal and stored tip. Display name and
+    /// reminder settings are kept — they are preferences, not data.
+    func deleteAllData() {
+        guard let modelContext = modelContext else { return }
         do {
-            let user = try await UserManager.shared.getUser(userId: uid)
-            DispatchQueue.main.async {
-                self.displayName = user.displayName ?? "Unknown"
-                self.email = user.email ?? "Unknown"
-            }
+            try modelContext.delete(model: IncomeModel.self)
+            try modelContext.delete(model: ExpenseModel.self)
+            try modelContext.delete(model: GoalModel.self)
+            try modelContext.delete(model: TipModel.self)
+            try modelContext.save()
+            UserDefaults.standard.removeObject(forKey: "celebratedAchievementIds")
+            weeklyIncomes = []
+            weeklyExpenses = []
         } catch {
-            DispatchQueue.main.async {
-                self.alertMessage = "Failed to fetch user data: \(error.localizedDescription)"
-                self.showAlert = true
-            }
+            print("deleteAllData: \(error)")
+            alertMessage = Strings.Profile.deleteDataFailedMessage
+            showAlert = true
         }
     }
 
@@ -122,7 +159,8 @@ class ProfileViewModel: ObservableObject {
     private func fetchWeeklyIncome(from startDate: Date, to endDate: Date, in context: ModelContext) async throws -> [IncomeModel] {
         print("fetchWeeklyIncome: Fetching incomes...")
         let adjustedStartDate = Calendar.current.startOfDay(for: startDate)
-        let adjustedEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+        guard let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: endDate) else { return [] }
+        let adjustedEndDate = Calendar.current.startOfDay(for: nextDay)
 
         let fetchDescriptor = FetchDescriptor<IncomeModel>(
             predicate: #Predicate {
@@ -139,7 +177,8 @@ class ProfileViewModel: ObservableObject {
     private func fetchWeeklyExpenses(from startDate: Date, to endDate: Date, in context: ModelContext) async throws -> [ExpenseModel] {
         print("fetchWeeklyExpenses: Fetching expenses...")
         let adjustedStartDate = Calendar.current.startOfDay(for: startDate)
-        let adjustedEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+        guard let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: endDate) else { return [] }
+        let adjustedEndDate = Calendar.current.startOfDay(for: nextDay)
 
         let fetchDescriptor = FetchDescriptor<ExpenseModel>(
             predicate: #Predicate {
@@ -201,41 +240,4 @@ class ProfileViewModel: ObservableObject {
         }
     }
 
-
-    func updatePersonalInformation() async {
-        guard let uid = AuthenticationManager.shared.currentUser?.uid else {
-            alertMessage = "User not authenticated."
-            showAlert = true
-            return
-        }
-        do {
-            try await UserManager.shared.updateUser(userId: uid, displayName: displayName, email: email)
-            try await AuthenticationManager.shared.updateEmail(email: email)
-            alertMessage = "Your personal information has been updated successfully."
-            showAlert = true
-        } catch {
-            alertMessage = "Failed to update your information: \(error.localizedDescription)"
-            showAlert = true
-        }
-    }
-
-    func handleExpenseReminderToggle() {
-        if !expenseReminders {
-            NotificationManager.shared.cancelNotification(with: "expenseReminder")
-        }
-    }
-
-    func handleGoalAlertToggle() {
-        if !goalAlerts {
-            NotificationManager.shared.cancelNotification(with: "goalAlert")
-        }
-    }
-
-    func signOut() {
-        do {
-            try AuthenticationManager.shared.signOut()
-        } catch {
-            print("Error signing out: \(error)")
-        }
-    }
 }

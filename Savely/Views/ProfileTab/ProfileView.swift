@@ -2,173 +2,408 @@ import SwiftUI
 import SwiftData
 
 struct ProfileView: View {
+    @Environment(\.dynamicTypeSize) private var typeSize
     @StateObject private var viewModel = ProfileViewModel()
     @EnvironmentObject var appViewModel: AppViewModel
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.openURL) private var openURL
     @Query(sort: \IncomeModel.date, order: .reverse) private var incomes: [IncomeModel]
-    @State private var showingEditProfile = false
+    @Query private var expenses: [ExpenseModel]
+    @Query private var goals: [GoalModel]
     @State private var showingAchievements = false
+    @State private var showingReports = false
     @State private var showingTipHistory = false
+    @State private var showingDeleteDialog = false
+    @State private var showingDeleteFinalConfirm = false
 
     private var lifetimeIncome: Double { incomes.reduce(0) { $0 + $1.amount } }
-    private var displayInitial: String {
-        viewModel.displayName.first.map { String($0).uppercased() } ?? "U"
+
+    // "Saving since <month>" — the first movement ever logged. Nothing
+    // logged yet is a deliberate state, not an empty label.
+    private var savingSinceSubtitle: String {
+        let firstDate = (incomes.map(\.date) + expenses.map(\.date)).min()
+        guard let firstDate else { return Strings.Profile.justStartedLabel }
+        let month = firstDate.formatted(.dateTime.month(.wide).year())
+        return String(format: Strings.Profile.savingSinceLabel, month)
     }
 
+    private var totalSaved: Double { goals.reduce(0) { $0 + $1.current } }
+    private var movementCount: Int { incomes.count + expenses.count }
+    private var activeGoalCount: Int { goals.filter { $0.progress < 1 }.count }
+
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 14) {
-                    // — Notification bell top right —
-                    HStack {
-                        Spacer()
-                        Button(action: {}) {
-                            Image(systemName: "bell")
-                                .font(.system(size: 18))
-                                .foregroundStyle(Color.warmInk)
-                                .frame(width: 40, height: 40)
-                                .background(Color.warmSurface)
-                                .cornerRadius(14)
-                                .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.warmLine, lineWidth: 1))
-                        }
-                    }
+        ScrollView {
+            VStack(spacing: 14) {
+                lifetimeIncomeCard
                     .padding(.top, 8)
 
-                    // — Identity card —
-                    HStack(spacing: 16) {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.warmAmberSoft)
-                            .frame(width: 64, height: 64)
-                            .overlay(
-                                Text(displayInitial)
-                                    .font(.system(size: 30, weight: .regular, design: .serif))
-                                    .foregroundStyle(Color.warmAmber)
-                            )
+                statsStrip
 
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(viewModel.displayName.isEmpty ? "User" : viewModel.displayName)
-                                .font(.system(size: 22, weight: .regular, design: .serif))
-                                .foregroundStyle(Color.warmInk)
-                            Text(viewModel.email.isEmpty ? "—" : viewModel.email)
-                                .font(.system(size: 13))
-                                .foregroundStyle(Color.warmInkMuted)
-                        }
-                        Spacer()
-                        Button(action: { showingEditProfile = true }) {
-                            Image(systemName: "chevron.right")
-                                .font(.system(size: 13))
-                                .foregroundStyle(Color.warmInkMuted)
-                                .frame(width: 32, height: 32)
-                                .background(Color.warmBg)
-                                .cornerRadius(10)
-                        }
-                    }
-                    .padding(20)
-                    .background(Color.warmSurface)
-                    .cornerRadius(22)
-                    .overlay(RoundedRectangle(cornerRadius: 22).stroke(Color.warmLine, lineWidth: 1))
+                achievementsCard
 
-                    // — Lifetime savings card —
-                    ZStack(alignment: .topTrailing) {
-                        Circle()
-                            .fill(Color.white.opacity(0.08))
-                            .frame(width: 140, height: 140)
-                            .offset(x: 30, y: -20)
+                settingsSection
 
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("LIFETIME INCOME")
-                                .font(.system(size: 11, weight: .semibold))
-                                .foregroundStyle(Color.white.opacity(0.7))
-                                .tracking(0.8)
-                            Text(formattedAmount(lifetimeIncome))
-                                .font(.system(size: 40, weight: .regular, design: .serif))
-                                .foregroundStyle(.white)
-                            Text("Total income logged in Savely")
-                                .font(.system(size: 13))
-                                .foregroundStyle(Color.white.opacity(0.75))
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(20)
-                    }
-                    .background(Color.warmGreen)
-                    .cornerRadius(22)
-                    .clipped()
+                dataPrivacySection
 
-                    // — Achievements preview —
-                    VStack(spacing: 12) {
-                        HStack {
-                            Text("Achievements")
-                                .font(.system(size: 18, weight: .regular, design: .serif))
-                                .foregroundStyle(Color.warmInk)
-                            Spacer()
-                            Button(action: { showingAchievements = true }) {
-                                Text("See all ›")
-                                    .font(.system(size: 13, weight: .medium))
-                                    .foregroundStyle(Color.warmGreen)
-                            }
-                        }
-                        HStack(spacing: 10) {
-                            ForEach(badgePreviews, id: \.icon) { b in
-                                BadgeTile(icon: b.icon, bg: b.bg, color: b.color, unlocked: b.unlocked)
-                            }
-                        }
-                    }
-                    .padding(16)
-                    .background(Color.warmSurface)
-                    .cornerRadius(20)
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.warmLine, lineWidth: 1))
-
-                    // — Settings —
-                    ProfileSection(header: "Settings") {
-                        SettingsToggleRow(icon: "bell.fill", title: "Notifications", isOn: $viewModel.expenseReminders)
-                        WarmDivider()
-                        SettingsToggleRow(icon: "moon.fill", title: "Dark Mode", isOn: $viewModel.darkMode)
-                        WarmDivider()
-                        SettingsNavRow(icon: "lock.shield.fill", title: "Change Password", onTap: {})
-                        WarmDivider()
-                        SettingsNavRow(icon: "doc.text.fill", title: "Weekly PDF report", onTap: {})
-                    }
-
+                if FeatureFlags.tipsEnabled {
                     ProfileSection(header: "About") {
                         SettingsNavRow(icon: "sparkles", title: "Tip history", detail: "128 tips", onTap: { showingTipHistory = true })
-                        WarmDivider()
-                        SettingsNavRow(icon: "rectangle.portrait.and.arrow.right", title: "Sign out", color: Color.warmClay, onTap: {
-                            Task { try? AuthenticationManager.shared.signOut() }
-                        })
                     }
-
-                    Spacer(minLength: 16)
                 }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 24)
+
+                Spacer(minLength: 16)
             }
-            .background(Color.warmBg)
-            .navigationBarHidden(true)
-            .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text(Strings.Errors.noticeLabel), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
+            .padding(.horizontal, 20)
+            .padding(.bottom, 24)
+        }
+        .background(Color.warmBg)
+        .navigationBarHidden(true)
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text(Strings.Errors.noticeLabel), message: Text(viewModel.alertMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
+        }
+        .confirmationDialog(
+            Strings.Profile.deleteAllDataConfirmTitle,
+            isPresented: $showingDeleteDialog,
+            titleVisibility: .visible
+        ) {
+            Button(Strings.Profile.deleteAllDataConfirmButton, role: .destructive) { showingDeleteFinalConfirm = true }
+            Button(Strings.Buttons.cancelButton, role: .cancel) {}
+        } message: {
+            Text(Strings.Profile.deleteAllDataConfirmMessage)
+        }
+        // Second, explicit confirm — deleting is the one irreversible thing here.
+        .alert(Strings.Profile.deleteAllDataConfirmTitle, isPresented: $showingDeleteFinalConfirm) {
+            Button(Strings.Profile.deleteAllDataConfirmButton, role: .destructive) { viewModel.deleteAllData() }
+            Button(Strings.Buttons.cancelButton, role: .cancel) {}
+        } message: {
+            Text(Strings.Profile.deleteAllDataConfirmMessage)
+        }
+        .navigationDestination(isPresented: $showingAchievements) { AchievementsView() }
+        .navigationDestination(isPresented: $showingReports) { ReportsView() }
+        .navigationDestination(isPresented: $showingTipHistory) { TipHistoryView() }
+        .onAppear { viewModel.setModelContext(modelContext) }
+        .task { await viewModel.refreshReminderState() }
+    }
+
+    // MARK: - Lifetime income
+
+    private var lifetimeIncomeCard: some View {
+        ZStack(alignment: .topTrailing) {
+            Circle()
+                .fill(Color.warmOnGreen.opacity(0.08))
+                .frame(width: 140, height: 140)
+                .offset(x: 30, y: -20)
+
+            VStack(alignment: .leading, spacing: 4) {
+                // Full-opacity white on the green fill: 6.3:1 light, 5.0:1
+                // dark. The .7/.75 washes read as "secondary" but landed at
+                // 4.0/3.4 in dark, under the 4.5 a label needs.
+                Text("LIFETIME INCOME")
+                    .warmFont(11, weight: .semibold)
+                    .foregroundStyle(Color.warmOnGreen)
+                    .tracking(0.8)
+                Text(formattedAmount(lifetimeIncome))
+                    .warmFont(40, weight: .regular, design: .serif)
+                    .foregroundStyle(Color.warmOnGreen)
+                Text(savingSinceSubtitle)
+                    .warmFont(13)
+                    .foregroundStyle(Color.warmOnGreen)
             }
-            .sheet(isPresented: $showingEditProfile) { EditProfileSheet(viewModel: viewModel) }
-            .navigationDestination(isPresented: $showingAchievements) { AchievementsView() }
-            .navigationDestination(isPresented: $showingTipHistory) { TipHistoryView() }
-            .onAppear { viewModel.setModelContext(modelContext) }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(20)
+        }
+        .background(Color.warmGreenFill)
+        .cornerRadius(22)
+        .clipped()
+        .accessibilityElement(children: .combine)
+    }
+
+    // MARK: - Stats
+
+    private var statsStrip: some View {
+        // Three across, or stacked at accessibility type sizes so the labels
+        // and figures keep one line each instead of wrapping into slivers.
+        let layout = typeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(spacing: 10))
+            : AnyLayout(HStackLayout(spacing: 10))
+        return layout {
+            ProfileStatCell(label: Strings.Profile.statSavedLabel, value: formattedAmount(totalSaved))
+            ProfileStatCell(label: Strings.Profile.statMovementsLabel, value: "\(movementCount)")
+            ProfileStatCell(label: Strings.Profile.statActiveGoalsLabel, value: "\(activeGoalCount)")
         }
     }
 
-    // Badge previews (static mock — real achievements system can be wired later)
-    private struct BadgePreview { let icon: String; let bg: Color; let color: Color; let unlocked: Bool }
-    private var badgePreviews: [BadgePreview] { [
-        BadgePreview(icon: "star.fill",   bg: Color.warmAmberSoft, color: Color.warmAmber, unlocked: true),
-        BadgePreview(icon: "checkmark",   bg: Color.warmGreenSoft, color: Color.warmGreen, unlocked: true),
-        BadgePreview(icon: "target",      bg: Color.warmSkySoft,   color: Color.warmSky,   unlocked: true),
-        BadgePreview(icon: "medal.fill",  bg: Color.warmClaySoft,  color: Color.warmClay,  unlocked: true),
-        BadgePreview(icon: "lock.fill",   bg: Color.warmBg,        color: Color.warmInkMuted, unlocked: false),
-        BadgePreview(icon: "lock.fill",   bg: Color.warmBg,        color: Color.warmInkMuted, unlocked: false),
-    ] }
+    // MARK: - Achievements
+
+    private var achievementStates: [AchievementState] {
+        AchievementEngine.evaluate(AchievementInput(
+            incomeTotal: lifetimeIncome,
+            incomeCount: incomes.count,
+            expenseCount: expenses.count,
+            loggedDates: incomes.map(\.date) + expenses.map(\.date),
+            goalCount: goals.count,
+            bestGoalProgress: goals.map(\.progress).max() ?? 0,
+            completedGoalCount: goals.filter { $0.progress >= 1 }.count
+        ))
+    }
+
+    private var unlockedAchievements: [AchievementState] { achievementStates.filter(\.unlocked) }
+
+    /// The locked achievement the user is closest to — one row with a real
+    /// bar beats a grid of padlocks on a fresh install.
+    private var nextAchievement: AchievementState? {
+        achievementStates.filter { !$0.unlocked }.max { $0.progress < $1.progress }
+    }
+
+    private var achievementsCard: some View {
+        VStack(spacing: 12) {
+            HStack {
+                Text("Achievements")
+                    .warmFont(18, weight: .regular, design: .serif)
+                    .foregroundStyle(Color.warmInk)
+                Spacer()
+                Button(action: { showingAchievements = true }) {
+                    Text("See all ›")
+                        .warmFont(13, weight: .medium)
+                        .foregroundStyle(Color.warmGreen)
+                        .tappable44()
+                }
+            }
+
+            if !unlockedAchievements.isEmpty {
+                HStack(spacing: 10) {
+                    ForEach(unlockedAchievements.prefix(6)) { state in
+                        BadgeTile(icon: state.icon, bg: state.tileBackground, color: state.tileColor, unlocked: true)
+                            .accessibilityLabel(state.title)
+                    }
+                    if unlockedAchievements.count < 6 {
+                        Spacer(minLength: 0)
+                    }
+                }
+            }
+
+            if let next = nextAchievement {
+                NextAchievementRow(state: next)
+            } else {
+                Text(Strings.Profile.allAchievementsUnlockedLabel)
+                    .warmFont(13)
+                    .foregroundStyle(Color.warmInkSoft)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .padding(16)
+        .background(Color.warmSurface)
+        .cornerRadius(20)
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.warmLine, lineWidth: 1))
+    }
+
+    // MARK: - Settings
+
+    private var settingsSection: some View {
+        ProfileSection(header: "Settings") {
+            if viewModel.notificationsDenied {
+                NotificationsDeniedRow(onOpenSettings: {
+                    if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
+                })
+            } else {
+                SettingsToggleRow(
+                    icon: "bell.fill",
+                    title: Strings.Profile.expenseRemindersLabel,
+                    isOn: reminderEnabledBinding(.expense)
+                )
+                if viewModel.reminders.expenseEnabled {
+                    ReminderTimeRow(time: reminderTimeBinding(.expense))
+                }
+                WarmDivider()
+                SettingsToggleRow(
+                    icon: "target",
+                    title: Strings.Profile.goalAlertsLabel,
+                    isOn: reminderEnabledBinding(.goal)
+                )
+                if viewModel.reminders.goalEnabled {
+                    ReminderTimeRow(time: reminderTimeBinding(.goal))
+                }
+            }
+            if FeatureFlags.darkModeEnabled {
+                WarmDivider()
+                SettingsToggleRow(icon: "moon.fill", title: Strings.Profile.darkModeLabel, isOn: $viewModel.darkMode)
+            }
+        }
+    }
+
+    private func reminderEnabledBinding(_ kind: ReminderKind) -> Binding<Bool> {
+        Binding(
+            get: { viewModel.reminders.isEnabled(kind) },
+            set: { viewModel.setReminder(kind, enabled: $0) }
+        )
+    }
+
+    private func reminderTimeBinding(_ kind: ReminderKind) -> Binding<Date> {
+        Binding(
+            get: { viewModel.reminders.time(for: kind) },
+            set: { viewModel.setReminder(kind, time: $0) }
+        )
+    }
+
+    // MARK: - Data & privacy
+
+    private var dataPrivacySection: some View {
+        ProfileSection(header: Strings.Profile.dataPrivacyTitle) {
+            HStack(spacing: 16) {
+                Image(systemName: "lock.shield")
+                    .warmFont(18)
+                    .foregroundStyle(Color.warmGreen)
+                    .frame(width: 28)
+                    .accessibilityHidden(true)
+                Text(Strings.Profile.dataStaysLocalLabel)
+                    .warmFont(13)
+                    .foregroundStyle(Color.warmInkSoft)
+                Spacer()
+            }
+            .padding(.horizontal, 16).padding(.vertical, 14)
+            WarmDivider()
+            SettingsNavRow(icon: "doc.text.fill", title: "Weekly PDF report", onTap: { viewModel.generateWeeklyReportPDF() })
+            WarmDivider()
+            SettingsNavRow(icon: "chart.bar", title: "Reports", onTap: { showingReports = true })
+            WarmDivider()
+            SettingsNavRow(icon: "trash", title: Strings.Profile.deleteAllDataLabel, color: Color.warmClay, onTap: { showingDeleteDialog = true })
+        }
+    }
 
     private func formattedAmount(_ v: Double) -> String {
         let f = NumberFormatter()
         f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 0
         return f.string(from: NSNumber(value: v)) ?? "$0"
+    }
+}
+
+// MARK: - Stat cell
+
+struct ProfileStatCell: View {
+    let label: String
+    let value: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            // Wrap rather than shrink: a third of the width at AX sizes cannot
+            // hold "ACTIVE GOALS" on one line, and the audit flags the clip.
+            Text(label)
+                .warmFont(11, weight: .semibold)
+                .foregroundStyle(Color.warmInkMuted)
+                .tracking(0.8)
+                .textCase(.uppercase)
+                .fixedSize(horizontal: false, vertical: true)
+            Text(value)
+                .warmFont(20, weight: .regular, design: .serif)
+                .foregroundStyle(Color.warmInk)
+                .monospacedDigit()
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.warmSurface)
+        .cornerRadius(16)
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.warmLine, lineWidth: 1))
+        .accessibilityElement(children: .combine)
+    }
+}
+
+// MARK: - Next achievement row
+
+struct NextAchievementRow: View {
+    let state: AchievementState
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(Strings.Profile.nextAchievementLabel)
+                .warmFont(11, weight: .semibold)
+                .foregroundStyle(Color.warmInkMuted)
+                .tracking(0.8)
+                .textCase(.uppercase)
+
+            HStack(spacing: 12) {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(state.tileBackground)
+                    .frame(width: 36, height: 36)
+                    .overlay(Image(systemName: state.icon).warmFont(15).foregroundStyle(state.tileColor))
+                    .accessibilityHidden(true)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(state.title)
+                        .warmFont(14, weight: .semibold)
+                        .foregroundStyle(Color.warmInk)
+                    Text(state.subtitle)
+                        .warmFont(12)
+                        .foregroundStyle(Color.warmInkSoft)
+                    GeometryReader { geo in
+                        ZStack(alignment: .leading) {
+                            Capsule().fill(Color.warmGreenSoft).frame(height: 4)
+                            Capsule().fill(Color.warmGreen)
+                                .frame(width: geo.size.width * state.progress, height: 4)
+                        }
+                    }
+                    .frame(height: 4)
+                    .padding(.top, 2)
+                }
+                Spacer()
+                Text("\(Int(state.progress * 100))%")
+                    .warmFont(13, weight: .semibold)
+                    .foregroundStyle(Color.warmInkSoft)
+                    .monospacedDigit()
+            }
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityValue("\(Int(state.progress * 100)) percent")
+    }
+}
+
+// MARK: - Notifications denied row
+
+struct NotificationsDeniedRow: View {
+    let onOpenSettings: () -> Void
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 16) {
+            Image(systemName: "bell.slash")
+                .warmFont(18)
+                .foregroundStyle(Color.warmInkSoft)
+                .frame(width: 28)
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 6) {
+                Text(Strings.Profile.notificationsDeniedHint)
+                    .warmFont(13)
+                    .foregroundStyle(Color.warmInkSoft)
+                    .fixedSize(horizontal: false, vertical: true)
+                Button(action: onOpenSettings) {
+                    Text(Strings.Profile.openSettingsButton)
+                        .warmFont(13, weight: .medium)
+                        .foregroundStyle(Color.warmGreen)
+                }
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 16).padding(.vertical, 14)
+    }
+}
+
+// MARK: - Reminder time row
+
+struct ReminderTimeRow: View {
+    @Binding var time: Date
+
+    var body: some View {
+        HStack(spacing: 16) {
+            Color.clear.frame(width: 28)
+            Text(Strings.Profile.reminderTimeLabel)
+                .warmFont(14)
+                .foregroundStyle(Color.warmInkSoft)
+            Spacer()
+            DatePicker(Strings.Profile.reminderTimeLabel, selection: $time, displayedComponents: .hourAndMinute)
+                .labelsHidden()
+                .tint(Color.warmGreen)
+        }
+        .padding(.horizontal, 16).padding(.bottom, 12)
     }
 }
 
@@ -180,7 +415,7 @@ struct BadgeTile: View {
         RoundedRectangle(cornerRadius: 14)
             .fill(bg)
             .overlay(RoundedRectangle(cornerRadius: 14).stroke(unlocked ? Color.clear : Color.warmLine, lineWidth: 1))
-            .overlay(Image(systemName: icon).font(.system(size: 18, weight: unlocked ? .semibold : .regular)).foregroundStyle(color))
+            .overlay(Image(systemName: icon).warmFont(18, weight: unlocked ? .semibold : .regular).foregroundStyle(color))
             .frame(maxWidth: .infinity)
             .aspectRatio(1, contentMode: .fit)
     }
@@ -194,10 +429,11 @@ struct ProfileSection<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(header.uppercased())
-                .font(.system(size: 11, weight: .semibold))
+                .warmFont(11, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(0.8)
                 .padding(.leading, 4)
+                .accessibilityAddTraits(.isHeader)
             VStack(spacing: 0) { content() }
                 .background(Color.warmSurface)
                 .cornerRadius(16)
@@ -214,6 +450,8 @@ struct WarmDivider: View {
 
 // MARK: - Settings rows (redesigned)
 
+/// The `Toggle` owns the title so VoiceOver reads
+/// "<title>, switch, on" — never `Toggle("")`.
 struct SettingsToggleRow: View {
     let icon: String
     let title: String
@@ -221,12 +459,14 @@ struct SettingsToggleRow: View {
     var body: some View {
         HStack(spacing: 16) {
             Image(systemName: icon)
-                .font(.system(size: 18))
+                .warmFont(18)
                 .foregroundStyle(Color.warmInkSoft)
                 .frame(width: 28)
-            Text(title).font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmInk)
-            Spacer()
-            Toggle("", isOn: $isOn).labelsHidden().tint(Color.warmGreen)
+                .accessibilityHidden(true)
+            Toggle(isOn: $isOn) {
+                Text(title).warmFont(14, weight: .medium).foregroundStyle(Color.warmInk)
+            }
+            .tint(Color.warmGreen)
         }
         .padding(.horizontal, 16).padding(.vertical, 14)
     }
@@ -242,16 +482,16 @@ struct SettingsNavRow: View {
         Button(action: onTap) {
             HStack(spacing: 16) {
                 Image(systemName: icon)
-                    .font(.system(size: 18))
+                    .warmFont(18)
                     .foregroundStyle(color)
                     .frame(width: 28)
-                Text(title).font(.system(size: 14, weight: .medium)).foregroundStyle(color == Color.warmInkSoft ? Color.warmInk : color)
+                Text(title).warmFont(14, weight: .medium).foregroundStyle(color == Color.warmInkSoft ? Color.warmInk : color)
                 Spacer()
                 if let d = detail {
-                    Text(d).font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                    Text(d).warmFont(13).foregroundStyle(Color.warmInkMuted)
                 }
                 if color != Color.warmClay {
-                    Image(systemName: "chevron.right").font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
+                    Image(systemName: "chevron.right").warmFont(12).foregroundStyle(Color.warmInkMuted)
                 }
             }
             .padding(.horizontal, 16).padding(.vertical, 14)
@@ -261,34 +501,7 @@ struct SettingsNavRow: View {
     }
 }
 
-// MARK: - Edit Profile Sheet (unchanged)
-
-struct EditProfileSheet: View {
-    @ObservedObject var viewModel: ProfileViewModel
-    @Environment(\.dismiss) private var dismiss
-    var body: some View {
-        NavigationView {
-            Form {
-                Section {
-                    TextField("Display Name", text: $viewModel.displayName)
-                    TextField("Email", text: $viewModel.email)
-                        .textContentType(.emailAddress).keyboardType(.emailAddress).autocapitalization(.none)
-                }
-            }
-            .navigationTitle("Edit Profile").navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") { Task { await viewModel.updatePersonalInformation(); dismiss() } }.fontWeight(.semibold)
-                }
-            }
-        }
-    }
+#Preview {
+    NavigationStack { ProfileView() }
+        .environmentObject(AppViewModel())
 }
-
-struct InnerHeightPreferenceKey: PreferenceKey {
-    static let defaultValue: CGFloat = .zero
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = nextValue() }
-}
-
-#Preview { ProfileView() }

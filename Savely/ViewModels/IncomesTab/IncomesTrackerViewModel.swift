@@ -19,13 +19,31 @@ class IncomesTrackerViewModel: ObservableObject {
     
     var modelContext: ModelContext?
 
+    private var observerTokens: [NSObjectProtocol] = []
+
     init(modelContext: ModelContext? = nil) {
         self.modelContext = modelContext
         if modelContext != nil {
             fetchIncomes()
         }
+        observeIncomeChanges()
     }
-    
+
+    deinit {
+        observerTokens.forEach { NotificationCenter.default.removeObserver($0) }
+    }
+
+    /// The global "+" sheet saves through its own view-model instance, so this
+    /// instance only hears about a new income through the notifications that
+    /// `addIncome`/`deleteIncome` post. Without this the Money tab's list
+    /// stayed stale until the app relaunched.
+    private func observeIncomeChanges() {
+        let refresh: (Notification) -> Void = { [weak self] _ in self?.fetchIncomes() }
+        observerTokens = [.incomeAdded, .incomeDeleted].map { name in
+            NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main, using: refresh)
+        }
+    }
+
     var totalIncomeThisMonth: Double {
         let calendar = Calendar.current
         let now = Date()
@@ -82,31 +100,39 @@ class IncomesTrackerViewModel: ObservableObject {
         }
     }
 
-    func addIncome() {
+    /// - Parameter source: the chip picked in the quick-add sheet; the inline
+    ///   Money-tab form passes nothing.
+    func addIncome(source: String? = nil) {
         guard let modelContext = modelContext else { return }
-        if let amountValue = Double(amount) {
-            let newIncome = IncomeModel(
-                incomeDescription: incomeDescription,
-                amount: amountValue,
-                date: Date()
-            )
-            modelContext.insert(newIncome)
-            
-            do {
-                try modelContext.save()
-                print("New income saved successfully")
-                
-                NotificationCenter.default.post(name: .incomeAdded, object: nil, userInfo: ["amount": amountValue])
-            } catch {
-                print("Error saving new income: \(error)")
-                errorMessage = "Error al guardar el ingreso."
-                showError = true
-            }
-            
-            incomeDescription = ""
-            amount = ""
-            fetchIncomes()
+        guard let amountValue = parseAmount(amount) else {
+            // Used to return silently, so a typo just did nothing at all.
+            errorMessage = "Enter a valid amount greater than zero."
+            showError = true
+            return
         }
+
+        let newIncome = IncomeModel(
+            incomeDescription: incomeDescription,
+            amount: amountValue,
+            date: Date(),
+            source: source
+        )
+        modelContext.insert(newIncome)
+
+        do {
+            try modelContext.save()
+            print("New income saved successfully")
+
+            NotificationCenter.default.post(name: .incomeAdded, object: nil, userInfo: ["amount": amountValue])
+        } catch {
+            print("Error saving new income: \(error)")
+            errorMessage = "Error al guardar el ingreso."
+            showError = true
+        }
+
+        incomeDescription = ""
+        amount = ""
+        fetchIncomes()
     }
 
     func deleteIncome(_ income: IncomeModel) {

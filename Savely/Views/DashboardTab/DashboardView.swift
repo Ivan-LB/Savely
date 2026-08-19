@@ -4,6 +4,9 @@ import SwiftData
 // MARK: - Dashboard
 
 struct DashboardView: View {
+    /// Set by `MainNavigationView` so "See all" can switch to the Money tab.
+    var onSeeAll: () -> Void = {}
+
     @Query(sort: \ExpenseModel.date, order: .reverse) private var expenses: [ExpenseModel]
     @Query(sort: \IncomeModel.date, order: .reverse)  private var incomes: [IncomeModel]
     @Query private var goals: [GoalModel]
@@ -49,27 +52,24 @@ struct DashboardView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                // — Greeting —
-                HStack(alignment: .center) {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(formattedDate)
-                            .font(.system(size: 13))
-                            .foregroundStyle(Color.warmInkMuted)
-                        Text(greeting + ".")
-                            .font(.system(size: 30, weight: .regular, design: .serif))
-                            .foregroundStyle(Color.warmInk)
-                    }
-                    Spacer()
-                    Circle()
-                        .fill(Color.warmAmberSoft)
-                        .frame(width: 40, height: 40)
-                        .overlay(
-                            Image(systemName: "person.fill")
-                                .font(.system(size: 18))
-                                .foregroundStyle(Color.warmAmber)
-                        )
+                // — Greeting — (no avatar: there is no account, so no
+                // person to represent)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(formattedDate)
+                        .warmFont(13)
+                        .foregroundStyle(Color.warmInkMuted)
+                    Text(greeting + ".")
+                        .warmFont(30, weight: .regular, design: .serif)
+                        .foregroundStyle(Color.warmInk)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 8)
+                // One heading for VoiceOver: "Good afternoon. Tuesday, August 18"
+                // instead of the bare "Afternoon." the audit flags as
+                // not human-readable.
+                .accessibilityElement(children: .ignore)
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityLabel(Text("Good \(greeting.lowercased()). \(formattedDate)"))
 
                 // — Hero Goal Card —
                 if let goal = favoriteGoal {
@@ -78,8 +78,10 @@ struct DashboardView: View {
                     EmptyGoalCard()
                 }
 
-                // — Tip of the day —
-                TipOfTheDayCard(viewModel: tipsViewModel)
+                // — Tip of the day (hidden for the App Store release, FeatureFlags.tipsEnabled) —
+                if FeatureFlags.tipsEnabled {
+                    TipOfTheDayCard(viewModel: tipsViewModel)
+                }
 
                 // — Monthly summary —
                 HStack(spacing: 10) {
@@ -91,22 +93,26 @@ struct DashboardView: View {
                 VStack(spacing: 0) {
                     HStack {
                         Text("Recent")
-                            .font(.system(size: 20, weight: .regular, design: .serif))
+                            .warmFont(20, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInk)
                         Spacer()
-                        Text("See all")
-                            .font(.system(size: 13, weight: .medium))
-                            .foregroundStyle(Color.warmGreen)
+                        Button(action: onSeeAll) {
+                            Text("See all")
+                                .warmFont(13, weight: .medium)
+                                .foregroundStyle(Color.warmGreen)
+                                .tappable44()
+                        }
+                        .buttonStyle(.plain)
                     }
                     .padding(.bottom, 10)
 
                     if recentTransactions.isEmpty {
                         VStack(spacing: 8) {
                             Image(systemName: "tray")
-                                .font(.system(size: 36))
+                                .warmFont(36)
                                 .foregroundStyle(Color.warmInkMuted)
                             Text("No transactions yet")
-                                .font(.system(size: 14))
+                                .warmFont(14)
                                 .foregroundStyle(Color.warmInkMuted)
                         }
                         .frame(maxWidth: .infinity)
@@ -136,7 +142,8 @@ struct DashboardView: View {
         .background(Color.warmBg)
         .navigationBarHidden(true)
         .onAppear {
-            if tipsViewModel.modelContext == nil {
+            // No tip generation at all while the flag is off — not just hidden UI.
+            if FeatureFlags.tipsEnabled && tipsViewModel.modelContext == nil {
                 tipsViewModel.setModelContext(modelContext)
             }
         }
@@ -163,6 +170,17 @@ struct HeroGoalCard: View {
     let goal: GoalModel
     let modelContext: ModelContext
     @State private var showDepositSheet = false
+    @State private var showEditSheet = false
+    @Query private var goalDeposits: [DepositModel]
+
+    init(goal: GoalModel, modelContext: ModelContext) {
+        self.goal = goal
+        self.modelContext = modelContext
+        let goalID = goal.id
+        _goalDeposits = Query(filter: #Predicate<DepositModel> { $0.goalID == goalID })
+    }
+
+    private var pace: GoalPace { GoalPace.compute(goal: goal, deposits: goalDeposits) }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -171,31 +189,26 @@ struct HeroGoalCard: View {
                 HStack {
                     HStack(spacing: 6) {
                         Image(systemName: "star.fill")
-                            .font(.system(size: 12))
+                            .warmFont(12)
                             .foregroundStyle(Color.warmAmber)
+                            .accessibilityHidden(true)
                         Text("FAVORITE GOAL")
-                            .font(.system(size: 11, weight: .semibold))
+                            .warmFont(11, weight: .semibold)
                             .foregroundStyle(Color.warmInkMuted)
                             .tracking(0.8)
                     }
                     Spacer()
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 14))
-                        .foregroundStyle(Color.warmInkMuted)
-                        .frame(width: 32, height: 32)
-                        .background(Color.warmBg)
-                        .cornerRadius(10)
                 }
 
                 Text(goal.name)
-                    .font(.system(size: 26, weight: .regular, design: .serif))
+                    .warmFont(26, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
 
                 // Ring + stats
                 HStack(alignment: .center, spacing: 20) {
                     ZStack {
                         Circle()
-                            .stroke(Color(red: 0.93, green: 0.90, blue: 0.83), lineWidth: 12)
+                            .stroke(Color.warmTrack, lineWidth: 12)
                         Circle()
                             .trim(from: 0, to: goal.progress)
                             .stroke(Color.warmGreen, style: StrokeStyle(lineWidth: 12, lineCap: .round))
@@ -203,38 +216,41 @@ struct HeroGoalCard: View {
                         VStack(spacing: 0) {
                             HStack(alignment: .lastTextBaseline, spacing: 2) {
                                 Text("\(Int(goal.progress * 100))")
-                                    .font(.system(size: 36, weight: .regular, design: .serif))
+                                    .warmFont(36, weight: .regular, design: .serif)
                                     .foregroundStyle(Color.warmInk)
                                 Text("%")
-                                    .font(.system(size: 18))
+                                    .warmFont(18)
                                     .foregroundStyle(Color.warmInkMuted)
                             }
                         }
                     }
                     .frame(width: 132, height: 132)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(Text("Progress"))
+                    .accessibilityValue(Text("\(Int(goal.progress * 100)) percent"))
 
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("SAVED")
-                                .font(.system(size: 11, weight: .semibold))
+                                .warmFont(11, weight: .semibold)
                                 .foregroundStyle(Color.warmInkMuted)
                                 .tracking(0.8)
                             Text(formattedAmount(goal.current))
-                                .font(.system(size: 24, weight: .regular, design: .serif))
+                                .warmFont(24, weight: .regular, design: .serif)
                                 .foregroundStyle(Color.warmInk)
                             Text("of \(formattedAmount(goal.target))")
-                                .font(.system(size: 12))
+                                .warmFont(12)
                                 .foregroundStyle(Color.warmInkMuted)
                         }
 
                         VStack(alignment: .leading, spacing: 2) {
                             Text("PACE")
-                                .font(.system(size: 11, weight: .semibold))
+                                .warmFont(11, weight: .semibold)
                                 .foregroundStyle(Color.warmInkMuted)
                                 .tracking(0.8)
-                            Text(paceText)
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundStyle(Color.warmGreen)
+                            Text(pace.label)
+                                .warmFont(14, weight: .semibold)
+                                .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmGreen)
                         }
                     }
                 }
@@ -244,24 +260,25 @@ struct HeroGoalCard: View {
                     Button(action: { showDepositSheet = true }) {
                         HStack(spacing: 6) {
                             Image(systemName: "plus")
-                                .font(.system(size: 14, weight: .semibold))
+                                .warmFont(14, weight: .semibold)
                             Text("Add deposit")
-                                .font(.system(size: 15, weight: .semibold))
+                                .warmFont(15, weight: .semibold)
                         }
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity)
                         .frame(height: 48)
-                        .background(Color.warmGreen)
+                        .background(Color.warmGreenFill)
                         .cornerRadius(14)
                     }
 
-                    Button(action: {}) {
+                    Button(action: { showEditSheet = true }) {
                         Image(systemName: "pencil")
-                            .font(.system(size: 16))
+                            .warmFont(16)
                             .foregroundStyle(Color.warmInk)
                             .frame(width: 48, height: 48)
                             .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.warmLine, lineWidth: 1))
                     }
+                    .accessibilityLabel("Edit goal")
                 }
             }
             .padding(24)
@@ -269,14 +286,13 @@ struct HeroGoalCard: View {
         .background(Color.warmSurface)
         .cornerRadius(24)
         .overlay(RoundedRectangle(cornerRadius: 24).stroke(Color.warmLine, lineWidth: 1))
-        .shadow(color: Color.black.opacity(0.04), radius: 12, x: 0, y: 4)
+        .shadow(color: Color.warmShadow, radius: 12, x: 0, y: 4)
         .sheet(isPresented: $showDepositSheet) {
             DepositSheet(goal: goal, modelContext: modelContext)
         }
-    }
-
-    private var paceText: String {
-        goal.progress >= 1.0 ? "Complete!" : "On track"
+        .sheet(isPresented: $showEditSheet) {
+            GoalEditSheet(goal: goal)
+        }
     }
 
     private func formattedAmount(_ v: Double) -> String {
@@ -296,6 +312,7 @@ struct DepositSheet: View {
     @Environment(\.dismiss) private var dismiss
     @State private var amountText = ""
     @State private var note = ""
+    @State private var errorMessage: String?
     private let quickAmounts: [Double] = [25, 50, 100, 250]
 
     var body: some View {
@@ -306,19 +323,19 @@ struct DepositSheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Add a deposit")
-                        .font(.system(size: 22, weight: .regular, design: .serif))
+                        .warmFont(22, weight: .regular, design: .serif)
                         .foregroundStyle(Color.warmInk)
                     Text("Move money toward \(goal.name.components(separatedBy: ",").first ?? goal.name).")
-                        .font(.system(size: 13))
+                        .warmFont(13)
                         .foregroundStyle(Color.warmInkMuted)
 
                     // Large amount
                     HStack(alignment: .lastTextBaseline, spacing: 4) {
                         Text("$")
-                            .font(.system(size: 48, weight: .regular, design: .serif))
+                            .warmFont(48, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInkMuted)
                         TextField("0", text: $amountText)
-                            .font(.system(size: 64, weight: .regular, design: .serif))
+                            .warmFont(64, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInk)
                             .keyboardType(.decimalPad)
                             .frame(maxWidth: .infinity)
@@ -331,7 +348,7 @@ struct DepositSheet: View {
                             let isSelected = amountText == String(Int(amt))
                             Button(action: { amountText = String(Int(amt)) }) {
                                 Text("$\(Int(amt))")
-                                    .font(.system(size: 13, weight: .semibold))
+                                    .warmFont(13, weight: .semibold)
                                     .foregroundStyle(isSelected ? Color.warmGreenDeep : Color.warmInkMuted)
                                     .padding(.horizontal, 14)
                                     .padding(.vertical, 8)
@@ -345,11 +362,11 @@ struct DepositSheet: View {
                     // Note
                     VStack(alignment: .leading, spacing: 6) {
                         Text("NOTE")
-                            .font(.system(size: 11, weight: .semibold))
+                            .warmFont(11, weight: .semibold)
                             .foregroundStyle(Color.warmInkMuted)
                             .tracking(0.8)
                         TextField("Optional note", text: $note)
-                            .font(.system(size: 14))
+                            .warmFont(14)
                             .padding(14)
                             .frame(height: 44)
                             .background(Color.warmBg)
@@ -359,11 +376,11 @@ struct DepositSheet: View {
 
                     Button(action: saveDeposit) {
                         Text("Add \(amountText.isEmpty ? "" : "$\(amountText)") to \(goal.name.components(separatedBy: ",").first ?? goal.name)")
-                            .font(.system(size: 15, weight: .semibold))
-                            .foregroundStyle(.white)
+                            .warmFont(15, weight: .semibold)
+                            .foregroundStyle(Color.warmOnGreen)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
-                            .background(Color.warmGreen)
+                            .background(Color.warmGreenFill)
                             .cornerRadius(14)
                     }
                     .disabled(depositAmount == nil)
@@ -375,15 +392,24 @@ struct DepositSheet: View {
         .background(Color.warmSurface)
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.hidden)
+        .honorsReduceMotion()
+        .alert("Couldn't save the deposit", isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(errorMessage ?? "")
+        }
     }
 
     private var depositAmount: Double? { Double(amountText) }
 
     private func saveDeposit() {
         guard let amt = depositAmount, amt > 0 else { return }
-        goal.current = min(goal.current + amt, goal.target)
-        try? modelContext.save()
-        dismiss()
+        do {
+            try GoalDeposits.record(goal: goal, amount: amt, note: note, source: .manual, context: modelContext)
+            dismiss()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 }
 
@@ -393,13 +419,13 @@ struct EmptyGoalCard: View {
     var body: some View {
         VStack(spacing: 14) {
             Image(systemName: "target")
-                .font(.system(size: 40))
+                .warmFont(40)
                 .foregroundStyle(Color.warmInkMuted)
             Text("No active goal")
-                .font(.system(size: 17, weight: .semibold))
+                .warmFont(17, weight: .semibold)
                 .foregroundStyle(Color.warmInkSoft)
             Text("Star a goal to see it here")
-                .font(.system(size: 14))
+                .warmFont(14)
                 .foregroundStyle(Color.warmInkMuted)
         }
         .frame(maxWidth: .infinity)
@@ -419,23 +445,23 @@ struct TipOfTheDayCard: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 6) {
                 Image(systemName: "sparkles")
-                    .font(.system(size: 12, weight: .semibold))
+                    .warmFont(12, weight: .semibold)
                     .foregroundStyle(Color.warmGreen)
                 Text("TIP OF THE DAY")
-                    .font(.system(size: 11, weight: .bold))
+                    .warmFont(11, weight: .bold)
                     .foregroundStyle(Color.warmGreen)
                     .tracking(1)
             }
 
             if let tip = viewModel.currentTip {
                 Text(tip.content)
-                    .font(.system(size: 17, weight: .regular, design: .serif))
+                    .warmFont(17, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                     .lineSpacing(3)
                     .fixedSize(horizontal: false, vertical: true)
             } else {
                 Text("No tip for today yet — check back soon.")
-                    .font(.system(size: 17, weight: .regular, design: .serif))
+                    .warmFont(17, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInkSoft)
             }
         }
@@ -458,18 +484,18 @@ struct MonthlySummaryCell: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(label)
-                .font(.system(size: 11, weight: .semibold))
+                .warmFont(11, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(0.8)
             Text(formattedAmount(value))
-                .font(.system(size: 20, weight: .regular, design: .serif))
+                .warmFont(20, weight: .regular, design: .serif)
                 .foregroundStyle(Color.warmInk)
             if let change = change {
                 HStack(spacing: 4) {
                     Image(systemName: positive ? "arrow.up" : "arrow.down")
-                        .font(.system(size: 9, weight: .semibold))
+                        .warmFont(9, weight: .semibold)
                     Text(change)
-                        .font(.system(size: 11, weight: .semibold))
+                        .warmFont(11, weight: .semibold)
                 }
                 .foregroundStyle(positive ? Color.warmGreen : Color.warmClay)
             }
@@ -479,6 +505,7 @@ struct MonthlySummaryCell: View {
         .background(Color.warmSurface)
         .cornerRadius(16)
         .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.warmLine, lineWidth: 1))
+        .accessibilityElement(children: .combine)
     }
 
     private func formattedAmount(_ v: Double) -> String {
@@ -502,27 +529,30 @@ struct RecentTransactionRow: View {
                     .fill(iconBg)
                     .frame(width: 34, height: 34)
                 Image(systemName: txn.isExpense ? "arrow.down" : "arrow.up")
-                    .font(.system(size: 14, weight: .medium))
+                    .warmFont(14, weight: .medium)
                     .foregroundStyle(iconColor)
             }
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(txn.description)
-                    .font(.system(size: 14, weight: .semibold))
+                    .warmFont(14, weight: .semibold)
                     .foregroundStyle(Color.warmInk)
                 Text(shortDate(txn.date))
-                    .font(.system(size: 12))
+                    .warmFont(12)
                     .foregroundStyle(Color.warmInkMuted)
             }
 
             Spacer()
 
             Text(formattedAmount)
-                .font(.system(size: 14, weight: .semibold))
+                .warmFont(14, weight: .semibold)
                 .foregroundStyle(txn.isExpense ? Color.warmInk : Color.warmGreen)
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 12)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text("\(txn.isExpense ? String(localized: "Expense") : String(localized: "Income")), \(txn.description), \(shortDate(txn.date))"))
+        .accessibilityValue(Text(formattedAmount))
     }
 
     private var iconBg: Color  { txn.isExpense ? Color.warmAmberSoft : Color.warmGreenSoft }

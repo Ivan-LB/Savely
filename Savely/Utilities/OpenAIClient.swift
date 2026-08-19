@@ -23,8 +23,11 @@ class OpenAIClient {
     }
 
     func fetchTip(prompt: String) async -> String? {
-        let url = URL(string: "https://api.openai.com/v1/chat/completions")!
-        
+        guard let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
+            return nil
+        }
+
+
         // Construir el mensaje para el modelo
         let messages = [
             OpenAIChatMessage(role: "system", content: "Eres un asistente financiero."),

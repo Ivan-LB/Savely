@@ -1,0 +1,148 @@
+{
+ "id": "percent-and-noise",
+ "source": "hand-authored: percentages, phone numbers and ticket ids must not become amounts (not a real receipt)",
+ "locale": "es_MX",
+ "now": "2026-08-16T12:00:00Z",
+ "lines": [
+  {
+   "text": "SUPER LEY",
+   "box": {
+    "x": 0.05,
+    "y": 0.02,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TEL 664 123 45 67",
+   "box": {
+    "x": 0.05,
+    "y": 0.052000000000000005,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TICKET 0004512879",
+   "box": {
+    "x": 0.05,
+    "y": 0.084,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "DESCUENTO 10%",
+   "box": {
+    "x": 0.05,
+    "y": 0.116,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "-12.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.117,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "IVA 16.00%",
+   "box": {
+    "x": 0.05,
+    "y": 0.14800000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "15.36",
+   "box": {
+    "x": 0.7,
+    "y": 0.14900000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TOTAL",
+   "box": {
+    "x": 0.05,
+    "y": 0.18000000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "111.36",
+   "box": {
+    "x": 0.7,
+    "y": 0.18100000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "EFECTIVO",
+   "box": {
+    "x": 0.05,
+    "y": 0.21200000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "120.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.21300000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "CAMBIO",
+   "box": {
+    "x": 0.05,
+    "y": 0.24400000000000002,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "8.64",
+   "box": {
+    "x": 0.7,
+    "y": 0.24500000000000002,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  }
+ ],
+ "expected": {
+  "total": 111.36,
+  "alternativesExclude": [
+   16.0,
+   10.0,
+   4512879,
+   664
+  ],
+  "category": "Food"
+ }
+}

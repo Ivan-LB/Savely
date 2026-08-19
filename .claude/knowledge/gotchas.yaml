@@ -1,0 +1,59 @@
+# gotchas.yaml — append-only log of project invariants
+#
+# Schema:
+#   - id:           kebab-case unique identifier
+#     summary:      one-line statement of the rule
+#     why:          the underlying reason (what breaks if you ignore this)
+#     how-to-apply: when/where this rule kicks in
+#
+# Discovered during the initial scaffold (2026-04-24):
+
+- id: only-savely-scheme-is-shared
+  summary: xcodebuild must use -scheme Savely; SavelyTests/SavelyUITests schemes are not shared.
+  why: Only Savely.xcscheme exists in xcshareddata. -scheme SavelyTests fails on a fresh checkout. The Savely scheme's Test action runs both bundles together.
+  how-to-apply: Any time you write or copy an xcodebuild command — for CI, for local docs, for agent prompts.
+
+- id: deployment-target-floor-ios-26
+  summary: iOS 26.0 is the minimum deployment target across all targets and the project default.
+  why: User explicitly chose this to use modern APIs (@Observable, NavigationStack, Swift Testing, Observation framework). All six IPHONEOS_DEPLOYMENT_TARGET values in project.pbxproj are now 26.0; UI test targets inherit it from the project default.
+  how-to-apply: Free to use iOS 26 APIs. Don't add #available(iOS 17, *) checks. Don't fall back to ObservableObject for new view models. If you ever bump the project default, bump every per-target override too — mismatches break @testable import with "minimum deployment target" errors.
+
+- id: secrets-are-gitignored
+  summary: Savely/Config.plist contains the OpenAI API key and must never be committed.
+  why: Leaking it on a public repo means key rotation + potential abuse charges. (GoogleService-Info.plist used to be in this list; it died with the Firebase removal, 2026-08 — the historical copy in public git history is neutralized by deleting the Firebase project, not by scrubbing.)
+  how-to-apply: Before any commit, grep the staged diff for this path. If present, stop and tell the user.
+
+- id: ui-tests-skipped-on-ci
+  summary: SavelyUITests bundle is excluded from CI execution via -skip-testing — compilation only, no run.
+  why: The Xcode UI test template ships SavelyUITestsLaunchTests with XCTApplicationLaunchMetric which runs the app launch ~8 times measuring performance, taking ~5–10 min and flaking when one iteration exceeds the std-dev threshold. The template tests assert nothing meaningful — they only measure launch time, which is noisy on shared runners. Burning that many minutes for no signal is wasteful.
+  how-to-apply: Leave -skip-testing:SavelyUITests in .github/workflows/ci.yml's Test step until qa-tester writes real UI tests that exercise actual user paths. When real UI tests exist, drop the flag (or narrow it to skip only the template's launch-perf tests). Build step still compiles the bundle, so breaking changes to UI test code are still caught.
+
+- id: ci-needs-placeholder-secrets
+  summary: CI generates a placeholder Config.plist before xcodebuild because it is a gitignored required build input.
+  why: Config.plist is listed as a required build input in project.pbxproj (Resources phase). On a fresh checkout (CI runners) it is absent and xcodebuild fails with "Build input file cannot be found" before compilation. The real key is not needed — CI never calls OpenAI. A placeholder with the right plist shape is sufficient. (GoogleService-Info.plist was also generated here until the Firebase removal, 2026-08.)
+  how-to-apply: The "Generate placeholder secrets" step in .github/workflows/ci.yml writes the file. Keep the placeholder's plist shape (OPENAI_API_KEY key) in sync with what OpenAIClient reads at runtime.
+
+- id: force-unwrap-ratchet-active
+  summary: force_unwrapping is severity error in .swiftlint.yml — any new value! fails CI and the local pre-commit hook.
+  why: The Task 3 cleanup PR (#29) refactored all 10 existing force-unwraps to safe forms (guard let, if let, ?? default, or guard let + fatalError for invariants) and bumped severity from warning to error. The point is to keep the codebase free of unwrap-of-nil crashes by stopping new ones at the door. force_cast and force_try were already error.
+  how-to-apply: Never write value!. Use guard let / if let / ?? default. Only use guard let x = value else { fatalError("invariant violated: <what>") } when the value is genuinely guaranteed non-nil by an invariant — that satisfies the linter and keeps the failure mode explicit. Never silence with // swiftlint:disable:next force_unwrapping. The pre-commit hook (.githooks/pre-commit) runs swiftlint --strict on staged Swift files, so a new force-unwrap blocks the commit before it even reaches CI.
+
+- id: tips-behind-feature-flag
+  summary: AI tips are compile-time disabled (FeatureFlags.tipsEnabled = false) for the official App Store release.
+  why: Decision (2026-08-15) to ship the first official version without the OpenAI tips surface. The data layer stays intact — TipModel remains in the SwiftData container, so any stored tips survive and the feature returns by flipping one constant. Hiding the UI also means no OpenAI calls are made (DashboardView skips wiring TipsAndSuggestionViewModel entirely).
+  how-to-apply: Any new tips surface must check FeatureFlags.tipsEnabled (Savely/Utilities/FeatureFlags.swift). Current gates - DashboardView (Tip of the Day card + view-model wiring), ProfileView (About/Tip history section), WeeklyInsightsView (tip row), OnboardingData (Receive Tips step). Do not delete tips code while the flag exists; the flag IS the off switch.
+
+- id: auto-move-suggestion-is-real
+  summary: The Log-income auto-move banner is a REAL feature (2026-08-15) — computed from goals, armed by YES, applied on save. FeatureFlags.autoMoveSuggestionsEnabled is its kill switch (ON).
+  why: It began as a hardcoded "$230 to Kyoto" placeholder whose YES did nothing. Now GoalModel persists autoMoveEnabled/autoMoveAmount (the AddGoalFlow wizard collected these but never saved them), AutoMoveSuggestion.compute picks one goal (favorite first; else highest required weekly pace = remaining/weeks-to-deadline; open-ended goals last by lowest progress) and caps the amount at min(pace, remaining target, income being logged, month margin = month incomes + this income - month expenses; an under-water month suggests nothing), and the deposit applies only together with the income save using the same clamp as the manual deposit flow.
+  how-to-apply: Any change to the suggestion policy goes in Utilities/AutoMoveSuggestion.swift (unit-tested in AutoMoveSuggestionTests). Never apply a move before the income is saved. The banner recomputes live from the keypad - do not cache a suggestion across amount edits.
+
+- id: warmfont-not-system-size
+  summary: Text sizes go through .warmFont(size, weight:, design:) — never .font(.system(size:)) — and Toggle/icon-only Buttons carry a real label.
+  why: The design is specified in fixed point sizes; .system(size:) ignores Dynamic Type entirely, which broke the WCAG AA commitment (PRODUCT.md). .warmFont renders the exact design size at the default content size (unit-tested identity) and scales on the matching text-style curve; it is a ViewModifier that reads the size category so views re-render on change. Two Text concatenations in AddGoalFlow use @ScaledMetric because they need a Font value. VoiceOver read "Switch, on" and "Button" for unlabeled controls before PR D/D3.
+  how-to-apply: New text → .warmFont(...). Fixed widths around text → @ScaledMetric. Small controls → .tappable44(). Icon-only Button → .accessibilityLabel(...). Decorative Image/tile → .accessibilityHidden(true). Rows → .accessibilityElement(children: .combine) with a value. Presented roots (sheet/fullScreenCover) → .honorsReduceMotion(). Bars that cannot carry AX text (tab bar, keypad) cap with .dynamicTypeSize(...DynamicTypeSize.xxxLarge) like UIKit does. Spoken strings: literals or Text/String(localized:) so they land in the catalog with es-419.
+
+- id: receipt-scanner-on-device-only
+  summary: The receipt scanner is Vision + a pure ReceiptParser; it never calls the network and its rules only change together with a fixture in SavelyTests/Fixtures/Receipts.
+  why: PRODUCT.md promises "money data lives on the phone and never leaves it" and onboarding says so. The 2026-08 spike (docs/spikes/receipt-scan-spike.md) found the old scanner recorded EFECTIVO instead of TOTAL on Mexican receipts, dropped leading digits ("1234.56" -> 234.56), rejected totals under 10, and lost the image orientation before OCR — all untested. The rewrite made extraction deterministic and fixture-driven so regressions fail CI without a camera.
+  how-to-apply: OCR config lives in Utilities/ReceiptOCR.swift (always pass CGImagePropertyOrientation; recognitionLanguages resolved at runtime to es+en). Extraction lives in Utilities/Receipt/ (vocabulary, amount grammar, dates, parser); to change a rule, add or edit a JSON fixture first (hand-authored fixtures say so in "source"; device dumps must be anonymized — no RFC/phone/card/name lines, no images). The DEBUG-only "Export OCR dump" button on the review screen writes a fixture-shaped JSON. FeatureFlags.useSystemDocumentCamera swaps the capture surface for VNDocumentCameraViewController; the Simulator supports neither camera, so use "Choose from Photos" there.

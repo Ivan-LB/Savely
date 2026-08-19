@@ -7,8 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import FirebaseCore
-import IQKeyboardManagerSwift
 import UserNotifications
 
 @main
@@ -21,19 +19,19 @@ struct SavelyApp: App {
             SplashScreenView()
                 .environmentObject(AppViewModel())
                 .preferredColorScheme(darkModeEnabled ? .dark : .light)
+                .honorsReduceMotion()
                 .onAppear {
                     NotificationManager.shared.requestAuthorization()
+                    KeyboardDismisser.install()
                 }
         }
-        .modelContainer(for: [TipModel.self, IncomeModel.self, ExpenseModel.self, GoalModel.self])
+        .modelContainer(for: [TipModel.self, IncomeModel.self, ExpenseModel.self, GoalModel.self, DepositModel.self])
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        FirebaseApp.configure()
-        IQKeyboardManager.shared.resignOnTouchOutside = true
         UNUserNotificationCenter.current().delegate = self
         return true
     }

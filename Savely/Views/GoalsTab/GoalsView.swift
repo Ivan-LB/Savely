@@ -8,6 +8,10 @@ struct GoalsView: View {
 
     private var totalSaved:    Double { viewModel.goals.reduce(0) { $0 + $1.current } }
     private var totalTarget:   Double { viewModel.goals.reduce(0) { $0 + $1.target } }
+    private var activeGoals:    [GoalModel] { viewModel.goals.filter { $0.progress < 1 } }
+    private var completedGoals: [GoalModel] { viewModel.goals.filter { $0.progress >= 1 } }
+    @State private var celebrating: Set<UUID> = []
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private var overallProgress: Double { totalTarget > 0 ? min(totalSaved / totalTarget, 1.0) : 0 }
 
     var body: some View {
@@ -41,17 +45,19 @@ struct GoalsView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Goals")
-                            .font(.system(size: 34, weight: .regular, design: .serif))
+                            .warmFont(34, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInk)
-                        Text("\(viewModel.goals.count) active · \(formattedAmount(totalSaved)) saved of \(formattedAmount(totalTarget))")
-                            .font(.system(size: 14)).foregroundStyle(Color.warmInkMuted)
+                        Text("\(activeGoals.count) active · \(formattedAmount(totalSaved)) saved of \(formattedAmount(totalTarget))")
+                            .warmFont(14).foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
                     Button(action: { showAddGoalFlow = true }) {
                         Image(systemName: "plus")
-                            .font(.system(size: 18, weight: .semibold)).foregroundStyle(.white)
+                            .warmFont(18, weight: .semibold).foregroundStyle(Color.warmOnInk)
                             .frame(width: 40, height: 40).background(Color.warmInk).cornerRadius(14)
+                            .tappable44()
                     }
+                    .accessibilityLabel("New goal")
                 }
                 .padding(.top, 8)
 
@@ -59,11 +65,11 @@ struct GoalsView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Text("Progress overall")
-                            .font(.system(size: 12, weight: .semibold)).foregroundStyle(Color.warmInkMuted)
+                            .warmFont(12, weight: .semibold).foregroundStyle(Color.warmInkMuted)
                             .tracking(0.6).textCase(.uppercase)
                         Spacer()
                         Text("\(Int(overallProgress * 100))%")
-                            .font(.system(size: 22, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                            .warmFont(22, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                     }
                     GeometryReader { geo in
                         HStack(spacing: 0) {
@@ -81,21 +87,63 @@ struct GoalsView: View {
                 .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.warmLine, lineWidth: 1))
 
                 VStack(spacing: 12) {
-                    ForEach(viewModel.goals) { goal in
-                        NavigationLink(destination: GoalDetailView(goal: goal)) {
-                            WarmGoalCard(
-                                goal: goal,
-                                onFavoriteToggle: { viewModel.setFavorite(goal: goal) },
-                                onDelete: { viewModel.deleteGoal(goal) }
-                            )
-                        }
-                        .buttonStyle(.plain)
+                    ForEach(activeGoals) { goal in
+                        goalLink(goal)
                     }
+                }
+
+                // — Completed — out of the active count, one-time celebration
+                if !completedGoals.isEmpty {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Completed")
+                            .warmFont(11, weight: .semibold)
+                            .foregroundStyle(Color.warmInkMuted)
+                            .tracking(1)
+                            .textCase(.uppercase)
+                            .padding(.leading, 4)
+                            .accessibilityAddTraits(.isHeader)
+                        ForEach(completedGoals) { goal in
+                            goalLink(goal)
+                                .scaleEffect(celebrating.contains(goal.id) ? 1.03 : 1)
+                                .shadow(
+                                    color: Color.warmAmber.opacity(celebrating.contains(goal.id) ? 0.45 : 0),
+                                    radius: celebrating.contains(goal.id) ? 14 : 0
+                                )
+                                .animation(.spring(response: 0.4, dampingFraction: 0.8), value: celebrating)
+                        }
+                    }
+                    .padding(.top, 8)
                 }
 
                 Spacer(minLength: 16)
             }
             .padding(.horizontal, 20).padding(.bottom, 24)
+        }
+        .onAppear { celebrateNewCompletions() }
+        .onChange(of: completedGoals.map(\.id)) { celebrateNewCompletions() }
+    }
+
+    private func goalLink(_ goal: GoalModel) -> some View {
+        NavigationLink(destination: GoalDetailView(goal: goal)) {
+            WarmGoalCard(
+                goal: goal,
+                onFavoriteToggle: { viewModel.setFavorite(goal: goal) },
+                onDelete: { viewModel.deleteGoal(goal) }
+            )
+        }
+        .buttonStyle(.plain)
+    }
+
+    /// Pops a just-completed goal once, then remembers it (mirrors
+    /// AchievementStore). Reduce Motion: no pop, still remembered.
+    private func celebrateNewCompletions() {
+        let fresh = GoalCelebrationStore.newlyCompleted(completedGoals)
+        guard !fresh.isEmpty else { return }
+        GoalCelebrationStore.markCelebrated(completedGoals)
+        guard !reduceMotion else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            celebrating = fresh
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) { celebrating = [] }
         }
     }
 
@@ -117,16 +165,18 @@ struct GoalsEmptyStateView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Goals")
-                            .font(.system(size: 34, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                            .warmFont(34, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                         Text("Nothing here yet — let's plant the first one.")
-                            .font(.system(size: 14)).foregroundStyle(Color.warmInkMuted)
+                            .warmFont(14).foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
                     Button(action: onCreateGoal) {
                         Image(systemName: "plus")
-                            .font(.system(size: 18, weight: .semibold)).foregroundStyle(.white)
+                            .warmFont(18, weight: .semibold).foregroundStyle(Color.warmOnInk)
                             .frame(width: 40, height: 40).background(Color.warmInk).cornerRadius(14)
+                            .tappable44()
                     }
+                    .accessibilityLabel("New goal")
                 }
                 .padding(.top, 8).padding(.horizontal, 20).padding(.bottom, 28)
 
@@ -136,16 +186,16 @@ struct GoalsEmptyStateView: View {
                     ZStack(alignment: .topTrailing) {
                         ZStack {
                             Circle()
-                                .stroke(Color(red: 0.89, green: 0.867, blue: 0.816), lineWidth: 14)
+                                .stroke(Color.warmTrack, lineWidth: 14)
                                 .frame(width: 160, height: 160)
                             ZStack {
                                 Circle().fill(Color.warmGreenSoft).frame(width: 64, height: 64)
                                 Image(systemName: "target")
-                                    .font(.system(size: 26)).foregroundStyle(Color.warmGreen)
+                                    .warmFont(26).foregroundStyle(Color.warmGreen)
                             }
                         }
                         Text("Day one")
-                            .font(.system(size: 10, weight: .bold)).foregroundStyle(Color.warmAmber)
+                            .warmFont(10, weight: .bold).foregroundStyle(Color.warmAmber)
                             .tracking(0.8).textCase(.uppercase)
                             .padding(.horizontal, 10).padding(.vertical, 4)
                             .background(Color.warmAmberSoft).clipShape(Capsule())
@@ -156,21 +206,21 @@ struct GoalsEmptyStateView: View {
 
                     VStack(spacing: 10) {
                         Text("What are you saving for?")
-                            .font(.system(size: 28, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                            .warmFont(28, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                             .multilineTextAlignment(.center)
                         Text("A goal is a name, a number, and a date.\nSavely takes care of the rest.")
-                            .font(.system(size: 14)).foregroundStyle(Color.warmInkSoft)
+                            .warmFont(14).foregroundStyle(Color.warmInkSoft)
                             .multilineTextAlignment(.center).lineSpacing(3)
                     }
 
                     Button(action: onCreateGoal) {
                         HStack(spacing: 8) {
-                            Image(systemName: "plus").font(.system(size: 14, weight: .semibold))
-                            Text("Create your first goal").font(.system(size: 15, weight: .semibold))
+                            Image(systemName: "plus").warmFont(14, weight: .semibold)
+                            Text("Create your first goal").warmFont(15, weight: .semibold)
                         }
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(Color.warmGreen).cornerRadius(14)
+                        .background(Color.warmGreenFill).cornerRadius(14)
                     }
 
                     // Suggestion chips
@@ -178,8 +228,8 @@ struct GoalsEmptyStateView: View {
                         ForEach([("🌿","Emergency fund"),("✈️","A trip"),("🏡","Down payment")], id: \.0) { item in
                             Button(action: onCreateGoal) {
                                 HStack(spacing: 6) {
-                                    Text(item.0).font(.system(size: 13))
-                                    Text(item.1).font(.system(size: 12)).foregroundStyle(Color.warmInkSoft)
+                                    Text(item.0).warmFont(13)
+                                    Text(item.1).warmFont(12).foregroundStyle(Color.warmInkSoft)
                                 }
                                 .padding(.horizontal, 12).padding(.vertical, 8)
                                 .background(Color.warmBg)
@@ -213,35 +263,40 @@ struct WarmGoalCard: View {
     let onFavoriteToggle: () -> Void
     let onDelete: () -> Void
     @State private var showDeleteConfirmation = false
+    @Query private var goalDeposits: [DepositModel]
+    @Environment(\.dynamicTypeSize) private var typeSize
+
+    init(goal: GoalModel, onFavoriteToggle: @escaping () -> Void, onDelete: @escaping () -> Void) {
+        self.goal = goal
+        self.onFavoriteToggle = onFavoriteToggle
+        self.onDelete = onDelete
+        let goalID = goal.id
+        _goalDeposits = Query(filter: #Predicate<DepositModel> { $0.goalID == goalID })
+    }
+
+    private var pace: GoalPace { GoalPace.compute(goal: goal, deposits: goalDeposits) }
 
     var body: some View {
         VStack(spacing: 12) {
-            HStack(spacing: 12) {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(goal.color).frame(width: 44, height: 44)
-                    .overlay(
-                        Text(goal.name.prefix(1).uppercased())
-                            .font(.system(size: 22, weight: .regular, design: .serif)).foregroundStyle(.white)
-                    )
-                VStack(alignment: .leading, spacing: 3) {
-                    HStack(spacing: 5) {
-                        Text(goal.name)
-                            .font(.system(size: 15, weight: .semibold)).foregroundStyle(Color.warmInk).lineLimit(1)
-                        if goal.isFavorite {
-                            Image(systemName: "star.fill").font(.system(size: 12)).foregroundStyle(Color.warmAmber)
-                        }
+            // Identity left, percent + favorite right — until the type is an
+            // accessibility size, where the name needs the whole width
+            // ("Trip to Oaxaca" became "Trip t…") and the figures drop below.
+            if typeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 10) {
+                    identity
+                    HStack(alignment: .firstTextBaseline) {
+                        percent
+                        Spacer(minLength: 8)
+                        favoriteButton
                     }
-                    Text(paceText)
-                        .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
                 }
-                Spacer()
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text("\(Int(goal.progress * 100))%")
-                        .font(.system(size: 18, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
-                    Button(action: onFavoriteToggle) {
-                        Image(systemName: goal.isFavorite ? "star.fill" : "star")
-                            .font(.system(size: 16))
-                            .foregroundStyle(goal.isFavorite ? Color.warmAmber : Color.warmInkMuted)
+            } else {
+                HStack(spacing: 12) {
+                    identity
+                    Spacer(minLength: 8)
+                    VStack(alignment: .trailing, spacing: 2) {
+                        percent
+                        favoriteButton
                     }
                 }
             }
@@ -257,15 +312,18 @@ struct WarmGoalCard: View {
 
             HStack {
                 Text(formattedAmount(goal.current))
-                    .font(.system(size: 12)).foregroundStyle(Color.warmInkSoft).monospacedDigit()
+                    .warmFont(12).foregroundStyle(Color.warmInkSoft).monospacedDigit()
                 Spacer()
                 Text("of \(formattedAmount(goal.target))")
-                    .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted).monospacedDigit()
+                    .warmFont(12).foregroundStyle(Color.warmInkMuted).monospacedDigit()
             }
         }
         .padding(16)
         .background(Color.warmSurface).cornerRadius(18)
         .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.warmLine, lineWidth: 1))
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(Text("\(goal.name)\(goal.isFavorite ? String(localized: ", favorite") : ""), \(pace.label)"))
+        .accessibilityValue(Text("\(Int(goal.progress * 100)) percent, \(formattedAmount(goal.current)) of \(formattedAmount(goal.target))"))
         .contextMenu {
             Button(role: .destructive, action: { showDeleteConfirmation = true }) {
                 Label("Delete", systemImage: "trash")
@@ -279,8 +337,43 @@ struct WarmGoalCard: View {
         }
     }
 
-    private var paceText: String {
-        goal.progress >= 1.0 ? "Complete!" : goal.progress > 0.5 ? "On track" : "In progress"
+    private var identity: some View {
+        HStack(spacing: 12) {
+            RoundedRectangle(cornerRadius: 12)
+                .fill(goal.color).frame(width: 44, height: 44)
+                .overlay(
+                    Text(goal.name.prefix(1).uppercased())
+                        .warmFont(22, weight: .regular, design: .serif).foregroundStyle(Color.warmOnGreen)
+                )
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(alignment: .firstTextBaseline, spacing: 5) {
+                    Text(goal.name)
+                        .warmFont(15, weight: .semibold).foregroundStyle(Color.warmInk).lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
+                    if goal.isFavorite {
+                        Image(systemName: "star.fill").warmFont(12).foregroundStyle(Color.warmAmber)
+                    }
+                }
+                Text(pace.label)
+                    .warmFont(12)
+                    .foregroundStyle(pace.status == .behind ? Color.warmClay : Color.warmInkMuted)
+            }
+        }
+    }
+
+    private var percent: some View {
+        Text("\(Int(goal.progress * 100))%")
+            .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
+    }
+
+    private var favoriteButton: some View {
+        Button(action: onFavoriteToggle) {
+            Image(systemName: goal.isFavorite ? "star.fill" : "star")
+                .warmFont(16)
+                .foregroundStyle(goal.isFavorite ? Color.warmAmber : Color.warmInkMuted)
+                .tappable44()
+        }
+        .accessibilityLabel(goal.isFavorite ? "Remove from favorites" : "Make favorite")
     }
 
     private func formattedAmount(_ v: Double) -> String {

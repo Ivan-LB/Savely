@@ -1,0 +1,128 @@
+name: ci
+
+# Runs on every PR (any base) and on every push to dev/main.
+# Skips draft PRs to save macOS minutes.
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev, main]
+
+# Cancel old runs if a new commit lands on the same branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build & test
+    runs-on: macos-15
+    if: github.event.pull_request.draft == false || github.event_name == 'push'
+
+    env:
+      # Pin Xcode so build behavior is reproducible.
+      # Bump when you upgrade local Xcode and want CI to follow.
+      XCODE_VERSION: "26.0"
+      SCHEME: "Savely"
+      # DESTINATION is picked dynamically per run (see "Pick a simulator") —
+      # hardcoding a device name breaks whenever GitHub rolls the runner
+      # image to an Xcode whose simulator lineup dropped that model
+      # (bit us 2026-08-15: the image lost "iPhone 16 Pro" mid-day).
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Select Xcode ${{ env.XCODE_VERSION }}
+        run: |
+          # If the requested version isn't installed on the runner,
+          # this will fail loudly — pick a version that's available.
+          # See: https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md
+          sudo xcode-select -s "/Applications/Xcode_${XCODE_VERSION}.app" || \
+            sudo xcode-select -s "/Applications/Xcode.app"
+          xcodebuild -version
+
+      - name: Pick a simulator
+        # Use whatever iPhone the selected Xcode actually ships — resilient
+        # to runner-image updates changing the simulator lineup.
+        run: |
+          DEVICE=$(xcrun simctl list devices available | grep -m1 -oE 'iPhone [^(]+' | sed 's/ *$//')
+          if [ -z "$DEVICE" ]; then
+            echo "No iPhone simulator available on this runner:"
+            xcrun simctl list devices available
+            exit 1
+          fi
+          echo "Using simulator: $DEVICE"
+          echo "DESTINATION=platform=iOS Simulator,name=$DEVICE" >> "$GITHUB_ENV"
+
+      - name: Install SwiftLint
+        run: |
+          brew install swiftlint
+          swiftlint version
+
+      - name: SwiftLint
+        # No --strict: warnings annotate inline but don't fail the build.
+        # Only error-severity violations (force_cast, force_try, custom errors)
+        # block the merge. The "ratchet" comment in .swiftlint.yml explains
+        # how to tighten this over time.
+        run: swiftlint lint --reporter github-actions-logging
+
+      - name: Generate placeholder secrets
+        # Config.plist (OpenAI) is gitignored locally, but the Xcode project
+        # lists it as a required build input. xcodebuild fails on a fresh
+        # checkout if it's absent. CI never calls OpenAI, so a placeholder
+        # with the right shape is sufficient. (GoogleService-Info.plist died
+        # with the Firebase removal — see docs/plans/remove-auth-firebase.md.)
+        run: |
+          cat > Savely/Config.plist <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>OPENAI_API_KEY</key>
+              <string>ci-placeholder-not-a-real-key</string>
+          </dict>
+          </plist>
+          PLIST
+
+      - name: Build
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Savely.xcodeproj \
+            -scheme "$SCHEME" \
+            -configuration Debug \
+            -destination "$DESTINATION" \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcbeautify --renderer github-actions
+
+      - name: Test
+        # Skip the SavelyUITests bundle on CI. The Xcode template ships
+        # SavelyUITestsLaunchTests with XCTApplicationLaunchMetric, which
+        # runs the app launch ~8 times measuring performance — that takes
+        # ~5–10 min and flakes on shared runners (one slow iteration blows
+        # the std-dev threshold and the whole bundle fails). The template
+        # tests cover no real behavior.
+        #
+        # Compilation of SavelyUITests is still verified by the Build step,
+        # so we still catch breakages. When qa-tester writes real UI tests,
+        # remove the -skip-testing flag.
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project Savely.xcodeproj \
+            -scheme "$SCHEME" \
+            -destination "$DESTINATION" \
+            -skip-testing:SavelyUITests \
+            -resultBundlePath build/TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcbeautify --renderer github-actions
+
+      - name: Upload xcresult on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: TestResults-${{ github.run_id }}
+          path: build/TestResults.xcresult
+          retention-days: 7

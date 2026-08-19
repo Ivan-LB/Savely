@@ -14,16 +14,29 @@ struct MainNavigationView: View {
     @State private var showActionSheet = false
     @State private var quickScreen: QuickAddScreen = .actionSheet
     @State private var showAddGoalFlow = false
+    @Environment(\.modelContext) private var modelContext
+    /// The receipt scanner presented from the "+" sheet. It writes through
+    /// its own expense view model, exactly like the Money tab's banner does;
+    /// the Money tab hears about the new row through the posted notification.
+    @StateObject private var scanExpenseVM = ExpenseTrackerViewModel()
+    @State private var scanner: ReceiptScanModel?
 
     var body: some View {
         ZStack(alignment: .bottom) {
+            // `.toolbar(.hidden, for: .tabBar)` goes on each child, not on the
+            // TabView: applied outside, the system tab bar is invisible but
+            // still in the accessibility tree as four unlabelled buttons
+            // (XCUIAccessibilityAudit: "Element has no description" ×4).
             TabView(selection: $selectedTab) {
-                NavigationStack { DashboardView() }.tag(0)
-                NavigationStack { GoalsView(showAddGoalFlow: $showAddGoalFlow) }.tag(1)
-                NavigationStack { MoneyView() }.tag(2)
-                NavigationStack { ProfileView() }.tag(3)
+                NavigationStack { DashboardView(onSeeAll: { selectedTab = 2 }) }
+                    .toolbar(.hidden, for: .tabBar).tag(0)
+                NavigationStack { GoalsView(showAddGoalFlow: $showAddGoalFlow) }
+                    .toolbar(.hidden, for: .tabBar).tag(1)
+                NavigationStack { MoneyView() }
+                    .toolbar(.hidden, for: .tabBar).tag(2)
+                NavigationStack { ProfileView() }
+                    .toolbar(.hidden, for: .tabBar).tag(3)
             }
-            .toolbar(.hidden, for: .tabBar)
             .tint(Color.warmGreen)
 
             WarmTabBar(
@@ -45,8 +58,16 @@ struct MainNavigationView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                         showAddGoalFlow = true
                     }
+                },
+                onScan: {
+                    showActionSheet = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                        scanExpenseVM.setModelContext(modelContext)
+                        scanner = ReceiptScanModel(expenseStore: scanExpenseVM)
+                    }
                 }
             )
+            .honorsReduceMotion()
             .presentationBackground(Color.warmBg)
             .presentationCornerRadius(28)
             .presentationDetents(quickScreen == .actionSheet ? [.height(540)] : [.large])
@@ -54,6 +75,10 @@ struct MainNavigationView: View {
         }
         .fullScreenCover(isPresented: $showAddGoalFlow) {
             AddGoalFlowView(isPresented: $showAddGoalFlow)
+                .honorsReduceMotion()
+        }
+        .fullScreenCover(item: $scanner) { model in
+            ReceiptScanFlowView(model: model)
         }
     }
 }
@@ -72,17 +97,19 @@ struct WarmTabBar: View {
 
             Button(action: onAddTapped) {
                 Image(systemName: "plus")
-                    .font(.system(size: 22, weight: .semibold))
-                    .foregroundStyle(.white)
+                    .warmFont(22, weight: .semibold)
+                    .foregroundStyle(isExpanded ? Color.warmOnGreen : Color.warmOnInk)
                     .frame(width: 52, height: 52)
-                    .background(isExpanded ? Color.warmGreen : Color.warmInk)
+                    .background(isExpanded ? Color.warmGreenFill : Color.warmInk)
                     .cornerRadius(18)
                     .shadow(
-                        color: (isExpanded ? Color.warmGreen : .black).opacity(isExpanded ? 0.38 : 0.18),
+                        color: isExpanded ? Color.warmGreenFill.opacity(0.38) : Color.warmShellShadow,
                         radius: 10, x: 0, y: 4
                     )
                     .rotationEffect(.degrees(isExpanded ? 45 : 0))
             }
+            .accessibilityLabel(isExpanded ? "Close" : "Add")
+            .accessibilityHint("Log an expense, income, deposit, or new goal")
             .animation(.spring(response: 0.28, dampingFraction: 0.65), value: isExpanded)
             .frame(maxWidth: .infinity)
             .offset(y: -14)
@@ -97,6 +124,12 @@ struct WarmTabBar: View {
         .overlay(alignment: .top) {
             Rectangle().fill(Color.warmLine).frame(height: 1)
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityAddTraits(.isTabBar)
+        // Like UITabBar: labels stop growing at the largest non-accessibility
+        // size — five items in 4 columns cannot carry AX text; VoiceOver
+        // labels and the 44pt targets carry accessibility here.
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
     }
 }
 
@@ -109,9 +142,9 @@ struct WarmTabBarItem: View {
         Button(action: { selectedTab = tag }) {
             VStack(spacing: 4) {
                 Image(systemName: icon)
-                    .font(.system(size: 22, weight: isActive ? .semibold : .regular))
+                    .warmFont(22, weight: isActive ? .semibold : .regular)
                 Text(label)
-                    .font(.system(size: 10, weight: isActive ? .semibold : .medium))
+                    .warmFont(10, weight: isActive ? .semibold : .medium)
             }
             .foregroundStyle(isActive ? Color.warmGreen : Color.warmInkMuted)
             .frame(maxWidth: .infinity)
@@ -119,6 +152,8 @@ struct WarmTabBarItem: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(label)
+        .accessibilityAddTraits(isActive ? [.isSelected] : [])
     }
 }
 
@@ -128,6 +163,7 @@ struct WarmQuickAddContainer: View {
     @Binding var screen: QuickAddScreen
     let onDismiss: () -> Void
     let onNewGoal: () -> Void
+    let onScan: () -> Void
 
     var body: some View {
         Group {
@@ -136,7 +172,8 @@ struct WarmQuickAddContainer: View {
                 WarmActionSheet(
                     onSelect: { s in withAnimation(.spring(response: 0.32, dampingFraction: 0.82)) { screen = s } },
                     onDismiss: onDismiss,
-                    onNewGoal: onNewGoal
+                    onNewGoal: onNewGoal,
+                    onScan: onScan
                 )
             case .expense:
                 WarmQuickExpenseView(
@@ -162,24 +199,25 @@ struct WarmQuickAddContainer: View {
 // MARK: - Action sheet
 
 private struct QuickAction {
+    enum Kind { case screen(QuickAddScreen), newGoal, scan }
     let icon: String; let label: String; let sub: String
-    let bg: Color; let fg: Color; let target: QuickAddScreen?; let isNewGoal: Bool
+    let bg: Color; let fg: Color; let kind: Kind
 }
 
 private let quickActions: [QuickAction] = [
-    QuickAction(icon: "wallet.pass",  label: "Log expense",       sub: "Coffee, groceries, anything",  bg: .warmAmberSoft, fg: .warmAmber, target: .expense,  isNewGoal: false),
-    QuickAction(icon: "arrow.up",     label: "Log income",        sub: "Paycheck, gift, side work",    bg: .warmGreenSoft, fg: .warmGreen, target: .income,   isNewGoal: false),
-    QuickAction(icon: "target",       label: "Deposit to a goal", sub: "Move money toward a goal",     bg: .warmSkySoft,   fg: .warmSky,   target: .deposit,  isNewGoal: false),
-    QuickAction(icon: "camera",       label: "Scan a receipt",    sub: "We'll read the total",          bg: .warmClaySoft,  fg: .warmClay,  target: .expense,  isNewGoal: false),
+    QuickAction(icon: "wallet.pass",  label: "Log expense",       sub: "Coffee, groceries, anything",  bg: .warmAmberSoft, fg: .warmAmber, kind: .screen(.expense)),
+    QuickAction(icon: "arrow.up",     label: "Log income",        sub: "Paycheck, gift, side work",    bg: .warmGreenSoft, fg: .warmGreen, kind: .screen(.income)),
+    QuickAction(icon: "target",       label: "Deposit to a goal", sub: "Move money toward a goal",     bg: .warmSkySoft,   fg: .warmSky,   kind: .screen(.deposit)),
+    QuickAction(icon: "camera",       label: "Scan a receipt",    sub: "We'll read the total, merchant and date", bg: .warmClaySoft, fg: .warmClay, kind: .scan),
     QuickAction(icon: "plus",         label: "New goal",          sub: "Start something new",
-                bg: Color(red: 0.925, green: 0.910, blue: 0.957),
-                fg: Color(red: 0.490, green: 0.416, blue: 0.722), target: nil, isNewGoal: true),
+                bg: .warmLilacSoft, fg: .warmLilac, kind: .newGoal),
 ]
 
 struct WarmActionSheet: View {
     let onSelect: (QuickAddScreen) -> Void
     let onDismiss: () -> Void
     let onNewGoal: () -> Void
+    let onScan: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -188,50 +226,55 @@ struct WarmActionSheet: View {
 
             HStack(alignment: .center) {
                 Text("What's the move?")
-                    .font(.system(size: 24, weight: .regular, design: .serif))
+                    .warmFont(24, weight: .regular, design: .serif)
                     .foregroundStyle(Color.warmInk)
                 Spacer()
                 Button(action: onDismiss) {
                     Image(systemName: "xmark")
-                        .font(.system(size: 11, weight: .medium))
+                        .warmFont(11, weight: .medium)
                         .foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
                         .background(Color.warmSurface)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.warmLine, lineWidth: 1))
+                        .tappable44()
                 }
+                .accessibilityLabel("Close")
             }
             .padding(.horizontal, 20)
 
             Text("Pick what to log right now.")
-                .font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                .warmFont(13).foregroundStyle(Color.warmInkMuted)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 20).padding(.top, 2).padding(.bottom, 18)
 
             VStack(spacing: 0) {
                 ForEach(Array(quickActions.enumerated()), id: \.offset) { i, action in
                     Button(action: {
-                        if action.isNewGoal { onNewGoal() }
-                        else if let t = action.target { onSelect(t) }
+                        switch action.kind {
+                        case .screen(let target): onSelect(target)
+                        case .newGoal: onNewGoal()
+                        case .scan: onScan()
+                        }
                     }) {
                         HStack(spacing: 14) {
                             Image(systemName: action.icon)
-                                .font(.system(size: 16))
+                                .warmFont(16)
                                 .foregroundStyle(action.fg)
                                 .frame(width: 40, height: 40)
                                 .background(action.bg)
                                 .cornerRadius(12)
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(action.label)
-                                    .font(.system(size: 15, weight: .semibold))
+                                    .warmFont(15, weight: .semibold)
                                     .foregroundStyle(Color.warmInk)
                                 Text(action.sub)
-                                    .font(.system(size: 12))
+                                    .warmFont(12)
                                     .foregroundStyle(Color.warmInkMuted)
                             }
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .font(.system(size: 11, weight: .medium))
+                                .warmFont(11, weight: .medium)
                                 .foregroundStyle(Color.warmInkMuted)
                         }
                         .padding(.horizontal, 16).padding(.vertical, 14)
@@ -248,22 +291,7 @@ struct WarmActionSheet: View {
             .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.warmLine, lineWidth: 1))
             .padding(.horizontal, 20)
 
-            HStack(spacing: 8) {
-                Image(systemName: "sparkles")
-                    .font(.system(size: 11)).foregroundStyle(Color.warmAmber)
-                (Text("Tip: long-press ") +
-                 Text("+").fontWeight(.bold).foregroundColor(Color.warmInk) +
-                 Text(" to repeat your last action."))
-                    .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(14)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [4]))
-                    .foregroundStyle(Color.warmLine)
-            )
-            .padding(.horizontal, 20).padding(.top, 14).padding(.bottom, 28)
+            Spacer(minLength: 28)
         }
         .background(Color.warmBg)
     }
@@ -284,10 +312,10 @@ struct WarmKeypad: View {
                         Group {
                             if key == "⌫" {
                                 Image(systemName: "delete.left")
-                                    .font(.system(size: 20, weight: .light))
+                                    .warmFont(20, weight: .light)
                             } else {
                                 Text(key)
-                                    .font(.system(size: 24, weight: .regular, design: .serif))
+                                    .warmFont(24, weight: .regular, design: .serif)
                             }
                         }
                         .foregroundStyle(Color.warmInk)
@@ -295,10 +323,14 @@ struct WarmKeypad: View {
                         .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(key == "⌫" ? "Delete" : key == "." ? "Decimal point" : key)
                 }
             }
             .background(Color.warmSurface)
         }
+        // A numeric keypad, like the system one, keeps its key size; the
+        // amount above it scales instead.
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
     }
 
     private func tap(_ key: String) {
@@ -332,13 +364,10 @@ func formatKeypadAmount(_ raw: String) -> String {
 
 // MARK: - Quick expense
 
-private let expenseCats: [(label: String, bg: Color, fg: Color)] = [
-    ("Coffee",   .warmAmberSoft, .warmAmber),
-    ("Food",     .warmGreenSoft, .warmGreen),
-    ("Transit",  .warmSkySoft,   .warmSky),
-    ("Shopping", .warmClaySoft,  .warmClay),
-    ("Other",    .warmBg,        .warmInkSoft),
-]
+/// The expense chips, straight from the canonical categories (what gets stored).
+private let expenseCats: [(label: String, bg: Color, fg: Color)] = ExpenseCategory.allCases.map {
+    ($0.label, $0.tileBackground, $0.tileTextColor)
+}
 
 struct WarmQuickExpenseView: View {
     @Environment(\.modelContext) private var modelContext
@@ -346,7 +375,7 @@ struct WarmQuickExpenseView: View {
 
     @State private var amountStr = "0"
     @State private var description = ""
-    @State private var selectedCat = "Coffee"
+    @State private var selectedCat = ExpenseCategory.coffee.label
     @StateObject private var vm = ExpenseTrackerViewModel()
 
     private var canSave: Bool { amountStr != "0" }
@@ -359,15 +388,17 @@ struct WarmQuickExpenseView: View {
             HStack {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmInkSoft)
+                        .warmFont(14, weight: .medium).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
+                        .tappable44()
                 }
+                .accessibilityLabel("Back")
                 Spacer()
                 Text("Log expense")
-                    .font(.system(size: 18, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Button("Save", action: saveAndDismiss)
-                    .font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.warmGreen)
+                    .warmFont(13, weight: .semibold).foregroundStyle(Color.warmGreen)
                     .opacity(canSave ? 1 : 0.4).disabled(!canSave)
             }
             .padding(.horizontal, 20).padding(.bottom, 4)
@@ -376,15 +407,18 @@ struct WarmQuickExpenseView: View {
 
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text("−$")
-                    .font(.system(size: 32, weight: .regular, design: .serif)).foregroundStyle(Color.warmInkMuted)
+                    .warmFont(32, weight: .regular, design: .serif).foregroundStyle(Color.warmInkMuted)
                 Text(formatKeypadAmount(amountStr))
-                    .font(.system(size: 72, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(72, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                     .monospacedDigit().minimumScaleFactor(0.4).lineLimit(1)
             }
             .padding(.top, 8)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(Text("Expense amount"))
+            .accessibilityValue(Text("\(amountStr) dollars"))
 
             TextField("Merchant · Today", text: $description)
-                .font(.system(size: 12)).foregroundStyle(Color.warmInkSoft)
+                .warmFont(12).foregroundStyle(Color.warmInkSoft)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 16).padding(.vertical, 7)
                 .background(Color.warmSurface).clipShape(Capsule())
@@ -397,7 +431,7 @@ struct WarmQuickExpenseView: View {
                         let isOn = selectedCat == cat.label
                         Button(action: { selectedCat = cat.label }) {
                             Text(cat.label)
-                                .font(.system(size: 13, weight: .semibold))
+                                .warmFont(13, weight: .semibold)
                                 .foregroundStyle(isOn ? cat.fg : Color.warmInkSoft)
                                 .padding(.horizontal, 14).padding(.vertical, 8)
                                 .background(isOn ? cat.bg : Color.clear)
@@ -416,12 +450,17 @@ struct WarmQuickExpenseView: View {
             WarmKeypad(amountStr: $amountStr)
         }
         .onAppear { vm.setModelContext(modelContext) }
+        .alert(isPresented: $vm.showError) {
+            Alert(title: Text(Strings.Errors.errorLabel), message: Text(vm.errorMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
+        }
     }
 
     private func saveAndDismiss() {
         guard canSave, let amt = Double(amountStr), amt > 0 else { return }
+        // Description and category are independent: the chip is stored as
+        // the category always, and only stands in for an empty description.
         vm.expenseDescription = description.isEmpty ? selectedCat : description
-        vm.amount = amountStr; vm.addExpense(); onSave()
+        vm.amount = amountStr; vm.addExpense(category: selectedCat); onSave()
     }
 }
 
@@ -429,15 +468,44 @@ struct WarmQuickExpenseView: View {
 
 struct WarmQuickIncomeView: View {
     @Environment(\.modelContext) private var modelContext
+    @Query private var goals: [GoalModel]
+    @Query private var allIncomes: [IncomeModel]
+    @Query private var allExpenses: [ExpenseModel]
+    @Query private var allDeposits: [DepositModel]
     let onBack: () -> Void; let onSave: () -> Void
 
     @State private var amountStr = "0"
     @State private var description = ""
-    @State private var selectedSource = "Paycheck"
+    @State private var selectedSource = IncomeSource.paycheck.label
+    @State private var autoMoveArmed = false
     @StateObject private var vm = IncomesTrackerViewModel()
 
-    private let sources = ["Paycheck", "Freelance", "Gift", "Other"]
+    private let sources = IncomeSource.allCases.map(\.label)
     private var canSave: Bool { amountStr != "0" }
+    private var enteredAmount: Double { Double(amountStr) ?? 0 }
+
+    /// This month's flows — the affordability input for the suggestion.
+    private func monthTotal(_ dates: [(Date, Double)]) -> Double {
+        let calendar = Calendar.current
+        let now = Date()
+        return dates
+            .filter { calendar.isDate($0.0, equalTo: now, toGranularity: .month) }
+            .reduce(0) { $0 + $1.1 }
+    }
+
+    /// Live suggestion — recomputes as the keypad changes, so the offered
+    /// amount can never exceed the income being logged nor what this
+    /// month's income-vs-expense margin can actually spare.
+    private var autoMoveSuggestion: AutoMoveSuggestion? {
+        guard FeatureFlags.autoMoveSuggestionsEnabled else { return nil }
+        return AutoMoveSuggestion.compute(
+            goals: goals,
+            incomeAmount: enteredAmount,
+            monthIncomeTotal: monthTotal(allIncomes.map { ($0.date, $0.amount) }),
+            monthExpenseTotal: monthTotal(allExpenses.map { ($0.date, $0.amount) }),
+            monthDepositTotal: GoalDeposits.monthTotal(allDeposits)
+        )
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -447,15 +515,17 @@ struct WarmQuickIncomeView: View {
             HStack {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmInkSoft)
+                        .warmFont(14, weight: .medium).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
+                        .tappable44()
                 }
+                .accessibilityLabel("Back")
                 Spacer()
                 Text("Log income")
-                    .font(.system(size: 18, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Button("Save", action: saveAndDismiss)
-                    .font(.system(size: 13, weight: .semibold)).foregroundStyle(Color.warmGreen)
+                    .warmFont(13, weight: .semibold).foregroundStyle(Color.warmGreen)
                     .opacity(canSave ? 1 : 0.4).disabled(!canSave)
             }
             .padding(.horizontal, 20).padding(.bottom, 4)
@@ -464,15 +534,18 @@ struct WarmQuickIncomeView: View {
 
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text("+$")
-                    .font(.system(size: 32, weight: .regular, design: .serif)).foregroundStyle(Color.warmGreen)
+                    .warmFont(32, weight: .regular, design: .serif).foregroundStyle(Color.warmGreen)
                 Text(formatKeypadAmount(amountStr))
-                    .font(.system(size: 72, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(72, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                     .monospacedDigit().minimumScaleFactor(0.4).lineLimit(1)
             }
             .padding(.top, 8)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(Text("Income amount"))
+            .accessibilityValue(Text("\(amountStr) dollars"))
 
             TextField("Source · Today", text: $description)
-                .font(.system(size: 12)).foregroundStyle(Color.warmInkSoft)
+                .warmFont(12).foregroundStyle(Color.warmInkSoft)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 16).padding(.vertical, 7)
                 .background(Color.warmSurface).clipShape(Capsule())
@@ -484,7 +557,7 @@ struct WarmQuickIncomeView: View {
                     let isOn = selectedSource == src
                     Button(action: { selectedSource = src }) {
                         Text(src)
-                            .font(.system(size: 13, weight: .semibold))
+                            .warmFont(13, weight: .semibold)
                             .foregroundStyle(isOn ? Color.warmGreenDeep : Color.warmInkSoft)
                             .padding(.horizontal, 14).padding(.vertical, 8)
                             .background(isOn ? Color.warmGreenSoft : Color.clear)
@@ -497,32 +570,76 @@ struct WarmQuickIncomeView: View {
             }
             .padding(.horizontal, 20).padding(.top, 20)
 
-            // Auto-move hint banner
-            HStack(spacing: 10) {
-                Image(systemName: "sparkles")
-                    .font(.system(size: 13)).foregroundStyle(Color.warmGreen)
-                    .frame(width: 32, height: 32).background(Color.warmSurface).cornerRadius(10)
-                Text("**Auto-move $230** to Kyoto from this paycheck?")
-                    .font(.system(size: 12)).foregroundStyle(Color.warmGreenDeep)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Button("YES") {}
-                    .font(.system(size: 11, weight: .bold)).foregroundStyle(.white)
+            // Auto-move suggestion — computed live from real goals with
+            // payday auto-move enabled. YES only ARMS it; the deposit is
+            // applied together with the income save (see saveAndDismiss).
+            if let suggestion = autoMoveSuggestion {
+                HStack(spacing: 10) {
+                    Image(systemName: autoMoveArmed ? "checkmark.circle.fill" : "sparkles")
+                        .warmFont(13).foregroundStyle(Color.warmGreen)
+                        .frame(width: 32, height: 32).background(Color.warmSurface).cornerRadius(10)
+                    Text(bannerText(for: suggestion))
+                        .warmFont(12).foregroundStyle(Color.warmGreenDeep)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Button(autoMoveArmed ? "UNDO" : "YES") {
+                        withAnimation(.spring(response: 0.35, dampingFraction: 0.9)) {
+                            autoMoveArmed.toggle()
+                        }
+                    }
+                    .warmFont(11, weight: .bold)
+                    .foregroundStyle(autoMoveArmed ? Color.warmGreenDeep : Color.warmOnGreen)
                     .padding(.horizontal, 10).padding(.vertical, 6)
-                    .background(Color.warmGreen).clipShape(Capsule())
+                    .background(autoMoveArmed ? Color.warmSurface : Color.warmGreenFill)
+                    .clipShape(Capsule())
+                    .overlay(Capsule().stroke(autoMoveArmed ? Color.warmGreen : Color.clear, lineWidth: 1))
+                }
+                .padding(12).background(Color.warmGreenSoft).cornerRadius(14)
+                .padding(.horizontal, 20).padding(.top, 18)
+                .transition(.opacity.combined(with: .move(edge: .top)))
+                .animation(.spring(response: 0.35, dampingFraction: 0.9), value: autoMoveArmed)
             }
-            .padding(12).background(Color.warmGreenSoft).cornerRadius(14)
-            .padding(.horizontal, 20).padding(.top, 18)
 
             Spacer(minLength: 0)
             WarmKeypad(amountStr: $amountStr)
         }
         .onAppear { vm.setModelContext(modelContext) }
+        .alert(isPresented: $vm.showError) {
+            Alert(title: Text(Strings.Errors.errorLabel), message: Text(vm.errorMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
+        }
+    }
+
+    private func bannerText(for suggestion: AutoMoveSuggestion) -> AttributedString {
+        let amount = "$\(Int(suggestion.amount))"
+        let origin = selectedSource == IncomeSource.paycheck.label ? "paycheck" : "income"
+        let raw = autoMoveArmed
+            ? "**Moving \(amount)** to \(suggestion.goal.name) when you save."
+            : "**Auto-move \(amount)** to \(suggestion.goal.name) from this \(origin)?"
+        return (try? AttributedString(markdown: raw)) ?? AttributedString(raw)
     }
 
     private func saveAndDismiss() {
         guard canSave, let amt = Double(amountStr), amt > 0 else { return }
+        // Snapshot the suggestion BEFORE the income insert mutates the
+        // month totals — this is exactly what the banner was showing.
+        let armedSuggestion = autoMoveArmed ? autoMoveSuggestion : nil
         vm.incomeDescription = description.isEmpty ? selectedSource : description
-        vm.amount = amountStr; vm.addIncome(); onSave()
+        vm.amount = amountStr
+        vm.addIncome(source: selectedSource)
+        if let suggestion = armedSuggestion {
+            do {
+                try GoalDeposits.record(
+                    goal: suggestion.goal, amount: suggestion.amount,
+                    note: "Payday auto-move", source: .autoMove, context: modelContext
+                )
+            } catch {
+                // The income itself is already saved; the move failing must
+                // not lose it. Surface through the income VM's alert.
+                vm.errorMessage = "Income saved, but the auto-move to \(suggestion.goal.name) failed."
+                vm.showError = true
+                return
+            }
+        }
+        onSave()
     }
 }
 
@@ -535,6 +652,7 @@ struct WarmQuickDepositView: View {
 
     @State private var selectedGoal: GoalModel?
     @State private var selectedPreset: Double = 50
+    @State private var errorMessage: String?
     private let presets: [Double] = [25, 50, 100, 250]
 
     var body: some View {
@@ -545,12 +663,14 @@ struct WarmQuickDepositView: View {
             HStack {
                 Button(action: onBack) {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .medium)).foregroundStyle(Color.warmInkSoft)
+                        .warmFont(14, weight: .medium).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 32, height: 32)
+                        .tappable44()
                 }
+                .accessibilityLabel("Back")
                 Spacer()
                 Text("Move money")
-                    .font(.system(size: 18, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Color.clear.frame(width: 32, height: 32)
             }
@@ -560,9 +680,9 @@ struct WarmQuickDepositView: View {
             VStack(spacing: 12) {
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
                     Text("$")
-                        .font(.system(size: 28, weight: .regular, design: .serif)).foregroundStyle(Color.warmInkMuted)
+                        .warmFont(28, weight: .regular, design: .serif).foregroundStyle(Color.warmInkMuted)
                     Text("\(Int(selectedPreset))")
-                        .font(.system(size: 60, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                        .warmFont(60, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                         .monospacedDigit()
                 }
                 HStack(spacing: 6) {
@@ -570,7 +690,7 @@ struct WarmQuickDepositView: View {
                         let isOn = selectedPreset == p
                         Button(action: { selectedPreset = p }) {
                             Text("$\(Int(p))")
-                                .font(.system(size: 12, weight: .semibold))
+                                .warmFont(12, weight: .semibold)
                                 .foregroundStyle(isOn ? Color.warmGreenDeep : Color.warmInkSoft)
                                 .padding(.horizontal, 12).padding(.vertical, 6)
                                 .background(isOn ? Color.warmGreenSoft : Color.clear)
@@ -587,12 +707,12 @@ struct WarmQuickDepositView: View {
             // Goal picker
             VStack(alignment: .leading, spacing: 8) {
                 Text("TO WHICH GOAL")
-                    .font(.system(size: 11, weight: .semibold)).foregroundStyle(Color.warmInkMuted).tracking(0.8)
+                    .warmFont(11, weight: .semibold).foregroundStyle(Color.warmInkMuted).tracking(0.8)
                     .padding(.horizontal, 20)
 
                 if goals.isEmpty {
                     Text("No goals yet — create one first.")
-                        .font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                        .warmFont(13).foregroundStyle(Color.warmInkMuted)
                         .padding(.horizontal, 20)
                 } else {
                     ScrollView {
@@ -605,12 +725,12 @@ struct WarmQuickDepositView: View {
                                             .frame(width: 36, height: 36)
                                             .overlay(
                                                 Text(goal.name.prefix(1).uppercased())
-                                                    .font(.system(size: 16, weight: .regular, design: .serif))
-                                                    .foregroundStyle(.white)
+                                                    .warmFont(16, weight: .regular, design: .serif)
+                                                    .foregroundStyle(Color.warmOnGreen)
                                             )
                                         VStack(alignment: .leading, spacing: 4) {
                                             Text(goal.name)
-                                                .font(.system(size: 14, weight: .semibold)).foregroundStyle(Color.warmInk)
+                                                .warmFont(14, weight: .semibold).foregroundStyle(Color.warmInk)
                                                 .lineLimit(1)
                                             GeometryReader { geo in
                                                 ZStack(alignment: .leading) {
@@ -626,9 +746,9 @@ struct WarmQuickDepositView: View {
                                             Circle().stroke(isOn ? Color.warmGreen : Color.warmLine, lineWidth: 2)
                                                 .frame(width: 22, height: 22)
                                             if isOn {
-                                                Circle().fill(Color.warmGreen).frame(width: 22, height: 22)
+                                                Circle().fill(Color.warmGreenFill).frame(width: 22, height: 22)
                                                 Image(systemName: "checkmark")
-                                                    .font(.system(size: 10, weight: .bold)).foregroundStyle(.white)
+                                                    .warmFont(10, weight: .bold).foregroundStyle(Color.warmOnGreen)
                                             }
                                         }
                                     }
@@ -656,10 +776,10 @@ struct WarmQuickDepositView: View {
 
             Button(action: saveDeposit) {
                 let goalName = selectedGoal.map { $0.name.components(separatedBy: ",").first ?? $0.name }
-                Text(goalName != nil ? "Add $\(Int(selectedPreset)) to \(goalName!)" : "Select a goal")
-                    .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
+                Text(goalName.map { "Add $\(Int(selectedPreset)) to \($0)" } ?? "Select a goal")
+                    .warmFont(15, weight: .semibold).foregroundStyle(Color.warmOnGreen)
                     .frame(maxWidth: .infinity).frame(height: 50)
-                    .background(selectedGoal != nil ? Color.warmGreen : Color.warmInkMuted)
+                    .background(selectedGoal != nil ? Color.warmGreenFill : Color.warmInkMuted)
                     .cornerRadius(14)
             }
             .disabled(selectedGoal == nil)
@@ -671,13 +791,21 @@ struct WarmQuickDepositView: View {
                 selectedGoal = goals.first(where: { $0.isFavorite }) ?? goals.first
             }
         }
+        .alert("Couldn't save the deposit", isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(errorMessage ?? "")
+        }
     }
 
     private func saveDeposit() {
         guard let goal = selectedGoal, selectedPreset > 0 else { return }
-        goal.current = min(goal.current + selectedPreset, goal.target)
-        try? modelContext.save()
-        onSave()
+        do {
+            try GoalDeposits.record(goal: goal, amount: selectedPreset, source: .manual, context: modelContext)
+            onSave()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 }
 

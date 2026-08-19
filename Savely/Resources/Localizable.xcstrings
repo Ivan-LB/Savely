@@ -10,13 +10,26 @@
     " of %lld" : {
 
     },
-    " to repeat your last action." : {
+    "—" : {
 
+    },
+    ", favorite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ", favorite"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ", favorita"
+          }
+        }
+      }
     },
     ".00" : {
-
-    },
-    "**Auto-move $230** to Kyoto from this paycheck?" : {
 
     },
     "/wk" : {
@@ -25,8 +38,108 @@
     "%" : {
 
     },
+    "%@ · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "%@ %lld percent" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%@ %lld percent"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$lld por ciento"
+          }
+        }
+      }
+    },
+    "%@ dollars" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%@ dollars"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ dólares"
+          }
+        }
+      }
+    },
     "%@ is on your home screen.\nAdd the first dollar?" : {
 
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%@, %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@, %@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%@, %@, %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@, %3$@"
+          }
+        }
+      }
+    },
+    "%@, %@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@%3$@"
+          }
+        }
+      }
+    },
+    "%@%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%@%@, %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@%2$@, %3$@"
+          }
+        }
+      }
     },
     "%lld" : {
 
@@ -51,13 +164,33 @@
         }
       }
     },
-    "%lld new saving tips" : {
-
+    "%lld percent" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld por ciento"
+          }
+        }
+      }
+    },
+    "%lld percent, %@ of %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld percent, %@ of %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld por ciento, %2$@ de %3$@"
+          }
+        }
+      }
     },
     "%lld%%" : {
-
-    },
-    "+" : {
 
     },
     "+%@" : {
@@ -143,6 +276,22 @@
         }
       }
     },
+    "Add" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar"
+          }
+        }
+      }
+    },
     "Add %@ to %@" : {
       "localizations" : {
         "en" : {
@@ -178,6 +327,38 @@
     },
     "Add deposit" : {
 
+    },
+    "Add expense" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add expense"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar gasto"
+          }
+        }
+      }
+    },
+    "Add income" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add income"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar ingreso"
+          }
+        }
+      }
     },
     "Add your first expense above" : {
 
@@ -236,20 +417,20 @@
         }
       }
     },
-    "add_new_goal_button" : {
-      "comment" : "Add New Goal Button",
+    "all_achievements_unlocked_label" : {
+      "comment" : "Shown when nothing is left to unlock",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Add New Goal"
+            "value" : "Every achievement unlocked"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar Nueva Meta"
+            "value" : "Todos los logros desbloqueados"
           }
         }
       }
@@ -259,7 +440,7 @@
     },
     "already_have_and_account_label" : {
       "comment" : "Already have an account Label",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -274,6 +455,9 @@
           }
         }
       }
+    },
+    "Amount" : {
+
     },
     "amount_placeholder_label" : {
       "comment" : "Amount Placeholder Label",
@@ -311,9 +495,6 @@
         }
       }
     },
-    "April · %@" : {
-
-    },
     "Are you sure you want to delete this expense?" : {
 
     },
@@ -323,8 +504,27 @@
     "Are you sure you want to delete this income?" : {
 
     },
+    "AUTO" : {
+
+    },
     "Auto-move on payday" : {
 
+    },
+    "Back" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Back"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atrás"
+          }
+        }
+      }
     },
     "Back to home" : {
 
@@ -350,7 +550,31 @@
         }
       }
     },
+    "Can't save yet" : {
+
+    },
     "Cancel" : {
+
+    },
+    "cancel_button" : {
+      "comment" : "Cancel Button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cancel"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
+    },
+    "Category" : {
 
     },
     "category_placeholder" : {
@@ -373,7 +597,7 @@
     },
     "change_password_button" : {
       "comment" : "Change Password Button",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -385,6 +609,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cambiar Contraseña"
+          }
+        }
+      }
+    },
+    "Clear name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Clear name"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar nombre"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Close"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
           }
         }
       }
@@ -410,9 +666,19 @@
         }
       }
     },
+    "Completed" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completadas"
+          }
+        }
+      }
+    },
     "confirm_password_string" : {
       "comment" : "Confirm Password String",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -485,6 +751,12 @@
         }
       }
     },
+    "Couldn't save the deposit" : {
+
+    },
+    "Couldn't save the goal" : {
+
+    },
     "Create your first goal" : {
 
     },
@@ -508,7 +780,7 @@
     },
     "create_account_title" : {
       "comment" : "Create Account Title",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -526,7 +798,7 @@
     },
     "creating_account_label" : {
       "comment" : "Creating Account Label",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -578,6 +850,42 @@
         }
       }
     },
+    "data_privacy_title" : {
+      "comment" : "Section header",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Data & privacy"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos y privacidad"
+          }
+        }
+      }
+    },
+    "data_stays_local_label" : {
+      "comment" : "One-line intro of the Data & privacy section",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your data never leaves this iPhone."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus datos nunca salen de este iPhone."
+          }
+        }
+      }
+    },
     "Day one" : {
 
     },
@@ -617,8 +925,31 @@
         }
       }
     },
+    "Decimal point" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Decimal point"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punto decimal"
+          }
+        }
+      }
+    },
     "Delete" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        }
+      }
     },
     "Delete Expense" : {
 
@@ -628,6 +959,96 @@
     },
     "Delete Income" : {
 
+    },
+    "delete_all_data_confirm_button" : {
+      "comment" : "Destructive confirm button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete everything"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar todo"
+          }
+        }
+      }
+    },
+    "delete_all_data_confirm_message" : {
+      "comment" : "Confirmation dialog message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Every income, expense and goal will be removed from this iPhone. Your name and reminder settings stay. This cannot be undone."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se eliminarán todos los ingresos, gastos y metas de este iPhone. Tu nombre y tus recordatorios se conservan. Esto no se puede deshacer."
+          }
+        }
+      }
+    },
+    "delete_all_data_confirm_title" : {
+      "comment" : "Confirmation dialog title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete all data?"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Borrar todos los datos?"
+          }
+        }
+      }
+    },
+    "delete_all_data_label" : {
+      "comment" : "Destructive row",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete all data"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar todos los datos"
+          }
+        }
+      }
+    },
+    "delete_data_failed_message" : {
+      "comment" : "Alert when deletion fails",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Couldn't delete your data. Please try again."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron borrar tus datos. Inténtalo de nuevo."
+          }
+        }
+      }
     },
     "description_placeholder_label" : {
       "comment" : "Description Placeholder Label",
@@ -665,8 +1086,21 @@
         }
       }
     },
-    "Display Name" : {
-
+    "down" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "down"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "abajo"
+          }
+        }
+      }
     },
     "download_weekly_report_button" : {
       "comment" : "Download Weekly Report Button",
@@ -692,11 +1126,15 @@
     "Edit anything" : {
 
     },
-    "Edit Profile" : {
-
-    },
-    "Email" : {
-
+    "Edit goal" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar meta"
+          }
+        }
+      }
     },
     "email_placeholder_title" : {
       "comment" : "Email Placeholder Label",
@@ -772,7 +1210,7 @@
     },
     "enter_email_and_password_label" : {
       "comment" : "Enter your email and password to sign in Label",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -784,6 +1222,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ingrese su correo electrónico y contraseña para iniciar sesión."
+          }
+        }
+      }
+    },
+    "error_invalid_amount" : {
+      "comment" : "Shown when an amount is empty, not a number, or not positive",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enter a valid amount greater than zero."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escribe un monto válido mayor que cero."
           }
         }
       }
@@ -806,8 +1262,55 @@
         }
       }
     },
+    "error_save_expense_failed" : {
+      "comment" : "Shown when writing an expense to the local store fails",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We couldn't save the expense. Please try again."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pudimos guardar el gasto. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
     "Expense" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto"
+          }
+        }
+      }
+    },
+    "Expense amount" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense amount"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monto del gasto"
+          }
+        }
+      }
     },
     "expense_distribution_label" : {
       "comment" : "Expense Distribution Label",
@@ -859,24 +1362,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seleccione la Hora del Recordatorio de Gastos"
-          }
-        }
-      }
-    },
-    "expense_reminder_time_label" : {
-      "comment" : "Expense Reminder Time Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Expense Reminder Time"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hora de Recordatorio de Gastos"
           }
         }
       }
@@ -1088,12 +1573,9 @@
         }
       }
     },
-    "Forgot password?" : {
-
-    },
     "forgot_password_label" : {
       "comment" : "Forgot Password Label",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1111,7 +1593,7 @@
     },
     "full_name_placeholder" : {
       "comment" : "Full Name Placeholder",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1154,6 +1636,9 @@
     "Goal · %@" : {
 
     },
+    "Goal name" : {
+
+    },
     "goal_alert_body" : {
       "comment" : "Goal Alert Body",
       "extractionState" : "extracted_with_value",
@@ -1190,24 +1675,6 @@
         }
       }
     },
-    "goal_alert_time_label" : {
-      "comment" : "Goal Alert Time Label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal Alert Time"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hora de Alerta de Metas"
-          }
-        }
-      }
-    },
     "goal_alert_title" : {
       "comment" : "Goal Alert Title",
       "extractionState" : "extracted_with_value",
@@ -1240,60 +1707,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alertas de Metas"
-          }
-        }
-      }
-    },
-    "goal_amount_placeholder" : {
-      "comment" : "Goal Amount Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal amount"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cantidad de la meta"
-          }
-        }
-      }
-    },
-    "goal_details_headline" : {
-      "comment" : "Goal Details Headline",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal details"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detalles de la meta"
-          }
-        }
-      }
-    },
-    "goal_name_placeholder" : {
-      "comment" : "Goal Name Placeholder",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Goal name"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre de la meta"
           }
         }
       }
@@ -1374,13 +1787,43 @@
       }
     },
     "History" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historial"
+          }
+        }
+      }
     },
     "HOW MUCH" : {
 
     },
     "Income" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingreso"
+          }
+        }
+      }
+    },
+    "Income amount" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Income amount"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monto del ingreso"
+          }
+        }
+      }
     },
     "income_distribution_label" : {
       "comment" : "Income Distribution Label",
@@ -1436,6 +1879,24 @@
         }
       }
     },
+    "just_started_label" : {
+      "comment" : "Subtitle under the display name when nothing is logged yet",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Just getting started"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apenas empezando"
+          }
+        }
+      }
+    },
     "LIFETIME INCOME" : {
 
     },
@@ -1478,6 +1939,22 @@
         }
       }
     },
+    "Log an expense, income, deposit, or new goal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Log an expense, income, deposit, or new goal"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra un gasto, un ingreso, un depósito o una meta nueva"
+          }
+        }
+      }
+    },
     "Log expense" : {
 
     },
@@ -1486,7 +1963,7 @@
     },
     "log_in_string" : {
       "comment" : "Log In String",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1502,8 +1979,72 @@
         }
       }
     },
+    "Long press to delete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Long press to delete"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén presionado para eliminar"
+          }
+        }
+      }
+    },
+    "Make favorite" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Make favorite"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marcar como favorita"
+          }
+        }
+      }
+    },
     "Merchant · Today" : {
 
+    },
+    "minus %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "minus %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "menos %@"
+          }
+        }
+      }
+    },
+    "Month over month" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Month over month"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes contra mes"
+          }
+        }
+      }
     },
     "monthly_goal_label" : {
       "comment" : "Monthly Goal Label",
@@ -1589,8 +2130,58 @@
     "New" : {
 
     },
+    "New goal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "New goal"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva meta"
+          }
+        }
+      }
+    },
     "New goal · " : {
 
+    },
+    "Next month" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Next month"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes siguiente"
+          }
+        }
+      }
+    },
+    "next_achievement_label" : {
+      "comment" : "Kicker above the closest locked achievement",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Next up"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
+        }
+      }
     },
     "next_button" : {
       "comment" : "Next Button",
@@ -1613,6 +2204,12 @@
     "No active goal" : {
 
     },
+    "no date" : {
+
+    },
+    "No deposits yet — the first one lands here." : {
+
+    },
     "No expenses yet" : {
 
     },
@@ -1620,6 +2217,9 @@
 
     },
     "No income yet" : {
+
+    },
+    "No target date — save at your own pace." : {
 
     },
     "No tip for today yet — check back soon." : {
@@ -1778,6 +2378,24 @@
         }
       }
     },
+    "notifications_denied_hint" : {
+      "comment" : "Shown instead of the reminder switches when permission is denied",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Notifications are off for Savely in iOS Settings."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las notificaciones de Savely están desactivadas en Ajustes de iOS."
+          }
+        }
+      }
+    },
     "notifications_title" : {
       "comment" : "Notifications Title",
       "extractionState" : "extracted_with_value",
@@ -1802,6 +2420,9 @@
     "of $%lld" : {
 
     },
+    "OK" : {
+
+    },
     "ok_button" : {
       "comment" : "OK Button",
       "extractionState" : "extracted_with_value",
@@ -1820,15 +2441,54 @@
         }
       }
     },
-    "Optional note" : {
-
+    "onboarding_welcome_label" : {
+      "comment" : "Onboarding welcome step description (privacy)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No accounts, no cloud. Your money data lives on your iPhone and never leaves it."
+          }
+        }
+      }
     },
-    "or" : {
+    "onboarding_welcome_title" : {
+      "comment" : "Onboarding welcome step title (privacy)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yours, and only yours"
+          }
+        }
+      }
+    },
+    "open_settings_button" : {
+      "comment" : "Button that opens the iOS Settings app",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open Settings"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Ajustes"
+          }
+        }
+      }
+    },
+    "Optional note" : {
 
     },
     "other_way_to_connect_label" : {
       "comment" : "Other Way to Connect",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1847,12 +2507,9 @@
     "PACE" : {
 
     },
-    "Password" : {
-
-    },
     "password_string" : {
       "comment" : "Password String",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1870,7 +2527,7 @@
     },
     "passwords_dont_match" : {
       "comment" : "Passwords Doesnt Match",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1885,9 +2542,6 @@
           }
         }
       }
-    },
-    "PDF" : {
-
     },
     "personal_information_title" : {
       "comment" : "Personal Information Title",
@@ -1924,6 +2578,9 @@
           }
         }
       }
+    },
+    "Pick the amount later in the goal's settings." : {
+
     },
     "Pick what to log right now." : {
 
@@ -1988,6 +2645,38 @@
         }
       }
     },
+    "plus %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "plus %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "más %@"
+          }
+        }
+      }
+    },
+    "Previous month" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Previous month"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes anterior"
+          }
+        }
+      }
+    },
     "previous_tips_title" : {
       "comment" : "Previous Tips",
       "extractionState" : "extracted_with_value",
@@ -2024,10 +2713,23 @@
         }
       }
     },
-    "Progress overall" : {
-
+    "Progress" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Progress"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progreso"
+          }
+        }
+      }
     },
-    "Ready for review" : {
+    "Progress overall" : {
 
     },
     "receive_tips_label" : {
@@ -2123,6 +2825,43 @@
         }
       }
     },
+    "reminder_time_label" : {
+      "comment" : "Label next to the reminder time picker",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Time"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hora"
+          }
+        }
+      }
+    },
+    "Remove from favorites" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Remove from favorites"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitar de favoritas"
+          }
+        }
+      }
+    },
+    "Reports" : {
+
+    },
     "reports_tab_string" : {
       "comment" : "Reports Tab String",
       "extractionState" : "extracted_with_value",
@@ -2189,6 +2928,24 @@
         }
       }
     },
+    "saving_since_label" : {
+      "comment" : "Subtitle under the display name; %@ is a month and year",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Saving since %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorrando desde %@"
+          }
+        }
+      }
+    },
     "savings_placeholder" : {
       "comment" : "Savings Placeholcer\nSavings Placeholder",
       "extractionState" : "extracted_with_value",
@@ -2246,6 +3003,366 @@
     "Scan a receipt" : {
 
     },
+    "scan_alternatives_label" : {
+      "comment" : "Label above the alternative amount chips",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Also on the receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También en el recibo"
+          }
+        }
+      }
+    },
+    "scan_amount_accessibility_label" : {
+      "comment" : "Accessibility label of the amount on the review screen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Expense amount"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monto del gasto"
+          }
+        }
+      }
+    },
+    "scan_camera_starting_body" : {
+      "comment" : "Shown when the shutter was tapped before the camera was ready",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The camera is still starting — try again in a moment."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La cámara aún está iniciando — inténtalo de nuevo en un momento."
+          }
+        }
+      }
+    },
+    "scan_camera_unavailable_body" : {
+      "comment" : "Body when the camera cannot start",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Allow camera access in Settings, or choose a receipt photo instead."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permite el acceso a la cámara en Ajustes, o elige una foto del recibo."
+          }
+        }
+      }
+    },
+    "scan_camera_unavailable_title" : {
+      "comment" : "Shown when the camera cannot start",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Camera not available"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cámara no disponible"
+          }
+        }
+      }
+    },
+    "scan_close_label" : {
+      "comment" : "Accessibility label of the close button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Close"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        }
+      }
+    },
+    "scan_date_from_receipt_note" : {
+      "comment" : "Note next to the date when it was read from the receipt",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "from the receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "del recibo"
+          }
+        }
+      }
+    },
+    "scan_date_label" : {
+      "comment" : "Label of the date picker on the review screen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha"
+          }
+        }
+      }
+    },
+    "scan_date_today_note" : {
+      "comment" : "Note next to the date when it defaulted to today",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "today — change it if the receipt is older"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hoy — cámbiala si el recibo es de otro día"
+          }
+        }
+      }
+    },
+    "scan_enter_amount_error" : {
+      "comment" : "Shown when saving with no amount",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enter a valid amount greater than zero."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escribe un monto válido mayor que cero."
+          }
+        }
+      }
+    },
+    "scan_export_dump_label" : {
+      "comment" : "DEBUG-only button that shares what OCR read as JSON",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Export OCR dump"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar OCR (JSON)"
+          }
+        }
+      }
+    },
+    "scan_guide_hint" : {
+      "comment" : "Hint under the camera guide frame",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Frame the whole receipt — flat, in good light."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encuadra todo el recibo — plano y con buena luz."
+          }
+        }
+      }
+    },
+    "scan_import_failed_body" : {
+      "comment" : "Shown when a photo picked from the library could not be loaded",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We couldn't open that photo. Try another one, or take a new picture."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pudimos abrir esa foto. Prueba con otra o toma una nueva."
+          }
+        }
+      }
+    },
+    "scan_import_photos_label" : {
+      "comment" : "Button that opens the photo picker to import a receipt",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Choose from Photos"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir de Fotos"
+          }
+        }
+      }
+    },
+    "scan_merchant_placeholder" : {
+      "comment" : "Placeholder of the merchant field on the review screen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Merchant"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comercio"
+          }
+        }
+      }
+    },
+    "scan_open_settings_label" : {
+      "comment" : "Button that opens the app's Settings page",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open Settings"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Ajustes"
+          }
+        }
+      }
+    },
+    "scan_privacy_note" : {
+      "comment" : "Reassurance shown in the scanner",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Read on your iPhone. The photo never leaves your phone."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se lee en tu iPhone. La foto nunca sale de tu teléfono."
+          }
+        }
+      }
+    },
+    "scan_processing_label" : {
+      "comment" : "Shown while OCR runs",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reading the receipt…"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leyendo el recibo…"
+          }
+        }
+      }
+    },
+    "scan_read_failed_body" : {
+      "comment" : "Body when capture or reading fails",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Try again with the receipt flat and well lit, or enter the amount yourself."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inténtalo de nuevo con el recibo plano y bien iluminado, o escribe el monto tú mismo."
+          }
+        }
+      }
+    },
+    "scan_read_failed_title" : {
+      "comment" : "Title when capture or reading fails",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We couldn't read this one"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pudimos leer este recibo"
+          }
+        }
+      }
+    },
     "scan_receipt_button" : {
       "comment" : "Scan Receipt Button",
       "extractionState" : "extracted_with_value",
@@ -2260,6 +3377,246 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Escanear Recibo"
+          }
+        }
+      }
+    },
+    "scan_receipt_thumbnail_label" : {
+      "comment" : "Accessibility label of the receipt thumbnail",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Photo of the receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto del recibo"
+          }
+        }
+      }
+    },
+    "scan_receipts_label" : {
+      "comment" : "Onboarding receipt scanning step description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Point the camera at a receipt and Savely reads the total for you."
+          }
+        }
+      }
+    },
+    "scan_receipts_title" : {
+      "comment" : "Onboarding receipt scanning step title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Scan Receipts"
+          }
+        }
+      }
+    },
+    "scan_retake_label" : {
+      "comment" : "Button that goes back to the camera",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Retake"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repetir"
+          }
+        }
+      }
+    },
+    "scan_retry_label" : {
+      "comment" : "Retry button after a failed read",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Try again"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intentar de nuevo"
+          }
+        }
+      }
+    },
+    "scan_review_lead_none" : {
+      "comment" : "Lead copy on the review screen when no amount was found",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We couldn't find a total. Enter it below."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No encontramos un total. Escríbelo abajo."
+          }
+        }
+      }
+    },
+    "scan_review_lead_read" : {
+      "comment" : "Lead copy on the review screen when a total was found",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We read this — is it right?"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leímos esto — ¿está bien?"
+          }
+        }
+      }
+    },
+    "scan_review_lead_unsure" : {
+      "comment" : "Lead copy on the review screen when the total is a low-confidence guess",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We're not sure about the total — please check it."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No estamos seguros del total — revísalo, por favor."
+          }
+        }
+      }
+    },
+    "scan_review_title" : {
+      "comment" : "Title of the review screen after a scan",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check the receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revisa el recibo"
+          }
+        }
+      }
+    },
+    "scan_save_expense_label" : {
+      "comment" : "Primary button on the review screen",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Save expense"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar gasto"
+          }
+        }
+      }
+    },
+    "scan_scanned_receipt_description" : {
+      "comment" : "Description saved when the receipt had no readable merchant",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Scanned receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recibo escaneado"
+          }
+        }
+      }
+    },
+    "scan_shutter_label" : {
+      "comment" : "Accessibility label of the shutter button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Take photo"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tomar foto"
+          }
+        }
+      }
+    },
+    "scan_torch_off_label" : {
+      "comment" : "Accessibility label of the torch button when on",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Turn flash off"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apagar flash"
+          }
+        }
+      }
+    },
+    "scan_torch_on_label" : {
+      "comment" : "Accessibility label of the torch button when off",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Turn flash on"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encender flash"
           }
         }
       }
@@ -2386,7 +3743,7 @@
     },
     "sign_in_string" : {
       "comment" : "Sign In String",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2404,7 +3761,7 @@
     },
     "sign_out_button" : {
       "comment" : "Sign Out Button",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2422,7 +3779,7 @@
     },
     "sign_up_label" : {
       "comment" : "Sign Up Label",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2440,7 +3797,7 @@
     },
     "sign_up_to_get_started" : {
       "comment" : "Sign Up To Get Started",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2457,6 +3814,9 @@
       }
     },
     "Skip" : {
+
+    },
+    "Source" : {
 
     },
     "Source · Today" : {
@@ -2504,6 +3864,60 @@
         }
       }
     },
+    "stat_active_goals_label" : {
+      "comment" : "Stat cell: goals not yet complete",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Active goals"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metas activas"
+          }
+        }
+      }
+    },
+    "stat_movements_label" : {
+      "comment" : "Stat cell: number of incomes + expenses logged",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Movements"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movimientos"
+          }
+        }
+      }
+    },
+    "stat_saved_label" : {
+      "comment" : "Stat cell: total saved across goals",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Saved"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorrado"
+          }
+        }
+      }
+    },
     "subscription_cleanup_description" : {
       "comment" : "Description for canceling unused subscriptions",
       "extractionState" : "stale",
@@ -2543,9 +3957,6 @@
     "SUGGESTED PACE" : {
 
     },
-    "SYMBOL" : {
-
-    },
     "Take a look\nbefore we start." : {
 
     },
@@ -2567,9 +3978,12 @@
         }
       }
     },
+    "Target date" : {
+
+    },
     "terms_of_service_label" : {
       "comment" : "Terms of Service Label",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2684,9 +4098,6 @@
     "TIMING" : {
 
     },
-    "Tip History" : {
-
-    },
     "TIP OF THE DAY" : {
 
     },
@@ -2709,9 +4120,6 @@
       }
     },
     "Tip: be specific. Try a specific name like Kyoto trip '26." : {
-
-    },
-    "Tip: long-press " : {
 
     },
     "tips_and_suggestion_title" : {
@@ -2752,7 +4160,7 @@
     },
     "title" : {
       "comment" : "Title for loading view",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2779,9 +4187,6 @@
       }
     },
     "TO WHICH GOAL" : {
-
-    },
-    "Total income logged in Savely" : {
 
     },
     "track_expenses_label" : {
@@ -2856,6 +4261,65 @@
         }
       }
     },
+    "track_money_label" : {
+      "comment" : "Onboarding merged income/expense tracking step description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Log income and expenses in seconds and understand where your money goes."
+          }
+        }
+      }
+    },
+    "track_money_title" : {
+      "comment" : "Onboarding merged income/expense tracking step title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Track Your Money"
+          }
+        }
+      }
+    },
+    "UNDO" : {
+
+    },
+    "Unlocked" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Unlocked"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desbloqueado"
+          }
+        }
+      }
+    },
+    "up" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "up"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "arriba"
+          }
+        }
+      }
+    },
     "update_information_button" : {
       "comment" : "Update Information Button",
       "extractionState" : "extracted_with_value",
@@ -2892,14 +4356,21 @@
         }
       }
     },
-    "We'll read the total and category" : {
-
-    },
-    "WEEKLY INSIGHTS" : {
-
-    },
-    "Weekly Report" : {
-
+    "We'll read the total, merchant and date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We'll read the total, merchant and date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leemos el total, el comercio y la fecha"
+          }
+        }
+      }
     },
     "weekly_budget_description" : {
       "comment" : "Description for achieving the weekly budget goal",
@@ -2973,12 +4444,9 @@
         }
       }
     },
-    "Welcome\nback." : {
-
-    },
     "welcome_back_string" : {
       "comment" : "Welcome Back String",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3068,9 +4536,6 @@
           }
         }
       }
-    },
-    "Your goals are waiting." : {
-
     }
   },
   "version" : "1.0"

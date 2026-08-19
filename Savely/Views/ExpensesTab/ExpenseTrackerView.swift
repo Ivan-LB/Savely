@@ -4,8 +4,9 @@ import SwiftData
 struct ExpenseTrackerView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel = ExpenseTrackerViewModel()
-    @State private var showCameraView = false
+    @State private var scanner: ReceiptScanModel?
     @FocusState private var focusedField: Field?
+    @ScaledMetric(relativeTo: .subheadline) private var amountFieldWidth: CGFloat = 70
 
     enum Field: Hashable { case description, amount }
 
@@ -43,62 +44,55 @@ struct ExpenseTrackerView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Expenses")
-                            .font(.system(size: 34, weight: .regular, design: .serif))
+                            .warmFont(34, weight: .regular, design: .serif)
                             .foregroundStyle(Color.warmInk)
-                        Text("April · \(formattedTotal)")
-                            .font(.system(size: 13))
+                        Text("\(currentMonthName) · \(formattedTotal)")
+                            .warmFont(13)
                             .foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
-                    Button(action: {}) {
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 16))
-                            .foregroundStyle(Color.warmInk)
-                            .frame(width: 40, height: 40)
-                            .background(Color.warmSurface)
-                            .cornerRadius(14)
-                            .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.warmLine, lineWidth: 1))
-                    }
                 }
                 .padding(.top, 8)
 
                 // — Scan receipt banner —
-                Button(action: { showCameraView = true }) {
+                Button(action: { scanner = ReceiptScanModel(expenseStore: viewModel) }) {
                     HStack(spacing: 14) {
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.white.opacity(0.1))
+                            .fill(Color.warmOnInk.opacity(0.1))
                             .frame(width: 44, height: 44)
-                            .overlay(Image(systemName: "camera.fill").font(.system(size: 18)).foregroundStyle(.white))
+                            .overlay(Image(systemName: "camera.fill").warmFont(18).foregroundStyle(Color.warmOnInk))
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Scan a receipt")
-                                .font(.system(size: 15, weight: .semibold))
-                                .foregroundStyle(.white)
-                            Text("We'll read the total and category")
-                                .font(.system(size: 12))
-                                .foregroundStyle(Color.white.opacity(0.65))
+                                .warmFont(15, weight: .semibold)
+                                .foregroundStyle(Color.warmOnInk)
+                            Text("We'll read the total, merchant and date")
+                                .warmFont(12)
+                                .foregroundStyle(Color.warmOnInk.opacity(0.65))
                         }
                         Spacer()
                         Image(systemName: "chevron.right")
-                            .font(.system(size: 14))
-                            .foregroundStyle(Color.white.opacity(0.6))
+                            .warmFont(14)
+                            .foregroundStyle(Color.warmOnInk.opacity(0.6))
                     }
                     .padding(16)
                     .background(Color.warmInk)
                     .cornerRadius(20)
                 }
-                .sheet(isPresented: $showCameraView) {
-                    let cameraViewModel = CameraViewModel(expenseViewModel: viewModel)
-                    CameraView(viewModel: cameraViewModel)
+                // Full screen, same as the "+" shortcut — the scanner is a
+                // camera, not a form. The model is owned here (@State) so
+                // a body re-run while the cover is up cannot recreate it.
+                .fullScreenCover(item: $scanner) { model in
+                    ReceiptScanFlowView(model: model)
                 }
 
                 // — Inline add —
                 HStack(spacing: 10) {
                     TextField("What did you buy?", text: $viewModel.expenseDescription)
-                        .font(.system(size: 14))
+                        .warmFont(14)
                         .foregroundStyle(Color.warmInk)
                         .padding(.horizontal, 12)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 40)
+                        .frame(minHeight: 40)
                         .background(Color.warmBg)
                         .cornerRadius(10)
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.warmLineSoft, lineWidth: 1))
@@ -108,25 +102,27 @@ struct ExpenseTrackerView: View {
                         Text("$").foregroundStyle(Color.warmInkMuted).padding(.leading, 8)
                         TextField("0.00", text: $viewModel.amount)
                             .keyboardType(.decimalPad)
-                            .font(.system(size: 14))
+                            .warmFont(14)
                             .monospacedDigit()
                             .padding(.vertical, 0)
-                            .frame(width: 70)
+                            .frame(width: amountFieldWidth)
                             .focused($focusedField, equals: .amount)
                     }
-                    .frame(height: 40)
+                    .frame(minHeight: 40)
                     .background(Color.warmBg)
                     .cornerRadius(10)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.warmLineSoft, lineWidth: 1))
 
                     Button(action: { viewModel.addExpense(); focusedField = nil }) {
                         Image(systemName: "plus")
-                            .font(.system(size: 15, weight: .semibold))
-                            .foregroundStyle(.white)
+                            .warmFont(15, weight: .semibold)
+                            .foregroundStyle(Color.warmOnGreen)
                             .frame(width: 40, height: 40)
-                            .background(Color.warmGreen)
+                            .background(Color.warmGreenFill)
                             .cornerRadius(10)
+                            .tappable44()
                     }
+                    .accessibilityLabel("Add expense")
                 }
                 .padding(14)
                 .background(Color.warmSurface)
@@ -136,9 +132,9 @@ struct ExpenseTrackerView: View {
                 // — Grouped list —
                 if viewModel.expenses.isEmpty {
                     VStack(spacing: 10) {
-                        Image(systemName: "tray").font(.system(size: 40)).foregroundStyle(Color.warmInkMuted)
-                        Text("No expenses yet").font(.system(size: 16, weight: .semibold)).foregroundStyle(Color.warmInkSoft)
-                        Text("Add your first expense above").font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                        Image(systemName: "tray").warmFont(40).foregroundStyle(Color.warmInkMuted)
+                        Text("No expenses yet").warmFont(16, weight: .semibold).foregroundStyle(Color.warmInkSoft)
+                        Text("Add your first expense above").warmFont(13).foregroundStyle(Color.warmInkMuted)
                     }
                     .frame(maxWidth: .infinity).padding(.vertical, 44)
                 } else {
@@ -146,7 +142,7 @@ struct ExpenseTrackerView: View {
                         ForEach(groupedExpenses, id: \.0) { group in
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(group.0)
-                                    .font(.system(size: 11, weight: .semibold))
+                                    .warmFont(11, weight: .semibold)
                                     .foregroundStyle(Color.warmInkMuted)
                                     .tracking(1)
                                     .textCase(.uppercase)
@@ -175,16 +171,28 @@ struct ExpenseTrackerView: View {
         }
         .background(Color.warmBg)
         .navigationBarHidden(true)
-        .onAppear { if viewModel.modelContext == nil { viewModel.setModelContext(modelContext) } }
+        // Unconditional: MoneyView keeps both trackers alive in a ZStack, so
+        // this fires rarely — but when it does, the list must not be stale.
+        .onAppear { viewModel.setModelContext(modelContext) }
         .alert(isPresented: $viewModel.showError) {
             Alert(title: Text(Strings.Errors.errorLabel), message: Text(viewModel.errorMessage), dismissButton: .default(Text(Strings.Buttons.okButton)))
         }
     }
 
+    private var currentMonthName: String {
+        Date().formatted(.dateTime.month(.wide))
+    }
+
+    /// Scoped to the current month so the label and the number agree — this
+    /// used to sum every expense ever logged under an "April" header.
     private var formattedTotal: String {
+        let calendar = Calendar.current
+        let monthTotal = viewModel.expenses
+            .filter { calendar.isDate($0.date, equalTo: Date(), toGranularity: .month) }
+            .reduce(0) { $0 + $1.amount }
         let f = NumberFormatter()
         f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 0
-        return f.string(from: NSNumber(value: viewModel.expenses.reduce(0) { $0 + $1.amount })) ?? "$0"
+        return f.string(from: NSNumber(value: monthTotal)) ?? "$0"
     }
 }
 
@@ -200,24 +208,28 @@ struct ExpenseRowWarm: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(iconBg)
                 .frame(width: 36, height: 36)
-                .overlay(Image(systemName: expenseIcon).font(.system(size: 15)).foregroundStyle(iconColor))
+                .overlay(Image(systemName: expenseIcon).warmFont(15).foregroundStyle(iconColor))
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(expense.expenseDescription)
-                    .font(.system(size: 14, weight: .semibold))
+                    .warmFont(14, weight: .semibold)
                     .foregroundStyle(Color.warmInk)
                 Text(categoryLabel)
-                    .font(.system(size: 12))
+                    .warmFont(12)
                     .foregroundStyle(Color.warmInkMuted)
             }
             Spacer()
             Text("−\(formattedAmount(expense.amount))")
-                .font(.system(size: 14, weight: .semibold))
+                .warmFont(14, weight: .semibold)
                 .foregroundStyle(Color.warmInk)
                 .monospacedDigit()
-            Image(systemName: "chevron.right").font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
         }
         .padding(.horizontal, 14).padding(.vertical, 12)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text("\(expense.expenseDescription), \(categoryLabel)"))
+        .accessibilityValue(Text("minus \(formattedAmount(expense.amount))"))
+        .accessibilityHint("Long press to delete")
         .contextMenu {
             Button(role: .destructive, action: { showDeleteConfirmation = true }) { Label("Delete", systemImage: "trash") }
         }
@@ -227,34 +239,14 @@ struct ExpenseRowWarm: View {
         } message: { Text("Are you sure you want to delete this expense?") }
     }
 
-    private var expenseIcon: String {
-        let d = expense.expenseDescription.lowercased()
-        if d.contains("coffee") || d.contains("cafe") { return "cup.and.saucer.fill" }
-        if d.contains("grocery") || d.contains("groceries") || d.contains("whole foods") { return "cart.fill" }
-        if d.contains("uber") || d.contains("lyft") || d.contains("transit") || d.contains("muni") { return "car.fill" }
-        if d.contains("movie") || d.contains("entertainment") { return "tv.fill" }
-        if d.contains("restaurant") || d.contains("food") { return "fork.knife" }
-        return "creditcard.fill"
+    /// Stored chip first; keyword inference only for rows that predate it.
+    private var category: ExpenseCategory {
+        ExpenseCategory.display(stored: expense.category, description: expense.expenseDescription)
     }
-    private var iconBg: Color {
-        let d = expense.expenseDescription.lowercased()
-        if d.contains("coffee") || d.contains("cafe") { return Color.warmAmberSoft }
-        if d.contains("grocery") || d.contains("whole foods") { return Color.warmGreenSoft }
-        return Color.warmClaySoft
-    }
-    private var iconColor: Color {
-        let d = expense.expenseDescription.lowercased()
-        if d.contains("coffee") || d.contains("cafe") { return Color.warmAmber }
-        if d.contains("grocery") || d.contains("whole foods") { return Color.warmGreen }
-        return Color.warmClay
-    }
-    private var categoryLabel: String {
-        let d = expense.expenseDescription.lowercased()
-        if d.contains("coffee") || d.contains("cafe") { return "Coffee" }
-        if d.contains("grocery") || d.contains("groceries") { return "Groceries" }
-        if d.contains("uber") || d.contains("lyft") || d.contains("muni") { return "Transit" }
-        return "Expense"
-    }
+    private var expenseIcon: String { category.icon }
+    private var iconBg: Color { category.tileBackground }
+    private var iconColor: Color { category.tileColor }
+    private var categoryLabel: String { category.label }
     private func formattedAmount(_ v: Double) -> String {
         let f = NumberFormatter(); f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 2
         return f.string(from: NSNumber(value: v)) ?? "$0"

@@ -1,0 +1,143 @@
+{
+ "id": "label-above-amount",
+ "source": "hand-authored: TOTAL printed on its own row, amount right-aligned on the next row (not a real receipt)",
+ "locale": "es_MX",
+ "now": "2026-08-16T12:00:00Z",
+ "lines": [
+  {
+   "text": "PANADERIA LA ESPIGA",
+   "box": {
+    "x": 0.05,
+    "y": 0.02,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "CONCHAS X3",
+   "box": {
+    "x": 0.05,
+    "y": 0.052000000000000005,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "36.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.053000000000000005,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "BOLILLO X6",
+   "box": {
+    "x": 0.05,
+    "y": 0.084,
+    "width": 0.45,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "18.00",
+   "box": {
+    "x": 0.7,
+    "y": 0.085,
+    "width": 0.25,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "SUBTOTAL",
+   "box": {
+    "x": 0.05,
+    "y": 0.116,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "54.00",
+   "box": {
+    "x": 0.7,
+    "width": 0.25,
+    "height": 0.022,
+    "y": 0.14800000000000002
+   },
+   "confidence": 1
+  },
+  {
+   "text": "TOTAL",
+   "box": {
+    "x": 0.05,
+    "y": 0.18000000000000002,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "54.00",
+   "box": {
+    "x": 0.7,
+    "width": 0.25,
+    "height": 0.022,
+    "y": 0.21200000000000002
+   },
+   "confidence": 1
+  },
+  {
+   "text": "EFECTIVO",
+   "box": {
+    "x": 0.05,
+    "y": 0.24400000000000002,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "100.00",
+   "box": {
+    "x": 0.7,
+    "width": 0.25,
+    "height": 0.022,
+    "y": 0.276
+   },
+   "confidence": 1
+  },
+  {
+   "text": "CAMBIO",
+   "box": {
+    "x": 0.05,
+    "y": 0.30800000000000005,
+    "width": 0.9,
+    "height": 0.022
+   },
+   "confidence": 1
+  },
+  {
+   "text": "46.00",
+   "box": {
+    "x": 0.7,
+    "width": 0.25,
+    "height": 0.022,
+    "y": 0.3400000000000001
+   },
+   "confidence": 1
+  }
+ ],
+ "expected": {
+  "total": 54.0,
+  "merchant": "Panaderia La Espiga",
+  "category": "Food"
+ }
+}

@@ -35,15 +35,15 @@ struct NetworkErrorView: View {
                     .frame(maxWidth: .infinity)
                     .padding()
                     .fontWeight(.bold)
-                    .background(Color("primaryGreen"))
-                    .foregroundColor(.white)
+                    .background(Color.warmGreenFill)
+                    .foregroundColor(Color.warmOnGreen)
                     .cornerRadius(UIConstants.UICornerRadius.cornerRadius)
             }
             .padding(.horizontal)
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(UIColor.systemBackground))
+        .background(Color.warmBg)
         .edgesIgnoringSafeArea(.all)
     }
 }

@@ -14,12 +14,19 @@ class ExpenseModel {
     var expenseDescription: String
     var amount: Double
     var date: Date
+    /// The chip the user picked when logging ("Coffee", "Food", "Transit",
+    /// "Shopping", "Other"). Scanned receipts store the chip confirmed on the
+    /// review screen. `nil` only for rows logged before categories were
+    /// stored — display then falls back to keyword inference, but the guess
+    /// is never written back here.
+    var category: String?
 
-    init(expenseDescription: String, amount: Double, date: Date) {
+    init(expenseDescription: String, amount: Double, date: Date, category: String? = nil) {
         self.id = UUID()
         self.expenseDescription = expenseDescription
         self.amount = amount
         self.date = date
+        self.category = category
     }
 }
 
@@ -29,7 +36,11 @@ extension ExpenseModel {
         print("Fetching expenses from \(startDate) to \(endDate)")
 
         // Precompute adjusted end date
-        let adjustedEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+        guard let nextDay = Calendar.current.date(byAdding: .day, value: 1, to: endDate) else {
+            print("Error computing adjusted end date for expense fetch")
+            return []
+        }
+        let adjustedEndDate = Calendar.current.startOfDay(for: nextDay)
 
         let fetchDescriptor = FetchDescriptor<ExpenseModel>(
             predicate: #Predicate {

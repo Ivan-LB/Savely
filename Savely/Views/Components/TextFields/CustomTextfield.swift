@@ -33,5 +33,5 @@ struct CustomTextfield: View {
 }
 
 #Preview {
-    CustomTextfield(label: "Hello", placeholder: Strings.Authentication.fullNamePlaceholder, value: .constant("Hola"))
+    CustomTextfield(label: "Hello", placeholder: "Full Name", value: .constant("Hola"))
 }

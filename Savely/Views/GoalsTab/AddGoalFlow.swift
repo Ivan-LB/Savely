@@ -5,26 +5,28 @@ import SwiftData
 
 final class AddGoalState: ObservableObject {
     @Published var name: String = ""
-    @Published var emoji: String = "✈️"
     @Published var color: GoalColor = .green
     @Published var amountStr: String = "0"
+    /// The calendar always holds a date so MiniCalendarView's binding stays
+    /// non-optional; `hasDeadline` says whether it counts. "No date" flips it
+    /// off; picking any day or duration flips it back on.
     @Published var deadline: Date = Calendar.current.date(byAdding: .month, value: 18, to: Date()) ?? Date()
+    @Published var hasDeadline: Bool = true
     @Published var autoDeposit: Bool = true
-    @Published var showReminders: Bool = true
     @Published var isFavorite: Bool = false
 
     var amount: Double { Double(amountStr) ?? 0 }
 
+    /// Required pace to the chosen date; 0 without a date (pace is undefined
+    /// then — the user sets an auto-move amount later in the edit sheet).
     var weeklyPace: Double {
-        let weeks = max(1, Calendar.current.dateComponents([.weekOfYear], from: Date(), to: deadline).weekOfYear ?? 78)
-        return amount / Double(weeks)
+        guard hasDeadline else { return 0 }
+        return GoalPace.requiredWeeklyPace(remaining: amount, deadline: deadline, now: Date()) ?? 0
     }
 
-    var monthlyPace: Double { weeklyPace * 4.33 }
+    var monthlyPace: Double { weeklyPace * GoalPace.weeksPerMonth }
 
-    func weeksBetweenNowAndDeadline() -> Int {
-        max(1, Calendar.current.dateComponents([.weekOfYear], from: Date(), to: deadline).weekOfYear ?? 78)
-    }
+    var canPlant: Bool { !name.trimmingCharacters(in: .whitespaces).isEmpty && amount > 0 }
 }
 
 // MARK: - Flow container
@@ -35,14 +37,22 @@ struct AddGoalFlowView: View {
     @StateObject private var state = AddGoalState()
     @State private var step = 1
     @State private var showSuccess = false
+    @State private var plantedGoal: GoalModel?
+    @State private var showDeposit = false
+    @State private var saveError: String?
 
     var body: some View {
         if showSuccess {
             AddGoalSuccessView(
                 state: state,
-                onDeposit: { isPresented = false },
+                onDeposit: { showDeposit = true },
                 onHome: { isPresented = false }
             )
+            .sheet(isPresented: $showDeposit, onDismiss: { isPresented = false }) {
+                if let goal = plantedGoal {
+                    DepositSheet(goal: goal, modelContext: modelContext)
+                }
+            }
         } else {
             Group {
                 switch step {
@@ -59,21 +69,35 @@ struct AddGoalFlowView: View {
                 removal: .move(edge: .leading)
             ))
             .animation(.spring(response: 0.35, dampingFraction: 0.85), value: step)
+            .alert("Couldn't save the goal", isPresented: Binding(get: { saveError != nil }, set: { if !$0 { saveError = nil } })) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(saveError ?? "")
+            }
         }
     }
 
     private func plantGoal() {
-        guard !state.name.isEmpty, state.amount > 0 else { return }
+        guard state.canPlant else { return } // the button is disabled before this; belt and braces
         let goal = GoalModel(
-            name: state.name,
+            name: state.name.trimmingCharacters(in: .whitespaces),
             current: 0,
             target: state.amount,
             color: state.color,
-            isFavorite: state.isFavorite
+            isFavorite: state.isFavorite,
+            autoMoveEnabled: state.autoDeposit,
+            autoMoveAmount: state.hasDeadline ? state.monthlyPace.rounded() : 0,
+            deadline: state.hasDeadline ? state.deadline : nil
         )
         modelContext.insert(goal)
-        try? modelContext.save()
-        withAnimation(.easeInOut(duration: 0.4)) { showSuccess = true }
+        do {
+            try modelContext.save()
+            plantedGoal = goal
+            withAnimation(.easeInOut(duration: 0.4)) { showSuccess = true }
+        } catch {
+            modelContext.delete(goal)
+            saveError = "Please try again."
+        }
     }
 }
 
@@ -83,31 +107,40 @@ struct AddGoalHeader: View {
     let step: Int; let total: Int
     let onBack: () -> Void; let onSkip: () -> Void
     var showClose: Bool = false
+    var showSkip: Bool = true
+    // Concatenated Text needs a Font value, so scale it here instead of via warmFont.
+    @ScaledMetric(relativeTo: .subheadline) private var headerSize: CGFloat = 13
 
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
                 Button(action: onBack) {
                     Image(systemName: showClose ? "xmark" : "chevron.left")
-                        .font(.system(size: 14, weight: .medium))
+                        .warmFont(14, weight: .medium)
                         .foregroundStyle(Color.warmInk)
                         .frame(width: 36, height: 36)
                         .background(Color.warmSurface)
                         .cornerRadius(12)
                         .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.warmLine, lineWidth: 1))
+                        .tappable44()
                 }
+                .accessibilityLabel(showClose ? "Close" : "Back")
                 Spacer()
                 Text("New goal · ")
-                    .font(.system(size: 13))
+                    .font(.system(size: headerSize))
                     .foregroundStyle(Color.warmInkMuted)
-                + Text("\(step)").font(.system(size: 13, weight: .semibold)).foregroundColor(Color.warmInk)
-                + Text(" of \(total)").font(.system(size: 13)).foregroundColor(Color.warmInkMuted)
+                + Text("\(step)").font(.system(size: headerSize, weight: .semibold)).foregroundColor(Color.warmInk)
+                + Text(" of \(total)").font(.system(size: headerSize)).foregroundColor(Color.warmInkMuted)
                 Spacer()
-                Button(action: onSkip) {
-                    Text("Skip")
-                        .font(.system(size: 13))
-                        .foregroundStyle(Color.warmInkMuted)
-                        .frame(width: 36, height: 36)
+                if showSkip {
+                    Button(action: onSkip) {
+                        Text("Skip")
+                            .warmFont(13)
+                            .foregroundStyle(Color.warmInkMuted)
+                            .frame(width: 36, height: 36)
+                    }
+                } else {
+                    Color.clear.frame(width: 36, height: 36)
                 }
             }
             .padding(.horizontal, 20)
@@ -127,9 +160,8 @@ struct AddGoalHeader: View {
     }
 }
 
-// MARK: - Step 1: Intent — name, emoji, color
+// MARK: - Step 1: Intent — name, color
 
-private let goalEmojis = ["✈️", "🏡", "🌿", "🚗", "💍", "🎓", "🎁", "🏥"]
 
 struct AddGoalStep1View: View {
     @ObservedObject var state: AddGoalState
@@ -144,12 +176,12 @@ struct AddGoalStep1View: View {
                 // Section label + headline
                 VStack(alignment: .leading, spacing: 10) {
                     Text("WHAT YOU'RE SAVING FOR")
-                        .font(.system(size: 11, weight: .bold)).foregroundStyle(Color.warmGreen).tracking(1.2)
+                        .warmFont(11, weight: .bold).foregroundStyle(Color.warmGreen).tracking(1.2)
                     Text("Give it a name\nyou'll recognize.")
-                        .font(.system(size: 32, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                        .warmFont(32, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                         .lineSpacing(2)
                     Text("This is what you'll see on your dashboard.")
-                        .font(.system(size: 14)).foregroundStyle(Color.warmInkSoft)
+                        .warmFont(14).foregroundStyle(Color.warmInkSoft)
                 }
                 .padding(.horizontal, 24).padding(.bottom, 24)
 
@@ -157,23 +189,19 @@ struct AddGoalStep1View: View {
                 HStack {
                     Spacer()
                     HStack(spacing: 12) {
-                        ZStack {
-                            Circle().fill(state.color.trackColor).frame(width: 44, height: 44)
-                            Text(state.emoji).font(.system(size: 22))
-                        }
+                        GoalInitialCircle(name: state.name, color: state.color, size: 44)
                         VStack(alignment: .leading, spacing: 2) {
                             Text(state.name.isEmpty ? "Your goal name" : state.name)
-                                .font(.system(size: 20, weight: .regular, design: .serif))
+                                .warmFont(20, weight: .regular, design: .serif)
                                 .foregroundStyle(state.name.isEmpty ? Color.warmInkMuted : Color.warmInk)
                             Text("Live preview")
-                                .font(.system(size: 11)).foregroundStyle(Color.warmInkMuted)
+                                .warmFont(11).foregroundStyle(Color.warmInkMuted)
                         }
                     }
                     .padding(.vertical, 12).padding(.horizontal, 18)
                     .background(Color.warmSurface)
                     .clipShape(Capsule())
                     .overlay(Capsule().stroke(Color.warmLine, lineWidth: 1))
-                    .shadow(color: .black.opacity(0.04), radius: 12, y: 4)
                     Spacer()
                 }
                 .padding(.bottom, 20)
@@ -181,16 +209,18 @@ struct AddGoalStep1View: View {
                 // Name input
                 VStack(alignment: .leading, spacing: 8) {
                     Text("NAME")
-                        .font(.system(size: 11, weight: .semibold)).foregroundStyle(Color.warmInkMuted).tracking(0.8)
+                        .warmFont(11, weight: .semibold).foregroundStyle(Color.warmInkMuted).tracking(0.8)
                     HStack {
                         TextField("e.g. Kyoto, autumn '26", text: $state.name)
-                            .font(.system(size: 16)).foregroundStyle(Color.warmInk)
+                            .warmFont(16).foregroundStyle(Color.warmInk)
                             .focused($nameFocused)
                         if !state.name.isEmpty {
                             Button(action: { state.name = "" }) {
                                 Image(systemName: "xmark.circle.fill")
-                                    .font(.system(size: 16)).foregroundStyle(Color.warmInkMuted)
+                                    .warmFont(16).foregroundStyle(Color.warmInkMuted)
+                                    .tappable44()
                             }
+                            .accessibilityLabel("Clear name")
                         }
                     }
                     .padding(14)
@@ -200,40 +230,15 @@ struct AddGoalStep1View: View {
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(nameFocused ? Color.warmGreen : Color.warmLine, lineWidth: nameFocused ? 1.5 : 1)
                     )
-                    .shadow(color: nameFocused ? Color.warmGreenSoft : .clear, radius: 0, x: 0, y: 0)
                     Text("Tip: be specific. Try a specific name like Kyoto trip '26.")
-                        .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted).padding(.leading, 4)
-                }
-                .padding(.horizontal, 20).padding(.bottom, 24)
-
-                // Emoji picker
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("SYMBOL")
-                        .font(.system(size: 11, weight: .semibold)).foregroundStyle(Color.warmInkMuted).tracking(0.8)
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 8), spacing: 8) {
-                        ForEach(goalEmojis, id: \.self) { e in
-                            let isOn = state.emoji == e
-                            Button(action: { state.emoji = e }) {
-                                Text(e).font(.system(size: 20))
-                                    .frame(width: 44, height: 44)
-                                    .background(isOn ? state.color.trackColor : Color.warmSurface)
-                                    .cornerRadius(12)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .stroke(isOn ? state.color.color : Color.warmLine, lineWidth: isOn ? 1.5 : 1)
-                                    )
-                            }
-                            .buttonStyle(.plain)
-                            .animation(.easeInOut(duration: 0.15), value: state.emoji)
-                        }
-                    }
+                        .warmFont(12).foregroundStyle(Color.warmInkMuted).padding(.leading, 4)
                 }
                 .padding(.horizontal, 20).padding(.bottom, 24)
 
                 // Color picker (6-swatch row from design)
                 VStack(alignment: .leading, spacing: 10) {
                     Text("COLOR")
-                        .font(.system(size: 11, weight: .semibold)).foregroundStyle(Color.warmInkMuted).tracking(0.8)
+                        .warmFont(11, weight: .semibold).foregroundStyle(Color.warmInkMuted).tracking(0.8)
                     HStack(spacing: 12) {
                         ForEach([GoalColor.green, .blue, .yellow, .red, .purple, .brown], id: \.id) { gc in
                             let isOn = state.color == gc
@@ -242,9 +247,8 @@ struct AddGoalStep1View: View {
                                     .fill(gc.color)
                                     .frame(width: 38, height: 38)
                                     .overlay(
-                                        Circle().stroke(Color.white, lineWidth: isOn ? 3 : 0)
+                                        Circle().stroke(Color.warmSurface, lineWidth: isOn ? 3 : 0)
                                     )
-                                    .shadow(color: isOn ? gc.color.opacity(0.5) : .clear, radius: 4, y: 2)
                             }
                             .buttonStyle(.plain)
                             .animation(.easeInOut(duration: 0.15), value: state.color)
@@ -255,9 +259,9 @@ struct AddGoalStep1View: View {
 
                 Button(action: onNext) {
                     Text("Continue")
-                        .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
+                        .warmFont(15, weight: .semibold).foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(state.name.isEmpty ? Color.warmInkMuted : Color.warmGreen)
+                        .background(state.name.isEmpty ? Color.warmInkMuted : Color.warmGreenFill)
                         .cornerRadius(14)
                 }
                 .disabled(state.name.isEmpty)
@@ -274,6 +278,7 @@ struct AddGoalStep1View: View {
 struct AddGoalStep2View: View {
     @ObservedObject var state: AddGoalState
     let onBack: () -> Void; let onNext: () -> Void; let onSkip: () -> Void
+    @ScaledMetric(relativeTo: .footnote) private var noteSize: CGFloat = 12
     private let presets: [Double] = [1000, 2500, 5000, 10000]
 
     var body: some View {
@@ -282,21 +287,18 @@ struct AddGoalStep2View: View {
 
             VStack(alignment: .leading, spacing: 10) {
                 Text("HOW MUCH")
-                    .font(.system(size: 11, weight: .bold)).foregroundStyle(Color.warmGreen).tracking(1.2)
+                    .warmFont(11, weight: .bold).foregroundStyle(Color.warmGreen).tracking(1.2)
                 Text("What's the\nfinish line?")
-                    .font(.system(size: 32, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(32, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 24).padding(.bottom, 8)
 
             // Goal name chip
             HStack(spacing: 10) {
-                ZStack {
-                    Circle().fill(state.color.trackColor).frame(width: 28, height: 28)
-                    Text(state.emoji).font(.system(size: 14))
-                }
+                GoalInitialCircle(name: state.name, color: state.color, size: 28)
                 Text(state.name)
-                    .font(.system(size: 13)).foregroundStyle(Color.warmInkSoft)
+                    .warmFont(13).foregroundStyle(Color.warmInkSoft)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 24).padding(.bottom, 8)
@@ -306,9 +308,9 @@ struct AddGoalStep2View: View {
             // Large amount display
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                 Text("$")
-                    .font(.system(size: 36, weight: .regular, design: .serif)).foregroundStyle(Color.warmInkMuted)
+                    .warmFont(36, weight: .regular, design: .serif).foregroundStyle(Color.warmInkMuted)
                 Text(formatKeypadAmount(state.amountStr))
-                    .font(.system(size: 88, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                    .warmFont(88, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                     .monospacedDigit().minimumScaleFactor(0.35).lineLimit(1)
             }
             .padding(.horizontal, 20)
@@ -317,13 +319,13 @@ struct AddGoalStep2View: View {
             if state.amount > 0 {
                 HStack(spacing: 6) {
                     Image(systemName: "sparkles")
-                        .font(.system(size: 11)).foregroundStyle(Color.warmAmber)
+                        .warmFont(11).foregroundStyle(Color.warmAmber)
                     Text("About ")
-                        .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
+                        .font(.system(size: noteSize)).foregroundStyle(Color.warmInkMuted)
                     + Text("$\(Int(state.weeklyPace))/week")
-                        .font(.system(size: 12, weight: .semibold)).foregroundColor(Color.warmInk)
+                        .font(.system(size: noteSize, weight: .semibold)).foregroundColor(Color.warmInk)
                     + Text(" for 18 months")
-                        .font(.system(size: 12)).foregroundColor(Color.warmInkMuted)
+                        .font(.system(size: noteSize)).foregroundColor(Color.warmInkMuted)
                 }
                 .padding(.top, 14)
             }
@@ -334,7 +336,7 @@ struct AddGoalStep2View: View {
                     let isOn = state.amountStr == "\(Int(p))"
                     Button(action: { state.amountStr = "\(Int(p))" }) {
                         Text("$\(Int(p).formatted())")
-                            .font(.system(size: 13, weight: .semibold))
+                            .warmFont(13, weight: .semibold)
                             .foregroundStyle(isOn ? Color.warmGreenDeep : Color.warmInkSoft)
                             .padding(.horizontal, 14).padding(.vertical, 8)
                             .background(isOn ? Color.warmGreenSoft : Color.clear)
@@ -354,9 +356,9 @@ struct AddGoalStep2View: View {
                 WarmKeypad(amountStr: $state.amountStr)
                 Button(action: onNext) {
                     Text("Continue")
-                        .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
+                        .warmFont(15, weight: .semibold).foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(state.amount > 0 ? Color.warmGreen : Color.warmInkMuted)
+                        .background(state.amount > 0 ? Color.warmGreenFill : Color.warmInkMuted)
                         .cornerRadius(14)
                 }
                 .disabled(state.amount <= 0)
@@ -390,9 +392,9 @@ struct AddGoalStep3View: View {
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("TIMING")
-                        .font(.system(size: 11, weight: .bold)).foregroundStyle(Color.warmGreen).tracking(1.2)
+                        .warmFont(11, weight: .bold).foregroundStyle(Color.warmGreen).tracking(1.2)
                     Text("When do you\nwant this by?")
-                        .font(.system(size: 32, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                        .warmFont(32, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 }
                 .padding(.horizontal, 24).padding(.bottom, 20)
 
@@ -400,29 +402,33 @@ struct AddGoalStep3View: View {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(spacing: 6) {
                         Image(systemName: "sparkles")
-                            .font(.system(size: 11, weight: .bold)).foregroundStyle(.white.opacity(0.85))
+                            .warmFont(11, weight: .bold).foregroundStyle(Color.warmOnGreen.opacity(0.85))
                         Text("SUGGESTED PACE")
-                            .font(.system(size: 11, weight: .bold)).foregroundStyle(.white.opacity(0.85)).tracking(1.2)
+                            .warmFont(11, weight: .bold).foregroundStyle(Color.warmOnGreen.opacity(0.85)).tracking(1.2)
                     }
                     HStack(alignment: .firstTextBaseline) {
-                        Text("$\(Int(state.weeklyPace))")
-                            .font(.system(size: 38, weight: .regular, design: .serif)).foregroundStyle(.white)
+                        Text(state.hasDeadline ? "$\(Int(state.weeklyPace))" : "—")
+                            .warmFont(38, weight: .regular, design: .serif).foregroundStyle(Color.warmOnGreen)
                         Text("/wk")
-                            .font(.system(size: 18)).foregroundStyle(.white.opacity(0.7)).padding(.leading, 2)
+                            .warmFont(18).foregroundStyle(Color.warmOnGreen.opacity(0.7)).padding(.leading, 2)
                         Spacer()
-                        Text("~$\(Int(state.monthlyPace))/mo")
-                            .font(.system(size: 13)).foregroundStyle(.white.opacity(0.85))
+                        Text(state.hasDeadline ? "~$\(Int(state.monthlyPace))/mo" : "no date")
+                            .warmFont(13).foregroundStyle(Color.warmOnGreen.opacity(0.85))
                     }
-                    Text("To hit **$\(Int(state.amount))** by **\(formattedDeadline)**.")
-                        .font(.system(size: 13)).foregroundStyle(.white.opacity(0.85))
+                    Text(state.hasDeadline
+                         ? "To hit **$\(Int(state.amount))** by **\(formattedDeadline)**."
+                         : "No target date — save at your own pace.")
+                        .warmFont(13).foregroundStyle(Color.warmOnGreen.opacity(0.85))
                 }
                 .padding(18)
-                .background(Color.warmGreen)
+                .background(Color.warmGreenFill)
                 .cornerRadius(22)
                 .padding(.horizontal, 20).padding(.bottom, 16)
 
-                // Mini calendar
+                // Mini calendar — picking a day turns the date back on
                 MiniCalendarView(displayMonth: $displayMonth, selectedDate: $state.deadline)
+                    .opacity(state.hasDeadline ? 1 : 0.45)
+                    .onChange(of: state.deadline) { state.hasDeadline = true; selectedDuration = -2 }
                     .padding(.horizontal, 20).padding(.bottom, 14)
 
                 // Duration presets
@@ -433,14 +439,16 @@ struct AddGoalStep3View: View {
                             Button(action: {
                                 if let m = preset.months {
                                     selectedDuration = m
+                                    state.hasDeadline = true
                                     state.deadline = Calendar.current.date(byAdding: .month, value: m, to: Date()) ?? Date()
                                     displayMonth = state.deadline
                                 } else {
                                     selectedDuration = -1
+                                    state.hasDeadline = false
                                 }
                             }) {
                                 Text(preset.label)
-                                    .font(.system(size: 13, weight: .semibold))
+                                    .warmFont(13, weight: .semibold)
                                     .foregroundStyle(isOn ? Color.warmGreenDeep : Color.warmInkSoft)
                                     .padding(.horizontal, 14).padding(.vertical, 8)
                                     .background(isOn ? Color.warmGreenSoft : Color.clear)
@@ -458,16 +466,18 @@ struct AddGoalStep3View: View {
                 // Auto-deposit toggle
                 HStack(spacing: 12) {
                     Image(systemName: "sparkles")
-                        .font(.system(size: 15)).foregroundStyle(Color.warmGreen)
+                        .warmFont(15).foregroundStyle(Color.warmGreen)
                         .frame(width: 36, height: 36).background(Color.warmGreenSoft).cornerRadius(10)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Auto-move on payday")
-                            .font(.system(size: 14, weight: .semibold)).foregroundStyle(Color.warmInk)
-                        Text("Set $\(Int(state.monthlyPace)) aside the day after each paycheck.")
-                            .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
+                            .warmFont(14, weight: .semibold).foregroundStyle(Color.warmInk)
+                        Text(state.hasDeadline
+                             ? "Set $\(Int(state.monthlyPace)) aside the day after each paycheck."
+                             : "Pick the amount later in the goal's settings.")
+                            .warmFont(12).foregroundStyle(Color.warmInkMuted)
                     }
                     Spacer()
-                    Toggle("", isOn: $state.autoDeposit)
+                    Toggle("Auto-move on payday", isOn: $state.autoDeposit)
                         .labelsHidden()
                         .tint(Color.warmGreen)
                 }
@@ -479,9 +489,9 @@ struct AddGoalStep3View: View {
 
                 Button(action: onNext) {
                     Text("Continue")
-                        .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
+                        .warmFont(15, weight: .semibold).foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(Color.warmGreen).cornerRadius(14)
+                        .background(Color.warmGreenFill).cornerRadius(14)
                 }
                 .padding(.horizontal, 20).padding(.bottom, 32)
             }
@@ -490,6 +500,7 @@ struct AddGoalStep3View: View {
     }
 
     private var formattedDeadline: String {
+        guard state.hasDeadline else { return "—" }
         let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"
         return f.string(from: state.deadline)
     }
@@ -506,32 +517,36 @@ struct MiniCalendarView: View {
         VStack(spacing: 0) {
             HStack {
                 Button(action: shiftMonth(-1)) {
-                    Image(systemName: "chevron.left").font(.system(size: 13)).foregroundStyle(Color.warmInkSoft)
+                    Image(systemName: "chevron.left").warmFont(13).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 28, height: 28).cornerRadius(8)
+                        .tappable44()
                 }
+                .accessibilityLabel("Previous month")
                 Spacer()
-                Text(monthTitle).font(.system(size: 18, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                Text(monthTitle).warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Button(action: shiftMonth(1)) {
-                    Image(systemName: "chevron.right").font(.system(size: 13)).foregroundStyle(Color.warmInkSoft)
+                    Image(systemName: "chevron.right").warmFont(13).foregroundStyle(Color.warmInkSoft)
                         .frame(width: 28, height: 28).cornerRadius(8)
+                        .tappable44()
                 }
+                .accessibilityLabel("Next month")
             }
             .padding(.bottom, 14)
 
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 4) {
                 ForEach(dayLabels, id: \.self) { d in
-                    Text(d).font(.system(size: 10, weight: .semibold)).foregroundStyle(Color.warmInkMuted)
+                    Text(d).warmFont(10, weight: .semibold).foregroundStyle(Color.warmInkMuted)
                 }
                 ForEach(0..<leadingBlanks, id: \.self) { _ in Color.clear.frame(height: 32) }
                 ForEach(1...daysInMonth, id: \.self) { day in
                     let isSelected = isSelectedDay(day)
                     Button(action: { selectDay(day) }) {
                         Text("\(day)")
-                            .font(.system(size: 13, weight: isSelected ? .semibold : .regular))
-                            .foregroundStyle(isSelected ? .white : Color.warmInk)
+                            .warmFont(13, weight: isSelected ? .semibold : .regular)
+                            .foregroundStyle(isSelected ? Color.warmOnGreen : Color.warmInk)
                             .frame(maxWidth: .infinity).frame(height: 32)
-                            .background(isSelected ? Color.warmGreen : Color.clear)
+                            .background(isSelected ? Color.warmGreenFill : Color.clear)
                             .cornerRadius(10)
                     }
                     .buttonStyle(.plain)
@@ -582,32 +597,29 @@ struct AddGoalStep4View: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                AddGoalHeader(step: 4, total: 4, onBack: onBack, onSkip: {})
+                AddGoalHeader(step: 4, total: 4, onBack: onBack, onSkip: {}, showSkip: false)
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("ALMOST THERE")
-                        .font(.system(size: 11, weight: .bold)).foregroundStyle(Color.warmGreen).tracking(1.2)
+                        .warmFont(11, weight: .bold).foregroundStyle(Color.warmGreen).tracking(1.2)
                     Text("Take a look\nbefore we start.")
-                        .font(.system(size: 32, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                        .warmFont(32, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 }
                 .padding(.horizontal, 24).padding(.bottom, 24)
 
                 // Hero preview card
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 12) {
-                        ZStack {
-                            Circle().fill(state.color.trackColor).frame(width: 44, height: 44)
-                            Text(state.emoji).font(.system(size: 22))
-                        }
+                        GoalInitialCircle(name: state.name, color: state.color, size: 44)
                         VStack(alignment: .leading, spacing: 3) {
                             Text(state.name)
-                                .font(.system(size: 22, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                                .warmFont(22, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                             Text("Goal · \(formattedDeadline)")
-                                .font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
+                                .warmFont(12).foregroundStyle(Color.warmInkMuted)
                         }
                         Spacer()
                         Text("New")
-                            .font(.system(size: 11, weight: .semibold)).foregroundStyle(Color.warmGreenDeep)
+                            .warmFont(11, weight: .semibold).foregroundStyle(Color.warmGreenDeep)
                             .padding(.horizontal, 10).padding(.vertical, 4)
                             .background(Color.warmGreenSoft).clipShape(Capsule())
                     }
@@ -615,10 +627,10 @@ struct AddGoalStep4View: View {
 
                     HStack(alignment: .firstTextBaseline) {
                         Text("$0")
-                            .font(.system(size: 32, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                            .warmFont(32, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                         Spacer()
                         Text("of $\(Int(state.amount))")
-                            .font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                            .warmFont(13).foregroundStyle(Color.warmInkMuted)
                     }
                     .padding(.bottom, 8)
 
@@ -632,12 +644,14 @@ struct AddGoalStep4View: View {
                     .frame(height: 8).padding(.bottom, 14)
 
                     HStack(spacing: 6) {
-                        ForEach([("Per week","$\(Int(state.weeklyPace))"),("Per month","$\(Int(state.monthlyPace))"),("By",shortDeadline)], id: \.0) { item in
+                        ForEach([("Per week", state.hasDeadline ? "$\(Int(state.weeklyPace))" : "—"),
+                                 ("Per month", state.hasDeadline ? "$\(Int(state.monthlyPace))" : "—"),
+                                 ("By", shortDeadline)], id: \.0) { item in
                             VStack(spacing: 4) {
                                 Text(item.0)
-                                    .font(.system(size: 9)).foregroundStyle(Color.warmInkMuted).textCase(.uppercase).tracking(0.8)
+                                    .warmFont(9).foregroundStyle(Color.warmInkMuted).textCase(.uppercase).tracking(0.8)
                                 Text(item.1)
-                                    .font(.system(size: 16, weight: .regular, design: .serif)).foregroundStyle(Color.warmInk)
+                                    .warmFont(16, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                             }
                             .frame(maxWidth: .infinity).padding(.vertical, 10)
                             .background(Color.warmBg).cornerRadius(12)
@@ -648,14 +662,12 @@ struct AddGoalStep4View: View {
                 .background(Color.warmSurface)
                 .cornerRadius(24)
                 .overlay(RoundedRectangle(cornerRadius: 24).stroke(Color.warmLine, lineWidth: 1))
-                .shadow(color: .black.opacity(0.05), radius: 16, y: 6)
+                .shadow(color: Color.warmShadow, radius: 16, y: 6)
                 .padding(.horizontal, 20).padding(.bottom, 20)
 
                 // Recap toggles
                 VStack(spacing: 0) {
-                    RecapToggleRow(label: "Auto-move", sub: "On — $\(Int(state.monthlyPace)) each payday", isOn: $state.autoDeposit)
-                    Divider().padding(.horizontal, 16)
-                    RecapToggleRow(label: "Reminders", sub: "Friday mornings", isOn: $state.showReminders)
+                    RecapToggleRow(label: "Auto-move", sub: state.hasDeadline ? "On — $\(Int(state.monthlyPace)) each payday" : "On — amount set later", isOn: $state.autoDeposit)
                     Divider().padding(.horizontal, 16)
                     RecapToggleRow(label: "Favorite", sub: "Show on home screen", isOn: $state.isFavorite)
                 }
@@ -667,9 +679,9 @@ struct AddGoalStep4View: View {
                 // Encouragement strip
                 HStack(alignment: .top, spacing: 8) {
                     Image(systemName: "sparkles")
-                        .font(.system(size: 13)).foregroundStyle(Color.warmAmber)
+                        .warmFont(13).foregroundStyle(Color.warmAmber)
                     Text("That's **about one less takeout per week**. Doable.")
-                        .font(.system(size: 12)).foregroundStyle(Color(red: 0.478, green: 0.337, blue: 0.094))
+                        .warmFont(12).foregroundStyle(Color.warmAmberDeep)
                 }
                 .padding(16)
                 .background(Color.warmAmberSoft)
@@ -681,17 +693,19 @@ struct AddGoalStep4View: View {
                     Button(action: onPlant) {
                         HStack(spacing: 8) {
                             Image(systemName: "checkmark")
-                                .font(.system(size: 14, weight: .semibold))
+                                .warmFont(14, weight: .semibold)
                             Text("Plant goal")
-                                .font(.system(size: 15, weight: .semibold))
+                                .warmFont(15, weight: .semibold)
                         }
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.warmOnGreen)
                         .frame(maxWidth: .infinity).frame(height: 50)
-                        .background(Color.warmGreen).cornerRadius(14)
+                        .background(Color.warmGreenFill).cornerRadius(14)
                     }
+                    .disabled(!state.canPlant)
+                    .opacity(state.canPlant ? 1 : 0.4)
                     Button(action: onBack) {
                         Text("Edit anything")
-                            .font(.system(size: 13)).foregroundStyle(Color.warmInkMuted)
+                            .warmFont(13).foregroundStyle(Color.warmInkMuted)
                             .padding(.vertical, 14)
                     }
                 }
@@ -702,9 +716,11 @@ struct AddGoalStep4View: View {
     }
 
     private var formattedDeadline: String {
+        guard state.hasDeadline else { return "No date" }
         let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"; return f.string(from: state.deadline)
     }
     private var shortDeadline: String {
+        guard state.hasDeadline else { return "—" }
         let f = DateFormatter(); f.dateFormat = "MMM ''yy"; return f.string(from: state.deadline)
     }
 }
@@ -716,11 +732,11 @@ struct RecapToggleRow: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text(label).font(.system(size: 14, weight: .semibold)).foregroundStyle(Color.warmInk)
-                Text(sub).font(.system(size: 12)).foregroundStyle(Color.warmInkMuted)
+                Text(label).warmFont(14, weight: .semibold).foregroundStyle(Color.warmInk)
+                Text(sub).warmFont(12).foregroundStyle(Color.warmInkMuted)
             }
             Spacer()
-            Toggle("", isOn: $isOn).labelsHidden().tint(Color.warmGreen)
+            Toggle(label, isOn: $isOn).labelsHidden().tint(Color.warmGreen)
         }
         .padding(.horizontal, 16).padding(.vertical, 14)
     }
@@ -741,12 +757,12 @@ struct AddGoalSuccessView: View {
 
     var body: some View {
         ZStack {
-            Color.warmGreen.ignoresSafeArea()
+            Color.warmGreenFill.ignoresSafeArea()
 
             GeometryReader { geo in
                 ForEach(Array(dots.enumerated()), id: \.offset) { _, dot in
                     Circle()
-                        .fill(dot.3 ? Color.warmAmber : Color.white)
+                        .fill(dot.3 ? Color.warmAmber : Color.warmOnGreen)
                         .frame(width: dot.2, height: dot.2)
                         .opacity(0.5)
                         .position(x: geo.size.width * dot.0, y: geo.size.height * dot.1)
@@ -757,24 +773,24 @@ struct AddGoalSuccessView: View {
                 Spacer()
 
                 ZStack {
-                    Circle().fill(Color.white.opacity(0.14)).frame(width: 132, height: 132)
-                    Circle().fill(Color.white).frame(width: 88, height: 88)
+                    Circle().fill(Color.warmOnGreen.opacity(0.14)).frame(width: 132, height: 132)
+                    Circle().fill(Color.warmOnGreen).frame(width: 88, height: 88)
                         .overlay(
                             Image(systemName: "checkmark")
-                                .font(.system(size: 36, weight: .semibold))
-                                .foregroundStyle(Color.warmGreen)
+                                .warmFont(36, weight: .semibold)
+                                .foregroundStyle(Color.warmGreenFill)
                         )
                 }
                 .padding(.bottom, 28)
 
                 Text("Planted.")
-                    .font(.system(size: 42, weight: .regular, design: .serif))
-                    .foregroundStyle(.white)
+                    .warmFont(42, weight: .regular, design: .serif)
+                    .foregroundStyle(Color.warmOnGreen)
                     .padding(.bottom, 12)
 
                 Text("\(state.name) is on your home screen.\nAdd the first dollar?")
-                    .font(.system(size: 15))
-                    .foregroundStyle(.white.opacity(0.85))
+                    .warmFont(15)
+                    .foregroundStyle(Color.warmOnGreen.opacity(0.85))
                     .multilineTextAlignment(.center)
                     .lineSpacing(4)
                     .padding(.horizontal, 40)
@@ -784,23 +800,41 @@ struct AddGoalSuccessView: View {
                 VStack(spacing: 10) {
                     Button(action: onDeposit) {
                         HStack(spacing: 8) {
-                            Image(systemName: "plus").font(.system(size: 14, weight: .semibold))
-                            Text("Add a deposit").font(.system(size: 15, weight: .semibold))
+                            Image(systemName: "plus").warmFont(14, weight: .semibold)
+                            Text("Add a deposit").warmFont(15, weight: .semibold)
                         }
-                        .foregroundStyle(Color.warmGreen)
+                        .foregroundStyle(Color.warmGreenFill)
                         .frame(maxWidth: .infinity).frame(height: 52)
-                        .background(Color.white).cornerRadius(14)
+                        .background(Color.warmOnGreen).cornerRadius(14)
                     }
                     Button(action: onHome) {
                         Text("Back to home")
-                            .font(.system(size: 15, weight: .medium)).foregroundStyle(.white)
+                            .warmFont(15, weight: .medium).foregroundStyle(Color.warmOnGreen)
                             .frame(maxWidth: .infinity).frame(height: 52)
-                            .background(Color.white.opacity(0.15)).cornerRadius(14)
-                            .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.white.opacity(0.25), lineWidth: 1))
+                            .background(Color.warmOnGreen.opacity(0.15)).cornerRadius(14)
+                            .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.warmOnGreen.opacity(0.25), lineWidth: 1))
                     }
                 }
                 .padding(.horizontal, 28).padding(.bottom, 52)
             }
         }
+    }
+}
+
+// MARK: - Goal initial (the pattern WarmGoalCard / WarmQuickDepositView use)
+
+struct GoalInitialCircle: View {
+    let name: String
+    let color: GoalColor
+    let size: CGFloat
+
+    var body: some View {
+        ZStack {
+            Circle().fill(color.color).frame(width: size, height: size)
+            Text(name.first.map { String($0).uppercased() } ?? "·")
+                .warmFont(size * 0.5, weight: .regular, design: .serif)
+                .foregroundStyle(Color.warmOnGreen)
+        }
+        .accessibilityHidden(true)
     }
 }
