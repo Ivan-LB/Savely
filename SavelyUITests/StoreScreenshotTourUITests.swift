@@ -128,6 +128,123 @@ final class StoreScreenshotTourUITests: XCTestCase {
         snap("00-home-light")
     }
 
+    /// App Preview footage: one continuous, human-paced walk through the
+    /// seeded app while `simctl io … recordVideo` captures the screen. Prints
+    /// `BRAGMARK <name> <epoch> [x y]` lines (points) so the editor can cut
+    /// scenes and draw touch indicators without guessing.
+    @MainActor
+    func testPreviewFootage() throws {
+        launch()
+        // The first launch asks for notifications; answer it before the take.
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        if springboard.buttons["Allow"].waitForExistence(timeout: 3) {
+            springboard.buttons["Allow"].tap()
+        }
+        pause(1.0)
+        mark("home")
+        pause(2.0)
+
+        tap(app.buttons["Goals"].firstMatch, "goals-tab")
+        let oaxaca = app.staticTexts["Trip to Oaxaca"]
+        XCTAssertTrue(oaxaca.waitForExistence(timeout: 8))
+        pause(0.8)
+        tap(oaxaca, "goal-open")
+        XCTAssertTrue(app.navigationBars["Goal"].waitForExistence(timeout: 8))
+        mark("goal-before")
+        pause(3.0)
+        tap(app.navigationBars.buttons.firstMatch, "goal-back")
+        pause(0.8)
+
+        tap(app.buttons["Add"], "add-1")
+        let expense = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Log expense'")).firstMatch
+        XCTAssertTrue(expense.waitForExistence(timeout: 5))
+        pause(0.6)
+        tap(expense, "expense-open")
+        XCTAssertTrue(app.staticTexts["Log expense"].waitForExistence(timeout: 5))
+        pause(0.5)
+        for key in ["4", "Decimal point", "5", "0"] { tap(app.buttons[key].firstMatch, "key-\(key)"); pause(0.15) }
+        pause(0.3)
+        tap(app.buttons["Coffee"].firstMatch, "expense-coffee")
+        pause(1.2)
+        tap(app.buttons["Save"].firstMatch, "expense-save")
+        pause(1.5)
+
+        tap(app.buttons["Add"], "add-2")
+        let income = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Log income'")).firstMatch
+        XCTAssertTrue(income.waitForExistence(timeout: 5))
+        pause(0.6)
+        tap(income, "income-open")
+        XCTAssertTrue(app.staticTexts["Log income"].waitForExistence(timeout: 5))
+        pause(0.5)
+        for key in ["1", "2", "4", "0"] { tap(app.buttons[key].firstMatch, "key-\(key)"); pause(0.15) }
+        XCTAssertTrue(app.buttons["YES"].waitForExistence(timeout: 3))
+        mark("income-banner")
+        pause(1.6)
+        tap(app.buttons["YES"], "income-yes")
+        pause(1.4)
+        tap(app.buttons["Save"].firstMatch, "income-save")
+        pause(1.2)
+
+        tap(app.buttons["Goals"].firstMatch, "goals-tab-2")
+        XCTAssertTrue(oaxaca.waitForExistence(timeout: 8))
+        pause(0.8)
+        tap(oaxaca, "goal-open-2")
+        XCTAssertTrue(app.navigationBars["Goal"].waitForExistence(timeout: 8))
+        mark("goal-after")
+        pause(3.0)
+        tap(app.navigationBars.buttons.firstMatch, "goal-back-2")
+        pause(0.6)
+
+        tap(app.buttons["Money"].firstMatch, "money-tab")
+        let incomeSeg = app.buttons["Income"].firstMatch
+        XCTAssertTrue(incomeSeg.waitForExistence(timeout: 8))
+        pause(1.0)
+        tap(incomeSeg, "money-income")
+        mark("trend")
+        pause(3.0)
+
+        tap(app.buttons["Me"].firstMatch, "me-tab")
+        pause(0.8)
+        for _ in 0..<9 { app.swipeUp() }
+        XCTAssertTrue(app.staticTexts["Your data never leaves this iPhone."].waitForExistence(timeout: 5))
+        mark("privacy")
+        pause(2.5)
+
+        tap(app.buttons["Add"], "add-3")
+        let scan = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Scan a receipt'")).firstMatch
+        XCTAssertTrue(scan.waitForExistence(timeout: 5))
+        pause(0.6)
+        tap(scan, "scan-open")
+        let picker = app.buttons["Choose from Photos"]
+        XCTAssertTrue(picker.waitForExistence(timeout: 8))
+        pause(0.8)
+        tap(picker, "scan-photos")
+        let photo = app.images.matching(NSPredicate(format: "label BEGINSWITH 'Photo'")).firstMatch
+        guard photo.waitForExistence(timeout: 30) else { mark("receipt-missing"); return }
+        pause(0.8)
+        tap(photo, "scan-photo")
+        XCTAssertTrue(app.staticTexts["Check the receipt"].waitForExistence(timeout: 30))
+        mark("receipt")
+        pause(3.5)
+        mark("end")
+    }
+
+    private func mark(_ name: String, _ point: CGPoint? = nil) {
+        let t = String(format: "%.3f", Date().timeIntervalSince1970)
+        let p = point.map { String(format: " %.1f %.1f", $0.x, $0.y) } ?? ""
+        print("BRAGMARK \(name) \(t)\(p)")
+    }
+
+    private func tap(_ element: XCUIElement, _ name: String) {
+        let frame = element.frame
+        mark(name, CGPoint(x: frame.midX, y: frame.midY))
+        element.tap()
+    }
+
+    private func pause(_ seconds: TimeInterval) {
+        Thread.sleep(forTimeInterval: seconds)
+    }
+
     private func snap(_ name: String) {
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = name
