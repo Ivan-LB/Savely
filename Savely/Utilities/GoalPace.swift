@@ -92,20 +92,19 @@ struct GoalPace: Equatable {
 
     var label: String {
         switch status {
-        case .complete: return "Complete!"
-        case .onTrack: return "On track"
-        case .behind: return "Behind"
+        case .complete: return Strings.Pace.complete
+        case .onTrack: return Strings.Pace.onTrack
+        case .behind: return Strings.Pace.behind
         }
     }
 
-    /// "Jun 12", "1+ year", or "—". Never a made-up date.
-    func etaText(from now: Date = Date(), calendar: Calendar = .current) -> String {
-        guard status != .complete else { return "Done!" }
+    /// "Jun 12" / "12 jun", "1+ year", or "—". Never a made-up date.
+    func etaText(from now: Date = Date(), calendar: Calendar = .current, locale: Locale = .current) -> String {
+        guard status != .complete else { return Strings.Pace.done }
         guard let etaWeeks else { return "—" }
-        if etaWeeks > Self.etaCapWeeks { return "1+ year" }
+        if etaWeeks > Self.etaCapWeeks { return Strings.Pace.overAYear }
         let date = calendar.date(byAdding: .day, value: Int((etaWeeks * 7).rounded()), to: now) ?? now
-        let f = DateFormatter(); f.dateFormat = "MMM d"
-        return f.string(from: date)
+        return date.formatted(.dateTime.month(.abbreviated).day().locale(locale))
     }
 }
 

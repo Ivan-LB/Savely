@@ -10,31 +10,25 @@ struct ExpenseTrackerView: View {
 
     enum Field: Hashable { case description, amount }
 
-    // Group expenses by relative date
+    // Group expenses by calendar day (in list order), labelled "Today",
+    // "Yesterday" or a localized "Tue, Aug 18" / "mar, 18 ago".
     private var groupedExpenses: [(String, [ExpenseModel])] {
         let calendar = Calendar.current
         let sorted = viewModel.expenses
-        var groups: [(String, [ExpenseModel])] = []
-        var used: Set<String> = []
+        var days: [Date] = []
+        var byDay: [Date: [ExpenseModel]] = [:]
         for expense in sorted {
-            let label: String
-            if calendar.isDateInToday(expense.date) { label = "Today" }
-            else if calendar.isDateInYesterday(expense.date) { label = "Yesterday" }
-            else {
-                let f = DateFormatter(); f.dateFormat = "EEE, MMM d"
-                label = f.string(from: expense.date)
-            }
-            if !used.contains(label) {
-                used.insert(label)
-                groups.append((label, sorted.filter { e in
-                    if label == "Today" { return calendar.isDateInToday(e.date) }
-                    if label == "Yesterday" { return calendar.isDateInYesterday(e.date) }
-                    let f = DateFormatter(); f.dateFormat = "EEE, MMM d"
-                    return f.string(from: e.date) == label
-                }))
-            }
+            let day = calendar.startOfDay(for: expense.date)
+            if byDay[day] == nil { days.append(day) }
+            byDay[day, default: []].append(expense)
         }
-        return groups
+        return days.map { day in (dayLabel(day, calendar: calendar), byDay[day] ?? []) }
+    }
+
+    private func dayLabel(_ day: Date, calendar: Calendar) -> String {
+        if calendar.isDateInToday(day) { return Strings.Common.today }
+        if calendar.isDateInYesterday(day) { return Strings.Common.yesterday }
+        return day.formatted(Date.FormatStyle.dateTime.weekday(.abbreviated).month(.abbreviated).day().sentenceCased)
     }
 
     var body: some View {
@@ -180,7 +174,7 @@ struct ExpenseTrackerView: View {
     }
 
     private var currentMonthName: String {
-        Date().formatted(.dateTime.month(.wide))
+        Date().formatted(Date.FormatStyle.dateTime.month(.wide).sentenceCased)
     }
 
     /// Scoped to the current month so the label and the number agree — this
@@ -246,7 +240,7 @@ struct ExpenseRowWarm: View {
     private var expenseIcon: String { category.icon }
     private var iconBg: Color { category.tileBackground }
     private var iconColor: Color { category.tileColor }
-    private var categoryLabel: String { category.label }
+    private var categoryLabel: String { category.displayName }
     private func formattedAmount(_ v: Double) -> String {
         let f = NumberFormatter(); f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 2
         return f.string(from: NSNumber(value: v)) ?? "$0"

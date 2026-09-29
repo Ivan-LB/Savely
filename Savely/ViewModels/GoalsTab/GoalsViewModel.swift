@@ -47,7 +47,7 @@ class GoalsViewModel: ObservableObject {
             goals = fetchedGoals
         } catch {
             print("Error fetching goals: \(error)")
-            errorMessage = "Error al obtener las metas."
+            errorMessage = String(localized: "Couldn't load your goals. Please try again.")
             showError = true
         }
     }
@@ -55,13 +55,13 @@ class GoalsViewModel: ObservableObject {
     func addGoal() {
         guard let modelContext = modelContext else {
             print("modelContext is nil in addGoal")
-            errorMessage = "El contexto del modelo está vacío."
+            errorMessage = String(localized: "Your data isn't ready yet. Please try again.")
             showError = true
             return
         }
         guard let target = Double(targetAmount), target > 0 else {
             print("Invalid target amount")
-            errorMessage = "La cantidad objetivo debe ser un número positivo."
+            errorMessage = String(localized: "The target has to be more than $0.")
             showError = true
             return
         }
@@ -82,7 +82,7 @@ class GoalsViewModel: ObservableObject {
             print("New goal saved successfully")
         } catch {
             print("Error saving new goal: \(error)")
-            errorMessage = "Error al guardar la nueva meta."
+            errorMessage = String(localized: "Couldn't save the goal. Please try again.")
             showError = true
         }
 
@@ -99,7 +99,7 @@ class GoalsViewModel: ObservableObject {
             print("Goal deleted successfully")
         } catch {
             print("Error saving after deleting goal: \(error)")
-            errorMessage = "Error al eliminar la meta."
+            errorMessage = String(localized: "Couldn't delete the goal. Please try again.")
             showError = true
         }
         fetchGoals()
@@ -128,7 +128,7 @@ class GoalsViewModel: ObservableObject {
             print("Favorite goal updated successfully")
         } catch {
             print("Error saving after setting favorite goal: \(error)")
-            errorMessage = "Error al actualizar la meta favorita."
+            errorMessage = String(localized: "Couldn't update your favorite goal. Please try again.")
             showError = true
         }
 
@@ -145,7 +145,7 @@ class GoalsViewModel: ObservableObject {
                 print("New favorite goal assigned")
             } catch {
                 print("Error assigning new favorite goal: \(error)")
-                errorMessage = "Error al asignar una nueva meta favorita."
+                errorMessage = String(localized: "Couldn't choose a new favorite goal. Please try again.")
                 showError = true
             }
             fetchGoals()

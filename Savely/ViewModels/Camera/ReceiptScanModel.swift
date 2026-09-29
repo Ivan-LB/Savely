@@ -204,7 +204,7 @@ final class ReceiptScanModel: Identifiable {
             description: description,
             amount: amount,
             date: review.date,
-            category: review.category.rawValue
+            category: review.category.storageKey
         )
         guard saved else {
             saveErrorMessage = expenseStore.errorMessage

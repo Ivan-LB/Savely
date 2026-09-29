@@ -15,19 +15,40 @@ struct DashboardView: View {
 
     private var favoriteGoal: GoalModel? { goals.first(where: { $0.isFavorite }) }
 
-    private var greeting: String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<12:  return "Morning"
-        case 12..<17: return "Afternoon"
-        default:      return "Evening"
+    private enum DayPart { case morning, afternoon, evening }
+
+    private var dayPart: DayPart {
+        switch Calendar.current.component(.hour, from: Date()) {
+        case 5..<12:  return .morning
+        case 12..<17: return .afternoon
+        default:      return .evening
         }
     }
 
+    /// The on-screen serif greeting ("Morning." / "Buenos días.").
+    private var greeting: String {
+        switch dayPart {
+        case .morning: return Strings.Dashboard.greetingMorning
+        case .afternoon: return Strings.Dashboard.greetingAfternoon
+        case .evening: return Strings.Dashboard.greetingEvening
+        }
+    }
+
+    /// The spoken form — "Good afternoon." rather than the bare "Afternoon."
+    private var spokenGreeting: String {
+        switch dayPart {
+        case .morning: return Strings.Dashboard.spokenGreetingMorning
+        case .afternoon: return Strings.Dashboard.spokenGreetingAfternoon
+        case .evening: return Strings.Dashboard.spokenGreetingEvening
+        }
+    }
+
+    /// "Tuesday · August 18" / "Martes · 18 de agosto" — locale-driven, not a fixed pattern.
     private var formattedDate: String {
-        let f = DateFormatter()
-        f.dateFormat = "EEEE · MMMM d"
-        return f.string(from: Date())
+        let now = Date()
+        let weekday = now.formatted(Date.FormatStyle.dateTime.weekday(.wide).sentenceCased)
+        let day = now.formatted(.dateTime.month(.wide).day())
+        return "\(weekday) · \(day)"
     }
 
     // Monthly totals (current month)
@@ -58,7 +79,7 @@ struct DashboardView: View {
                     Text(formattedDate)
                         .warmFont(13)
                         .foregroundStyle(Color.warmInkMuted)
-                    Text(greeting + ".")
+                    Text(greeting)
                         .warmFont(30, weight: .regular, design: .serif)
                         .foregroundStyle(Color.warmInk)
                 }
@@ -69,7 +90,7 @@ struct DashboardView: View {
                 // not human-readable.
                 .accessibilityElement(children: .ignore)
                 .accessibilityAddTraits(.isHeader)
-                .accessibilityLabel(Text("Good \(greeting.lowercased()). \(formattedDate)"))
+                .accessibilityLabel(Text(verbatim: "\(spokenGreeting) \(formattedDate)"))
 
                 // — Hero Goal Card —
                 if let goal = favoriteGoal {
@@ -85,8 +106,10 @@ struct DashboardView: View {
 
                 // — Monthly summary —
                 HStack(spacing: 10) {
-                    MonthlySummaryCell(label: "In · \(currentMonthAbbr)", value: monthlyIncome, change: nil, positive: true)
-                    MonthlySummaryCell(label: "Out · \(currentMonthAbbr)", value: monthlyExpenses, change: nil, positive: false)
+                    MonthlySummaryCell(label: Strings.Dashboard.monthIn(currentMonthAbbr),
+                                       value: monthlyIncome, change: nil, positive: true)
+                    MonthlySummaryCell(label: Strings.Dashboard.monthOut(currentMonthAbbr),
+                                       value: monthlyExpenses, change: nil, positive: false)
                 }
 
                 // — Recent transactions —
@@ -149,8 +172,9 @@ struct DashboardView: View {
         }
     }
 
+    /// "SEP" / "SEPT" — the locale's own abbreviation, shown in a tracked caps label.
     private var currentMonthAbbr: String {
-        DateFormatter().monthSymbols[Calendar.current.component(.month, from: Date()) - 1].prefix(3).uppercased()
+        Date().formatted(.dateTime.month(.abbreviated)).replacingOccurrences(of: ".", with: "").uppercased()
     }
 }
 
@@ -569,10 +593,9 @@ struct RecentTransactionRow: View {
 
     private func shortDate(_ d: Date) -> String {
         let cal = Calendar.current
-        if cal.isDateInToday(d) { return "Today" }
-        if cal.isDateInYesterday(d) { return "Yesterday" }
-        let f = DateFormatter(); f.dateFormat = "EEE"
-        return f.string(from: d)
+        if cal.isDateInToday(d) { return Strings.Common.today }
+        if cal.isDateInYesterday(d) { return Strings.Common.yesterday }
+        return d.formatted(.dateTime.weekday(.abbreviated))
     }
 }
 

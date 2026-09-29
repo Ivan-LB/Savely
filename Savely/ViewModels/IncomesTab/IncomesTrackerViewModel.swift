@@ -95,7 +95,7 @@ class IncomesTrackerViewModel: ObservableObject {
             incomes = try modelContext.fetch(fetchDescriptor)
         } catch {
             print("Error fetching incomes: \(error)")
-            errorMessage = "Error al obtener los ingresos."
+            errorMessage = String(localized: "Couldn't load your income. Please try again.")
             showError = true
         }
     }
@@ -106,7 +106,7 @@ class IncomesTrackerViewModel: ObservableObject {
         guard let modelContext = modelContext else { return }
         guard let amountValue = parseAmount(amount) else {
             // Used to return silently, so a typo just did nothing at all.
-            errorMessage = "Enter a valid amount greater than zero."
+            errorMessage = Strings.Errors.invalidAmount
             showError = true
             return
         }
@@ -126,7 +126,7 @@ class IncomesTrackerViewModel: ObservableObject {
             NotificationCenter.default.post(name: .incomeAdded, object: nil, userInfo: ["amount": amountValue])
         } catch {
             print("Error saving new income: \(error)")
-            errorMessage = "Error al guardar el ingreso."
+            errorMessage = String(localized: "Couldn't save the income. Please try again.")
             showError = true
         }
 
@@ -146,7 +146,7 @@ class IncomesTrackerViewModel: ObservableObject {
             NotificationCenter.default.post(name: .incomeDeleted, object: nil, userInfo: ["amount": income.amount])
         } catch {
            print("Error saving after deleting income: \(error)")
-           errorMessage = "Error al eliminar el ingreso."
+           errorMessage = String(localized: "Couldn't delete the income. Please try again.")
            showError = true
         }
 
