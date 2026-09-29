@@ -159,6 +159,11 @@ struct GoalsView: View {
 struct GoalsEmptyStateView: View {
     let onCreateGoal: () -> Void
 
+    /// Emoji + localized idea. Both open the add-goal flow; nothing is prefilled.
+    fileprivate static let suggestionChips: [(String, LocalizedStringKey)] = [
+        ("🌿", "Emergency fund"), ("✈️", "A trip"), ("🏡", "Down payment"),
+    ]
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
@@ -225,7 +230,7 @@ struct GoalsEmptyStateView: View {
 
                     // Suggestion chips
                     HStack(spacing: 8) {
-                        ForEach([("🌿","Emergency fund"),("✈️","A trip"),("🏡","Down payment")], id: \.0) { item in
+                        ForEach(Self.suggestionChips, id: \.0) { item in
                             Button(action: onCreateGoal) {
                                 HStack(spacing: 6) {
                                     Text(item.0).warmFont(13)

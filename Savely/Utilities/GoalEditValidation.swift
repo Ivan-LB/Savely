@@ -18,17 +18,17 @@ enum GoalEditError: Equatable, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .emptyName:
-            return "Give the goal a name."
+            return String(localized: "Give the goal a name.")
         case .nonPositiveTarget:
-            return "The target has to be more than $0."
+            return String(localized: "The target has to be more than $0.")
         case .targetBelowSaved(let saved):
             let f = NumberFormatter(); f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 0
             let savedText = f.string(from: NSNumber(value: saved)) ?? "$0"
-            return "You've already saved \(savedText) — the target can't be lower than that."
+            return String(localized: "You've already saved \(savedText) — the target can't be lower than that.")
         case .deadlineInPast:
-            return "Pick a date in the future, or turn the date off."
+            return String(localized: "Pick a date in the future, or turn the date off.")
         case .nonPositiveAutoMove:
-            return "Set an auto-move amount above $0, or turn auto-move off."
+            return String(localized: "Set an auto-move amount above $0, or turn auto-move off.")
         }
     }
 }

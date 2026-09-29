@@ -44,7 +44,7 @@ struct ReportsPDFGenerator {
         }
         
         // Title
-        let title = "Weekly Financial Report"
+        let title = String(localized: "Weekly Financial Report")
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
 
@@ -59,11 +59,11 @@ struct ReportsPDFGenerator {
 
     private static func addIncomePage(incomes: [IncomeModel], pageWidth: CGFloat, pageHeight: CGFloat) {
         UIGraphicsBeginPDFPage()
-        drawHeader(title: "Income Overview", yPosition: 20, pageWidth: pageWidth)
+        drawHeader(title: String(localized: "Income Overview"), yPosition: 20, pageWidth: pageWidth)
 
         // Table
         drawTable(
-            title: "Income Breakdown",
+            title: String(localized: "Income Breakdown"),
             data: incomes.map { ($0.incomeDescription, String(format: "$%.2f", $0.amount)) },
             startY: 60,
             pageWidth: pageWidth
@@ -72,11 +72,11 @@ struct ReportsPDFGenerator {
 
     private static func addExpensePage(expenses: [ExpenseModel], pageWidth: CGFloat, pageHeight: CGFloat) {
         UIGraphicsBeginPDFPage()
-        drawHeader(title: "Expense Overview", yPosition: 20, pageWidth: pageWidth)
+        drawHeader(title: String(localized: "Expense Overview"), yPosition: 20, pageWidth: pageWidth)
 
         // Table
         drawTable(
-            title: "Expense Breakdown",
+            title: String(localized: "Expense Breakdown"),
             data: expenses.map { ($0.expenseDescription, String(format: "$%.2f", $0.amount)) },
             startY: 60,
             pageWidth: pageWidth

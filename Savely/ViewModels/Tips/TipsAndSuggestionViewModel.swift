@@ -115,14 +115,8 @@ class TipsAndSuggestionViewModel: ObservableObject {
                         print("Error saving new tip: \(error)")
                     }
                 } else {
-                    // Manejo del error o ausencia de tip
-                    let errorMessage: String
-                    switch languageCode {
-                    case "es":
-                        errorMessage = "No se pudo generar un consejo en este momento. Por favor, inténtalo más tarde."
-                    default:
-                        errorMessage = "Could not generate a tip at this time. Please try again later."
-                    }
+                    // No tip came back — say so plainly, in the user's language.
+                    let errorMessage = String(localized: "Couldn't get a tip right now. Please try again later.")
                     self.currentTip = TipModel(date: Date(), content: errorMessage)
                 }
             }

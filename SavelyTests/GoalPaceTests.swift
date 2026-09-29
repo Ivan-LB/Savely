@@ -97,8 +97,11 @@ final class GoalPaceTests: XCTestCase {
         let pace = GoalPace.compute(goal: g, deposits: [deposit(g, 400, daysAgo: 1)], now: now, calendar: calendar) // 100/wk
         XCTAssertEqual(pace.etaWeeks ?? -1, 4, accuracy: 0.001)
         let expected = calendar.date(byAdding: .day, value: 28, to: now)
-        let f = DateFormatter(); f.dateFormat = "MMM d"
-        XCTAssertEqual(pace.etaText(from: now, calendar: calendar), f.string(from: try XCTUnwrap(expected)))
+        // Locale-driven ("Aug 10" in en_US, "10 Aug" in en_GB, "10 ago" in es), never a fixed pattern.
+        let usEnglish = Locale(identifier: "en_US")
+        let style = Date.FormatStyle.dateTime.month(.abbreviated).day().locale(usEnglish)
+        XCTAssertEqual(pace.etaText(from: now, calendar: calendar, locale: usEnglish),
+                       try XCTUnwrap(expected).formatted(style))
     }
 
     func testEtaBeyondAYearIsCappedNotFaked() {

@@ -58,7 +58,7 @@ class ExpenseTrackerViewModel: ObservableObject {
             expenses = try modelContext.fetch(fetchDescriptor)
         } catch {
             print("Error fetching expenses: \(error)")
-            errorMessage = "Error al obtener los gastos."
+            errorMessage = String(localized: "Couldn't load your expenses. Please try again.")
             showError = true
         }
     }
@@ -132,7 +132,7 @@ class ExpenseTrackerViewModel: ObservableObject {
             NotificationCenter.default.post(name: .expenseDeleted, object: nil, userInfo: ["amount": expense.amount])
         } catch {
             print("Error saving after deleting expense: \(error)")
-            errorMessage = "Error al eliminar el gasto."
+            errorMessage = String(localized: "Couldn't delete the expense. Please try again.")
             showError = true
         }
         

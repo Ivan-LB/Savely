@@ -154,6 +154,8 @@ struct Strings {
             "add_income_label",
             value: "Add Income",
             comment: "Add Income Label")
+        static let title = String(localized: "money.income.title", defaultValue: "Income",
+                                  comment: "Money tab: income segment and list title (plural in Spanish, like Expenses)")
     }
     
     struct ReportsView {
@@ -707,5 +709,179 @@ struct Strings {
             "color_label",
             value: "Color",
             comment: "Color Label")
+    }
+}
+
+// MARK: - 1.1 (es-419 localization)
+//
+// Values that reach the UI typed as `String` (model display helpers, arrays
+// of labels, error messages) — `Text(someString)` does not localize, so they
+// resolve here. Keys are dotted `<feature>.<element>`; the English value is
+// the `defaultValue`, the es-419 value lives in Localizable.xcstrings.
+
+extension Date.FormatStyle {
+    /// The same style, capitalized for the start of a label — Spanish month
+    /// and weekday names are lowercase mid-sentence ("martes" → "Martes").
+    /// No effect in English.
+    var sentenceCased: Date.FormatStyle {
+        var style = self
+        style.capitalizationContext = .beginningOfSentence
+        return style
+    }
+}
+
+extension Strings {
+    struct Common {
+        static let today = String(localized: "common.today", defaultValue: "Today",
+                                  comment: "Relative day label in lists")
+        static let yesterday = String(localized: "common.yesterday", defaultValue: "Yesterday",
+                                      comment: "Relative day label in lists")
+        static let back = String(localized: "common.back", defaultValue: "Back",
+                                 comment: "Accessibility label of a back chevron")
+        static let close = String(localized: "common.close", defaultValue: "Close",
+                                  comment: "Accessibility label of a close button")
+        static let add = String(localized: "common.add", defaultValue: "Add",
+                                comment: "Accessibility label of the + tab bar button")
+        static let deleteKey = String(localized: "common.keypad.delete", defaultValue: "Delete",
+                                      comment: "Accessibility label of the keypad backspace key")
+        static let decimalPoint = String(localized: "common.keypad.decimal", defaultValue: "Decimal point",
+                                         comment: "Accessibility label of the keypad decimal key")
+        static let noDate = String(localized: "common.noDate", defaultValue: "No date",
+                                   comment: "Shown where a goal has no target date")
+
+        /// "Today", "Yesterday", or the localized medium date ("12 dic 2026").
+        static func relativeDay(_ date: Date, calendar: Calendar = .current) -> String {
+            if calendar.isDateInToday(date) { return today }
+            if calendar.isDateInYesterday(date) { return yesterday }
+            return date.formatted(.dateTime.month(.abbreviated).day().year())
+        }
+    }
+
+    struct TabBar {
+        static let home = String(localized: "tabbar.home", defaultValue: "Home", comment: "Tab bar item")
+        static let goals = String(localized: "tabbar.goals", defaultValue: "Goals", comment: "Tab bar item")
+        static let money = String(localized: "tabbar.money", defaultValue: "Money", comment: "Tab bar item")
+        static let me = String(localized: "tabbar.me", defaultValue: "Me", comment: "Tab bar item (profile)")
+        static let addHint = String(localized: "tabbar.add.hint",
+                                    defaultValue: "Log an expense, income, deposit, or new goal",
+                                    comment: "Accessibility hint of the + tab bar button")
+    }
+
+    struct QuickAdd {
+        static let logExpense = String(localized: "quickadd.logExpense", defaultValue: "Log expense",
+                                       comment: "Quick-add action and sheet title")
+        static let logExpenseSub = String(localized: "quickadd.logExpense.sub",
+                                          defaultValue: "Coffee, groceries, anything",
+                                          comment: "Quick-add action subtitle")
+        static let logIncome = String(localized: "quickadd.logIncome", defaultValue: "Log income",
+                                      comment: "Quick-add action and sheet title")
+        static let logIncomeSub = String(localized: "quickadd.logIncome.sub",
+                                         defaultValue: "Paycheck, gift, side work",
+                                         comment: "Quick-add action subtitle")
+        static let depositToGoal = String(localized: "quickadd.deposit", defaultValue: "Deposit to a goal",
+                                          comment: "Quick-add action")
+        static let depositToGoalSub = String(localized: "quickadd.deposit.sub",
+                                             defaultValue: "Move money toward a goal",
+                                             comment: "Quick-add action subtitle")
+        static let scanReceipt = String(localized: "quickadd.scan", defaultValue: "Scan a receipt",
+                                        comment: "Quick-add action")
+        static let scanReceiptSub = String(localized: "quickadd.scan.sub",
+                                           defaultValue: "We'll read the total, merchant and date",
+                                           comment: "Quick-add action subtitle")
+        static let newGoal = String(localized: "quickadd.newGoal", defaultValue: "New goal",
+                                    comment: "Quick-add action")
+        static let newGoalSub = String(localized: "quickadd.newGoal.sub", defaultValue: "Start something new",
+                                       comment: "Quick-add action subtitle")
+        static let moveMoney = String(localized: "quickadd.moveMoney", defaultValue: "Move money",
+                                      comment: "Deposit sheet title")
+        static let yes = String(localized: "quickadd.automove.yes", defaultValue: "YES",
+                                comment: "Arms the payday auto-move suggestion (short, uppercase)")
+        static let undo = String(localized: "quickadd.automove.undo", defaultValue: "UNDO",
+                                 comment: "Disarms the payday auto-move suggestion (short, uppercase)")
+        static let paydayAutoMoveNote = String(localized: "quickadd.automove.note",
+                                               defaultValue: "Payday auto-move",
+                                               comment: "Shown in goal history for payday auto-move deposits (display only; the stored note stays English)")
+        static func autoMoveFailed(goal: String) -> String {
+            String(localized: "quickadd.automove.failed",
+                   defaultValue: "Income saved, but the auto-move to \(goal) failed.",
+                   comment: "Alert when the income saved but the goal deposit did not; %@ is the goal name")
+        }
+    }
+
+    /// Display names only — the stored values are `ExpenseCategory` /
+    /// `IncomeSource` raw values and never go through here.
+    struct Categories {
+        static let coffee = String(localized: "category.coffee", defaultValue: "Coffee", comment: "Expense category chip")
+        static let food = String(localized: "category.food", defaultValue: "Food", comment: "Expense category chip")
+        static let transit = String(localized: "category.transit", defaultValue: "Transit",
+                                    comment: "Expense category chip")
+        static let shopping = String(localized: "category.shopping", defaultValue: "Shopping",
+                                     comment: "Expense category chip")
+        static let other = String(localized: "category.other", defaultValue: "Other",
+                                  comment: "Expense category / income source chip")
+        static let paycheck = String(localized: "source.paycheck", defaultValue: "Paycheck",
+                                     comment: "Income source chip")
+        static let freelance = String(localized: "source.freelance", defaultValue: "Freelance",
+                                      comment: "Income source chip")
+        static let gift = String(localized: "source.gift", defaultValue: "Gift", comment: "Income source chip")
+        static let untagged = String(localized: "source.untagged", defaultValue: "Untagged",
+                                     comment: "Reports: income logged without a source")
+    }
+
+    struct Pace {
+        static let complete = String(localized: "pace.complete", defaultValue: "Complete!",
+                                     comment: "Goal pace status when the goal is funded")
+        static let onTrack = String(localized: "pace.onTrack", defaultValue: "On track",
+                                    comment: "Goal pace status (the goal is feminine in es: a tiempo)")
+        static let behind = String(localized: "pace.behind", defaultValue: "Behind",
+                                   comment: "Goal pace status (the goal is feminine in es: Atrasada)")
+        static let done = String(localized: "pace.eta.done", defaultValue: "Done!",
+                                 comment: "ETA value when the goal is complete")
+        static let overAYear = String(localized: "pace.eta.overAYear", defaultValue: "1+ year",
+                                      comment: "ETA value when the projection is more than a year out")
+    }
+
+    struct GoalDetail {
+        static let remaining = String(localized: "goaldetail.remaining", defaultValue: "Remaining",
+                                      comment: "Stat pill label (rendered uppercase, keep short)")
+        static let neededPerWeek = String(localized: "goaldetail.neededPerWeek", defaultValue: "Needed / wk",
+                                          comment: "Stat pill label (rendered uppercase, keep short)")
+        static let eta = String(localized: "goaldetail.eta", defaultValue: "ETA",
+                                comment: "Stat pill label: estimated completion date (uppercase, keep short)")
+        static func statusNoDate(_ pace: String) -> String {
+            String(localized: "goaldetail.status.noDate", defaultValue: "\(pace) · no target date",
+                   comment: "Status line; %@ is the pace status (On track / Behind)")
+        }
+        static func status(_ pace: String, date: String, weekly: String) -> String {
+            String(localized: "goaldetail.status",
+                   defaultValue: "\(pace) · by \(date) · \(weekly)/wk",
+                   comment: "Status line: pace status · target date · actual weekly pace (e.g. $40)")
+        }
+    }
+
+    struct Dashboard {
+        static let greetingMorning = String(localized: "dashboard.greeting.morning", defaultValue: "Morning.",
+                                            comment: "Large serif greeting, 5:00–11:59")
+        static let greetingAfternoon = String(localized: "dashboard.greeting.afternoon", defaultValue: "Afternoon.",
+                                              comment: "Large serif greeting, 12:00–16:59")
+        static let greetingEvening = String(localized: "dashboard.greeting.evening", defaultValue: "Evening.",
+                                            comment: "Large serif greeting, 17:00–4:59")
+        static let spokenGreetingMorning = String(localized: "dashboard.greeting.morning.spoken",
+                                                  defaultValue: "Good morning.",
+                                                  comment: "VoiceOver form of the morning greeting")
+        static let spokenGreetingAfternoon = String(localized: "dashboard.greeting.afternoon.spoken",
+                                                    defaultValue: "Good afternoon.",
+                                                    comment: "VoiceOver form of the afternoon greeting")
+        static let spokenGreetingEvening = String(localized: "dashboard.greeting.evening.spoken",
+                                                  defaultValue: "Good evening.",
+                                                  comment: "VoiceOver form of the evening greeting")
+        static func monthIn(_ month: String) -> String {
+            String(localized: "dashboard.month.in", defaultValue: "In · \(month)",
+                   comment: "Monthly income cell label; %@ is the abbreviated month in caps")
+        }
+        static func monthOut(_ month: String) -> String {
+            String(localized: "dashboard.month.out", defaultValue: "Out · \(month)",
+                   comment: "Monthly expenses cell label; %@ is the abbreviated month in caps")
+        }
     }
 }

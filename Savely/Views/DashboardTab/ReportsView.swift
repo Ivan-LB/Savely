@@ -26,7 +26,8 @@ struct ReportsView: View {
     private var incomeBySource: [Slice] {
         var totals: [String: Double] = [:]
         for income in viewModel.weeklyIncomes {
-            let key = IncomeSource.display(stored: income.source)?.label ?? "Untagged"
+            // Grouped by display name — stored values stay the English raw values.
+            let key = IncomeSource.display(stored: income.source)?.displayName ?? Strings.Categories.untagged
             totals[key, default: 0] += income.amount
         }
         return totals.map { Slice(label: $0.key, amount: $0.value) }.sorted { $0.amount > $1.amount }
@@ -35,7 +36,7 @@ struct ReportsView: View {
     private var expensesByCategory: [Slice] {
         var totals: [String: Double] = [:]
         for expense in viewModel.weeklyExpenses {
-            let key = ExpenseCategory.display(stored: expense.category, description: expense.expenseDescription).label
+            let key = ExpenseCategory.display(stored: expense.category, description: expense.expenseDescription).displayName
             totals[key, default: 0] += expense.amount
         }
         return totals.map { Slice(label: $0.key, amount: $0.value) }.sorted { $0.amount > $1.amount }
@@ -43,11 +44,11 @@ struct ReportsView: View {
 
     private var expenseColorScale: KeyValuePairs<String, Color> {
         KeyValuePairs(dictionaryLiteral:
-            (ExpenseCategory.coffee.label, ExpenseCategory.coffee.tileColor),
-            (ExpenseCategory.food.label, ExpenseCategory.food.tileColor),
-            (ExpenseCategory.transit.label, ExpenseCategory.transit.tileColor),
-            (ExpenseCategory.shopping.label, ExpenseCategory.shopping.tileColor),
-            (ExpenseCategory.other.label, ExpenseCategory.other.tileColor)
+            (ExpenseCategory.coffee.displayName, ExpenseCategory.coffee.tileColor),
+            (ExpenseCategory.food.displayName, ExpenseCategory.food.tileColor),
+            (ExpenseCategory.transit.displayName, ExpenseCategory.transit.tileColor),
+            (ExpenseCategory.shopping.displayName, ExpenseCategory.shopping.tileColor),
+            (ExpenseCategory.other.displayName, ExpenseCategory.other.tileColor)
         )
     }
 
@@ -139,8 +140,8 @@ struct ReportsView: View {
     }
 
     private var rangeSubtitle: String {
-        let f = DateFormatter(); f.dateFormat = "MMM d"
-        return "\(f.string(from: viewModel.startDate)) – \(f.string(from: viewModel.endDate))"
+        let style = Date.FormatStyle.dateTime.month(.abbreviated).day()
+        return "\(viewModel.startDate.formatted(style)) – \(viewModel.endDate.formatted(style))"
     }
 
     private func dateRow(_ title: String, selection: Binding<Date>) -> some View {

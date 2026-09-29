@@ -16,12 +16,17 @@ enum GoalDepositsError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .nonPositiveAmount: return "Enter an amount greater than zero."
+        case .nonPositiveAmount: return String(localized: "Enter an amount greater than zero.")
         }
     }
 }
 
 enum GoalDeposits {
+    /// The note written on payday auto-move deposits. It is persisted, so it
+    /// stays this stable English value in every language; the goal history
+    /// shows the localized `Strings.QuickAdd.paydayAutoMoveNote` for it.
+    static let autoMoveNote = "Payday auto-move"
+
     /// Adds `amount` to the goal (clamped at its target, exactly as every
     /// flow already did), inserts the ledger row, and saves.
     ///

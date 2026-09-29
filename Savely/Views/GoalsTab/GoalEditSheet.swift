@@ -177,7 +177,7 @@ struct GoalEditSheet: View {
             try modelContext.save()
             dismiss()
         } catch {
-            errorMessage = "Couldn't save the goal. Please try again."
+            errorMessage = String(localized: "Couldn't save the goal. Please try again.")
         }
     }
 
@@ -190,8 +190,9 @@ struct GoalEditSheet: View {
             .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.warmLine, lineWidth: 1))
     }
 
-    private func sectionLabel(_ text: String) -> some View {
-        Text(text.uppercased())
+    private func sectionLabel(_ text: LocalizedStringKey) -> some View {
+        Text(text)
+            .textCase(.uppercase)
             .warmFont(11, weight: .semibold)
             .foregroundStyle(Color.warmInkMuted)
             .tracking(0.8)
@@ -199,7 +200,7 @@ struct GoalEditSheet: View {
             .accessibilityAddTraits(.isHeader)
     }
 
-    private func fieldRow<Content: View>(label: String, @ViewBuilder content: () -> Content) -> some View {
+    private func fieldRow<Content: View>(label: LocalizedStringKey, @ViewBuilder content: () -> Content) -> some View {
         HStack(spacing: 16) {
             Text(label)
                 .warmFont(14, weight: .medium)
@@ -210,7 +211,7 @@ struct GoalEditSheet: View {
         .padding(.horizontal, 16).padding(.vertical, 12)
     }
 
-    private func toggleRow(_ title: String, isOn: Binding<Bool>) -> some View {
+    private func toggleRow(_ title: LocalizedStringKey, isOn: Binding<Bool>) -> some View {
         Toggle(isOn: isOn) {
             Text(title).warmFont(14, weight: .medium).foregroundStyle(Color.warmInk)
         }

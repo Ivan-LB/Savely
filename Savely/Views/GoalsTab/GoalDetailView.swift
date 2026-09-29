@@ -61,7 +61,7 @@ struct GoalDetailView: View {
                                 .warmFont(26)
                                 .foregroundStyle(Color.warmInkMuted)
                         }
-                        Text(formattedAmount(goal.current) + " of " + formattedAmount(goal.target))
+                        Text("\(formattedAmount(goal.current)) of \(formattedAmount(goal.target))")
                             .warmFont(12)
                             .foregroundStyle(Color.warmInkMuted)
                             .tracking(0.5)
@@ -92,9 +92,11 @@ struct GoalDetailView: View {
                     ? AnyLayout(VStackLayout(spacing: 8))
                     : AnyLayout(HStackLayout(spacing: 8))
                 statLayout {
-                    StatPill(label: "Remaining", value: formattedAmount(max(0, goal.target - goal.current)), accent: goal.color)
-                    StatPill(label: "Needed / wk", value: pace.requiredWeekly.map { formattedAmount($0) } ?? "—", accent: goal.color)
-                    StatPill(label: "ETA", value: pace.etaText(), accent: goal.color)
+                    StatPill(label: Strings.GoalDetail.remaining,
+                             value: formattedAmount(max(0, goal.target - goal.current)), accent: goal.color)
+                    StatPill(label: Strings.GoalDetail.neededPerWeek,
+                             value: pace.requiredWeekly.map { formattedAmount($0) } ?? "—", accent: goal.color)
+                    StatPill(label: Strings.GoalDetail.eta, value: pace.etaText(), accent: goal.color)
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
@@ -130,12 +132,12 @@ struct GoalDetailView: View {
         .sheet(isPresented: $showingEdit) { GoalEditSheet(goal: goal) }
     }
 
-    /// "On track · by Jun 12" / "Behind · by Jun 12" / "On track · no target date" / "Complete!"
+    /// "On track · by Jun 12, 2026 · $40/wk" / "Behind · …" / "On track · no target date" / "Complete!"
     private var statusLine: String {
         if pace.status == .complete { return pace.label }
-        guard let deadline = goal.deadline else { return "\(pace.label) · no target date" }
-        let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"
-        return "\(pace.label) · by \(f.string(from: deadline)) · \(formattedAmount(pace.actualWeekly))/wk"
+        guard let deadline = goal.deadline else { return Strings.GoalDetail.statusNoDate(pace.label) }
+        let date = deadline.formatted(.dateTime.month(.abbreviated).day().year())
+        return Strings.GoalDetail.status(pace.label, date: date, weekly: formattedAmount(pace.actualWeekly))
     }
 
     private func formattedAmount(_ v: Double) -> String {
@@ -244,7 +246,8 @@ struct DepositCard: View {
 
             // CTA
             Button(action: saveDeposit) {
-                Text(amountText.isEmpty ? "Add deposit" : "Add $\(amountText) to \(goalFirstName)")
+                Text(amountText.isEmpty ? String(localized: "Add deposit")
+                     : String(localized: "Add $\(amountText) to \(goalFirstName)"))
                     .warmFont(15, weight: .semibold)
                     .foregroundStyle(Color.warmOnGreen)
                     .frame(maxWidth: .infinity)
@@ -339,6 +342,12 @@ struct DepositRow: View {
 
     private var isAuto: Bool { deposit.source == DepositSource.autoMove.rawValue }
 
+    /// The stored auto-move note is a stable English value; show it localized.
+    private var displayNote: String? {
+        guard let note = deposit.note else { return nil }
+        return isAuto && note == GoalDeposits.autoMoveNote ? Strings.QuickAdd.paydayAutoMoveNote : note
+    }
+
     var body: some View {
         HStack(spacing: 12) {
             RoundedRectangle(cornerRadius: 10)
@@ -366,7 +375,7 @@ struct DepositRow: View {
                             .clipShape(Capsule())
                     }
                 }
-                if let note = deposit.note {
+                if let note = displayNote {
                     Text(note)
                         .warmFont(12)
                         .foregroundStyle(Color.warmInkSoft)
@@ -383,13 +392,7 @@ struct DepositRow: View {
         .accessibilityElement(children: .combine)
     }
 
-    private func relativeDate(_ d: Date) -> String {
-        let cal = Calendar.current
-        if cal.isDateInToday(d) { return "Today" }
-        if cal.isDateInYesterday(d) { return "Yesterday" }
-        let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"
-        return f.string(from: d)
-    }
+    private func relativeDate(_ d: Date) -> String { Strings.Common.relativeDay(d) }
 
     private func formattedAmount(_ v: Double) -> String {
         let f = NumberFormatter(); f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 2

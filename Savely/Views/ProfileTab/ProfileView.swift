@@ -46,8 +46,9 @@ struct ProfileView: View {
                 dataPrivacySection
 
                 if FeatureFlags.tipsEnabled {
-                    ProfileSection(header: "About") {
-                        SettingsNavRow(icon: "sparkles", title: "Tip history", detail: "128 tips", onTap: { showingTipHistory = true })
+                    ProfileSection(header: String(localized: "About")) {
+                        SettingsNavRow(icon: "sparkles", title: String(localized: "Tip history"),
+                                       onTap: { showingTipHistory = true })
                     }
                 }
 
@@ -200,7 +201,7 @@ struct ProfileView: View {
     // MARK: - Settings
 
     private var settingsSection: some View {
-        ProfileSection(header: "Settings") {
+        ProfileSection(header: String(localized: "Settings")) {
             if viewModel.notificationsDenied {
                 NotificationsDeniedRow(onOpenSettings: {
                     if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
@@ -262,9 +263,9 @@ struct ProfileView: View {
             }
             .padding(.horizontal, 16).padding(.vertical, 14)
             WarmDivider()
-            SettingsNavRow(icon: "doc.text.fill", title: "Weekly PDF report", onTap: { viewModel.generateWeeklyReportPDF() })
+            SettingsNavRow(icon: "doc.text.fill", title: String(localized: "Weekly PDF report"), onTap: { viewModel.generateWeeklyReportPDF() })
             WarmDivider()
-            SettingsNavRow(icon: "chart.bar", title: "Reports", onTap: { showingReports = true })
+            SettingsNavRow(icon: "chart.bar", title: String(localized: "Reports"), onTap: { showingReports = true })
             WarmDivider()
             SettingsNavRow(icon: "trash", title: Strings.Profile.deleteAllDataLabel, color: Color.warmClay, onTap: { showingDeleteDialog = true })
         }
@@ -428,7 +429,8 @@ struct ProfileSection<Content: View>: View {
     @ViewBuilder let content: () -> Content
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(header.uppercased())
+            Text(header)
+                .textCase(.uppercase)
                 .warmFont(11, weight: .semibold)
                 .foregroundStyle(Color.warmInkMuted)
                 .tracking(0.8)

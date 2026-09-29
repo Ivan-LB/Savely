@@ -19,7 +19,7 @@
   how-to-apply: Free to use iOS 26 APIs. Don't add #available(iOS 17, *) checks. Don't fall back to ObservableObject for new view models. If you ever bump the project default, bump every per-target override too — mismatches break @testable import with "minimum deployment target" errors.
 
 - id: secrets-are-gitignored
-  summary: Savely/Config.plist contains the OpenAI API key and must never be committed.
+  summary: Savely/Config.plist holds a local OpenAI API key and must never be committed.
   why: Leaking it on a public repo means key rotation + potential abuse charges. (GoogleService-Info.plist used to be in this list; it died with the Firebase removal, 2026-08 — the historical copy in public git history is neutralized by deleting the Firebase project, not by scrubbing.)
   how-to-apply: Before any commit, grep the staged diff for this path. If present, stop and tell the user.
 
@@ -28,10 +28,10 @@
   why: The Xcode UI test template ships SavelyUITestsLaunchTests with XCTApplicationLaunchMetric which runs the app launch ~8 times measuring performance, taking ~5–10 min and flaking when one iteration exceeds the std-dev threshold. The template tests assert nothing meaningful — they only measure launch time, which is noisy on shared runners. Burning that many minutes for no signal is wasteful.
   how-to-apply: Leave -skip-testing:SavelyUITests in .github/workflows/ci.yml's Test step until qa-tester writes real UI tests that exercise actual user paths. When real UI tests exist, drop the flag (or narrow it to skip only the template's launch-perf tests). Build step still compiles the bundle, so breaking changes to UI test code are still caught.
 
-- id: ci-needs-placeholder-secrets
-  summary: CI generates a placeholder Config.plist before xcodebuild because it is a gitignored required build input.
-  why: Config.plist is listed as a required build input in project.pbxproj (Resources phase). On a fresh checkout (CI runners) it is absent and xcodebuild fails with "Build input file cannot be found" before compilation. The real key is not needed — CI never calls OpenAI. A placeholder with the right plist shape is sufficient. (GoogleService-Info.plist was also generated here until the Firebase removal, 2026-08.)
-  how-to-apply: The "Generate placeholder secrets" step in .github/workflows/ci.yml writes the file. Keep the placeholder's plist shape (OPENAI_API_KEY key) in sync with what OpenAIClient reads at runtime.
+- id: config-plist-never-bundled
+  summary: Savely/Config.plist is NOT a Resources build input and must never become one again.
+  why: Anything in Resources ships inside the IPA and can be extracted, so a bundled key is a published key. 1.0 shipped it that way (key revoked 2026-08-19); 1.1 removed the build-phase entry, which also retired the CI placeholder steps in ci.yml and ci_post_clone.sh.
+  how-to-apply: If Xcode re-adds Config.plist to "Copy Bundle Resources" (e.g. dragging the file into the project with target membership checked), untick it. When Tips returns, serve the key from a proxy you control (docs/plans/drop-bundled-config-plist.md step 3) and relax the archive gate in ci_scripts/ci_post_clone.sh at the same time.
 
 - id: force-unwrap-ratchet-active
   summary: force_unwrapping is severity error in .swiftlint.yml — any new value! fails CI and the local pre-commit hook.
@@ -57,3 +57,8 @@
   summary: The receipt scanner is Vision + a pure ReceiptParser; it never calls the network and its rules only change together with a fixture in SavelyTests/Fixtures/Receipts.
   why: PRODUCT.md promises "money data lives on the phone and never leaves it" and onboarding says so. The 2026-08 spike (docs/spikes/receipt-scan-spike.md) found the old scanner recorded EFECTIVO instead of TOTAL on Mexican receipts, dropped leading digits ("1234.56" -> 234.56), rejected totals under 10, and lost the image orientation before OCR — all untested. The rewrite made extraction deterministic and fixture-driven so regressions fail CI without a camera.
   how-to-apply: OCR config lives in Utilities/ReceiptOCR.swift (always pass CGImagePropertyOrientation; recognitionLanguages resolved at runtime to es+en). Extraction lives in Utilities/Receipt/ (vocabulary, amount grammar, dates, parser); to change a rule, add or edit a JSON fixture first (hand-authored fixtures say so in "source"; device dumps must be anonymized — no RFC/phone/card/name lines, no images). The DEBUG-only "Export OCR dump" button on the review screen writes a fixture-shaped JSON. FeatureFlags.useSystemDocumentCamera swaps the capture surface for VNDocumentCameraViewController; the Simulator supports neither camera, so use "Choose from Photos" there.
+
+- id: persisted-identifiers-never-localized
+  summary: Expense categories, income sources, the payday auto-move note, achievement ids and notification ids are stored as stable English strings; only their display text is localized.
+  why: 1.1 added es-419. The quick-add chips used to store `cat.label` (the text on screen), so a Spanish UI would have written "Café" next to older "Coffee" rows and split every filter, chart and group by language.
+  how-to-apply: Write `ExpenseCategory.storageKey` / `IncomeSource.storageKey` (raw values, Savely/Utilities/MoneyCategories.swift) and `GoalDeposits.autoMoveNote`; show `displayName`. Never persist a `String(localized:)` value as an identifier. CategoryPersistenceTests guards the round trip.

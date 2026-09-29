@@ -72,7 +72,7 @@ Savely/
 ├── Resources/                 # Strings.swift, Localizable.xcstrings, Color+Warm.swift, UIConstants.swift
 ├── Assets.xcassets/           # Images + ColorPalette
 ├── Savely.entitlements        # Sign in with Apple
-├── Config.plist               # OpenAI API key — GITIGNORED
+├── Config.plist               # local OpenAI key — GITIGNORED, not bundled
 
 SavelyTests/                   # XCTest unit tests (skeleton only today)
 SavelyUITests/                 # XCTest UI tests (skeleton only today)
@@ -92,7 +92,7 @@ These are invariants that future changes must respect. They were discovered duri
 
 1. **Signing is automatic, team `ZHLD96SP29`.** Don't switch to manual signing. Don't edit signing build settings.
 2. **No `.xcconfig` files exist** — all settings live in `project.pbxproj`. Touching pbxproj is risky; prefer Xcode UI edits and review the diff carefully.
-3. **Secrets are gitignored:** `Savely/Config.plist` (OpenAI), anything matching `.env*`. Never commit these. Never paste their contents.
+3. **Secrets are gitignored:** `Savely/Config.plist` (OpenAI), anything matching `.env*`. Never commit these. Never paste their contents. `Config.plist` is also never a Resources build input — a bundled key ships in the IPA (`gotchas.yaml#config-plist-never-bundled`).
 4. **iOS 26.0 is the minimum deployment target** for the app target. Use modern APIs freely (`@Observable`, `NavigationStack`, Swift Testing, etc.).
 5. **Only `Savely.xcscheme` is shared and tracked** in `Savely.xcodeproj/xcshareddata/xcschemes/`. Test commands must use `-scheme Savely`, never `-scheme SavelyTests`.
 6. **Localization rule:** all user-facing strings go through `Resources/Strings.swift` constants and are registered in `Localizable.xcstrings`. No hardcoded literals in views.

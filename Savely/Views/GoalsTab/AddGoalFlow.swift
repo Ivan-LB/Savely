@@ -96,7 +96,7 @@ struct AddGoalFlowView: View {
             withAnimation(.easeInOut(duration: 0.4)) { showSuccess = true }
         } catch {
             modelContext.delete(goal)
-            saveError = "Please try again."
+            saveError = String(localized: "Please try again.")
         }
     }
 }
@@ -191,7 +191,7 @@ struct AddGoalStep1View: View {
                     HStack(spacing: 12) {
                         GoalInitialCircle(name: state.name, color: state.color, size: 44)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(state.name.isEmpty ? "Your goal name" : state.name)
+                            Text(state.name.isEmpty ? String(localized: "Your goal name") : state.name)
                                 .warmFont(20, weight: .regular, design: .serif)
                                 .foregroundStyle(state.name.isEmpty ? Color.warmInkMuted : Color.warmInk)
                             Text("Live preview")
@@ -371,7 +371,7 @@ struct AddGoalStep2View: View {
 
 // MARK: - Step 3: Deadline + pace
 
-private let durationPresets: [(label: String, months: Int?)] = [
+private let durationPresets: [(label: LocalizedStringKey, months: Int?)] = [
     ("6 mo", 6), ("1 yr", 12), ("18 mo", 18), ("2 yr", 24), ("No date", nil)
 ]
 
@@ -434,7 +434,7 @@ struct AddGoalStep3View: View {
                 // Duration presets
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
-                        ForEach(durationPresets, id: \.label) { preset in
+                        ForEach(durationPresets, id: \.months) { preset in
                             let isOn = (preset.months ?? -1) == selectedDuration
                             Button(action: {
                                 if let m = preset.months {
@@ -501,8 +501,7 @@ struct AddGoalStep3View: View {
 
     private var formattedDeadline: String {
         guard state.hasDeadline else { return "—" }
-        let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"
-        return f.string(from: state.deadline)
+        return state.deadline.formatted(.dateTime.month(.abbreviated).day().year())
     }
 }
 
@@ -511,7 +510,8 @@ struct AddGoalStep3View: View {
 struct MiniCalendarView: View {
     @Binding var displayMonth: Date
     @Binding var selectedDate: Date
-    private let dayLabels = ["S","M","T","W","T","F","S"]
+    /// Sunday-first, like `leadingBlanks` below; localized initials ("D L M M J V S" in es).
+    private let dayLabels = Calendar.current.veryShortStandaloneWeekdaySymbols
 
     var body: some View {
         VStack(spacing: 0) {
@@ -535,7 +535,7 @@ struct MiniCalendarView: View {
             .padding(.bottom, 14)
 
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 4) {
-                ForEach(dayLabels, id: \.self) { d in
+                ForEach(Array(dayLabels.enumerated()), id: \.offset) { _, d in
                     Text(d).warmFont(10, weight: .semibold).foregroundStyle(Color.warmInkMuted)
                 }
                 ForEach(0..<leadingBlanks, id: \.self) { _ in Color.clear.frame(height: 32) }
@@ -560,7 +560,7 @@ struct MiniCalendarView: View {
     }
 
     private var monthTitle: String {
-        let f = DateFormatter(); f.dateFormat = "MMMM yyyy"; return f.string(from: displayMonth)
+        displayMonth.formatted(Date.FormatStyle.dateTime.month(.wide).year().sentenceCased)
     }
     private var leadingBlanks: Int {
         Calendar.current.component(.weekday, from: firstOfMonth) - 1
@@ -644,9 +644,12 @@ struct AddGoalStep4View: View {
                     .frame(height: 8).padding(.bottom, 14)
 
                     HStack(spacing: 6) {
-                        ForEach([("Per week", state.hasDeadline ? "$\(Int(state.weeklyPace))" : "—"),
-                                 ("Per month", state.hasDeadline ? "$\(Int(state.monthlyPace))" : "—"),
-                                 ("By", shortDeadline)], id: \.0) { item in
+                        let recap: [(LocalizedStringKey, String)] = [
+                            ("Per week", state.hasDeadline ? "$\(Int(state.weeklyPace))" : "—"),
+                            ("Per month", state.hasDeadline ? "$\(Int(state.monthlyPace))" : "—"),
+                            ("By", shortDeadline),
+                        ]
+                        ForEach(Array(recap.enumerated()), id: \.offset) { _, item in
                             VStack(spacing: 4) {
                                 Text(item.0)
                                     .warmFont(9).foregroundStyle(Color.warmInkMuted).textCase(.uppercase).tracking(0.8)
@@ -716,17 +719,17 @@ struct AddGoalStep4View: View {
     }
 
     private var formattedDeadline: String {
-        guard state.hasDeadline else { return "No date" }
-        let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"; return f.string(from: state.deadline)
+        guard state.hasDeadline else { return Strings.Common.noDate }
+        return state.deadline.formatted(.dateTime.month(.abbreviated).day().year())
     }
     private var shortDeadline: String {
         guard state.hasDeadline else { return "—" }
-        let f = DateFormatter(); f.dateFormat = "MMM ''yy"; return f.string(from: state.deadline)
+        return state.deadline.formatted(.dateTime.month(.abbreviated).year(.twoDigits))
     }
 }
 
 struct RecapToggleRow: View {
-    let label: String; let sub: String
+    let label: LocalizedStringKey; let sub: LocalizedStringKey
     @Binding var isOn: Bool
 
     var body: some View {

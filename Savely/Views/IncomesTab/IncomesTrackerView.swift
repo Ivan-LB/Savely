@@ -18,8 +18,7 @@ struct IncomesTrackerView: View {
             let total = viewModel.incomes.filter {
                 calendar.isDate($0.date, equalTo: date, toGranularity: .month)
             }.reduce(0) { $0 + $1.amount }
-            let f = DateFormatter(); f.dateFormat = "MMM"
-            return (f.string(from: date), total)
+            return (date.formatted(.dateTime.month(.abbreviated)), total)
         }
     }
     private var maxBar: Double { max(barData.map(\.1).max() ?? 1, 1) }
@@ -29,7 +28,7 @@ struct IncomesTrackerView: View {
             VStack(spacing: 14) {
                 // — Header —
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Income")
+                    Text(Strings.IncomesTrackerView.title)
                         .warmFont(34, weight: .regular, design: .serif)
                         .foregroundStyle(Color.warmInk)
                     Text("\(currentMonthName) · \(formattedAmount(viewModel.totalIncomeThisMonth))")
@@ -170,7 +169,7 @@ struct IncomesTrackerView: View {
     }
 
     private var currentMonthName: String {
-        Date().formatted(.dateTime.month(.wide))
+        Date().formatted(Date.FormatStyle.dateTime.month(.wide).sentenceCased)
     }
 
     private func formattedAmount(_ v: Double) -> String {
@@ -206,7 +205,7 @@ struct IncomeRowWarm: View {
                 Text(income.incomeDescription)
                     .warmFont(14, weight: .semibold)
                     .foregroundStyle(Color.warmInk)
-                Text(source.map { "\($0.label) · \(shortDate(income.date))" } ?? shortDate(income.date))
+                Text(source.map { "\($0.displayName) · \(shortDate(income.date))" } ?? shortDate(income.date))
                     .warmFont(12)
                     .foregroundStyle(Color.warmInkMuted)
             }
@@ -218,7 +217,7 @@ struct IncomeRowWarm: View {
         }
         .padding(.horizontal, 14).padding(.vertical, 14)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(Text("\(income.incomeDescription), \(source.map { "\($0.label), " } ?? "")\(shortDate(income.date))"))
+        .accessibilityLabel(Text("\(income.incomeDescription), \(source.map { "\($0.displayName), " } ?? "")\(shortDate(income.date))"))
         .accessibilityValue(Text("plus \(formattedAmount(income.amount))"))
         .accessibilityHint("Long press to delete")
         .contextMenu {
@@ -231,8 +230,7 @@ struct IncomeRowWarm: View {
     }
 
     private func shortDate(_ d: Date) -> String {
-        let f = DateFormatter(); f.dateFormat = "MMM d, yyyy"
-        return f.string(from: d)
+        d.formatted(.dateTime.month(.abbreviated).day().year())
     }
     private func formattedAmount(_ v: Double) -> String {
         let f = NumberFormatter(); f.numberStyle = .currency; f.currencySymbol = "$"; f.maximumFractionDigits = 2

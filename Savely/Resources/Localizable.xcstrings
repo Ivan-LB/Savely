@@ -2,16 +2,44 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     " for 18 months" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " por 18 meses"
+          }
+        }
+      }
     },
     " of %lld" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " de %lld"
+          }
+        }
+      }
     },
     "—" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "—"
+          }
+        }
+      }
     },
     ", favorite" : {
       "localizations" : {
@@ -30,19 +58,76 @@
       }
     },
     ".00" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ".00"
+          }
+        }
+      }
+    },
+    "**Auto-move $%lld** to %@ from this income?" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿**Mover $%1$lld** a %2$@ de este ingreso?"
+          }
+        }
+      }
+    },
+    "**Auto-move $%lld** to %@ from this paycheck?" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿**Mover $%1$lld** a %2$@ de este sueldo?"
+          }
+        }
+      }
+    },
+    "**Moving $%lld** to %@ when you save." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Moviendo $%1$lld** a %2$@ al guardar."
+          }
+        }
+      }
     },
     "/wk" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/sem"
+          }
+        }
+      }
     },
     "%" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%"
+          }
+        }
+      }
     },
     "%@ · %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "%1$@ · %2$@"
           }
         }
@@ -81,7 +166,24 @@
       }
     },
     "%@ is on your home screen.\nAdd the first dollar?" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ya aparece en Inicio.\n¿Agregas el primer depósito?"
+          }
+        }
+      }
+    },
+    "%@ of %@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ de %2$@"
+          }
+        }
+      }
     },
     "%@, %@" : {
       "localizations" : {
@@ -122,6 +224,12 @@
             "state" : "new",
             "value" : "%1$@, %2$@%3$@"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@%3$@"
+          }
         }
       }
     },
@@ -142,7 +250,14 @@
       }
     },
     "%lld" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld active · %@ saved of %@" : {
       "localizations" : {
@@ -150,6 +265,34 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$lld active · %2$@ saved of %3$@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%#@active@ · %2$@ ahorrado de %3$@"
+          },
+          "substitutions" : {
+            "active" : {
+              "argNum" : 1,
+              "formatSpecifier" : "lld",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg activa"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg activas"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -160,6 +303,34 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$lld earned,\n%2$lld to go."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%#@earned@,\n%2$lld por obtener."
+          },
+          "substitutions" : {
+            "earned" : {
+              "argNum" : 1,
+              "formatSpecifier" : "lld",
+              "variations" : {
+                "plural" : {
+                  "one" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg obtenido"
+                    }
+                  },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "%arg obtenidos"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -191,103 +362,231 @@
       }
     },
     "%lld%%" : {
-
-    },
-    "+%@" : {
-
-    },
-    "+$" : {
-
-    },
-    "~$%lld/mo" : {
-
-    },
-    "−%@" : {
-
-    },
-    "−$" : {
-
-    },
-    "$" : {
-
-    },
-    "$%.2f / $%.2f" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "$%1$.2f / $%2$.2f"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "$%1$.2f / $%2$.2f"
+            "value" : "%lld%%"
+          }
+        }
+      }
+    },
+    "+%@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%@"
+          }
+        }
+      }
+    },
+    "+$" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+$"
+          }
+        }
+      }
+    },
+    "~$%lld/mo" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~$%lld/mes"
+          }
+        }
+      }
+    },
+    "−%@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "−%@"
+          }
+        }
+      }
+    },
+    "−$" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "−$"
+          }
+        }
+      }
+    },
+    "$" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "$"
           }
         }
       }
     },
     "$%@" : {
-
-    },
-    "$%lld" : {
-
-    },
-    "$%lld/week" : {
-
-    },
-    "$0" : {
-
-    },
-    "0" : {
-
-    },
-    "0.00" : {
-
-    },
-    "7-month trend" : {
-
-    },
-    "A goal is a name, a number, and a date.\nSavely takes care of the rest." : {
-
-    },
-    "About " : {
-
-    },
-    "Achievements" : {
-
-    },
-    "achievements_title" : {
-      "comment" : "Achievements Title",
-      "extractionState" : "stale",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Achievements and Medals"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Logros y Medallas"
+            "value" : "$%@"
           }
         }
       }
     },
-    "Add" : {
+    "$%lld" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Add"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar"
+            "value" : "$%lld"
+          }
+        }
+      }
+    },
+    "$%lld/week" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "$%lld/semana"
+          }
+        }
+      }
+    },
+    "$0" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "$0"
+          }
+        }
+      }
+    },
+    "0" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "0.00" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0.00"
+          }
+        }
+      }
+    },
+    "1 yr" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 año"
+          }
+        }
+      }
+    },
+    "2 yr" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 años"
+          }
+        }
+      }
+    },
+    "6 mo" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6 meses"
+          }
+        }
+      }
+    },
+    "7-month trend" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendencia de 7 meses"
+          }
+        }
+      }
+    },
+    "18 mo" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "18 meses"
+          }
+        }
+      }
+    },
+    "A goal is a name, a number, and a date.\nSavely takes care of the rest." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una meta es un nombre, una cifra y una fecha.\nSavely se encarga del resto."
+          }
+        }
+      }
+    },
+    "A trip" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un viaje"
+          }
+        }
+      }
+    },
+    "About" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de"
+          }
+        }
+      }
+    },
+    "About " : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unos "
+          }
+        }
+      }
+    },
+    "Achievements" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logros"
           }
         }
       }
@@ -299,6 +598,12 @@
             "state" : "new",
             "value" : "Add %1$@ to %2$@"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar %1$@ a %2$@"
+          }
         }
       }
     },
@@ -308,6 +613,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Add $%1$@ to %2$@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar $%1$@ a %2$@"
           }
         }
       }
@@ -319,14 +630,34 @@
             "state" : "new",
             "value" : "Add $%1$lld to %2$@"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar $%1$lld a %2$@"
+          }
         }
       }
     },
     "Add a deposit" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar un depósito"
+          }
+        }
+      }
     },
     "Add deposit" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar depósito"
+          }
+        }
+      }
     },
     "Add expense" : {
       "localizations" : {
@@ -361,7 +692,14 @@
       }
     },
     "Add your first expense above" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agrega tu primer gasto arriba"
+          }
+        }
+      }
     },
     "add_expense_button" : {
       "comment" : "Add Expense Button",
@@ -376,7 +714,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar Gasto"
+            "value" : "Agregar gasto"
           }
         }
       }
@@ -394,7 +732,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar Ingreso"
+            "value" : "Agregar ingreso"
           }
         }
       }
@@ -412,7 +750,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar Ingreso"
+            "value" : "Agregar ingreso"
           }
         }
       }
@@ -436,28 +774,34 @@
       }
     },
     "ALMOST THERE" : {
-
-    },
-    "already_have_and_account_label" : {
-      "comment" : "Already have an account Label",
-      "extractionState" : "stale",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Don't have an account?"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿No tiene una cuenta?"
+            "value" : "YA CASI"
           }
         }
       }
     },
     "Amount" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monto"
+          }
+        }
+      }
+    },
+    "Amount each payday" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monto cada día de pago"
+          }
+        }
+      }
     },
     "amount_placeholder_label" : {
       "comment" : "Amount Placeholder Label",
@@ -472,7 +816,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cantidad"
+            "value" : "Monto"
           }
         }
       }
@@ -490,25 +834,70 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preferencias de la Aplicación"
+            "value" : "Preferencias de la app"
           }
         }
       }
     },
     "Are you sure you want to delete this expense?" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Seguro que quieres eliminar este gasto?"
+          }
+        }
+      }
     },
     "Are you sure you want to delete this goal?" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Seguro que quieres eliminar esta meta?"
+          }
+        }
+      }
     },
     "Are you sure you want to delete this income?" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Seguro que quieres eliminar este ingreso?"
+          }
+        }
+      }
     },
     "AUTO" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AUTO"
+          }
+        }
+      }
+    },
+    "Auto-move" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mover al ahorro"
+          }
+        }
+      }
     },
     "Auto-move on payday" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mover al ahorro en día de pago"
+          }
+        }
+      }
     },
     "Back" : {
       "localizations" : {
@@ -527,10 +916,34 @@
       }
     },
     "Back to home" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volver a Inicio"
+          }
+        }
+      }
     },
     "Badges unlock as you save — no pressure." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los logros se desbloquean mientras ahorras — sin presión."
+          }
+        }
+      }
+    },
+    "Big saver" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gran ahorro"
+          }
+        }
+      }
     },
     "blue_color" : {
       "comment" : "Blue Color",
@@ -550,11 +963,35 @@
         }
       }
     },
+    "By" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha"
+          }
+        }
+      }
+    },
     "Can't save yet" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no se puede guardar"
+          }
+        }
+      }
     },
     "Cancel" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
     },
     "cancel_button" : {
       "comment" : "Cancel Button",
@@ -575,7 +1012,14 @@
       }
     },
     "Category" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoría"
+          }
+        }
+      }
     },
     "category_placeholder" : {
       "comment" : "Category Placeholder",
@@ -590,25 +1034,107 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Categoria"
+            "value" : "Categoría"
           }
         }
       }
     },
-    "change_password_button" : {
-      "comment" : "Change Password Button",
-      "extractionState" : "stale",
+    "category.coffee" : {
+      "comment" : "Expense category chip",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Change Password"
+            "value" : "Coffee"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cambiar Contraseña"
+            "value" : "Café"
+          }
+        }
+      }
+    },
+    "category.food" : {
+      "comment" : "Expense category chip",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Food"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comida"
+          }
+        }
+      }
+    },
+    "category.other" : {
+      "comment" : "Expense category / income source chip",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Other"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otro"
+          }
+        }
+      }
+    },
+    "category.shopping" : {
+      "comment" : "Expense category chip",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Shopping"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compras"
+          }
+        }
+      }
+    },
+    "category.transit" : {
+      "comment" : "Expense category chip",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Transit"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transporte"
+          }
+        }
+      }
+    },
+    "Century club" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Club de los 100"
           }
         }
       }
@@ -645,8 +1171,25 @@
         }
       }
     },
+    "Color" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color"
+          }
+        }
+      }
+    },
     "COLOR" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "COLOR"
+          }
+        }
+      }
     },
     "color_label" : {
       "comment" : "Color Label",
@@ -666,6 +1209,160 @@
         }
       }
     },
+    "common.add" : {
+      "comment" : "Accessibility label of the + tab bar button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar"
+          }
+        }
+      }
+    },
+    "common.back" : {
+      "comment" : "Accessibility label of a back chevron",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Back"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atrás"
+          }
+        }
+      }
+    },
+    "common.close" : {
+      "comment" : "Accessibility label of a close button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Close"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        }
+      }
+    },
+    "common.keypad.decimal" : {
+      "comment" : "Accessibility label of the keypad decimal key",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Decimal point"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punto decimal"
+          }
+        }
+      }
+    },
+    "common.keypad.delete" : {
+      "comment" : "Accessibility label of the keypad backspace key",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borrar"
+          }
+        }
+      }
+    },
+    "common.noDate" : {
+      "comment" : "Shown where a goal has no target date",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin fecha"
+          }
+        }
+      }
+    },
+    "common.today" : {
+      "comment" : "Relative day label in lists",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Today"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
+          }
+        }
+      }
+    },
+    "common.yesterday" : {
+      "comment" : "Relative day label in lists",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yesterday"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayer"
+          }
+        }
+      }
+    },
+    "Complete a full goal" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completa una meta"
+          }
+        }
+      }
+    },
     "Completed" : {
       "localizations" : {
         "es-419" : {
@@ -676,62 +1373,15 @@
         }
       }
     },
-    "confirm_password_string" : {
-      "comment" : "Confirm Password String",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Confirm Password"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Confirmar Contraseña"
-          }
-        }
-      }
-    },
-    "consistent_savings_description" : {
-      "comment" : "Description for consistent monthly savings",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have maintained consistent monthly savings for three months."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ha mantenido ahorros mensuales constantes durante tres meses."
-          }
-        }
-      }
-    },
-    "consistent_savings_title" : {
-      "comment" : "Title for consistent monthly savings",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Consistent Monthly Savings"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ahorros Mensuales Constantes"
-          }
-        }
-      }
-    },
     "Continue" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        }
+      }
     },
     "continue_button" : {
       "comment" : "Continue Button",
@@ -751,14 +1401,145 @@
         }
       }
     },
+    "Couldn't choose a new favorite goal. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo elegir una nueva meta favorita. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "Couldn't delete the expense. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo eliminar el gasto. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "Couldn't delete the goal. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo eliminar la meta. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "Couldn't delete the income. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo eliminar el ingreso. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "Couldn't get a tip right now. Please try again later." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo obtener un consejo ahora. Inténtalo más tarde."
+          }
+        }
+      }
+    },
+    "Couldn't load your expenses. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron cargar tus gastos. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "Couldn't load your goals. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron cargar tus metas. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "Couldn't load your income. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron cargar tus ingresos. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
     "Couldn't save the deposit" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo guardar el depósito"
+          }
+        }
+      }
     },
     "Couldn't save the goal" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo guardar la meta"
+          }
+        }
+      }
+    },
+    "Couldn't save the goal. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo guardar la meta. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "Couldn't save the income. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo guardar el ingreso. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "Couldn't update your favorite goal. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo actualizar tu meta favorita. Inténtalo de nuevo."
+          }
+        }
+      }
     },
     "Create your first goal" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea tu primera meta"
+          }
+        }
+      }
     },
     "create_account_button" : {
       "comment" : "Create Account Button",
@@ -773,43 +1554,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crear una cuenta"
-          }
-        }
-      }
-    },
-    "create_account_title" : {
-      "comment" : "Create Account Title",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Create your account!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Crea tú cuenta!"
-          }
-        }
-      }
-    },
-    "creating_account_label" : {
-      "comment" : "Creating Account Label",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "By creating an account, I accept Savely's"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Al crear una cuenta, acepto los"
+            "value" : "Crear cuenta"
           }
         }
       }
@@ -827,7 +1572,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Modo Oscuro"
+            "value" : "Modo oscuro"
           }
         }
       }
@@ -846,6 +1591,150 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Panel"
+          }
+        }
+      }
+    },
+    "dashboard.greeting.afternoon" : {
+      "comment" : "Large serif greeting, 12:00–16:59",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Afternoon."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buenas tardes."
+          }
+        }
+      }
+    },
+    "dashboard.greeting.afternoon.spoken" : {
+      "comment" : "VoiceOver form of the afternoon greeting",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Good afternoon."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buenas tardes."
+          }
+        }
+      }
+    },
+    "dashboard.greeting.evening" : {
+      "comment" : "Large serif greeting, 17:00–4:59",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Evening."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buenas noches."
+          }
+        }
+      }
+    },
+    "dashboard.greeting.evening.spoken" : {
+      "comment" : "VoiceOver form of the evening greeting",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Good evening."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buenas noches."
+          }
+        }
+      }
+    },
+    "dashboard.greeting.morning" : {
+      "comment" : "Large serif greeting, 5:00–11:59",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Morning."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buenos días."
+          }
+        }
+      }
+    },
+    "dashboard.greeting.morning.spoken" : {
+      "comment" : "VoiceOver form of the morning greeting",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Good morning."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buenos días."
+          }
+        }
+      }
+    },
+    "dashboard.month.in" : {
+      "comment" : "Monthly income cell label; %@ is the abbreviated month in caps",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "In · %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresos · %@"
+          }
+        }
+      }
+    },
+    "dashboard.month.out" : {
+      "comment" : "Monthly expenses cell label; %@ is the abbreviated month in caps",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Out · %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos · %@"
           }
         }
       }
@@ -887,56 +1776,11 @@
       }
     },
     "Day one" : {
-
-    },
-    "debt_paid_off_description" : {
-      "comment" : "Description for paying off debt",
-      "extractionState" : "stale",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have paid off a major debt."
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ha pagado una deuda importante."
-          }
-        }
-      }
-    },
-    "debt_paid_off_title" : {
-      "comment" : "Title for paying off debt",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Debt Paid Off"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deuda Saldada"
-          }
-        }
-      }
-    },
-    "Decimal point" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Decimal point"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Punto decimal"
+            "value" : "Día uno"
           }
         }
       }
@@ -952,13 +1796,34 @@
       }
     },
     "Delete Expense" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar gasto"
+          }
+        }
+      }
     },
     "Delete Goal" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar meta"
+          }
+        }
+      }
     },
     "Delete Income" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar ingreso"
+          }
+        }
+      }
     },
     "delete_all_data_confirm_button" : {
       "comment" : "Destructive confirm button",
@@ -973,7 +1838,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Borrar todo"
+            "value" : "Eliminar todo"
           }
         }
       }
@@ -1009,7 +1874,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Borrar todos los datos?"
+            "value" : "¿Eliminar todos los datos?"
           }
         }
       }
@@ -1027,7 +1892,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Borrar todos los datos"
+            "value" : "Eliminar todos los datos"
           }
         }
       }
@@ -1045,7 +1910,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No se pudieron borrar tus datos. Inténtalo de nuevo."
+            "value" : "No se pudieron eliminar tus datos. Inténtalo de nuevo."
           }
         }
       }
@@ -1081,7 +1946,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Su dispositivo está desconectado. Funciones como Consejos pueden no funcionar, pero la aplicación sigue siendo completamente funcional sin conexión."
+            "value" : "Tu dispositivo no tiene conexión. Funciones como Consejos podrían no funcionar, pero la app funciona por completo sin conexión."
           }
         }
       }
@@ -1102,6 +1967,16 @@
         }
       }
     },
+    "Down payment" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enganche"
+          }
+        }
+      }
+    },
     "download_weekly_report_button" : {
       "comment" : "Download Weekly Report Button",
       "extractionState" : "extracted_with_value",
@@ -1115,16 +1990,30 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descargar Reporte Semanal"
+            "value" : "Descargar reporte semanal"
           }
         }
       }
     },
     "e.g. Kyoto, autumn '26" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "p. ej. Kioto, otoño '26"
+          }
+        }
+      }
     },
     "Edit anything" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar algo"
+          }
+        }
+      }
     },
     "Edit goal" : {
       "localizations" : {
@@ -1149,43 +2038,17 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Correo Electrónico"
+            "value" : "Correo electrónico"
           }
         }
       }
     },
-    "emergency_fund_description" : {
-      "comment" : "Description for establishing an emergency fund",
-      "extractionState" : "stale",
+    "Emergency fund" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have created an emergency fund worth three months of expenses."
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ha creado un fondo de emergencia equivalente a tres meses de gastos."
-          }
-        }
-      }
-    },
-    "emergency_fund_title" : {
-      "comment" : "Title for establishing an emergency fund",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Emergency Fund Established"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fondo de Emergencia Establecido"
+            "value" : "Fondo de emergencia"
           }
         }
       }
@@ -1203,25 +2066,27 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fecha de Finalización"
+            "value" : "Fecha de fin"
           }
         }
       }
     },
-    "enter_email_and_password_label" : {
-      "comment" : "Enter your email and password to sign in Label",
-      "extractionState" : "stale",
+    "Enter an amount greater than zero." : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Enter your email and password to sign in."
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ingrese su correo electrónico y contraseña para iniciar sesión."
+            "value" : "Escribe un monto mayor que cero."
+          }
+        }
+      }
+    },
+    "Error saving the PDF file." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo guardar el PDF."
           }
         }
       }
@@ -1312,6 +2177,26 @@
         }
       }
     },
+    "Expense Breakdown" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desglose de gastos"
+          }
+        }
+      }
+    },
+    "Expense Overview" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumen de gastos"
+          }
+        }
+      }
+    },
     "expense_distribution_label" : {
       "comment" : "Expense Distribution Label",
       "extractionState" : "extracted_with_value",
@@ -1325,7 +2210,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Distribución de Gastos"
+            "value" : "Distribución de gastos"
           }
         }
       }
@@ -1343,7 +2228,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡No olvide registrar sus gastos hoy!"
+            "value" : "No olvides registrar tus gastos de hoy."
           }
         }
       }
@@ -1361,7 +2246,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccione la Hora del Recordatorio de Gastos"
+            "value" : "Elige la hora del recordatorio de gastos"
           }
         }
       }
@@ -1379,7 +2264,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recordatorio de Gastos"
+            "value" : "Recordatorio de gastos"
           }
         }
       }
@@ -1397,13 +2282,20 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recordatorios de Gastos"
+            "value" : "Recordatorios de gastos"
           }
         }
       }
     },
     "Expenses" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos"
+          }
+        }
+      }
     },
     "expenses_tab_string" : {
       "comment" : "Expenses Tab String",
@@ -1436,16 +2328,70 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exportar Reporte"
+            "value" : "Exportar reporte"
+          }
+        }
+      }
+    },
+    "Eyes open" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ojos abiertos"
+          }
+        }
+      }
+    },
+    "Failed to generate the PDF report." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo generar el reporte en PDF."
+          }
+        }
+      }
+    },
+    "Failed to locate the PDF file." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró el archivo PDF."
+          }
+        }
+      }
+    },
+    "Favorite" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorita"
           }
         }
       }
     },
     "FAVORITE" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAVORITA"
+          }
+        }
+      }
     },
     "FAVORITE GOAL" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "META FAVORITA"
+          }
+        }
+      }
     },
     "favorites_placeholder" : {
       "comment" : "Favorites Placeholder",
@@ -1460,7 +2406,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Favoritos"
+            "value" : "Favoritas"
           }
         }
       }
@@ -1478,7 +2424,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obtener Reporte"
+            "value" : "Obtener reporte"
           }
         }
       }
@@ -1501,110 +2447,22 @@
         }
       }
     },
-    "first_goal_description" : {
-      "comment" : "Description for achieving the first goal",
-      "extractionState" : "stale",
+    "First seed" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have reached your first savings goal."
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ha alcanzado su primera meta de ahorros."
+            "value" : "Primera semilla"
           }
         }
       }
     },
-    "first_goal_title" : {
-      "comment" : "Title for achieving the first goal",
-      "extractionState" : "stale",
+    "Full week" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "First Goal Achieved"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Primera Meta Alcanzada"
-          }
-        }
-      }
-    },
-    "first_investment_description" : {
-      "comment" : "Description for making the first investment",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have made your first investment towards your financial future."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ha realizado su primera inversión para su futuro financiero."
-          }
-        }
-      }
-    },
-    "first_investment_title" : {
-      "comment" : "Title for making the first investment",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "First Investment Made"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Primera Inversión Realizada"
-          }
-        }
-      }
-    },
-    "forgot_password_label" : {
-      "comment" : "Forgot Password Label",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Forgot password?"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Olvidó su contraseña?"
-          }
-        }
-      }
-    },
-    "full_name_placeholder" : {
-      "comment" : "Full Name Placeholder",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Full Name"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre Completo"
+            "value" : "Semana completa"
           }
         }
       }
@@ -1628,16 +2486,74 @@
       }
     },
     "Give it a name\nyou'll recognize." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponle un nombre\nque reconozcas."
+          }
+        }
+      }
+    },
+    "Give the goal a name." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponle un nombre a la meta."
+          }
+        }
+      }
     },
     "Goal" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta"
+          }
+        }
+      }
     },
     "Goal · %@" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta · %@"
+          }
+        }
+      }
+    },
+    "Goal closer" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta cumplida"
+          }
+        }
+      }
     },
     "Goal name" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de la meta"
+          }
+        }
+      }
+    },
+    "Goal setter" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primera meta"
+          }
+        }
+      }
     },
     "goal_alert_body" : {
       "comment" : "Goal Alert Body",
@@ -1652,7 +2568,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Revise sus metas y siga su progreso!"
+            "value" : "Revisa tus metas y sigue tu progreso."
           }
         }
       }
@@ -1670,7 +2586,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccione la Hora de Alerta de Metas"
+            "value" : "Elige la hora del aviso de metas"
           }
         }
       }
@@ -1688,7 +2604,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recordatorio de Metas"
+            "value" : "Recordatorio de metas"
           }
         }
       }
@@ -1706,13 +2622,110 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alertas de Metas"
+            "value" : "Avisos de metas"
+          }
+        }
+      }
+    },
+    "goaldetail.eta" : {
+      "comment" : "Stat pill label: estimated completion date (uppercase, keep short)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ETA"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha est."
+          }
+        }
+      }
+    },
+    "goaldetail.neededPerWeek" : {
+      "comment" : "Stat pill label (rendered uppercase, keep short)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Needed / wk"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesario / sem"
+          }
+        }
+      }
+    },
+    "goaldetail.remaining" : {
+      "comment" : "Stat pill label (rendered uppercase, keep short)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Remaining"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restante"
+          }
+        }
+      }
+    },
+    "goaldetail.status" : {
+      "comment" : "Status line: pace status · target date · actual weekly pace (e.g. $40)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%@ · by %@ · %@/wk"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · para el %2$@ · %3$@/sem"
+          }
+        }
+      }
+    },
+    "goaldetail.status.noDate" : {
+      "comment" : "Status line; %@ is the pace status (On track / Behind)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%@ · no target date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · sin fecha objetivo"
           }
         }
       }
     },
     "Goals" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metas"
+          }
+        }
+      }
     },
     "goals_tab_string" : {
       "comment" : "Goals Tab String",
@@ -1750,38 +2763,12 @@
         }
       }
     },
-    "high_savings_rate_description" : {
-      "comment" : "Description for achieving a high savings rate",
-      "extractionState" : "stale",
+    "Half-way there" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have saved more than 20% of your income this month."
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ha ahorrado más del 20% de sus ingresos este mes."
-          }
-        }
-      }
-    },
-    "high_savings_rate_title" : {
-      "comment" : "Title for achieving a high savings rate",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "High Savings Rate"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alta Tasa de Ahorro"
+            "value" : "A la mitad"
           }
         }
       }
@@ -1797,7 +2784,14 @@
       }
     },
     "HOW MUCH" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CUÁNTO"
+          }
+        }
+      }
     },
     "Income" : {
       "localizations" : {
@@ -1825,6 +2819,26 @@
         }
       }
     },
+    "Income Breakdown" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desglose de ingresos"
+          }
+        }
+      }
+    },
+    "Income Overview" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumen de ingresos"
+          }
+        }
+      }
+    },
     "income_distribution_label" : {
       "comment" : "Income Distribution Label",
       "extractionState" : "extracted_with_value",
@@ -1838,7 +2852,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Distribución de Ingresos"
+            "value" : "Distribución de ingresos"
           }
         }
       }
@@ -1874,7 +2888,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¿Es correcto?"
+            "value" : "¿Está bien?"
           }
         }
       }
@@ -1897,8 +2911,35 @@
         }
       }
     },
+    "Keep a 30-day streak" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén una racha de 30 días"
+          }
+        }
+      }
+    },
+    "Keep a 100-day streak" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén una racha de 100 días"
+          }
+        }
+      }
+    },
     "LIFETIME INCOME" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INGRESOS TOTALES"
+          }
+        }
+      }
     },
     "limited_connection_header" : {
       "comment" : "Limited Connection Header",
@@ -1913,13 +2954,20 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conectividad Limitada"
+            "value" : "Conexión limitada"
           }
         }
       }
     },
     "Live preview" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista previa"
+          }
+        }
+      }
     },
     "loading_tip_label" : {
       "comment" : "Loading Tip Label",
@@ -1934,47 +2982,57 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cargando consejo..."
+            "value" : "Cargando consejo…"
           }
         }
       }
     },
-    "Log an expense, income, deposit, or new goal" : {
+    "Log $1,000 of income in total" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Log an expense, income, deposit, or new goal"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Registra un gasto, un ingreso, un depósito o una meta nueva"
+            "value" : "Registra $1,000 de ingresos en total"
           }
         }
       }
     },
-    "Log expense" : {
-
-    },
-    "Log income" : {
-
-    },
-    "log_in_string" : {
-      "comment" : "Log In String",
-      "extractionState" : "stale",
+    "Log $10,000 of income in total" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Log in to your existant account"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inicie sesión en su cuenta existente"
+            "value" : "Registra $10,000 de ingresos en total"
+          }
+        }
+      }
+    },
+    "Log something 7 days in a row" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra algo 7 días seguidos"
+          }
+        }
+      }
+    },
+    "Log your first expense" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra tu primer gasto"
+          }
+        }
+      }
+    },
+    "Log your first income" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra tu primer ingreso"
           }
         }
       }
@@ -2012,7 +3070,14 @@
       }
     },
     "Merchant · Today" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comercio · Hoy"
+          }
+        }
+      }
     },
     "minus %@" : {
       "localizations" : {
@@ -2026,6 +3091,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "menos %@"
+          }
+        }
+      }
+    },
+    "money.income.title" : {
+      "comment" : "Money tab: income segment and list title (plural in Spanish, like Expenses)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Income"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresos"
           }
         }
       }
@@ -2059,7 +3142,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meta Mensual"
+            "value" : "Meta mensual"
           }
         }
       }
@@ -2077,7 +3160,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Resumen Mensual"
+            "value" : "Resumen mensual"
           }
         }
       }
@@ -2100,14 +3183,35 @@
         }
       }
     },
-    "Move money" : {
-
-    },
     "Move money toward %@." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mueve dinero hacia %@."
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre"
+          }
+        }
+      }
     },
     "NAME" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NOMBRE"
+          }
+        }
+      }
     },
     "name_placeholder_label" : {
       "comment" : "Name Placeholder Label",
@@ -2128,7 +3232,14 @@
       }
     },
     "New" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva"
+          }
+        }
+      }
     },
     "New goal" : {
       "localizations" : {
@@ -2147,7 +3258,14 @@
       }
     },
     "New goal · " : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva meta · "
+          }
+        }
+      }
     },
     "Next month" : {
       "localizations" : {
@@ -2202,31 +3320,114 @@
       }
     },
     "No active goal" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin meta activa"
+          }
+        }
+      }
+    },
+    "No data available to generate the report." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay datos para generar el reporte."
+          }
+        }
+      }
     },
     "no date" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sin fecha"
+          }
+        }
+      }
+    },
+    "No date" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin fecha"
+          }
+        }
+      }
     },
     "No deposits yet — the first one lands here." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay depósitos — el primero aparecerá aquí."
+          }
+        }
+      }
     },
     "No expenses yet" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay gastos"
+          }
+        }
+      }
     },
     "No goals yet — create one first." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay metas — primero crea una."
+          }
+        }
+      }
     },
     "No income yet" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay ingresos"
+          }
+        }
+      }
     },
     "No target date — save at your own pace." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin fecha objetivo — ahorra a tu ritmo."
+          }
+        }
+      }
     },
     "No tip for today yet — check back soon." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay consejo para hoy — vuelve pronto."
+          }
+        }
+      }
     },
     "No transactions yet" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay movimientos"
+          }
+        }
+      }
     },
     "no_button" : {
       "comment" : "No Button",
@@ -2277,52 +3478,30 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sin metas recientemente"
-          }
-        }
-      }
-    },
-    "no_unnecessary_spending_description" : {
-      "comment" : "Description for avoiding unnecessary spending",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have avoided unnecessary spending for a whole month."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ha evitado gastos innecesarios durante un mes entero."
-          }
-        }
-      }
-    },
-    "no_unnecessary_spending_title" : {
-      "comment" : "Title for avoiding unnecessary spending",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "No Unnecessary Spending"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sin Gastos Innecesarios"
+            "value" : "Sin metas recientes"
           }
         }
       }
     },
     "NOTE" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NOTA"
+          }
+        }
+      }
     },
     "Nothing here yet — let's plant the first one." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay nada — plantemos la primera."
+          }
+        }
+      }
     },
     "notice_label" : {
       "comment" : "Notice Label",
@@ -2355,7 +3534,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elija los horarios para recibir alertas sobre gastos y metas."
+            "value" : "Elige a qué hora quieres recibir avisos de gastos y metas."
           }
         }
       }
@@ -2373,7 +3552,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configuración de Notificaciones"
+            "value" : "Configuración de notificaciones"
           }
         }
       }
@@ -2415,13 +3594,34 @@
       }
     },
     "of %@" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de %@"
+          }
+        }
+      }
     },
     "of $%lld" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de $%lld"
+          }
+        }
+      }
     },
     "OK" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "ok_button" : {
       "comment" : "OK Button",
@@ -2441,6 +3641,26 @@
         }
       }
     },
+    "On — $%lld each payday" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activo — $%lld cada día de pago"
+          }
+        }
+      }
+    },
+    "On — amount set later" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activo — monto por definir"
+          }
+        }
+      }
+    },
     "onboarding_welcome_label" : {
       "comment" : "Onboarding welcome step description (privacy)",
       "extractionState" : "extracted_with_value",
@@ -2449,6 +3669,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "No accounts, no cloud. Your money data lives on your iPhone and never leaves it."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin cuentas ni nube. Tus datos de dinero viven en tu iPhone y nunca salen de él."
           }
         }
       }
@@ -2461,6 +3687,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Yours, and only yours"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tuyo, y solo tuyo"
           }
         }
       }
@@ -2484,61 +3716,141 @@
       }
     },
     "Optional note" : {
-
-    },
-    "other_way_to_connect_label" : {
-      "comment" : "Other Way to Connect",
-      "extractionState" : "stale",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Or connect using"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O conéctese usando"
+            "value" : "Nota opcional"
           }
         }
       }
     },
     "PACE" : {
-
-    },
-    "password_string" : {
-      "comment" : "Password String",
-      "extractionState" : "stale",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Password"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Contraseña"
+            "value" : "RITMO"
           }
         }
       }
     },
-    "passwords_dont_match" : {
-      "comment" : "Passwords Doesnt Match",
-      "extractionState" : "stale",
+    "pace.behind" : {
+      "comment" : "Goal pace status (the goal is feminine in es: Atrasada)",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Passwords doesn't match"
+            "value" : "Behind"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las contraseñas no coinciden"
+            "value" : "Atrasada"
+          }
+        }
+      }
+    },
+    "pace.complete" : {
+      "comment" : "Goal pace status when the goal is funded",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Complete!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completa"
+          }
+        }
+      }
+    },
+    "pace.eta.done" : {
+      "comment" : "ETA value when the goal is complete",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Done!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista"
+          }
+        }
+      }
+    },
+    "pace.eta.overAYear" : {
+      "comment" : "ETA value when the projection is more than a year out",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1+ year"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1+ año"
+          }
+        }
+      }
+    },
+    "pace.onTrack" : {
+      "comment" : "Goal pace status (the goal is feminine in es: a tiempo)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "On track"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A tiempo"
+          }
+        }
+      }
+    },
+    "Payday" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Día de pago"
+          }
+        }
+      }
+    },
+    "Per month" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por mes"
+          }
+        }
+      }
+    },
+    "Per week" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por semana"
           }
         }
       }
@@ -2556,7 +3868,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Información Personal"
+            "value" : "Información personal"
           }
         }
       }
@@ -2579,11 +3891,35 @@
         }
       }
     },
+    "Pick a date in the future, or turn the date off." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige una fecha futura o desactiva la fecha."
+          }
+        }
+      }
+    },
     "Pick the amount later in the goal's settings." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige el monto después en los ajustes de la meta."
+          }
+        }
+      }
     },
     "Pick what to log right now." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige qué registrar ahora."
+          }
+        }
+      }
     },
     "pick_date_label" : {
       "comment" : "Pick Date Label",
@@ -2598,7 +3934,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Selecciona Fecha"
+            "value" : "Elige una fecha"
           }
         }
       }
@@ -2616,16 +3952,40 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Selecciona Periodo de Tiempo"
+            "value" : "Elige un periodo"
           }
         }
       }
     },
     "Plant goal" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plantar meta"
+          }
+        }
+      }
     },
     "Planted." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plantada."
+          }
+        }
+      }
+    },
+    "Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inténtalo de nuevo."
+          }
+        }
+      }
     },
     "please_confirm_value_title" : {
       "comment" : "Please Confirm Value Title",
@@ -2640,7 +4000,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Por favor confirme el valor"
+            "value" : "Confirma el valor"
           }
         }
       }
@@ -2690,7 +4050,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Consejos Anteriores"
+            "value" : "Consejos anteriores"
           }
         }
       }
@@ -2730,7 +4090,294 @@
       }
     },
     "Progress overall" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progreso total"
+          }
+        }
+      }
+    },
+    "quickadd.automove.failed" : {
+      "comment" : "Alert when the income saved but the goal deposit did not; %@ is the goal name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Income saved, but the auto-move to %@ failed."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se guardó el ingreso, pero no se pudo mover el dinero a %@."
+          }
+        }
+      }
+    },
+    "quickadd.automove.note" : {
+      "comment" : "Shown in goal history for payday auto-move deposits (display only; the stored note stays English)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Payday auto-move"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movido en día de pago"
+          }
+        }
+      }
+    },
+    "quickadd.automove.undo" : {
+      "comment" : "Disarms the payday auto-move suggestion (short, uppercase)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "UNDO"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DESHACER"
+          }
+        }
+      }
+    },
+    "quickadd.automove.yes" : {
+      "comment" : "Arms the payday auto-move suggestion (short, uppercase)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "YES"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SÍ"
+          }
+        }
+      }
+    },
+    "quickadd.deposit" : {
+      "comment" : "Quick-add action",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Deposit to a goal"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depositar a una meta"
+          }
+        }
+      }
+    },
+    "quickadd.deposit.sub" : {
+      "comment" : "Quick-add action subtitle",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Move money toward a goal"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mueve dinero hacia una meta"
+          }
+        }
+      }
+    },
+    "quickadd.logExpense" : {
+      "comment" : "Quick-add action and sheet title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Log expense"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registrar gasto"
+          }
+        }
+      }
+    },
+    "quickadd.logExpense.sub" : {
+      "comment" : "Quick-add action subtitle",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Coffee, groceries, anything"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Café, súper, lo que sea"
+          }
+        }
+      }
+    },
+    "quickadd.logIncome" : {
+      "comment" : "Quick-add action and sheet title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Log income"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registrar ingreso"
+          }
+        }
+      }
+    },
+    "quickadd.logIncome.sub" : {
+      "comment" : "Quick-add action subtitle",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Paycheck, gift, side work"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sueldo, regalo, trabajo extra"
+          }
+        }
+      }
+    },
+    "quickadd.moveMoney" : {
+      "comment" : "Deposit sheet title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Move money"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mover dinero"
+          }
+        }
+      }
+    },
+    "quickadd.newGoal" : {
+      "comment" : "Quick-add action",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "New goal"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva meta"
+          }
+        }
+      }
+    },
+    "quickadd.newGoal.sub" : {
+      "comment" : "Quick-add action subtitle",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Start something new"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empieza algo nuevo"
+          }
+        }
+      }
+    },
+    "quickadd.scan" : {
+      "comment" : "Quick-add action",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Scan a receipt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escanear recibo"
+          }
+        }
+      }
+    },
+    "quickadd.scan.sub" : {
+      "comment" : "Quick-add action subtitle",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "We'll read the total, merchant and date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leemos el total, el comercio y la fecha"
+          }
+        }
+      }
+    },
+    "Reach %lld%% on any goal" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llega al %lld%% en cualquier meta"
+          }
+        }
+      }
     },
     "receive_tips_label" : {
       "comment" : "Receive Tips Label",
@@ -2745,7 +4392,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obtenga consejos personalizados para mejorar su salud financiera."
+            "value" : "Recibe consejos personalizados para mejorar tu salud financiera."
           }
         }
       }
@@ -2763,13 +4410,20 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recibir Consejos"
+            "value" : "Recibe consejos"
           }
         }
       }
     },
     "Recent" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recientes"
+          }
+        }
+      }
     },
     "recent_expenses_title" : {
       "comment" : "Recent Expenses Title",
@@ -2784,7 +4438,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gastos Recientes"
+            "value" : "Gastos recientes"
           }
         }
       }
@@ -2802,7 +4456,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ingresos Recientes"
+            "value" : "Ingresos recientes"
           }
         }
       }
@@ -2860,7 +4514,14 @@
       }
     },
     "Reports" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reportes"
+          }
+        }
+      }
     },
     "reports_tab_string" : {
       "comment" : "Reports Tab String",
@@ -2881,10 +4542,24 @@
       }
     },
     "Save" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
+          }
+        }
+      }
     },
     "Save with intention" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorra con intención"
+          }
+        }
+      }
     },
     "save_button" : {
       "comment" : "Save Button",
@@ -2905,10 +4580,14 @@
       }
     },
     "SAVED" : {
-
-    },
-    "Savely" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AHORRADO"
+          }
+        }
+      }
     },
     "savely_app_title" : {
       "comment" : "Savely App Title",
@@ -2924,6 +4603,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Savely"
+          }
+        }
+      }
+    },
+    "Saver" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buen ahorro"
           }
         }
       }
@@ -2977,7 +4666,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Resumen de Ahorros"
+            "value" : "Resumen de ahorros"
           }
         }
       }
@@ -2995,13 +4684,20 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tendencia de Ahorros"
+            "value" : "Tendencia de ahorros"
           }
         }
       }
     },
     "Scan a receipt" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escanear recibo"
+          }
+        }
+      }
     },
     "scan_alternatives_label" : {
       "comment" : "Label above the alternative amount chips",
@@ -3376,7 +5072,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Escanear Recibo"
+            "value" : "Escanear recibo"
           }
         }
       }
@@ -3408,6 +5104,12 @@
             "state" : "new",
             "value" : "Point the camera at a receipt and Savely reads the total for you."
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apunta la cámara a un recibo y Savely lee el total por ti."
+          }
         }
       }
     },
@@ -3419,6 +5121,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Scan Receipts"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escanea recibos"
           }
         }
       }
@@ -3640,10 +5348,24 @@
       }
     },
     "See all" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver todo"
+          }
+        }
+      }
     },
     "See all ›" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver todo ›"
+          }
+        }
+      }
     },
     "see_previous_tips_label" : {
       "comment" : "See Previous Tips Label",
@@ -3664,7 +5386,14 @@
       }
     },
     "Select a goal" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige una meta"
+          }
+        }
+      }
     },
     "select_tab_placeholder" : {
       "comment" : "Select Tab Placeholder",
@@ -3679,7 +5408,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Selecciona Pestaña"
+            "value" : "Elige una pestaña"
           }
         }
       }
@@ -3697,13 +5426,30 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar Hora"
+            "value" : "Elige la hora"
           }
         }
       }
     },
     "Set $%lld aside the day after each paycheck." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aparta $%lld el día después de cada sueldo."
+          }
+        }
+      }
+    },
+    "Set an auto-move amount above $0, or turn auto-move off." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pon un monto mayor que $0 para mover al ahorro, o desactívalo."
+          }
+        }
+      }
     },
     "set_goals_label" : {
       "comment" : "Set Goals Label",
@@ -3718,7 +5464,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Defina sus objetivos financieros y trabaje para alcanzarlos."
+            "value" : "Define tus objetivos financieros y trabaja para alcanzarlos."
           }
         }
       }
@@ -3736,97 +5482,152 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Definir Metas"
+            "value" : "Define tus metas"
           }
         }
       }
     },
-    "sign_in_string" : {
-      "comment" : "Sign In String",
-      "extractionState" : "stale",
+    "Settings" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sign In"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Iniciar Sesión"
+            "value" : "Ajustes"
           }
         }
       }
     },
-    "sign_out_button" : {
-      "comment" : "Sign Out Button",
-      "extractionState" : "stale",
+    "Show on home screen" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sign Out"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cerrar Sesión"
-          }
-        }
-      }
-    },
-    "sign_up_label" : {
-      "comment" : "Sign Up Label",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sign Up"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Registrarse"
-          }
-        }
-      }
-    },
-    "sign_up_to_get_started" : {
-      "comment" : "Sign Up To Get Started",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sign up to get started"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regístrese para comenzar"
+            "value" : "Mostrar en Inicio"
           }
         }
       }
     },
     "Skip" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omitir"
+          }
+        }
+      }
     },
     "Source" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Origen"
+          }
+        }
+      }
     },
     "Source · Today" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Origen · Hoy"
+          }
+        }
+      }
     },
     "Source…" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Origen…"
+          }
+        }
+      }
+    },
+    "source.freelance" : {
+      "comment" : "Income source chip",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Freelance"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Freelance"
+          }
+        }
+      }
+    },
+    "source.gift" : {
+      "comment" : "Income source chip",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Gift"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regalo"
+          }
+        }
+      }
+    },
+    "source.paycheck" : {
+      "comment" : "Income source chip",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Paycheck"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sueldo"
+          }
+        }
+      }
+    },
+    "source.untagged" : {
+      "comment" : "Reports: income logged without a source",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Untagged"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin etiqueta"
+          }
+        }
+      }
     },
     "Star a goal to see it here" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca una meta como favorita para verla aquí"
+          }
+        }
+      }
     },
     "start_button" : {
       "comment" : "Start Button",
@@ -3841,7 +5642,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Iniciar"
+            "value" : "Empezar"
           }
         }
       }
@@ -3859,7 +5660,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fecha de Inicio"
+            "value" : "Fecha de inicio"
           }
         }
       }
@@ -3918,47 +5719,125 @@
         }
       }
     },
-    "subscription_cleanup_description" : {
-      "comment" : "Description for canceling unused subscriptions",
-      "extractionState" : "stale",
+    "Steady hand" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have canceled unused subscriptions to reduce your monthly expenses."
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ha cancelado suscripciones sin uso para reducir sus gastos mensuales."
-          }
-        }
-      }
-    },
-    "subscription_cleanup_title" : {
-      "comment" : "Title for canceling unused subscriptions",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Subscription Clean-up"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limpieza de Suscripciones"
+            "value" : "Mano firme"
           }
         }
       }
     },
     "SUGGESTED PACE" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RITMO SUGERIDO"
+          }
+        }
+      }
+    },
+    "tabbar.add.hint" : {
+      "comment" : "Accessibility hint of the + tab bar button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Log an expense, income, deposit, or new goal"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra un gasto, un ingreso, un depósito o una nueva meta"
+          }
+        }
+      }
+    },
+    "tabbar.goals" : {
+      "comment" : "Tab bar item",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Goals"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metas"
+          }
+        }
+      }
+    },
+    "tabbar.home" : {
+      "comment" : "Tab bar item",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Home"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicio"
+          }
+        }
+      }
+    },
+    "tabbar.me" : {
+      "comment" : "Tab bar item (profile)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Me"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfil"
+          }
+        }
+      }
+    },
+    "tabbar.money" : {
+      "comment" : "Tab bar item",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Money"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinero"
+          }
+        }
+      }
     },
     "Take a look\nbefore we start." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échale un vistazo\nantes de empezar."
+          }
+        }
+      }
     },
     "take_another_photo_label" : {
       "comment" : "Take Another Photo Label",
@@ -3978,32 +5857,55 @@
         }
       }
     },
-    "Target date" : {
-
-    },
-    "terms_of_service_label" : {
-      "comment" : "Terms of Service Label",
-      "extractionState" : "stale",
+    "Target" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Terms of Service"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Términos del Servicio"
+            "value" : "Objetivo"
+          }
+        }
+      }
+    },
+    "Target date" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha objetivo"
           }
         }
       }
     },
     "That's **about one less takeout per week**. Doable." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es **como pedir comida una vez menos por semana**. Se puede."
+          }
+        }
+      }
+    },
+    "The target has to be more than $0." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El objetivo tiene que ser mayor que $0."
+          }
+        }
+      }
     },
     "This is what you'll see on your dashboard." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto es lo que verás en Inicio."
+          }
+        }
+      }
     },
     "this_month_label" : {
       "comment" : "This Month Label",
@@ -4018,7 +5920,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Este Mes"
+            "value" : "Este mes"
           }
         }
       }
@@ -4036,7 +5938,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Este Trimestre"
+            "value" : "Este trimestre"
           }
         }
       }
@@ -4054,52 +5956,50 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Este Año"
+            "value" : "Este año"
           }
         }
       }
     },
-    "three_goals_description" : {
-      "comment" : "Description for achieving three goals",
-      "extractionState" : "stale",
+    "Timing" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have achieved three different savings goals."
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ha logrado tres metas de ahorro diferentes."
-          }
-        }
-      }
-    },
-    "three_goals_title" : {
-      "comment" : "Title for achieving three goals",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Three Goals Achieved"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tres Metas Alcanzadas"
+            "value" : "Plazo"
           }
         }
       }
     },
     "TIMING" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PLAZO"
+          }
+        }
+      }
+    },
+    "Tip history" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historial de consejos"
+          }
+        }
+      }
     },
     "TIP OF THE DAY" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CONSEJO DEL DÍA"
+          }
+        }
+      }
     },
     "tip_of_the_day_title" : {
       "comment" : "Tip of the Day Title",
@@ -4114,13 +6014,20 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Consejo del Día"
+            "value" : "Consejo del día"
           }
         }
       }
     },
     "Tip: be specific. Try a specific name like Kyoto trip '26." : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consejo: entre más específico, mejor. Prueba algo como Viaje a Kioto '26."
+          }
+        }
+      }
     },
     "tips_and_suggestion_title" : {
       "comment" : "Tips and Suggestions Tittle",
@@ -4135,7 +6042,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Consejos y Sugerencias"
+            "value" : "Consejos y sugerencias"
           }
         }
       }
@@ -4153,25 +6060,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Historial de Consejos"
-          }
-        }
-      }
-    },
-    "title" : {
-      "comment" : "Title for loading view",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Loading..."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Logros"
+            "value" : "Historial de consejos"
           }
         }
       }
@@ -4183,11 +6072,24 @@
             "state" : "new",
             "value" : "To hit **$%1$lld** by **%2$@**."
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para llegar a **$%1$lld** para el **%2$@**."
+          }
         }
       }
     },
     "TO WHICH GOAL" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A QUÉ META"
+          }
+        }
+      }
     },
     "track_expenses_label" : {
       "comment" : "Track Expenses Label",
@@ -4202,7 +6104,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Registre y categorice sus gastos para entender sus hábitos de consumo."
+            "value" : "Registra y clasifica tus gastos para entender tus hábitos de consumo."
           }
         }
       }
@@ -4220,7 +6122,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Controle sus Gastos"
+            "value" : "Controla tus gastos"
           }
         }
       }
@@ -4238,7 +6140,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Registre sus ingresos para planificar mejor su presupuesto y alcanzar sus metas de ahorro."
+            "value" : "Registra tus ingresos para planear mejor tu presupuesto y alcanzar tus metas de ahorro."
           }
         }
       }
@@ -4256,7 +6158,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Controle sus Ingresos"
+            "value" : "Controla tus ingresos"
           }
         }
       }
@@ -4270,6 +6172,12 @@
             "state" : "new",
             "value" : "Log income and expenses in seconds and understand where your money goes."
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra ingresos y gastos en segundos y entiende a dónde va tu dinero."
+          }
         }
       }
     },
@@ -4282,11 +6190,24 @@
             "state" : "new",
             "value" : "Track Your Money"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controla tu dinero"
+          }
         }
       }
     },
-    "UNDO" : {
-
+    "Unable to open sharing options." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudieron abrir las opciones para compartir."
+          }
+        }
+      }
     },
     "Unlocked" : {
       "localizations" : {
@@ -4333,25 +6254,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Actualizar Información"
-          }
-        }
-      }
-    },
-    "view_achievements" : {
-      "comment" : "View Achievements Label",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "View Achievements"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ver Logros"
+            "value" : "Actualizar información"
           }
         }
       }
@@ -4372,38 +6275,22 @@
         }
       }
     },
-    "weekly_budget_description" : {
-      "comment" : "Description for achieving the weekly budget goal",
-      "extractionState" : "stale",
+    "Weekly Financial Report" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You have successfully stayed within your budget for a whole week."
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Se ha mantenido dentro de su presupuesto durante una semana completa."
+            "value" : "Reporte financiero semanal"
           }
         }
       }
     },
-    "weekly_budget_title" : {
-      "comment" : "Title for achieving the weekly budget goal",
-      "extractionState" : "stale",
+    "Weekly PDF report" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Weekly Budget Goal"
-          }
-        },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meta Presupuestaria Semanal"
+            "value" : "Reporte semanal en PDF"
           }
         }
       }
@@ -4421,7 +6308,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gastos Semanales"
+            "value" : "Gastos semanales"
           }
         }
       }
@@ -4439,25 +6326,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reporte Semanal"
-          }
-        }
-      }
-    },
-    "welcome_back_string" : {
-      "comment" : "Welcome Back String",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Welcome Back!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Bienvenido de Vuelta!"
+            "value" : "Reporte semanal"
           }
         }
       }
@@ -4475,28 +6344,70 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenido a Savely"
+            "value" : "Te damos la bienvenida a Savely"
           }
         }
       }
     },
     "What are you saving for?" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Para qué ahorras?"
+          }
+        }
+      }
     },
     "What did you buy?" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué compraste?"
+          }
+        }
+      }
     },
     "WHAT YOU'RE SAVING FOR" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PARA QUÉ AHORRAS"
+          }
+        }
+      }
     },
     "What's the\nfinish line?" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Hasta dónde\nquieres llegar?"
+          }
+        }
+      }
     },
     "What's the move?" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué hacemos?"
+          }
+        }
+      }
     },
     "When do you\nwant this by?" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Para cuándo\nlo quieres?"
+          }
+        }
+      }
     },
     "yellow_Color" : {
       "comment" : "Yellow Color",
@@ -4516,9 +6427,6 @@
         }
       }
     },
-    "YES" : {
-
-    },
     "yes_button" : {
       "comment" : "Yes Button",
       "extractionState" : "extracted_with_value",
@@ -4533,6 +6441,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sí"
+          }
+        }
+      }
+    },
+    "You've already saved %@ — the target can't be lower than that." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya ahorraste %@ — el objetivo no puede ser menor."
+          }
+        }
+      }
+    },
+    "Your data isn't ready yet. Please try again." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus datos aún no están listos. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "Your goal name" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El nombre de tu meta"
           }
         }
       }

@@ -68,23 +68,10 @@ jobs:
         # how to tighten this over time.
         run: swiftlint lint --reporter github-actions-logging
 
-      - name: Generate placeholder secrets
-        # Config.plist (OpenAI) is gitignored locally, but the Xcode project
-        # lists it as a required build input. xcodebuild fails on a fresh
-        # checkout if it's absent. CI never calls OpenAI, so a placeholder
-        # with the right shape is sufficient. (GoogleService-Info.plist died
-        # with the Firebase removal — see docs/plans/remove-auth-firebase.md.)
-        run: |
-          cat > Savely/Config.plist <<'PLIST'
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-              <key>OPENAI_API_KEY</key>
-              <string>ci-placeholder-not-a-real-key</string>
-          </dict>
-          </plist>
-          PLIST
+      - name: Localization completeness
+        # Every live key in Localizable.xcstrings needs a translated es-419
+        # value with the same format specifiers as the English source.
+        run: python3 scripts/check-l10n.py
 
       - name: Build
         run: |

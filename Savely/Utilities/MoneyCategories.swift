@@ -20,7 +20,20 @@ enum ExpenseCategory: String, CaseIterable, Identifiable {
     case other = "Other"
 
     var id: String { rawValue }
-    var label: String { rawValue }
+    /// The stable storage key — what `ExpenseModel.category` holds. Never
+    /// localized: rows written in any language must keep matching.
+    var storageKey: String { rawValue }
+
+    /// What the UI shows. Localized; never written to the store.
+    var displayName: String {
+        switch self {
+        case .coffee: return Strings.Categories.coffee
+        case .food: return Strings.Categories.food
+        case .transit: return Strings.Categories.transit
+        case .shopping: return Strings.Categories.shopping
+        case .other: return Strings.Categories.other
+        }
+    }
 
     var icon: String {
         switch self {
@@ -93,7 +106,18 @@ enum IncomeSource: String, CaseIterable, Identifiable {
     case other = "Other"
 
     var id: String { rawValue }
-    var label: String { rawValue }
+    /// The stable storage key — what `IncomeModel.source` holds. Never localized.
+    var storageKey: String { rawValue }
+
+    /// What the UI shows. Localized; never written to the store.
+    var displayName: String {
+        switch self {
+        case .paycheck: return Strings.Categories.paycheck
+        case .freelance: return Strings.Categories.freelance
+        case .gift: return Strings.Categories.gift
+        case .other: return Strings.Categories.other
+        }
+    }
 
     var icon: String {
         switch self {
