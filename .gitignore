@@ -46,3 +46,6 @@ fastlane/Preview.html
 fastlane/screenshots/
 fastlane/test_output/
 fastlane/README.md
+
+# /brag launch-video renders (large, regenerable)
+brag-output*/
