@@ -195,7 +195,7 @@ class ProfileViewModel: ObservableObject {
     func generateWeeklyReportPDF() {
         print("generateWeeklyReportPDF: Checking data availability.")
         guard !weeklyIncomes.isEmpty || !weeklyExpenses.isEmpty else {
-            alertMessage = "No data available to generate the report."
+            alertMessage = String(localized: "No data available to generate the report.")
             showAlert = true
             print("generateWeeklyReportPDF: No data available to generate the report.")
             return
@@ -203,7 +203,7 @@ class ProfileViewModel: ObservableObject {
 
         guard let pdfData = ReportsPDFGenerator.generateWeeklyReport(incomes: weeklyIncomes, expenses: weeklyExpenses) else {
             print("generateWeeklyReportPDF: Failed to generate PDF")
-            alertMessage = "Failed to generate the PDF report."
+            alertMessage = String(localized: "Failed to generate the PDF report.")
             showAlert = true
             return
         }
@@ -216,7 +216,7 @@ class ProfileViewModel: ObservableObject {
             // Ensure file exists
             guard FileManager.default.fileExists(atPath: tempURL.path) else {
                 print("generateWeeklyReportPDF: File does not exist at \(tempURL)")
-                alertMessage = "Failed to locate the PDF file."
+                alertMessage = String(localized: "Failed to locate the PDF file.")
                 showAlert = true
                 return
             }
@@ -229,13 +229,13 @@ class ProfileViewModel: ObservableObject {
                     rootViewController.present(activityViewController, animated: true, completion: nil)
                 } else {
                     print("generateWeeklyReportPDF: Unable to find rootViewController")
-                    self.alertMessage = "Unable to open sharing options."
+                    self.alertMessage = String(localized: "Unable to open sharing options.")
                     self.showAlert = true
                 }
             }
         } catch {
             print("generateWeeklyReportPDF: Error saving PDF: \(error)")
-            alertMessage = "Error saving the PDF file."
+            alertMessage = String(localized: "Error saving the PDF file.")
             showAlert = true
         }
     }

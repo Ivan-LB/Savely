@@ -67,6 +67,12 @@ Image(systemName: "trash")
   .accessibilityLabel(L10n.Common.delete)
 ```
 
+## Supported languages & the CI gate
+
+English (source) and **es-419** (Latin-American Spanish, tú, sentence case, no exclamation marks — see PRODUCT.md voice). `scripts/check-l10n.py` runs in CI ("Localization completeness"): every live key needs a translated es-419 value with the same format specifiers. Run it locally before committing catalog changes. When editing `Localizable.xcstrings` by script, keep Xcode's formatting (`" : "` separators, keys ordered by `localizedStandardCompare`) so diffs stay reviewable.
+
+Persisted identifiers (categories, income sources, notes, ids) are never localized — see `gotchas.yaml#persisted-identifiers-never-localized`.
+
 ## Catalog hygiene
 
 - Keep keys grouped by feature in `Strings.swift` so they're easy to find.

@@ -8,7 +8,7 @@ struct MoneyView: View {
             // Segmented control header
             Picker("", selection: $selectedSegment) {
                 Text("Expenses").tag(0)
-                Text("Income").tag(1)
+                Text(Strings.IncomesTrackerView.title).tag(1)
             }
             .pickerStyle(.segmented)
             .padding(.horizontal, 20)

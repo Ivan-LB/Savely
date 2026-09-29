@@ -239,7 +239,7 @@ struct ReceiptReviewView: View {
                     let isOn = review.wrappedValue.category == cat
                     let fg = cat.tileTextColor
                     Button(action: { review.wrappedValue.category = cat }) {
-                        Text(cat.label)
+                        Text(cat.displayName)
                             .warmFont(13, weight: .semibold)
                             .foregroundStyle(isOn ? fg : Color.warmInkSoft)
                             .padding(.horizontal, 14).padding(.vertical, 8)

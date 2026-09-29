@@ -92,8 +92,8 @@ struct WarmTabBar: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
-            WarmTabBarItem(icon: "house.fill",       label: "Home",  tag: 0, selectedTab: $selectedTab)
-            WarmTabBarItem(icon: "target",            label: "Goals", tag: 1, selectedTab: $selectedTab)
+            WarmTabBarItem(icon: "house.fill",       label: Strings.TabBar.home,  tag: 0, selectedTab: $selectedTab)
+            WarmTabBarItem(icon: "target",            label: Strings.TabBar.goals, tag: 1, selectedTab: $selectedTab)
 
             Button(action: onAddTapped) {
                 Image(systemName: "plus")
@@ -108,14 +108,14 @@ struct WarmTabBar: View {
                     )
                     .rotationEffect(.degrees(isExpanded ? 45 : 0))
             }
-            .accessibilityLabel(isExpanded ? "Close" : "Add")
-            .accessibilityHint("Log an expense, income, deposit, or new goal")
+            .accessibilityLabel(isExpanded ? Strings.Common.close : Strings.Common.add)
+            .accessibilityHint(Strings.TabBar.addHint)
             .animation(.spring(response: 0.28, dampingFraction: 0.65), value: isExpanded)
             .frame(maxWidth: .infinity)
             .offset(y: -14)
 
-            WarmTabBarItem(icon: "wallet.pass.fill", label: "Money", tag: 2, selectedTab: $selectedTab)
-            WarmTabBarItem(icon: "person.fill",       label: "Me",    tag: 3, selectedTab: $selectedTab)
+            WarmTabBarItem(icon: "wallet.pass.fill", label: Strings.TabBar.money, tag: 2, selectedTab: $selectedTab)
+            WarmTabBarItem(icon: "person.fill",       label: Strings.TabBar.me,    tag: 3, selectedTab: $selectedTab)
         }
         .padding(.horizontal, 8)
         .padding(.top, 10)
@@ -205,11 +205,15 @@ private struct QuickAction {
 }
 
 private let quickActions: [QuickAction] = [
-    QuickAction(icon: "wallet.pass",  label: "Log expense",       sub: "Coffee, groceries, anything",  bg: .warmAmberSoft, fg: .warmAmber, kind: .screen(.expense)),
-    QuickAction(icon: "arrow.up",     label: "Log income",        sub: "Paycheck, gift, side work",    bg: .warmGreenSoft, fg: .warmGreen, kind: .screen(.income)),
-    QuickAction(icon: "target",       label: "Deposit to a goal", sub: "Move money toward a goal",     bg: .warmSkySoft,   fg: .warmSky,   kind: .screen(.deposit)),
-    QuickAction(icon: "camera",       label: "Scan a receipt",    sub: "We'll read the total, merchant and date", bg: .warmClaySoft, fg: .warmClay, kind: .scan),
-    QuickAction(icon: "plus",         label: "New goal",          sub: "Start something new",
+    QuickAction(icon: "wallet.pass",  label: Strings.QuickAdd.logExpense,    sub: Strings.QuickAdd.logExpenseSub,
+                bg: .warmAmberSoft, fg: .warmAmber, kind: .screen(.expense)),
+    QuickAction(icon: "arrow.up",     label: Strings.QuickAdd.logIncome,     sub: Strings.QuickAdd.logIncomeSub,
+                bg: .warmGreenSoft, fg: .warmGreen, kind: .screen(.income)),
+    QuickAction(icon: "target",       label: Strings.QuickAdd.depositToGoal, sub: Strings.QuickAdd.depositToGoalSub,
+                bg: .warmSkySoft,   fg: .warmSky,   kind: .screen(.deposit)),
+    QuickAction(icon: "camera",       label: Strings.QuickAdd.scanReceipt,   sub: Strings.QuickAdd.scanReceiptSub,
+                bg: .warmClaySoft, fg: .warmClay, kind: .scan),
+    QuickAction(icon: "plus",         label: Strings.QuickAdd.newGoal,       sub: Strings.QuickAdd.newGoalSub,
                 bg: .warmLilacSoft, fg: .warmLilac, kind: .newGoal),
 ]
 
@@ -239,7 +243,7 @@ struct WarmActionSheet: View {
                         .overlay(Circle().stroke(Color.warmLine, lineWidth: 1))
                         .tappable44()
                 }
-                .accessibilityLabel("Close")
+                .accessibilityLabel(Strings.Common.close)
             }
             .padding(.horizontal, 20)
 
@@ -323,7 +327,7 @@ struct WarmKeypad: View {
                         .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel(key == "⌫" ? "Delete" : key == "." ? "Decimal point" : key)
+                    .accessibilityLabel(key == "⌫" ? Strings.Common.deleteKey : key == "." ? Strings.Common.decimalPoint : key)
                 }
             }
             .background(Color.warmSurface)
@@ -364,10 +368,9 @@ func formatKeypadAmount(_ raw: String) -> String {
 
 // MARK: - Quick expense
 
-/// The expense chips, straight from the canonical categories (what gets stored).
-private let expenseCats: [(label: String, bg: Color, fg: Color)] = ExpenseCategory.allCases.map {
-    ($0.label, $0.tileBackground, $0.tileTextColor)
-}
+/// The expense chips, straight from the canonical categories. The chip
+/// *shows* `displayName` (localized) and *stores* `storageKey` (stable English).
+private let expenseCats: [ExpenseCategory] = ExpenseCategory.allCases
 
 struct WarmQuickExpenseView: View {
     @Environment(\.modelContext) private var modelContext
@@ -375,7 +378,7 @@ struct WarmQuickExpenseView: View {
 
     @State private var amountStr = "0"
     @State private var description = ""
-    @State private var selectedCat = ExpenseCategory.coffee.label
+    @State private var selectedCat = ExpenseCategory.coffee
     @StateObject private var vm = ExpenseTrackerViewModel()
 
     private var canSave: Bool { amountStr != "0" }
@@ -392,9 +395,9 @@ struct WarmQuickExpenseView: View {
                         .frame(width: 32, height: 32)
                         .tappable44()
                 }
-                .accessibilityLabel("Back")
+                .accessibilityLabel(Strings.Common.back)
                 Spacer()
-                Text("Log expense")
+                Text(Strings.QuickAdd.logExpense)
                     .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Button("Save", action: saveAndDismiss)
@@ -427,18 +430,19 @@ struct WarmQuickExpenseView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
-                    ForEach(expenseCats, id: \.label) { cat in
-                        let isOn = selectedCat == cat.label
-                        Button(action: { selectedCat = cat.label }) {
-                            Text(cat.label)
+                    ForEach(expenseCats) { cat in
+                        let isOn = selectedCat == cat
+                        Button(action: { selectedCat = cat }) {
+                            Text(cat.displayName)
                                 .warmFont(13, weight: .semibold)
-                                .foregroundStyle(isOn ? cat.fg : Color.warmInkSoft)
+                                .foregroundStyle(isOn ? cat.tileTextColor : Color.warmInkSoft)
                                 .padding(.horizontal, 14).padding(.vertical, 8)
-                                .background(isOn ? cat.bg : Color.clear)
+                                .background(isOn ? cat.tileBackground : Color.clear)
                                 .clipShape(Capsule())
-                                .overlay(Capsule().stroke(isOn ? cat.bg : Color.warmLine, lineWidth: 1))
+                                .overlay(Capsule().stroke(isOn ? cat.tileBackground : Color.warmLine, lineWidth: 1))
                         }
                         .buttonStyle(.plain)
+                        .accessibilityAddTraits(isOn ? [.isSelected] : [])
                         .animation(.easeInOut(duration: 0.15), value: selectedCat)
                     }
                 }
@@ -457,10 +461,12 @@ struct WarmQuickExpenseView: View {
 
     private func saveAndDismiss() {
         guard canSave, let amt = Double(amountStr), amt > 0 else { return }
-        // Description and category are independent: the chip is stored as
-        // the category always, and only stands in for an empty description.
-        vm.expenseDescription = description.isEmpty ? selectedCat : description
-        vm.amount = amountStr; vm.addExpense(category: selectedCat); onSave()
+        // Description and category are independent: the chip's stable
+        // storage key is stored as the category always. Only an empty
+        // description borrows the chip's *display* name — the description
+        // is free text the user reads back, so it follows their language.
+        vm.expenseDescription = description.isEmpty ? selectedCat.displayName : description
+        vm.amount = amountStr; vm.addExpense(category: selectedCat.storageKey); onSave()
     }
 }
 
@@ -476,11 +482,11 @@ struct WarmQuickIncomeView: View {
 
     @State private var amountStr = "0"
     @State private var description = ""
-    @State private var selectedSource = IncomeSource.paycheck.label
+    @State private var selectedSource = IncomeSource.paycheck
     @State private var autoMoveArmed = false
     @StateObject private var vm = IncomesTrackerViewModel()
 
-    private let sources = IncomeSource.allCases.map(\.label)
+    private let sources = IncomeSource.allCases
     private var canSave: Bool { amountStr != "0" }
     private var enteredAmount: Double { Double(amountStr) ?? 0 }
 
@@ -519,9 +525,9 @@ struct WarmQuickIncomeView: View {
                         .frame(width: 32, height: 32)
                         .tappable44()
                 }
-                .accessibilityLabel("Back")
+                .accessibilityLabel(Strings.Common.back)
                 Spacer()
-                Text("Log income")
+                Text(Strings.QuickAdd.logIncome)
                     .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Button("Save", action: saveAndDismiss)
@@ -553,10 +559,10 @@ struct WarmQuickIncomeView: View {
                 .padding(.horizontal, 60).padding(.top, 12)
 
             HStack(spacing: 8) {
-                ForEach(sources, id: \.self) { src in
+                ForEach(sources) { src in
                     let isOn = selectedSource == src
                     Button(action: { selectedSource = src }) {
-                        Text(src)
+                        Text(src.displayName)
                             .warmFont(13, weight: .semibold)
                             .foregroundStyle(isOn ? Color.warmGreenDeep : Color.warmInkSoft)
                             .padding(.horizontal, 14).padding(.vertical, 8)
@@ -565,6 +571,7 @@ struct WarmQuickIncomeView: View {
                             .overlay(Capsule().stroke(isOn ? Color.warmGreenSoft : Color.warmLine, lineWidth: 1))
                     }
                     .buttonStyle(.plain)
+                    .accessibilityAddTraits(isOn ? [.isSelected] : [])
                     .animation(.easeInOut(duration: 0.15), value: selectedSource)
                 }
             }
@@ -581,7 +588,7 @@ struct WarmQuickIncomeView: View {
                     Text(bannerText(for: suggestion))
                         .warmFont(12).foregroundStyle(Color.warmGreenDeep)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Button(autoMoveArmed ? "UNDO" : "YES") {
+                    Button(autoMoveArmed ? Strings.QuickAdd.undo : Strings.QuickAdd.yes) {
                         withAnimation(.spring(response: 0.35, dampingFraction: 0.9)) {
                             autoMoveArmed.toggle()
                         }
@@ -608,13 +615,19 @@ struct WarmQuickIncomeView: View {
         }
     }
 
+    /// Whole sentences per case (armed / paycheck / other income) so each
+    /// language can order and inflect them freely; markdown bold survives
+    /// through `AttributedString(localized:)`.
     private func bannerText(for suggestion: AutoMoveSuggestion) -> AttributedString {
-        let amount = "$\(Int(suggestion.amount))"
-        let origin = selectedSource == IncomeSource.paycheck.label ? "paycheck" : "income"
-        let raw = autoMoveArmed
-            ? "**Moving \(amount)** to \(suggestion.goal.name) when you save."
-            : "**Auto-move \(amount)** to \(suggestion.goal.name) from this \(origin)?"
-        return (try? AttributedString(markdown: raw)) ?? AttributedString(raw)
+        let amount = Int(suggestion.amount)
+        let goal = suggestion.goal.name
+        if autoMoveArmed {
+            return AttributedString(localized: "**Moving $\(amount)** to \(goal) when you save.")
+        }
+        if selectedSource == .paycheck {
+            return AttributedString(localized: "**Auto-move $\(amount)** to \(goal) from this paycheck?")
+        }
+        return AttributedString(localized: "**Auto-move $\(amount)** to \(goal) from this income?")
     }
 
     private func saveAndDismiss() {
@@ -622,19 +635,21 @@ struct WarmQuickIncomeView: View {
         // Snapshot the suggestion BEFORE the income insert mutates the
         // month totals — this is exactly what the banner was showing.
         let armedSuggestion = autoMoveArmed ? autoMoveSuggestion : nil
-        vm.incomeDescription = description.isEmpty ? selectedSource : description
+        // Stored source = stable storage key; an empty description borrows
+        // the chip's display name (free text, read back in the user's language).
+        vm.incomeDescription = description.isEmpty ? selectedSource.displayName : description
         vm.amount = amountStr
-        vm.addIncome(source: selectedSource)
+        vm.addIncome(source: selectedSource.storageKey)
         if let suggestion = armedSuggestion {
             do {
                 try GoalDeposits.record(
                     goal: suggestion.goal, amount: suggestion.amount,
-                    note: "Payday auto-move", source: .autoMove, context: modelContext
+                    note: GoalDeposits.autoMoveNote, source: .autoMove, context: modelContext
                 )
             } catch {
                 // The income itself is already saved; the move failing must
                 // not lose it. Surface through the income VM's alert.
-                vm.errorMessage = "Income saved, but the auto-move to \(suggestion.goal.name) failed."
+                vm.errorMessage = Strings.QuickAdd.autoMoveFailed(goal: suggestion.goal.name)
                 vm.showError = true
                 return
             }
@@ -667,9 +682,9 @@ struct WarmQuickDepositView: View {
                         .frame(width: 32, height: 32)
                         .tappable44()
                 }
-                .accessibilityLabel("Back")
+                .accessibilityLabel(Strings.Common.back)
                 Spacer()
-                Text("Move money")
+                Text(Strings.QuickAdd.moveMoney)
                     .warmFont(18, weight: .regular, design: .serif).foregroundStyle(Color.warmInk)
                 Spacer()
                 Color.clear.frame(width: 32, height: 32)
@@ -776,7 +791,7 @@ struct WarmQuickDepositView: View {
 
             Button(action: saveDeposit) {
                 let goalName = selectedGoal.map { $0.name.components(separatedBy: ",").first ?? $0.name }
-                Text(goalName.map { "Add $\(Int(selectedPreset)) to \($0)" } ?? "Select a goal")
+                Text(goalName.map { String(localized: "Add $\(Int(selectedPreset)) to \($0)") } ?? String(localized: "Select a goal"))
                     .warmFont(15, weight: .semibold).foregroundStyle(Color.warmOnGreen)
                     .frame(maxWidth: .infinity).frame(height: 50)
                     .background(selectedGoal != nil ? Color.warmGreenFill : Color.warmInkMuted)

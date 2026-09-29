@@ -86,4 +86,59 @@ final class CategoryPersistenceTests: XCTestCase {
         XCTAssertEqual(ExpenseCategory.allCases.map(\.rawValue), ["Coffee", "Food", "Transit", "Shopping", "Other"])
         XCTAssertEqual(IncomeSource.allCases.map(\.rawValue), ["Paycheck", "Freelance", "Gift", "Other"])
     }
+
+    // MARK: - Localized display, stable storage (es-419, 1.1)
+
+    /// The app's es-419 string table, read directly so the test does not
+    /// depend on the simulator's language.
+    private func spanish(_ key: String) throws -> String {
+        let appBundle = Bundle(for: ExpenseTrackerViewModel.self)
+        let path = try XCTUnwrap(appBundle.path(forResource: "es-419", ofType: "lproj"), "es-419.lproj missing")
+        let bundle = try XCTUnwrap(Bundle(path: path))
+        return bundle.localizedString(forKey: key, value: nil, table: nil)
+    }
+
+    func testStorageKeysAreTheRawValues() {
+        XCTAssertEqual(ExpenseCategory.allCases.map(\.storageKey), ExpenseCategory.allCases.map(\.rawValue))
+        XCTAssertEqual(IncomeSource.allCases.map(\.storageKey), IncomeSource.allCases.map(\.rawValue))
+    }
+
+    func testSpanishDisplayNamesDifferFromWhatIsStored() throws {
+        // If these ever matched, a localized label could leak into the store unnoticed.
+        XCTAssertEqual(try spanish("category.coffee"), "Café")
+        XCTAssertNotEqual(try spanish("category.coffee"), ExpenseCategory.coffee.storageKey)
+        XCTAssertEqual(try spanish("source.paycheck"), "Sueldo")
+        XCTAssertNotEqual(try spanish("source.paycheck"), IncomeSource.paycheck.storageKey)
+    }
+
+    func testQuickAddWritesTheStorageKeyAndItRoundTrips() throws {
+        let expenses = ExpenseTrackerViewModel(modelContext: context)
+        XCTAssertTrue(expenses.addExpense(description: "Oxxo", amount: 25, date: Date(),
+                                          category: ExpenseCategory.coffee.storageKey))
+        context.insert(IncomeModel(incomeDescription: "Quincena", amount: 900, date: Date(),
+                                   source: IncomeSource.paycheck.storageKey))
+        try context.save()
+
+        let expense = try XCTUnwrap(try context.fetch(FetchDescriptor<ExpenseModel>()).first)
+        XCTAssertEqual(expense.category, "Coffee")
+        XCTAssertEqual(ExpenseCategory.display(stored: expense.category, description: expense.expenseDescription), .coffee)
+
+        let income = try XCTUnwrap(try context.fetch(FetchDescriptor<IncomeModel>()).first)
+        XCTAssertEqual(income.source, "Paycheck")
+        XCTAssertEqual(IncomeSource.display(stored: income.source), .paycheck)
+    }
+
+    func testLegacyEnglishRowsStillResolveEveryChip() {
+        // Rows written by 1.0 (English-only) must keep matching after 1.1.
+        for category in ExpenseCategory.allCases {
+            XCTAssertEqual(ExpenseCategory.display(stored: category.rawValue, description: ""), category)
+        }
+        for source in IncomeSource.allCases {
+            XCTAssertEqual(IncomeSource.display(stored: source.rawValue), source)
+        }
+    }
+
+    func testAutoMoveNoteIsStoredInEnglish() {
+        XCTAssertEqual(GoalDeposits.autoMoveNote, "Payday auto-move")
+    }
 }
